@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-moosburg-50: #f4f7fb;
+  --color-moosburg-100: #e6edf6;
+  --color-moosburg-500: #2b5d9b;
+  --color-moosburg-600: #23508a;
+  --color-moosburg-700: #1c4272;
+  --color-moosburg-900: #11294a;
+  --color-accent-500: #f0a500;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #1a1a1a;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
