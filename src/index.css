@@ -1,14 +1,81 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/900.css";
+@import "@fontsource/playfair-display/700-italic.css";
+
+@font-face {
+  font-family: "Madelon Script";
+  src: url("/moosburg/fonts/MadelonScript.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-moosburg-50: #f4f7fb;
-  --color-moosburg-100: #e6edf6;
-  --color-moosburg-500: #2b5d9b;
-  --color-moosburg-600: #23508a;
-  --color-moosburg-700: #1c4272;
-  --color-moosburg-900: #11294a;
-  --color-accent-500: #f0a500;
+  /* ──────────────────────────────────────────────────────────────
+     Brand colors — Moosburg civic identity
+     Red + Gold as soul, cream as ground, rainbow as joyful accent
+     ────────────────────────────────────────────────────────────── */
+  --color-red-50: #fdf3f5;
+  --color-red-100: #fbe5e9;
+  --color-red-500: #c8102e;
+  --color-red-600: #b00e28;
+  --color-red-700: #a50d24;
+  --color-red-900: #6d0818;
+
+  --color-gold-100: #f6ecd5;
+  --color-gold-200: #e8d5a3;
+  --color-gold-500: #b8964e;
+  --color-gold-600: #967a40;
+  --color-gold-700: #6e5a30;
+
+  --color-cream: #faf7f2;
+  --color-cream-dark: #f1ece1;
+
+  --color-ink: #1c1c1c;
+  --color-ink-soft: #555555;
+  --color-ink-muted: #888888;
+  --color-ink-line: #e4e0d7;
+
+  --color-purple-accent: #6b3e7a;
+
+  /* Rainbow stripe — fixed order, use only as stripe, never gradient */
+  --color-rb-1: #e91e8c;
+  --color-rb-2: #e5202e;
+  --color-rb-3: #f4830a;
+  --color-rb-4: #f5d400;
+  --color-rb-5: #0a9e4c;
+  --color-rb-6: #009ac7;
+  --color-rb-7: #3b3f9a;
+  --color-rb-8: #8b4a2a;
+  --color-rb-9: #1a1a1a;
+
+  /* ──────────────────────────────────────────────────────────────
+     Typography — three families, clearly roled
+     ────────────────────────────────────────────────────────────── */
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-script: "Madelon Script", "Playfair Display", cursive;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --text-display-1: 4rem;       /* 64px — Hero, seiten-H1 */
+  --text-display-2: 3rem;       /* 48px — Section-Opener */
+  --text-display-3: 2.25rem;    /* 36px — H2 */
+  --text-display-4: 1.5rem;     /* 24px — H3 */
+
+  /* ──────────────────────────────────────────────────────────────
+     Radii, shadows, motion
+     ────────────────────────────────────────────────────────────── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-2xl: 14px;
+
+  --shadow-soft: 0 2px 12px rgb(0 0 0 / 0.07);
+  --shadow-lift: 0 4px 24px rgb(0 0 0 / 0.10);
 }
 
 html {
@@ -17,7 +84,108 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: #1a1a1a;
-  background: #ffffff;
+  color: var(--color-ink);
+  background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Display helpers — used via utility classes or directly */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+/* ALL CAPS display headlines, Playfair — per brand brief */
+.headline {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+/* Script accent, used large + sparingly (one per layout) */
+.script-accent {
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 0.85;
+}
+
+/* Small caps labels, Inter, tight tracking */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Card/tile titles — Inter, uppercase-light, not Playfair */
+.card-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+}
+
+/* UI label title — slightly smaller, for nav/chips/buttons */
+.ui-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+/* Rainbow stripe — 9 fixed segments, 4px per brand guideline */
+.rainbow-stripe {
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+.rainbow-stripe > span {
+  flex: 1;
+}
+.rainbow-stripe > span:nth-child(1) { background: var(--color-rb-1); }
+.rainbow-stripe > span:nth-child(2) { background: var(--color-rb-2); }
+.rainbow-stripe > span:nth-child(3) { background: var(--color-rb-3); }
+.rainbow-stripe > span:nth-child(4) { background: var(--color-rb-4); }
+.rainbow-stripe > span:nth-child(5) { background: var(--color-rb-5); }
+.rainbow-stripe > span:nth-child(6) { background: var(--color-rb-6); }
+.rainbow-stripe > span:nth-child(7) { background: var(--color-rb-7); }
+.rainbow-stripe > span:nth-child(8) { background: var(--color-rb-8); }
+.rainbow-stripe > span:nth-child(9) { background: var(--color-rb-9); }
+
+/* Focus ring — buttons/links/select/textarea get ring; inputs rely on the
+   focus-within border of their wrapper. Prevents the triple-outline effect
+   on composed inputs (icon + input + submit button). */
+:where(a, button, select, textarea):focus-visible {
+  outline: 2px solid var(--color-red-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+:where(input):focus-visible {
+  outline: none;
+}
+
+/* Motion — subtle fade-in-on-scroll, respects reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal[data-delay="1"] { transition-delay: 80ms; }
+  .reveal[data-delay="2"] { transition-delay: 160ms; }
+  .reveal[data-delay="3"] { transition-delay: 240ms; }
+  .reveal[data-delay="4"] { transition-delay: 320ms; }
 }

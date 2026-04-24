@@ -8,3 +8,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 *.log
+
+# Design-Handoff bundle (reference, not shipped)
+design-handoff/
+src/*.zip
+*.zip

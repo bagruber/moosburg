@@ -1,23 +1,37 @@
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { TopTiles } from "@/components/TopTiles";
-import { Lebenslagen } from "@/components/Lebenslagen";
-import { Events } from "@/components/Events";
-import { Identity } from "@/components/Identity";
-import { Footer } from "@/components/Footer";
+import { Routes, Route } from "react-router-dom";
+import { HomePage } from "@/pages/HomePage";
+import { HubPage } from "@/pages/HubPage";
+import { StubPage } from "@/pages/StubPage";
+import { KontoPage } from "@/pages/Konto";
+import { TerminBuchen } from "@/pages/flagship/TerminBuchen";
+import { OnlineDienste } from "@/pages/flagship/OnlineDienste";
+import { Veranstaltungen } from "@/pages/flagship/Veranstaltungen";
+import { MaengelMelden } from "@/pages/flagship/MaengelMelden";
+import { Stadtrat } from "@/pages/flagship/Stadtrat";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <Header />
-      <main>
-        <Hero />
-        <TopTiles />
-        <Lebenslagen />
-        <Events />
-        <Identity />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+
+      {/* Flagship service pages */}
+      <Route path="/rathaus/termin-buchen" element={<TerminBuchen />} />
+      <Route path="/rathaus/online-dienste" element={<OnlineDienste />} />
+      <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
+      <Route path="/mitgestalten/maengel-melden" element={<MaengelMelden />} />
+      <Route path="/mitgestalten/stadtrat" element={<Stadtrat />} />
+
+      {/* Account */}
+      <Route path="/konto" element={<KontoPage />} />
+
+      {/* Hub landing pages */}
+      <Route path="/:hub" element={<HubPage />} />
+
+      {/* Sub-pages (Tier 2, data-driven stubs) */}
+      <Route path="/:hub/*" element={<StubPage />} />
+
+      {/* Fallback to home for unknown routes */}
+      <Route path="*" element={<HomePage />} />
+    </Routes>
   );
 }

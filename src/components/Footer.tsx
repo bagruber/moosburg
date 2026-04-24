@@ -1,79 +1,103 @@
-import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { IconPhone, IconMail, IconClock, IconMapPin, IconExternalLink } from "@tabler/icons-react";
+import { RainbowStripe } from "./RainbowStripe";
+import { Logo } from "./Logo";
+import { partnerLinks } from "@/routes";
 
 const columns = [
   {
     title: "Rathaus",
-    links: ["Online-Dienste A–Z", "Termin buchen", "Kontakt & Organigramm", "Stellenangebote"],
+    links: [
+      { label: "Online-Dienste A–Z", to: "/rathaus/online-dienste" },
+      { label: "Termin buchen", to: "/rathaus/termin-buchen" },
+      { label: "Kontakt & Organigramm", to: "/rathaus/kontakt" },
+      { label: "Stellenangebote", to: "/rathaus/stellenangebote" },
+    ],
   },
   {
     title: "Mein Moosburg",
-    links: ["Was ist los?", "Familie & Bildung", "Mobilität & Verkehr", "Firmenverzeichnis"],
+    links: [
+      { label: "Was ist los?", to: "/mein-moosburg/veranstaltungen" },
+      { label: "Familie & Bildung", to: "/mein-moosburg/familie" },
+      { label: "Mobilität & Verkehr", to: "/mein-moosburg/mobilitaet" },
+      { label: "Firmenverzeichnis", to: "/mein-moosburg/firmen" },
+    ],
   },
   {
     title: "Mitgestalten",
-    links: ["Stadtrat", "Bürgerbeteiligung", "Mängel melden", "Stadtentwicklung"],
-  },
-  {
-    title: "Partner",
-    links: ["moosburg.org", "dermoosburger.de", "stalag7a.de", "Heimatmuseum"],
+    links: [
+      { label: "Stadtrat", to: "/mitgestalten/stadtrat" },
+      { label: "Bürgerbeteiligung", to: "/mitgestalten/beteiligung" },
+      { label: "Mängel melden", to: "/mitgestalten/maengel-melden" },
+      { label: "Stadtentwicklung", to: "/mitgestalten/stadtentwicklung" },
+    ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50">
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-5">
+    <footer className="bg-red-700 text-cream">
+      <RainbowStripe />
+      <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 font-semibold text-moosburg-700">
-              <div className="grid h-9 w-9 place-items-center rounded-lg bg-moosburg-600 text-white font-bold">
-                M
+            <Logo tone="light" />
+            <dl className="mt-6 space-y-3 text-sm text-cream/90">
+              <div className="flex gap-2.5">
+                <IconMapPin className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <span>Stadtplatz 13<br />85368 Moosburg a. d. Isar</span>
               </div>
-              <span>Stadt Moosburg</span>
-            </div>
-            <dl className="mt-4 space-y-2 text-sm text-slate-600">
-              <div className="flex gap-2">
-                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-slate-400" />
-                <span>Stadtplatz 15<br />85368 Moosburg a. d. Isar</span>
+              <div className="flex gap-2.5">
+                <IconPhone className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <a href="tel:+49876168400" className="hover:text-white">08761 684-0</a>
               </div>
-              <div className="flex gap-2">
-                <Phone className="h-4 w-4 shrink-0 mt-0.5 text-slate-400" />
-                <a href="tel:+4987619800" className="hover:text-moosburg-700">08761 683-0</a>
+              <div className="flex gap-2.5">
+                <IconMail className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <a href="mailto:info@moosburg.de" className="hover:text-white">info@moosburg.de</a>
               </div>
-              <div className="flex gap-2">
-                <Mail className="h-4 w-4 shrink-0 mt-0.5 text-slate-400" />
-                <a href="mailto:rathaus@moosburg.de" className="hover:text-moosburg-700">
-                  rathaus@moosburg.de
-                </a>
-              </div>
-              <div className="flex gap-2">
-                <Clock className="h-4 w-4 shrink-0 mt-0.5 text-slate-400" />
-                <span>Mo–Fr 8–12 · Do 14–18</span>
+              <div className="flex gap-2.5">
+                <IconClock className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <span>Mo 8–12 · 14–16<br />Di/Mi/Fr 8–12<br />Do 8–12 · 14–18</span>
               </div>
             </dl>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-sm font-semibold text-slate-900">{col.title}</h3>
-              <ul className="mt-3 space-y-2 text-sm text-slate-600">
+              <h3 className="eyebrow text-gold-200">{col.title}</h3>
+              <ul className="mt-4 space-y-2.5 text-sm text-cream/90">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="hover:text-moosburg-700">{l}</a>
+                  <li key={l.to}>
+                    <Link to={l.to} className="hover:text-white">{l.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
+
+          <div>
+            <h3 className="eyebrow text-gold-200">Partner</h3>
+            <ul className="mt-4 space-y-2.5 text-sm text-cream/90">
+              {partnerLinks.map((p) => (
+                <li key={p.label}>
+                  <a href={p.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 hover:text-white">
+                    {p.label}
+                    <IconExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" stroke={1.75} />
+                  </a>
+                  <div className="text-xs text-cream/50">{p.description}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-slate-200 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col gap-3 border-t border-cream/15 pt-6 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <div>© {new Date().getFullYear()} Stadt Moosburg an der Isar</div>
-          <div className="flex gap-4">
-            <a href="#impressum" className="hover:text-moosburg-700">Impressum</a>
-            <a href="#datenschutz" className="hover:text-moosburg-700">Datenschutz</a>
-            <a href="#barrierefreiheit" className="hover:text-moosburg-700">Barrierefreiheit</a>
-            <a href="#leichte-sprache" className="hover:text-moosburg-700">Leichte Sprache</a>
+          <div className="flex flex-wrap gap-5">
+            <Link to="/impressum" className="hover:text-white">Impressum</Link>
+            <Link to="/datenschutz" className="hover:text-white">Datenschutz</Link>
+            <Link to="/barrierefreiheit" className="hover:text-white">Barrierefreiheit</Link>
+            <Link to="/leichte-sprache" className="hover:text-white">Leichte Sprache</Link>
           </div>
         </div>
       </div>
