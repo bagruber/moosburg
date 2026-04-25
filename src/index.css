@@ -175,6 +175,21 @@ body {
   outline: none;
 }
 
+/* Three-rose loader — sequential pulse evoking the Drei-Rosen-Wappen.
+   Each tile dips and lifts; phases offset by 200 ms. */
+@keyframes rose-tile-pulse {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  20%      { transform: translateY(-6px) scale(1.05); opacity: 1; }
+  60%      { transform: translateY(0) scale(0.96); opacity: 0.55; }
+}
+.rose-tile      { animation: rose-tile-pulse 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+.rose-tile--inv { animation-delay: 0ms;   }
+.rose-tile--a   { animation-delay: 200ms; }
+.rose-tile--b   { animation-delay: 400ms; }
+@media (prefers-reduced-motion: reduce) {
+  .rose-tile { animation: none; }
+}
+
 /* Rose loading spinner — gentle rotation, decelerates briefly each turn */
 @keyframes rose-spin {
   0%   { transform: rotate(0deg); }
