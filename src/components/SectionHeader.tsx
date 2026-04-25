@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { Rose } from "./BrandMark";
 
 export function SectionHeader({
   eyebrow,
@@ -37,7 +38,14 @@ export function SectionHeader({
         </span>
       )}
       {eyebrow && (
-        <div className={cn("eyebrow relative", light ? "text-gold-200" : "text-red-700")}>
+        <div
+          className={cn(
+            "eyebrow relative inline-flex items-center gap-2",
+            align === "center" && "justify-center",
+            light ? "text-gold-200" : "text-red-700",
+          )}
+        >
+          <Rose className="h-3 w-3" />
           {eyebrow}
         </div>
       )}

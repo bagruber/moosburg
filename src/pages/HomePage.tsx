@@ -328,39 +328,41 @@ function Events() {
 function MayorQuote() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
-      <div className="grid items-center gap-10 md:grid-cols-[180px,minmax(0,1fr)] lg:grid-cols-[220px,minmax(0,1fr)] lg:gap-14">
-        <Reveal className="mx-auto md:mx-0 w-40 sm:w-48 md:w-full">
-          <div className="overflow-hidden rounded-md shadow-lift">
-            <img
-              src={IMG("images/person-portrait-1.jpg")}
-              alt="Erster Bürgermeister Josef Dollinger"
-              className="aspect-square w-full object-cover"
-            />
+      <Reveal>
+        <div className="relative">
+          <span
+            aria-hidden="true"
+            className="script-accent pointer-events-none absolute -top-2 left-0 text-[5rem] leading-none text-gold-500/40 select-none lg:-top-4 lg:text-[6rem]"
+          >
+            Ein Wort
+          </span>
+          <div className="eyebrow relative text-red-700 pt-10">des Bürgermeisters</div>
+          <h2 className="headline relative mt-2 text-3xl lg:text-4xl text-ink max-w-3xl">
+            „Moosburg ist unser Zuhause."
+          </h2>
+        </div>
+      </Reveal>
+
+      <Reveal delay={1}>
+        <figure className="mt-8 flex items-start gap-5 rounded-md border border-ink-line bg-white p-6 shadow-soft sm:gap-7 sm:p-8">
+          <img
+            src={IMG("images/person-portrait-1.jpg")}
+            alt="Erster Bürgermeister Josef Dollinger"
+            className="h-24 w-24 shrink-0 rounded-md object-cover sm:h-28 sm:w-28"
+          />
+          <div className="min-w-0">
+            <blockquote className="text-base italic text-ink-soft leading-relaxed sm:text-lg">
+              „Die Stadt Moosburg freut sich darauf, mit Ihnen gemeinsam Stadtgeschichte zu
+              schreiben. Diese Website soll Ihnen das einfacher machen — kommen Sie mit uns
+              ins Gespräch."
+            </blockquote>
+            <figcaption className="mt-4 text-sm font-semibold text-ink">
+              Josef Dollinger
+              <span className="ml-2 font-normal text-ink-muted">· Erster Bürgermeister</span>
+            </figcaption>
           </div>
-        </Reveal>
-        <Reveal delay={1}>
-          <div className="relative pt-10">
-            <span
-              aria-hidden="true"
-              className="script-accent pointer-events-none absolute -top-1 left-0 text-[5rem] leading-none text-gold-500/40 select-none"
-            >
-              Ein Wort
-            </span>
-            <div className="eyebrow relative text-red-700">des Bürgermeisters</div>
-            <h2 className="headline relative mt-2 text-3xl lg:text-4xl text-ink">
-              „Moosburg ist unser Zuhause."
-            </h2>
-          </div>
-          <p className="mt-6 max-w-2xl text-lg italic text-ink-soft leading-relaxed">
-            „Die Stadt Moosburg freut sich darauf, mit Ihnen gemeinsam Stadtgeschichte zu
-            schreiben. Diese Website soll Ihnen das einfacher machen — kommen Sie mit uns
-            ins Gespräch."
-          </p>
-          <div className="mt-5 text-sm font-semibold text-ink-muted">
-            Josef Dollinger — Erster Bürgermeister
-          </div>
-        </Reveal>
-      </div>
+        </figure>
+      </Reveal>
     </section>
   );
 }

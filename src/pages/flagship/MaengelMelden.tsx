@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   IconMapPin,
   IconCamera,
   IconCheck,
   IconInfoCircle,
-  IconCrosshair,
-  IconPlus,
   IconChevronDown,
   IconShieldCheck,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import {
+  MoosburgMap,
+  layerConfig,
+  type LayerKey,
+} from "@/components/MoosburgMap";
+import { mockPins } from "@/data/mapPins";
 import { findRoute } from "@/routes";
 
 const route = findRoute("mitgestalten/maengel-melden")!;
@@ -38,65 +42,31 @@ const statusStyle: Record<string, string> = {
   "gemeldet": "bg-red-50 text-red-700",
 };
 
-function MapMock({ pin }: { pin: { x: number; y: number } | null }) {
-  return (
-    <div className="relative h-full w-full overflow-hidden rounded-md bg-[#e7e2d6]">
-      {/* Faux map tile pattern */}
-      <svg className="absolute inset-0 h-full w-full opacity-80" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="streets" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-            <rect width="120" height="120" fill="#efebe0" />
-            <path d="M0 40 L120 30 M30 0 L40 120 M70 0 L90 120 M0 80 L120 85" stroke="#d8d0bd" strokeWidth="4" fill="none" />
-            <path d="M0 20 L120 15" stroke="#c8102e" strokeWidth="2" fill="none" opacity="0.35" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#streets)" />
-      </svg>
-      {/* Isar as a blue curve */}
-      <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 1000 500">
-        <path d="M -50 380 Q 200 340 380 380 T 800 360 T 1100 390" stroke="#9fc9d9" strokeWidth="24" fill="none" opacity="0.8" />
-      </svg>
-      {/* Pin */}
-      {pin && (
-        <div
-          className="absolute -translate-x-1/2 -translate-y-full"
-          style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-        >
-          <div className="relative">
-            <IconMapPin className="h-10 w-10 fill-red-500 text-red-500 drop-shadow-lg" stroke={1.5} />
-            <div className="absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-ink/40" />
-          </div>
-        </div>
-      )}
-      {/* Zoom controls */}
-      <div className="absolute right-4 top-4 flex flex-col overflow-hidden rounded-md border border-ink-line bg-white shadow-soft">
-        <button className="grid h-9 w-9 place-items-center border-b border-ink-line text-ink hover:bg-cream-dark">
-          <IconPlus className="h-4 w-4" stroke={2} />
-        </button>
-        <button className="grid h-9 w-9 place-items-center text-ink hover:bg-cream-dark">
-          <span className="font-display text-lg">−</span>
-        </button>
-      </div>
-      <button className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-md border border-ink-line bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-soft hover:border-red-500">
-        <IconCrosshair className="h-3.5 w-3.5" stroke={2} />
-        Mein Standort
-      </button>
-      {!pin && (
-        <div className="pointer-events-none absolute inset-0 grid place-items-center">
-          <div className="rounded-md bg-white/90 px-4 py-2 text-sm font-semibold text-ink shadow-soft backdrop-blur">
-            Klicken Sie auf die Karte, um den Ort zu markieren
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+const ALL_LAYERS: LayerKey[] = ["mangel", "baustelle", "spielplatz", "trinkbrunnen", "haltestelle"];
 
 export function MaengelMelden() {
-  const [pin, setPin] = useState<{ x: number; y: number } | null>(null);
+  const [pin, setPin] = useState<{ lat: number; lng: number } | null>(null);
   const [address, setAddress] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
+  const [visibleLayers, setVisibleLayers] = useState<Set<LayerKey>>(
+    () => new Set<LayerKey>(["mangel", "baustelle"]),
+  );
+
+  const toggleLayer = (k: LayerKey) =>
+    setVisibleLayers((prev) => {
+      const next = new Set(prev);
+      next.has(k) ? next.delete(k) : next.add(k);
+      return next;
+    });
+
+  const layerCounts = useMemo(() => {
+    const out: Record<LayerKey, number> = {
+      mangel: 0, baustelle: 0, spielplatz: 0, trinkbrunnen: 0, haltestelle: 0,
+    };
+    mockPins.forEach((p) => { out[p.layer]++; });
+    return out;
+  }, []);
 
   return (
     <PageLayout>
@@ -122,20 +92,43 @@ export function MaengelMelden() {
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
-          <div
-            className="h-[380px] cursor-crosshair overflow-hidden rounded-md border border-ink-line shadow-soft"
-            onClick={(e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              setPin({
-                x: ((e.clientX - r.left) / r.width) * 100,
-                y: ((e.clientY - r.top) / r.height) * 100,
-              });
-            }}
-          >
-            <MapMock pin={pin} />
-          </div>
+          <MoosburgMap
+            className="h-[460px] overflow-hidden rounded-md border border-ink-line shadow-soft"
+            pins={mockPins}
+            visibleLayers={visibleLayers}
+            userPin={pin}
+            onPick={(lat, lng) => setPin({ lat, lng })}
+          />
 
           <div className="flex flex-col gap-4">
+            <div className="rounded-md border border-ink-line bg-white p-4">
+              <div className="eyebrow text-ink-muted">Ebenen anzeigen</div>
+              <ul className="mt-3 space-y-1.5">
+                {ALL_LAYERS.map((k) => {
+                  const cfg = layerConfig[k];
+                  const on = visibleLayers.has(k);
+                  return (
+                    <li key={k}>
+                      <label className="flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 text-sm hover:bg-cream-dark">
+                        <input
+                          type="checkbox"
+                          checked={on}
+                          onChange={() => toggleLayer(k)}
+                          className="h-4 w-4 accent-red-500"
+                        />
+                        <span
+                          className="h-3 w-3 shrink-0 rounded-full"
+                          style={{ backgroundColor: cfg.color }}
+                        />
+                        <span className="flex-1 text-ink">{cfg.label}</span>
+                        <span className="font-mono text-xs text-ink-muted">{layerCounts[k]}</span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
             <label className="block">
               <span className="eyebrow text-ink-muted">Adresse</span>
               <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-white focus-within:border-red-500">
@@ -155,14 +148,14 @@ export function MaengelMelden() {
                 {pin ? (
                   <>
                     <div className="font-semibold">Marker gesetzt</div>
-                    <div className="mt-0.5 text-xs text-ink-muted">
-                      Koordinate: {pin.x.toFixed(1)}%, {pin.y.toFixed(1)}% — Adresse wird ermittelt…
+                    <div className="mt-0.5 font-mono text-xs text-ink-muted">
+                      {pin.lat.toFixed(5)}, {pin.lng.toFixed(5)}
                     </div>
                   </>
                 ) : address ? (
                   <div className="font-semibold">{address}</div>
                 ) : (
-                  <div className="text-ink-muted">Noch kein Ort gewählt</div>
+                  <div className="text-ink-muted">Noch kein Ort gewählt — bitte auf die Karte klicken</div>
                 )}
               </div>
             </div>

@@ -13,19 +13,20 @@ const route = findRoute("mitgestalten/stadtrat")!;
 const IMG = (src: string) => `${import.meta.env.BASE_URL}${src}`;
 
 const boardMembers = [
-  { name: "Josef Dollinger", role: "Erster Bürgermeister", fraction: "CSU", image: "images/person-portrait-1.jpg" },
-  { name: "Dr. Elisabeth Maier", role: "2. Bürgermeisterin", fraction: "Freie Wähler", image: "images/person-portrait-2.jpg" },
-  { name: "Thomas Huber", role: "3. Bürgermeister", fraction: "SPD", image: "images/person-portrait-3.jpg" },
-  { name: "Markus Reindl", role: "Fraktionsvorsitzender", fraction: "Grüne", image: "images/person-portrait-4.jpg" },
+  { name: "Martin Pschorr", role: "Erster Bürgermeister", fraction: "SPD", image: "images/person-portrait-1.jpg" },
+  { name: "Nathalie von Pressentin", role: "2. Bürgermeisterin", fraction: "Grüne", image: "images/person-portrait-2.jpg" },
+  { name: "Erwin Weber", role: "3. Bürgermeister", fraction: "CSU", image: "images/person-portrait-3.jpg" },
+  { name: "Philipp Fincke", role: "Fraktionsvorsitzender", fraction: "parteilos", image: "images/person-portrait-4.jpg" },
 ];
 
 const fractions = [
+  { name: "Linke", seats: 1, color: "bg-rb-1" },
+  { name: "Bündnis 90/Die Grünen", seats: 5, color: "bg-rb-5" },
+  { name: "fresh", seats: 2, color: "bg-turquoise-accent" },
+  { name: "SPD", seats: 2, color: "bg-red-500" },
+  { name: "Freie Wähler", seats: 4, color: "bg-gold-500" },
   { name: "CSU", seats: 8, color: "bg-ink" },
-  { name: "Freie Wähler", seats: 5, color: "bg-gold-500" },
-  { name: "SPD", seats: 4, color: "bg-red-500" },
-  { name: "Bündnis 90/Die Grünen", seats: 3, color: "bg-rb-5" },
-  { name: "FDP", seats: 2, color: "bg-rb-4" },
-  { name: "ödp", seats: 2, color: "bg-purple-accent" },
+  { name: "AfD", seats: 2, color: "bg-rb-6" },
 ];
 
 const sessions = [
@@ -87,8 +88,8 @@ export function Stadtrat() {
               />
               <div>
                 <div className="eyebrow text-gold-200">Erster Bürgermeister</div>
-                <div className="mt-1 card-title text-xl leading-tight">Josef Dollinger</div>
-                <div className="text-xs text-cream/70">seit 2020, CSU</div>
+                <div className="mt-1 card-title text-xl leading-tight">Martin Pschorr</div>
+                <div className="text-xs text-cream/70">seit 2020, SPD</div>
               </div>
             </div>
             <p className="mt-5 text-sm text-cream/90 italic">

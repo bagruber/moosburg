@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { IconPhone, IconMail, IconClock, IconMapPin, IconExternalLink } from "@tabler/icons-react";
 import { RainbowStripe } from "./RainbowStripe";
 import { Logo } from "./Logo";
+import { WappenWatermark } from "./BrandMark";
 import { partnerLinks } from "@/routes";
 
 const columns = [
@@ -36,9 +37,12 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="bg-red-700 text-cream">
+    <footer className="relative overflow-hidden bg-red-700 text-cream">
       <RainbowStripe />
-      <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
+      <WappenWatermark
+        className="absolute -right-12 -top-8 h-[420px] w-[336px] text-cream/[0.06] lg:-right-4 lg:h-[520px] lg:w-[416px]"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 py-14 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-1">
             <Logo tone="light" />

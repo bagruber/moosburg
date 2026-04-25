@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 @import "@fontsource-variable/inter";
 @import "@fontsource/playfair-display/400.css";
 @import "@fontsource/playfair-display/600.css";
@@ -41,6 +42,7 @@
   --color-ink-line: #e4e0d7;
 
   --color-purple-accent: #6b3e7a;
+  --color-turquoise-accent: #18ada4;
 
   /* Rainbow stripe — fixed order, use only as stripe, never gradient */
   --color-rb-1: #e91e8c;
@@ -171,6 +173,19 @@ body {
 }
 :where(input):focus-visible {
   outline: none;
+}
+
+/* Rose loading spinner — gentle rotation, decelerates briefly each turn */
+@keyframes rose-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.rose-spin {
+  animation: rose-spin 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rose-spin { animation: none; }
 }
 
 /* Motion — subtle fade-in-on-scroll, respects reduced-motion */
