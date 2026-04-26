@@ -166,7 +166,7 @@ export const routes: Route[] = [
     title: "Was ist los? — Veranstaltungen",
     eyebrow: "Mein Moosburg",
     intro:
-      "Vom Frühlingsfest bis zur Lesung in der Stadtbücherei — der zentrale Veranstaltungskalender bündelt alle Termine aus Stadt, Vereinen und Kultur an einem Ort.",
+      "Vom Frühlingsfest bis zur Lesung in der Stadtbibliothek — der zentrale Veranstaltungskalender bündelt alle Termine aus Stadt, Vereinen und Kultur an einem Ort.",
     icon: IconCalendarEvent,
     flagship: true,
   },
@@ -212,7 +212,7 @@ export const routes: Route[] = [
     title: "Freizeit & Sport",
     eyebrow: "Mein Moosburg",
     intro:
-      "Vereine, Stadtbücherei, Hallenbad, Eisstadion, Radwege und Naherholung — wer in Moosburg aktiv ist, findet hier den passenden Einstieg.",
+      "Vereine, Stadtbibliothek, Hallenbad, Eisstadion, Radwege und Naherholung — wer in Moosburg aktiv ist, findet hier den passenden Einstieg.",
     icon: IconBike,
   },
   {
@@ -445,7 +445,7 @@ export const upcomingEvents: EventItem[] = [
   { date: "2026-04-30", day: "30", month: "Apr", title: "57. Moosburger Frühlingsfest — Anstich", location: "Festgelände, Am Stadtpark", category: "Volksfest" },
   { date: "2026-05-01", day: "01", month: "Mai", title: "Maibaumaufstellen am Plan", location: "Plan Moosburg", category: "Brauchtum" },
   { date: "2026-04-29", day: "29", month: "Apr", title: "Stadtratssitzung — öffentlich", location: "Rathaus, Sitzungssaal", category: "Stadtrat" },
-  { date: "2026-05-04", day: "04", month: "Mai", title: "Auftakt Solar- und Umwelttage 2026", location: "Stadtbücherei Moosburg", category: "Umwelt" },
+  { date: "2026-05-04", day: "04", month: "Mai", title: "Auftakt Solar- und Umwelttage 2026", location: "Stadtbibliothek Moosburg", category: "Umwelt" },
 ];
 
 export function findRoute(slug: string): Route | undefined {

@@ -32,12 +32,12 @@ type Ev = {
 
 const events: Ev[] = [
   { date: "2026-04-25", day: "25", month: "Apr", weekday: "Samstag", time: "10:00 – 14:00", title: "Modebasar Moosburg", description: "Mode- und Accessoires-Flohmarkt der Moosburger Schulen.", location: "Turnhalle Anton-Vitzthum-Grundschule", category: "Markt" },
-  { date: "2026-04-28", day: "28", month: "Apr", weekday: "Dienstag", time: "19:30 – 21:00", title: "Lesung: Isar, Land und Leute", description: "Autorin Katharina Maier liest aus ihrem neuen Roman.", location: "Stadtbücherei Moosburg", category: "Kultur" },
+  { date: "2026-04-28", day: "28", month: "Apr", weekday: "Dienstag", time: "19:30 – 21:00", title: "Lesung: Isar, Land und Leute", description: "Autorin Katharina Maier liest aus ihrem neuen Roman.", location: "Stadtbibliothek Moosburg", category: "Kultur" },
   { date: "2026-04-29", day: "29", month: "Apr", weekday: "Mittwoch", time: "19:00 – offen", title: "Stadtratssitzung (öffentlich)", description: "Tagesordnung: Haushaltsplan 2026, Bebauungsplan „Am Amperwerk“.", location: "Rathaus, Großer Sitzungssaal", category: "Stadtrat" },
   { date: "2026-04-30", day: "30", month: "Apr", weekday: "Donnerstag", time: "17:00", title: "57. Moosburger Frühlingsfest — Anstich", description: "Feierlicher Fassanstich durch den Ersten Bürgermeister.", location: "Festgelände am Stadtpark", category: "Volksfest" },
   { date: "2026-05-01", day: "01", month: "Mai", weekday: "Freitag", time: "10:00", title: "Maibaumaufstellen", description: "Traditionelles Aufstellen des Maibaums mit Musikkapelle.", location: "Plan", category: "Brauchtum" },
   { date: "2026-05-02", day: "02", month: "Mai", weekday: "Samstag", time: "14:00 – 22:00", title: "Frühlingsfest — Familiennachmittag", description: "Ermäßigte Fahrgeschäfte, Kinderprogramm, Fass-Bier-Angebote.", location: "Festgelände am Stadtpark", category: "Volksfest" },
-  { date: "2026-05-04", day: "04", month: "Mai", weekday: "Montag", time: "18:00 – 20:00", title: "Auftakt Solar- und Umwelttage 2026", description: "Auftaktveranstaltung mit Vorträgen zur kommunalen Energiewende.", location: "Stadtbücherei Moosburg", category: "Umwelt" },
+  { date: "2026-05-04", day: "04", month: "Mai", weekday: "Montag", time: "18:00 – 20:00", title: "Auftakt Solar- und Umwelttage 2026", description: "Auftaktveranstaltung mit Vorträgen zur kommunalen Energiewende.", location: "Stadtbibliothek Moosburg", category: "Umwelt" },
   { date: "2026-05-09", day: "09", month: "Mai", weekday: "Samstag", time: "11:00", title: "TSV Moosburg vs. SV Nandlstadt", description: "Kreisliga-Heimspiel.", location: "TSV-Stadion, Eisstadionstraße", category: "Sport" },
 ];
 

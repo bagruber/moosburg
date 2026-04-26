@@ -118,7 +118,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       id: "energieberatung",
       category: "foerderung",
       title: "Kostenlose Energieberatung",
-      desc: "Gefördert vom Landkreis Freising — bei der Stadtbücherei mittwochs nachmittags.",
+      desc: "Gefördert vom Landkreis Freising — bei der Stadtbibliothek mittwochs nachmittags.",
       to: "/mein-moosburg/umwelt",
       reason: "Sie sind Eigentümer:in",
       score: 75,
