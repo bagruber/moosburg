@@ -32,17 +32,17 @@ export function RoseLoader({
     >
       <div className="flex flex-col items-center gap-5">
         <div className="flex items-center gap-3">
-          {/* Tile 1 — red field, white rose */}
-          <div className="rose-tile rose-tile--inv grid h-20 w-20 place-items-center rounded-md bg-red-700 shadow-lift">
+          {/* Left — cream field, red rose */}
+          <div className="rose-tile rose-tile--a grid h-20 w-20 place-items-center rounded-md border border-ink-line bg-cream shadow-soft">
+            <Rose className="h-10 w-10 text-red-900" />
+          </div>
+          {/* Center — deep red field, white rose (heraldic inversion) */}
+          <div className="rose-tile rose-tile--inv grid h-20 w-20 place-items-center rounded-md bg-red-900 shadow-lift">
             <Rose className="h-10 w-10 text-cream" />
           </div>
-          {/* Tile 2 — cream field, red rose */}
-          <div className="rose-tile rose-tile--a grid h-20 w-20 place-items-center rounded-md border border-ink-line bg-cream shadow-soft">
-            <Rose className="h-10 w-10 text-red-700" />
-          </div>
-          {/* Tile 3 — cream field, red rose */}
+          {/* Right — cream field, red rose */}
           <div className="rose-tile rose-tile--b grid h-20 w-20 place-items-center rounded-md border border-ink-line bg-cream shadow-soft">
-            <Rose className="h-10 w-10 text-red-700" />
+            <Rose className="h-10 w-10 text-red-900" />
           </div>
         </div>
         <div className="eyebrow text-red-700">{label} …</div>

@@ -37,7 +37,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-red-700 text-cream">
+    <footer className="relative overflow-hidden bg-red-900 text-cream">
       <RainbowStripe />
       <WappenWatermark
         className="absolute -right-12 -top-8 h-[420px] w-[336px] text-cream/[0.06] lg:-right-4 lg:h-[520px] lg:w-[416px]"

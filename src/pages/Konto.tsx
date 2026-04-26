@@ -40,7 +40,10 @@ import { AddressAutocomplete } from "@/components/AddressAutocomplete";
 import { useAppState, type AgeGroup, type ChildAge } from "@/state/AppState";
 import { recommendationsFor, type RecCategory } from "@/data/recommendations";
 import { districtFor, districts } from "@/data/moosburgStreets";
+import { jobs } from "@/data/jobs";
+import { PersonalizedBadge } from "@/components/PersonalizedBadge";
 import { cn } from "@/lib/cn";
+import { IconBookmarkFilled } from "@tabler/icons-react";
 
 type Stage = "signed-out" | "awaiting-link" | "logging-in" | "signed-in";
 
@@ -510,6 +513,98 @@ function MyBookings() {
 }
 
 /* ──────────────────────────────────────────────────────────────────
+ * Watched jobs (cross-page state from Stellenangebote)
+ * ────────────────────────────────────────────────────────────────── */
+function WatchedJobs() {
+  const { watchedJobs, toggleWatchedJob } = useAppState();
+  if (watchedJobs.length === 0) return null;
+  const watched = jobs.filter((j) => watchedJobs.includes(j.id));
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <div className="eyebrow text-red-700">Beobachtete Stellen</div>
+            <PersonalizedBadge reason="Sie haben markiert" tone="profile" />
+          </div>
+          <h2 className="headline mt-1 text-2xl text-ink">{watched.length} {watched.length === 1 ? "Stelle" : "Stellen"} im Auge</h2>
+        </div>
+        <Link to="/rathaus/stellenangebote" className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline">
+          <IconBriefcase className="h-4 w-4" stroke={2} /> Alle Stellen
+        </Link>
+      </div>
+
+      <ul className="grid gap-3 lg:grid-cols-2">
+        {watched.map((j) => (
+          <li key={j.id}>
+            <article className="flex items-start gap-4 rounded-md border border-ink-line bg-white p-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-red-50 text-red-700">
+                <IconBriefcase className="h-5 w-5" stroke={1.75} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <h3 className="card-title text-sm text-ink">{j.title}</h3>
+                <div className="text-xs text-ink-muted">{j.bereich} · {j.eingruppierung} · bis {new Date(j.deadline).toLocaleDateString("de-DE")}</div>
+                <div className="mt-2 flex items-center gap-3">
+                  <Link to="/rathaus/stellenangebote" className="text-xs font-semibold text-red-700 hover:underline">Details</Link>
+                  <button onClick={() => toggleWatchedJob(j.id)} className="ml-auto inline-flex items-center gap-1 text-xs text-ink-muted hover:text-red-700">
+                    <IconBookmarkFilled className="h-3.5 w-3.5" /> Entfernen
+                  </button>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * "Neu in Moosburg" progress widget — only when newInTown=true
+ * ────────────────────────────────────────────────────────────────── */
+function NeuInMoosburgWidget() {
+  const { profile, completedSteps } = useAppState();
+  if (!profile.newInTown) return null;
+
+  // We don't import the steps list here to avoid circular coupling; instead show
+  // a quick summary based on count of completedSteps relevant to the lebenslage.
+  const total = 4 + (profile.ownsCar ? 1 : 0) + (profile.ownsDog ? 1 : 0)
+              + (profile.hasChildren ? 1 : 0) + (profile.ownsProperty ? 1 : 0)
+              + ((profile.ageGroup === "65plus" || profile.receivesPension) ? 1 : 0)
+              + 4; // tipp steps
+  const done = completedSteps.size;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 pt-6 pb-12 lg:px-8">
+      <Link
+        to="/lebenslage/neu-in-moosburg"
+        className="group block rounded-md border border-turquoise-accent/40 bg-turquoise-accent/5 p-6 transition hover:bg-turquoise-accent/10"
+      >
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-turquoise-accent text-cream">
+            <IconHomePlus className="h-6 w-6" stroke={1.5} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <PersonalizedBadge reason="Lebenslage Neu in Moosburg" tone="profile" />
+            </div>
+            <h3 className="mt-1.5 card-title text-base text-ink">
+              {done} von ca. {total} Ankommens-Schritten erledigt
+            </h3>
+            <div className="mt-2 h-1.5 w-full max-w-md overflow-hidden rounded-full bg-ink-line">
+              <div className="h-full bg-turquoise-accent transition-all" style={{ width: `${pct}%` }} />
+            </div>
+          </div>
+          <IconArrowRight className="h-5 w-5 text-turquoise-accent transition group-hover:translate-x-0.5" stroke={2} />
+        </div>
+      </Link>
+    </section>
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────────
  * Signed-in dashboard wrapper
  * ────────────────────────────────────────────────────────────────── */
 function SignedIn({ onSignOut }: { onSignOut: () => void }) {
@@ -570,7 +665,9 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
       </section>
 
       <ProfileFactors />
+      <NeuInMoosburgWidget />
       <MyBookings />
+      <WatchedJobs />
       <DistrictInfo />
       <Recommendations />
 

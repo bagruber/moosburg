@@ -183,8 +183,8 @@ body {
   60%      { transform: translateY(0) scale(0.96); opacity: 0.55; }
 }
 .rose-tile      { animation: rose-tile-pulse 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-.rose-tile--inv { animation-delay: 0ms;   }
-.rose-tile--a   { animation-delay: 200ms; }
+.rose-tile--a   { animation-delay: 0ms;   }
+.rose-tile--inv { animation-delay: 200ms; }
 .rose-tile--b   { animation-delay: 400ms; }
 @media (prefers-reduced-motion: reduce) {
   .rose-tile { animation: none; }

@@ -58,11 +58,15 @@ type AppStateValue = {
   signedIn: boolean;
   profile: Profile;
   bookings: Booking[];
+  completedSteps: Set<string>;
+  watchedJobs: string[];
   signIn: (email: string) => void;
   signOut: () => void;
   updateProfile: (patch: Partial<Profile>) => void;
   addBooking: (b: Omit<Booking, "id" | "reference" | "createdAt">) => Booking;
   removeBooking: (id: string) => void;
+  toggleStep: (id: string) => void;
+  toggleWatchedJob: (id: string) => void;
 };
 
 const Ctx = createContext<AppStateValue | null>(null);
@@ -71,6 +75,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [signedIn, setSignedIn] = useState(false);
   const [profile, setProfile] = useState<Profile>(emptyProfile);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [completedSteps, setCompletedSteps] = useState<Set<string>>(() => new Set());
+  const [watchedJobs, setWatchedJobs] = useState<string[]>([]);
 
   const signIn = useCallback((email: string) => {
     setSignedIn(true);
@@ -81,6 +87,20 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     setSignedIn(false);
     setProfile(emptyProfile);
     setBookings([]);
+    setCompletedSteps(new Set());
+    setWatchedJobs([]);
+  }, []);
+
+  const toggleStep = useCallback((id: string) => {
+    setCompletedSteps((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }, []);
+
+  const toggleWatchedJob = useCallback((id: string) => {
+    setWatchedJobs((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   }, []);
 
   const updateProfile = useCallback((patch: Partial<Profile>) => {
@@ -100,8 +120,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo<AppStateValue>(
-    () => ({ signedIn, profile, bookings, signIn, signOut, updateProfile, addBooking, removeBooking }),
-    [signedIn, profile, bookings, signIn, signOut, updateProfile, addBooking, removeBooking],
+    () => ({
+      signedIn, profile, bookings, completedSteps, watchedJobs,
+      signIn, signOut, updateProfile, addBooking, removeBooking, toggleStep, toggleWatchedJob,
+    }),
+    [signedIn, profile, bookings, completedSteps, watchedJobs,
+     signIn, signOut, updateProfile, addBooking, removeBooking, toggleStep, toggleWatchedJob],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

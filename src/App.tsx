@@ -8,6 +8,8 @@ import { OnlineDienste } from "@/pages/flagship/OnlineDienste";
 import { Veranstaltungen } from "@/pages/flagship/Veranstaltungen";
 import { MaengelMelden } from "@/pages/flagship/MaengelMelden";
 import { Stadtrat } from "@/pages/flagship/Stadtrat";
+import { Stellenangebote } from "@/pages/flagship/Stellenangebote";
+import { NeuInMoosburg } from "@/pages/flagship/NeuInMoosburg";
 
 export default function App() {
   return (
@@ -17,9 +19,14 @@ export default function App() {
       {/* Flagship service pages */}
       <Route path="/rathaus/termin-buchen" element={<TerminBuchen />} />
       <Route path="/rathaus/online-dienste" element={<OnlineDienste />} />
+      <Route path="/rathaus/stellenangebote" element={<Stellenangebote />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
       <Route path="/mitgestalten/maengel-melden" element={<MaengelMelden />} />
       <Route path="/mitgestalten/stadtrat" element={<Stadtrat />} />
+
+      {/* Lebenslagen — flagship per slug, others fall through to stub */}
+      <Route path="/lebenslage/neu-in-moosburg" element={<NeuInMoosburg />} />
+      <Route path="/lebenslage/*" element={<StubPage />} />
 
       {/* Account */}
       <Route path="/konto" element={<KontoPage />} />
