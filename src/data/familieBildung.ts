@@ -81,7 +81,7 @@ export const kitas: Kita[] = [
   },
   {
     id: "hort-sonnenschein",
-    name: "Kinderhort „Sonnenschein"",
+    name: "Kinderhort „Sonnenschein“",
     traeger: "stadt", traegerLabel: "Stadt Moosburg",
     typen: ["kinderhort"],
     address: "Banatstraße 27",
@@ -103,7 +103,7 @@ export const kitas: Kita[] = [
   // ── Kirchlich ────────────────────────────────────────────────────────
   {
     id: "weltentdecker",
-    name: "Kindergarten „Weltentdecker"",
+    name: "Kindergarten „Weltentdecker“",
     traeger: "kirchlich", traegerLabel: "Evang.-Luth. Kirche",
     typen: ["kindergarten"],
     address: "Ginsterstraße 1",
@@ -114,7 +114,7 @@ export const kitas: Kita[] = [
   },
   {
     id: "villa-kunterbunt",
-    name: "Kindergarten „Villa Kunterbunt"",
+    name: "Kindergarten „Villa Kunterbunt“",
     traeger: "kirchlich", traegerLabel: "Evang.-Luth. Kirche",
     typen: ["kindergarten"],
     address: "Schleienstraße 3",
@@ -328,7 +328,7 @@ export const spielplaetze: Spielplatz[] = [
   { name: "Hallertauer Straße", area: "Pfettrach" },
   { name: "Kanalstraße", area: "Mitte" },
   { name: "Kapellenacker", area: "Süd" },
-  { name: "Leipziger Straße „Max und Moritz"", area: "Süd" },
+  { name: "Leipziger Straße „Max und Moritz“", area: "Süd" },
   { name: "Ligusterstraße", area: "Süd" },
   { name: "Mainburger Straße", area: "Nord" },
   { name: "Meisenstraße", area: "Nord" },
