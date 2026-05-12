@@ -13,3 +13,6 @@ dist-ssr
 design-handoff/
 src/*.zip
 *.zip
+
+# Local project-context notes (kept local, not shipped)
+CLAUDE.md

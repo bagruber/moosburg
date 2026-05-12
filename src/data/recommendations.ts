@@ -35,7 +35,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       category: "service",
       title: "Kita-Platz finden",
       desc: "Über LITTLE BIRD freie Plätze in Moosburger Kitas und Krippen vergleichen.",
-      to: "/mein-moosburg/familie",
+      to: "/mein-moosburg/familie#kitas",
       reason: "Sie haben Kinder unter 3",
       score: 95,
     });
@@ -54,8 +54,8 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       id: "vorschule",
       category: "info",
       title: "Vorschule & Schuleinschreibung",
-      desc: "Termine für die Schuleinschreibung an der Anton-Vitzthum-Grundschule.",
-      to: "/mein-moosburg/familie/schulen",
+      desc: "Termine für die Schuleinschreibung (Anton-Vitzthum oder Theresia-Gerhardinger, je nach Sprengel).",
+      to: "/mein-moosburg/familie#schulen",
       reason: "Ihre Kinder kommen bald in die Schule",
       score: 90,
     });
@@ -66,7 +66,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       category: "service",
       title: "Offene Ganztagsschule (OGTS)",
       desc: "Anmeldung zur Mittagsbetreuung & Hausaufgabenhilfe an der Grundschule.",
-      to: "/mein-moosburg/familie/schulen",
+      to: "/mein-moosburg/familie#schulen",
       reason: "Sie haben Grundschulkinder",
       score: 85,
     });
@@ -75,7 +75,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       category: "community",
       title: "Sommerferien-Programm 2026",
       desc: "Anmeldung zum Ferienprogramm — über 40 Aktionen mit Vereinen und Stadt.",
-      to: "/mein-moosburg/familie",
+      to: "/mein-moosburg/familie#jugend",
       reason: "Sie haben Kinder im Schulalter",
       score: 70,
     });
@@ -85,8 +85,8 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       id: "uebertritt",
       category: "info",
       title: "Übertritt nach der 4. Klasse",
-      desc: "Beratung zu Realschule, Mittelschule, Gymnasium und Tag der offenen Tür.",
-      to: "/mein-moosburg/familie/schulen",
+      desc: "Beratung zu Mittelschule, Realschule, Gymnasium — inkl. Tag der offenen Tür.",
+      to: "/mein-moosburg/familie#schulen",
       reason: "Übertrittsphase steht an",
       score: 80,
     });
@@ -97,7 +97,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       category: "community",
       title: "Jugendtreff Moosburg",
       desc: "Offener Treff, Workshops, Beteiligungsformate für Jugendliche ab 12.",
-      to: "/mein-moosburg/familie",
+      to: "/mein-moosburg/familie#jugend",
       reason: "Sie haben Jugendliche im Haus",
       score: 65,
     });

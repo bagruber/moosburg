@@ -10,6 +10,7 @@ import { MaengelMelden } from "@/pages/flagship/MaengelMelden";
 import { Stadtrat } from "@/pages/flagship/Stadtrat";
 import { Stellenangebote } from "@/pages/flagship/Stellenangebote";
 import { NeuInMoosburg } from "@/pages/flagship/NeuInMoosburg";
+import { FamilieBildung } from "@/pages/flagship/FamilieBildung";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
       <Route path="/rathaus/online-dienste" element={<OnlineDienste />} />
       <Route path="/rathaus/stellenangebote" element={<Stellenangebote />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
+      <Route path="/mein-moosburg/familie" element={<FamilieBildung />} />
+      <Route path="/mein-moosburg/familie/schulen" element={<FamilieBildung />} />
       <Route path="/mitgestalten/maengel-melden" element={<MaengelMelden />} />
       <Route path="/mitgestalten/stadtrat" element={<Stadtrat />} />
 
