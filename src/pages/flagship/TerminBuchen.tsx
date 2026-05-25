@@ -5,7 +5,6 @@ import {
   IconCar,
   IconHeart,
   IconId,
-  IconFileCertificate,
   IconArrowRight,
   IconArrowLeft,
   IconInfoCircle,

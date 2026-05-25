@@ -20,7 +20,6 @@ import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
 import { findAnsprechpartner } from "@/data/ansprechpartner";
 import { AnsprechpartnerCard, AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
-import { cn } from "@/lib/cn";
 
 const route = findRoute("rathaus/ver-entsorgung")!;
 
