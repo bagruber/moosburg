@@ -11,6 +11,11 @@ import { Stadtrat } from "@/pages/flagship/Stadtrat";
 import { Stellenangebote } from "@/pages/flagship/Stellenangebote";
 import { NeuInMoosburg } from "@/pages/flagship/NeuInMoosburg";
 import { FamilieBildung } from "@/pages/flagship/FamilieBildung";
+import { Kontakt } from "@/pages/flagship/Kontakt";
+import { VerEntsorgung } from "@/pages/flagship/VerEntsorgung";
+import { Bauen } from "@/pages/flagship/Bauen";
+import { Notfall } from "@/pages/flagship/Notfall";
+import { Satzungen } from "@/pages/flagship/Satzungen";
 
 export default function App() {
   return (
@@ -21,6 +26,11 @@ export default function App() {
       <Route path="/rathaus/termin-buchen" element={<TerminBuchen />} />
       <Route path="/rathaus/online-dienste" element={<OnlineDienste />} />
       <Route path="/rathaus/stellenangebote" element={<Stellenangebote />} />
+      <Route path="/rathaus/kontakt" element={<Kontakt />} />
+      <Route path="/rathaus/ver-entsorgung" element={<VerEntsorgung />} />
+      <Route path="/rathaus/bauantrag" element={<Bauen />} />
+      <Route path="/rathaus/notfall" element={<Notfall />} />
+      <Route path="/rathaus/satzungen" element={<Satzungen />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
       <Route path="/mein-moosburg/familie" element={<FamilieBildung />} />
       <Route path="/mein-moosburg/familie/schulen" element={<FamilieBildung />} />

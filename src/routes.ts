@@ -107,10 +107,10 @@ export const routes: Route[] = [
   {
     slug: "rathaus/bauantrag",
     hub: "rathaus",
-    title: "Bauantrag",
+    title: "Bauen",
     eyebrow: "Rathaus",
     intro:
-      "Ob Neubau, Anbau oder Sanierung — der Bauantrag ist der formale Einstieg in jedes Bauvorhaben. Hier finden Sie Formulare, Zuständigkeiten und den Status laufender Verfahren.",
+      "Was darf ich auf meinem Grundstück bauen, brauche ich überhaupt einen Bauantrag, und wie läuft das jetzt mit dem digitalen Antrag beim Landratsamt? Die kurzen Wege zum eigenen Bauvorhaben in Moosburg.",
     icon: IconBallpen,
   },
   {
@@ -119,7 +119,7 @@ export const routes: Route[] = [
     title: "Kontakt & Organigramm",
     eyebrow: "Rathaus",
     intro:
-      "Wer ist für was zuständig? Die Stadtverwaltung Moosburg beschäftigt rund 180 Mitarbeitende in fünf Fachbereichen. Hier finden Sie Ansprechpersonen und Durchwahlen.",
+      "Wer ist für was zuständig? Die Stadtverwaltung Moosburg gliedert sich in drei Abteilungen mit zwölf Sachgebieten. Hier finden Sie Ansprechpersonen, Durchwahlen und das, was sie konkret bearbeiten.",
     icon: IconPhone,
   },
   {
@@ -146,7 +146,7 @@ export const routes: Route[] = [
     title: "Satzungen & Verordnungen",
     eyebrow: "Rathaus",
     intro:
-      "Das kommunale Regelwerk der Stadt Moosburg: Hauptsatzung, Gebührensatzungen, Bebauungspläne in Textfassung und alle amtlichen Bekanntmachungen.",
+      "Das kommunale Regelwerk der Stadt — sortiert nach Themen, mit kurzen Erklärungen in Alltagssprache. Filtern Sie nach Lebenslage, um nur die Regeln zu sehen, die Sie betreffen.",
     icon: IconGavel,
   },
   {
@@ -392,7 +392,7 @@ export const lebenslagen: Lebenslage[] = [
 export const topTiles: { title: string; description: string; icon: Icon; slug: string; accent?: boolean }[] = [
   { title: "Termin buchen", description: "Standesamt, KFZ, Pass", icon: IconCalendarEvent, slug: "rathaus/termin-buchen" },
   { title: "Online-Dienste A–Z", description: "Alle digitalen Services", icon: IconFileDescription, slug: "rathaus/online-dienste" },
-  { title: "Bauantrag", description: "Einreichen & Status", icon: IconBallpen, slug: "rathaus/bauantrag" },
+  { title: "Bauen", description: "Antrag, Bebauungsplan, Beratung", icon: IconBallpen, slug: "rathaus/bauantrag" },
   { title: "Familie & Kita", description: "Betreuung, Schulen", icon: IconBabyCarriage, slug: "mein-moosburg/familie" },
   { title: "Mängel melden", description: "Schlaglöcher, Laternen, Müll", icon: IconAlertTriangle, slug: "mitgestalten/maengel-melden", accent: true },
   { title: "Stadtratssitzung", description: "Termine & Protokolle", icon: IconScale, slug: "mitgestalten/stadtrat" },

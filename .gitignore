@@ -16,3 +16,13 @@ src/*.zip
 
 # Local project-context notes (kept local, not shipped)
 CLAUDE.md
+
+# Legacy-site scrapes (research-only, not shipped)
+scrape-out/
+
+# Python bytecode (scrape scripts)
+__pycache__/
+*.pyc
+
+# TypeScript incremental build cache
+*.tsbuildinfo

@@ -238,7 +238,7 @@ export const moosburgStreets = [
   "Ziegelbergstraße",
 ] as const;
 
-export type District = "altstadt" | "pfettrach" | "bahnhof" | "isarauen";
+export type District = "altstadt" | "westerberg" | "neustadt" | "bonau";
 
 export const districts: Record<District, {
   name: string;
@@ -254,11 +254,11 @@ export const districts: Record<District, {
   ortsteil: string;
 }> = {
   altstadt: {
-    name: "Altstadt-Mitte",
+    name: "Altstadt",
     short: "Altstadt",
     wahllokal: "Stadthalle Moosburg",
     wahllokalDistance: "ca. 240 m",
-    grundschule: "Anton-Vitzthum-Grundschule",
+    grundschule: "Anton-Vitzthum-Grundschule Süd",
     trashCollection: { rest: "Dienstag, 29. Apr", bio: "Mittwoch, 30. Apr", papier: "Mo, 04. Mai", gelber: "Fr, 08. Mai" },
     activeBaustellen: 2,
     nearestBaustelle: "Stadtplatz — Pflasterarbeiten (bis Ende Juni)",
@@ -266,25 +266,25 @@ export const districts: Record<District, {
     parking: "Anwohnerparkzone A · Tarifzone 1",
     ortsteil: "Moosburg a.d.Isar",
   },
-  pfettrach: {
-    name: "Pfettrach-Süd",
-    short: "Pfettrach",
+  westerberg: {
+    name: "Westerberg",
+    short: "Westerberg",
     wahllokal: "Theresia-Gerhardinger-Grundschule, Aula",
     wahllokalDistance: "ca. 410 m",
-    grundschule: "Theresia-Gerhardinger-Grundschule",
+    grundschule: "Theresia-Gerhardinger-Grundschule Nord",
     trashCollection: { rest: "Donnerstag, 30. Apr", bio: "Freitag, 01. Mai", papier: "Di, 05. Mai", gelber: "Mi, 06. Mai" },
     activeBaustellen: 1,
-    nearestBaustelle: "Glasfaserausbau Pfettrach (bis Mai 2026)",
-    nearestSpielplatz: { name: "Spielplatz Pfettracher Straße", distance: "180 m" },
+    nearestBaustelle: "Glasfaserausbau Albinstraße (bis Mai 2026)",
+    nearestSpielplatz: { name: "Spielplatz Westerbergstraße", distance: "180 m" },
     parking: "Anwohnerparkzone B · Tarifzone 2",
     ortsteil: "Moosburg a.d.Isar",
   },
-  bahnhof: {
-    name: "Bahnhofsviertel",
-    short: "Bahnhof-West",
+  neustadt: {
+    name: "Neustadt",
+    short: "Neustadt",
     wahllokal: "Anton-Vitzthum-Grundschule, Pausenhalle",
     wahllokalDistance: "ca. 290 m",
-    grundschule: "Anton-Vitzthum-Grundschule",
+    grundschule: "Anton-Vitzthum-Grundschule Süd",
     trashCollection: { rest: "Mittwoch, 30. Apr", bio: "Donnerstag, 01. Mai", papier: "Mi, 06. Mai", gelber: "Do, 07. Mai" },
     activeBaustellen: 3,
     nearestBaustelle: "Bahnhofsumbau, 2. Bauabschnitt (bis Q4 2026)",
@@ -292,16 +292,16 @@ export const districts: Record<District, {
     parking: "Tarifzone 1 · 2 Std kostenlos mit Parkscheibe",
     ortsteil: "Moosburg a.d.Isar",
   },
-  isarauen: {
-    name: "Isarauen-Nord",
-    short: "Isarauen",
+  bonau: {
+    name: "Bonau",
+    short: "Bonau",
     wahllokal: "Kinderhaus in den Amperauen",
     wahllokalDistance: "ca. 520 m",
-    grundschule: "Anton-Vitzthum-Grundschule",
+    grundschule: "Anton-Vitzthum-Grundschule Süd",
     trashCollection: { rest: "Freitag, 01. Mai", bio: "Montag, 04. Mai", papier: "Do, 07. Mai", gelber: "Fr, 08. Mai" },
     activeBaustellen: 0,
     nearestBaustelle: "Keine Baustellen in Ihrer Umgebung",
-    nearestSpielplatz: { name: "Spielplatz an der Isar", distance: "140 m" },
+    nearestSpielplatz: { name: "Skateboardbahn Bonau", distance: "140 m" },
     parking: "Keine Bewirtschaftung · freies Parken",
     ortsteil: "Moosburg a.d.Isar",
   },
@@ -316,7 +316,7 @@ export function districtFor(address: string): District | null {
   const ch = address.trim().toUpperCase().charCodeAt(0);
   if (ch < 65 || ch > 90) return null;
   if (ch <= "G".charCodeAt(0)) return "altstadt";
-  if (ch <= "N".charCodeAt(0)) return "pfettrach";
-  if (ch <= "T".charCodeAt(0)) return "bahnhof";
-  return "isarauen";
+  if (ch <= "N".charCodeAt(0)) return "westerberg";
+  if (ch <= "T".charCodeAt(0)) return "neustadt";
+  return "bonau";
 }

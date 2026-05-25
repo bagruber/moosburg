@@ -207,7 +207,7 @@ export function recommendationsFor(profile: Profile): Recommendation[] {
       reason: "Sie haben ein Auto",
       score: 50,
     });
-    if (district === "altstadt" || district === "bahnhof") {
+    if (district === "altstadt" || district === "neustadt") {
       out.push({
         id: "anwohner-park",
         category: "service",
