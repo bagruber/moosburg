@@ -24,6 +24,7 @@ import { RoseLoader } from "@/components/RoseLoader";
 import { findRoute } from "@/routes";
 import { useAppState } from "@/state/AppState";
 import { cn } from "@/lib/cn";
+import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
 
 const route = findRoute("rathaus/termin-buchen")!;
 
@@ -32,7 +33,13 @@ type ServiceCategory = {
   icon: typeof IconId;
   title: string;
   location: string;
+  hours?: string[];
   duration: number; // minutes
+  /** Optional advisory shown above the service list (e.g. "Antrag jetzt beim Landratsamt"). */
+  note?: string;
+  /** Ansprechpartner-IDs from src/data/ansprechpartner.ts — used to surface the
+   *  actual person handling the topic, not just the office label. */
+  contactIds?: string[];
   items: { id: string; title: string; durationOverride?: number; preparation?: string[] }[];
 };
 
@@ -40,23 +47,16 @@ const categories: ServiceCategory[] = [
   {
     id: "einwohner",
     icon: IconId,
-    title: "Einwohnermeldeamt",
-    location: "Bürgerbüro · Rathaus, EG, Zimmer 02",
+    title: "Einwohnermelde- & Passamt",
+    location: "Rathaus, EG · Zimmer R0.01",
+    hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Mo: zusätzl. 14:00 – 16:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
+    contactIds: ["adamski-madeleine"],
     duration: 15,
     items: [
       { id: "anmelden", title: "Anmeldung / Ummeldung Wohnsitz", preparation: ["Personalausweis oder Reisepass", "Wohnungsgeberbestätigung", "Bei Familien: Geburtsurkunden / Heiratsurkunde"] },
       { id: "abmelden", title: "Abmeldung Wohnsitz", preparation: ["Personalausweis oder Reisepass"] },
       { id: "auskunft", title: "Melderegisterauskunft", preparation: ["Begründung des Auskunftsersuchens"] },
       { id: "fuehrung", title: "Führungszeugnis", preparation: ["Personalausweis", "Bei Beantragung für Beruf: Aufforderungsschreiben des Arbeitgebers"] },
-    ],
-  },
-  {
-    id: "pass",
-    icon: IconFileCertificate,
-    title: "Passamt",
-    location: "Passamt · Rathaus, EG, Zimmer 04",
-    duration: 20,
-    items: [
       { id: "personalausweis", title: "Personalausweis beantragen", durationOverride: 25, preparation: ["Aktuelles biometrisches Lichtbild", "Alter Ausweis (falls vorhanden)", "Geburtsurkunde bei Erstbeantragung"] },
       { id: "reisepass", title: "Reisepass beantragen", durationOverride: 25, preparation: ["Aktuelles biometrisches Lichtbild", "Alter Pass (falls vorhanden)", "Personalausweis"] },
       { id: "kinderpass", title: "Kinderreisepass / Kinder-Personalausweis", preparation: ["Biometrisches Lichtbild des Kindes", "Geburtsurkunde", "Beide Erziehungsberechtigte müssen anwesend sein"] },
@@ -66,8 +66,15 @@ const categories: ServiceCategory[] = [
   {
     id: "kfz",
     icon: IconCar,
-    title: "KFZ-Zulassung",
-    location: "Außenstelle Zulassungsstelle · Münchener Straße 5",
+    title: "KFZ-Zulassungsbehörde",
+    location: "Sudetenlandstraße 14 · separates Gebäude",
+    hours: [
+      "Mo – Fr: 8:00 – 12:00",
+      "Mittwoch nachmittags: 14:00 – 15:30",
+      "Donnerstag nachmittags: 14:00 – 17:00",
+    ],
+    note: "Viele Vorgänge sind auch online möglich (i-KFZ). Termin nur, wenn das Online-Portal Ihren Fall nicht abdeckt.",
+    contactIds: ["brandlmeier-susanne"],
     duration: 30,
     items: [
       { id: "neu", title: "Neuzulassung", durationOverride: 35, preparation: ["Zulassungsbescheinigung Teil II (Fahrzeugbrief)", "eVB-Nummer der Versicherung", "SEPA-Mandat für Kfz-Steuer", "TÜV-Bescheinigung"] },
@@ -80,7 +87,9 @@ const categories: ServiceCategory[] = [
     id: "standesamt",
     icon: IconHeart,
     title: "Standesamt",
-    location: "Standesamt · Rathaus, 1. OG, Zimmer 11",
+    location: "Rathaus, EG · Zimmer R0.01",
+    hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Mo: zusätzl. 14:00 – 16:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
+    contactIds: ["juettner-karin"],
     duration: 30,
     items: [
       { id: "ehe", title: "Eheschließung anmelden", durationOverride: 45, preparation: ["Personalausweise beider Partner:innen", "Aktuelle Geburtsurkunden (max. 6 Monate alt)", "Aufenthaltsbescheinigungen"] },
@@ -92,11 +101,14 @@ const categories: ServiceCategory[] = [
   {
     id: "bauamt",
     icon: IconBuilding,
-    title: "Bauamt",
-    location: "Bauamt · Rathaus, 2. OG, Zimmer 21",
+    title: "Stadtbauamt — Beratung",
+    location: "Rathaus · Stadtbauamt",
+    hours: ["Termin nach Vereinbarung"],
+    note: "Bauanträge gehen seit März 2024 direkt ans Landratsamt Freising. Die Stadt berät vorab und gibt im Verfahren ihre Stellungnahme ab.",
+    contactIds: ["held-herbert", "grassl-thomas"],
     duration: 30,
     items: [
-      { id: "bauantrag", title: "Bauantrag-Beratung", durationOverride: 45, preparation: ["Lageplan (M 1:500)", "Baubeschreibung", "Skizzen / Vorentwurf"] },
+      { id: "bauantrag", title: "Bauantrag-Vorberatung", durationOverride: 45, preparation: ["Lageplan (M 1:500)", "Baubeschreibung", "Skizzen / Vorentwurf"] },
       { id: "vorbescheid", title: "Bauvoranfrage", durationOverride: 30 },
       { id: "akteneinsicht", title: "Akteneinsicht Bebauungsplan", durationOverride: 20 },
     ],
@@ -105,7 +117,8 @@ const categories: ServiceCategory[] = [
     id: "wohnen",
     icon: IconHome,
     title: "Wohnen & Soziales",
-    location: "Sozialamt · Rathaus, 1. OG, Zimmer 15",
+    location: "Rathaus · Sozialamt",
+    hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
     duration: 30,
     items: [
       { id: "wohngeld", title: "Wohngeld-Beratung", durationOverride: 30 },
@@ -268,7 +281,10 @@ export function TerminBuchen() {
                     <Icon className="h-5 w-5" stroke={1.75} />
                   </span>
                   <h3 className="mt-5 card-title text-base text-ink">{c.title}</h3>
-                  <p className="mt-1 text-xs text-ink-muted">{c.items.length} Dienstleistungen · {c.duration} Min Slot</p>
+                  <p className="mt-1 text-xs text-ink-muted">
+                    {c.items.length} Dienstleistungen · {c.duration} Min Slot
+                  </p>
+                  <p className="mt-2 line-clamp-2 text-xs text-ink-soft">{c.location}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                     Auswählen
                     <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
@@ -292,6 +308,34 @@ export function TerminBuchen() {
               <IconArrowLeft className="h-4 w-4" stroke={2} /> Zurück
             </button>
           </div>
+
+          {/* Office card — address + hours + note */}
+          <div className="mt-6 grid gap-4 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr),minmax(0,1fr)]">
+            <div>
+              <div className="eyebrow text-ink-muted">Standort</div>
+              <p className="mt-1 text-sm text-ink">{cat.location}</p>
+            </div>
+            {cat.hours && cat.hours.length > 0 && (
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <IconClock className="h-3.5 w-3.5 text-ink-muted" stroke={2} />
+                  <div className="eyebrow text-ink-muted">Öffnungszeiten</div>
+                </div>
+                <ul className="mt-1 space-y-0.5 text-sm text-ink-soft">
+                  {cat.hours.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {cat.note && (
+            <div className="mt-4 flex items-start gap-3 rounded-xl border border-gold-500/30 bg-gold-100/40 p-4 text-sm text-ink-soft">
+              <IconInfoCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+              <p>{cat.note}</p>
+            </div>
+          )}
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {cat.items.map((s) => {
@@ -328,6 +372,15 @@ export function TerminBuchen() {
               );
             })}
           </div>
+
+          {cat.contactIds && cat.contactIds.length > 0 && (
+            <AnsprechpartnerStrip
+              ids={cat.contactIds}
+              heading="Bei Rückfragen vorab"
+              variant="compact"
+              className="mt-8"
+            />
+          )}
         </section>
       )}
 
