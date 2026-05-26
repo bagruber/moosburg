@@ -69,7 +69,7 @@ export function Satzungen() {
       />
 
       {/* ── Sticky search + filter bar ───────────────────────────────── */}
-      <section className="sticky top-16 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
+      <section className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <label className="flex flex-1 items-center rounded-full border-2 border-ink-line bg-white px-5 focus-within:border-red-500">

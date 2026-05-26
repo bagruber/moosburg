@@ -262,7 +262,7 @@ export function Notfall() {
       </section>
 
       {/* In-page nav */}
-      <nav className="sticky top-16 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
+      <nav className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-8">
           {SECTIONS.map((s) => (
             <SectionAnchor key={s.id} id={s.id} label={s.title} icon={s.icon} />

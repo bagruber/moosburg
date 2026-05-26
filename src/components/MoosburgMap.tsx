@@ -35,14 +35,20 @@ export type LayerKey =
   | "baustelle"
   | "spielplatz"
   | "trinkbrunnen"
-  | "haltestelle";
+  | "haltestelle"
+  | "parken"
+  | "ladestation"
+  | "fahrradstation";
 
 export const layerConfig: Record<LayerKey, { label: string; color: string; ring: string }> = {
-  mangel:       { label: "Gemeldete Mängel", color: "#c8102e", ring: "ring-red-500" },
-  baustelle:    { label: "Baustellen",        color: "#f4830a", ring: "ring-rb-3" },
-  spielplatz:   { label: "Spielplätze",       color: "#0a9e4c", ring: "ring-rb-5" },
-  trinkbrunnen: { label: "Trinkbrunnen",      color: "#009ac7", ring: "ring-rb-6" },
-  haltestelle:  { label: "ÖPNV-Haltestellen", color: "#3b3f9a", ring: "ring-rb-7" },
+  mangel:         { label: "Gemeldete Mängel",  color: "#c8102e", ring: "ring-red-500" },
+  baustelle:      { label: "Baustellen",         color: "#f4830a", ring: "ring-rb-3" },
+  spielplatz:     { label: "Spielplätze",        color: "#0a9e4c", ring: "ring-rb-5" },
+  trinkbrunnen:   { label: "Trinkbrunnen",       color: "#009ac7", ring: "ring-rb-6" },
+  haltestelle:    { label: "ÖPNV-Haltestellen",  color: "#3b3f9a", ring: "ring-rb-7" },
+  parken:         { label: "Parken",             color: "#6b3e7a", ring: "ring-purple-accent" },
+  ladestation:    { label: "E-Ladestationen",    color: "#18ada4", ring: "ring-turquoise-accent" },
+  fahrradstation: { label: "Rad-Abstellanlagen", color: "#b8964e", ring: "ring-gold-500" },
 };
 
 function ClickCapture({ onPick }: { onPick?: (lat: number, lng: number) => void }) {

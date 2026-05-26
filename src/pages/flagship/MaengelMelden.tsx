@@ -63,6 +63,7 @@ export function MaengelMelden() {
   const layerCounts = useMemo(() => {
     const out: Record<LayerKey, number> = {
       mangel: 0, baustelle: 0, spielplatz: 0, trinkbrunnen: 0, haltestelle: 0,
+      parken: 0, ladestation: 0, fahrradstation: 0,
     };
     mockPins.forEach((p) => { out[p.layer]++; });
     return out;

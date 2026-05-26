@@ -16,6 +16,14 @@ import { VerEntsorgung } from "@/pages/flagship/VerEntsorgung";
 import { Bauen } from "@/pages/flagship/Bauen";
 import { Notfall } from "@/pages/flagship/Notfall";
 import { Satzungen } from "@/pages/flagship/Satzungen";
+import { Einkaufen } from "@/pages/flagship/Einkaufen";
+import { Essen } from "@/pages/flagship/Essen";
+import { Gesundheit } from "@/pages/flagship/Gesundheit";
+import { Freizeit } from "@/pages/flagship/Freizeit";
+import { Mobilitaet } from "@/pages/flagship/Mobilitaet";
+import { Umwelt } from "@/pages/flagship/Umwelt";
+import { Wohnen } from "@/pages/flagship/Wohnen";
+import { Firmen } from "@/pages/flagship/Firmen";
 
 export default function App() {
   return (
@@ -31,6 +39,14 @@ export default function App() {
       <Route path="/rathaus/bauantrag" element={<Bauen />} />
       <Route path="/rathaus/notfall" element={<Notfall />} />
       <Route path="/rathaus/satzungen" element={<Satzungen />} />
+      <Route path="/mein-moosburg/einkaufen" element={<Einkaufen />} />
+      <Route path="/mein-moosburg/essen" element={<Essen />} />
+      <Route path="/mein-moosburg/gesundheit" element={<Gesundheit />} />
+      <Route path="/mein-moosburg/freizeit" element={<Freizeit />} />
+      <Route path="/mein-moosburg/mobilitaet" element={<Mobilitaet />} />
+      <Route path="/mein-moosburg/umwelt" element={<Umwelt />} />
+      <Route path="/mein-moosburg/wohnen" element={<Wohnen />} />
+      <Route path="/mein-moosburg/firmen" element={<Firmen />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
       <Route path="/mein-moosburg/familie" element={<FamilieBildung />} />
       <Route path="/mein-moosburg/familie/schulen" element={<FamilieBildung />} />
