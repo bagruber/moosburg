@@ -100,8 +100,10 @@ export function Firmen() {
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Firmenverzeichnis" }]}
+        variant="photo"
+        image="images/plan.jpg"
+        script="Moosburg lokal"
       />
 
       {/* Sticky search + toggle row */}

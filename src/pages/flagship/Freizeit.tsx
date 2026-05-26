@@ -15,12 +15,22 @@ import {
   IconChevronRight,
   IconMapPin,
   IconArrowRight,
+  IconBabyCarriage,
+  IconConfetti,
+  IconCalendarEvent,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { SectionHeader } from "@/components/SectionHeader";
+import { SpotlightSection } from "@/components/SpotlightSection";
+import { Reveal } from "@/components/Reveal";
+import { HeuteBanner } from "@/components/HeuteBanner";
+import { TipCard } from "@/components/TipCard";
+import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
-import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
+import { FirmaCard, MoosburgCardBadge, MomaBadge, FairTradeBadge } from "@/components/FirmaCard";
+import { useAppState } from "@/state/AppState";
 
 const route = findRoute("mein-moosburg/freizeit")!;
 
@@ -132,59 +142,40 @@ const SECTIONS: Section[] = [
 ];
 
 export function Freizeit() {
+  const { profile } = useAppState();
+
   return (
     <PageLayout>
       <PageHeader
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Freizeit & Sport" }]}
+        variant="photo"
+        image="images/bücherei.jpg"
+        script="raus aus dem Alltag"
       />
 
-      {/* Sticky anchor nav */}
-      <nav className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-8">
-          <a
-            href="#einrichtungen"
-            className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700"
-          >
-            <IconBuildingCommunity className="h-4 w-4" stroke={1.75} />
-            Städtische Einrichtungen
-          </a>
-          {SECTIONS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700"
-              >
-                <Icon className="h-4 w-4" stroke={1.75} />
-                {s.label}
-              </a>
-            );
-          })}
-        </div>
-      </nav>
+      <HeuteBanner />
+
+      <NavTab items={[
+        { id: "einrichtungen", label: "Städt. Einrichtungen" } as NavItem,
+        ...SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label })),
+      ]} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Städtische Einrichtungen ─────────────────────────── */}
+            <Reveal>
             <section id="einrichtungen" className="scroll-mt-40">
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-rb-6)1A", color: "var(--color-rb-6)" }}
-                  aria-hidden="true"
-                >
-                  <IconBuildingCommunity className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Städtische Einrichtungen</h2>
-              </div>
-              <p className="mt-3 max-w-3xl text-base text-ink-soft">
+              <SectionHeader
+                eyebrow="Stadtangebote"
+                heading="Städtische Einrichtungen"
+                script="von Bad bis Bücher"
+              />
+              <p className="-mt-3 max-w-3xl text-base text-ink-soft">
                 Die Häuser, Bäder und Sportstätten der Stadt. Öffnungszeiten und Sommer/Winter­saisons
                 auf den jeweiligen Detailseiten.
               </p>
@@ -226,53 +217,63 @@ export function Freizeit() {
                 })}
               </ul>
             </section>
+            </Reveal>
 
             {/* Legend just before the firma sections */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
               <span className="font-display uppercase tracking-wider">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
-                <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
+                <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <MoosburgCardBadge /> <span>akzeptiert die Moosburg-Card</span>
+                <MoosburgCardBadge /> <span>Moosburg-Card</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <FairTradeBadge /> <span>Fair-Trade-Partner</span>
               </span>
             </div>
 
-            {SECTIONS.map((s) => {
+            {/* Profile-driven hint */}
+            {profile.hasChildren && (
+              <TipCard
+                icon={IconBabyCarriage}
+                title="Familien­zeiten in den städt. Bädern"
+                body="Freibad: Kinder bis 6 frei, Familien­tarife am Wochenende. Eisstadion: Familien-Sonntag von 14–17 Uhr."
+                personalReason="Sie haben Kinder"
+                to="/mein-moosburg/familie"
+                accent="rb-6"
+              />
+            )}
+
+            {SECTIONS.map((s, i) => {
               const matches = firmen.filter(s.match);
               matches.sort((a, b) =>
                 Number(b.moma_mitglied) - Number(a.moma_mitglied) || a.name.localeCompare(b.name),
               );
-              const accent = `var(--color-${s.accent})`;
-              const Icon = s.icon;
               return (
-                <section key={s.id} id={s.id} className="scroll-mt-40">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="grid h-11 w-11 place-items-center rounded-xl"
-                      style={{ backgroundColor: `${accent}1A`, color: accent }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-5 w-5" stroke={1.75} />
-                    </span>
-                    <h2 className="headline text-2xl lg:text-3xl text-ink">{s.label}</h2>
-                    <span className="ml-auto text-xs text-ink-muted">{matches.length}</span>
-                  </div>
-                  <p className="mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
-                  {matches.length === 0 ? (
-                    <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
-                      Aktuell kein Eintrag.
-                    </p>
-                  ) : (
-                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                      {matches.map((f) => (
-                        <li key={f.id}>
-                          <FirmaCard firma={f} variant="compact" />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
+                <Reveal key={s.id} delay={((i % 2) + 1) as 1 | 2}>
+                  <section id={s.id} className="scroll-mt-40">
+                    <SectionHeader
+                      eyebrow={s.label}
+                      heading={s.label}
+                      script={`${matches.length} in der Stadt`}
+                    />
+                    <p className="-mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
+                    {matches.length === 0 ? (
+                      <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
+                        Aktuell kein Eintrag.
+                      </p>
+                    ) : (
+                      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                        {matches.map((f) => (
+                          <li key={f.id}>
+                            <FirmaCard firma={f} variant="compact" />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                </Reveal>
               );
             })}
           </div>
@@ -344,6 +345,63 @@ export function Freizeit() {
           </aside>
         </div>
       </article>
+
+      {/* ─────────────────────────────────────────────────────────────────
+         CLOSER  — Volksfeste & Stadtkultur als rote Marketing-Sektion
+      ────────────────────────────────────────────────────────────────── */}
+      <SpotlightSection tone="red">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Was Moosburg feiert"
+            heading="Volksfeste & Stadtkultur"
+            script="das ganze Jahr"
+            light
+          />
+        </Reveal>
+        <Reveal delay={1}>
+          <p className="mt-6 max-w-3xl text-base text-cream/90">
+            Vom Frühlingsfest Ende April bis zum Christkindl­markt im Dezember — Moosburg
+            hat seine festen Termine im Jahres­kreis. Vereine, Pfarreien und die Stadt
+            tragen die Tradition gemeinsam.
+          </p>
+        </Reveal>
+        <Reveal delay={2}>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <FestPill icon={IconConfetti} label="Frühlingsfest" hint="Ende April · Festgelände" />
+            <FestPill icon={IconConfetti} label="Volksfest"     hint="September · Stadtpark" />
+            <FestPill icon={IconConfetti} label="Hodschager Bratwurstessen" hint="Sommer · Partnerstadt-Fest" />
+            <FestPill icon={IconConfetti} label="Christkindl­markt" hint="Advent · Stadtplatz" />
+          </div>
+        </Reveal>
+        <Reveal delay={3}>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/mein-moosburg/veranstaltungen"
+              className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
+            >
+              Veranstaltungs­kalender öffnen
+              <IconCalendarEvent className="h-4 w-4" stroke={2} />
+            </Link>
+            <Link
+              to="/zu-besuch/highlights"
+              className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-2.5 text-sm font-medium text-cream hover:bg-cream/10"
+            >
+              Auch für Besucher
+              <IconArrowRight className="h-4 w-4" stroke={2} />
+            </Link>
+          </div>
+        </Reveal>
+      </SpotlightSection>
     </PageLayout>
+  );
+}
+
+function FestPill({ icon: Icon, label, hint }: { icon: Icon; label: string; hint: string }) {
+  return (
+    <div className="rounded-xl border border-cream/15 bg-cream/5 p-4">
+      <Icon className="h-5 w-5 text-gold-200" stroke={1.75} />
+      <h3 className="mt-2 card-title text-sm text-cream">{label}</h3>
+      <p className="mt-0.5 text-xs text-cream/75">{hint}</p>
+    </div>
   );
 }

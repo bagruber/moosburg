@@ -5,15 +5,22 @@ import {
   IconCalendarEvent,
   IconClock,
   IconMapPin,
-  IconGiftCard,
   IconLeaf,
   IconPackage,
   IconArrowRight,
-  IconExternalLink,
   IconChevronRight,
+  IconBabyCarriage,
+  IconPaw,
+  IconShoppingBag,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Reveal } from "@/components/Reveal";
+import { HeuteBanner } from "@/components/HeuteBanner";
+import { TipCard } from "@/components/TipCard";
+import { SpotlightSection } from "@/components/SpotlightSection";
+import { useAppState } from "@/state/AppState";
 import { findRoute } from "@/routes";
 import { firmen } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
@@ -23,14 +30,10 @@ const route = findRoute("mein-moosburg/einkaufen")!;
 
 const GESCHAEFTE = firmen.filter((f) => f.primary_kategorie === "Geschäfte");
 
-/** Tags that are noise in the shop branch-filter: too broad or organisational
- *  rather than retail-relevant ("Handwerk" labels craftsmen, "Dienstleister"
- *  applies to almost every entry). */
 const HIDDEN_BRANCH_TAGS = new Set([
   "Geschäfte", "Handwerk", "Handwerklich", "Dienstleister", "Handel",
 ]);
 
-/** Distinct sub-categories within "Geschäfte", with counts. */
 const GESCHAEFTE_KATS = (() => {
   const counts = new Map<string, number>();
   for (const f of GESCHAEFTE) {
@@ -43,11 +46,11 @@ const GESCHAEFTE_KATS = (() => {
 })();
 
 export function Einkaufen() {
+  const { profile } = useAppState();
   const [katFilter, setKatFilter] = useState<string | null>(null);
 
   const visibleGeschaefte = useMemo(() => {
     if (!katFilter) {
-      // Default: MoMa-members first, then top 8
       return [...GESCHAEFTE]
         .sort((a, b) => Number(b.moma_mitglied) - Number(a.moma_mitglied))
         .slice(0, 8);
@@ -61,70 +64,86 @@ export function Einkaufen() {
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Einkaufen & Märkte" }]}
+        variant="photo"
+        image="images/plan.jpg"
+        script="auf dem Plan"
       />
 
-      <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
+      <HeuteBanner />
+
+      {/* ─────────────────────────────────────────────────────────────────
+         HERO 1 — Wochenmarkt (ink, ruhig-erdig)
+      ────────────────────────────────────────────────────────────────── */}
+      <SpotlightSection tone="ink">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Jeden Samstag"
+            heading="Wochenmarkt"
+            script="frisch & regional"
+            light
+          />
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="mt-6 grid gap-5 sm:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+            <p className="max-w-2xl text-base text-cream/85">
+              Beste Waren aus der Region — frisches Obst und Gemüse, Fleisch, Fisch, Brot,
+              Käse, Honig. Im Herzen der Altstadt, mit Park­plätzen in der Nähe. Mittwochs
+              gibt es eine kleine Auswahl des grünen Marktes.
+            </p>
+            <dl className="space-y-2 text-sm">
+              <div className="flex items-start gap-2">
+                <IconClock className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                <div>
+                  <div className="text-cream"><strong>Samstag</strong> · 7:00 – 12:00 Uhr</div>
+                  <div className="text-xs text-cream/70">Mi: kleine Auswahl</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                <span className="text-cream">Auf dem Plan, 85368 Moosburg</span>
+              </div>
+            </dl>
+          </div>
+        </Reveal>
+        <Reveal delay={2}>
+          <div className="mt-8 inline-flex flex-wrap items-center gap-3 text-sm text-cream/70">
+            <Link to="/mein-moosburg/veranstaltungen" className="inline-flex items-center gap-1.5 text-cream hover:text-gold-200">
+              <IconCalendarEvent className="h-4 w-4" stroke={1.75} />
+              Markt-Sondertage im Veranstaltungs­kalender
+            </Link>
+            <span className="hidden text-cream/30 sm:inline">·</span>
+            <Link to="/mein-moosburg/mobilitaet#parken" className="inline-flex items-center gap-1.5 text-cream hover:text-gold-200">
+              <IconMapPin className="h-4 w-4" stroke={1.75} />
+              Parken in der Nähe
+            </Link>
+          </div>
+        </Reveal>
+      </SpotlightSection>
+
+      <article className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
           <div className="space-y-16">
 
-            {/* ── HERO: Wochenmarkt ───────────────────────────────── */}
-            <section>
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-rb-5)1A", color: "var(--color-rb-5)" }}
-                  aria-hidden="true"
-                >
-                  <IconCalendarEvent className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Wochenmarkt</h2>
-              </div>
-              <div className="mt-5 grid gap-5 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-2">
-                <div>
-                  <h3 className="card-title text-lg text-ink">Jeden Samstag auf dem Plan</h3>
-                  <p className="mt-2 text-sm text-ink-soft">
-                    Beste Waren aus der Region — frisches Obst und Gemüse, Fleisch, Fisch, Brot,
-                    Käse, Honig. Im Herzen der Altstadt, mit Park­plätzen in der Nähe.
-                  </p>
-                </div>
-                <dl className="space-y-2 text-sm">
-                  <div className="flex items-start gap-2">
-                    <IconClock className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
-                    <div>
-                      <div className="text-ink"><strong>Samstag</strong> · 7:00 – 12:00 Uhr</div>
-                      <div className="text-xs text-ink-muted">Mittwoch: kleine Auswahl des grünen Marktes</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
-                    <span className="text-ink">Auf dem Plan, 85368 Moosburg</span>
-                  </div>
-                </dl>
-              </div>
-            </section>
+            {/* ── Geschäfte ─────────────────────────────────────── */}
+            <Reveal>
+              <SectionHeader
+                eyebrow="Lokal kaufen"
+                heading="Geschäfte in Moosburg"
+                script={`${GESCHAEFTE.length} in der Stadt`}
+              />
+            </Reveal>
 
-            {/* ── Geschäfte ───────────────────────────────────────── */}
-            <section>
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-rb-6)1A", color: "var(--color-rb-6)" }}
-                  aria-hidden="true"
-                >
-                  <IconBuildingStore className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Geschäfte in Moosburg</h2>
-              </div>
-              <p className="mt-3 max-w-3xl text-base text-ink-soft">
-                <strong>{GESCHAEFTE.length}</strong> Geschäfte in {GESCHAEFTE_KATS.length} Branchen.
-                Eine Auswahl unten — die vollständige Liste mit Such- und Filterfunktion finden Sie
-                im <Link to="/mein-moosburg/firmen" className="text-red-700 hover:underline">Firmenverzeichnis</Link>.
-              </p>
+            <p className="-mt-6 max-w-3xl text-base text-ink-soft">
+              {GESCHAEFTE_KATS.length} Branchen, von Mode über Garten bis Hörgeräte — eine
+              Auswahl unten, die vollständige Liste finden Sie im{" "}
+              <Link to="/mein-moosburg/firmen" className="text-red-700 hover:underline">
+                Firmen­verzeichnis
+              </Link>.
+            </p>
 
-              {/* Branchen-Chips */}
-              <div className="mt-5 flex flex-wrap gap-1.5">
+            <Reveal delay={1}>
+              <div className="flex flex-wrap gap-1.5">
                 <button
                   type="button"
                   onClick={() => setKatFilter(null)}
@@ -140,164 +159,128 @@ export function Einkaufen() {
                 {GESCHAEFTE_KATS.map(([k, n]) => {
                   const active = katFilter === k;
                   return (
-                    <button
-                      key={k}
-                      type="button"
+                    <button key={k} type="button"
                       onClick={() => setKatFilter(active ? null : k)}
                       className={cn(
                         "rounded-full border px-3 py-1 text-xs font-medium transition",
                         active
                           ? "border-red-500 bg-red-500 text-cream"
                           : "border-ink-line bg-white text-ink-soft hover:border-red-500",
-                      )}
-                    >
+                      )}>
                       {k} <span className="opacity-60">({n})</span>
                     </button>
                   );
                 })}
               </div>
+            </Reveal>
 
-              {/* Legend right above the list — explains the badges in context */}
-              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-                <span className="font-display uppercase tracking-wider">Legende:</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <MoosburgCardBadge /> <span>akzeptiert die Moosburg-Card</span>
-                </span>
-              </div>
+            {/* Legend */}
+            <div className="-mt-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
+              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="inline-flex items-center gap-1.5">
+                <MomaBadge /> <span>Moosburg Marketing eG</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <MoosburgCardBadge /> <span>akzeptiert Moosburg-Card</span>
+              </span>
+            </div>
 
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {visibleGeschaefte.map((f) => (
-                  <li key={f.id}>
-                    <FirmaCard firma={f} variant="compact" />
-                  </li>
-                ))}
-              </ul>
+            <ul className="-mt-10 grid gap-3 sm:grid-cols-2">
+              {visibleGeschaefte.map((f, i) => (
+                <Reveal key={f.id} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+                  <FirmaCard firma={f} variant="compact" />
+                </Reveal>
+              ))}
+            </ul>
 
-              <div className="mt-5 text-center">
-                <Link
-                  to="/mein-moosburg/firmen"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
-                >
-                  Alle {GESCHAEFTE.length} Geschäfte im Firmenverzeichnis
-                  <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
-                </Link>
-              </div>
-            </section>
+            <div className="-mt-10 text-center">
+              <Link
+                to="/mein-moosburg/firmen?kategorie=Geschäfte"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
+              >
+                Alle {GESCHAEFTE.length} Geschäfte im Firmen­verzeichnis
+                <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+              </Link>
+            </div>
 
-            {/* ── Moosburg-Card ───────────────────────────────────── */}
-            <section>
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-turquoise-accent)1A", color: "var(--color-turquoise-accent)" }}
-                  aria-hidden="true"
-                >
-                  <IconGiftCard className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Moosburg-Card</h2>
-              </div>
-              <p className="mt-3 max-w-3xl text-base text-ink-soft">
-                <em>Eine Stadt – eine Karte – viele Möglichkeiten.</em> Die Moosburg Card 2.0 ist
-                der lokale Einkaufs- und Geschenk­gutschein der Stadt.
-              </p>
-              <div className="mt-5 grid gap-4 rounded-2xl border border-turquoise-accent/30 bg-turquoise-accent/5 p-5 sm:grid-cols-2">
-                <div>
-                  <h3 className="card-title text-base text-ink">So funktioniert sie</h3>
-                  <ul className="mt-2 space-y-1.5 text-sm text-ink-soft">
-                    <li>· Aufladbar zwischen <strong>5 € und 250 €</strong></li>
-                    <li>· Bargeld- und kontaktlos bezahlen</li>
-                    <li>· Beliebig oft nachladbar, Restbeträge bleiben erhalten</li>
-                    <li>· Auch für Firmen als steuerfreie Sachwertkarte</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="card-title text-base text-ink">Wer macht mit?</h3>
-                  <p className="mt-2 text-sm text-ink-soft">
-                    Teilnehmende Geschäfte sind im Firmen­verzeichnis mit der Marke{" "}
-                    <MoosburgCardBadge className="ml-0.5" /> gekennzeichnet — aktuell{" "}
-                    <strong>{firmen.filter((f) => f.moosburg_card).length}</strong> Betriebe.
-                  </p>
-                  <Link
-                    to="/mein-moosburg/firmen?moosburgCard=1"
-                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
+            {/* Profil-driven Tip (only renders if profile matches) */}
+            {profile.hasChildren && (
+              <TipCard
+                icon={IconBabyCarriage}
+                title="Spiel- und Kinderkleider­läden in Moosburg"
+                body="Mode Neu hat eine Kinder­abteilung, der Eine-Welt-Laden führt fair gehandeltes Spielzeug."
+                personalReason="Sie haben Kinder"
+                to="/mein-moosburg/firmen?q=kinder"
+                accent="rb-6"
+              />
+            )}
+            {profile.ownsDog && (
+              <TipCard
+                icon={IconPaw}
+                title="Heim­tier­bedarf in Moosburg"
+                body="Tier­fachgeschäft und Bauer Gärtnerei führen Futter und Zubehör."
+                personalReason="Sie haben einen Hund"
+                to="/mein-moosburg/firmen?q=tier"
+                accent="rb-6"
+              />
+            )}
+
+            {/* ── Fair-Trade Teaser ───────────────────────────────── */}
+            <Reveal>
+              <Link
+                to="/thema/fair-trade"
+                className="group block rounded-2xl border border-rb-5/30 p-5 transition hover:border-solid hover:shadow-soft"
+                style={{
+                  borderColor: "color-mix(in srgb, var(--color-rb-5) 30%, transparent)",
+                  backgroundColor: "color-mix(in srgb, var(--color-rb-5) 6%, transparent)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <span
+                    className="grid h-12 w-12 shrink-0 place-items-center rounded-xl"
+                    style={{ backgroundColor: "color-mix(in srgb, var(--color-rb-5) 15%, transparent)",
+                             color: "var(--color-rb-5)" }}
                   >
-                    Teilnehmende Geschäfte anzeigen
-                    <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
-                  </Link>
+                    <IconLeaf className="h-6 w-6" stroke={1.75} />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="eyebrow" style={{ color: "var(--color-rb-5)" }}>
+                      Themenseite · seit 2019
+                    </div>
+                    <h3 className="mt-1 card-title text-lg text-ink">
+                      Moosburg ist Fair-Trade-Stadt
+                    </h3>
+                    <p className="mt-1 text-sm text-ink-soft">
+                      14+ Partner­betriebe und vier eigene Moosburg-Fair-Trade-Produkte. Alle
+                      Hintergründe, Teilnehmenden und Mitmach-Möglichkeiten auf der Themen­seite.
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium"
+                      style={{ color: "var(--color-rb-5)" }}>
+                      Zur Themenseite öffnen
+                      <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </Link>
+            </Reveal>
 
-            {/* ── Fair-Trade ──────────────────────────────────────── */}
-            <section>
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-rb-5)1A", color: "var(--color-rb-5)" }}
-                  aria-hidden="true"
-                >
-                  <IconLeaf className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Fair-Trade-Stadt seit 2019</h2>
-              </div>
-              <p className="mt-3 max-w-3xl text-base text-ink-soft">
-                Seit Mai 2019 ist Moosburg offiziell <em>Fairtrade-Stadt</em> — gemeinsam mit lokalen
-                Geschäften, Schulen, Kirchen und Vereinen. Es gibt sogar eigene Moosburg-Fair-Trade-Produkte.
-              </p>
-              <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                {[
-                  { name: "Schokolade „Fair naschen\"", hint: "in vier Sorten" },
-                  { name: "Kaffee „Faire Bohne\"",       hint: "im Eine-Welt-Laden" },
-                  { name: "Tee „Moosburg zum Entspannen\"", hint: "" },
-                  { name: "Wein „Moosburg zum Genießen\"",  hint: "weiß und rot" },
-                ].map((p) => (
-                  <li key={p.name} className="rounded-lg border border-ink-line/40 bg-white px-4 py-3 text-sm">
-                    <div className="font-medium text-ink">{p.name}</div>
-                    {p.hint && <div className="text-xs text-ink-muted">{p.hint}</div>}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-xs text-ink-soft">
-                Komplettes Geschenk-Set inkl. Lesezeichen für 25 € im Eine-Welt-Laden.
-              </p>
-            </section>
-
-            {/* ── Moosburg-Artikel ────────────────────────────────── */}
-            <section>
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid h-11 w-11 place-items-center rounded-xl"
-                  style={{ backgroundColor: "var(--color-rb-3)1A", color: "var(--color-rb-3)" }}
-                  aria-hidden="true"
-                >
-                  <IconGiftCard className="h-5 w-5" stroke={1.75} />
-                </span>
-                <h2 className="headline text-2xl lg:text-3xl text-ink">Moosburg-Souvenirs</h2>
-              </div>
-              <p className="mt-3 max-w-3xl text-base text-ink-soft">
-                Stadttaschen mit Schabert-Motiv, Postkarten der Drei-Rosen-Stadt, Stoffbeutel und
-                die Fair-Trade-Produkte — kleine Mitbringsel aus Moosburg.
-              </p>
-            </section>
-
-            {/* ── Müllreduziert ───────────────────────────────────── */}
-            <section className="rounded-2xl border border-ink-line/40 bg-cream-dark/30 p-5">
-              <div className="flex items-start gap-3">
-                <IconPackage className="mt-0.5 h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
-                <div>
-                  <h3 className="card-title text-base text-ink">Müllreduziert einkaufen</h3>
-                  <p className="mt-1 text-sm text-ink-soft">
-                    Die <em>„Einmal ohne, bitte\"</em>-Initiative macht Geschäfte sichtbar, in
-                    denen Lebensmittel ohne produkteigene Verpackung erhältlich sind. In Moosburg
-                    in Vorbereitung — siehe auch{" "}
-                    <Link to="/mein-moosburg/umwelt" className="text-red-700 hover:underline">Umwelt & Klima</Link>.
-                  </p>
-                </div>
-              </div>
-            </section>
+            {/* Cross-link strip — bridge to umwelt / souvenirs */}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <TipCard
+                icon={IconPackage}
+                title="Müllreduziert einkaufen"
+                body="„Einmal ohne, bitte“-Initiative — Geschäfte, die ohne Verpackung verkaufen. In Vorbereitung."
+                to="/mein-moosburg/umwelt"
+                accent="rb-5"
+              />
+              <TipCard
+                icon={IconShoppingBag}
+                title="Moosburg-Souvenirs"
+                body="Stadttaschen mit Schabert-Motiv, Postkarten, Stofftaschen — kleine Mitbringsel."
+                to="/zu-besuch/entdecken"
+                accent="rb-3"
+              />
+            </div>
           </div>
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
@@ -326,29 +309,69 @@ export function Einkaufen() {
               </ul>
             </section>
 
-            <section>
-              <div className="eyebrow text-ink-muted">Über die Marke</div>
-              <p className="mt-2 text-xs text-ink-soft">
-                Das Firmenverzeichnis und die Moosburg-Card werden von der{" "}
-                <a href="https://meinmoosburg.de/digitale-stadt/" target="_blank" rel="noreferrer" className="text-red-700 hover:underline">
-                  Moosburg Marketing eG
-                </a>{" "}
-                betreut. Eintrag für Ihr Geschäft hinzufügen?
-              </p>
-              <a
-                href="https://meinmoosburg.de/digitale-stadt/eintrag-aendern/"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-red-700 hover:underline"
-              >
-                Eintrag hinzufügen / ändern
-                <IconExternalLink className="h-3 w-3" stroke={2} />
-              </a>
-            </section>
+            <TipCard
+              icon={IconLeaf}
+              title="Wussten Sie?"
+              body="„Moosburg-Card“-Umsätze bleiben zu 100 % im lokalen Kreislauf — anders als bei Online-Versand­händlern."
+              to="/mein-moosburg/firmen?moosburgCard=1"
+              ctaLabel="Teilnehmer ansehen"
+              accent="turquoise-accent"
+            />
 
+            <TipCard
+              icon={IconBuildingStore}
+              title="Eintrag fehlt oder veraltet?"
+              body="Das Verzeichnis wird von der Moosburg Marketing eG gepflegt."
+              href="https://meinmoosburg.de/digitale-stadt/eintrag-aendern/"
+              ctaLabel="Eintrag hinzufügen"
+              accent="rb-6"
+            />
           </aside>
         </div>
       </article>
+
+      {/* ─────────────────────────────────────────────────────────────────
+         CLOSER  — Moosburg-Card als rote Marketing-Sektion
+      ────────────────────────────────────────────────────────────────── */}
+      <SpotlightSection tone="red">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Lokale Wirtschaft stärken"
+            heading="Moosburg-Card"
+            script="eine Karte für alles"
+            light
+          />
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="mt-6 grid gap-8 sm:grid-cols-[minmax(0,2fr),minmax(0,1fr)] sm:items-center">
+            <div>
+              <p className="text-base text-cream/90">
+                <em>Eine Stadt – eine Karte – viele Möglichkeiten.</em> Aufladbar zwischen 5 €
+                und 250 €, bargeld- und kontaktlos bezahlen, beliebig oft nachladbar — Restbeträge
+                bleiben erhalten. Auch als steuerfreie Sachwertkarte für Firmen.
+              </p>
+              <p className="mt-3 text-sm text-cream/75">
+                Aktuell <strong className="text-cream">{firmen.filter((f) => f.moosburg_card).length}</strong>{" "}
+                teilnehmende Betriebe in Moosburg. Umsätze bleiben zu 100 % im lokalen Kreislauf.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Link
+                to="/mein-moosburg/firmen?moosburgCard=1"
+                className="block w-full rounded-lg bg-cream px-4 py-3 text-center text-sm font-medium text-ink hover:bg-cream-dark"
+              >
+                Teilnehmende Geschäfte
+              </Link>
+              <Link
+                to="/mein-moosburg/essen?moosburgCard=1"
+                className="block w-full rounded-lg border border-cream/40 px-4 py-3 text-center text-sm font-medium text-cream hover:bg-cream/10"
+              >
+                In der Gastronomie
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </SpotlightSection>
     </PageLayout>
   );
 }

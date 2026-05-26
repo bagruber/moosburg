@@ -13,12 +13,22 @@ import {
   IconExternalLink,
   IconChevronRight,
   IconPhone,
+  IconBabyCarriage,
+  IconHandStop,
+  IconHomeHeart,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { SectionHeader } from "@/components/SectionHeader";
+import { SpotlightSection } from "@/components/SpotlightSection";
+import { Reveal } from "@/components/Reveal";
+import { HeuteBanner } from "@/components/HeuteBanner";
+import { TipCard } from "@/components/TipCard";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
-import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
+import { FirmaCard, MoosburgCardBadge, MomaBadge, FairTradeBadge } from "@/components/FirmaCard";
+import { useAppState } from "@/state/AppState";
+import { NavTab, type NavItem } from "@/components/SectionNav";
 
 const route = findRoute("mein-moosburg/gesundheit")!;
 
@@ -103,34 +113,24 @@ const SECTIONS: Section[] = [
 ];
 
 export function Gesundheit() {
+  const { profile } = useAppState();
+  const navItems: NavItem[] = SECTIONS.map((s) => ({ id: s.id, label: s.label }));
+
   return (
     <PageLayout>
       <PageHeader
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Gesundheit" }]}
+        variant="photo"
+        image="images/brücke.jpg"
+        script="gut versorgt"
       />
 
-      {/* In-page anchor nav */}
-      <nav className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-8">
-          {SECTIONS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700"
-              >
-                <Icon className="h-4 w-4" stroke={1.75} />
-                {s.label}
-              </a>
-            );
-          })}
-        </div>
-      </nav>
+      <HeuteBanner />
+
+      <NavTab items={navItems} />
 
       {/* Notfall-Hero — direkter Querverweis */}
       <section className="border-b border-ink-line/50 bg-cream-dark/40">
@@ -176,51 +176,70 @@ export function Gesundheit() {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
               <span className="font-display uppercase tracking-wider">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
-                <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
+                <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <MoosburgCardBadge /> <span>akzeptiert die Moosburg-Card</span>
+                <MoosburgCardBadge /> <span>Moosburg-Card</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <FairTradeBadge /> <span>Fair-Trade-Partner</span>
               </span>
             </div>
 
-            {SECTIONS.map((s) => {
+            {/* Profile-driven hints */}
+            {profile.hasChildren && (
+              <TipCard
+                icon={IconBabyCarriage}
+                title="Kinder­ärzt:innen & Hebammen"
+                body="Für Kinder und werdende Eltern: Pädiater­praxen, Vorsorge, Hebammen­dienste."
+                personalReason="Sie haben Kinder"
+                to="/mein-moosburg/familie"
+                accent="rb-6"
+              />
+            )}
+            {profile.receivesPension && (
+              <TipCard
+                icon={IconHomeHeart}
+                title="Hausärzt:innen mit Hausbesuchen"
+                body="Mehrere Moosburger Praxen bieten Hausbesuche für ältere Patient:innen an — siehe Hinweis in der Praxis-Detailansicht."
+                personalReason="Sie beziehen Rente"
+                to="/lebenslage/pflege-alter"
+                accent="rb-6"
+              />
+            )}
+
+            {SECTIONS.map((s, i) => {
               const matches = firmen.filter(s.match);
               matches.sort((a, b) =>
                 Number(b.moma_mitglied) - Number(a.moma_mitglied) || a.name.localeCompare(b.name),
               );
-              const accent = `var(--color-${s.accent})`;
-              const Icon = s.icon;
               return (
-                <section key={s.id} id={s.id} className="scroll-mt-40">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="grid h-11 w-11 place-items-center rounded-xl"
-                      style={{ backgroundColor: `${accent}1A`, color: accent }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-5 w-5" stroke={1.75} />
-                    </span>
-                    <h2 className="headline text-2xl lg:text-3xl text-ink">{s.label}</h2>
-                    <span className="ml-auto text-xs text-ink-muted">{matches.length}</span>
-                  </div>
-                  <p
-                    className="mt-3 max-w-3xl text-base text-ink-soft"
-                    dangerouslySetInnerHTML={{ __html: s.lead }}
-                  />
-                  {matches.length === 0 ? (
-                    <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
-                      Aktuell kein Eintrag in dieser Kategorie.
-                    </p>
-                  ) : (
-                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                      {matches.map((f) => (
-                        <li key={f.id}>
-                          <FirmaCard firma={f} variant="compact" />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
+                <Reveal key={s.id} delay={((i % 3) + 1) as 1 | 2 | 3}>
+                  <section id={s.id} className="scroll-mt-40">
+                    <SectionHeader
+                      eyebrow={s.label}
+                      heading={s.label}
+                      script={`${matches.length} in der Stadt`}
+                    />
+                    <p
+                      className="-mt-3 max-w-3xl text-base text-ink-soft"
+                      dangerouslySetInnerHTML={{ __html: s.lead }}
+                    />
+                    {matches.length === 0 ? (
+                      <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
+                        Aktuell kein Eintrag in dieser Kategorie.
+                      </p>
+                    ) : (
+                      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                        {matches.map((f) => (
+                          <li key={f.id}>
+                            <FirmaCard firma={f} variant="compact" />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                </Reveal>
               );
             })}
           </div>
@@ -299,6 +318,57 @@ export function Gesundheit() {
           </aside>
         </div>
       </article>
+
+      {/* ─────────────────────────────────────────────────────────────────
+         CLOSER  — Pflege & Alter als ink-Spotlight (gesellschaftliches Thema)
+      ────────────────────────────────────────────────────────────────── */}
+      <SpotlightSection tone="ink">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Wenn Angehörige Hilfe brauchen"
+            heading="Pflege & Alter"
+            script="da füreinander"
+            light
+          />
+        </Reveal>
+        <Reveal delay={1}>
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            <Pill icon={IconHandStop}
+              title="Pflegeberatung"
+              body="Erstauskunft, Pflegegrad, ambulant vs. stationär — neutrale Beratung im Landkreis Freising." />
+            <Pill icon={IconHomeHeart}
+              title="Senioren­einrichtungen"
+              body="AWO Seniorenpark, Caritas-Pflegedienste, ambulante Krankenpflege David, Pflegedienst Mann." />
+            <Pill icon={IconPhone}
+              title="Krisendienst Psychiatrie"
+              body="0180 655 3000 · 365 Tage, 0–24 Uhr für seelische Krisen im Alter." />
+          </div>
+        </Reveal>
+        <Reveal delay={2}>
+          <div className="mt-8">
+            <Link
+              to="/lebenslage/pflege-alter"
+              className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
+            >
+              Lebenslage „Pflege & Alter" öffnen
+              <IconArrowRight className="h-4 w-4" stroke={2} />
+            </Link>
+          </div>
+        </Reveal>
+      </SpotlightSection>
     </PageLayout>
   );
 }
+
+function Pill({ icon: Icon, title, body }: { icon: Icon; title: string; body: string }) {
+  return (
+    <div className="rounded-xl border border-cream/15 bg-cream/5 p-5">
+      <span className="grid h-10 w-10 place-items-center rounded-lg bg-cream/10 text-gold-200">
+        <Icon className="h-5 w-5" stroke={1.75} />
+      </span>
+      <h3 className="mt-3 card-title text-base text-cream">{title}</h3>
+      <p className="mt-1 text-xs text-cream/75">{body}</p>
+    </div>
+  );
+}
+

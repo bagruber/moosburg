@@ -214,6 +214,31 @@ PATCHES: dict[str, list[str]] = {
     "mode-neu-damengeschaeft":                ["Kleidung & Mode"],
 }
 
+# Fair-Trade-Stadt Moosburg — teilnehmende Betriebe (Stand 2026).
+# Quelle: vom Auftraggeber recherchiert; gemappt auf Firma.id wo vorhanden.
+# Fehlende (kein eigener Eintrag im Verzeichnis): "Café Bistro Wochenblatt",
+# "Stadtpfarrei St. Kastulus", "Städtische Bücherei" — werden auf der
+# Themen-Seite als „weitere Partner" zusätzlich gelistet.
+FAIR_TRADE_PARTICIPANTS: set[str] = {
+    # Einzelhandel
+    "moosburger-teeladen",
+    "tagwerk-biomarkt-kleeblatt-moosburg",
+    "blumen-beubl-die-muehlbachgaertnerei",
+    "modehaus-heilingbrunner",
+    "waeschehaus-in-den-arkaden",
+    "barbaras-buecherstube",
+    "bauer-gaertnerei-blumenladen",
+    "blumenzauber",
+    # Gastronomie
+    "caf-weingraben",
+    "muehlbachcaf-beubl",
+    "baeckerei-grundner-gmbh",
+    # Vereine / Institutionen
+    "eine-welt-laden",
+    "karl-ritter-von-frisch-gymnasium",
+    "kastulus-realschule-moosburg",
+}
+
 
 def main() -> None:
     firma_pages = []
@@ -275,6 +300,7 @@ def main() -> None:
         "  beschreibung: string;",
         "  moma_mitglied: boolean;",
         "  moosburg_card: boolean;",
+        "  fair_trade: boolean;",
         "  url: string;",
         "};",
         "",
@@ -298,6 +324,7 @@ def main() -> None:
         lines.append(f"    beschreibung: {ts_str(r['beschreibung'])},")
         lines.append(f"    moma_mitglied: {'true' if r['moma_mitglied'] else 'false'},")
         lines.append(f"    moosburg_card: {'true' if r['moosburg_card'] else 'false'},")
+        lines.append(f"    fair_trade: {'true' if r['id'] in FAIR_TRADE_PARTICIPANTS else 'false'},")
         lines.append(f"    url: {ts_str(r['url'])},")
         lines.append("  },")
     lines.append("];")

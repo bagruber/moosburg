@@ -17,6 +17,8 @@ import {
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { HeuteBanner } from "@/components/HeuteBanner";
+import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
 
@@ -48,24 +50,15 @@ export function Umwelt() {
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Umwelt & Klima" }]}
+        variant="photo"
+        image="images/altstadt.jpg"
+        script="bis 2035 erneuerbar"
       />
 
-      <nav className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-8">
-          {SECTIONS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <a key={s.id} href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700">
-                <Icon className="h-4 w-4" stroke={1.75} />
-                {s.label}
-              </a>
-            );
-          })}
-        </div>
-      </nav>
+      <HeuteBanner hideSeason />
+
+      <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">

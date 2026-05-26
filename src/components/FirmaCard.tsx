@@ -5,6 +5,7 @@ import {
   IconExternalLink,
   IconClock,
   IconStar,
+  IconLeaf,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/cn";
 import type { Firma } from "@/data/firmen";
@@ -71,6 +72,30 @@ export function MoosburgCardBadge({ className }: { className?: string }) {
 }
 
 /**
+ * "Fair-Trade-Partner" — green pill for participants in the Fairtrade-Stadt-
+ * Initiative (siehe /thema/fair-trade).
+ */
+export function FairTradeBadge({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 rounded-md border border-rb-5/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider",
+        className,
+      )}
+      style={{
+        backgroundColor: "color-mix(in srgb, var(--color-rb-5) 12%, transparent)",
+        color: "var(--color-rb-5)",
+        borderColor: "color-mix(in srgb, var(--color-rb-5) 40%, transparent)",
+      }}
+      title="Fair-Trade-Partner der Stadt Moosburg"
+    >
+      <IconLeaf className="h-2.5 w-2.5" stroke={2.25} />
+      Fair-Trade
+    </span>
+  );
+}
+
+/**
  * "MoMa Mitglied" — gold pill for Moosburg-Marketing-eG members.
  */
 export function MomaBadge({ className }: { className?: string }) {
@@ -110,9 +135,10 @@ export function FirmaCard({
       >
         <header className="flex items-start justify-between gap-2">
           <h3 className="card-title text-sm text-ink leading-snug">{firma.name}</h3>
-          <div className="flex shrink-0 gap-1">
+          <div className="flex shrink-0 flex-wrap justify-end gap-1">
             {firma.moma_mitglied && <MomaBadge />}
             {firma.moosburg_card && <MoosburgCardBadge />}
+            {firma.fair_trade && <FairTradeBadge />}
           </div>
         </header>
         <p className="flex items-start gap-1.5 text-xs text-ink-soft">

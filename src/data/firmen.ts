@@ -16,6 +16,7 @@ export type Firma = {
   beschreibung: string;
   moma_mitglied: boolean;
   moosburg_card: boolean;
+  fair_trade: boolean;
   url: string;
 };
 
@@ -34,6 +35,7 @@ export const firmen: Firma[] = [
     beschreibung: "Im Herzen der Innenstadt gelegen, bietet Ihnen die Marien-Apotheke unter Leitung von Fachapothekerin Edith Schmid jahrzehntelange Erfahrung rund um Ihre Gesundheit. Ein breites Sortiment von Arzneimitteln, Kosmetika und Homöopathika wird ergänzt durch individuelle Rezepturen. Zudem bieten wir u.a. einen Botendienst, Kompressionstherapie, Heimbelieferung und Verleihgeräte.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/marien-apotheke/",
   },
   {
@@ -50,6 +52,7 @@ export const firmen: Firma[] = [
     beschreibung: "In der Michaeli Apotheke steht Ihnen ein kompetentes und engagiertes Team zur Seite. Sie als Kunde stehen bei uns im Mittelpunkt.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/michaeli-apotheke/",
   },
   {
@@ -66,6 +69,7 @@ export const firmen: Firma[] = [
     beschreibung: "Apotheke Wir beraten Sie sehr gerne zu Ihren Gesundheitsfragen. Sollten Sie einmal nicht in der Lage sein, Ihr Medikament selbst bei uns abzuholen, liefern wir Ihnen Ihre Medikamente sicher und zuverlässig nach Hause.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/st-johannis-apotheke-2/",
   },
   {
@@ -82,6 +86,7 @@ export const firmen: Firma[] = [
     beschreibung: "Frau Julia Bassl- Für die Gesundheit der ganzen Familie. Wir bieten alle Leistungen der hausärztlichen Familienmedizin und stehen Ihnen bei Gesundheitsfragen mit Rat und Tat zur Seite.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gemeinschaftspraxis-tiedemann-schwaiger-bassl/",
   },
   {
@@ -98,6 +103,7 @@ export const firmen: Firma[] = [
     beschreibung: "Fachärztin für Innere Medizin mit Hausärztlicher Versorgung, Naturheilverfahren Angest. Ärztin: Andrea Winkelmann, Fachärztin für Allgemeinmedizin",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/internistin-dr-strasser/",
   },
   {
@@ -114,6 +120,7 @@ export const firmen: Firma[] = [
     beschreibung: "Arzt Wir bieten Ihnen Zahnbehandlungen auf höchstem Niveau in einem familiären Umfeld.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zahnarztpraxis-dr-raith-dr-kerscher/",
   },
   {
@@ -130,6 +137,7 @@ export const firmen: Firma[] = [
     beschreibung: "+49 151 15368487 info@flairnailstyle.de Social Media Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Samstag Nach Terminvereinbarung Schöne Nägel sind ein MUST HAVE!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/br-stamm-ug-nagelstudio-flairnailstyle/",
   },
   {
@@ -146,6 +154,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Wellnessmassagen Gönnen Sie sich eine Auszeit mit einer wohltuenden, entspannten Aromaölmassage. Lassen Sie den Alltagsstress hinter sich und genießen Sie die Zeit für sich selbst. Eine Wellnessmassage hilft körperliche Verspannungen zu lösen und ist wohltuend für Geist und Seele.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/massagetherapeutin-schmerzspezialist-claudia-fauchon/",
   },
   {
@@ -162,6 +171,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Schenken Sie sich die Pflege, die Ihrem Körper und Ihrer Haut guttut! Für Männer & Frauen. Von Kopf bis Fuß. Individuelle Anwendungen, die perfekte Symbiose aus apparativer und natürlicher Kosmetik und ein Ambiente zum Wohlfühlen – alles für Ihre Schönheit, alles zentral am Ortseingang von Moosburg.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rose-fuer-ihre-schoenheit/",
   },
   {
@@ -178,6 +188,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir bieten: • Gesichtsbehandlungen • dauerhafte Haarentfernung mittels Diodenicelaser • Wimpernverlängerung • Wimpern- & Augenbrauenlifting • kosmetische/med. Fachfußpflege • Solarium",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sakura-beauty/",
   },
   {
@@ -194,6 +205,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Ich biete Gesichtsbehandlungen, Wellnessmassagen, Pediküre und Maniküre mit ausschließlich bio-zertifizierter Naturkosmetik.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wellness-und-kosmetik-ottilie-pusl/",
   },
   {
@@ -210,6 +222,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich begleite Hochsensible, frischgebackene Eltern, Prüflinge, Trauernde, gerade Getrennte, Überstimulierte und andere Hilfesuchende durch eine emotional schwierige Zeit. Hin zu mehr Leichtigkeit, Mut, Verbundenheit, Klarheit, Intuition und Selbstverwirklichung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpraxis-fuer-psychotherapie-carolin-hintermair/",
   },
   {
@@ -226,6 +239,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mit meiner fundierten Ausbildung und langjährigen Erfahrung helfe ich dabei, in schwierigen Lebenslagen die richtigen Lösungen zu finden. Familien- und Systemaufstellungen Gesprächstherapie Paar- und Sexualtherapie Polarity – Körperorientierte Psychotherapie Keine Kassenabrechnung möglich",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpraxis-petra-boehme/",
   },
   {
@@ -242,6 +256,7 @@ export const firmen: Firma[] = [
     beschreibung: "Partner für Sport & Gesundheit. Ich biete klassischen Reit- und Voltigierunterricht. Im pferdegestützten Coaching & Entspannungstraining kann sich dein Potenzial entfalten, du findest Klarheit und Ruhe. Stress und Ängste abbauen, Burnout keine Chance geben. Natur erleben.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pferdegaudi/",
   },
   {
@@ -258,6 +273,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir bieten Beratung und Behandlung bei Suchtproblemen – für Betroffene und deren Angehörige",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/psychosoziale-beratungs-und-behandlungsstelle-fuer-suchtprobleme/",
   },
   {
@@ -274,6 +290,7 @@ export const firmen: Firma[] = [
     beschreibung: "Tiefenpsychologisch fundierte Psychotherapie für Erwachsene, alle Kassen und privat",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dipl-psych-judith-angela-kall/",
   },
   {
@@ -290,6 +307,7 @@ export const firmen: Firma[] = [
     beschreibung: "Coaching für Eltern, Körper-und tiefenpsychologisch orientierte Traumatherapie, Familienaufstellungen, Coaching für Künstler, Freiberufler, Führungskräfte",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/psychotherapie-ingrid-huch-hallwachs/",
   },
   {
@@ -306,6 +324,7 @@ export const firmen: Firma[] = [
     beschreibung: "Herzlich willkommen in der Privatpraxis impuls – Psychotherapie & Coaching der Diplom-Psychologin Raphaela Neudecker. Im Herzen von Moosburg gelegen, gut erreichbar auch aus Landshut & Freising. Weitere Informationen auf der Homepage.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/impuls-psychotherapie-coaching/",
   },
   {
@@ -322,6 +341,7 @@ export const firmen: Firma[] = [
     beschreibung: "AWO Seniorenpark Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/awo-seniorenpark-moosburg-2/",
   },
   {
@@ -338,6 +358,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ambulanter Pflegedienst Ines Mann",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ambulanter-pflegedienst-ines-mann/",
   },
   {
@@ -354,6 +375,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ca. 500 Kinder lernen und lachen an unserer Anton Vitzthum Grundschule im Süden Moosburgs. Jedes Schuljahr werden ca. 20 Klassen in den Jahrgangsstufen 1-4 unterrichtet. Unser Schulhaus besitzt 2 Pausenhöfe und eine schöne lichtdurchflutete Aula verbindet den Altbau mit dem Neubau unserer Schule.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/anton-vitzthum-grundschule-moosburg-sued/",
   },
   {
@@ -370,6 +392,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die BRK Bereitschaft Moosburg ist eine der vier Bereitschaften des BRK Kreisverband Freising. Zu unseren Tätigkeiten zählen u .a. der Sanitätsdienste und der Katastrophenschutz. Auch betreiben wir einen Helfer vor Ort und eine Schnelleinsatzgruppe, mit der wir den öffentlich-rechtlichen Rettungsdienst unterstützen. Alle unsere Mitglieder sind rein ehrenamtlich tätig und absolvieren Ausbildungen, Sanitätsdienste oder ihre Tätigkeit im Rettungsdienst in ihrer Freizeit. Wir freuen uns immer über neue Mitglieder – egal ob aktiv oder passiv.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/brk-bereitschaft-moosburg/",
   },
   {
@@ -386,6 +409,7 @@ export const firmen: Firma[] = [
     beschreibung: "Damit alte oder kranke Menschen in ihrer vertrauten Umgebung bleiben können, bieten wir Ihnen und Ihren Angehörigen einen professionellen ambulanten Pflegedienst. Die Annahme von Hilfe fällt oft nicht leicht, daher führen wir ausführliche Beratung zu unseren Angeboten und Finanzierungsmöglichkeiten durch. Neben der Beratung bieten wir ambulante Pflege, Betreuung für ältere Menschen sowie Hausnotruf. Das Team der Sozialstation, bestehend aus Krankenschwestern und Krankenpflegern, Altenpfleger/innen, Pflegehelfern, Hauswirtschaftskräften, ist für Sie da.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/caritas-sozialstation/",
   },
   {
@@ -402,6 +426,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir unterstützen bei Fragen zu: – Familie & Erziehung – Soziale Beratung – Schuldnerberatung – Psychische Gesundheit – Psychische Gesundheit im Alter – Integration Bei Bedarf bieten wir auch Beratungstermine nach Vereinbarung an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/caritas-zentrum/",
   },
   {
@@ -418,6 +443,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Feuerwehr Moosburg ist ehrenamtlich tätig und leistet unverzichtbare Hilfe – nicht nur bei Bränden, sondern ebenso bei technischen Hilfeleistungen oder wetterbedingten Extremsituationen. Neben dem regulären Einsatzdienst sind wir auch in der Jugendarbeit tätig. Hierfür existiert die Jugendfeuerwehr, welche nicht nur Kameradschaft und Teamgeist fördert, sondern auch zur Vorbereitung auf den Einsatzdienst dient. Ebenso ist unsere Abteilung für Alte Löschfahrzeuge (ALF) nicht zu vergessen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/freiwillige-feuerwehr/",
   },
   {
@@ -434,6 +460,7 @@ export const firmen: Firma[] = [
     beschreibung: "Am 24. August 1874 wurde in Selbstorganisation eine Pflicht-Feuerwehr zusammengestellt. Die Männer arbeiteten damals überwiegend in der Landwirtschaft. Sie waren damals Tag und Nacht bei Brandeinsätzen verfügbar. Doch man kam schnell zu der Einsicht, dass in einer Pflichtfeuerwehr nicht der notwendige Idealismus und Ehrgeiz vorhanden war. Bereits 7 Monate später, am 20. März 1875 wurde die Freiwillige Feuerwehr Pfrombach gegründet, und in die Grundliste vom Bayerischen Landes-Feuerwehr-Verband in München eingetragen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/freiwillige-feuerwehr-pfrombach-aich/",
   },
   {
@@ -450,6 +477,7 @@ export const firmen: Firma[] = [
     beschreibung: "Feuerwehrmänner und -frauen helfen immer, wenn es nötig ist. Getreu dem gewählten Leitspruch der Wehren “Gott zur Ehr – dem Nächsten zur Wehr!” sind die Mitglieder bei jeder Tages- und Nachtzeit bereit, wenn es darum geht Leben zu retten, Hab und Gut zu schützen oder Mitmenschen aus einer misslichen Lage zu befreien. Nicht umsonst zeigt das Logo der Wehren die vier Einsatzbereiche “Retten”, “Löschen”, “Bergen” und “Schützen”. Unterstützen auch Sie daher Ihre Wehr!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/freiwillige-feuerwehr-thonstetten/",
   },
   {
@@ -466,6 +494,7 @@ export const firmen: Firma[] = [
     beschreibung: "Das bieten wir: gebundener Ganztagesunterricht in allen Jahrgangsstufen, vielfältiges Angebot an Arbeitsgemeinschaften für unsere Ganztagesschüler, passgenauer Unterricht für unsere Regelschüler, Mittlere Reife durch den M-Zug, Klasse im Puls‚ das musizierende Klassenzimmer, praxisnaher Unterricht.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/georg-hummel-mittelschule-moosburg-a-d-isar/",
   },
   {
@@ -482,6 +511,7 @@ export const firmen: Firma[] = [
     beschreibung: "Integrative Kindertagesstätte InKiMo",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/integrative-kindertagesstaette-inkimo/",
   },
   {
@@ -498,6 +528,7 @@ export const firmen: Firma[] = [
     beschreibung: "Städtischer integrativer Kinderhort “Sonnenschein” für Schulkinder bis zum 14.Lebensjahr Unsere Schwerpunkte: – eine Intensive Hausaufgabenbetreuung – eine ganzheitliche, kindgerechten, partizipativen und individueller Förderung der Kinder nach dem BEP Öffnungszeiten in den Ferien 7-17 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/integrativer-hort-sonnenschein/",
   },
   {
@@ -514,6 +545,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Einrichtung hat folgendes Leitbild: Jedes Kind ist als Persönlichkeit und in seiner Individualität wahrzunehmen, zu akzeptieren und wertzuschätzen. Wir wollen in unserer Arbeit jedem Kind helfen, seine Stärken zu entdecken, sich in seiner Ganzheit zu erleben und den eigenen Weg zu finden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/integrativer-kindergarten-moosschloessl/",
   },
   {
@@ -530,6 +562,7 @@ export const firmen: Firma[] = [
     beschreibung: "Für Helfen ist man nie zu klein! Bei unseren Kids stehen Erste Hilfe, wöchentliche Gruppenstunden, Übernachtungsabende, Schnitzeljagd oder Basteln auf dem Plan. Wir bieten auch viele weitere Aktionen wie z.B. Kinderfaschingsball, Ostereierfärben oder das Zeltlager in den Sommerferien an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jugendrotkreuz-moosburg/",
   },
   {
@@ -546,6 +579,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir gehören zu den Diözesanen Kitas der Erzdiözese München & Freising im Regionalverbund FS. Achtung vor der Würde des Menschen u. vor allem Geschaffenen, kindgemäße Vermittlung des Glaubens sowie gegenseitige Wertschätzung u. Toleranz u. ein frohes Miteinander prägen unsere Auffassung v. Erziehung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/katholischer-kindergarten-st-kastulus/",
   },
   {
@@ -562,6 +596,7 @@ export const firmen: Firma[] = [
     beschreibung: "Es werden Kinder von 3 Jahren bis zum Schuleintritt in altersgemischten Gruppen betreut. Ein variables Betreuungsangebot mit breiten Öffnungszeiten erleichtert die Vereinbarkeit von Familie und Beruf. Jedes Kind steht mit seiner individuellen Entwicklung und seinen Bedürfnissen in den Mittelpunkt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/katholischer-kindergarten-st-pius/",
   },
   {
@@ -578,6 +613,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kranken- und Altenpflege Haus Moosburg GmbH",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kranken-und-altenpflege-haus-moosburg-gmbh/",
   },
   {
@@ -594,6 +630,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Lebenshilfe Freising e.V. vertritt die Interessen von über 1000 Menschen mit einer (meist geistigen) Behinderung und ihrer Familien im ganzen Landkreis Freising. In Moosburg haben wir fünf Einrichtungen: die Integrative Kita “InKiMo”, eine Interdisziplinäre Frühförderstelle, die beiden Wohneinrichtungen Juliane-Maier-Haus und Anneliese-Schweinberger-Haus und die Förderstätte Moosburg. Hier betreuen und fördern wir über 250 Kinder, Jugendliche und Erwachsene mit Behinderung, damit diese ein möglichst selbständiges Leben führen können. Jeden Tag!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lebenshilfe-freising/",
   },
   {
@@ -610,6 +647,7 @@ export const firmen: Firma[] = [
     beschreibung: "08161 9107376 oder Standort Moosburg: 08761 60316 moosburg@mibikids.de http://www.mibikids.de Kategorie(n) Bildung & Soziales, Soziale Einrichtungen Wir organisieren seit 2010 ehrenamtliche Deutschförderkurse für Kinder mit Migrationshintergrund.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/mibikids/",
   },
   {
@@ -626,6 +664,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Moosburger Tafel wurde 2007 unter der Trägerschaft des BRK-Kreisverbandes Freising und des Caritas-Zentrums Freising gegründet. Zahlreiche Geschäfte und Privatpersonen unterstützen die Tafel mit ihren Lebensmittel- und Geldspenden. Einen Berechtigungsschein erhält man gegen Vorlage des Einkommensnachweises bei der Caritas-Bezirksstelle Moosburg unter Tel: 08761 / 8586 Wie und womit kann ich den “Tafelladen” unterstützen? – durch Warenspenden (Lebensmittel) – durch Aufmerksamkeit (Bedürftige auf den “Tafelladen” hinweisen) – durch Spenden auf das Konto: DE 76 7435 1740 0000 004480",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-tafel/",
   },
   {
@@ -642,6 +681,7 @@ export const firmen: Firma[] = [
     beschreibung: "Das Ziel von NAVIS ist die schnelle Hilfe bei Katastrophen im In- und Ausland – vor allem durch die Versorgung mit Lebensmitteln und Hilfsgütern, durch medizinische Versorgung und technische Hilfe. Die Einsatzeinheiten bestehen aus erfahrenem Feuerwehr- und Sanitätspersonal, Ärzten, Technikern und Fachleuten aus den verschiedensten Bereichen. Die gesamte Arbeit in allen Bereichen von NAVIS e.V. wird rein ehrenamtlich und ohne Vergütung verrichtet. Der Verein kann unterstützt werden durch eine aktive Mitgliedschaft (als Helfer), durch eine fördernde Mitgliedschaft sowie durch Spenden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/navis-e-v/",
   },
   {
@@ -658,6 +698,7 @@ export const firmen: Firma[] = [
     beschreibung: "Pichlmayr Senioren-Zentrum Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pichlmayr-senioren-zentrum-moosburg/",
   },
   {
@@ -674,6 +715,7 @@ export const firmen: Firma[] = [
     beschreibung: "Polizeiinspektion Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/polizeiinspektion-moosburg/",
   },
   {
@@ -690,6 +732,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Seniorenbeirat ist eine Einrichtung der Stadt Moosburg und kümmert sich um die Anliegen älterer Mitbürgerinnen und Mitbürger. Wir sind auf eine Anpassung der Lebensbedingungen an die Anforderungen der älteren Generation bedacht und zeigen auch konkrete Möglichkeiten der Hilfe auf. An jedem ersten Montag im Monat führt der Seniorenbeirat eine Sprechstunde durch. Die Sprechstunde findet von 15:00 – 16:00 Uhr im Bürgerhaus (Elisabethenheim), 2. OG, Raum 8 statt (Aufzug vorhanden).",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/seniorenbeirat-der-stadt-moosburg/",
   },
   {
@@ -706,6 +749,7 @@ export const firmen: Firma[] = [
     beschreibung: "wurzeln – wachsen – aufblühen Unser dreigruppiger Kindergarten ist ein Ganztagskindergarten mit Mittagessen und Mittagsschlaf.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/staedtischer-drei-rosen-kindergarten-2/",
   },
   {
@@ -722,6 +766,7 @@ export const firmen: Firma[] = [
     beschreibung: "Im Integrativen Kinderhaus in den Amperauen werden in 6 Gruppen 116 Kinder im Alter von 12 Monaten bis zum Schuleintritt im teiloffenen und bedarfsorientierten Konzept betreut.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/staedtischer-kindergarten-moosburg/",
   },
   {
@@ -738,6 +783,7 @@ export const firmen: Firma[] = [
     beschreibung: "Tante Emma ist eine soziale Einrichtung, die Menschen in Notlagen unterstützt – sei es durch Beratung, als sozialer Treffpunkt oder auch mit gespendeten Waren. Als Begegnungsstätte dient sie dem Austausch und bietet Hilfen im eigenen Beratungsraum und interessante Veranstaltungen an. Als Erweiterung gibt es das Projekt Onkel Anton – als Begegnungsstätte in Form eines ökologischen Gemeinschaftsgartens. Gartenbegeisterte jeden Alters sind herzlich willkommen und dürfen den Garten nutzen. In Kooperation mit Kindergruppen aus Moosburg lernen auch Kinder die Gartenarbeit näher kennen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tante-emma-e-v/",
   },
   {
@@ -754,6 +800,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die vhs Moosburg e.V. bietet ein breit gefächertes, hochwertiges Programm für alle Gruppen der Bevölkerung. Sie trägt damit dazu bei, das verbürgte Recht aller Bürgerinnen und Bürger auf Bildung zu sichern. Die Volkshochschule Moosburg e.V. ist Trägerverein der kommunalen Erwachsenenbildung. Diese ist im Wesentlichen in zwei Gesetzen verankert: 1. In der Bayerischen Verfassung und 2. Im Gesetz zur Förderung der Erwachsenenbildung.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/volkshochschule-moosburg-e-v/",
   },
   {
@@ -770,6 +817,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mühlbachgärtnerei- Blumen- Beubl Die Gärtnerei im Herzen Moosburg`s Blumen- Kräuter- Gemüse aus eigenem Anbau Mühlbachcafé Hochzeits und Trauerbinderei, Friedhofsservice, Überwinterung",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/blumen-beubl-die-muehlbachgaertnerei/",
   },
   {
@@ -786,6 +834,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kleiner Blumenladen im Herzen von Moosburg: Wir bieten für Sie jegliche Art von floristischen Arbeiten wie Sträuße und Gestecke, auch für besondere Anlässe wie Hochzeit oder Trauerfall, an. Zusätzlich haben wir eine große Auswahl an saisonalen Dekoartikeln sowie an Feinkost wie Salze und Öle, aber auch Kräuter, Essige etc. aus regionaler Produktion.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/blumenzauber/",
   },
   {
@@ -802,6 +851,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr Markt für Heim- u. Hobbytier, Garten, Haus und Hof. Bei uns finden Sie von Tiernahrung & Zubehör über Gartenbedarf und Dinge des täglichen Lebens eine gut sortierte Auswahl. Bei uns werden Sie gerne bedient und beraten. Wir sind für Sie und Ihre Tiere da. Ihr Landmarkt Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/landmarkt-xl-gmbh/",
   },
   {
@@ -818,6 +868,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr kompetenter Ansprechpartner in Sachen Garten-, Forst- und Reinigungstechnik! Wir bieten unseren Kunden: – Liefer-/Abholservice – große Auswahl an Leih-/Testgeräten – Schärfdienst für Sägeketten/Heckenscheren – Umfangreiches Ersatzteillager – kompetente Mitarbeiter im Verkauf u. Werkstatt",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/max-braun-kg/",
   },
   {
@@ -834,6 +885,7 @@ export const firmen: Firma[] = [
     beschreibung: "Backen ist unsere Leidenschaft. Von schmackhaften Brezen über verschiedene Torten und Kuchen bis hin zu unseren leckeren Sandwiches bieten wir Ihnen getreu dem Motto „Frisch vom Land. Von Hand.” frische und regionale Produkte und freuen uns auf Ihren Besuch in unserer Filiale in Moosburg.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/baeckerei-bachmeier-gmbh/",
   },
   {
@@ -850,6 +902,7 @@ export const firmen: Firma[] = [
     beschreibung: "Liebevolle Hingabe zum handwerklichen Meisterberuf, verantwortungsvolle Fleischverarbeitung von Tieren ausschließlich aus unserer Heimat, nachhaltiger Umgang mit allen Ressourcen sowie Frische und höchste Qualität schätzen viele unserer langjährigen Stammkunden seit Jahrzenten. Dafür wurden wir vom Bayerischen Landtag mit dem Staatsehrenpreises für das bayerische Metzgerhandwerk ausgezeichnet und dürfen uns zu den 10 besten Metzgerfachbetrieben Bayerns zählen. Ganz besonders liegt uns natürlich auch unsere Moosburger Kundschaft am Herzen, die wir immer wieder gerne in Langenpreising begrüßen!",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/haslacher-metzgerei/",
   },
   {
@@ -866,6 +919,7 @@ export const firmen: Firma[] = [
     beschreibung: "Buchhandlung mit Online-Shop (Abholung, Versand), Buchhandlung des Jahres 2019",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/barbaras-buecherstube/",
   },
   {
@@ -882,6 +936,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mühlbachcafé – das Café im Herzen Moosburg`s",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/muehlbachcafe/",
   },
   {
@@ -898,6 +953,7 @@ export const firmen: Firma[] = [
     beschreibung: "IT SYSTEME • SOFTWAREINTEGRATION • NETZWERK Durch unsere breit aufgestellte Erfahrung und das gute Netzwerk sind wir in der Lage, Ihnen in vielen Bereichen der IT zu helfen. Für Sie kümmern wir uns um Ihre IT-Systeme, Ihre Software-Themen und unterstützen Sie bei IT Entscheidungen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/byts-tech-gmbh/",
   },
   {
@@ -914,6 +970,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 19:00 08:00 - 19:00 08:00 - 19:00 08:00 - 19:00 08:00 - 19:00 Samstag 09:00 - 17:00 Computer & IT, Dienstleister Profitieren Sie von meiner Erfahrung im Computer- IT- und Anwendungs-Software-Bereich. Die Zufriedenheit meiner Kunden steht für mich an erster Stelle. Diese sichere ich durch höchste Service- und Dienstleistungsqualität. >Computer Reparaturen | Netzwerk Installationen | Software Hilfe<",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/computer-service-moosburg-steve-schaeffer/",
   },
   {
@@ -930,6 +987,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Computer & IT, Dienstleister, Foto, Grafik, Druck Mit ganzheitlichen Webdesign und Beratung zu Deiner Webseite. Mit Herz und Verstand zu Deinen Traumkunden. Hierbei verwende ich liebevolles Design mit psychologischen Aspekten. Deine digitale Sichtbarkeit erreichen wir, mit meinem Wissen zur Suchmaschinenoptimierung. Melde Dich ! 🙂",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ganzheitliches-design-by-daniela-brunhuber/",
   },
   {
@@ -946,6 +1004,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Computer & IT InboundZone ist eine Marketing Agentur mit Sitz in Moosburg. Wir begeistern unsere Kunden durch die einzigartige Kombination aus verkaufspsychologisch optimierten Websites und strategischer sowie operativer SEO-Betreuung. Kaufbereite Kundenanfragen. Planbar, Nachhaltig & OHNE Aufwand. Garantiert!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/inboundzone-webdesign-seo-agentur/",
   },
   {
@@ -962,6 +1021,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ganztägig Ganztägig Ganztägig Ganztägig Ganztägig Computer & IT, Foto, Grafik, Druck Business- und Unternehmens-Websites Gewinne mehr Kunden und Mitarbeitende mit einer Website die überzeugt! Ob neue Homepage, Relaunch, Optimierung oder strategische Beratung – ich helfe Selbständigen und kleinen Unternehmen online aufzutauchen und ihr Business erfolgreich zu präsentieren:",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/webdesign-mehr-wordpress-websites-und-digitales-marketing/",
   },
   {
@@ -978,6 +1038,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 14:00 Computer & IT Digitale Lösungen, die zu Ihnen passen & mit Ihnen wachsen! Ihre digitale Basis. Ihr Workflow. Ihr Erfolg. Seit über 10 Jahren vertrauen Unternehmen europaweit auf unsere Expertise in Web- & Softwareentwicklung – erweiterbar und perfekt abgestimmt auf Ihre Unternehmensziele.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sketch-media-gmbh/",
   },
   {
@@ -994,6 +1055,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Computer & IT Wir sind yeahConcept – Experte für WordPress Webseiten. Seit 20 Jahren sind wir Partner für kleine und mittelständische Unternehmen sowie Startups. Unser Service: WordPress Webdesign, Wartung, Pflege und SEO. Unsere Mission: maßgeschneiderte Lösungen, Fairness und langfristige Partnerschaften.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/yeahconcept-internetagentur-wordpress-agentur/",
   },
   {
@@ -1010,6 +1072,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Finanzen & Versicherung Sie brauchen jemanden, der Ordnung und System in Ihre Versicherungen bringt? Es fehlt Ihnen aber an der Lust Ihre wertvolle Zeit dafür zu investieren? Dann sind Sie bei mir genau an der richtigen Adresse. Vereinbaren Sie einen kostenfreien Telefontermin mit mir – ich freue mich auf Sie!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/abhs-versicherungsmakler-gmbh/",
   },
   {
@@ -1026,6 +1089,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 17:00 08:30 - 17:00 08:30 - 17:00 08:30 - 17:00 08:30 - 17:00 Dienstleister, Kommunikation & Beratung ADVERICOM ist Ihr Partner, Berater, Dienstleister – ganz gleich ob Sie eine neue Internetpräsenz planen, soziale Medien nutzen wollen oder einfach Flyer / Broschüren etc. benötigen – wir sind für Sie da.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/advericom-gesellschaft-fuer-werbung-kommunikation-mbh/",
   },
   {
@@ -1042,6 +1106,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 Samstag 08:00 - 20:00 Dienstleister, Transport ANT Transporte ist Ihr zuverlässiger Partner im Bereich Flughafentransfer I Shuttle-Service I Kurierdienst I Krankenfahrt I Overnight I externer Verkehrsleiter I externer Gefahrgutbeauftragter I Beantragung EU Lizenz",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ant-transport-gmbh/",
   },
   {
@@ -1058,6 +1123,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:30 08:00 - 16:30 08:00 - 13:00 08:00 - 17:30 08:00 - 13:00 Dienstleister, Finanzen & Versicherung AOK in Moosburg – persönlich und nah! Mit Service- und Beratungsqualität für die Versicherten da.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/aok-bayern-die-gesundheitskasse-geschaeftsstelle-moosburg/",
   },
   {
@@ -1074,6 +1140,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 Dienstleister, Hotellerie, Immobilien, Nutzfahrzeuge Wir sind eine Unternehmensgruppe die schon seit langjähriger Zeit erfolgreich mehrere Einzelunternehmen in verschiedensten Branchen aufgebaut hat und führt. Unsere Kerngeschäfte sind im Bereich der Privat- und Gewerbeimmobilien, die Hotellerie und im Nutzfahrzeug- und Baumaschinenhandel.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/awa-investment-group/",
   },
   {
@@ -1090,6 +1157,7 @@ export const firmen: Firma[] = [
     beschreibung: "Restrukturierung und Firmensanierung, Personalentwicklung und Managementcoaching, Neuausrichtung des Unternehmens und Wachstumsberatung, Aufsichtsratsmandate mit Schwerpunkt Vertrieb, Digitalisierung und Transformation, Spezielle Mittelstandsberatung und Hilfe bei Nachfolgeregelung",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/albiez-consulting-gmbh/",
   },
   {
@@ -1106,6 +1174,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Dienstleister, Sicherheit Wir, die Fa. Alkin Security GmbH, sind ein Sicherheitsunternehmen und bayernweit zuständig für Ihre Sicherheit im Bereich: Werk- & Objektschutz, Pforten- & Empfangsdienste, Baustellenüberwachung, Brandwache, Handwerkerüberwachung, Doorman in Märkten, Revier- und Streifendienste, Kurierfahrten",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/alkin-security-gmbh/",
   },
   {
@@ -1122,6 +1191,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00 09:00 - 12:00, 14:00 - 17:00 09:00 - 12:00 09:00 - 12:00 Dienstleister, Finanzen & Versicherung Ihre Versicherung vor Ort",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allianz-generalvertretung-stephan-pasta/",
   },
   {
@@ -1138,6 +1208,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 15:00 Dienstleister, Finanzen & Versicherung Ihre Versicherungsexperten für Firmen sowie Privatkunden in Moosburg und Umgebung. Mit unserem Team stehen wir Ihnen bei allen Fragen zu Versicherung und Vorsorge zur Verfügung. Sprechen Sie uns an!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allianz-generalvertretung-th-w-wallhoefer-ohg/",
   },
   {
@@ -1154,6 +1225,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 14:00 - 17:00 Dienstleister, Finanzen & Versicherung Lohnsteuerhilfe, weil Sie dadurch Steuern sparen Ihre Vorteile als Mitglied: Steuerlicher Rundumservice, günstige Beratungsgebühren, persönlicher Ansprechpartner, fachkompetente Beratung und automatische Fristverlängerung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/altbayerischer-lohnsteuerhilfeverein/",
   },
   {
@@ -1170,6 +1242,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit 20 Jahren stehen wir für eine würdevolle und fürsorgliche Pflege Ihrer Angehörigen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/brigitte-david/",
   },
   {
@@ -1186,6 +1259,7 @@ export const firmen: Firma[] = [
     beschreibung: "Meine Schwerpunkte: Existenzgründungen, Unterstützung für Gründungszuschuss Arbeitsamt, Businessplan-Erstellung, qualifizierte Förderprogramme sowie Vorsorgevollmachten, Patientenverfügungen und Testamente.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/arche-consulting/",
   },
   {
@@ -1202,6 +1276,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 12:00 Dienstleister, Handel, Werkstatt & Autoservice Auto Wutzer – Autos und Service !",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/auto-wutzer-e-k/",
   },
   {
@@ -1218,6 +1293,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 Samstag 09:00 - 17:00 Dienstleister, Werkstatt & Autoservice AutoBlitz-Mobil – Ihre mobile Fahrzeugpflege! Für Unternehmen und Privatpersonen – wir kommen zur Autoaufbereitung und Wertsteigerung direkt zu Ihnen vor Ort.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/autoblitz-mobil/",
   },
   {
@@ -1234,6 +1310,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein modernes, familiengeführtes Autohaus in 3. Generation in Moosburg fast 70 Jahren. Bei uns stehen Sie als Kunde im Mittelpunkt. Wir legen großen Wert auf persönliche Beratung, individuelle Betreuung und höchste Servicequalität. Die Kundenzufriedenheit ist unser oberstes Ziel. Unsere engagierten Mitarbeiter geben täglich Ihr Bestes, um Ihre Wünsche und Erwartungen zu entsprechen. Wir erfüllen Ihre Wünsche in den Bereichen Volkswagen Service, Audi Service und Volkswagen Nutzfahrzeuge Service sowie Jahreswagen und Gebrauchtwagen. Wir freuen uns auf Ihren Besuch!",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/autohaus-braun-gmbh-co/",
   },
   {
@@ -1250,6 +1327,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:15 - 12:00, 13:00 - 17:00 07:15 - 12:00, 13:00 - 17:00 07:15 - 12:00, 13:00 - 17:00 07:15 - 13:30 Dienstleister, Werkstatt & Autoservice Wir reparieren und warten PKW und Transporter aller Marken.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/autoservice-walter-greulein/",
   },
   {
@@ -1266,6 +1344,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Dienstleister, Kommunikation & Beratung Als Befähigerin berate ich Unternehmen und Teams, wenn der Weg, das Ziel oder die Art und Weise der Zusammenarbeit unklar sind. Durch lösungsfokussierte Moderation verhelfe ich Gruppen schnell zu Entscheidungen und damit zum nächsten Schritt. Ich bin langjähriger Agile Coach und Change Manager.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/b-bucksch-moderation-und-beratung/",
   },
   {
@@ -1282,6 +1361,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mini-Wellness und Day SPA in Moosburg Eine kleine Auszeit, Durchatmen und Entspannen – gerade in Zeiten von Hektik und Stress – ist das, was ich Ihnen bieten möchte. Mein Ziel ist Ihre Zufriedenheit, Ihr Wohlbefinden und Ihre “persönliche Freizeit”. Mein umfangreiches Angebot umfasst unter anderem Teil- oder Ganzkörpermassagen – klassisch oder mit Aromaölen. Ich biete Schwangeren- und Wochenbettmassage sowie Ayurveda, KOBIDO, Hot Stone und vielen mehr. Alle Infos und Angebote finden Sie in meinem Flyer oder auf meinen Accounts in den Sozialen Medien.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/body-service/",
   },
   {
@@ -1298,6 +1378,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 12:30 08:30 - 12:30, 14:00 - 16:00 08:30 - 12:30 Dienstleister, Finanzen & Versicherung Tradition, Unabhängigkeit und Ortsverbundenheit … mit dieser Philosophie stellen wir unsere Kompetenz und Qualität unter Beweis. Seit Generationen liegen Eigentum und Leitung des Bankhauses in den Händen der Familie Sperrer. Viele Kunden führen ihr Vertrauen bereits auf die jahrzehntelange Verbindung ihrer Eltern und Großeltern zu unserem Hause zurück. Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bankhaus-sperrer/",
   },
   {
@@ -1314,6 +1395,7 @@ export const firmen: Firma[] = [
     beschreibung: "Geschlossen 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Samstag 09:00 - 13:00 Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Wir sind ein Herrenfriseur im Herzen der Moosburger Innenstadt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/barbershop-moosburg/",
   },
   {
@@ -1330,6 +1412,7 @@ export const firmen: Firma[] = [
     beschreibung: "Sicherheit trägt einen Namen: BeKa Security Dienstleistungsgesellschaft mbH – Sicherheit und Sauberkeit aus einer Hand Unser Unternehmen wurde im Jahr 2001 gegründet. Seitdem konnten wir unsere Kompetenzen in den Bereichen Sicherheitsdienst und Gebäudemanagement immer wieder unter Beweis stellen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/beka-security-dienstleisungsgesellschaft-mbh/",
   },
   {
@@ -1346,6 +1429,7 @@ export const firmen: Firma[] = [
     beschreibung: "Buchkunst individuell zu jedem Anlass.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/buchkunst-diana-przybilla/",
   },
   {
@@ -1362,6 +1446,7 @@ export const firmen: Firma[] = [
     beschreibung: "Als Partner des Premium-Herstellers CUBE bieten Ihnen stets eine exklusive Auswahl an E-Bikes, Mountainbikes und City-Rädern an.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/christian-braun-e-k-cube-store-moosburg/",
   },
   {
@@ -1378,6 +1463,7 @@ export const firmen: Firma[] = [
     beschreibung: "+49 8761 3340-0 info@citrinsolar.de https://www.citrinsolar.de Social Media 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 14:00 Dienstleister, Industrie CitrinSolar steht für hochwertige Solarthermie- und Photovoltaikanlagen sowie als führender Premiumpartner für Wärmespeichersysteme. Seit 2002 entwickeln und fertigen wir als Industrieunternehmen effiziente Wärmespeicher und Solarthermieanlagen in Eigenfertigung in Moosburg an der Isar. Zentral ist dabei die Verknüpfung der Sektoren Wärme, Strom und Mobilität für mehr Autarkie im Rahmen des Klimaschutzes. Umfangreiche Dienstleistungen, von der Planung bis hin zur Montage von Solarstrom- und Solarwärmeanlagen, runden unser Angebot ab. Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/citrinsolar-gmbh/",
   },
   {
@@ -1394,6 +1480,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir heißen Sie herzlich bei CopyPrint Moosburg willkommen. In ebenerdigen, großen Geschäftsräumen im Zentrum von Moosburg bieten wir ein umfangreiches Dienstleistungs- und Verkaufsprogramm. Wir sind Ihr zuverlässiger Partner in Druck- und Kopierangelegenheiten. Machen Sie einen Rundgang auf unserer Homepage und lernen Sie CopyPrint Moosburg näher kennen: http://www.copyprint-moosburg.de Unser erfahrenes Team steht Ihnen jederzeit mit Rat und Tat zur Seite. Wir freuen uns auf Sie. Friederike Bauer mit Ihrem freundlichen Team",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/copyprint-moosburg/",
   },
   {
@@ -1410,6 +1497,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Samstag 09:00 - 18:00 Dienstleister, Werkstatt & Autoservice DS FAHRZEUGPFLEGE Professionelle Autopflege",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ds-fahrzeugpflege/",
   },
   {
@@ -1426,6 +1514,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Dein Service GmbH unterstützt Firmen in der online Leadgenerierung. Mit Projekten wie z. B. http://www.dein-messestand.com geben wir Firmen die Möglichkeit Ihren online Vertrieb auszubauen bzw. zusätzliche Anfragen über das Internet zu generieren.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dein-service-gmbh/",
   },
   {
@@ -1442,6 +1531,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 17:30 08:30 - 17:30 08:30 - 17:30 08:30 - 17:30 08:30 - 17:30 Computer & IT, Dienstleister Berater für Telefonanlagen auch mit Chat- und Voicebots, Beratung Telefonie-Lösung, Geld sparen, Kundenzufriedenheit und Erreichbar erhöhen durch Premium Telefonie-Lösungen. Zusätzlich Termine nach Vereinbarung",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/der-telefonjoker-inhaber-robert-niedermayer/",
   },
   {
@@ -1458,6 +1548,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Dienstleister, Freizeit & Events Ihr sucht etwas Außergewöhnliches für euer Event? Mit unserem Audio Gästebuch schaffen eure Gäste Erinnerungen, welche selbst nach Jahrzehnten nicht verblassen und eure Feier immer wieder neu aufleben lässt. Der neueste Trend u. a. auf Hochzeiten, eignet sich auch wunderbar als Geschenk.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/die-erinnerung-das-audio-gaestebuch/",
   },
   {
@@ -1474,6 +1565,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:30 - 17:00 09:30 - 17:00 09:30 - 17:00 09:30 - 17:00 09:30 - 15:00 Dienstleister, Foto, Grafik, Druck Designbüro für Image- und Werbedesign. Die Signatur bietet Unternehmen eine starke, stabile und erfolgsorientierte Wiedererkennung (print und digital) und entwickelt einen individuellen Auftritt mit eindeutiger Handschrift. 2x German Design Award 2019 (1x B2B-Design, 1x Corporate Design).",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/philipp-schilli/",
   },
   {
@@ -1490,6 +1582,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 Dienstleister, Finanzen & Versicherung Mehr als 20 Jahre Erfahrung im Onlineverkauf/Online-Shops. Beratung und Unterstützung im digitalen Wandel. Branchenschwerpunkt Verlage, Medien, Handel, Strategieentwicklung, Business-Analysen, Businesspläne, Kundenbindung, Profileing, Usability, Social Media uwm. … Ihr Erfolg ist mein Anspruch!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dr-artmann-consulting/",
   },
   {
@@ -1506,6 +1599,7 @@ export const firmen: Firma[] = [
     beschreibung: "Als Team mit breitem Erfahrungsspektrum können wir eure Wünsche mit unserer hervorstechenden Kreativität in filmische und fotografische Werke umwandeln. Wir bieten Fotoshootings wie Landschafts-, Architektur-, Hochzeits- und Veranstaltungsfotografie und Porträtaufnahmen. Du möchtest einen Image-Film? Oder es steht ein spektakuläres Ereignis an? Wir stehen für Werbespots, Imagefilm, Dokumentationent, Heiratsanträge, Highlightclips, Verlobungs-, Standesamt-und Hochzeitsaufnahmen zur Verfügung und bieten außerdem Storyboard, Drehbuch, Catering, Post Produktion und Regie.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dual-pro-jects-ugur-yarac/",
   },
   {
@@ -1522,6 +1616,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Dienstleister, Handwerk, Handwerklich Wir helfen Ihnen gerne bei Innen- und Außenputz-Arbeiten, Putzsanierungen und Gebäudereinigungen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/frano-tokic/",
   },
   {
@@ -1538,6 +1633,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind eine Genossenschaftsbank im Herzen von Moosburg: Lokal verankert, überregional vernetzt, ihren Mitgliedern verpflichtet und demokratisch organisiert. Seit über 130 Jahren sind wir fest verwurzelt in der Region, schaffen generationsübergreifend Lebenswerte und gestalten aus der Tradition heraus die Zukunft. Ob Mensch, Umwelt oder regionale Wirtschaft – wir übernehmen Verantwortung. Die Nähe zu unseren Kunden ist uns wichtig, denn nur so können wir auf deren individuelle Lebenssituation eingehen und sie in allen Finanz-, Versicherungs- und Immobilienthemen fair und kompetent beraten.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/freisinger-bank-eg-beratungscenter-moosburg/",
   },
   {
@@ -1554,6 +1650,7 @@ export const firmen: Firma[] = [
     beschreibung: "10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 Samstag 10:00 - 14:00 Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Lust auf ein Umstyling? Eine neue Frisur muss nicht gleich einen neuen Haarschnitt bedeuten. Bereits ein anderes Haarstyling kann Ihren Typ komplett verändern.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/friseursalon-sunycut/",
   },
   {
@@ -1570,6 +1667,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Dienstleister, Handwerk, Haus, Garten, Umwelt Stephan Jehle – Gartenpflege sowie Garten-und Landschaftsbau Wir pflegen Ihren Garten und setzen kleine aber feine Gartenprojekte um.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stephan-jehle-gartenpflege-garten-und-landschaftsbau/",
   },
   {
@@ -1586,6 +1684,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Samstag 08:00 - 18:00 Dienstleister, Haus, Garten, Umwelt Gebäudereinigung Okeanos ist ein Familienunternehmen, das mit sehr viel Leidenschaft geführt wird. Sowohl die Geschäftsführung als auch die Mitarbeiter haben dasselbe Ziel: Qualität, Zuverlässigkeit, Reinigung, Hygiene und Desinfektion auf höchster Niveau – Erleben sie den Unterschied!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tirikon-goenuel/",
   },
   {
@@ -1602,6 +1701,7 @@ export const firmen: Firma[] = [
     beschreibung: "Für Veranstaltungen in Moosburg können Sie bei mir ganz bequem ihre Karten online reservieren.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/get-your-ticket/",
   },
   {
@@ -1618,6 +1718,7 @@ export const firmen: Firma[] = [
     beschreibung: "14:00 - 17:00 14:00 - 17:00 Samstag 09:00 - 12:00 Dienstleister, Haus, Garten, Umwelt Regionaler Grüngut Entsorgungsbetrieb in Moosburg. – Entsorgung von Grüngut aller Art – Verkauf von Rindenmulch, Pflanzerde/Hochbeeterde, Humus und Kompost – Grüngutabholung und Lieferung der Substrate auf Anfrage jederzeit möglich",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gruengut-schweiger/",
   },
   {
@@ -1634,6 +1735,7 @@ export const firmen: Firma[] = [
     beschreibung: "HAGN-Aussperr- und Einbruchschutz Erspart teure Türöffnungen. Für alle Haus- und Wohnungstüren.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hagn-technologien/",
   },
   {
@@ -1650,6 +1752,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:45 08:00 - 16:45 08:00 - 16:45 08:00 - 16:45 Geschlossen Dienstleister, Haus, Garten, Umwelt Wir sind ein mittelständisches Familienunternehmen mit 13 Standorten in Ober- und Niederbayern und bieten unseren Kunden aus den unterschiedlichsten Branchen individuelle Entsorgungs-, Recycling- und Logistiklösungen. HEINZ ist regional verwurzelt und somit ein Unternehmen der kurzen Wege – das schätzen unsere langjährigen und zufriedenen Geschäftspartner. Wir bieten Ihnen hochwertige Entsorgungsdienstleistungen durch eine lückenlose und effiziente Wiederverwertung. Gemeinsam mit unseren Kunden liefern wir damit die Rohstoffe der Zukunft!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heinz-entsorgung-gmbh/",
   },
   {
@@ -1666,6 +1769,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Finanzen & Versicherung Ihr Schuldner will trotz Mahnung nicht bezahlen? Als registriertes Inkasso-Unternehmen versuchen wir mit Ihrem Schuldner eine Einigung zu erzielen. Auf Wunsch leiten wir auch das gerichtliche Mahnverfahren und die Zwangsvollstreckung ein. Wir sind schnell, kostengünstig, zuverlässig und diskret.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/inkasso-hackl-kollegen/",
   },
   {
@@ -1682,6 +1786,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 16:00 07:00 - 16:00 07:00 - 16:00 07:00 - 16:00 08:00 - 14:00 Dienstleister, Freizeit & Events Ihr ortsansässiger Mobildienstleister – über 85 Jahre Erfahrung – guter Service, individuell & maßgeschneidert – schnelle & unverbindliche Bearbeitung – transparente Angebote – beste Konditionen & Preise – alles aus einer Hand … mit uns kommen Sie wieder zügig in Fahrt!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hadersdorfer-reisen-moosburg-gmbh-co-kg/",
   },
   {
@@ -1698,6 +1803,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 09:00 - 18:00 09:00 - 14:00 Dienstleister, Finanzen & Versicherung In unserem Servicebüro verknüpfen wir fundierte Beratungskompetenz mit der richtigen Auswahl an Versicherungen, egal ob Fahrzeug-, Private-, Vorsorge- oder Wertversicherungen. In allen Bereichen bieten wir unseren Kund*innen einzigartige Lösungen – von der Bedarfsanalyse bis zur Umsetzung. Wir verstehen uns als moderne Versicherungsagentur, die sich durch ihre Aktualität auszeichnet. So bieten wir unseren Kund*innen die Möglichkeit, ihre Versicherungsgeschäfte digital zu erledigen – vom Abschluss bis zur Schadensregulierung. Selbstverständlich bleibt der persönliche Kontakt jederzeit erhalten.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/helvetia-servicebuero/",
   },
   {
@@ -1714,6 +1820,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bitte immer einen Termin vereinbaren, da wir die meiste Zeit in unserem Büro in der Erdinger Str. 6 in 85452 Moosinning sind. Vielen Dank.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/henning-jordan-versicherungs-und-finanzmakler/",
   },
   {
@@ -1730,6 +1837,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 08:00 - 20:00 Samstag 08:00 - 20:00 Sonntag 08:00 - 20:00 Dienstleister, Film & Medien Die Hochzeitsfilm Manufaktur will Hochzeitsvideos auf ein neues Niveau heben und den Brautpaaren ein einzigartiges Familienerbstück schenken. Unsere emotionalen, stilvollen und authentischen Hochzeitsvideos sind die perfekte Ergänzung zu Hochzeitsfotos mit denen auch Reden, Einlagen oder der Hochzeitstanz eingefangen werden können. All die besonders emotionalen Momente also, und so bleibt bei unseren Filmen kein Auge trocken! Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hochzeitsfilm-manufaktur/",
   },
   {
@@ -1746,6 +1854,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Dienstleister, Handwerklich Wir bieten Dienstleistungen im Bereich der Netzschutztechnik für Hoch- und Mittelspannungsanlagen. Zu unseren Aufgaben gehören unter anderem die Planung, Projektierung und Ausführung der Netzschutztechnik. Wir arbeiten mit modernster Prüftechnik, immer auf dem neusten Stand.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hofmair-energietechnik-gmbh/",
   },
   {
@@ -1762,6 +1871,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 16:00 08:00 - 12:00, 13:00 - 16:00 08:00 - 12:00, 13:00 - 16:00 08:00 - 13:00 Dienstleister, Haus, Garten, Umwelt Entsorgungs-Betrieb Aufgrund der aktuellen Personalsituation sind Anlieferungen nur noch nach telefonischer Absprache möglich. Vielen Dank für Ihr Verständnis! Anlieferungen Mo-Do bis 16 Uhr, Fr bis 12 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/huber-recycling-gmbh/",
   },
   {
@@ -1778,6 +1888,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Dienstleister, Freizeit & Events Hundetraining, Beratung, Social Walks, Fährtensuche, Mantrailing, Objektsuche – für Moosburg und Umgebung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hundetrainerin-gabriele-schuemann/",
   },
   {
@@ -1794,6 +1905,7 @@ export const firmen: Firma[] = [
     beschreibung: "Hundsamma – die Hundeschule für Sie und Ihren Hund in Moosburg. Ob Welpe, Junghund oder schon erwachsen – bei Hundsamma lernen Sie, wie Sie Ihren Vierbeiner zum einem alltagstauglichen Begleiter erziehen. Wir bieten auch ein umfangreiches Beschäftigungsprogramm mit Agility, Mantrailing oder Tricks.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hundsamma/",
   },
   {
@@ -1810,6 +1922,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir bieten Ihnen zielführende Lösungen in folgenden Fachbereichen an: Abwasserbeseitigung Wasserversorgung Straßen und Wege Erschließungsmaßnahmen Regenwasserbewirtschaftung Renaturierung Privater Sachverständiger Gerne planen, beraten und überwachen wir Ihr Bauvorhaben.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ingenieurbuero-schelzke/",
   },
   {
@@ -1826,6 +1939,7 @@ export const firmen: Firma[] = [
     beschreibung: "Isar Design, das Interior Design Studio für dein Bau- oder Renovierungsprojekt vom Design Konzept bis zur Umsetzung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/isar-design/",
   },
   {
@@ -1842,6 +1956,7 @@ export const firmen: Firma[] = [
     beschreibung: "15:00 - 19:00 15:00 - 19:00 09:00 - 19:00 09:00 - 19:00 Samstag 09:00 - 13:00 Dienstleister, Gesundheit & Beauty Herzlich willkommen bei JK Beautybar – In unserem modernen Friseursalon bieten wir Ihnen nicht nur exzellente Haarschnitte und Stylings, sondern auch Dienstleistungen wie Haarverlängerungen, Wimpern, Permanent Make-up.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jk-beautybar-friseur-kosmetik/",
   },
   {
@@ -1858,6 +1973,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00 Samstag Nach Terminvereinbarung Sonntag Ganztägig Dienstleister, Handwerk, Werkstatt & Autoservice Reparatur und Inspektion aller Marken. Autoglas, Fahrzeugdiagnose, HU+AU im Haus, Klimaservice, Reifenmontage + Achsvermessung, Unfallinstandsetzung + Lackierung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kfz-kirste-gmbh/",
   },
   {
@@ -1874,6 +1990,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00 09:00 - 12:00 09:00 - 12:00, 14:00 - 19:00 09:00 - 12:00 Dienstleister, Finanzen & Versicherung Als kompetente und solide Partner unterstützen wir Sie in allen Fragen rund um Versicherungen, Vorsorge und Finanzen. Weiterhin helfen wir Ihnen gerne Ihren Traum vom Eigenheim zu realisieren.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kirschstein-kollegen-allfinanz-deutsche-vermoegensberatung/",
   },
   {
@@ -1890,6 +2007,7 @@ export const firmen: Firma[] = [
     beschreibung: "KoKo-online – WEBDESIGN | GRAFIK | MULTIMEDIA Ihr professioneller Webdesigner in Moosburg: Design, CMS, Text, SEO KoKo-online – Webdesign in Moosburg unterstützt Sie dabei, damit Sie Ihre Kunden digital erreichen.WEBDESIGN | GRAFIK | MULTIMEDIA",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/koko-online/",
   },
   {
@@ -1906,6 +2024,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Dienstleister, Finanzen & Versicherung Wir gewinnen Neukunden für Ihr Unternehmen! 1. Briefing – erstellen eines detaillierten Anforderungsprofils. 2. Zielfirmenliste – mit passenden Branchen und Regionen. 3. Telefonkontakt – Ansprechpartner werden ermittelt. 4. Kundenprofile – Kontaktdaten und Termine werden übergeben.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kunden-marketing-von-falkenstein/",
   },
   {
@@ -1922,6 +2041,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Samstag 09:00 - 13:00 Dienstleister, Werkstatt & Autoservice Hauptuntersuchung (HU) Abgasuntersuchung (AU) Feinstaubplakette Tempo-100-Plakette Spezielle Hauptuntersuchung für Taxis und Mietwagen (BOKraft §41 und §42) Zusätzliche Untersuchung für gasbetriebene Kraftfahrzeuge (GWP) Untersuchung von Flüssiggasanlagen (Wohnmobile u. Wohnanhänger) Unfallgutachten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kues-kfz-pruefstelle-moosburg/",
   },
   {
@@ -1938,6 +2058,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00 09:00 - 12:00, 14:00 - 17:00 09:00 - 12:00 09:00 - 15:00 Dienstleister, Finanzen & Versicherung Was erwarten Sie von einer Versicherung? Kompetente Beratung, leistungsstarke Produkte, individuellen Service und eine partnerschaftliche Geschäftsbeziehung? Das ist auch unser Anspruch, an dem wir unsere Arbeit orientieren. Vereinbaren Sie gerne einen Termin. Ihre LVM-Versicherungsagentur",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lvm-versicherung-manfred-misslinger/",
   },
   {
@@ -1954,6 +2075,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein Dekorationsverleih / -service für Hochzeiten sowie jedes andere Familienfest. Wir verleihen Ihrem Festsaal den Glanz, den er verdient. Sie können verschiedene Dekorationsartikel wie Brauttisch, Stuhlhussen, Tischdecken usw. bei uns ausleihen oder wir übernehmen die Dekoration für Sie.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lovely-dekor/",
   },
   {
@@ -1970,6 +2092,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 13:00 Dienstleister, Handwerklich Die Firma M-SYSTEM Elektronik GmbH versteht sich als Dienstleistungsunternehmen im Bereich der industriellen Elektronik.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/m-system/",
   },
   {
@@ -1986,6 +2109,7 @@ export const firmen: Firma[] = [
     beschreibung: "Marc Przybilla – ich biete Schwimmkurse für Kinder und Erwachsene, inkl. erweiterte Kurse und individuelle Einzelstunden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/marcs-kinder-schwimmschule/",
   },
   {
@@ -2002,6 +2126,7 @@ export const firmen: Firma[] = [
     beschreibung: "0175/2882328. melanieputz.leo@googlemail.com https://www.weddingbeauty.de Social Media 09:00 - 20:00 09:00 - 20:00 09:00 - 20:00 09:00 - 20:00 09:00 - 20:00 Samstag 09:00 - 13:00 Sonntag Geschlossen Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Meine professionelle und fröhliche Art werden von meinen Kunden sehr geschätzt, sei es im Bereich Make -Up oder in meiner gemütlichen Kabine. Sie hätten gerne einen neuen Look, oder Sie möchten Ihrer Haut etwas Gutes tun? Dann kommen Sie zu Weddingbeauty – schön wie eine Braut.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/melanie-putz/",
   },
   {
@@ -2018,6 +2143,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Dienstleister, Handwerk, Sicherheit Wir sind der richtige Ansprechpartner für die Erneuerung eines alten Holzzaun oder wenn z.B. Ihr Haustürschloß nicht mehr richtig schließt. Spezialisiert sind wir besonders auf Einbruchschutz aller Art.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bruckmaier-martin-metallbau/",
   },
   {
@@ -2034,6 +2160,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Moosburg Marketing eG wurde 2009 gegründet. Unsere Ziele sind: – Stärkung und Vermarktung des Wirtschaftsstandorts Moosburg – Verbesserung der Aufenthaltsqualität in der Innenstadt – Förderung des kulturellen Lebens durch vielseitige Events – Steigerung der Lebensqualität durch eigene Projekte für die Stadt Durch eine Bündelung von Kräften und ein gemeinsames starkes Auftreten wollen wir die Attraktivität der gesamten Stadt Moosburg weiterentwickeln. Weitere Informationen finden Sie hier im Portal unter der Rubrik “Wer wir sind” oder auf unserer homepage http://www.moosburg-marketing.de Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburg-marketing-eg/",
   },
   {
@@ -2050,6 +2177,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nachrichten aus dem Großraum Moosburg-Freising",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburgtv/",
   },
   {
@@ -2066,6 +2194,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 14:00 Dienstleister, Film & Medien Wir berichten seit über 145 Jahren aus und für Moosburg und seine Umgebung. Politik, Sport, Wirtschaft, Vereine, Menschen der Heimat stehen bei uns im Mittelpunkt. Tradition prägt und verpflichtet: Wir stehen für Seriosität und Wahrhaftigkeit, bieten echte Orientierung, die sich der mehr als 2000 Jahre alten christlich-humanistischen Kultur verpflichtet weiß.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-zeitung/",
   },
   {
@@ -2082,6 +2211,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Dienstleister, Transport Wir bieten Transporte mit Silo und Planen LKW, Siloinnenreinigung, Lager und Umschlag, Vermietung von Lagerflächen und Garagen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/nuesslein-speditions-und-transport-gmbh/",
   },
   {
@@ -2098,6 +2228,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 13:00 - 17:00 09:00 - 12:00, 13:00 - 17:00 09:00 - 12:00, 13:00 - 17:00 09:00 - 12:00, 13:00 - 17:00 Dienstleister, Freizeit & Events Kleine und große Kunden setzen auf unsere Kompetenz in der Veranstaltungstechnik. Wir beraten und planen, wir vermieten und verleihen, wir bauen auf und bauen ab: Licht & Ton, Bühnen & Equipment. Wir betreuen jegliche Arten von Events: Ob private Feier mit kleiner Musikanlage oder Mega-Live-Konzert mit Hightech-Sound und -Licht. Aber auch Weihnachtsfeiern und Aktionärsversammlungen von Unternehmen betreuen wir technisch und personell. Für öffentliche Einrichtungen, Sportstätten und Gaststätten und Firmen bieten wir Festeinbau und Installation von Medientechnik an.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/orange-veranstaltungstechnik-lauterbach-beibl-gbr/",
   },
   {
@@ -2114,6 +2245,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 Dienstleister, Finanzen & Versicherung Wir kümmern uns um Ihre Belege, buchen Ihre lfd. Geschäftsvorfälle, helfen bei der Digitalisierung Ihres Büros, erstellen die lfd. Lohnabrechnungen, und unterstützen Sie bei den Fragen Ihres Büroalltags. Belegloser Datenaustausch und revisionssichere Archivierung sind komfortabler Standard. Wir helfen bei den Herausforderungen der Bürokratie, seit 30 Jahren erfolgreich, durch fundierte Ausbildung, konsequente Weiterbildung und Zusammenarbeit mit Ihrem Steuerberater. Unsere Erfahrung garantiert Ihnen stets kompetente Ansprechpartner, die sich mit großem persönlichem Einsatz um Sie kümmern.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/profil-michaela-niedermaier/",
   },
   {
@@ -2130,6 +2262,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 Samstag 09:00 - 19:00 Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty In Thailand heißt sie “Nuad Phaen Boran”, was soviel bedeutet wie “Uralte heilsame Berührung”. Zehn Energielinien, die den Körper als Netz durchziehen, werden über sanfte Dehnungen und Druck massiert. Blutzirkulation und Muskelverspannungen können gelöst werden. Wir freuen uns auf Sie!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pho-thong-thaimassage/",
   },
   {
@@ -2146,6 +2279,7 @@ export const firmen: Firma[] = [
     beschreibung: "08761 / 72790 oder 0178 / 2654579 Notfall-Hotline info@reiseservice-heinz.de https://www.reiseservice-heinz.de/ Social Media 09:00 - 12:00, 14:00 - 18:00 09:00 - 12:00, 14:00 - 16:00 09:00 - 12:00 09:00 - 12:00, 14:00 - 18:00 09:00 - 12:00, 14:00 - 16:00 Samstag 09:00 - 12:00 Dienstleister, Freizeit & Events Wir bieten Ihnen über 50 Jahre Reiseerfahrung und arbeiten nur mit ausgebildeten Fachpersonal. Wir verwenden für Ihre Urlaubssuche modernste Technik und präsentieren Ihnen Ihre Urlaubsträume auf einer eigens für Sie erstellten Webseite. Wir haben Verträge mit den führenden Veranstaltern aus der Touristik. Wir sind selbst Veranstalter für Reisen in das Königreich Bhutan und Oldtimer-Reisen. Beratung auf Anfrage auch außerhalb der Öffnungszeiten möglich. Ab sofort auch Online-Terminvereinbarung möglich unter: https://www.reiseservice-heinz.de/ueber-uns/beratungstermin-vereinbaren Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/reise-service-heinz/",
   },
   {
@@ -2162,6 +2296,7 @@ export const firmen: Firma[] = [
     beschreibung: "+49 8761 72790 info@reiseservice-heinz.de https://www.reiseservice-heinz.de/ Social Media 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Samstag 09:00 - 12:00 Reiseservice Heinz: Ihre Traumerfüller in Moosburg Seit über 60 Jahren verbinden wir Tradition mit modernem Reisefieber. Als unabhängiges Familienunternehmen bieten wir Ihnen, was Online-Portale nicht können: ehrliche, neutrale Beratung und echte Leidenschaft. Wir sind an keine Konzerne gebunden und finden genau den Urlaub, der zu Ihnen passt. Unser Beweis für Expertise: Wir sind nicht nur Vermittler, sondern eigener Reiseveranstalter für Bhutan. Ob klassische Pauschalreise oder individuelles Abenteuer – wir machen Ihre Reiseträume wahr. Persönlich, fair und kompetent.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/reiseservice-heinz/",
   },
   {
@@ -2178,6 +2313,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:30 08:00 - 17:30 08:00 - 17:30 08:00 - 17:30 Geschlossen Dienstleister, Finanzen & Versicherung Im Herzen sind wir Unternehmer. Das macht uns auch über 70 Jahre nach Gründung so einzigartig. Wir leben unsere drei Unternehmenswerte Exzellenz, Unternehmergeist und Empathie. Diese bilden die Grundlage unserer Tätigkeit mit unseren Mandanten, Mitarbeitern und Geschäftspartnern. Wir sind jederzeit für unsere Mandanten da und entscheiden schnell. Wir handeln unternehmerisch und beraten kompetent in allen wirtschaftlichen Fragen. Für Industrie- und Handelsunternehmen, Handwerksbetriebe, Land- und Forstwirtschaft, Dienstleistungsunternehmen, Freiberufler, Existenzgründer oder Privatpersonen.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/riedl-schreiber-steuerberatersozietaet/",
   },
   {
@@ -2194,6 +2330,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Handwerklich Ich biete Reparatur und Bau von Lautsprechern und Plattenspielern, Beratung zur Aufstellung von Hifi-Anlagen und noch mehr rund um das Thema.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rockopelli-lautsprecherbau-wolfgang-hauke/",
   },
   {
@@ -2210,6 +2347,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 12:30, 14:00 - 17:00 08:30 - 12:30, 14:00 - 17:00 08:30 - 12:30, 14:00 - 17:00 08:30 - 12:30, 14:00 - 17:00 Dienstleister, Handwerklich Seit über 35 Jahren und mittlerweile in der dritten Generation haben wir die passenden Lösungen für Sie: Fenster, Türen, Insektenschutz, Renovierungen, Schlüsseldienst, Aufsperrdienst, Schließanlagen, Sicherheitstechnik, Tresore, Briefkästen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schluesseldienst-aigner/",
   },
   {
@@ -2226,6 +2364,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mein Bestreben ist es, mit meinem Unternehmen dort anzusetzen, wo viele der Sanitär-Heizungs-Installationsfirmen in den letzten 10 Jahren sehr stark nachgelassen haben: Das tägliche Geschäft – der Service, auch Kundendienst genannt. Neben Personalmangel ist dies in der Branche das größte Problem. Die meisten Firmen legen ihren Fokus auf große, gewinnbringende Baustellen und stehen für anschließend dringend benötigte Instandhaltungs- und Wartungs- arbeiten kaum noch zur Verfügung. Zuverlässigkeit – hohe Qualität und Kompetenz sind die wichtigsten Faktoren in unserem Handwerk.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schwarzkugler-sanitaer-heizung/",
   },
   {
@@ -2242,6 +2381,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 12:30 08:30 - 12:30 08:30 - 12:30, 13:30 - 17:30 08:30 - 12:30 08:30 - 12:30 Dienstleister, Finanzen & Versicherung Versicherungen seit 1970 in zweiter Generation Wir wollen Sie nicht verunsichern, sondern rundum gut beraten und absichern!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/barbara-hofmann-stecher/",
   },
   {
@@ -2258,6 +2398,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:30 09:00 - 12:30, 14:00 - 18:00 09:00 - 12:30 09:00 - 12:30, 14:00 - 18:00 09:00 - 14:00 Dienstleister, Finanzen & Versicherung Sparkasse Freising Moosburg Der starke Partner in Ihrer Nähe Als Mensch und Kunde stehen Sie bei uns im Mittelpunkt. Wir sind ein wichtiger Arbeitgeber und Ausbildungsbetrieb in der Region. Insgesamt arbeiten in der Sparkassen-Finanzgruppe rund 600 Unternehmen eng zusammen. Mit Spenden und Sponsoring unterstützen wir Vereine und Initiativen vor Ort. Aus der Region für die Region. So lautet unser Kerngedanke. Nach Terminvereinbarung bieten wir auch Beratungszeiten von Mo.-Fr. von 8 bis 20 Uhr an.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stadt-und-kreissparkasse-moosburg-a-d-isar/",
   },
   {
@@ -2274,6 +2415,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 16:00 08:00 - 12:00, 13:00 - 16:00 08:00 - 12:00, 13:00 - 16:00 08:00 - 12:00, 13:00 - 16:00 Dienstleister, Transport Langjährige Erfahrung im Transportgewerbe, nunmehr in der dritten Generation, verbindet Tradition mit Qualität.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/spedition-elfinger-gmbh/",
   },
   {
@@ -2290,6 +2432,7 @@ export const firmen: Firma[] = [
     beschreibung: "10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 10:00 - 18:00 Dienstleister, Freizeit & Events Wir sind ein Full-Service-Anbieter für Event- und Veranstaltungstechnik, spezialisiert auf die Umsetzung professioneller Veranstaltungen und Messen. Nach 20 jähriger Tätigkeit als Einzelunternehmen folgte zu Beginn des Jahres 2018 die Umfirmierung zur Gesellschaft. Der Grundstein wurde jedoch bereits 1997 gelegt, damals ausschließlich zur Vermietung von Lautsprecher- und Lichtanlagen gegründet, entwickelten wir uns im Laufe der Jahre zu einem kompetenten Komplettanbieter weiter und verfolgen nun seit vielen Jahren den “Alles aus einer Hand” Gedanken.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stagezone-veranstaltungs-medientechnik/",
   },
   {
@@ -2306,6 +2449,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 08:00 - 18:00 09:00 - 18:00 09:00 - 18:00 08:00 - 18:00 Samstag 08:00 - 13:00 Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Wir bieten: – Färbung: Holen Sie sich Ihre Haare in den Farben, die Sie wollen… – Haardesign&MakeUp: Neueste Haardesigns und perfektes Make-up… – Haareschneiden: Haarschnitte nach den angesagtesten Modellen… – Hochsteckfrisuren: Für das besondere tag eine besondere Haare…",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stefanie-brams-friseure-ehemals-salon-angelique/",
   },
   {
@@ -2322,6 +2466,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 12:00, 13:00 - 18:00 07:00 - 12:00, 13:00 - 18:00 07:00 - 12:00, 13:00 - 18:00 07:00 - 14:00 Dienstleister, Haus, Garten, Umwelt, Transport Steidel GmbH – Sauberkeit für Straße und Kanal!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/steidel-gmbh-industrie-und-staedtereinigung-transporte/",
   },
   {
@@ -2338,6 +2483,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Dienstleister, Haus, Garten, Umwelt SuperHause erleichtert die tägliche Reinigung von Wohnungen. Sie können den Reiniger sowohl von Ihrem Laptop als auch von Ihrem Mobiltelefon aus anrufen. Um zu bestellen, müssen Sie nur Ihre Telefonnummer hinterlassen und unser Manager ruft Sie zurück.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/superhause/",
   },
   {
@@ -2354,6 +2500,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unser freundliches Team steht jederzeit bereit für: > Taxi- und Mietwagenfahrten > Abholung oder Transport zum Airport > kleinere Kurierdienste > Fahrten von oder zu einem Hotel / Pension > Krankenfahrten für alle Kassen > Serienkrankenfahrten (AOK Vertragspartner)",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/taxi-mietwagen-hochleitner/",
   },
   {
@@ -2370,6 +2517,7 @@ export const firmen: Firma[] = [
     beschreibung: "Taxi Hammerl hat sich in Moosburg seit über 55 Jahren etabliert. Wir stehen seit jeher für Qualität und Zuverlässigkeit. Im Bereich Personenbeförderung können wir Ihnen einen rundum Service anbieten. Ich und mein freundliches Team würden uns freuen, auch Sie davon überzeugen zu können.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/taxi-hammerl/",
   },
   {
@@ -2386,6 +2534,7 @@ export const firmen: Firma[] = [
     beschreibung: "08761 / 3871000 oder +49 176 21664090 info@taxizentrale-moosburg.de https://www.taxizentrale-moosburg.de Social Media Kategorie(n) Dienstleister, Informationen, Moosburg Mobil, Transport Die Taxizentrale Moosburg steht Ihnen 24 Stunden am Tag, sieben Tage die Woche zur Verfügung. Wir bemühen uns, unsere Kunden stets pünktlich und sicher von A nach B zu bringen. Unsere Flotte unfasst außerdem einen Wagen für Rollstuhlbeförderung mit Lift sowie ein E-Taxi der Marke Tesla.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/taxizentrale-moosburg/",
   },
   {
@@ -2402,6 +2551,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unternehmensberater für den Privaten Haushalt Termine nach telefonischer oder gerne auch schriftlicher Vereinbarung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/telis-berater-bernhard-scholz/",
   },
   {
@@ -2418,6 +2568,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Filiale in Moosburg heißt Sie herzlich willkommen! Unsere Mitarbeiter/innen sind für Sie da. Egal, ob Sie ein Konto eröffnen, Bargeld auf ein Konto einzahlen oder sich ausführlich beraten lassen wollen. In Ihrer Filiale erhalten Sie außerdem nützliches Informationsmaterial für Ihre Finanzen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/unicredit-bank-ag/",
   },
   {
@@ -2434,6 +2585,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Finanzen & Versicherung Als Sparkassenfachwirt, -betriebswirt und Vermögensberater (cert.) betreue ich Kunden im Bereich der Vorsorge, Vermögensberatung und Vermögensverwaltung. Mir ist wichtig, nur das, was ich selbst verstehe, auch meinen Kunden anzubieten. Ständige Weiterbildungen und oftmals über den Tellerrand hinaus zu schauen ist ein wesentlicher Erfolgsfaktor für den Anlageerfolg.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/vb-select-ag-reinhard-lauterbach/",
   },
   {
@@ -2450,6 +2602,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:30 08:00 - 16:30 08:00 - 12:00 08:00 - 16:30 08:00 - 12:00 Dienstleister, Finanzen & Versicherung Herzlich willkommen zu Ihrem VK-Büroservice. Betreuung in Sachen Buchhaltung und Finanzen ist Vertrauenssache. Bei Individueller und persönlicher Beratung bilden Zuverlässigkeit, Flexibilität und Verschwiegenheit die Grundlagen unserer Arbeit. Wir unterstützen Sie qualifiziert im Bereich Ihrer laufenden Lohn- und Finanzbuchhaltung und stehen Ihnen auch als Büroservice mit kaufmännischer Kompetenz zur Verfügung. Wir bringen Ordnung in Ihre Belege und Unterlagen, sauber & betriebsprüfungssicher.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/vk-bueroservice-finanz-sachbearbeitung/",
   },
   {
@@ -2466,6 +2619,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ganztägig Ganztägig Ganztägig Ganztägig Ganztägig Samstag 10:00 - 15:00 Sonntag Geschlossen Dienstleister, Freizeit & Events Wir übernehmen die Komplettausrichtung Ihrer Veranstaltung. Künstlervermittlung bundesweit. Druck Ihrer Werbemittel. Plakatierungen. Vermittlung von Tagungsräumen. Geschenkartikel über unseren http://www.Bayern-Laden.de . Vereinsartikel.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/veranstaltungsservice-und-kuenstlervermittlung-uwe-penner/",
   },
   {
@@ -2482,6 +2636,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Dienstleister, Freizeit & Events TOUCHED BY NATURE – Intensive Naturschauspiele, Tierbegegnungen und (Tauch-)Reiseerlebnisse, z. T. bis in die entlegensten Winkel unseres Planeten. Mit Teamkompetenz und viel Herzblut gestalten wir seit 25 Jahren ein Portfolio, das über die üblichen Stationen jeder Taucherkarriere weit hinausreicht.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wirodive-tauch-und-eerlebnisreisen-gmbh/",
   },
   {
@@ -2498,6 +2653,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Du möchtest Dich und Dein Unternehmen zeigen? Du möchtest nicht nur schönes Design, sondern auch gesehen werden? Wenn dann Deine Zielgruppe anhand der Keywörter bei Dir auf der Seite sind – dann werden wir diese zum Klicken animieren. Besuche uns auf unserer Website. Wir freuen uns auf Dich!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/web-queens-gbr/",
   },
   {
@@ -2514,6 +2670,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 12:00 Dienstleister, Handwerk, Handwerklich Ob War­tungs­ar­bei­ten oder Kun­den­dienst, wir sind mit unse­rem Ser­vice im­mer für Sie da. Alle Be­rei­che – Be­ra­tung, Pro­jek­tie­rung, In­stal­la­tion und Ser­vice – sehen wir immer als Ge­samt­pro­jekt, das nur durch in­ten­sive und per­sön­liche Be­treu­ung opti­mal funk­tio­nie­ren kann.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/weichert-gmbh/",
   },
   {
@@ -2530,6 +2687,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 17:30 08:00 - 12:00, 13:00 - 17:30 08:00 - 12:00, 13:00 - 17:30 08:00 - 12:00, 13:00 - 17:00 Samstag Nach Terminvereinbarung Dienstleister, Foto, Grafik, Druck Ihr Ansprechpartner für professionelle Werbung in Moosburg und Umgebung. Profitieren Sie aus unserer 30-jährigen Erfahrung im Bereich der Werbetechnik. Wir garantieren Ihnen die bestmögliche Planung und Ausführung Ihrer Projekte. Wir unterstützen Sie mit unseren vielfältigen und persönlich auf Sie zugeschnittenen Angebote für Schilder, Beschriftungen, Drucke und Shirts",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/werbeschriften-hambach/",
   },
   {
@@ -2546,6 +2704,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr Profi für Erdbewegungen, Asphalt-, Pflaster-, Kanalbau ob für Gemeinden, Städte, Industrie- und Gewerbebetriebe, Privatpersonen – wir erledigen kompetent und zuverlässig sämtliche Arbeiten rund um Kanalbau, Asphaltierung, Sanierung von Fahrbahnbelägen, Pflasterbau, Erdarbeiten, Planierungen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wiesheu-asphalt-pflaster-und-kanalbau-gmbh/",
   },
   {
@@ -2562,6 +2721,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ganztägig Ganztägig Ganztägig Ganztägig Ganztägig Samstag Ganztägig Sonntag Ganztägig Dienstleister, Freizeit & Events, Kulinarisches, Schnelle Küche Wir produzieren den größten YouTube-Kanal zum Thema “Grillen”, der von einer Frau im deutschsprachigen Raum geschmissen wird. Die dazugehörige Webseite https://die-frau-am-grill.de/ hat darüber hinaus monatlich zwischen 300.000 und 500.000 Seitenaufrufe und ist eine der meist besuchten BBQ-Webseiten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wuerfl-anja-matthias-gbr/",
   },
   {
@@ -2578,6 +2738,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Dienstleister, Handwerklich, Haus, Garten, Umwelt, Sicherheit Wir bieten faire Preise für unsere Dienstleistungen an. Wir legen Wert auf Transparenz und Offenheit, deshalb stellen wir Ihnen immer klare und detaillierte Angebote. Wir verstehen, dass der Service, den wir bieten, von unschätzbarem Wert ist und dass die Kosten dafür angemessen sein sollten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zl-service-gmbh/",
   },
   {
@@ -2594,6 +2755,7 @@ export const firmen: Firma[] = [
     beschreibung: "Grafikdesign, Gestaltung, Illustrationen für Printprodukte und Webauftritte.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/inktrap-gestaltung-und-design/",
   },
   {
@@ -2610,6 +2772,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Sicherheit Als Dienstleister für Arbeitssicherheit, Gesundheitsschutz und Managementsysteme kümmern wir uns um die Optimierung von Arbeitsschutz in Betrieben. Mit langjähriger Erfahrung auch in der Arbeitnehmerüberlassung unterstützen wir bei der Verbesserung des Arbeitsablaufes und der Arbeitsumgebung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kk-business-services-gmbh/",
   },
   {
@@ -2626,6 +2789,7 @@ export const firmen: Firma[] = [
     beschreibung: "Dienstleistungen für Film, Fernsehen und Veranstaltungen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/letsdoit4u-gmbh/",
   },
   {
@@ -2642,6 +2806,7 @@ export const firmen: Firma[] = [
     beschreibung: "ver-bastelt – Kreativität die begeistert! Ihr Partner für individuelle und qualitativ hochwertige Eventdekoration und Floristik für Hochzeiten, Kommunion, Taufen oder alle anderen Anlässe. Wir fertigen außerdem personalisierte Geschenke mit Laser- und Plottertechnik – individuell und mit Liebe zum Detail. Kontaktieren Sie mich und lassen Sie sich inspirieren!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ver-bastelt-by-friederike-linseisen/",
   },
   {
@@ -2658,6 +2823,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Dienstleister, Foto, Grafik, Druck Marketing- und Kreativkonzepte, Werbung, Kampagnen, Corporate Identity, Printmedien, Brandt, Design, Graphik, Grafik",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zum-guten-ton-kreativagentur/",
   },
   {
@@ -2674,6 +2840,7 @@ export const firmen: Firma[] = [
     beschreibung: "Dr. Anne Hoheisel Dr. Jonas Härtl Dr. Wolfgang Freidl",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/das-mundwerk-dr-hoheisel-kollegen/",
   },
   {
@@ -2690,6 +2857,7 @@ export const firmen: Firma[] = [
     beschreibung: "Facharzt Facharztpraxis für Orthopädie und Unfallchirurgie Prof. Dr. Jens Schaumburger, Dr. Ludwig Kohn, Christian Zieglmaier und Dr. Sebastian Macher",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/orthopaedie-muehleninsel/",
   },
   {
@@ -2706,6 +2874,7 @@ export const firmen: Firma[] = [
     beschreibung: "Finanzen & Versicherung HUK Coburg Versicherung Vertrauensmann Roger Käding Versicherungen für die Bereiche Auto & Mobilität, Haus, Haftung & Recht, Gesundheit, Vorsorge und Vermögen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/huk-coburg-versicherung-vertrauensmann-roger-kaeding/",
   },
   {
@@ -2722,6 +2891,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00 09:00 - 12:00 09:00 - 12:00 09:00 - 12:00 09:00 - 12:00 Finanzen & Versicherung Ihre Versicherungsagentur derb Mario Binn in Moosburg – Ihr gemeinsamer Partner für den optimalen Versicherungscheck.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wwk-versicherungsagentur-mario-binn/",
   },
   {
@@ -2738,6 +2908,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich bin jemand, der seinen Beruf mit unglaublich viel Spaß betreibt. Jeder Auftrag ist eine Herausforderung, mich jedes Mal neu zu entdecken, neu zu beweisen und jedes Mal aufs neue meine Kunden gänzlich zu begeistern. Gleiches gilt selbstverständlich für meine grafischen Dienstleistungen. Bei mir bekommt Ihr alles aus einer Hand, zu vernünftigen und vor allem transparenten Kosten, die wir vorher gemeinsam Besprechen. Ich stehe Euch in vielerlei Situationen gerne professionell zur Seite. Dies beginnt bei der Besprechung, über die Planung bis hin zur vollkommenen Fertigstellung Eures Projektes.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/arts-by-xd/",
   },
   {
@@ -2754,6 +2925,7 @@ export const firmen: Firma[] = [
     beschreibung: "Für Selbstständige & Unternehmen gestalte ich im Bereich Grafik- & Web Design einen konsistenten und professionellen Markenauftritt. Ich bin deine Partnerin für einen zielgerichteten Außenauftritt, der authentisch & stark wirken soll – ob auf Projektbasis oder als langfristige Unterstützung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/marieluise-hacker-grafik-web-design/",
   },
   {
@@ -2770,6 +2942,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Foto, Grafik, Druck POGOmedia ist eine Agentur für Grafik, Druck, Webdesign in Pfedelbach. Kunden im Raum Moosburg, Freising, Erding und Landshut betreut Kerstin Eitner aus Moosburg. Das machen wir für Sie: Gestaltung Ihrer Drucksachen, Druck, Weiterverarbeitung, Versand. Wir haben Spezialisten für Homepagegestaltung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pogomedia-e-k/",
   },
   {
@@ -2786,6 +2959,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Foto, Grafik, Druck, Freizeit & Events Ich bin Christina, eine leidenschaftliche Fotografin, die im Großraum München und Niederbayern tätig ist. Seit Ende 2021 begleite ich meine Kunden fotografisch und teile wundervolle Momente mit ihnen. Gemeinsam erschaffen wir in einer entspannten Atmosphäre unvergessliche Marmeladenglasmomente.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/weltwinkelobjektiv-fotografie/",
   },
   {
@@ -2802,6 +2976,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 11:00 - 23:00 Dienstag 11:00 - 15:00 Donnerstag 11:00 - 23:00 Freitag 11:00 - 23:00 Samstag 11:00 - 23:00 Sonntag 11:00 - 23:00 Freizeit & Kultur, Sport, Vereine & Kulturelles Billardbegeisterte aufgepasst: Ob Anfänger oder Profi – jeder ist gerne willkommen. Unser Vereinslokal befindet sich im Gasthof “Drei Tannen”. Schaut doch mal vorbei!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/1-pbc-teuflische-8-moosburg-e-v/",
   },
   {
@@ -2818,6 +2993,7 @@ export const firmen: Firma[] = [
     beschreibung: "1. SKC Rot-Weiß Moosburg e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/1-skc-rot-weiss-moosburg-e-v/",
   },
   {
@@ -2834,6 +3010,7 @@ export const firmen: Firma[] = [
     beschreibung: "Cafés & Eisdielen, Freizeit & Events, Freizeit & Kultur, Gesellschaft, Handwerk, Vereine & Kulturelles In geselligem Beisammensein mit Kaffee und Kuchen versuchen wir eure Sachen zu reparieren, denn unser Motto lautet: Lieber richten, statt vernichten! Termine 2026 14-16 Uhr Sa 16.05.26 Sa 27.06.26 Sa 18.07.26 Sa 19.09.26 Sa 14.11.26",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/3-rosen-werkstatt-e-v/",
   },
   {
@@ -2850,6 +3027,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kerninteressen: – Verkehrsaufklärung – Kartsport – Oldtimertreffen – Motorradausfahrten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/amc-moosburg-e-v-im-adac/",
   },
   {
@@ -2866,6 +3044,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 09:00 - 17:00 Dienstag 09:00 - 17:00 Mittwoch 09:00 - 17:00 Donnerstag 09:00 - 17:00 Freitag 09:00 - 17:00 Freizeit & Kultur, Sport, Vereine & Kulturelles Der Anglerverein Moosburg ist der zweitgrößte Fischereiverein im Landkreis Freising. Mit vielen unterschiedlichen Gewässern.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/anglerverein-moosburg-e-v-2/",
   },
   {
@@ -2882,6 +3061,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der öffentliche Fitness-Bewegungsparcour befindet sich am Krankenhausweg und bietet in mehreren Stationen Geräte zur sportlichen Betätigung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bewegungsparcour/",
   },
   {
@@ -2898,6 +3078,7 @@ export const firmen: Firma[] = [
     beschreibung: "Blaue Kugel Moosburg e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/blaue-kugel-moosburg-e-v/",
   },
   {
@@ -2914,6 +3095,7 @@ export const firmen: Firma[] = [
     beschreibung: "In Moosburg gibt es eine Reihe von öffentlichen Bolzplätzen zur allgemeinen Nutzung: – Bolzplatz Hodschagerstraße/Neue Industriestraße – Bolzplatz Wasserwerkstraße – Bolzplatz Ende Thalbacherstraße – Bolzplatz Am Mühlbachbogen – Streetballplatz Stadtbadstraße (hinter Freibad)",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bolzplaetze/",
   },
   {
@@ -2930,6 +3112,7 @@ export const firmen: Firma[] = [
     beschreibung: "Traditionelles Bogenschießen mit Freunden Anfrage zu Probetraining bei den Sportschützen Langenpreising unter http://sportschuetzen-langenpreising.de/",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bowhunters-moosburg-n-e-v/",
   },
   {
@@ -2946,6 +3129,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bund der Eghalanda Gmoin e.V. – Bund der Egerländer –",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/egerlaender-gmoi/",
   },
   {
@@ -2962,6 +3146,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Bühne Moosburg ist ein Theaterverein, bestehend aus Laienspielern und wurde 1998 gegründet. Jährlich wird ein Stück geprobt und aufgeführt mit wechselnder Regie, rekrutiert aus den Vereinsmitgliedern. Da über mehrere Monate hinweg an der Inszenierung gefeilt wird, um ein anspruchsvolles Niveau halten zu können, begnügen wir uns mit nur einem Stück pro Jahr. Die Bühne Moosburg hat sich im Laufe der Zeit zum Sprungbrett entwickelt für die Bretter, die die Welt bedeuten. Mehrere Mitglieder sind professionell in der Filmbranche tätig.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/buehne-moosburg-e-v/",
   },
   {
@@ -2978,6 +3163,7 @@ export const firmen: Firma[] = [
     beschreibung: "Dart Club AUS IS!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dart-club-aus-is/",
   },
   {
@@ -2994,6 +3180,7 @@ export const firmen: Firma[] = [
     beschreibung: "Deutscher Familienverband Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/deutscher-familienverband-moosburg/",
   },
   {
@@ -3010,6 +3197,7 @@ export const firmen: Firma[] = [
     beschreibung: "Donauschwaben Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/donauschwaben-moosburg/",
   },
   {
@@ -3026,6 +3214,7 @@ export const firmen: Firma[] = [
     beschreibung: "0000 info@ev-aich.de https://www.ev-aich.de/ Social Media Freizeit & Kultur, Sport Eishockeymannschaft der Ortschaften Pfrombach und Aich",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ev-aich-eishockeyverein-aich-e-v/",
   },
   {
@@ -3042,6 +3231,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind eine Interessensvertretung für Eigenheimer. Für Mitglieder: Infos u. Vermittlung, Rechtsberatung in allen Bereichen inkl. Rechtschutzversicherung f. Haus und Grund, Schutz durch Gebäude-, Grundstückshaftpflicht- u. Bauherrenhaftpflichtversicherung. Gratis Verleih von vereinseigenen Geräten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eigenheimervereinigung-moosburg-e-v/",
   },
   {
@@ -3058,6 +3248,7 @@ export const firmen: Firma[] = [
     beschreibung: "0 kontakt@ev-moosburg.de http://www.ev-moosburg.de/ Social Media Freizeit & Kultur, Sport, Vereine & Kulturelles Im Jahr 2024 feiert der EV Moosburg sein 75-jähriges Bestehen. Die erste Mannschaft spielt in der Landesliga, zudem sind so gut wie alle Altersklassen im Nachwuchs besetzt. Jährlich veranstaltet man zudem Eislaufkurse, im Fasching veranstaltet der EVM den maskierten “Ball der Vereine”.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eissportverein-moosburg-e-v/",
   },
   {
@@ -3074,6 +3265,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der FCM geht aus der Fusion von Spielvereinigung Moosburg e.V. und FC Real Bonau Moosburg e.V. im Jahre 2008 hervor. Der Verein hat durch Bündelung gemeinsamer Kräfte, insbesondere der Spieler, Trainer, Betreuer und Funktionäre den Jugend- und Fußballsport in Moosburg positiv entwickelt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fc-moosburg-e-v/",
   },
   {
@@ -3090,6 +3282,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Fliegerclub Moosburg beheimatet ca. 140 Mitglieder. Davon sind ca. 40 Mitglieder aktive Flieger, sowohl im Segel- als auch Motorflug. Während der Flugsaison findet der Flugbetrieb meist an Wochenenden und Feiertagen bei gutem Wetter statt. Gäste mit und ohne Flieger sind jederzeit Willkommen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fliegerclub-moosburg-e-v/",
   },
   {
@@ -3106,6 +3299,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Handballjugend finanziell zu unterstützen, war im Jahr 2010 Grund genug für ehemalige aktive Moosburger Handballer und Gönner, initiiert von Peter Kellner, mit acht Gleichgesinnten, den „Förderverein SG Moosburg Handball e.V.“ zu gründen. Ein fester Bestandteil sind die weit über die Grenzen des Landkreises hinaus bekannten Ü30-Partys, die seit 10 Jahren jeweils zweimal im Jahr in der Moosburger Stadthalle veranstaltet werden. Die Mitglieder zeigen ihren Idealismus auch durch die Teilnahme bei Veranstaltungen wie Herbstschau- und Faschingsumzug sowie beim Adventskalender am Rathaus.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/foerderverein-sg-moosburg-handball-e-v/",
   },
   {
@@ -3122,6 +3316,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit Dezember 2015 setzt sich Greenpeace Moosburg für Umwelt-, Klima- und Naturschutz ein. Alle Altersgruppen arbeiten zusammen an dem großen Ziel, die Welt ein bisschen besser zu machen. Mach mit! Jeden 2. Sonntag im Monat Treffen bei “Tante Emma” von 16-18 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/greenpeace-e-v-ortsgruppe-moosburg/",
   },
   {
@@ -3138,6 +3333,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Dienstag 18:30 - 20:30 Freitag 18:30 - 20:30 Freizeit & Kultur, Sport, Vereine & Kulturelles Verein für Koreanische Kampfkünste und Selbstverteidigung. Wir unterrichten: Taekwondo, Koreanisches Karate (Hapkido) und Selbstverteidigung, Kinder-/Jugend-Unterricht (Motivation durch Bewegung). Geführter Unterricht durch geprüfte Trainer, Assistenten und Großmeister Nick Kraensel 6.Dan.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/han-kook-dojang-of-self-devense-e-v/",
   },
   {
@@ -3154,6 +3350,7 @@ export const firmen: Firma[] = [
     beschreibung: "Heimatbund Königsberg a. d. Eger",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heimatbund-koenigsberg-a-d-eger-moosburg/",
   },
   {
@@ -3170,6 +3367,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Imkerverein Moosburg und Umgebung e. V. dient dem freien Zusammenschluss aller Imker*innen aus Moosburg und Umgebung. Durch die jährlichen Veranstaltungen bietet der Verein den Mitgliedern ein umfangreiches Wissensangebot für den erfolgreichen Umgang mit Bienen und ein geselliges Beisammensein.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/imkerverein-moosburg-und-umgebung-e-v/",
   },
   {
@@ -3186,6 +3384,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Jazz Club Hirsch e.V. wurde 1996 gegründet und veranstaltet regelmäßig Konzerte in Freising und Moosburg.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jazz-club-hirsch-e-v/",
   },
   {
@@ -3202,6 +3401,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 16:00 - 20:00 Dienstag 16:00 - 20:00 Mittwoch 16:00 - 20:00 Donnerstag 16:00 - 20:00 Freitag 16:00 - 21:00 Samstag 16:00 - 21:00 Sonntag Geschlossen Freizeit & Kultur, Kinder & Jugend Das Jugendhaus ist ein klassisches Jugendzentrum. Der Offene Betrieb stellt den Mittelpunkt Offener Kinder- und Jugendarbeit dar. Während der Öffnungszeiten sind im Jugendhaus alle Jugendlichen und jungen Erwachsenen im Alter von 12 bis 27 Jahren herzlich willkommen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jugendhaus/",
   },
   {
@@ -3218,6 +3418,7 @@ export const firmen: Firma[] = [
     beschreibung: "Das Jugendparlament ist ein Zusammenschluss von Jugendlichen aus Moosburg und der Umgebung, mit dem Ziel Moosburg für die Jugend vielfältiger zu gestalten. Dafür kann das JUP entweder Anträge im Stadtrat einreichen oder selbst Projekte umsetzen. Die Themen sind vielfältig (z.B. Treffpunkte, Partys)",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jugendparlament-moosburg/",
   },
   {
@@ -3234,6 +3435,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Dienstag 19:30 - 21:30 Freizeit & Kultur, Musik, Vereine & Kulturelles Wir sind ein sinfonisch besetztes Orchester, das wöchentlich im Probenraum der Schäfflerhalle probt. Wir spielen bevorzugt Werke aus der Romantik und auch aktuelle Filmmusikkompositionen. Wenn Sie ein passendendes Instrument spielen – wir freuen uns über jeden, der mitmachen möchte!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kammerorchester-moosburg-e-v/",
   },
   {
@@ -3250,6 +3452,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kegeln Sie mit Ihren Freunden und Bekannten auf einer oder mehreren der sechs Kegelbahnen. Wir bitten hierzu um rechtzeitige Reservierung beim ‘Gasthof zur Kegelhalle’, um Überschneidungen mit dem Trainingsbetrieb und den Kegelturnieren (von September bis ca. März) zu vermeiden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kegeln/",
   },
   {
@@ -3266,6 +3469,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Moosburger Kegler Verein (MKV) ist der Dachverein der drei Moosburger Kegelvereine: 1. SKC 1967 Moosburg e.V., SKC Rot-Weiß Moosburg e.V., SKC Blaue Kugel 1958 Moosburg e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kegelverein-moosburg-e-v/",
   },
   {
@@ -3282,6 +3486,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kinderschutzbund Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kinderschutzbund-moosburg/",
   },
   {
@@ -3298,6 +3503,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kolping Spielmannszug Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kolping-spielmannszug/",
   },
   {
@@ -3314,6 +3520,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Kultur Moosburg e.V. ist 2010 erstmals mit dem Festspiel „Die verbotene Stadt“ ins Rampenlicht getreten. Seit der Gründung haben wir uns der kulturellen Bereicherung der Stadt Moosburg verschrieben und veranstalten nunmehr alle 2 Jahre im jährlichen Wechsel die JAZZ NIGHTS und das SOMMERFESTIVAL. Feiern Sie mit uns im Herzen Moosburgs auf einer Open Air-Bühne mit einem grandiosen Programm für Jung und Alt mit Musik, Kabarett, Zauberei, Kindervergnügen, Volkstanz und Kino.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kultur-moosburg-e-v/",
   },
   {
@@ -3330,6 +3537,7 @@ export const firmen: Firma[] = [
     beschreibung: "Willkommen im LariFari, Moosburgs neuer Perle im Nachtleben. Seit Benjamin Sabanovic, der kreative Kopf hinter der legendären BB-Lounge, übernommen hat, ist unsere Stadt lebendiger als je zuvor. Hier bei uns genießt du nicht nur einzigartige Cocktails, sondern auch eine frische, einladende Atmosphäre, die in Moosburg ihresgleichen sucht. Unser Motto: Spaß und Respekt. Komm vorbei und erlebe, warum das LariFari das absolute Must-Visit und der Treffpunkt für tolle Abende ist!",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/larifari/",
   },
   {
@@ -3346,6 +3554,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 15:00 - 22:30 Dienstag 15:00 - 22:30 Mittwoch 15:00 - 22:30 Donnerstag 15:00 - 22:30 Freitag 15:00 - 22:30 Samstag Geschlossen Sonntag Nach Terminvereinbarung Freizeit & Kultur, Sportangebote Marios Tanzwelt ist weit mehr als nur eine Tanzschule. In unseren hellen und weitläufigen Räumen mit viel Atmosphäre begegnen sich Menschen aller Altersklassen – von jung bis alt und klein bis groß. Alle verbindet die Liebe zum Tanzen und die Freude an Bewegung. Gerne überzeugen wir auch SIE!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/marios-tanzwelt-moosburg-gmbh/",
   },
   {
@@ -3362,6 +3571,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freizeit & Kultur, Sportangebote Ich führe eine Mobile Tanzschule und komme ins Haus. Wollen Sie Tanzen lernen und haben eine Räumlichkeit (z.B. Wohnzimmer, Garage, Terrasse, Lokal, usw.), setzen Sie sich mit mir in Verbindung. Bis zu vier Paare können auch in meinem kleinen Tanzstudio in Moosburg Aich das Tanzen erlernen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/manfred-reiter/",
   },
   {
@@ -3378,6 +3588,7 @@ export const firmen: Firma[] = [
     beschreibung: "Modellfliegerclub Moosburg e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/modellfliegerclub-moosburg-e-v/",
   },
   {
@@ -3394,6 +3605,7 @@ export const firmen: Firma[] = [
     beschreibung: "Narrhalla Moosburg",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/narrhalla-moosburg/",
   },
   {
@@ -3410,6 +3622,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Freizeit & Kultur, Musik, Vereine & Kulturelles Die Moosburger Münstermusik ist die Kirchenmusik-Organisation der kath. Stadtpfarrei St. Kastulus. In 10 Chorgruppen sind 130 Sänger/-innen aktiv. Neben dem Schwerpunkt der musikalischen Gestaltung von Gottesdiensten prägt die Münstermusik mit ihren Konzerten auch das kulturelle Leben Moosburgs.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-muenstermusik/",
   },
   {
@@ -3426,6 +3639,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moosburger Schäffler von 1912 e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-schaeffler-von-1912-e-v/",
   },
   {
@@ -3442,6 +3656,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Verein zur Förderung der Kirchenmusik in der Pfarrei St. Kastulus hat zum Ziel, die kirchenmusikaliscchen Projekte finanziell zu unterstützen und einen Beitrag zur Ausbildung des sängerischen Nachwuses der Moosburger Münstermusik zu leisten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/musica-sacra-e-v/",
   },
   {
@@ -3458,6 +3673,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Verein will Kontakt- und Kommunikationsstelle für Musiker aller Gruppierungen sein. In Zusammenarbeit mit der Stadtjugendpflege veranstaltet die MIMO Konzerte. Um den Spaß an der Musik ausleben zu können, stehen den Vereinsmitgliedern ein Bandraum mit Aufnahmemöglichkeit zur Verfügung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/musikinitiative-moosburg-mimo-e-v/",
   },
   {
@@ -3474,6 +3690,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit mehr als 20 Jahren ( 1998 ) qualifizierter Musikunterricht für Jung und Alt. ( Aus gegebenem Anlass bieten wir Unterricht auch online )",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/musikinstitut-neubert/",
   },
   {
@@ -3490,6 +3707,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Freizeit & Kultur, Vereine & Kulturelles, Weitere Bei unserer Ortsgruppe finden regelmäßige Treffen mit unterschiedlichen Schwerpunkten statt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturfreunde-moosburg/",
   },
   {
@@ -3506,6 +3724,7 @@ export const firmen: Firma[] = [
     beschreibung: "Pfadfinder DPSG St. Kastulus Vorstand: Lorenz Penzkofer und Leon Hrodek",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pfadfinder-st-kastulus/",
   },
   {
@@ -3522,6 +3741,7 @@ export const firmen: Firma[] = [
     beschreibung: "Alle die gerne Rennrad oder Mountainbike fahren sind hier willkommen. Ob als Rennradler im gemütlichen Tempo bei der Cappuccino Gruppe oder sportlich orientiert bei der Espresso-Gruppe. Für erwachsene Mountainbiker gibt es die Gruppe Trailsucht. Für Kinder/Jugendliche haben wir ebenfalls Angebote.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rsv-moosburg/",
   },
   {
@@ -3538,6 +3758,7 @@ export const firmen: Firma[] = [
     beschreibung: "Freunde des Reitsports können in Moosburg in folgenden Reitställen ihr Glück auf dem Pferderücken suchen: – Reitsportanlage, Fischerstraße 24 – Reiterhof Zeller, Stießberg 1 – Reiterhof Zimmer, Pferdeland Aich, Holzlandstraße 2 Die nahegelegenen Isarauen bieten sich hervorragend für Ausritte an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/reitsport/",
   },
   {
@@ -3554,6 +3775,7 @@ export const firmen: Firma[] = [
     beschreibung: "SG Türk Istanbul Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sg-tuerk-istanbul-moosburg/",
   },
   {
@@ -3570,6 +3792,7 @@ export const firmen: Firma[] = [
     beschreibung: "Als fünft größter Schachverein Deutschlands lehren wir Jugendlichen und Erwachsenen das Schachspiel. Jeden Freitag ab 18:30 Uhr findet ein Spieleabend statt – Gäste sind herzlich willkommen. Außerdem gibt es zahlreiche Ausbildungskurse.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schachclub-moosburg-1956-e-v/",
   },
   {
@@ -3586,6 +3809,7 @@ export const firmen: Firma[] = [
     beschreibung: "Schlesische Landsmannschaft",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schlesische-landsmannschaft/",
   },
   {
@@ -3602,6 +3826,7 @@ export const firmen: Firma[] = [
     beschreibung: "Schützengesellschat Aich e.V.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schuetzengesellschat-aich-e-v/",
   },
   {
@@ -3618,6 +3843,7 @@ export const firmen: Firma[] = [
     beschreibung: "Auch außerhalb des Stadtgebiets von Moosburg finden sich wunderbare Spielplätze. Pfrombach: Kinderspielplatz St. Magaretenstraße Kinderspielplatz Bergstraße Aich: Kinderspielplatz Moosstraße Thonstetten: Kindespielplatz Thonstetten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kinderspielplaetze-ausserhalb-des-stadtgebiets/",
   },
   {
@@ -3634,6 +3860,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moosburg bietet eine Vielzahl von attraktiven Kinderspielplätzen innerhalb des Stadtgebiets: – Böhmerwaldstraße – Gabelberger / Jahnstraße – Leipziger Straße – Sudetenlandstraße – Hallertauerstraße – Mainburgerstraße – Alte Thalbacher Straße – Amperwehrstraße – Am Försterweg – Feldkirchnerau – Neptunstraße – Westerberg – Kapellenacker – An der Mühle – Kanalstraße – Am Mühlbachbogen – Burgermühlstraße – Meisenstraße – Ginsterstraße – Ligusterstraße – Saliterstraße – Zehentstadel",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kinderspielplaetze/",
   },
   {
@@ -3650,6 +3877,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Karate Verein in Moosburg ist seit über 40 Jahren fester Bestandteil in der Sportgemeinschaft Moosburg (SGM) und einer der ältesten Vereine im Deutschen Karate Verband (DKV) sowie zertifiziertes Mitglied im Bayerischen Karate Bund (BKB). Wir bieten mit vielen sehr gut ausgebildeten Trainern Einsteigerkurse ab 4 Jahren und ermöglichen ein ausgewogenes, abwechslungsreiches Ganzkörpertraining bis ins hohe Alter.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sportgemeinschaft-moosburg-e-v-abteilung-karate/",
   },
   {
@@ -3666,6 +3894,7 @@ export const firmen: Firma[] = [
     beschreibung: "k.A. andreas.ehrmaier@schwimmverein.eu https://schwimmverein.eu/ Freizeit & Kultur, Sport, Vereine & Kulturelles Sportgemeinschaft Moosburg e.V. – Abteilung Schwimmen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sportgemeinschaft-moosburg-e-v-abteilung-schwimmen/",
   },
   {
@@ -3682,6 +3911,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 08:00 - 12:00 Dienstag 08:00 - 12:00 Mittwoch 08:00 - 12:00 Donnerstag 15:00 - 17:45 Freitag 08:00 - 12:00 Freizeit & Kultur, Sport, Vereine & Kulturelles Mit 10 Abteilungen bietet die Sportgemeinschaft Moosburg ein reichhaltiges und abwechslungsreiches Programm für jeden Sportinteressierten. Bei einer Auswahl von Kampfsport über viele Ballsportarten bis hin zum Yoga ist für jeden etwas dabei. Das Alter spielt keine Rolle. Schon ab 2 Jahren bieten wir für alle Altersstufen Kurse an, nach oben sind keine Grenzen gesetzt. Vereinsmitglieder können das gesamte Sportangebot nutzen, welches auf der Homepage http://www.sgm-moosburg.de zu finden ist. Bei Fragen wenden sie sich gerne an info@sgm-moosburg.de .",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sportgemeinschaft-moosburg-von-1862-e-v/",
   },
   {
@@ -3698,6 +3928,7 @@ export const firmen: Firma[] = [
     beschreibung: "Stadtkapelle Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stadtkapelle-moosburg/",
   },
   {
@@ -3714,6 +3945,7 @@ export const firmen: Firma[] = [
     beschreibung: "Sudetendeutsche Landsmannschaft",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sudetendeutsche-landsmannschaft/",
   },
   {
@@ -3730,6 +3962,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind der Tennisclub in Moosburg. Etwa 500 Mitglieder gehen auf neun Freiluftplätzen und zwei Hallenplätzen ihrem Sport nach. Tennis gespielt wird in Moosburg seit 1954. Seit 1989 ist der TC Moosburg e.V. ein eigenständiger Verein.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tc-moosburg/",
   },
   {
@@ -3746,6 +3979,7 @@ export const firmen: Firma[] = [
     beschreibung: "Alles rund um Münchens große Liebe in Moosburg – einmal Löwe, immer Löwe!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tsv-1860-fanclub-moosburg/",
   },
   {
@@ -3762,6 +3996,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der TSV Moosburg bietet seit 1950 ein breites Programm an sportlicher Vielfalt an: Egal ob Fussball, Jugendtanz, Nordic Walking oder Frauengymnastik – hier ist garantiert für jeden etwas dabei! Alle weiteren Informationen finden Sie auf unserer Homepage.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tsv-moosburg-neustadt-e-v/",
   },
   {
@@ -3778,6 +4013,7 @@ export const firmen: Firma[] = [
     beschreibung: "BESSER LEBEN Mit diesem Thema befassen wir uns seit über 10 Jahren bei VITAGO und helfen Menschen dabei, sich regelmäßig, richtig zu bewegen und erarbeiten alltagstaugliche Erholungsstrategien für ein “besser leben”!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/vitago/",
   },
   {
@@ -3794,6 +4030,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung Freizeit & Kultur, Vereine & Kulturelles, Weitere Die Vereinigung der Hodschager ist eine Heimatortsgemeinschaft der früheren donauschwäbischen Kreisgemeinde Hodschag (heute Serbien). Wir sehen als Pflicht die Donauschwäbische Kultur und Brauchtum weiter zu führen. Besonders Stolz sind wir auf das eigene Hodschager Heimatmuseum in der Neustadt.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/vereinigung-der-hodschager-e-v-moosburg/",
   },
   {
@@ -3810,6 +4047,7 @@ export const firmen: Firma[] = [
     beschreibung: "- yogagaudi@gmail.com http://www.yoga-gaudi.jimdosite.com Öffnungszeiten Mittwoch 18:30 - 19:30 Freizeit & Kultur, Kinder & Jugend, Sportangebote Verschiedene Yogakurse für Anfänger und Fortgeschrittene in Moosburg a.d. Isar. Die Kurse werden auch online angeboten. Einmal im Monat ist auch am Sonntag von 9:30-10:30 Uhr geöffnet.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/yoga-gaudi/",
   },
   {
@@ -3826,6 +4064,7 @@ export const firmen: Firma[] = [
     beschreibung: "Jedes Jahr in der ersten Sommerferienwoche verbringen wir DIE SCHÖNSTE WOCHE IM JAHR in unseren Zelten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zeltlager-moosburg/",
   },
   {
@@ -3842,6 +4081,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Zitherclub Moosburg wurde 1924 gegründet und nimmt seither einen festen Platz in der Moosburger Musikszene ein. Konzerte, musikalische Umrahmungen von Gottesdiensten, Begleitmusik auf Weihnachts- und Betriebsfeiern, sowie das Mitwirken beim Moosburger Altstadtfest im Amtsgerichtsgarten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zitherclub-moosburg/",
   },
   {
@@ -3858,6 +4098,7 @@ export const firmen: Firma[] = [
     beschreibung: "Was Tiere lieben finden Sie in unserer Fressnapf-Filiale Moosburg direkt gegenüber Kaufland. Große Auswahl und die freundliche, fachkundige Beratung überzeugen seit 2008 die Moosburger Tierfreunde. Wir freuen uns auf Ihren Besuch!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fressnapf-moosburg/",
   },
   {
@@ -3874,6 +4115,7 @@ export const firmen: Firma[] = [
     beschreibung: "k.A. k.A. 0151/52419997 lumi.flechtwerkstatt@gmail.com Social Media Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Samstag Nach Terminvereinbarung Kategorie(n) Dienstleister, Freizeit & Sport, Geschäfte, Handwerklich Mit Liebe zum Detail In liebevoller Handarbeit stelle ich genähte und geflochtene Hundehalsbänder, Leinen, Y-Geschirre, orthopädische Hundebetten, Dekokissen uvm. her. Auch für den Hundemenschen gibt es tolle Accessoires wie Gassitascherl und Leckerliebeutel.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lumi-flechtwerkstatt/",
   },
   {
@@ -3890,6 +4132,7 @@ export const firmen: Firma[] = [
     beschreibung: "Als Anlaufpunkt für werdende Eltern und junge Familien bieten wir Geburtsvorbereitung, Yoga in der Schwangerschaft, Betreuung der Schwangerschaft, Babypflegekurs, Rückbildungsgymnastik, Babytreff/offene Sprechstunde, Babymassage, PEKiP, Wochenbettbetreuung, Still- und Ernährungsberatung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hebammen-praxis-altenbeck/",
   },
   {
@@ -3906,6 +4149,7 @@ export const firmen: Firma[] = [
     beschreibung: "Tradition hat in Moosburg einen Namen und beim Fetzer seit 100 Jahren, in der vierten Generation. Wir leben die ganzheitliche Augenoptik und die Augengesundheit steht an oberster Priorität! Aus diesem Grunde behandeln wir auch die trockenen Augen bereits seit 15 Jahren. Für Nachtlinsen, auch um die Kurzsichtigkeit aufzuhalten, sind wir zertifiziert. Ob exklusiv angefertigte Brillenfassungen, Trachtenschmuck oder Trauringe – wir nehmen uns Zeit für Ihre Wünsche! Wir arbeiten nach Möglichkeit auf Termin, denn wir wollen ja für SIE Zeit haben, auch ausserhalb der normalen Öffnungszeiten!",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/optik-schmuck-fetzer/",
   },
   {
@@ -3922,6 +4166,7 @@ export const firmen: Firma[] = [
     beschreibung: "Aktuelle Blumentrends, saisonale Pflanzen, Blumensträuße, Dekorationsideen und alles für den Garten. Wir bieten abwechslungsreiche und zeitgemäße Floristik in unserem Blumenladen. In unserer Gärtnerei finden Sie alles, was sie für ihr persönliches kleines Paradies benötigen.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/bauer-gaertnerei-blumenladen/",
   },
   {
@@ -3938,6 +4183,7 @@ export const firmen: Firma[] = [
     beschreibung: "italienische Mode – Accessoires & Candle Factory Duftkerzen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/casa-creativa-due/",
   },
   {
@@ -3954,6 +4200,7 @@ export const firmen: Firma[] = [
     beschreibung: "Trendsetter mit Tradition. Seit 1913 steht Deichmann für Mode und ein gutes Preis-Leistungs-Verhältnis. Hier bekommen Sie hochwertige Schuhe zum günstigen Preis. Europas größter Schuheinzelhändler bietet eine große Auswahl an Modellen und Marken für Damen, Herren, Kinder sowie im Sportbereich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/deichmann-se/",
   },
   {
@@ -3970,6 +4217,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Schneiderei und Boutique befindet sich in der Herrnstraße 10 in der Moosburger Innenstadt und wir bieten neben Maß- und Änderungsschneiderei u.a. auch Abenkleider zum Kauf an.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/efuli-boutique-schneiderei-textilreinigung/",
   },
   {
@@ -3986,6 +4234,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr freundliches und kompetentes Fernseh- und Elektrofachgeschäft in Moosburg",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/elektro-haider/",
   },
   {
@@ -4002,6 +4251,7 @@ export const firmen: Firma[] = [
     beschreibung: "Herzlich willkommen bei EURONICS Stampfl, Ihrem Technikexperten aus Moosburg. In unserem Fachgeschäft erhalten Sie kompetente Beratung und umfangreiche Serviceleistungen. Für Fragen stehen wir Ihnen gerne zur Verfügung – besuchen Sie uns doch direkt im Markt, rufen Sie uns an oder schreiben Sie uns eine E-Mail.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/euronics-stampfl/",
   },
   {
@@ -4018,6 +4268,7 @@ export const firmen: Firma[] = [
     beschreibung: "Gönn´ dir was Schönes! Unter diesem Motto bietet die Fussl Modestraße topaktuelle Mode, Trends und Accessoires für Damen, Herren und Kinder. Die angesagten Modetrends werden in tragbare Kollektionen mit hohem Qualitätsanspruch umgesetzt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fussl-modestrasse/",
   },
   {
@@ -4034,6 +4285,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir nehmen uns Zeit für einen guten Schuh – Gerlspeck das Schuhhaus für die ganze Familie Video",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schuhhaus-gerlspeck/",
   },
   {
@@ -4050,6 +4302,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein inhabergeführter Familienbetrieb im Bereich der Hörgeräteakustik. Zu unserem Leistungsspektrum gehören modernste Hörsysteme, maßgefertigter Gehörschutz, Hilfe bei Tinnitus, Zubehör für hörgeschädigte Menschen und die Kinderversorgung (Pädakustik).",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hoergeraete-eibl/",
   },
   {
@@ -4066,6 +4319,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach der exakten Bestimmung ihrer Sehstärke folgt die Beratung der Brillengläser,die wir vom deutschen Hersteller R+H beziehen. Uhren- und Schmuckverkauf mit Service.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lida-sehen-und-aussehen/",
   },
   {
@@ -4082,6 +4336,7 @@ export const firmen: Firma[] = [
     beschreibung: "Immer am Puls der Zeit und ausgestattet mit modernster Technik, so garantiert MATT optik in Moosburg bestes Sehen zum besten Preis. Das Angebot erstreckt sich von der modischen, aber preisgünstigen, Fassung bis hin zu aktuellen Modellen internationaler Designer, sowie Kinder- und Sonnenbrillen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/matt-optik/",
   },
   {
@@ -4098,6 +4353,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mode für Damen von sportlich, leger über den Business-Look bis hin zu elegant und festlich. Wir führen bei Damen von Größe 32 bis 50 und bei den Herren bis Größe 60. 32 und 4XL von modern wear bis zu unserer Premium-Abteilung mit Marc Cain, Riani, Cambio, Luisa Cerano und vielen anderen. Besuchen Sie auch unser Herrengeschäft in der Herrnstraße 6.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/mode-neu/",
   },
   {
@@ -4114,6 +4370,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mode für Herren von sportlich, leger über den Business-Look bis hin zu elegant und festlich. Wir führen Herrenmode bis Größe 60. 32 und 4XL von modern wear bis zu unserer Premium-Abteilung mit Marc Cain, Riani, Cambio, Luisa Cerano und vielen anderen. Besuchen Sie auch unser Damengeschäft in der Herrnstraße 1 -3.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/mode-neu-herrengeschaeft/",
   },
   {
@@ -4130,6 +4387,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moosburger Badehimmel immer das passende Geschenk oder für das eigene Wohlfühlerlebnis. Wir freuen uns auf Ihren Besuch.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-badehimmel/",
   },
   {
@@ -4146,6 +4404,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moosburger Hörakustik – Ihr Hörexperte vor Ort Bei einer fachmännischen individuellen Beratung stellen wir Ihr persönliches Hörerlebnis wieder her. Bei uns können Sie kostenlos einen Hörtest machen und Hörsysteme in Ihrer gewohnten Umgebung testen. Wir freuen uns auf Sie.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-hoerakustik-gmbh-2/",
   },
   {
@@ -4162,6 +4421,7 @@ export const firmen: Firma[] = [
     beschreibung: "NKD bietet vielfältige sowie saisonale Mode-Highlights und Accessoires für Damen, Herren und Kinder. Dekorative Heimtextilien, schöne Deko-Artikel, verschiedene Geschenkideen und Praktisches für das Zuhause runden das Angebot ab. Dabei garantiert NKD stets: beste Qualität zu günstigen Preisen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/nkd-deutschland-gmbh/",
   },
   {
@@ -4178,6 +4438,7 @@ export const firmen: Firma[] = [
     beschreibung: "Für unsere Kunden tun wir alles, was der Qualität des Produktangebotes zugute kommt. Das Lebensmittel-Sortiment bietet Qualitätsartikel zu super Preisen. Ergänzt wird es durch ein wöchentlich wechselndes Angebot aus dem Nonfood-Bereich mit Trendartikeln für Haushalt, Familie und Freizeit.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/norma-lebensmittelfilialbetrieb-stiftung-co-kg/",
   },
   {
@@ -4194,6 +4455,7 @@ export const firmen: Firma[] = [
     beschreibung: "Immer frisch und gute Preise.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/obst-gemuese-paradies-kul/",
   },
   {
@@ -4210,6 +4472,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr Profi für Optik in Moosburg.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/optik-oehm/",
   },
   {
@@ -4226,6 +4489,7 @@ export const firmen: Firma[] = [
     beschreibung: "HELFEN IST UNSER HANDWERK Wir bieten ein breites Sortiment u.a. Bandagen, Prothesen, Strümpfe, Rollstühle, Alten- und Krankenpflege.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/orthopaedietechnik-plochmann-gmbh/",
   },
   {
@@ -4242,6 +4506,7 @@ export const firmen: Firma[] = [
     beschreibung: "Dein REWE Einkauf bietet dir frische Backwaren, saisonale Vielfalt deiner Region, internationale Spezialitäten und ein großes Sortiment an Eigenmarken und Markenartikeln. Mit bestem Preis-Leistungs-Verhältnis und cleveren Service-Ideen, wie z.B. an der Kasse Bargeld abheben, Geschenkkarten u.v.m.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rewe-markt/",
   },
   {
@@ -4258,6 +4523,7 @@ export const firmen: Firma[] = [
     beschreibung: "Im Herzen Moosburgs ist die Firma Rosa Bengl, die 1952 gegründet wurde, vertreten: Am Stadtplatz 13 bieten wir unseren Kunden neben Zeitungen und Tabakwaren auch Geschenkartikel und Spielwaren sowie Postkarten, zum Teil mit Moosburger Motiven.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schreibwaren-bengl/",
   },
   {
@@ -4274,6 +4540,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kartoffeln aus eigener Herstellung direkt aus Moosburg!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schweigerhof-moosburg/",
   },
   {
@@ -4290,6 +4557,7 @@ export const firmen: Firma[] = [
     beschreibung: "Tabak Kiermaier ist Ihre Adresse für Tabakgenuss in Moosburg seit 1933. Unser Familienunternehmen steht für Tradition, Menschlichkeit und persönliche Beratung. Bei uns finden Sie “Alles für den Raucher”. Seit 2017 tragen wir den Namen Davidoff Depot Partner. Eine weitere Passion ist unsere Lotto-Annahmenstelle. Hier ist wahrlich Ihr “Spiel in guten Händen”. Abgerundet wird das Angebot mit einem DHL-Paketshop mit Postdienstleistungen. In unserer Zweigstelle im Kaufland Moosburg bieten wir Ihnen zusätzlich Presseartikel und eine Post-Partnerfiliale. Diese ist geöffnet Mo-Sa 8-20 Uhr",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tabak-kiermaier-gmbh/",
   },
   {
@@ -4306,6 +4574,7 @@ export const firmen: Firma[] = [
     beschreibung: "Takko Fashion bietet lässige Casuals, praktische Basics und angesagte Trendstücke. In unseren vielseitigen Kollektionen findet die gesamte Familie Trends zum Wohlfühlen. Dabei runden ein überzeugendes Preis-Leistungs-Verhältnis und verlässlich gute Qualität das besondere Shopping-Vergnügen ab.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/takko-fashion/",
   },
   {
@@ -4322,6 +4591,7 @@ export const firmen: Firma[] = [
     beschreibung: "Fachgeschäft für Damendessous, Damen- und Herren-Unterwäsche sowie Nachtwäsche.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/waeschehaus-in-den-arkaden/",
   },
   {
@@ -4338,6 +4608,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir als Drogeriemarkt tun alles, damit Sie sich in Ihrem dm-Markt in Moosburg wohlfühlen. Sie finden bei uns alles rund um das Thema Drogerie: Gesichts- und Körperpflege, Haushaltsartikel, Kosmetik und Düfte, Fotoartikel, Gesundheit und Ernährung, Hygieneartikel, Babyprodukte und vieles mehr.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dm-drogerie-markt/",
   },
   {
@@ -4354,6 +4625,7 @@ export const firmen: Firma[] = [
     beschreibung: "mister*lady bietet Fashion für alle, die sich gerne modisch individuell kleiden. Mit eigenen Kollektionen wird dem Kunden ein abwechslungsreiches Modeangebot zu einem attraktiven Preis geboten. Die Kollektionen bestehen aus den mister*lady Marken BLIND DATE und MUCH MORE.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/misterlady/",
   },
   {
@@ -4370,6 +4642,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wasserwacht – Mit Sicherheit am Wasser. Aus Spaß am Sport und aus Freude am Helfen! Besetzung der Wachstation am Aquapark und im Freibad Moosburg (bei schönem Wetter): Samstag 13:00 – 19:00 Uhr Sonn- u. Feiertags 10:00 Uhr – 19:00 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/brk-wasserwacht-moosburg/",
   },
   {
@@ -4386,6 +4659,7 @@ export const firmen: Firma[] = [
     beschreibung: "Brauchtumsverein mit Nikolaus/Krampusse und Rauhnachtgestalten/ Perchten aus Moosburg. Die Rauhnachtgeister e.V. sind der offizielle Verein der Moosburger Moordeifen. Hausbesuche Nikolaus & Co, Auftritte auf Christkindlmärkte, Veranstaltungen zur Rauhnachtszeit, Veranstaltungen mit Hexen & Co",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-rauhnachtgeister-e-v/",
   },
   {
@@ -4402,6 +4676,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ziele des Vereins: Dokumentation des Kriegsgefangenenlagers Stalag VII A und seiner Folge, Gedenken in Veranstaltungen und Ausstellungen, Recherchen und Publikationen, interkulturelle Begegnung in Besucher-Führungen, Erhalt denkmalgeschützter Baracken und deren Nutzung für ein Info- und Dokuzentrum.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stalag-moosburg-e-v/",
   },
   {
@@ -4418,6 +4693,7 @@ export const firmen: Firma[] = [
     beschreibung: "Allgemeinarzt Dr. Gruber-Candel",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allgemeinarzt-dr-gruber-candel/",
   },
   {
@@ -4434,6 +4710,7 @@ export const firmen: Firma[] = [
     beschreibung: "Allgemeinarzt Dr. Klose",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allgemeinarzt-dr-klose/",
   },
   {
@@ -4450,6 +4727,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praktische Ärztin Dr. Kmak-Steuerwald",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praktische-aerztin-dr-kmak-steuerwald/",
   },
   {
@@ -4466,6 +4744,7 @@ export const firmen: Firma[] = [
     beschreibung: "Facharzt für Innere- und Allgemeinmedizin, Ernährungsmedizin",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allgemeinarzt-dr-spatz/",
   },
   {
@@ -4482,6 +4761,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praktischer Arzt – Notfallmedizin – Reisemedizin – staatlich zugelassene Gelbfieberimpfstelle Termine nach Vereinbarung",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allgemeinarzt-dr-med-thomas-geiner/",
   },
   {
@@ -4498,6 +4778,7 @@ export const firmen: Firma[] = [
     beschreibung: "Facharztpraxis für Augenheilkunde, moderne Diagnostik, konservative und operative Therapie von Augenerkrankungen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dr-a-dichtl-dr-j-muenich/",
   },
   {
@@ -4514,6 +4795,7 @@ export const firmen: Firma[] = [
     beschreibung: "DenkArt-Mit-Wirkung bietet Coaching und Beratung für Unternehmen und Privatpersonen. Wenn es mal schwieriger wird, oder das Leben gerade einen Gang höher schaltet, dann sind wir für Sie da. Wir arbeiten systemisch und mit viel Humor an pragmatischen Lösungen im Sinne Ihrer Ziele.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/denkart-mit-wirkung/",
   },
   {
@@ -4530,6 +4812,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Wellness fängt bei den Füßen an. Gönnen Sie sich eine entspannende Fußpflege, eine wohltuende Fußreflexzonenmassage, Maniküre oder eine individuelle Kosmetikbehandlung mit Produkten von Dr. Spiller. Langjährige Berufserfahrung, kompetentes Fachpersonal, persönliche Atmosphäre zeichnen uns aus.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fachfusspflege-ulrike-vogl-fuehrer/",
   },
   {
@@ -4546,6 +4829,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind eine überörtliche Gemeinschaftspraxis mit Freising, Marienplatz 4, Hr.Dr. Neuhofer, Fr. Dr. Thiel und weiteren angestellten Fachärzten. Fr. Dr. Hamadeh betreut den Moosburger Standort.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/frauenaerztin-dr-med-linda-hamadeh/",
   },
   {
@@ -4562,6 +4846,7 @@ export const firmen: Firma[] = [
     beschreibung: "Fußpflege Pro Fuss – Barbara Stier",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fusspflege-pro-fuss-barbara-stier/",
   },
   {
@@ -4578,6 +4863,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Körper sind komplexe Systeme, für deren gutes Bestehen ein ganzheitlicher Ansatz erforderlich ist. Deshalb möchte ich, z.B. durch Heilmassagen, kinesiologische Sitzungen, phytotherapeutische Beratungen, Hypnosen u.a. Körper, Geist und Seele in Harmonie bringen. Termine nach Vereinbarung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gabriele-luechau/",
   },
   {
@@ -4594,6 +4880,7 @@ export const firmen: Firma[] = [
     beschreibung: "Gynäkologin Dr. Hartmann",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gynaekologin-dr-hartmann/",
   },
   {
@@ -4610,6 +4897,7 @@ export const firmen: Firma[] = [
     beschreibung: "HNO Dr. Palaras",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hno-dr-palaras/",
   },
   {
@@ -4626,6 +4914,7 @@ export const firmen: Firma[] = [
     beschreibung: "Allgemeinarzt Dr. Pongratz",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/allgemeinarzt-dr-pongratz/",
   },
   {
@@ -4642,6 +4931,7 @@ export const firmen: Firma[] = [
     beschreibung: "Heilpraktikerin – Magret Nagl",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/nagl-magret-heilpraktikerin/",
   },
   {
@@ -4658,6 +4948,7 @@ export const firmen: Firma[] = [
     beschreibung: "Heilpraxis für Homöopathie Heilpraktikerin S. Göschl",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpraxis-fuer-homoeopathie-heilpraktikerin-s-goeschl/",
   },
   {
@@ -4674,6 +4965,7 @@ export const firmen: Firma[] = [
     beschreibung: "hausärztlich-internistische Praxis",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dr-med-georg-wagner/",
   },
   {
@@ -4690,6 +4982,7 @@ export const firmen: Firma[] = [
     beschreibung: "IAZ Internisten am Zehentstadel, Dres. Gerhard Mehltretter & Christian Marquardt. Gemeinsam mit Hr. Dr. Josef Höpfl und Fr. Dr. Ewa Lison für Sie tätig mit den Schwerpunkten Kardiologie / Angiologie und Gastroenterologie. Umfassende internistische Versorgung: wohnortnah – kompetent – menschlich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/internisten-am-zehetstadel-gemeinschaftspraxis/",
   },
   {
@@ -4706,6 +4999,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kieferorthopädie Moosburg Dr. Amann & Dr. Burg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kieferorthopaedie-moosburg-dr-amann-dr-burg/",
   },
   {
@@ -4722,6 +5016,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Beauty & Wellness, Dienstleister, Gesundheit, Gesundheit & Beauty Es ist mir und meinem Team eine Herzensangelegenheit jeden Menschen zu einer gepflegten, attraktiven und vitalen Haut zu verhelfen und zu erhalten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kosmetikinstitut-moosburg/",
   },
   {
@@ -4738,6 +5033,7 @@ export const firmen: Firma[] = [
     beschreibung: "Krankengymnastik Matthias Huber",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/krankengymnastik-huber-matthias/",
   },
   {
@@ -4754,6 +5050,7 @@ export const firmen: Firma[] = [
     beschreibung: "Massage-Praxis Pongratz",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/peter-pongratz-massage-praxis/",
   },
   {
@@ -4770,6 +5067,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich kümmere mich gerne um Ihre Gesundheit!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eva-maier/",
   },
   {
@@ -4786,6 +5084,7 @@ export const firmen: Firma[] = [
     beschreibung: "Herzlich willkommen auf Ihrem Weg zu mehr Wohlbefinden, innerer Harmonie und Lebensfreude! Meine Schwerpunkte: BodyTalk-System, Darmsanierung, Colon-Hydro-Therapie, Entgiftung und Entschlackung, Kinesiologie und Bachblütentherapie. Für kleine Gruppen biete ich Seminare zu Säure-Basen-Balance an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpraktikerin-klara-lehmann/",
   },
   {
@@ -4802,6 +5101,7 @@ export const firmen: Firma[] = [
     beschreibung: "08761 / 7690025 (auch WhatsApp) info@cso-parstorfer.de https://www.cso-parstorfer.de Montag 17:00 - 22:00 Mittwoch 09:00 - 12:00, 17:30 - 22:00 Donnerstag 09:00 - 12:00 Gesundheit, Physiotherapie & Osteopathie Osteopathie – Kinderosteopathie – Physiotherapie",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturheilpraxis-parstorfer/",
   },
   {
@@ -4818,6 +5118,7 @@ export const firmen: Firma[] = [
     beschreibung: "Gesundheit ist unser höchstes Gut, lassen Sie uns gemeinsam daran arbeiten! Akupunktur, Homöopathie sind hierbei gute Ansätze! Termine nach Vereinbarung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturheilpraxis-petra-prechtl/",
   },
   {
@@ -4834,6 +5135,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praxis für Gesundheitswillige. Termine auch nach Vereinbarung möglich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpraktikerin-regina-nerb/",
   },
   {
@@ -4850,6 +5152,7 @@ export const firmen: Firma[] = [
     beschreibung: "In meiner Praxis stehe ich Ihnen für alle Fragen und Probleme zum Thema Gesundheit und Gesunderhaltung zur Verfügung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturheilpraxis-richter/",
   },
   {
@@ -4866,6 +5169,7 @@ export const firmen: Firma[] = [
     beschreibung: "Osteopathie Andreas Klessinger",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/osteopathie-andreas-klessinger/",
   },
   {
@@ -4882,6 +5186,7 @@ export const firmen: Firma[] = [
     beschreibung: "Osteopathie: Osteopathie speziell für Babys und Kinder, traditionelle und biodynamische Osteopahtie Physiotherapie : Krankengymnastik, manuelle. Therapie. manuelle Lymphdrainage, reflektorische Atemtherapie bei Erwachsenen, Massagen, Naturmoor",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/physiowerkstatt/",
   },
   {
@@ -4898,6 +5203,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Praxis ist zusätzlich zu den Büro-Öffnungszeiten folgendermaßen besetzt Kleintiersprechstunde Mo & Do 09-17.30 Uhr Di, Mi & Fr 08.30-17 Uhr Sa 09-15 Uhr Termine nach Vereinbarung 08761/3870 874 Tourzeiten Pferdepraxis Mo-Fr 08–17 Uhr Termine nach Vereinbarung unter 08761/3870 853",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pferde-und-kleintierpraxis-popa/",
   },
   {
@@ -4914,6 +5220,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praxis für Physiotherapie und manuelle Therapie",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/physio1-praxis-baumann/",
   },
   {
@@ -4930,6 +5237,7 @@ export const firmen: Firma[] = [
     beschreibung: "In unserer hausärztlich – internistischen Gemeinschaftspraxis in der Georg Schweiger Str. 7 in Moosburg bieten wir Ihnen eine umfassende medizinische Versorgung für die ganze Familie und für alle Generationen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-dr-englert-mathes-und-dr-mathes/",
   },
   {
@@ -4946,6 +5254,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praxis Vitafit",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-vitafit/",
   },
   {
@@ -4962,6 +5271,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praxis balanceakt – Evi Reinelt",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-balanceakt-evi-reinelt/",
   },
   {
@@ -4978,6 +5288,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unterstützung für Jung und Alt, in Kita, Schule, Beruf und Alltag",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-fuer-ergotherapie-bernhard-thiel/",
   },
   {
@@ -4994,6 +5305,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir bieten Ihnen ein ganzheitlich naturheilkundliches Therapiekonzept in den Bereichen Stress, Darm und Schmerz.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-fuer-komplementaermedizin/",
   },
   {
@@ -5010,6 +5322,7 @@ export const firmen: Firma[] = [
     beschreibung: "Praxis für Physiotherapie Romana Binder und Isabell Waldmann",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/praxis-fuer-physiotherapie-romana-binder-und-isabell-waldmann/",
   },
   {
@@ -5026,6 +5339,7 @@ export const firmen: Firma[] = [
     beschreibung: "Psychofitness-Praxis Therapie und Coaching Ludwig",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/psychofitness-praxis-therapie-und-coaching-ludwig/",
   },
   {
@@ -5042,6 +5356,7 @@ export const firmen: Firma[] = [
     beschreibung: "Psychotherapie, Kassenpatienten und Privat, Verhaltenstherapie.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/psychotherapie-hans-kaucher/",
   },
   {
@@ -5058,6 +5373,7 @@ export const firmen: Firma[] = [
     beschreibung: "Salus Praxis – Gesundheitsberatung und Massagen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/salus-praxis-claudia-schmidbaur/",
   },
   {
@@ -5074,6 +5390,7 @@ export const firmen: Firma[] = [
     beschreibung: "Energetische Lebensberatung, Lebenshilfe & Coaching in Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sylvia-rudeck-seelenmanufaktur/",
   },
   {
@@ -5090,6 +5407,7 @@ export const firmen: Firma[] = [
     beschreibung: "Selbsthilfe Gruppe für MS-Betroffene und andere neurologische Krankheiten. Gruppenleitung Frau Hölzl und Frau Fischer Jeden 3. Montag im Monat von 10.00 -13.00 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/selbsthilfegruppe-fuer-ms-betroffene-gruppenleiter-frau-hoelzl-frau-fischer/",
   },
   {
@@ -5106,6 +5424,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kleintierpraxis mit Terminsprechstunde",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tierarztpraxis-dr-sylvia-lahr/",
   },
   {
@@ -5122,6 +5441,7 @@ export const firmen: Firma[] = [
     beschreibung: "Dr. Tobias Olbricht und Dr. Alexander Oehme – Fachärzte für Urologie. Wir bieten Ihnen das gesamte Spektrum der Urologie.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/urologische-gemeinschaftspraxis-moosburg-dres-a-oehme-t-olbricht/",
   },
   {
@@ -5138,6 +5458,7 @@ export const firmen: Firma[] = [
     beschreibung: "Akut kranke Kinder: NUR nach Terminvereinbarung jeden Tag von 11 bis 12 Uhr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wichtel-und-freunde-praxis-fuer-kinder-und-jugendliche/",
   },
   {
@@ -5154,6 +5475,7 @@ export const firmen: Firma[] = [
     beschreibung: "Zahnarzt Dr. Garreis",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zahnarzt-dr-garreis/",
   },
   {
@@ -5170,6 +5492,7 @@ export const firmen: Firma[] = [
     beschreibung: "Oralchirurg Dr. Wolfgang Ferstl",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dr-ferstl/",
   },
   {
@@ -5186,6 +5509,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir bieten Ihnen das ganze Spektrum der Zahnmedizin auf höchstem Niveau. Mit einer individuellen Beratung entwickeln wir gemeinsam mit Ihnen einen Behandlungsplan. Unsere Patienten begleiten wir ab dem ersten Milchzahn. Besondere Aufmerksamkeit widmen wir der Vorbeugung vor Karies und Parodontitis.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zahnarztpraxis-kastl-und-kollege/",
   },
   {
@@ -5202,6 +5526,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir gestalten den Weg zu Ihrer Zahngesundheit mit Ihnen zusammen transparent und verständlich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zahnarztpraxis-olaf-prinz/",
   },
   {
@@ -5218,6 +5543,7 @@ export const firmen: Firma[] = [
     beschreibung: "Zahnärztin Dr. Märkl-Killermann",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zahnaerztin-dr-maerkl-killermann/",
   },
   {
@@ -5234,6 +5560,7 @@ export const firmen: Firma[] = [
     beschreibung: "Krankengymnastik, med. Massage, Lymphdrainage, Brügger, Fango, Microkinesitheraphie",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/physiotherapie-weger-hempel/",
   },
   {
@@ -5250,6 +5577,7 @@ export const firmen: Firma[] = [
     beschreibung: "wellcome Freising – Sozialunternehmen für Familien",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wellcome-freising-sozialunternehmen-fuer-familien/",
   },
   {
@@ -5266,6 +5594,7 @@ export const firmen: Firma[] = [
     beschreibung: "Amazon",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/amazon/",
   },
   {
@@ -5282,6 +5611,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:30 - 18:00 07:30 - 18:00 07:30 - 18:00 07:30 - 18:00 07:30 - 16:00 Dienstleister, Handel, Werkstatt & Autoservice Gebrauchtwagen Händler & Volkswagen Vertrags-Werkstatt mit Unfallschadeninstandsetzung, Fahrzeuglackierungen und Autoglas Service",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/autohaus-ernst-kirschner-gmbh-co-kg/",
   },
   {
@@ -5298,6 +5628,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 Samstag 08:00 - 12:00 Der regionale Fachpartner für Privatkunden und Bauexperten: Mit einem breiten Sortiment an Baustoffen, Fenstern, Türen, Toren, Böden, Fliesen, Garten sowie Baugeräte und Werkzeuge für jeden Bedarf. Von Wohngesundheit, Handwerkervermittlung bis zu Fördermitteln.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/baywa-baustoffe-moosburg/",
   },
   {
@@ -5314,6 +5645,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 12:00 Wir sind ein Unternehmen das den An- und Verkauf von Nutzfahrzeugen und Baumaschinen betreibt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eka-trucks-gmbh/",
   },
   {
@@ -5330,6 +5662,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 09:00 - 18:00 Dienstleister, Handel, Kommunikation & Beratung Seit 2009 sind wir als Produzent von LED-Leuchten und -Lampen tätig. Mit steigender Präsenz im Elektro-Fachgroßhandel und dem Direktvertrieb zur Groß-Industrie (bei Entwicklung neuer Produkte) bieten wir projektbezogene Lichtplanung und Wirtschaftlichkeitsberechnungen nach DN12464 an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/environlight-gmbh/",
   },
   {
@@ -5346,6 +5679,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Herzlich Willkommen bei HABEMED Medizinprodukte! Schön, dass Sie den virtuellen Weg zu mir gefunden haben. HABEMED hat sich auf zwei Bereiche spezialisiert. Ästhetische Dermatologie Hyaluronsäure Revanesse PRP, autologe Zellregeneration Ophthalmologie Intraokularlinsen Viskoelasthika BSS Augenspüllösungen Instrumente Weitere Informationen jederzeit gerne auch persönlich. Ich freue mich auf Ihren Anruf.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/habemed-medizinprodukte-hans-berghofer/",
   },
   {
@@ -5362,6 +5696,7 @@ export const firmen: Firma[] = [
     beschreibung: "+4987613871291 Hoefl.sonnenschutz@gmail.com https://hoefl-sonnenschutz.jimdosite.... Social Media 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Handel, Handwerk Höfl Sonnenschutz bietet hochwertige Markisen, Rollläden, Insektenschutz, Wintergärten und vieles mehr. Wir sorgen für Komfort, Schutz und stilvolle Lösungen rund ums Haus – individuell, zuverlässig und professionell.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hoefl-sonnenschutz-markisen-insektenschutz-rolllaeden-plissees-wintergaerten/",
   },
   {
@@ -5378,6 +5713,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Samstag 08:30 - 12:00 Schirmbeck – Großhandel für Kfz-Ersatzteile, Lacke und Autoglas Schirmbeck bietet Produkte rund ums Auto. Als Großhandel versorgen wir KfZ-Werkstätten und andere Firmenkunden mit hochwertigen Ersatzteilen sowie Lacken und Produkten aus dem Bereich Autoglas.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/johann-schirmbeck-gmbh/",
   },
   {
@@ -5394,6 +5730,7 @@ export const firmen: Firma[] = [
     beschreibung: "Als mittelständisches Unternehmen beweisen wir seit 1888 unsere Leidenschaft an fünf Standorten in Bayern. Egal, ob sie Bauprofi oder Privatkunde sind: Bei uns finden sie alles für Ihr persönliches Bauvorhaben. Unser umfangreiches und hochwertiges Sortiment umfasst: – Roh-, Tief-, Hochbau – Dach & Fassade – Fenster, Türen, Tore – Bodenbeläge & Fliesen – Garten- & Landschaftsbau – Werkzeug & Zubehör – Beratung & Service Lassen Sie sich in unseren Innen- und Außenausstellungen inspirieren!",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/josef-schwarz-sohn-gmbh-co-kg/",
   },
   {
@@ -5410,6 +5747,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kompetent und mit Leidenschaft berate ich Sie zu Natursteinarbeiten wie Treppen- u. Terrassenbeläge, Eingangsbereiche, Fensterbänke oder Fliesenarbeiten. Ich bin Steinmetz- und Steinbildhauermeister mit über 15 Jahren Berufserfahrung. Lassen Sie sich über der Vielfalt von Naturstein beeindrucken.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/natursteine-steinmetz-mueller/",
   },
   {
@@ -5426,6 +5764,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 14:30 Samstag 08:00 - 13:00 Über uns Edle Münzen für Sammler, geprüft und zu 100% Originale. Ich bin seit 2016 gewerblicher Münzhändler und überwiegend im Online-Handel tätig. Auf vielen großen Online-Plattformen verkaufe ich Münzen und Edelmetalle unter den Händlernamen Bayerntaler mit 100% positiven Bewertungen. Sollten Sie",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/muenzhandlung-bayerntaler-moosburg/",
   },
   {
@@ -5442,6 +5781,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ganztägig Ganztägig Ganztägig Ganztägig Ganztägig Samstag Ganztägig Sonntag Ganztägig Handel, Handwerk #Deko #Raysin #Lasern #Gravieren #allesmit❤️",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/na-schee-verbastelt/",
   },
   {
@@ -5458,6 +5798,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 16:30 07:00 - 16:30 07:00 - 16:30 07:00 - 16:30 07:00 - 13:00 NAU Tank – Energie fürs Leben Hochwertige und innovative Produkte im Umwelt- und Energiebereich zeichnen das Unternehmen aus – der Name NAU ist seit Jahrzehnten für seine hervorragenden Produkte im Bereich Lagerbehälter bekannt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/nau-ts-gmbh-co-kg/",
   },
   {
@@ -5474,6 +5815,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 Als Großhandel für Gastronomie-, Industriebedarf und Serviceverpackungen, sowie diverse andere Artikel, bieten wir Ihnen ein umfangreiches Sortiment verschiedenster Produkte für den täglichen Bedarf. Große Produktvielfalt zu günstigen Konditionen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sws-schueler-gmbh/",
   },
   {
@@ -5490,6 +5832,7 @@ export const firmen: Firma[] = [
     beschreibung: "Zwei Frauen eine Leidenschaft! Bei Andrea und Sandra finden Sie schnell Ihren neuen Lieblingswein. Über 170 Weine (Italien, Deutschland, Österreich) lassen das Genießerherz höher schlagen. Online wird gestöbert und wir beraten Sie gerne telefonisch. Für jeden Anlass, jeden Geldbeutel und jeden Geschmack. Ergänzend gibts Olivenöl und Acetis von BIO-Kleinbauern sowie Spirituosen aus Italien. WEINLIEBE ist BIO-zertifiziert! In Moosburg liefern wir nach Absprache frei Haus. Wir haben kein Ladengeschäft.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/weinliebe-moosburg-lauterbach-protzner-gbr/",
   },
   {
@@ -5506,6 +5849,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bei mir finden Sie von mir handgefertigte frostfeste Keramik für Haus und Garten. Meine Keramik ist frostfest, kann somit gerade in den kalten Winterwochen draußen bleiben um triste Gartenecken zu beleben und zu verschönern. Oder Sie schaffen eine kleine Oase auf Terrasse und Balkon. Teller, Schalen sowie alle Waren für den Haushalt sind spülmaschinenfest. Entdecken Sie in meiner Galerie auf der Homepage stilvolle und handgefertigte Unikate. Gerne fertige ich auch auf Bestellung.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/3k-keramikkunstkragt-elke-kragt/",
   },
   {
@@ -5522,6 +5866,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 08:00 - 18:00 Als Spezialist für Ihre Bausanierung bieten wir Ihnen folgende Leistungen an: Badsanierungen, Küchensanierung, Treppensanierungen Maurerarbeiten, Verputzarbeiten, Estricharbeiten Aussenanlagenbau, Natursteinarbeiten Sanierungen von Wasserschäden und Drainagen Kellersanierung,Trockenlegungen Garagen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bausanierungen-meier/",
   },
   {
@@ -5538,6 +5883,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:15 - 11:45, 13:00 - 16:00 08:15 - 11:45, 13:00 - 16:00 08:15 - 11:45, 13:00 - 16:00 08:15 - 11:45 Elektroinstallation in Moosburg Sie suchen einen Elektro-Fachbetrieb in Moosburg und Umgebung? Dann sind Sie bei uns an der richtigen Adresse. Zu unseren Spezialgebieten gehören Telefonanlagen, Netzwerktechnik und weitere Installationen wie technisches Licht (z.B. Arbeitsplatzbeleuchtung und Hallenausleuchtung). Als Meisterbetrieb garantieren wir Ihnen fachkundige Arbeiten und Service!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/elektro-steiner/",
   },
   {
@@ -5554,6 +5900,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ganztägig Ganztägig Ganztägig Ganztägig Ganztägig Samstag Ganztägig Sonntag Ganztägig Handwerk, Haus, Garten, Umwelt Unser Reinigungsservice setzt auf höchste Qualität, Zuverlässigkeit und Effizienz. Mit modernsten Reinigungsmethoden und umweltfreundlichen Produkten sorgen wir für strahlend saubere Ergebnisse. Kontaktieren Sie uns noch heute.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/exxelproclean/",
   },
   {
@@ -5570,6 +5917,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 18:00 07:00 - 18:00 07:00 - 18:00 07:00 - 18:00 07:00 - 18:00 Spezialunternehmen für vorgehängte hinterlüftete Fassaden mit mineralischer Dämmung bis KfW 055.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fassadenverkleidung-haberkorn/",
   },
   {
@@ -5586,6 +5934,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Ganz egal, ob es um einen kleinen Auftrag, eine kurzfristige Reparatur oder um umfangreiche Projekte geht, wir kümmern uns um jedes “glasige” Anliegen! Wir fertigen für Sie Spiegel nach Maß, Bleiverglasungen, Küchenrückwände, Ganzglasduschen, Wohnraumverglasungen, Überdachungen, Reparaturen u.v.m.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/glaserei-zehetbauer-inh-a-becker/",
   },
   {
@@ -5602,6 +5951,7 @@ export const firmen: Firma[] = [
     beschreibung: "+4987099438330 info@pv-gruenauer.de https://www.pv-gruenauer.de/ Social Media 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Handwerk, Immobilien & Bauen Wir, die Grünauer GmbH, sind ein kleiner, mittelständischer Meisterbetrieb mit über 20 Jahren Branchenerfahrung. Komplett ausgestattet, bieten wir unseren Kunden eine schlüsselfertige Photovoltaik-Anlage, von den Solarmodulen, über den Wechselrichter bis hin zum Speicher ist alles dabei! Mit unseren aktuell circa 70 Mitarbeitern haben wir Experten in jedem Bereich. Ob Fachberater für Solarstrom, Innendienst, Elektriker oder Monteure, wir sind ein eng vernetztes Team! Unser Hauptstandort befindet sich in Eching (Weixerau) bei Moosburg. Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gruenauer-gmbh/",
   },
   {
@@ -5618,6 +5968,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 20:00 07:00 - 20:00 07:00 - 20:00 07:00 - 20:00 07:00 - 20:00 Samstag 07:00 - 20:00 Handwerk, Handwerklich, Haus, Garten, Umwelt, Transport Hausmeisterservice Toth bietet zuverlässige und professionelle Dienstleistungen rund ums Gebäude. Wir kümmern uns um Wartung, Reparaturen, Reinigung und Gartenpflege – alles aus einer Hand. Unser Ziel ist es, Ihre Immobilie in Top-Zustand zu halten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hausmeisterservice-toth/",
   },
   {
@@ -5634,6 +5985,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 14:00 - 17:00 08:00 - 12:00, 14:00 - 17:00 08:00 - 12:00, 14:00 - 17:00 08:00 - 12:00 Dienstleister, Handwerk, Handwerklich Wir sind ein Meisterbetrieb mit langjähriger Erfahrung im Bereich Heizung, Sanitär und Wasseraufbereitung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/haustechnik-max-scheidl-gmbh/",
   },
   {
@@ -5650,6 +6002,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich biete unterschiedliche Handwerksleistungen im Bereich Innenausbau an: Raumausstattung, Fliesen legen, Parkett legen, Badsanierung, Malereiarbeiten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/innenausbaus-mihai-chibelean/",
   },
   {
@@ -5666,6 +6019,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Bei mir sind Sie richtig wenn sie nach Trockenbau, Innenausbau, Abbruch und/oder Renovierungen suchen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/isuf-kastrati/",
   },
   {
@@ -5682,6 +6036,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 13:30 - 17:00 09:00 - 12:00, 13:30 - 17:00 09:00 - 12:00, 13:30 - 17:00 09:00 - 12:00, 13:30 - 17:00 Ob neue Fliese, neues Bad, neue Heizung, Wartungs­arbeiten oder Kunden­ienst, wir sind mit unserem Service immer für Sie da. Die Bereiche – Bera­tung, Projek­tierung, Instal­lation, Ser­vice – ein Gesamt­projekt, das nur durch inten­sive und persön­liche Betreu­ung opti­mal funk­tio­nieren kann.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kellner-fliese-bad-heizung/",
   },
   {
@@ -5698,6 +6053,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 Garten- und Landschaftsbau, Baggerarbeiten, Erd- und Abbrucharbeiten, Baumfällungen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/maximilian-littmann-garten-und-landschaftsbau/",
   },
   {
@@ -5714,6 +6070,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein Metallbau Unternehmen in Moosburg. Es gibt fast nichts was wir nicht herstellen können. Balkone + Geländer, Treppen, Vordächer, franz. Geländer, Tore, Zäune, Carports usw. Wir versuchen jeden Kundenwunsch umzusetzen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/metallbau-gatzemeier/",
   },
   {
@@ -5730,6 +6087,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 08:00 - 12:00, 13:00 - 17:00 Der Betrieb wurde 1955 von Johann Reif sen. gegründet und wird seit 1996 von Johann Reif jun. weitergeführt. Die Firma ist spezialisiert auf Zaunbau (Maschendraht, Holz, geschmiedete Zäune) und Toranlagen, des weiteren werden Metallbau- und Schmiedearbeiten nach individuellen Kundenvorstellungen angefertigt. Auch Restaurierungen von historischen Metall- und Kunstschmiedearbeiten führen wir gerne aus. Über die VHS Moosburg können Schmiedekurse gebucht werden.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/metallbau-johann-reif/",
   },
   {
@@ -5746,6 +6104,7 @@ export const firmen: Firma[] = [
     beschreibung: "Metallschleiferei & Polierwerkstatt für Auto und Motorradteile aus Alu und Edelstahl, Glasperlenstrahlen, Aufbereitung von Aluteilen, Aufbereitung von Oldtimerteilen, Felgen, usw.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/metallschleiferei-polierwerkstatt-roth-forstner-e-k/",
   },
   {
@@ -5762,6 +6121,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 12:30 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 Wir bieten Schreinerarbeiten aller Art: In jeder Preislage Qualität in Ausführung und Service!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moebel-art-gmbh/",
   },
   {
@@ -5778,6 +6138,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 14:00 - 17:00 09:00 - 12:00, 14:00 - 17:00 09:00 - 12:00, 14:00 - 17:00 Nach Terminvereinbarung Dienstleister, Handwerk, Handwerklich Die Firma cell polstert alle Sitzmöbel. Sowohl zum Be- als auch zum Entschleunigen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/raumausstattung-claudia-ellbogen/",
   },
   {
@@ -5794,6 +6155,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:00 08:00 - 16:00 08:00 - 16:00 08:00 - 16:00 Handwerk, Immobilien & Bauen Seit über 20 Jahren ist Reichhart Klimasysteme Ihr zertifizierter Partner, wenn es um Klimatechnik geht. Mit Sitz in Moosburg versorgen wir Kunden in ganz Bayern mit leistungsstarken Klimaanlagen für den Heim-Bereich und für Unternehmen aller Art.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/reichhart-gmbh/",
   },
   {
@@ -5810,6 +6172,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Schlosserei und Metallbau",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/riess-metallbau/",
   },
   {
@@ -5826,6 +6189,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Schreinereibetrieb in Moosburg seit 1889 Kreative Lösungen aus Massiv- und Vollholz in meisterlicher Perfektion auf Ihre Bedürfnisse zugeschnitten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schreinerei-franz-xaver-bloechl/",
   },
   {
@@ -5842,6 +6206,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 14:15 - 17:00 09:00 - 12:00 09:00 - 12:00, 14:15 - 18:00 09:00 - 12:00, 14:15 - 17:00 Samstag Geschlossen Dienstleister, Handwerk, Paketshop Schuhreparaturen aller Art: Pflegeartikel, Schuhbänder, Einlegesohlen Verkauf von Taschen, Geldbörsen und Gürtel",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schuhmacherei-kachel-christian/",
   },
   {
@@ -5858,6 +6223,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein inhabergeführter Meisterbetrieb aus Moosburg, der sich auf die Planung sowie Neu- und Umgestaltung hochwertiger Hausgärten spezialisiert hat.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schweiger-garten-und-landschaftsbau-gmbh-co-kg/",
   },
   {
@@ -5874,6 +6240,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ihr Partner im Estrichbau Wir arbeiten für kleine, mittelgroße und große Unternehmen sowie für private Bauherren. Unsere Kunden schätzen unsere Zuverlässigkeit, die Qualität der verwendeten Materialien und unsere fairen Preise.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ertugrul-estrich-gmbh/",
   },
   {
@@ -5890,6 +6257,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 12:00 Wir sind ein regionaler, familiärer Fachhandwerksbetrieb und genießen seit Jahrzehnten das Vertrauen unserer Kunden. Wir arbeiten ausschließlich mit marktführenden Herstellern und Großhandelspartnern zusammen und können Ihnen so außergewöhnliche Produkte, Leistungen und Services bieten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fa-walter-henning-inh-christian-henning/",
   },
   {
@@ -5906,6 +6274,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 19:00 07:00 - 19:00 07:00 - 19:00 07:00 - 19:00 07:00 - 19:00 Der zuverlässige Meisterbetrieb. Wenn es um Ihre Heizung geht, sind wir blitzschnell vor Ort und kümmern uns zuverlässig um die passende Lösung. Noch besser: Mit unserem Heizungs-Check-Abo müssen Sie sich keine Gedanken mehr über die Heizungswartung machen. Das erledigen wir. Unkompliziert.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/radke-sanitaer-heizung-klima/",
   },
   {
@@ -5922,6 +6291,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich mache Schmuck aus Leidenschaft. In Moosburg habe ich eine Werkstatt und in München bin ich in einer Ladengemeinschaft eingemietet. Alle Arbeiten rund um Schmuckanfertigung, -umarbeitung und -reparatur biete ich an. Trauringe, Verlobungsringe besondere Geschenke gehören zu meinem Repertoire.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schmuck-id/",
   },
   {
@@ -5938,6 +6308,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die HIBO Haustechnik GmbH & Co. KG bietet lösungsorientierte und qualitativ hochwertige Arbeit in den Bereichen Sanitär, Heizung, Isolation, Kälte-/Klimatechnik und Lüftung für Privatkunden, Industrie, Kommunen und Firmenkunden. Des Weiteren sind wir Spezialist im Bereich Großanlagenbau für Industrie und Großkunden und besitzen hier eine eigene Produktionsabteilung für den Bau von lufttechnischen Sonderlösungen. Zudem ist unsere HIBO-Kundendienst-Flotte eine der Größten im Umkreis. Unser moderner Firmensitz befindet sich im Gewerbegebiet Degernpoint in Moosburg a. d. Isar.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hibo-haustechnik-gmbh-co-kg/",
   },
   {
@@ -5954,6 +6325,7 @@ export const firmen: Firma[] = [
     beschreibung: "Handwerklich Kucaj Cleaning steht für einen TIP TOP Service. Wir bieten folgende Dienstleistungen an: – Gebäude/Treppenhausreinigung – Endreinigung nach Auszug – Büroreinigung – Rasenmähen/Heckenschneiden – Laubkehren – Heraus/Hereinstellen von Müllcontainern/Eimern – Winterdienst",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kucaj-cleaning/",
   },
   {
@@ -5970,6 +6342,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 17:30 09:00 - 17:30 09:00 - 17:30 09:00 - 17:30 09:00 - 17:30 Haus, Garten, Umwelt Bavaria Facility Solution bietet zuverlässige und gründliche Gebäudereinigung für Unternehmen, Praxen, Büros und mehr. Sauberkeit, Flexibilität und Qualität stehen bei uns im Fokus – für einen glänzenden ersten Eindruck Ihrer Räume.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bavaria-facility-solution/",
   },
   {
@@ -5986,6 +6359,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Haus, Garten, Umwelt Pflege und Sanierung von Rasenflächen, von Rasenmähen über Bodenbelüften (aerifizieren) und Sanden, Vertikutieren bis hin zur Profipflege mit Spindelmäher und Topdressing.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/birker-rasen/",
   },
   {
@@ -6002,6 +6376,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 13:30 - 17:00 Dienstleister, Haus, Garten, Umwelt Unser Name steht in und um Moosburg für hohe Qualität, renommierte Marken, zuverlässigen Kundenservice, persönliche und kompetente Beratung zu fairen Preisen. Von der Küchenneuplanung, Küchenrenovierung, Küchen Ab- und Aufbau, Ersatzbedarf und Einbaugeräte.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kms-kuechenstudio/",
   },
   {
@@ -6018,6 +6393,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich erstelle Aufmaße und Abrechnungen nach VOB für Hochbaugewerke.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/abrechnungsservice-hochbau-achim-wagner-gmbh/",
   },
   {
@@ -6034,6 +6410,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 14:00 Bauträgerunternehmen mit mehr als 100jähriger Tradition",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bauunternehmen-scheidl-gmbh/",
   },
   {
@@ -6050,6 +6427,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 09:00 - 16:00 Unser Geschäftssegment EKA Real Estate GmbH umfasst unter anderem die Vermietung, Verpachtung von Bestandsimmobilien, sowie den An- und Verkauf von Immobilien, Gewerbeflächen und Grundstücken.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eka-real-estate-gmbh/",
   },
   {
@@ -6066,6 +6444,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00 08:00 - 12:00 08:00 - 12:00 08:00 - 12:00 08:00 - 12:00 Vermittlung von Neu- und Gebrauchtimmobilien, Vermietung und Verkauf, WEG Verwaltung, Eigentümerverwaltung",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/immobilien-heinz-gmbh/",
   },
   {
@@ -6082,6 +6461,7 @@ export const firmen: Firma[] = [
     beschreibung: "10:00 - 12:00, 14:00 - 16:00 10:00 - 12:00, 14:00 - 16:00 10:00 - 12:00, 14:00 - 16:00 10:00 - 12:00 Wir sind ein eingespieltes Vater-Tochter-Gespann, das sich leidenschaftlich um alle Angelegenheiten rund um Ihre Immobilie kümmert!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/immobilien-riederer/",
   },
   {
@@ -6098,6 +6478,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Wenn Sie auf der Suche nach Ihrem individuellen Traumhaus sind, sind wir die richtigen Partner an Ihrer Seite! Wir analysieren gemeinsam mit Ihnen Ihren persönlichen Bedarf, erstellen einen maßgeschneiderten Plan mit Ihrem individuellen Angebot und begleiten Sie vom Erstgespräch bis zum Einzug.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/immobilien-und-hausbau-jenny-vogel/",
   },
   {
@@ -6114,6 +6495,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Samstag Nach Terminvereinbarung Sonntag Nach Terminvereinbarung LB Immobilien wurde 2020 gegründet und ist ein junges, inhabergeführtes Makler-Unternehmen in Moosburg an der Isar. Ob nun der Verkauf oder die Vermietung einer Immobilie – es handelt sich stets um eine vertrauensvolle Aufgabe, die mit fachlicher Kompetenz, größter Sorgfalt, einer klaren Strategie und einer hohen Service-Orientierung angegangen werden muss. Neben diesen essenziellen Punkten sind aber auch bzw. vor allem ein hohes Maß an Persönlichkeit, Motivation, Integrität, Herzlichkeit und Fingerspitzengefühl unser Leitbild. Ihr Lukas Böhm Ich freue mich auf Sie!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lb-immobilien/",
   },
   {
@@ -6130,6 +6512,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 17:00 07:00 - 15:00 Regionaler Rohstoff, vor Ort gewonnen, aufbereitet und veredelt – als Rund- oder Brechkorn Unsere Öffnungszeit am Freitag ist im Januar und Februar von 7 bis 13 Uhr.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rohrdorfer-sand-und-kies-gmbh/",
   },
   {
@@ -6146,6 +6529,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 12:00, 13:00 - 16:30 08:00 - 12:00, 13:00 - 16:30 08:00 - 12:00, 13:00 - 16:30 08:00 - 13:00 Unser Hauptaufgabengebiet ist die professionelle WEG-Verwaltung. Behilflich sind wir Ihnen auch bei der Miet- & Gewerbeverwaltung, der Vermarktung sowie einer umfänglichen Beratung zum Thema Wohnungseigentum.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/spaengler-hausverwaltung-immobilien/",
   },
   {
@@ -6162,6 +6546,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 08:00 - 17:00 Architektenleistungen: Alle Leistungsphasen der Honorarordnung für Architekten und Angenieure (HOAI) • Grundlagenermittlung • Vorplanung (Projekt- und Planungsvorbereitung) • Entwurfsplanung (System- und Integrationsplanung) • Genehmigungsplanung • Ausführungsplanung • Vorbereitung der Vergabe (Ausschreibung) • Mitwirkung bei der Vergabe • Objektüberwachung (Bauüberwachung) und Dokumentation • Objektbetreuung Tätigkeitsbereiche: • Neubau • Sanierung • Denkmalschutz • Städtebau • Innenausbau • Bauleitplanung • Möbeldesign Zusätzliche Leistungen nach Anfrage.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heinz-pflueger-partner-architekten-gmbh/",
   },
   {
@@ -6178,6 +6563,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Nach Terminvereinbarung Freizeit & Kultur, Industrie, Vereine & Kulturelles, Weitere Die immer größere Bedeutung von Umwelt- und Klimaschutz hat namhafte Unternehmen, Wissenschaftler und engagierte Bürger bewogen, das Bayerische Institut für Umwelt- und Kläranlagentechnologie „BIUKAT“ ins Leben zu rufen. Wir arbeiten an der Weiterentwicklung neuer Technologien und Methoden sowie ihrer Anwendung und Verbreitung im Umweltbereich und in der Kläranlagentechnologie. Unser Ziel ist, die fortwährende Anpassung und Aktualisierung der Umwelttechniken an die klimarelevanten Bedürfnisse voranzutreiben. Umwelt ist Ihnen wichtig: Werden Sie Mitglied!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/biukat-bayerisches-institut-fuer-umwelt-und-klaeranlagentechnologie-e-v/",
   },
   {
@@ -6194,6 +6580,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 Clariant",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/clariant/",
   },
   {
@@ -6210,6 +6597,7 @@ export const firmen: Firma[] = [
     beschreibung: "06:00 - 17:00 06:00 - 17:00 06:00 - 17:00 06:00 - 17:00 06:00 - 15:00 Wir arbeiten daran, dass Sie Strom haben! DRIESCHER Moosburg ist ein familiengeführtes, global operierendes Unternehmen und Anbieter von Nieder- und Mittelspannungs-Schaltanlagen, von Schaltgeräten sowie von Technik für Bahnelektrifizierung. Als Inhaber von 300 Patenten und Hersteller kompatibler, zukunftssicherer Lösungen bietet DRIESCHER seinen Kunden – Stromversorgern, Stadtwerken, Industrieunternehmen, Bahnbetreibern u.v.m. – eine breite Produktpalette an. Unseren Azubis bieten wir eine berufliche Perspektive und sorgen damit für eigenen Nachwuchs an Fach- und Führungskräften. Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/elektrotechnische-werke-fritz-driescher-soehne-gmbh/",
   },
   {
@@ -6226,6 +6614,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 17:00 07:30 - 16:00 Handel, Industrie ELA Container ist Spezialist für mobile Raumlösungen in Containerbauweise. Ob als temporäre Büroräume, Kindergärten, Schulen, Bankgebäude oder auf der Baustelle – unsere Containeranlagen schaffen Raum, wo er gebraucht wird. Dabei legen wir größten Wert auf Service und Kundennähe. Wir sind ein Familienunternehmen in zweiter Generation mit mehr als 1.200 Mitarbeiterinnen und Mitarbeitern an 20 Standorten weltweit.Seit 2015 sind wir in Moosburg mit mehr als 50 Mitarbeitern ansässig. Von hier aus beliefern wir unsere Kunden in Süddeutschland, Österreich, Tschechien und in der Schweiz.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ela-container-gmbh/",
   },
   {
@@ -6242,6 +6631,7 @@ export const firmen: Firma[] = [
     beschreibung: "Qualität aus Familientradition Gutes bewahren und Neues probieren – diesem Leitsatz verpflichtet sich das Hofmeister Käsewerk auch in Zukunft. Um Ihnen das Beste aus unserem vielfältigen Sortiment von Edelpilzkäsespezialitäten, Convenience-Produkten, Brotaufstrichen und Milchpulver anbieten zu können, kombinieren wir traditionelle Herstellungsverfahren mit hoher Qualität. Die frische Milch für unsere Spezialitäten erhalten wir täglich von bayerischen Landwirten, die bereits seit Generationen Milch für uns erzeugen. Das garantiert leckeren und abwechslungsreichen Genuss – aus Familientradition",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hofmeister-kaesewerk-gmbh-co-kg/",
   },
   {
@@ -6258,6 +6648,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Jungheinrich AG, zählt zu den weltweit führenden Unternehmen der Intralogistik. Mit einem abgestimmten Portfolio an Flurförderzeugen, Logistiksystemen, -komponenten und -software, Dienstleistungen und Beratung bietet Jungheinrich seinen Kunden umfassende Lösungen aus einer Hand. Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/jungheinrich-moosburg-ag-co-kg/",
   },
   {
@@ -6274,6 +6665,7 @@ export const firmen: Firma[] = [
     beschreibung: "07:15 - 12:00, 13:00 - 17:00 07:15 - 12:00, 13:00 - 17:00 07:15 - 12:00, 13:00 - 17:00 07:15 - 12:15 Handel, Industrie Die Firma Putzmeister ist einer der Weltmarktführer im Bereich Betonpumpen. Service und Ersatzteilverfügbarkeit wird bei uns großgeschrieben. Um unseren Kunden den bestmöglichen Service bieten zu können, steht seit 2019 die nagelneue Service-Niederlassung für den bayrischen Raum in Moosburg.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/putzmeister-concrete-pumps-gmbh-niederlassung-muenchen/",
   },
   {
@@ -6290,6 +6682,7 @@ export const firmen: Firma[] = [
     beschreibung: "08761 / 684-54 (Rathaus) https://www.moosburg.de/freies-lasten... Kategorie(n) Informationen, Moosburg Mobil Lastenräder sind eine klimafreundliche Alternative und leisten einen wichtigen Beitrag zur Verringerung der Verkehrsbelastung. Besonders geeignet sind sie für den innerstädtischen Transport, egal ob Sie mit Ihren Kindern unterwegs sind, einen Einkauf erledigen oder sonstige größere Lasten transportieren wollen. Mit einem Lastenrad lässt sich das alles problemlos und ohne Anstrengung erledigen, besonders mit Elektromotor. Informationen zum Leihen: https://www.moosburg.de/freies-lastenfahrrad",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/freies-lastenfahrrad/",
   },
   {
@@ -6306,6 +6699,7 @@ export const firmen: Firma[] = [
     beschreibung: "Vor dem Rathaus und rund um die Mariensäule am Stadtplatz kann man kostenfreies öffentliches W-LAN empfangen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/w-lan-rund-um-mariensaeule/",
   },
   {
@@ -6322,6 +6716,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Stadtwerke München (SWM) und die Münchner Verkehrsgesellschaft haben ihre ersten Elektroladesäulen, mit je zwei Ladepunkten, in Moosburg in Betrieb genommen. Pro Ladepunkt steht eine Leistung von bis zu 22 KW zur Verfügung. An beiden fließt Ökostrom der SWM. Das Projekt wird durch das Bundesministerium für Verkehr und digitale Infrastruktur gefördert. Folgende Standorte gibt es in Moosburg: – Viehmarktplatz (Landshuter Str. 23) – Parkplatz an der Leinbergerstr. 11 – Parkplatz am Stadion 3",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ladestationen-e-mobilitaet/",
   },
   {
@@ -6338,6 +6733,7 @@ export const firmen: Firma[] = [
     beschreibung: "SO GEHT’S: „Richtungsdaumen“ einfach auf das gewünschte Fahrtziel einstellen, warten bis jemand anhält und wenn der Fahrer*in vertrauenerweckend erscheint: Ziel mündlich klären, einsteigen und am vereinbarten Zielort wieder aussteigen. Standorte Moosburg: 1. Bahnhofstrasse vor der Ausfahrt der Tiefgarage 2. Neustadt vor dem REWE 3. Degernpoint vor dem ALDI 4. Münchnerstraße vor der Rosen-Apotheke (in Kürze) außerhalb Moosburg: 5. Wang, Einfahrt Schlossbreiten 6. Mauern am Rathaus 7. Mauern an der Volksbank Hinweis: Benutzung auf eigene Gefahr Empfehlung: Benutzung ab 16 Jahren",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/mitfahrerbaenke/",
   },
   {
@@ -6354,6 +6750,7 @@ export const firmen: Firma[] = [
     beschreibung: "Am Moosburger Bahnhof bestehen direkte Zugverbindungen in Richtung München (35 Minuten) und Landshut (12 Minuten). Im Parkhaus stehen 269 Stellplätze sowie eine große, überdachte Stellfläche für Fahrräder zur Verfügung. Sämtliche Verbindungen finden Sie unter http://www.bahn.de . Abfahrt Moosburg Ankunft Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/deutsche-bahn/",
   },
   {
@@ -6370,6 +6767,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir schenken Ihnen Zeit! 15 Minuten kostenlos Parken! … für kurze Erledigungen, kleine Besorgungen oder „nur schnell was holen“. Statt Parkschein auf allen öffentlichen Parkplätzen! Erhältlich für nur 5,- Euro bei Moosburg Marketing, CopyPrint, Moosburger Teeladen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/parksanduhr/",
   },
   {
@@ -6386,6 +6784,7 @@ export const firmen: Firma[] = [
     beschreibung: "Nahe dem Eingang zur Stadtbücherei befinden sich Gepäcksafes für Radfahrer. Die Schließfächer bieten Besuchern der Innenstadt die Möglichkeit, ihr Gepäck während des Aufenthalts sicher zu verstauen. Die Anlage bietet Stauraum für Tüten oder Körbe sowie momentan nicht benötigtes Gepäck. Für die Nutzung ist lediglich ein Münzpfand in Form einer Ein- oder Zwei-Euro-Münze aufzuwenden. Jedes der acht Schließfächer ist mit einer Steckdose ausgestattet, die es ermöglicht, den Akku von E-Bikes und Pedelecs aufzuladen. Diese Möglichkeit stellt Moosburg allen Nutzern kostenfrei zur Verfügung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kostenlose-schliessfaecher-mit-e-bike-pedelec-ladestation/",
   },
   {
@@ -6402,6 +6801,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bei Reihenbestuhlung gibt es ca. 340 Sitzplätze. Bei Tischbestuhlung (ohne Tanzfläche) gibt es ca. 280 Sitzplätze. Bei Tischbestuhlung (mit Tanzfläche) gibt es ca. 250 Sitzplätze.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schaefflerhalle-mehrzweckhalle/",
   },
   {
@@ -6418,6 +6818,7 @@ export const firmen: Firma[] = [
     beschreibung: "An zwei verschiedenen Standorten wird in Moosburg das StadtTeilAuto angeboten. Als Mitglied des Vereins StadtTeilAuto Freising e.V. können Sie ganz einfach und nach Ihren Bedürfnissen das StadtTeilAuto nutzen. Dadurch wird die Nachhaltigkeit, Regionalität, Gemeinschaft und Fairness innerhalb Moosburgs gefördert. Folgende Standorte gibt es in Moosburg: – Parkplatz Ecke Steinbockstraße – Leinbergerstraße – P+R am Bahnhof",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stadtteilauto-e-v/",
   },
   {
@@ -6434,6 +6835,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Stadthalle Moosburg bietet 736 Sitzplätze auf einer Gesamtfläche von 625 qm. Ansprechpartner/Hausmeister ist Herr Gabriel (08761 / 6755)",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/stadthalle/",
   },
   {
@@ -6450,6 +6852,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Zehentstadel hat eine Größe von 300 qm.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/zehentstadel/",
   },
   {
@@ -6466,6 +6869,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Bei Musikentdecker Moosburg bieten wir kreative Musikkurse für Kinder und Erwachsene. Von Singen mit Baby über Eltern-Kind-Musikkurse, Musikkurse für Kinder, Flötenunterricht und Stimmbildungskurse für Erwachsene.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/musikentdecker-moosburg/",
   },
   {
@@ -6482,6 +6886,7 @@ export const firmen: Firma[] = [
     beschreibung: "",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/degernpuenktchen/",
   },
   {
@@ -6498,6 +6903,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein 3-gruppiger Kindergarten der Evang.-Luth. Kirchengemeinde Moosburg. Bei uns wird INDIVIDUALITÄT großgeschrieben und wir arbeiten orientiert an die Pädagogik von Maria Montessori.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/integrativkindergarten-weltentdecker/",
   },
   {
@@ -6514,6 +6920,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der evang. Kindergarten Villa Kunterbunt ist ein 3-gruppiger Kindergarten in der Bonau. Die Kinder erleben bei uns Geborgenheit, Wertschätzung und eine liebevolle Begleitung. Dadurch entfalten sie ein gesundes Selbstbewusstsein und eine zuversichtliche Grundhaltung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/evang-luth-kindergarten-villa-kunterbunt/",
   },
   {
@@ -6530,6 +6937,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir fördern Schulkinder im Alter von 6 bis 12 Jahren mit emotionalem und sozialem Förderbedarf. Betreuung nach Schulschluss bis 17 Uhr.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/heilpaedagogische-kindertagesstaette/",
   },
   {
@@ -6546,6 +6954,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein gemeinnütziger Verein und arbeiten ehrenamtlich. Unser Ziel ist es Familien aus Moosburg und Umgebung zu unterstützen. Wir finanzieren uns durch Mitgliedsbeiträge und Fördergelder. Das KIMM!Familienzentrum e. V. ist Begegnungsstätte mit Herz.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kimm-familienzentrum-moosburg-e-v/",
   },
   {
@@ -6562,6 +6971,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Einrichtung ist ein Ort für Kinder, an dem sie sich wohl und wertgeschätzt fühlen. Sie erleben Geborgenheit, Zuwendung und Stabilität. Unser Ziel ist es, gemeinsam mit den Kindern eine fröhliche, unbeschwerte und erfahrungsreiche Zeit zu gestalten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kinderhaus-st-elisabeth/",
   },
   {
@@ -6578,6 +6988,7 @@ export const firmen: Firma[] = [
     beschreibung: "In der Schatzinsel wird jedes Kind als individueller Schatz angesehen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kinderkrippe-schatzinsel/",
   },
   {
@@ -6594,6 +7005,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Kita Moosburger Sonnenkäfer bieten eine liebevolle Betreuung für Kinder von 6 Monaten bis zum Kindergarteneintritt an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kita-moosburger-sonnenkaefer/",
   },
   {
@@ -6610,6 +7022,7 @@ export const firmen: Firma[] = [
     beschreibung: "Motessori Familienzentrum Moosburg, Baby-Kurse ab 8 Wochen bis 6 Monate, Eltern-Kind Spielgruppen ab 6 Monate bis 4 Jahre, Individuelle Elterngespräche, Montessori Coaching, Stoffwindel-Beratung, Eltern-Portal",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/mooszwergal-montessori-familienzentrum-moosburg/",
   },
   {
@@ -6626,6 +7039,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind spezialisiert auf den Vertrieb hochwertiger, genormter Arbeits- und Berufsbekleidung für alle Branchen und jede Situation. Durch die Zusammenarbeit mit verschiedenen, am Markt fest etablierten Herstellern, ist es uns möglich ein großes Sortiment an Marken ganz speziell „für Ihren professionellen Auftritt“ bereitzustellen. Natürlich entsprechen alle Materialien den neusten Arbeits- und Warnschutzbestimmungen. In Verbindung mit unserem hausinternen Veredelungsservice (Transferabteilung und eigene Stickerei), erstellen wir für Sie Ihr ganz individuelles Corporate Design.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/migacut/",
   },
   {
@@ -6642,6 +7056,7 @@ export const firmen: Firma[] = [
     beschreibung: "Heilingbrunner ist seit über 200 Jahren Moosburgs traditionsreiches Modehaus mit 1.900 m² Verkaufsfläche. Erleben Sie auf 3 Etagen die Vielfalt der Mode für Damen, Herren und Kinder mit einer stilsicheren Auswahl namhafter Labels. Von femininer Damenmode über eine große Bandbreite wichtiger Herrenmarken oder angesagter Young Fashion bis zu fröhlich-bunter Kindermode finden Sie bei Heilingbrunner alles, was das Fashion-Herz begehrt. Tauchen Sie ein in unsere Modewelt und genießen Sie das Shoppingerlebnis im Modehaus Heilingbrunner in Moosburg. Video",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/modehaus-heilingbrunner/",
   },
   {
@@ -6658,6 +7073,7 @@ export const firmen: Firma[] = [
     beschreibung: "Willkommen in meinem Online-Shop für Handmade Bekleidung, Accessoires, Textildruck, Stoffe und Kurzwaren. Gerne kannst Du auch persönlich vorbeischauen, nach Terminvereinbarung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/samra-homemade-fashion/",
   },
   {
@@ -6674,6 +7090,7 @@ export const firmen: Firma[] = [
     beschreibung: "Jede Woche wieder wollen wir euch eine verdiente Auszeit von eurem Altag gönnen. In guter Atmosphäre könnt ihr und eure Freunde den ganzen Abend bei uns Verbringen und die besten Cocktails genießen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/bb-lounge/",
   },
   {
@@ -6690,6 +7107,7 @@ export const firmen: Firma[] = [
     beschreibung: "Übertragungen von Sky, Dartvereine z.B. ADL, DSAB und vieles mehr",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/danys-sportsbar/",
   },
   {
@@ -6706,6 +7124,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bei uns findet Ihr neben einem netten Gespräch auch eine gute Bier- und Whiskey-Auswahl und auch der kleine Hunger zwischendurch kann gestillt werden.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/the-corner-house/",
   },
   {
@@ -6722,6 +7141,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 09:00 - 17:00 Kommunikation & Beratung “Merkur tz MEDIA – Ihre Agentur für Kommunikation in München & Oberbayern Wir kombinieren redaktionelle Erfahrung mit modernen Marketingstrategien. Ob Mittelstand, Kommune oder KMU – wir bieten individuelle Lösungen in Print, Digital, Content, Video, Employer Branding und Mediaplanung. Unser Team entwickelt Kampagnen, die Ihre Marke lokal und digital sichtbar machen – mit kreativen Konzepten, starken Inhalten und datenbasiertem Storytelling. In München und Oberbayern sind wir Ihr Partner für regionale Kommunikation mit Weitblick. Unsere Leistungen: – Print & Digitalmarketing – Content & Video",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/merkur-tz-media-freising/",
   },
   {
@@ -6738,6 +7158,7 @@ export const firmen: Firma[] = [
     beschreibung: "09:00 - 12:00, 15:00 - 17:00 09:00 - 12:00, 15:00 - 17:00 09:00 - 12:00, 15:00 - 17:00 09:00 - 12:00 Kommunikation & Beratung Gute Texte bringen Aufmerksamkeit, Kunden und Vertrauen. Ich unterstütze Unternehmen und Selbstständige mit überzeugenden Texten – für Werbung, Webseiten, Pressetexte oder Anschreiben. Mein Wissen über Texten mit KI gebe ich in Kursen an der VHS Moosburg und bei LinkedIn weiter. Folgen Sie mir!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/wortkind-texte-marketing-pr-und-coaching/",
   },
   {
@@ -6754,6 +7175,7 @@ export const firmen: Firma[] = [
     beschreibung: "+498769759907 ja@co-intelligent.de https://www.co-intelligent.de Social Media Kommunikation & Beratung Organisations- und Demokratieentwicklung für Kommunen und Nonprofit-Organisationen. Mitarbeiterbefragungen, u.a. Psychische Gefährdungsbeurteilung. Gestaltung und Begleitung partizipativer Prozesse, einschließlich Moderation von Workshops. Motto: Gemeinsam das Unmögliche entfalten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/co-intelligent/",
   },
   {
@@ -6770,6 +7192,7 @@ export const firmen: Firma[] = [
     beschreibung: "An Guadn bietet seit dem Frühjahr 2020 Catering in der Gemeinschaftsverpflegung für Seniorenheime sowie Kindergarten- und Schulverpflegung an. Wir legen Wert auf regionale und frische Zutaten. Durch “Cook & Chill” kommen alle Speisen frisch und geschmackvoll an.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/an-guadn-catering/",
   },
   {
@@ -6786,6 +7209,7 @@ export const firmen: Firma[] = [
     beschreibung: "Sushi & vietnamesische Küche Speisen auch To-Go oder per Lieferservice.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/asia-rose/",
   },
   {
@@ -6802,6 +7226,7 @@ export const firmen: Firma[] = [
     beschreibung: "Döner, Falafel, Lahmacun, Dürüm, Pide, Pizza oder auch Salat bei Barakat. Wir freuen uns auf Euren Besuch",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/barakat-doener/",
   },
   {
@@ -6818,6 +7243,7 @@ export const firmen: Firma[] = [
     beschreibung: "18 verschiedene Brotsorten, 22 verschiedene Semmelteige werden in der Moosburger Backstube hergestellt. Jedes einzelene Bäckerstück wird von Hand gefertigt. Chemische Zusätze wie Weichmacher und Geschmacksverstärker werden nicht verwendet. Der Teig hat ausgiebig Zeit zum Ruhen und ist deshalb besonders bekömmlich. Beginnen Sie den Tag mit unserer Frühstücksauswahl, zum Mittag gibt´s frische Bäcker-Snacks und am Nachmittag trifft Sahneschnittchen auf Fruchtkörbchen in unseren Cafe´s. In der Bonbonniere am Stadtplatz erhalten Sie feinste Pralinen. Wir wünschen guten Apetit!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/baeckerei-grundner-gmbh/",
   },
   {
@@ -6834,6 +7260,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind Feuer und Flamme für unsere Backwaren! In Moosburgs einziger Holzofenbäckerei wird noch mit Leidenschaft gebacken. Neben den Klassikern die in keiner Bäckerei fehlen dürfen, findet man bei uns auch resches Brot aus dem Holzofen. Der Weg zu uns wird belohnt mit einer Vielfalt an frischen, knusprigen Brezen, feinsten Kuchen, verschiedensten Broten und anderen Leckereien. Neben unserer Filiale in Degernpoint finden Sie uns auch in der Innenstadt: “Alte Post” in der Münchener Straße 2 Mo – Fr: 6.00 – 18.00 Uhr / Sa: 6.00 – 13.00 Uhr / So: 8.00 – 11.00 Uhr",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/baeckerei-welter/",
   },
   {
@@ -6850,6 +7277,7 @@ export const firmen: Firma[] = [
     beschreibung: "In unserem gemütlichen Café genießen Sie regionales Frühstück, kalte und warme Speisen sowie diverse Kaffeespezialitäten und Getränke.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/cafe-weingraben/",
   },
   {
@@ -6866,6 +7294,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind eine Eisdiele und Café am Stadtplatz im Herzen von Moosburg mit einer ständigen variierenden und vielfältigen Auswahl an verschiedenen Eissorten – von ausgefallenen Sorten wie Einhorn bis hin zu den Klassikern wie Schoko, Erdbeere und Vanille ist für jeden Geschmack etwas dabei!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/eiscafe-da-claudio/",
   },
   {
@@ -6882,6 +7311,7 @@ export const firmen: Firma[] = [
     beschreibung: "Catering für Geburtstage, Hochzeiten & Feiern aller Art",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/florian-huber-cateringgenusslieferant/",
   },
   {
@@ -6898,6 +7328,7 @@ export const firmen: Firma[] = [
     beschreibung: "Thailändische Spezialitäten frisch zubereitet! Mit meinem Foodtruck bin ich an wechselnden Standorten in Moosburg für Sie da.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/fonny-thay-food/",
   },
   {
@@ -6914,6 +7345,7 @@ export const firmen: Firma[] = [
     beschreibung: "Treffpunkt für alle Altersgruppen, regelmäßig Jazz-Konzerte",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gasthaus-zum-hirschen/",
   },
   {
@@ -6930,6 +7362,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir liegen direkt am Isarradweg. Seit 30 Jahren führen wir dieses Haus mit deutsch-kroatischer Küche und großen Biergarten (bis zu 180 Plätze). Unsere moderne Zimmer sind mit Dusche, WC, Telefon und kostenlosem Wlan ausgestattet. Egal ob Sie privat, geschäftlich oder einfach so unterwegs sind!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/gasthof-u-hotel-zur-laend-ivan-rimac/",
   },
   {
@@ -6946,6 +7379,7 @@ export const firmen: Firma[] = [
     beschreibung: "Griechisches Restaurant Alexander The Great",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/griechisches-restaurant-alexander-the-great/",
   },
   {
@@ -6962,6 +7396,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind seit 15 Jahren für unsere Kunden da und bieten jeden Tag frische Gerichte.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/feinkost-burg/",
   },
   {
@@ -6978,6 +7413,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit mehr als 15 Jahren sind wir in Neustadt & Degernpoint für Sie da. Neben Döner gibt es Beilagen wie Pommes, Reis o. Börek sowie die süße Spezialität Baklava. Wir bereiten unseren Döner jeden Tag frisch zu und bieten Sitzmöglichkeiten im Innen- und Außenbereich. To-Go und Vorbestellung möglich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/isar-imbiss/",
   },
   {
@@ -6994,6 +7430,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ehrliches Metzgerhandwerk seit 1908 Wir stehen für geschmackliche Vielfalt, transparentes Metzgerhandwerk sowie die Balance von bewährten Traditionen & neuen Ideen. In unseren Filialen in Moosburg & Langenbach erhalten Sie Fleisch- & Wurstspezialitäten sowie sorgfältig ausgewählte Weine und Käse.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/keller-gmbh/",
   },
   {
@@ -7010,6 +7447,7 @@ export const firmen: Firma[] = [
     beschreibung: "Im Restaurant/Pizzeria La Forchetta essen Sie in stilvollem Ambiente. Berühmt ist unsere ständig wechselnde Tageskarte der traditionellen italienischen Küche, die wir Ihnen gerne am Tisch erklären. Sie möchten zu Hause italienisch speisen? Natürlich können Sie unsere Spezialitäten auch mitnehmen.",
     moma_mitglied: false,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pizzeria-la-forchetta/",
   },
   {
@@ -7026,6 +7464,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unser Laden hat alles, was zu einer modernen Metzgerei gehört. Frisches Fleisch, perfekt zugeschnitten, küchenfertige Speisen und ein außergewöhnlich großes Würstl- und Frischwurstsortiment. Feinste Salami- und Schinkensorten, Salate und Käse ergänzen das Sortiment.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/metzgerei-huber-die-bayrische-gerichtekueche/",
   },
   {
@@ -7042,6 +7481,7 @@ export const firmen: Firma[] = [
     beschreibung: "Natürliche, handwerklich hergestellte Backwaren. Besuchen Sie auch unsere Filiale in Degernpoint. Dort sind die Öffnungszeiten: MO-FR 08.00 – 19.00, SA 08.00 – 18.00, SO & Feiertag geschlossen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturbackstube-wiesender/",
   },
   {
@@ -7058,6 +7498,7 @@ export const firmen: Firma[] = [
     beschreibung: "Pizza Pazza",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pizza-pazza/",
   },
   {
@@ -7074,6 +7515,7 @@ export const firmen: Firma[] = [
     beschreibung: "Essen ist ein Bedürfnis, Genießen eine Kunst. Genießen Sie unsere mediterrane Küche, immer frisch zubereitet und mit viel Liebe! Lassen Sie sich von uns verwöhnen. Ein Stück Griechenland, viel Herzlichkeit und Offenheit in einer warmen Atmosphäre erwarten Sie! Verbinden Sie Ihre Auszeit doch mit einer Übernachtung in unserem gemütlichen Hotel mit Frühstück und griechischen Kaffe (Mokka oder Frappe). Warme Küche mittags bis 14 Uhr und abends bis 22 Uhr.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/restaurant-mythos-hotel-im-moosburger-hof/",
   },
   {
@@ -7090,6 +7532,7 @@ export const firmen: Firma[] = [
     beschreibung: "Soul of Food Catering ist ein junger, kreativer und sehr hochwertiger Partyservice, der unter anderem schon mit den „Kochprofis“ zusammengearbeitet hat. Das Team hat Spaß daran, neue Ideen umzusetzen und ist kulinarisch vielseitig aufgestellt. Es kann der typische halbe Ochse sein oder aber auch mediterrane Feinkost – deiner Kreativität sind keine Grenzen gesetzt. Auch beim jeweiligen Event ist Soul of Food flexibel: Von Fingerfood, über Buffet und Menü bis hin zu Front Cooking wird für jeden Kunden das passende Essen geliefert.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/soul-of-food-catering-e-k/",
   },
   {
@@ -7106,6 +7549,7 @@ export const firmen: Firma[] = [
     beschreibung: "#tagwerkbiomarkt #gleichambahnhof #bioqualität #bewussteinkaufen #frisch&nachhaltig #biosortiment",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/tagwerk-biomarkt-kleeblatt-moosburg/",
   },
   {
@@ -7122,6 +7566,7 @@ export const firmen: Firma[] = [
     beschreibung: "Mit frischen Zutaten und ohne Zusatzstoffe werden unsere thailändischen Speisen im Wok zubereitet. Qualität, Frische und Selbstgemachtes ist die Grundlage, aus der wir > 20 Gerichte zaubern. In unserer offenen Küche können Sie dabei zusehen, wie Ihr Gericht zubereitet wird. Alle Speisen auch To-Go.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/thaiboo/",
   },
   {
@@ -7138,6 +7583,7 @@ export const firmen: Firma[] = [
     beschreibung: "In der Thüringer Stub’n gibt es die echte Thüringer Rostbratwurst, nätürlich roh und nicht eingefroren. Wir grillen für Sie auch gerne unsere marinierten Rostbrätl – natürlich frisch und auf dem Holzkohle-Grill gebraten. Reichhaltige, schmackhafte Portionen mit hausgemachten Soßen, in ausgezeichneter Qualität zu fairen Preisen, dass is(s)t es, wie die Thüringer Stub’n Ihnen begegnen möchte. Für unseren Chefkoch, Uwe Spindler, kann es für Currywurst nur eine Wurst geben – die Thüringer Rostbratwurst. Denn nur diese Wurst hat dieses besondere geschmackliche Aroma. Überzeugen Sie sich selbst!",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/thueringer-stubn/",
   },
   {
@@ -7154,6 +7600,7 @@ export const firmen: Firma[] = [
     beschreibung: "WASNER Wirt im Kaufland Moosburg",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/johann-wasner-gmbh-rottaler-land-feinkost/",
   },
   {
@@ -7170,6 +7617,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Samstag Nach Terminvereinbarung Freizeit & Kultur, Kunst & Kultur, Vereine & Kulturelles Die Kolpingsfamilie ist ein soziales Netzwerk, das gekennzeichnet ist von der Fürsorge und der Verantwortung der Mitglieder füreinander – “verantwortlich leben, solidarisch handeln”",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kolpingsfamilie-moosburg/",
   },
   {
@@ -7186,6 +7634,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind eine Interessengemeinschaft von Künstlern mit einem kreativen Hobby. Der Stammtisch findet jeden 2. Freitag im Monat im Gasthof Drei Tannen statt. Ansprechpartner ist Stefan Wiborg . Neue Künstler sind jederzeit gerne willkommen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-hobbykuenstler-kreis/",
   },
   {
@@ -7202,6 +7651,7 @@ export const firmen: Firma[] = [
     beschreibung: "1A Getränkefachmarkt und Lieferservice. Bierspezialitäten vom Schwarzwald bis Stralsund, von Köln bis in die Lausitz, sowie Biere aus der Region. Eine einmalige Auswahl an Whisky, Gin und Rum, als auch deutsche Top Spirituosen warten auf Sie. Sollten noch Wünsche offen sein, kümmern wir uns gerne darum. Ob Firmen- oder Privatfeier, bei uns erhalten Sie, was Sie dafür benötigen: Kühlhänger, Biertischgarnituren, Stehtische sowie Gläser für jedes Getränk. Wir rechnen flaschengenau auf Kommissionsbasis ab. Schauen Sie doch mal rein. Oder shoppen Sie zuhause bequem in unserem Online-Shop.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/appel-getraenke/",
   },
   {
@@ -7218,6 +7668,7 @@ export const firmen: Firma[] = [
     beschreibung: "016094678395 ( Renate Pongratz) oder 015128938061 (Beate Meinert) ewl.moosburg@gmail.com Donnerstag 09:00 - 12:00, 14:00 - 18:00 Freitag 09:00 - 12:00, 14:00 - 18:00 Samstag 08:30 - 12:00 Kategorie(n) Geschäfte, Lebensmittel & Genuss Faires Miteinander beginnt mit dem fairen Handel im ehrenamtlich geführten Eine Welt Laden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/eine-welt-laden/",
   },
   {
@@ -7234,6 +7685,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Getränkemarkt ihres Vertrauen. Lieferservice, Lieferung für Veranstaltungen, Kühlanhänger, Catering.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/getraenke-center-bachhuber/",
   },
   {
@@ -7250,6 +7702,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind mehr als ein Feinkostgeschäft oder eine Weinhandelung. Unser Bestreben ist es hochwertige Produkte anzubieten, die es in keinem Supermarkt zu kaufen gibt. Um einige Klassiker kommt man zwar nicht herum. Trotzdem sind unsere Lieferanten überwiegend kleine Manufakturen, Familienbetriebe und ähnliches. Persönlicher Kontakt zum Hersteller oder Importeur ist uns sehr wichtig, und dass vor dem Produkt ein Mensch in Verbindung steht. Wein, Spirituosen, Kaffee und Tee, sowie Gewürze, Olivenöle – die Liste ist lang und wir sind ständig auf der Suche nach schönen Produkten für unser Sortiment.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/htr-feinkost-genussladal/",
   },
   {
@@ -7266,6 +7719,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kaufland bietet seinen Kunden ein umfangreiches Sortiment an Lebensmitteln und alles für den täglichen Bedarf. Dabei liegt der Schwerpunkt auf Frische-Abteilungen, Produkten regionaler Lieferanten sowie auf einem Bio-Angebot. Kaufland steht für hohe Qualität, große Auwahl und günstige Preise.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kaufland-vertrieb-7-gmbh-co-kg-filiale-moosburg/",
   },
   {
@@ -7282,6 +7736,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit 1996 produziere ich vollständig biologisch Wald- und Blütenhonig. Meine Bienenvölker stehen in den Amperauen in Moosburg.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-biolandimkerei-goldbrunner/",
   },
   {
@@ -7298,6 +7753,7 @@ export const firmen: Firma[] = [
     beschreibung: "Einkaufen mit allen Sinnen! In unserem Teefachgeschäft finden Sie ein reichhaltiges Angebot feinster Tees und edler Gewürze aus aller Welt. Sie finden Kräuter, Süßes für Groß und Klein, Regionale Ware, Liköre, Essige und Öle, Ätherische Öle, Räucherstäbchen, Räucherwerk, Klangschalen, Geschenkartikel, Glückwunschkarten, Tücher, Windspiele, Kristalle, reichhaltiges Zubehör und vieles mehr! Das gut sortierte Gesamtsortiment bietet für jeden Anlass ein passendes Präsent; gerne fertigen wir nach Ihren Wünschen individuelle Kreationen. Bei uns gibt’s auch die Moosburg Card.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/moosburger-teeladen/",
   },
   {
@@ -7314,6 +7770,7 @@ export const firmen: Firma[] = [
     beschreibung: "Regionale Spezialitäten aus eigener Produktion",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/schaetzl-gmbh/",
   },
   {
@@ -7330,6 +7787,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein qualitativ hochwertiger Pizza-Heimservice für Moosburg und Umgebung. Wir liefern immer frisch, heiss und zuverlässig.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pizza-4you/",
   },
   {
@@ -7346,6 +7804,7 @@ export const firmen: Firma[] = [
     beschreibung: "Singen macht Freude und ist gesund! Die Liedertafel Moosburg ist ein weltlicher Chor, bei dem Geselligkeit und Singen im Mittelpunkt stehen. Proben sind jeden Dienstag um 19:30 Uhr in der Aula der Anton-Vitzthum-Grundschule, Münchener Str. 29.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/liedertafel-moosburg/",
   },
   {
@@ -7362,6 +7821,7 @@ export const firmen: Firma[] = [
     beschreibung: "Osteria, Caffè & Vinothek – das Adesso bietet italienische Küche abseits des Gängigen",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/adesso/",
   },
   {
@@ -7378,6 +7838,7 @@ export const firmen: Firma[] = [
     beschreibung: "Kunden zufrieden stellen ist uns zuwenig – wir wollen unsere Gäste begeistern! Bei uns gibt es Frühstück von 9.30 bis 11 Uhr und durchgehend warme Küche von 11 bis 21 Uhr.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/cafe-bistro-wochnblatt/",
   },
   {
@@ -7394,6 +7855,7 @@ export const firmen: Firma[] = [
     beschreibung: "Genießen Sie authentische indische Küche im Maharaja Moosburg Besuchen Sie unser Restaurant in Moosburg a. d. Isar und entdecken Sie die Vielfalt der indischen Küche mit exotischen Gewürzen und unserer herzlichen Gastfreundschaft.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/maharaja-indisches-restaurant/",
   },
   {
@@ -7410,6 +7872,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Geschlossen Dienstag Geschlossen Mittwoch 17:00 - 23:00 Donnerstag 17:00 - 23:00 Freitag 17:00 - 23:00 Samstag 17:00 - 23:00 Sonntag 17:00 - 23:00 Freizeit & Kultur, Kulinarisches, Restaurants & Gaststätten In unserem Restaurant bieten wir eine vielseitige und abwechslungsreiche Auswahl. Unsere Speisen bereiten wir à la Minute, mit frischen Zutaten und viel Liebe für Sie zu. Von Mai bis September öffnen wir unseren Rosenhof-Garten – mitten im Zentrum und dennoch im Grünen von Moosburg, umgeben von Rosen und Kastanienbäumen. Unser Restaurant öffnet ab 17.00 Uhr. Reservierungen nehmen wir gerne per Mail oder telefonisch zu unseren Öffnungszeiten entgegen. Die Kinokassen öffnen 30 Minuten vor der ersten Filmvorstellung.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rosenhof-lichtspiele/",
   },
   {
@@ -7426,6 +7889,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Restaurants in Bayern sind auf südindische Küche spezialisiert. Wir bieten eine Vielzahl von Biryanis an, darunter Hyderabadi Dum Biryani, Chicken Biryani, Mutton Biryani und Veg Biryani, sowie andere Gerichte auf Anfrage. Zusätzlich servieren wir auch thailändische und italienische Küche. Speisekarte",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/tattva-indisches-restaurant/",
   },
   {
@@ -7442,6 +7906,7 @@ export const firmen: Firma[] = [
     beschreibung: "Genießen Sie sowohl bayerische als auch internationale Speisen, zubereitet mit viel Liebe, Leidenschaft und Engagement. Das Restaurant verfügt über 90 Sitzplätze. Bei schönem Wetter können Sie unsere Schmankerl in unserem gemütlichen Biergarten genießen & die Kinder sich auf dem Spielplatz austoben.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/westerberg-stubn-bruckner/",
   },
   {
@@ -7458,6 +7923,7 @@ export const firmen: Firma[] = [
     beschreibung: "Auf zum Karamurats Food Truck am Moosburger Bahnhof! Hier gibts das Dreieck zum Mitnehmen für 4,50 €. Unvergleichlich sind unsere selbstgemachten Saucen und Orginal Berliner Gemüse Kebab. Ihr findet auch als Vegetarier oder als Nicht-Dönerliebhaber die bunteste Vielfalt unserer Testkandidaten.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kebab-smoothie-karamats/",
   },
   {
@@ -7474,6 +7940,7 @@ export const firmen: Firma[] = [
     beschreibung: "Naturwissenschaftlich-technologisches und Sprachliches Gymnasium",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/kartl-ritter-von-fritsch-gymnasium/",
   },
   {
@@ -7490,6 +7957,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Schule wurde 1957 gegründet. Wir haben die Jahrgangsstufen 5 – 10 und bieten ab der 7. Klasse vier verschiedene Wahlpflichtfächergruppen an. Wir bieten in den 5./6. Klassen eine Chor- und eine Bläserklasse an. Ab der 7. Klasse kann man auch einen bilingualen Sachunterricht wählen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: true,
     url: "https://meinmoosburg.de/firma/kastulus-realschule-moosburg/",
   },
   {
@@ -7506,6 +7974,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unsere Schule besuchen ca. 330 Kinder verteilt auf 14 Klassen. Wir sind seit 2017 MINT-freundliche Schule und seit 2019 auch Schule ohne Rassismus – Schule mit Courage. Jedes Jahr nehmen wir am bundesweiten Mathematikwettbewerb Känguru und an der „Lauf-dich-fit-Challenge“ teil.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/theresia-gerhardinger-grundschule/",
   },
   {
@@ -7522,6 +7991,7 @@ export const firmen: Firma[] = [
     beschreibung: "In der “Mein Moosburg” App finden Sie alles Wissenswerte rund um Wirtschaft, Stadtleben und Freizeit aus Moosburg an der Isar. Zahlreiche Funktionen bieteten einen Mehrwert für die Nutzer: – Aktuelle Mitteilungen per Push-Nachricht – Immer die neuesten Veranstaltungen – Infos zum umfangreichen Freizeit- und Kulturangebot – Interaktive Stadtkarte und Stadtquiz – Mängelmelder – Firmen- und Vereinsverzeichnis – Moosburg Card 2.0 – Kontakte finden und aufnehmen Und das wichtigste: Diese kostenlose App wird aus Moosburg für Moosburg angeboten.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/meinmoosburg-app/",
   },
   {
@@ -7538,6 +8008,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Dienstag 16:00 - 18:00 Donnerstag 10:00 - 12:00 Freizeit & Kultur, Sport, Vereine & Kulturelles Gegründet 1963 als Behinderten- und Versehrtensportverein, mittlerweile ein vielseitig orientierter Reha- und Gesundheitssportverein mit mehreren Abteilungen. Vielfältiges Angebot für alle sportlich Ambitionierten im Reha-, Präventions-, Breiten-, und leistungsorientierten Sport.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/rgsv-moosburg/",
   },
   {
@@ -7554,6 +8025,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Standort des öffentlichen Basektball-Platzes wird aufgrund des Naturkindergartens verlegt. Der neue Standort wird zeitnah bekannt gegeben.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/basketball-platz/",
   },
   {
@@ -7570,6 +8042,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Billardtische im Keller des Gasthofs Drei Tannen stehen nicht nur dem Verein, sondern stehen auch der Öffentlichkeit, also Nichtmitgliedern (gegen Gebühr), zur Verfügung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/billard/",
   },
   {
@@ -7586,6 +8059,7 @@ export const firmen: Firma[] = [
     beschreibung: "Das INJOY Fitness- und Gesundheitsstudio ist Ihr Ansprechpartner in Moosburg für Gesundheit und ganzheitliches Training. Auf über 2.000 Quadratmetern finden Sie moderne Trainingsgeräte, einen großen Wellnessbereich und über 200 Group Fitness Kurse pro Monat! Durch Umsetzung der aktuellsten wissenschaftlichen Erkenntnisse und Verfolgung aktueller Trends sind wir zukunftsorientiert aufgestellt und unterstützen Sie bei Ihrer Zielerreichung. Die Öffnungszeiten können an Feiertagen variieren.",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/injoy-moosburg/",
   },
   {
@@ -7602,6 +8076,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Dienstag 19:30 - 22:00 Donnerstag 19:30 - 22:00 Freitag 19:30 - 22:00 Freizeit & Kultur, Sportangebote Klettergebühren: Mitglieder der Sektion Moosburg Erwachsene ermäßigt Familie Einzelkarte 2,00 € 1,00 € 3,00 € Jahreskarte: 65,00 € Mitglieder anderer Sektionen Einzelkarte 3,00 € 1,50 € 4,50 € Nicht-DAV-Mitglieder Einzelkarte 4,00 € 2,00 € 6,00 €",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kletterturm-dav/",
   },
   {
@@ -7618,6 +8093,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag 08:00 - 22:00 Dienstag 08:00 - 22:00 Mittwoch 08:00 - 22:00 Donnerstag 08:00 - 22:00 Freitag 08:00 - 22:00 Samstag 09:00 - 20:00 Sonntag 09:00 - 17:00 Freizeit & Kultur, Sportangebote Fitnessstudio, Hallenbad, Sauna, Wellness, Yoga, Athletik, Reha, Personal Training, Abnehmkurs, Rückentraining, Trainingsbetreuung, Präventionskurse, Muskeltraining, Betriebliches Gesundheitsmanagement",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/new-mountains-fitness-wellness-loft/",
   },
   {
@@ -7634,6 +8110,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Strecke ist als Rundkurs angelegt. Fester Bestandteil sind im Startbereich leichte Aufwärm- und Dehnübungen sowie eine Technik-Route, auf der die sieben Schritte zum richtigen Nordic Walken erklärt werden. Auf jeder Route erinnern besondere Tafeln an das Herzfrequenztraining.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/nordic-walking-aok-parcour/",
   },
   {
@@ -7650,6 +8127,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:30 - 22:00 08:30 - 22:00 08:30 - 22:00 08:30 - 22:00 08:30 - 22:00 Samstag 09:00 - 20:00 Sonntag 09:00 - 17:00 Dienstleister, Freizeit & Kultur, Gesundheit & Beauty, Sportangebote Das P.NUTS Fitnessstudio in Moosburg bietet Ihnen bestes Equipment, ein super breites Fitness-Sortiment für Krafttraining, Ausdauertraining oder Functional Training. Die Outdoor Area ermöglicht ein Training im Freien. Ihr Vorteil: Absolut flexibel und zum kleinen Preis trainieren!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/p-nuts-fitness/",
   },
   {
@@ -7666,6 +8144,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die Skateboard-Anlage in der Stadtbadstraße (nahe Freibad) steht der Öffentlichkeit bis 22 Uhr zur Verfügung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/skateboard-anlage/",
   },
   {
@@ -7682,6 +8161,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moderne Kleintierpraxis für Kleintiere, Heimtiere und Exoten. Wie bieten eine Rundumbetreuung für ihr Tier mit digitalem Röntgen, Ultraschall, Inhalationsnarkose, Verhaltenstherapie und Vielem mehr. Außerdem arbeiten wir mit externen Kollegen für Sonographie, Chirurgie und Physiotherapie zusammen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/dr-sita-meinzer/",
   },
   {
@@ -7698,6 +8178,7 @@ export const firmen: Firma[] = [
     beschreibung: "Türkisblauer Badeesee zwischen Landshut, Freising und Erding. Die Duschen und Toiletten am Aquapark sind wieder geöffnet. Seit Juli 2022 lädt der SAUSALITOS-Seegarten am Aquapark ein zu einem entspannten Biergartenbesuch am Wasser .",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/auqapark/",
   },
   {
@@ -7714,6 +8195,7 @@ export const firmen: Firma[] = [
     beschreibung: "Am zentrumsnahen Standort auf dem Viehmarktplatz befindet sich eine Campingsäule für Wohnmobile (vom Parkplatz aus gesehen an der Rückseite der Schäfflerhalle). Dort können Sie nicht nur Ihre Chemietoiletten entsorgen, sondern auch Strom und Wasser auftanken. Für 1 € gibt es 2 kWh Strom oder 100 l Wasser. Die Entnahme ist ganz einfach. Zuerst wird der Wahlschalter gedrückt, dann erfolgt der Münzeinwurf – und los geht’s. – Stellplatz für Wohnmobile bis 8 m – Zulässiges Gesamtgewicht: ohne Einschränkung – Maximale Aufenthaltsdauer: 3 Tage – Stellplatzkosten: keine – Reservierung: nicht möglich",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/campingsaeule-am-viehmarktplatz/",
   },
   {
@@ -7730,6 +8212,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der Himmelblaue See ist ein kleines Gewässer im Stadtwald Moosburg mit verschiedenen Informationstafeln zu Flora und Fauna. Eine schöne Wandertour, die am himmelblauen See vorbeiführt und die Natur und Innenstadt verbindet, finden Sie hier: https://www.outdooractive.com/de/route/wanderung/freising/zum-himmelblauen-see-und-in-moosburgs-innenstadt/58035510/",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/himmelblauer-see/",
   },
   {
@@ -7746,6 +8229,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir sind ein familiengeführtes Haus mit gemütlichen Zimmern und moderner Ausstattung. Dazu gibt es ein abwechslungsreiches Frühstück mit Produkten aus der eigenen Metzgerei. Auf Wunsch servieren wir auch Weißwurst mit Brezen. Parkplätze stehen unseren Gästen vor dem Hotel kostenlos zur Verfügung!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hotel-huber/",
   },
   {
@@ -7762,6 +8246,7 @@ export const firmen: Firma[] = [
     beschreibung: "Das Naturschutzgebiet “Vogelfreistätte Mittlere Isarstauseen” zählt zu den wertvollsten Wasservogelschutzgebieten Bayerns und ist Bestandteil des Europäischen Schutzgebietsnetzes NATURA 2000. Wesentliche Lebensräume des Gebietes sind der Mittlere Isarkanal mit den Stauseen bei Moosburg und Eching sowie der Isar mit den angrenzenden Auwaldbereichen. Aus botanischer Sicht sind besonders die Trockenstanorte an den Dämmen der Stauseen und des Isarkanals von Bedeutung. Große Teile des Schutzgebietes sind vom Menschen geschaffene Lebensräume, die in den 30er Jahren zur Stromgewinnung gebaut wurden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/naturschutzgebiet-vogelfreistaette-mittlere-isarstauseen/",
   },
   {
@@ -7778,6 +8263,7 @@ export const firmen: Firma[] = [
     beschreibung: "Ich würde mich sehr freuen, Ihnen Ihren Aufenthalt in unserer Stadt so angenehm wie möglich zu gestalten. Der persönliche Service kommt in unserer Pension immer an erster Stelle.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/pension-irene/",
   },
   {
@@ -7794,6 +8280,7 @@ export const firmen: Firma[] = [
     beschreibung: "Moosburg liegt an der Zusammenkunft des Ammer-Amper-Radwegs und des Isarradwegs und somit ideal für Radbegeisterte. Mit der traumhaften Natur vor den Toren der Stadt ist Moosburg Start und Ziel vieler schöner Touren durch den Landkreis und in benachbarte Gebiete. Amper und Isar laden ein für entspannte Spaziergänge, Gassirunden, Joggen oder Walken. An einigen Stellen kann auch in den Flüssen gebadet werden. Weitere Informationen finden Sie z.B. hier: – https://www.isarradweg.de/de/highlights/moosburg-a-d-isar – http://ammer-amper-radweg.com/beschreibung/",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/radeln-rund-um-die-isar/",
   },
   {
@@ -7810,6 +8297,7 @@ export const firmen: Firma[] = [
     beschreibung: "Direkt in der Innenstadt befinden sich mehrere schöne und ruhige Grünflächen. Die gemütlichen Liege- oder Sitzbänke laden zum Verweilen und Entspannen ein – ob in der Mittagspause oder in der Freizeit. – Grünfläche am Zehentstadel (Thalbacher Straße 7) – Amtsgerichtsgarten (Herrnstraße 16) – Grünfläche am Krankenhausweg – Schloss Asch-Wiese",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/staedtische-gruenflaechen/",
   },
   {
@@ -7826,6 +8314,7 @@ export const firmen: Firma[] = [
     beschreibung: "08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 08:00 - 16:30 Transport Teil- und Komplettladungen Stückgut",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/guettler-logistik-gmbh/",
   },
   {
@@ -7842,6 +8331,7 @@ export const firmen: Firma[] = [
     beschreibung: "Seit 1994 sind Kultur erleben, Stadtentwicklung fördern und Denkmäler erhalten die Themenschwerpunkte der Altstadtförderer Moosburg e.V. Wir veranstalten zwei Kunstausstellungen im Jahr, die Kurzfilmnacht sowie Diskussionsveranstaltungen zu Themen der Stadtentwicklung.",
     moma_mitglied: true,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/altstadtfoerderer-moosburg-e-v/",
   },
   {
@@ -7858,6 +8348,7 @@ export const firmen: Firma[] = [
     beschreibung: "Gemeinsame Berg- und Freizeitaktivitäten in den Alpen und im Umland, monatlicher Treff im Vereinsheim jeden 1. Dienstag im Monat um 19 Uhr, umfangreiches Karten- und Wanderführermaterial in der Vereinsbibliothek.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/deutsche-alpenverein-sektion-moosburg-e-v/",
   },
   {
@@ -7874,6 +8365,7 @@ export const firmen: Firma[] = [
     beschreibung: "Der EV Aich wurde 1976 von ortsansässigen Pfrombacher und Aicher Eishockeybegeisterten gegründet und spielt aktuell in der Bayerischen Bezirksliga. Im Sommer veranstaltet der Verein das alljährlich am ersten Augustwochenende stattfindende 3-tägige Dorffest in Aich.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/ev-aich-e-v/",
   },
   {
@@ -7890,6 +8382,7 @@ export const firmen: Firma[] = [
     beschreibung: "Öffnungszeiten Montag Nach Terminvereinbarung Dienstag Nach Terminvereinbarung Mittwoch Nach Terminvereinbarung Donnerstag Nach Terminvereinbarung Freitag Nach Terminvereinbarung Samstag Nach Terminvereinbarung Freizeit & Kultur, Vereine & Kulturelles, Weitere Wir sind ein Verein zur Ausbildung und Erziehung von Sport- u. Familienhunden mit Trainingsmöglichkeiten in nahezu allen Sektoren des Hundesportes, auch Welpen-/Junghundkurse. Willkommen sind Mitglieder sowohl mit Welpen als auch ausgewachsenen Hunden. Bei Interesse einfach zum Probetraining melden.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hundesportverein-moosburg-aich-e-v/",
   },
   {
@@ -7906,6 +8399,7 @@ export const firmen: Firma[] = [
     beschreibung: "Volkstanz, Brauchtum, Schuhplattler, bayrisches Singen und musizieren können Kinder und Erwachsende bei uns erlernen. Jugendprobe jeden Freitag von 18:00 bis 19:30 Uhr (außer i.d. Ferien). Vereinsabend (für Erwachsene) jeden 2. + 4. Freitag im Monat ab 20 Uhr.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/isartaler-moosburg-e-v/",
   },
   {
@@ -7922,6 +8416,7 @@ export const firmen: Firma[] = [
     beschreibung: "Katholischer Burschenverein Thonstetten",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/katholischer-burschenverein-thonstetten/",
   },
   {
@@ -7938,6 +8433,7 @@ export const firmen: Firma[] = [
     beschreibung: "0 info@kleiderbasar-moosburg.de https://www.kleiderbasar-moosburg.de Social Media Wir organisieren viermal im Jahr Basare für Kinderbekleidung und Spielwaren sowie auch für Erwachsenenbekleidung, Schuhe, Accessoires und vieles mehr! Alle Einnahmen gehen an soziale Einrichtungen in der Region. Vorbeischauen, Schnäppchen machen und dabei Gutes tun!",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/kleiderbasar-moosburg-e-v/",
   },
   {
@@ -7954,6 +8450,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir, die FSG Moosburg, sind eine Vereinigung von Menschen, die den Schießsport nach den Richtlinien des DEUTSCHEN SCHÜTZENBUNDES betreibt.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/koeniglich-privilegierte-feuerschuetzengesellschaft-moosburg/",
   },
   {
@@ -7970,6 +8467,7 @@ export const firmen: Firma[] = [
     beschreibung: "Am 24. und 25. Dezember 2021 sowie am 6. Januar 2022 entführt der Verein Lebende Krippe Moosburg e.V. jeweils von 14 – 17 Uhr Groß und Klein ins Betlehem des Jahres 0 unserer Zeitrechnung.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/lebende-krippe-moosburg-e-v/",
   },
   {
@@ -7986,6 +8484,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir pflegen die Volks- und Blasmusik, bayrische, deutsche sowie internationale Musikstücke. Probentermine sind Freitags von 17:00 – 19:00 Uhr. Interessierte sind herzlich eingeladen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/moosburger-stadtorchester-e-v/",
   },
   {
@@ -8002,6 +8501,7 @@ export const firmen: Firma[] = [
     beschreibung: "Die SGM Handball e.V. zählt fast 300 Mitglieder und fördert über 180 Jugendmitglieder für den Handballsport. Der Verein nimmt zusätzlich bei vielen regionalen Turnieren teil und organisiert regelmässige Veranstaltungen. Die SGM ist seit seiner Gründung 1968 fester Besandteil des Moosburger Sports.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/sgm-handball-e-v/",
   },
   {
@@ -8018,6 +8518,7 @@ export const firmen: Firma[] = [
     beschreibung: "Wir informieren Bürger seit 1996 über Klimaschutz und Energiewende (u.a. Solarstrom, Solarwärme, Bauen, Sanieren, E-Mobilität, Energieeinsparung, Müllvermeidung).",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/solarfreunde-moosburg-e-v/",
   },
   {
@@ -8034,6 +8535,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unseren Verein gibt es seit über 15 Jahren. Wir unterstützen die Schule überall dort, wo es keine finanzielle Mittel aus öffentlicher Hand gibt. Das können z.B. Musikinstrumente, T-Shirts für Chor-/ Bläserklassen und SMV, ein Spanisch-Schnupperkurs oder Busfahrten sein.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/verein-der-freunde-und-foerderer-der-kastulus-realschule-moosburg-e-v/",
   },
   {
@@ -8050,6 +8552,7 @@ export const firmen: Firma[] = [
     beschreibung: "Online Shop mit handgemachten Papiersachen für verschiedene Anlässe – wie zum Beispiel Verpackungen, Karten, Stanzteile oder Notizbücher.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/martina-golubic-papiersachen/",
   },
   {
@@ -8066,6 +8569,7 @@ export const firmen: Firma[] = [
     beschreibung: "Traditionelles Familienunternehmen sowie Meisterbetrieb seit 1965. Wir bieten Qualitätsprodukte führender Hersteller sowie zuverlässige Dienstleistungen im Bereich Sonnenschutz, Insektenschutz und Rollladenbau. Bei uns erwartet Sie eine große Ausstellung und freundliches Personal.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/markisen-rolllaeden-insektenschutz-bernhard-loidl/",
   },
   {
@@ -8082,6 +8586,7 @@ export const firmen: Firma[] = [
     beschreibung: "Bayerische Kultur – Zeitgemäße und traditionelle deutsche Küche, sowie modern renovierte Zimmer",
     moma_mitglied: true,
     moosburg_card: true,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hotel-und-gasthaus-drei-tannen/",
   },
   {
@@ -8098,6 +8603,7 @@ export const firmen: Firma[] = [
     beschreibung: "Unser Hotel liegt in zentraler Lage mitten im Herzen der 1200 Jahre alten Drei-Rosenstadt Moosburg mit Blick auf die Türme des Kastulus-Münsters und der Johannis-Kirche. Alle 29 Zimmer sind rustikal ländlich mit naturbelassenem Mobiliar ausgestattet. Sie werden sich wohlfühlen.",
     moma_mitglied: false,
     moosburg_card: false,
+    fair_trade: false,
     url: "https://meinmoosburg.de/firma/hotel-garni-am-kastulus-muenster/",
   },
 ];

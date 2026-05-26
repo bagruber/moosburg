@@ -10,12 +10,21 @@ import {
   IconChevronRight,
   IconArrowRight,
   IconExternalLink,
+  IconBabyCarriage,
+  IconLeaf,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { SectionHeader } from "@/components/SectionHeader";
+import { SpotlightSection } from "@/components/SpotlightSection";
+import { Reveal } from "@/components/Reveal";
+import { HeuteBanner } from "@/components/HeuteBanner";
+import { TipCard } from "@/components/TipCard";
+import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
-import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
+import { FirmaCard, MoosburgCardBadge, MomaBadge, FairTradeBadge } from "@/components/FirmaCard";
+import { useAppState } from "@/state/AppState";
 
 const route = findRoute("mein-moosburg/essen")!;
 
@@ -96,34 +105,26 @@ const SECTIONS: Section[] = [
 ];
 
 export function Essen() {
+  const { profile } = useAppState();
+  const fairTradeGastro = firmen.filter(
+    (f) => f.fair_trade && FOOD_PRIMARY.has(f.primary_kategorie),
+  );
+
   return (
     <PageLayout>
       <PageHeader
         eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Essen & Trinken" }]}
+        variant="photo"
+        image="images/münster.jpg"
+        script="genießen in Moosburg"
       />
 
-      {/* Sticky anchor nav */}
-      <nav className="sticky top-20 z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-8">
-          {SECTIONS.map((s) => {
-            const Icon = s.icon;
-            return (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700"
-              >
-                <Icon className="h-4 w-4" stroke={1.75} />
-                {s.label}
-              </a>
-            );
-          })}
-        </div>
-      </nav>
+      <HeuteBanner />
+
+      <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
@@ -132,50 +133,58 @@ export function Essen() {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
               <span className="font-display uppercase tracking-wider">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
-                <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
+                <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <MoosburgCardBadge /> <span>akzeptiert die Moosburg-Card</span>
+                <MoosburgCardBadge /> <span>Moosburg-Card</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <FairTradeBadge /> <span>Fair-Trade-Partner</span>
               </span>
             </div>
 
-            {SECTIONS.map((s) => {
+            {/* Profile-driven hint (only renders if profile matches) */}
+            {profile.hasChildren && (
+              <TipCard
+                icon={IconBabyCarriage}
+                title="Familien­freundliche Lokale"
+                body="Tagwerk Biomarkt-Café und Mühlbachcafé Beubl haben Spiel­ecken; viele Restaurants bieten Kinder­karten."
+                personalReason="Sie haben Kinder"
+                to="/mein-moosburg/firmen?q=familie"
+                accent="rb-6"
+              />
+            )}
+
+            {SECTIONS.map((s, i) => {
               const matches = FOOD_FIRMS.filter((f) => inCategory(f, s.kategorie));
-              // Sort MoMa-members first, then alpha
               matches.sort((a, b) =>
                 Number(b.moma_mitglied) - Number(a.moma_mitglied) || a.name.localeCompare(b.name),
               );
-              const accent = `var(--color-${s.accent})`;
-              const Icon = s.icon;
               return (
-                <section key={s.id} id={s.id} className="scroll-mt-40">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="grid h-11 w-11 place-items-center rounded-xl"
-                      style={{ backgroundColor: `${accent}1A`, color: accent }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-5 w-5" stroke={1.75} />
-                    </span>
-                    <h2 className="headline text-2xl lg:text-3xl text-ink">{s.label}</h2>
-                    <span className="ml-auto text-xs text-ink-muted">{matches.length}</span>
-                  </div>
-                  <p className="mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
-                  {matches.length === 0 ? (
-                    <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
-                      Aktuell kein Eintrag in dieser Kategorie. Mehr unter{" "}
-                      <Link to="/mein-moosburg/firmen" className="text-red-700 hover:underline">Firmenverzeichnis</Link>.
-                    </p>
-                  ) : (
-                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                      {matches.map((f) => (
-                        <li key={f.id}>
-                          <FirmaCard firma={f} variant="compact" />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
+                <Reveal key={s.id} delay={((i % 2) + 1) as 1 | 2}>
+                  <section id={s.id} className="scroll-mt-40">
+                    <SectionHeader
+                      eyebrow={s.label}
+                      heading={s.label}
+                      script={`${matches.length} in der Stadt`}
+                    />
+                    <p className="-mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
+                    {matches.length === 0 ? (
+                      <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
+                        Aktuell kein Eintrag in dieser Kategorie. Mehr unter{" "}
+                        <Link to="/mein-moosburg/firmen" className="text-red-700 hover:underline">Firmenverzeichnis</Link>.
+                      </p>
+                    ) : (
+                      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                        {matches.map((f) => (
+                          <li key={f.id}>
+                            <FirmaCard firma={f} variant="compact" />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                </Reveal>
               );
             })}
           </div>
@@ -246,6 +255,61 @@ export function Essen() {
           </aside>
         </div>
       </article>
+
+      {/* ─────────────────────────────────────────────────────────────────
+         CLOSER  — Fair-Trade-Gastronomie als rote Marketing-Sektion
+      ────────────────────────────────────────────────────────────────── */}
+      <SpotlightSection tone="red">
+        <Reveal>
+          <SectionHeader
+            eyebrow="Fair genießen"
+            heading="Fair-Trade-Gastronomie"
+            script="bewusst auf dem Teller"
+            light
+          />
+        </Reveal>
+        <Reveal delay={1}>
+          <p className="mt-6 max-w-3xl text-base text-cream/90">
+            Diese Moosburger Gastro-Betriebe sind Teil der Fair-Trade-Stadt-Initiative —
+            Sie finden bei ihnen fair gehandelten Kaffee, Tee oder Backwaren.
+          </p>
+        </Reveal>
+        {fairTradeGastro.length > 0 && (
+          <Reveal delay={2}>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {fairTradeGastro.map((f) => (
+                <li key={f.id}
+                  className="rounded-xl border border-cream/15 bg-cream/5 p-4 transition hover:bg-cream/10">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="font-display text-base text-cream">{f.name}</h3>
+                    <IconLeaf className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                  </div>
+                  <p className="mt-1 text-xs text-cream/70">{f.primary_kategorie}</p>
+                  <p className="mt-2 text-xs text-cream/80">{f.strasse}</p>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        )}
+        <Reveal delay={3}>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/thema/fair-trade"
+              className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
+            >
+              Alles zur Fair-Trade-Stadt
+              <IconArrowRight className="h-4 w-4" stroke={2} />
+            </Link>
+            <Link
+              to="/mein-moosburg/firmen?moosburgCard=1"
+              className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-2.5 text-sm font-medium text-cream hover:bg-cream/10"
+            >
+              Moosburg-Card in der Gastronomie
+              <IconArrowRight className="h-4 w-4" stroke={2} />
+            </Link>
+          </div>
+        </Reveal>
+      </SpotlightSection>
     </PageLayout>
   );
 }
