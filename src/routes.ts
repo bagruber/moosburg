@@ -161,6 +161,26 @@ export const routes: Route[] = [
 
   // ─────────────────────────────────────── Mein Moosburg
   {
+    slug: "mein-moosburg/diese-woche",
+    hub: "mein-moosburg",
+    title: "Diese Woche in Moosburg",
+    eyebrow: "Mein Moosburg",
+    intro:
+      "Was steht an, was ist neu, was sollte man wissen? Der wöchentliche Einstieg ins Stadtleben — Events, Neuigkeiten, Saison-Tipps und Live-Daten aus Moosburg.",
+    icon: IconCalendarEvent,
+    flagship: true,
+  },
+  {
+    slug: "mein-moosburg/stadtplan",
+    hub: "mein-moosburg",
+    title: "Stadtplan",
+    eyebrow: "Mein Moosburg",
+    intro:
+      "Die interaktive Karte von Moosburg — Sehenswürdigkeiten, Spielplätze, Lokale, Apotheken, Haltestellen, Ladesäulen und Baustellen, alle Ebenen frei kombinierbar.",
+    icon: IconMap2,
+    flagship: true,
+  },
+  {
     slug: "mein-moosburg/veranstaltungen",
     hub: "mein-moosburg",
     title: "Was ist los? — Veranstaltungen",

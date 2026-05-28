@@ -10,6 +10,7 @@ export function PageHeader({
   icon: Icon,
   crumbs,
   image,
+  imageCredit,
   script,
   variant = "cream",
 }: {
@@ -19,6 +20,8 @@ export function PageHeader({
   icon?: Icon;
   crumbs: Crumb[];
   image?: string;
+  /** Optional dezenter Foto-Credit unten rechts im Photo-Hero. */
+  imageCredit?: { label?: string; author: string; href?: string };
   script?: string;
   variant?: "cream" | "photo" | "gold" | "red";
 }) {
@@ -32,6 +35,25 @@ export function PageHeader({
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/20" />
+          {imageCredit && (
+            <div className="absolute bottom-2 right-3 z-10 text-right text-[10px] leading-tight text-cream/55">
+              {imageCredit.label && (
+                <span className="block font-display uppercase tracking-wider text-cream/70">
+                  {imageCredit.label}
+                </span>
+              )}
+              <span>
+                Foto:{" "}
+                {imageCredit.href ? (
+                  <a href={imageCredit.href} target="_blank" rel="noreferrer" className="underline hover:text-cream">
+                    {imageCredit.author}
+                  </a>
+                ) : (
+                  imageCredit.author
+                )}
+              </span>
+            </div>
+          )}
           <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 lg:px-8 lg:pb-14">
             <div className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream/90 [&_svg]:text-cream/50">
               <Breadcrumbs items={crumbs} />

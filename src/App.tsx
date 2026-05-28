@@ -25,6 +25,8 @@ import { Umwelt } from "@/pages/flagship/Umwelt";
 import { Wohnen } from "@/pages/flagship/Wohnen";
 import { Firmen } from "@/pages/flagship/Firmen";
 import { FairTrade } from "@/pages/thema/FairTrade";
+import { DieseWoche } from "@/pages/flagship/DieseWoche";
+import { StadtKarte } from "@/pages/flagship/StadtKarte";
 
 export default function App() {
   return (
@@ -49,6 +51,8 @@ export default function App() {
       <Route path="/mein-moosburg/wohnen" element={<Wohnen />} />
       <Route path="/mein-moosburg/firmen" element={<Firmen />} />
       <Route path="/thema/fair-trade" element={<FairTrade />} />
+      <Route path="/mein-moosburg/diese-woche" element={<DieseWoche />} />
+      <Route path="/mein-moosburg/stadtplan" element={<StadtKarte />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />
       <Route path="/mein-moosburg/familie" element={<FamilieBildung />} />
       <Route path="/mein-moosburg/familie/schulen" element={<FamilieBildung />} />
