@@ -428,6 +428,14 @@ export const searchChips: SearchChip[] = [
   { label: "Müllkalender", slug: "rathaus/ver-entsorgung" },
 ];
 
+export type ThemenSeite = { title: string; slug: string; intro: string };
+
+export const themenSeiten: ThemenSeite[] = [
+  { slug: "thema/strassennamen", title: "Straßennamen & Stadtviertel", intro: "Wie Moosburgs Straßen zu ihren Namen kommen und warum ganze Viertel einem Thema folgen — vom Vogelviertel bis zur verlorenen Heimat der Vertriebenen." },
+  { slug: "thema/partnerstaedte", title: "Partnerstädte", intro: "Moosburgs Städtepartnerschaften mit Bry-sur-Marne, Rochester, Moosburg in Kärnten und Sawbridgeworth." },
+  { slug: "thema/fair-trade", title: "Fair-Trade-Stadt Moosburg", intro: "Moosburg als Fairtrade-Stadt — Geschäfte, Gastronomie und Einrichtungen, die fair gehandelte Produkte anbieten." },
+];
+
 export type SearchEntry = { title: string; slug: string; context: string; keywords: string };
 
 export function allSearchEntries(): SearchEntry[] {
@@ -449,7 +457,13 @@ export function allSearchEntries(): SearchEntry[] {
     context: "Lebenslage",
     keywords: `${l.title} ${l.intro}`.toLowerCase(),
   }));
-  return [...hubEntries, ...routeEntries, ...lebenslagenEntries];
+  const themenEntries: SearchEntry[] = themenSeiten.map((t) => ({
+    title: t.title,
+    slug: t.slug,
+    context: "Themenseite",
+    keywords: `${t.title} ${t.intro}`.toLowerCase(),
+  }));
+  return [...hubEntries, ...routeEntries, ...lebenslagenEntries, ...themenEntries];
 }
 
 export type EventItem = {

@@ -33,6 +33,14 @@ const columns = [
       { label: "Stadtentwicklung", to: "/mitgestalten/stadtentwicklung" },
     ],
   },
+  {
+    title: "Themen",
+    links: [
+      { label: "Straßennamen & Viertel", to: "/thema/strassennamen" },
+      { label: "Partnerstädte", to: "/thema/partnerstaedte" },
+      { label: "Fair-Trade-Stadt", to: "/thema/fair-trade" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -43,7 +51,7 @@ export function Footer() {
         className="absolute -right-12 -top-8 h-[420px] w-[336px] text-cream/[0.06] lg:-right-4 lg:h-[520px] lg:w-[416px]"
       />
       <div className="relative mx-auto max-w-7xl px-4 py-14 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-5">
+        <div className="grid gap-10 lg:grid-cols-6">
           <div className="lg:col-span-1">
             <Logo tone="light" />
             <dl className="mt-6 space-y-3 text-sm text-cream/90">
