@@ -347,7 +347,7 @@ function MayorQuote() {
         <figure className="mt-8 flex items-start gap-5 rounded-md border border-ink-line bg-white p-6 shadow-soft sm:gap-7 sm:p-8">
           <img
             src={IMG("images/person-portrait-1.jpg")}
-            alt="Erster Bürgermeister Josef Dollinger"
+            alt="Erster Bürgermeister Maximilian Mader"
             className="h-24 w-24 shrink-0 rounded-md object-cover sm:h-28 sm:w-28"
           />
           <div className="min-w-0">
@@ -357,7 +357,7 @@ function MayorQuote() {
               ins Gespräch."
             </blockquote>
             <figcaption className="mt-4 text-sm font-semibold text-ink">
-              Josef Dollinger
+              Maximilian Mader
               <span className="ml-2 font-normal text-ink-muted">· Erster Bürgermeister</span>
             </figcaption>
           </div>

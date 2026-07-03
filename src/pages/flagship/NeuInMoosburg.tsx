@@ -356,7 +356,7 @@ export function NeuInMoosburg() {
               <figcaption className="mt-4 flex items-center gap-3">
                 <IconUserCircle className="h-9 w-9 text-red-700" stroke={1.5} />
                 <div className="text-sm">
-                  <div className="card-title text-ink">Josef Dollinger</div>
+                  <div className="card-title text-ink">Maximilian Mader</div>
                   <div className="text-xs text-ink-muted">Erster Bürgermeister</div>
                 </div>
               </figcaption>

@@ -20,6 +20,7 @@ import {
   stichwahl,
   wahlbeteiligung,
   kommendeWahlen,
+  gewaehlterBuergermeister,
   type Kandidat,
 } from "@/data/wahlen";
 
@@ -78,8 +79,10 @@ export function Wahlen() {
                     <span className="truncate">{p.name}</span>
                   </span>
                   <span className={cn(p.bg, "h-4 rounded-r-sm")} style={{ width: `${Math.max((p.stimmen / maxStimmen) * 100, 2)}%` }} />
-                  <span className="whitespace-nowrap text-right text-sm tabular-nums text-ink-soft">
-                    {pct(p.stimmen)} <span className="text-ink-muted">· {p.seats} {p.seats === 1 ? "Sitz" : "Sitze"}</span>
+                  <span className="flex items-baseline justify-end gap-1.5 whitespace-nowrap text-right text-sm tabular-nums text-ink-soft">
+                    {pct(p.stimmen)}
+                    <Delta v={p.delta} />
+                    <span className="text-ink-muted">· {p.seats} {p.seats === 1 ? "Sitz" : "Sitze"}</span>
                   </span>
                 </li>
               ))}
@@ -102,7 +105,7 @@ export function Wahlen() {
                 <div className="mb-3 text-sm font-semibold text-ink">Stichwahl</div>
                 <CandidateBars list={stichwahl} winner />
                 <p className="mt-3 text-xs text-ink-muted">
-                  Gewählt: <strong className="text-ink">Martin Pschorr</strong> (SPD) als Erster Bürgermeister.
+                  Gewählt: <strong className="text-ink">{gewaehlterBuergermeister.name}</strong> ({gewaehlterBuergermeister.partei}) als Erster Bürgermeister.
                 </p>
               </div>
             </div>
@@ -195,6 +198,16 @@ function CandidateBars({ list, winner }: { list: Kandidat[]; winner?: boolean })
         </li>
       ))}
     </ul>
+  );
+}
+
+function Delta({ v }: { v: number }) {
+  if (!v) return <span className="text-xs text-ink-muted">±0</span>;
+  const up = v > 0;
+  return (
+    <span className={cn("text-xs font-medium", up ? "text-rb-5" : "text-red-600")}>
+      {up ? "▲" : "▼"} {Math.abs(v).toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+    </span>
   );
 }
 

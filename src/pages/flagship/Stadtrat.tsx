@@ -13,7 +13,7 @@ const route = findRoute("mitgestalten/stadtrat")!;
 const IMG = (src: string) => `${import.meta.env.BASE_URL}${src}`;
 
 const boardMembers = [
-  { name: "Martin Pschorr", role: "Erster Bürgermeister", fraction: "SPD", image: "images/person-portrait-1.jpg" },
+  { name: "Maximilian Mader", role: "Erster Bürgermeister", fraction: "CSU", image: "images/person-portrait-1.jpg" },
   { name: "Nathalie von Pressentin", role: "2. Bürgermeisterin", fraction: "Grüne", image: "images/person-portrait-2.jpg" },
   { name: "Erwin Weber", role: "3. Bürgermeister", fraction: "CSU", image: "images/person-portrait-3.jpg" },
   { name: "Philipp Fincke", role: "Fraktionsvorsitzender", fraction: "parteilos", image: "images/person-portrait-4.jpg" },
@@ -83,13 +83,13 @@ export function Stadtrat() {
             <div className="flex items-center gap-4">
               <img
                 src={IMG("images/person-portrait-1.jpg")}
-                alt="Erster Bürgermeister Josef Dollinger"
+                alt="Erster Bürgermeister Maximilian Mader"
                 className="h-20 w-20 rounded-md border-4 border-gold-200 object-cover"
               />
               <div>
                 <div className="eyebrow text-gold-200">Erster Bürgermeister</div>
-                <div className="mt-1 card-title text-xl leading-tight">Martin Pschorr</div>
-                <div className="text-xs text-cream/70">seit 2020, SPD</div>
+                <div className="mt-1 card-title text-xl leading-tight">Maximilian Mader</div>
+                <div className="text-xs text-cream/70">seit 2026, CSU</div>
               </div>
             </div>
             <p className="mt-5 text-sm text-cream/90 italic">
