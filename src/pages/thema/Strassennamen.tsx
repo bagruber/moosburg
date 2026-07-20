@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import {
   IconSearch,
   IconArrowRight,
-  IconArrowLeft,
   IconSignRight,
   IconClipboardCheck,
   IconBuildingCommunity,
@@ -17,10 +16,8 @@ import { SpotlightSection } from "@/components/SpotlightSection";
 import { NavTab } from "@/components/SectionNav";
 import { Reveal } from "@/components/Reveal";
 import { Highlight } from "@/components/Highlight";
-import { StrassenKarte } from "@/components/StrassenKarte";
-import { cn } from "@/lib/cn";
+import { StrassenExplorer } from "@/components/StrassenExplorer";
 import { strassen, strassenThemen, type ThemeId } from "@/data/strassennamen";
-import { motivViertel } from "@/data/motivgruppen";
 
 /* Naming-process steps for the spotlight band. */
 const SCHRITTE = [
@@ -59,13 +56,6 @@ function StrassenZeile({ name, note }: { name: string; note?: string }) {
 export function Strassennamen() {
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
-
-  // Karten-Explorer
-  const [viertelId, setViertelId] = useState(motivViertel[0].id);
-  const [street, setStreet] = useState<string | null>(null);
-  const viertel = motivViertel.find((v) => v.id === viertelId)!;
-  const highlightStreets = street ? [street] : viertel.strassen.map((s) => s.name);
-  const streetInfo = street ? viertel.strassen.find((s) => s.name === street) : undefined;
 
   const treffer = useMemo(
     () => (q ? strassen.filter((s) => s.name.toLowerCase().includes(q)) : []),
@@ -141,90 +131,14 @@ export function Strassennamen() {
       {/* ── Karten-Explorer ───────────────────────────────────────── */}
       <section id="karte" className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="Auf der Karte" heading="Viertel räumlich entdecken" script="wo genau?" />
+          <SectionHeader eyebrow="Auf der Karte" heading="Motivgruppen räumlich entdecken" script="wo genau?" />
         </Reveal>
         <p className="-mt-4 mb-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Wählen Sie ein Motiv-Viertel — alle zugehörigen Straßen leuchten gemeinsam auf und zeigen,
-          wie nah sie beieinanderliegen. Tippen Sie eine einzelne Straße an, um sie hervorzuheben und
-          ihre Geschichte zu lesen.
+          Wählen Sie eine Motivgruppe — jede Untergruppe erscheint in eigener Farbe, sodass sichtbar
+          wird, welche sich räumlich ballen und welche verstreut liegen. Öffnen Sie eine Untergruppe für
+          Details; einzelne Straßen lassen sich auf der Karte oder in der Liste anwählen.
         </p>
-
-        {/* Viertel-Auswahl */}
-        <div className="mb-6 flex flex-wrap gap-2">
-          {motivViertel.map((v) => (
-            <button
-              key={v.id}
-              onClick={() => { setViertelId(v.id); setStreet(null); }}
-              className={cn(
-                "rounded-full border px-4 py-1.5 text-sm transition",
-                v.id === viertelId
-                  ? "border-red-500 bg-red-500 text-cream"
-                  : "border-ink-line bg-cream text-ink-soft hover:border-red-500/40",
-              )}
-            >
-              {v.name}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr),minmax(0,1.25fr)]">
-          {/* Panel */}
-          <div className="order-2 lg:order-1">
-            {streetInfo ? (
-              <div>
-                <button
-                  onClick={() => setStreet(null)}
-                  className="mb-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
-                >
-                  <IconArrowLeft className="h-3.5 w-3.5" stroke={2} />
-                  Ganzes Viertel zeigen
-                </button>
-                <h3 className="headline text-2xl text-ink">{streetInfo.name}</h3>
-                <p className="mt-2 text-base font-medium text-ink">{streetInfo.kurz}</p>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{streetInfo.lang}</p>
-              </div>
-            ) : (
-              <div>
-                <div className="eyebrow" style={{ color: viertel.accent }}>{viertel.familie}</div>
-                <h3 className="headline mt-1 text-2xl text-ink">{viertel.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{viertel.beschreibung}</p>
-              </div>
-            )}
-
-            <div className="mt-6">
-              <div className="eyebrow mb-2 text-ink-muted">{viertel.strassen.length} Straßen im Viertel</div>
-              <ul className="flex flex-wrap gap-2">
-                {viertel.strassen.map((s) => (
-                  <li key={s.name}>
-                    <button
-                      onClick={() => setStreet(street === s.name ? null : s.name)}
-                      className={cn(
-                        "rounded-lg border px-3 py-1.5 text-sm transition",
-                        street === s.name
-                          ? "border-red-500 bg-red-50 text-red-800"
-                          : "border-ink-line bg-cream text-ink hover:border-red-500/40",
-                      )}
-                    >
-                      {s.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Karte */}
-          <div className="order-1 lg:order-2">
-            <StrassenKarte
-              streets={highlightStreets}
-              onSelectStreet={(n) => setStreet(n)}
-              className="h-[360px] overflow-hidden rounded-2xl border border-ink-line/70 lg:h-[520px]"
-            />
-            <p className="mt-2 text-[11px] text-ink-muted">
-              Karte: © OpenFreeMap · Straßengeometrien © OpenStreetMap-Mitwirkende
-            </p>
-          </div>
-        </div>
+        <StrassenExplorer />
       </section>
 
       {/* ── Such-Einstieg ─────────────────────────────────────────── */}

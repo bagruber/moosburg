@@ -1,218 +1,222 @@
 /**
- * Motivgruppen der Moosburger Straßennamen — thematische Viertel mit
- * redaktionellem Inhalt (Viertel-Beschreibung + je Straße Kurz-/Langtext).
+ * Motivgruppen der Moosburger Straßennamen — zweistufig:
+ *   Motivgruppe → Untergruppe (Viertel) → Straßen (Kurz-/Langtext).
  *
- * Diese Daten speisen den Karten-Explorer auf der Straßennamen-Seite: Die
- * `name`-Werte entsprechen exakt den OSM-Straßennamen in
- * public/data/strassen-geo.json, sodass die Straßen auf der Karte hervorgehoben
- * werden können. Lange Texte sind mit Backticks umschlossen, damit Anführungs-
- * zeichen im Text unproblematisch sind.
+ * Die `name`-Werte entsprechen exakt den OSM-Straßennamen in
+ * public/data/strassen-geo.json (Karten-Highlight). `accent` ist ein Hex-Wert
+ * (wird auch von MapLibre gebraucht, wo CSS-Variablen nicht aufgelöst werden).
+ * Lange Texte in Backticks, damit Anführungszeichen unproblematisch sind.
  */
 
 export type MotivStrasse = { name: string; kurz: string; lang: string };
 
-export type MotivViertel = {
+export type Untergruppe = {
   id: string;
   name: string;
-  familie: string;
-  accent: string; // CSS-Farbe für UI-Akzente
+  accent: string; // Hex
   beschreibung: string;
   strassen: MotivStrasse[];
 };
 
-export const motivViertel: MotivViertel[] = [
+export type Motivgruppe = {
+  id: string;
+  name: string;
+  einleitung: string;
+  untergruppen: Untergruppe[];
+};
+
+export const motivgruppen: Motivgruppe[] = [
   {
-    id: "komponisten",
-    name: "Komponistenviertel",
-    familie: "Persönlichkeiten · Musik & Literatur",
-    accent: "var(--color-rb-7)",
-    beschreibung:
-      `Nach Komponisten benannte Straßen gehören zu den häufigsten thematischen Benennungsmustern in deutschen Städten — kaum ein Ort ohne Bach-, Beethoven- oder Mozartstraße. Solche Namen gelten als politisch unverfänglich und eignen sich gut, um bei der Erschließung neuer Wohngebiete gleich mehrere Straßen konsistent zu benennen, ohne lokale Kontroversen auszulösen. Verbreitet ist das Muster über alle Regionen und Ortsgrößen hinweg, mit Häufungen in Neubaugebieten, die „auf einen Schlag" erschlossen wurden.`,
-    strassen: [
+    id: "persoenlichkeiten",
+    name: "Persönlichkeiten",
+    einleitung:
+      `Ganze Straßenzüge tragen die Namen großer Komponisten und Dichter — ein unpolitisches, konsensfähiges Muster, mit dem sich bei der Erschließung neuer Wohngebiete gleich mehrere Straßen in einem Zug benennen lassen.`,
+    untergruppen: [
       {
-        name: "Bachstraße",
-        kurz: `Johann Sebastian Bach (1685–1750) war ein Komponist und Organist des Barock, einer der wichtigsten Musiker überhaupt.`,
-        lang: `Johann Sebastian Bach (1685–1750) wirkte unter anderem als Organist und Kapellmeister in Weimar und Köthen, bevor er 1723 Thomaskantor in Leipzig wurde. Sein Werk umfasst geistliche Kantaten, die Matthäus- und die Johannespassion, die h-Moll-Messe sowie Instrumentalwerke wie die Brandenburgischen Konzerte und das Wohltemperierte Klavier. Er gilt als Meister des Kontrapunkts und der Fuge und als eine der zentralen Figuren der abendländischen Musikgeschichte, dessen Einfluss bis in die Moderne reicht.`,
+        id: "komponisten",
+        name: "Komponistenviertel",
+        accent: "#3b3f9a",
+        beschreibung:
+          `Nach Komponisten benannte Straßen gehören zu den häufigsten thematischen Benennungsmustern in deutschen Städten — kaum ein Ort ohne Bach-, Beethoven- oder Mozartstraße. Solche Namen gelten als politisch unverfänglich und eignen sich gut, um bei der Erschließung neuer Wohngebiete gleich mehrere Straßen konsistent zu benennen, ohne lokale Kontroversen auszulösen.`,
+        strassen: [
+          { name: "Bachstraße", kurz: `Johann Sebastian Bach (1685–1750) war ein Komponist und Organist des Barock, einer der wichtigsten Musiker überhaupt.`, lang: `Johann Sebastian Bach (1685–1750) wirkte unter anderem als Organist und Kapellmeister in Weimar und Köthen, bevor er 1723 Thomaskantor in Leipzig wurde. Sein Werk umfasst geistliche Kantaten, die Matthäus- und die Johannespassion, die h-Moll-Messe sowie Instrumentalwerke wie die Brandenburgischen Konzerte und das Wohltemperierte Klavier. Er gilt als Meister des Kontrapunkts und der Fuge und als eine der zentralen Figuren der abendländischen Musikgeschichte, dessen Einfluss bis in die Moderne reicht.` },
+          { name: "Beethovenstraße", kurz: `Ludwig van Beethoven (1770–1827) war ein Komponist, der die Musik von der Klassik zur Romantik weiterentwickelte.`, lang: `Ludwig van Beethoven (1770–1827) wurde in Bonn geboren und lebte ab 1792 überwiegend in Wien. Trotz zunehmender Ertaubung ab etwa 1800 komponierte er neun Sinfonien, zahlreiche Klaviersonaten, Streichquartette und sein einziges Opernwerk „Fidelio". Seine 9. Sinfonie mit der Vertonung von Schillers „Ode an die Freude" gilt als Meilenstein der Musikgeschichte und ist heute Grundlage der Europahymne. Beethoven markiert den Übergang von der Wiener Klassik zur Romantik.` },
+          { name: "Brucknerstraße", kurz: `Anton Bruckner (1824–1896) war ein österreichischer Komponist und Organist, bekannt für seine gewaltigen Sinfonien.`, lang: `Anton Bruckner (1824–1896) stammte aus Oberösterreich und wirkte zunächst als Organist im Stift St. Florian und am Linzer Dom, später als Hoforganist und Professor in Wien. Bekannt ist er vor allem für seine neun nummerierten, klanglich monumentalen Sinfonien sowie geistliche Chorwerke wie die Messen und das Te Deum. Sein tief religiöses Weltbild prägte sein Schaffen ebenso wie der Einfluss Richard Wagners, dessen Musik er bewunderte.` },
+          { name: "Haydnstraße", kurz: `Joseph Haydn (1732–1809) war ein Komponist, der die Sinfonie und das Streichquartett entscheidend geprägt hat.`, lang: `Joseph Haydn (1732–1809) stand über Jahrzehnte in den Diensten der Fürstenfamilie Esterházy, wo er einen Großteil seines umfangreichen Werks schuf. Er komponierte über 100 Sinfonien, zahlreiche Streichquartette, Messen und Oratorien wie „Die Schöpfung" und gilt als maßgeblicher Wegbereiter der klassischen Sonatenform. Haydn war zudem Freund und Förderer Mozarts sowie Lehrer des jungen Beethoven und prägte damit die Wiener Klassik entscheidend mit.` },
+          { name: "Mozartstraße", kurz: `Wolfgang Amadeus Mozart (1756–1791) war ein Komponist und Wunderkind, eines der größten musikalischen Genies überhaupt.`, lang: `Wolfgang Amadeus Mozart (1756–1791) wurde in Salzburg geboren und trat bereits als Kind in ganz Europa als Wunderkind auf, bevor er sich ab 1781 in Wien als freischaffender Komponist niederließ. Sein Werk umfasst über 600 Kompositionen nahezu aller Gattungen, darunter Opern wie „Die Zauberflöte" und „Die Hochzeit des Figaro", Sinfonien, Klavier- und Violinkonzerte sowie das unvollendete Requiem. Er starb bereits mit 35 Jahren, gilt aber bis heute als eines der größten musikalischen Genies der Geschichte.` },
+          { name: "Regerstraße", kurz: `Max Reger (1873–1916) war ein bayerischer Komponist und Organist, bekannt für seine komplexen Orgelwerke.`, lang: `Max Reger (1873–1916) wurde im oberpfälzischen Brand geboren und wirkte unter anderem in Weiden, München, Leipzig und Meiningen als Komponist, Organist und Dirigent. Er hinterließ ein sehr umfangreiches Werk, darunter komplexe, chromatisch geprägte Orgelwerke, Kammermusik, Orchesterwerke und Lieder. Reger gilt als einer der bedeutendsten Vertreter der Spätromantik im deutschsprachigen Raum.` },
+          { name: "Richard-Strauss-Straße", kurz: `Richard Strauss (1864–1949) war ein Münchner Komponist und Dirigent, bekannt für Opern wie „Salome".`, lang: `Richard Strauss (1864–1949) wurde in München geboren und war neben seiner Tätigkeit als Komponist auch als Dirigent international tätig, unter anderem an der Wiener und der Berliner Staatsoper. Bekannt wurde er durch sinfonische Tondichtungen wie „Also sprach Zarathustra" und „Till Eulenspiegels lustige Streiche" sowie durch Opern wie „Salome", „Elektra" und „Der Rosenkavalier". Er zählt zu den bedeutendsten spätromantischen Komponisten und übernahm 1933 kurzzeitig ein offizielles Amt in der nationalsozialistischen Reichsmusikkammer, von dem er sich 1935 zurückzog.` },
+        ],
       },
       {
-        name: "Beethovenstraße",
-        kurz: `Ludwig van Beethoven (1770–1827) war ein Komponist, der die Musik von der Klassik zur Romantik weiterentwickelte.`,
-        lang: `Ludwig van Beethoven (1770–1827) wurde in Bonn geboren und lebte ab 1792 überwiegend in Wien. Trotz zunehmender Ertaubung ab etwa 1800 komponierte er neun Sinfonien, zahlreiche Klaviersonaten, Streichquartette und sein einziges Opernwerk „Fidelio". Seine 9. Sinfonie mit der Vertonung von Schillers „Ode an die Freude" gilt als Meilenstein der Musikgeschichte und ist heute Grundlage der Europahymne. Beethoven markiert den Übergang von der Wiener Klassik zur Romantik.`,
-      },
-      {
-        name: "Brucknerstraße",
-        kurz: `Anton Bruckner (1824–1896) war ein österreichischer Komponist und Organist, bekannt für seine gewaltigen Sinfonien.`,
-        lang: `Anton Bruckner (1824–1896) stammte aus Oberösterreich und wirkte zunächst als Organist im Stift St. Florian und am Linzer Dom, später als Hoforganist und Professor in Wien. Bekannt ist er vor allem für seine neun nummerierten, klanglich monumentalen Sinfonien sowie geistliche Chorwerke wie die Messen und das Te Deum. Sein tief religiöses Weltbild prägte sein Schaffen ebenso wie der Einfluss Richard Wagners, dessen Musik er bewunderte.`,
-      },
-      {
-        name: "Haydnstraße",
-        kurz: `Joseph Haydn (1732–1809) war ein Komponist, der die Sinfonie und das Streichquartett entscheidend geprägt hat.`,
-        lang: `Joseph Haydn (1732–1809) stand über Jahrzehnte in den Diensten der Fürstenfamilie Esterházy, wo er einen Großteil seines umfangreichen Werks schuf. Er komponierte über 100 Sinfonien, zahlreiche Streichquartette, Messen und Oratorien wie „Die Schöpfung" und gilt als maßgeblicher Wegbereiter der klassischen Sonatenform. Haydn war zudem Freund und Förderer Mozarts sowie Lehrer des jungen Beethoven und prägte damit die Wiener Klassik entscheidend mit.`,
-      },
-      {
-        name: "Mozartstraße",
-        kurz: `Wolfgang Amadeus Mozart (1756–1791) war ein Komponist und Wunderkind, eines der größten musikalischen Genies überhaupt.`,
-        lang: `Wolfgang Amadeus Mozart (1756–1791) wurde in Salzburg geboren und trat bereits als Kind in ganz Europa als Wunderkind auf, bevor er sich ab 1781 in Wien als freischaffender Komponist niederließ. Sein Werk umfasst über 600 Kompositionen nahezu aller Gattungen, darunter Opern wie „Die Zauberflöte" und „Die Hochzeit des Figaro", Sinfonien, Klavier- und Violinkonzerte sowie das unvollendete Requiem. Er starb bereits mit 35 Jahren, gilt aber bis heute als eines der größten musikalischen Genies der Geschichte.`,
-      },
-      {
-        name: "Regerstraße",
-        kurz: `Max Reger (1873–1916) war ein bayerischer Komponist und Organist, bekannt für seine komplexen Orgelwerke.`,
-        lang: `Max Reger (1873–1916) wurde im oberpfälzischen Brand geboren und wirkte unter anderem in Weiden, München, Leipzig und Meiningen als Komponist, Organist und Dirigent. Er hinterließ ein sehr umfangreiches Werk, darunter komplexe, chromatisch geprägte Orgelwerke, Kammermusik, Orchesterwerke und Lieder. Reger gilt als einer der bedeutendsten Vertreter der Spätromantik im deutschsprachigen Raum und wird oft für die kontrapunktische Dichte und harmonische Komplexität seiner Musik hervorgehoben.`,
-      },
-      {
-        name: "Richard-Strauss-Straße",
-        kurz: `Richard Strauss (1864–1949) war ein Münchner Komponist und Dirigent, bekannt für Opern wie „Salome".`,
-        lang: `Richard Strauss (1864–1949) wurde in München geboren und war neben seiner Tätigkeit als Komponist auch als Dirigent international tätig, unter anderem an der Wiener und der Berliner Staatsoper. Bekannt wurde er durch sinfonische Tondichtungen wie „Also sprach Zarathustra" und „Till Eulenspiegels lustige Streiche" sowie durch Opern wie „Salome", „Elektra" und „Der Rosenkavalier". Er zählt zu den bedeutendsten spätromantischen Komponisten und übernahm 1933 kurzzeitig ein offizielles Amt in der nationalsozialistischen Reichsmusikkammer, von dem er sich 1935 zurückzog.`,
+        id: "dichter",
+        name: "Dichterviertel",
+        accent: "#8b4a2a",
+        beschreibung:
+          `Nach Dichtern und Schriftstellern benannte Straßen sind ebenfalls sehr verbreitet — insbesondere Goethe- und Schillerstraßen finden sich in nahezu jeder deutschen Stadt. Die Praxis hat ihren Ursprung im 19. Jahrhundert, als sich der literarische Kanon der Weimarer Klassik als Namensgeber etablierte. Wie bei den Musikerstraßen handelt es sich um unpolitische, konsensfähige Namen.`,
+        strassen: [
+          { name: "Eichendorffstraße", kurz: `Joseph von Eichendorff (1788–1857) war ein Dichter der Romantik, bekannt für Naturgedichte und „Aus dem Leben eines Taugenichts".`, lang: `Joseph von Eichendorff (1788–1857) entstammte einem schlesischen Adelsgeschlecht und gilt als einer der wichtigsten Lyriker der deutschen Romantik. Viele seiner Gedichte, geprägt von Naturbildern, Wanderschaft und Sehnsucht, wurden später vertont und zählen zu den bekanntesten deutschen Kunstliedern. Bekanntheit erlangte er zudem durch seine Novelle „Aus dem Leben eines Taugenichts", die das romantische Ideal eines unbeschwerten, naturverbundenen Lebens verkörpert.` },
+          { name: "Goethestraße", kurz: `Johann Wolfgang von Goethe (1749–1832) war Dichter und Staatsmann – die wohl wichtigste Figur der deutschen Literatur.`, lang: `Johann Wolfgang von Goethe (1749–1832) wurde in Frankfurt am Main geboren und wirkte den größten Teil seines Lebens in Weimar, unter anderem als Minister im Herzogtum Sachsen-Weimar-Eisenach. Sein literarisches Werk reicht vom Sturm-und-Drang-Roman „Die Leiden des jungen Werthers" bis zum Drama „Faust", daneben war er als Naturforscher tätig. Gemeinsam mit Friedrich Schiller prägte er die Weimarer Klassik und gilt bis heute als zentrale Gestalt der deutschen Literaturgeschichte.` },
+          { name: "Hans-Sachs-Straße", kurz: `Hans Sachs (1494–1576) war ein Nürnberger Schuhmacher, der nebenbei tausende Gedichte und Lieder schrieb.`, lang: `Hans Sachs (1494–1576) war Schuhmachermeister in Nürnberg und zugleich der bekannteste Vertreter des Meistersangs, einer bürgerlichen Dichtungstradition des Spätmittelalters. Er verfasste mehrere tausend Werke, darunter Meisterlieder, Fastnachtsspiele und Schwänke, und unterstützte die Reformation und Martin Luther mit seinen Schriften. Bekannt ist er bis heute nicht zuletzt durch Richard Wagners Oper „Die Meistersinger von Nürnberg", in der er als Titelfigur auftritt.` },
+          { name: "Schillerstraße", kurz: `Friedrich Schiller (1759–1805) war ein Dichter und Dramatiker, bekannt für Stücke wie „Wilhelm Tell".`, lang: `Friedrich Schiller (1759–1805) wurde in Marbach am Neckar geboren und schuf mit Dramen wie „Die Räuber", „Don Carlos", „Wallenstein" und „Wilhelm Tell" zentrale Werke des deutschen Theaters. Neben seiner dichterischen Arbeit war er auch als Historiker und Philosoph tätig und stand ab 1794 in enger Zusammenarbeit mit Goethe in Weimar. Sein Gedicht „An die Freude" wurde durch Beethovens Vertonung in dessen 9. Sinfonie weltberühmt.` },
+        ],
       },
     ],
   },
   {
-    id: "dichter",
-    name: "Dichterviertel",
-    familie: "Persönlichkeiten · Musik & Literatur",
-    accent: "var(--color-rb-8)",
-    beschreibung:
-      `Nach Dichtern und Schriftstellern benannte Straßen sind in Deutschland ebenfalls ein sehr verbreitetes Muster — insbesondere Goethe- und Schillerstraßen finden sich in nahezu jeder deutschen Stadt. Diese Praxis hat ihren Ursprung vor allem im 19. Jahrhundert, als sich im Zuge eines wachsenden nationalen Kulturbewusstseins der literarische Kanon der Weimarer Klassik als Namensgeber etablierte, und setzte sich im 20. Jahrhundert fort. Wie bei den Musikerstraßen handelt es sich um unpolitische, konsensfähige Namen, die sich gut für die geschlossene Benennung mehrerer Straßen eines Viertels eignen.`,
-    strassen: [
+    id: "tiere",
+    name: "Tiere",
+    einleitung:
+      `Vögel und Fische geben zwei Moosburger Vierteln ihre Namen — mit teils konkretem Bezug zur Natur rund um die Stadt, von der Vogelfreistätte an den Isarstauseen bis zu den Fischen in Isar und Amper.`,
+    untergruppen: [
       {
-        name: "Eichendorffstraße",
-        kurz: `Joseph von Eichendorff (1788–1857) war ein Dichter der Romantik, bekannt für Naturgedichte und „Aus dem Leben eines Taugenichts".`,
-        lang: `Joseph von Eichendorff (1788–1857) entstammte einem schlesischen Adelsgeschlecht und gilt als einer der wichtigsten Lyriker der deutschen Romantik. Viele seiner Gedichte, geprägt von Naturbildern, Wanderschaft und Sehnsucht, wurden später vertont und zählen zu den bekanntesten deutschen Kunstliedern. Bekanntheit erlangte er zudem durch seine Novelle „Aus dem Leben eines Taugenichts", die das romantische Ideal eines unbeschwerten, naturverbundenen Lebens verkörpert.`,
+        id: "voegel",
+        name: "Vogelviertel",
+        accent: "#009ac7",
+        beschreibung:
+          `Nach Vogelarten benannte Straßenzüge sind in deutschen Wohngebieten ein bekanntes Muster. Die Arten reichen von häufigen Garten- und Waldvögeln (Amsel, Meise, Fink) über Feld- und Wiesenvögel (Lerche, Kiebitz) bis zu Greifvögeln (Falke, Habicht, Sperber). Moosburg hat dabei einen konkreten Bezug: Unmittelbar an der Stadt liegt mit der seit 1982 geschützten Vogelfreistätte Mittlere Isarstauseen eines der bedeutendsten Wasservogelschutzgebiete Bayerns.`,
+        strassen: [
+          { name: "Amselstraße", kurz: `Die Amsel ist ein weit verbreiteter Singvogel mit auffällig orangefarbenem Schnabel und melodischem Gesang.`, lang: `Die Amsel (Turdus merula) gehört zur Familie der Drosseln und zählt zu den häufigsten und bekanntesten Singvögeln in deutschen Gärten und Parks. Die Männchen sind komplett schwarz gefiedert mit einem markanten orangegelben Schnabel, während Weibchen eher unscheinbar braun gefärbt sind. Bekannt ist die Amsel vor allem für ihren melodischen, weit hörbaren Gesang, mit dem sie oft schon in der Morgendämmerung beginnt.` },
+          { name: "Auerhahnstraße", kurz: `Der Auerhahn ist der größte europäische Waldvogel, bekannt für sein imposantes Balzverhalten und selten geworden.`, lang: `Der Auerhahn, das Männchen des Auerhuhns (Tetrao urogallus), ist der größte Vertreter der Raufußhühner in Europa und bewohnt bevorzugt störungsarme, alte Nadel- und Mischwälder. Bekannt ist er vor allem für sein auffälliges Balzverhalten im Frühjahr. Durch den Verlust geeigneter Waldlebensräume ist der Bestand in weiten Teilen Deutschlands stark zurückgegangen, weshalb die Art heute streng geschützt ist.` },
+          { name: "Drosselweg", kurz: `Drosseln sind eine Familie von Singvögeln, zu der unter anderem Sing- und Wacholderdrossel gehören.`, lang: `Als Drosseln (Turdidae) bezeichnet man eine Familie von Singvögeln, zu der neben der Amsel auch die Singdrossel und die Wacholderdrossel zählen. Viele Arten sind für ihren kräftigen, oft mehrstrophigen Gesang bekannt und ernähren sich überwiegend von Insekten, Würmern und Beeren. Drosseln sind in Wäldern, Parks und Gärten weit verbreitet.` },
+          { name: "Falkenstraße", kurz: `Falken sind schnelle Greifvögel; der bei uns häufigste Vertreter ist der Turmfalke.`, lang: `Falken (Falconidae) bilden eine eigene Familie unter den Greifvögeln und sind für ihren schnellen, wendigen Flug bekannt. Der in Deutschland häufigste Vertreter ist der Turmfalke (Falco tinnunculus), der häufig im charakteristischen Rüttelflug über Feldern nach Mäusen jagt. Andere heimische Arten wie der Wanderfalke gelten als die schnellsten Tiere der Welt und erreichen im Sturzflug über 300 km/h.` },
+          { name: "Fasanenstraße", kurz: `Der Fasan ist ein ursprünglich aus Asien stammender Hühnervogel, der seit Jahrhunderten in Europa als Jagdwild gilt.`, lang: `Der Fasan (Phasianus colchicus) stammt ursprünglich aus Asien und wurde bereits vor Jahrhunderten in Europa als Jagd- und Ziervogel eingeführt. Die Männchen fallen durch ihr prachtvolles, buntes Federkleid und den langen Schwanz auf, während Weibchen unscheinbar braun gefärbt sind. Fasane bevorzugen offenes, strukturreiches Agrarland mit Hecken und gelten bis heute als beliebtes Niederwild.` },
+          { name: "Finkenstraße", kurz: `Finken sind kleine Singvögel; der Buchfink zählt zu den häufigsten Vogelarten Deutschlands.`, lang: `Zur Familie der Finken (Fringillidae) gehören zahlreiche kleine, meist bunt gefärbte Singvögel mit kräftigem, kegelförmigem Schnabel, der zum Knacken von Sämereien geeignet ist. Der bekannteste heimische Vertreter, der Buchfink (Fringilla coelebs), zählt zu den häufigsten Brutvögeln Deutschlands. Finken besiedeln vor allem Wälder, Gärten und Parks.` },
+          { name: "Geibitzstraße", kurz: `Der Kiebitz ist ein gefährdeter Wiesenvogel mit markanter Federhaube, dessen Bestand stark zurückgegangen ist.`, lang: `Der Kiebitz (Vanellus vanellus), in bairischer Mundart auch „Geibitz" genannt, ist ein Watvogel mit auffälliger Federhaube und einem unverwechselbaren, ruckartigen Balzflug. Er brütet bevorzugt am Boden offener, feuchter Wiesen und ist an seinem charakteristischen „kiwitt"-Ruf zu erkennen. Der Bestand ist stark zurückgegangen, weshalb er heute als gefährdet gilt. Der Landkreis Freising zählt bayernweit zu den wichtigeren Brutgebieten der Art.` },
+          { name: "Habichtweg", kurz: `Der Habicht ist ein kräftiger Waldgreifvogel, der in dichten Wäldern lebt und Vögel und Kleinsäuger jagt.`, lang: `Der Habicht (Accipiter gentilis) ist ein mittelgroßer bis kräftiger Greifvogel, der bevorzugt in geschlossenen Wäldern lebt und dort mit hoher Wendigkeit zwischen den Bäumen jagt. Er ernährt sich vor allem von mittelgroßen Vögeln und Säugetieren wie Tauben oder Krähen. Wegen seiner Jagdfähigkeiten wurde der Habicht historisch auch in der Falknerei eingesetzt.` },
+          { name: "Kleiberstraße", kurz: `Der Kleiber ist ein kleiner Singvogel, der als einziger heimischer Vogel kopfüber Bäume hinabläuft.`, lang: `Der Kleiber (Sitta europaea) ist an seiner blaugrauen Oberseite, dem kräftigen Schnabel und dem schwarzen Augenstreif gut zu erkennen. Als einzige heimische Vogelart läuft er Baumstämme nicht nur hinauf, sondern auch kopfüber hinab, auf der Suche nach Insekten in der Rinde. Charakteristisch ist sein Verhalten, den Eingang seiner Bruthöhle mit Lehm zu verkleinern, was ihm den Namen „Spechtmeise" eingebracht hat.` },
+          { name: "Lerchenstraße", kurz: `Die Feldlerche ist ein Vogel offener Felder, bekannt für ihren Gesang im hohen Steigflug.`, lang: `Die Feldlerche (Alauda arvensis) ist ein unscheinbar braun gefärbter Vogel offener Acker- und Wiesenlandschaften. Bekannt ist sie vor allem für ihren charakteristischen Gesang, den die Männchen oft minutenlang im steilen Aufstiegsflug hoch über dem Feld vortragen. Ihr Bestand ist durch die Intensivierung der Landwirtschaft spürbar zurückgegangen.` },
+          { name: "Meisenstraße", kurz: `Meisen sind kleine, gesellige Singvögel, die häufig Gärten und Nistkästen besiedeln.`, lang: `Zur Familie der Meisen (Paridae) gehören mehrere kleine, meist bunt gefärbte Singvogelarten, von denen die Kohlmeise (Parus major) die bekannteste ist. Meisen sind sehr wendige Vögel, die sich häufig an Gärten und Futterstellen zeigen und gerne künstliche Nistkästen annehmen. Als eifrige Insektenjäger leisten sie einen wichtigen Beitrag zur biologischen Schädlingsbekämpfung.` },
+          { name: "Schwalbenstraße", kurz: `Schwalben sind Zugvögel, die den Sommer über in Lehmnestern an Gebäuden brüten.`, lang: `Schwalben (Hirundinidae) wie die Rauch- und die Mehlschwalbe sind wendige Flieger, die einen Großteil ihrer Zeit jagend in der Luft verbringen. Sie überwintern in Afrika und legen jährlich tausende Kilometer zurück, bevor sie im Frühjahr an ihre Brutplätze zurückkehren. Charakteristisch sind ihre aus Lehm gebauten Nester an Gebäuden, weshalb die Schwalbe seit jeher als Glücksbringer und Bote des Sommers gilt.` },
+          { name: "Sperberstraße", kurz: `Der Sperber ist ein kleiner, wendiger Greifvogel, der vor allem kleine Singvögel jagt.`, lang: `Der Sperber (Accipiter nisus) ist ein kleiner, sehr wendiger Greifvogel, der mit kurzen, gerundeten Flügeln geschickt zwischen Bäumen und Hecken jagt. Er hat sich auf kleine bis mittelgroße Vögel spezialisiert, die er in schnellen Überraschungsangriffen erbeutet. Der Sperber ist inzwischen auch in Siedlungsgebieten häufig anzutreffen.` },
+          { name: "Starenweg", kurz: `Der Star ist ein geselliger Singvogel, bekannt für seine riesigen, kunstvoll fliegenden Schwärme im Herbst.`, lang: `Der Star (Sturnus vulgaris) ist ein mittelgroßer Singvogel mit dunklem, metallisch schimmerndem Gefieder. Bekannt ist er für sein Sozialverhalten: Besonders im Herbst versammeln sich Stare zu riesigen Schwärmen, die in koordinierten Flugformationen am Himmel Muster bilden. Zudem ist der Star ein begabter Stimmenimitator.` },
+          { name: "Taubenstraße", kurz: `Tauben sind weit verbreitete Vögel; die Ringeltaube ist die häufigste heimische Wildtaubenart.`, lang: `Zur Familie der Tauben (Columbidae) zählen sowohl wild lebende Arten wie die Ringeltaube (Columba palumbus) als auch die von der Felsentaube abstammende Haustaube. Tauben sind an ihrem gedrungenen Körperbau, dem kleinen Kopf und dem gurrenden Ruf zu erkennen. Als Symbol des Friedens ist die Taube tief in Kultur, Religion und Kunst verankert.` },
+        ],
       },
       {
-        name: "Goethestraße",
-        kurz: `Johann Wolfgang von Goethe (1749–1832) war Dichter und Staatsmann – die wohl wichtigste Figur der deutschen Literatur.`,
-        lang: `Johann Wolfgang von Goethe (1749–1832) wurde in Frankfurt am Main geboren und wirkte den größten Teil seines Lebens in Weimar, unter anderem als Minister im Herzogtum Sachsen-Weimar-Eisenach. Sein literarisches Werk reicht vom Sturm-und-Drang-Roman „Die Leiden des jungen Werthers" bis zum Drama „Faust", daneben war er als Naturforscher unter anderem in der Farbenlehre und Morphologie tätig. Gemeinsam mit Friedrich Schiller prägte er die Weimarer Klassik und gilt bis heute als zentrale Gestalt der deutschen Literaturgeschichte.`,
-      },
-      {
-        name: "Hans-Sachs-Straße",
-        kurz: `Hans Sachs (1494–1576) war ein Nürnberger Schuhmacher, der nebenbei tausende Gedichte und Lieder schrieb.`,
-        lang: `Hans Sachs (1494–1576) war Schuhmachermeister in Nürnberg und zugleich der bekannteste Vertreter des Meistersangs, einer bürgerlichen Dichtungstradition des Spätmittelalters. Er verfasste mehrere tausend Werke, darunter Meisterlieder, Fastnachtsspiele und Schwänke, und unterstützte die Reformation und Martin Luther mit seinen Schriften. Bekannt ist er bis heute nicht zuletzt durch Richard Wagners Oper „Die Meistersinger von Nürnberg", in der er als Titelfigur auftritt.`,
-      },
-      {
-        name: "Schillerstraße",
-        kurz: `Friedrich Schiller (1759–1805) war ein Dichter und Dramatiker, bekannt für Stücke wie „Wilhelm Tell".`,
-        lang: `Friedrich Schiller (1759–1805) wurde in Marbach am Neckar geboren und schuf mit Dramen wie „Die Räuber", „Don Carlos", „Wallenstein" und „Wilhelm Tell" zentrale Werke des deutschen Theaters. Neben seiner dichterischen Arbeit war er auch als Historiker und Philosoph tätig und stand ab 1794 in enger freundschaftlicher und künstlerischer Zusammenarbeit mit Goethe in Weimar. Sein Gedicht „An die Freude" wurde durch Beethovens Vertonung in dessen 9. Sinfonie weltberühmt.`,
-      },
-    ],
-  },
-  {
-    id: "voegel",
-    name: "Vogelviertel",
-    familie: "Tiere · Vögel & Fische",
-    accent: "var(--color-rb-6)",
-    beschreibung:
-      `Nach Vogelarten benannte Straßenzüge sind in deutschen Wohngebieten ein bekanntes und relativ häufiges Muster. Die hier versammelten Arten reichen von häufigen Garten- und Waldvögeln (Amsel, Meise, Fink) über typische Feld- und Wiesenvögel (Lerche, Kiebitz) bis zu Greifvögeln (Falke, Habicht, Sperber). Moosburg hat dabei einen konkreten Bezug: Unmittelbar an der Stadt liegt mit der seit 1982 geschützten Vogelfreistätte Mittlere Isarstauseen eines der bedeutendsten Wasservogelschutzgebiete Bayerns, und der Landkreis Freising gilt als bayernweit bedeutender Brutraum für den gefährdeten Kiebitz.`,
-    strassen: [
-      {
-        name: "Amselstraße",
-        kurz: `Die Amsel ist ein weit verbreiteter Singvogel mit auffällig orangefarbenem Schnabel und melodischem Gesang.`,
-        lang: `Die Amsel (Turdus merula) gehört zur Familie der Drosseln und zählt zu den häufigsten und bekanntesten Singvögeln in deutschen Gärten und Parks. Die Männchen sind komplett schwarz gefiedert mit einem markanten orangegelben Schnabel, während Weibchen eher unscheinbar braun gefärbt sind. Bekannt ist die Amsel vor allem für ihren melodischen, weit hörbaren Gesang, mit dem sie oft schon in der Morgendämmerung beginnt.`,
-      },
-      {
-        name: "Auerhahnstraße",
-        kurz: `Der Auerhahn ist der größte europäische Waldvogel, bekannt für sein imposantes Balzverhalten und selten geworden.`,
-        lang: `Der Auerhahn, das Männchen des Auerhuhns (Tetrao urogallus), ist der größte Vertreter der Raufußhühner in Europa und bewohnt bevorzugt störungsarme, alte Nadel- und Mischwälder. Bekannt ist er vor allem für sein auffälliges Balzverhalten im Frühjahr, bei dem die Hähne mit gesträubtem Gefieder und typischen Balzlauten um die Weibchen werben. Durch den Verlust geeigneter Waldlebensräume ist der Bestand in weiten Teilen Deutschlands stark zurückgegangen, weshalb die Art heute streng geschützt ist.`,
-      },
-      {
-        name: "Drosselweg",
-        kurz: `Drosseln sind eine Familie von Singvögeln, zu der unter anderem Sing- und Wacholderdrossel gehören.`,
-        lang: `Als Drosseln (Turdidae) bezeichnet man eine Familie von Singvögeln, zu der neben der Amsel auch die Singdrossel und die Wacholderdrossel zählen. Viele Arten sind für ihren kräftigen, oft mehrstrophigen Gesang bekannt und ernähren sich überwiegend von Insekten, Würmern und Beeren. Drosseln sind in Wäldern, Parks und Gärten weit verbreitet und zählen zu den häufig zu beobachtenden heimischen Singvögeln.`,
-      },
-      {
-        name: "Falkenstraße",
-        kurz: `Falken sind schnelle Greifvögel; der bei uns häufigste Vertreter ist der Turmfalke.`,
-        lang: `Falken (Falconidae) bilden eine eigene Familie unter den Greifvögeln und sind für ihren schnellen, wendigen Flug bekannt. Der in Deutschland häufigste Vertreter ist der Turmfalke (Falco tinnunculus), der häufig im charakteristischen Rüttelflug über Feldern nach Mäusen jagt. Andere heimische Arten wie der Wanderfalke gelten als die schnellsten Tiere der Welt und erreichen im Sturzflug Geschwindigkeiten von über 300 km/h.`,
-      },
-      {
-        name: "Fasanenstraße",
-        kurz: `Der Fasan ist ein ursprünglich aus Asien stammender Hühnervogel, der seit Jahrhunderten in Europa als Jagdwild gilt.`,
-        lang: `Der Fasan (Phasianus colchicus) stammt ursprünglich aus Asien und wurde bereits vor Jahrhunderten in Europa als Jagd- und Ziervogel eingeführt, wo er sich vielerorts dauerhaft angesiedelt hat. Die Männchen fallen durch ihr prachtvolles, buntes Federkleid und den langen Schwanz auf, während Weibchen unscheinbar braun gefärbt sind. Fasane bevorzugen offenes, strukturreiches Agrarland mit Hecken und Feldrändern und gelten bis heute als beliebtes Niederwild.`,
-      },
-      {
-        name: "Finkenstraße",
-        kurz: `Finken sind kleine Singvögel; der Buchfink zählt zu den häufigsten Vogelarten Deutschlands.`,
-        lang: `Zur Familie der Finken (Fringillidae) gehören zahlreiche kleine, meist bunt gefärbte Singvögel mit kräftigem, kegelförmigem Schnabel, der zum Knacken von Sämereien geeignet ist. Der bekannteste heimische Vertreter, der Buchfink (Fringilla coelebs), zählt zu den häufigsten Brutvögeln Deutschlands und ist an seinem charakteristischen, weithin hörbaren Gesang zu erkennen. Finken besiedeln vor allem Wälder, Gärten und Parks und ernähren sich überwiegend von Samen und Insekten.`,
-      },
-      {
-        name: "Geibitzstraße",
-        kurz: `Der Kiebitz ist ein gefährdeter Wiesenvogel mit markanter Federhaube, dessen Bestand stark zurückgegangen ist.`,
-        lang: `Der Kiebitz (Vanellus vanellus), in bairischer Mundart auch „Geibitz" genannt, ist ein Watvogel mit auffälliger Federhaube und einem unverwechselbaren, ruckartigen Balzflug. Er brütet bevorzugt am Boden offener, feuchter Wiesen und Weiden und ist an seinem charakteristischen „kiwitt"-Ruf gut zu erkennen. Durch die Trockenlegung von Feuchtwiesen und die Intensivierung der Landwirtschaft ist der Bestand stark zurückgegangen, weshalb der Kiebitz heute als gefährdet gilt. Der Landkreis Freising zählt bayernweit zu den wichtigeren Brutgebieten der Art.`,
-      },
-      {
-        name: "Habichtweg",
-        kurz: `Der Habicht ist ein kräftiger Waldgreifvogel, der in dichten Wäldern lebt und Vögel und Kleinsäuger jagt.`,
-        lang: `Der Habicht (Accipiter gentilis) ist ein mittelgroßer bis kräftiger Greifvogel, der bevorzugt in geschlossenen Wäldern lebt und dort mit hoher Wendigkeit zwischen den Bäumen jagt. Er ernährt sich vor allem von mittelgroßen Vögeln und Säugetieren wie Tauben oder Krähen, die er im schnellen Verfolgungsflug erbeutet. Wegen seiner Jagdfähigkeiten wurde der Habicht historisch auch in der Falknerei eingesetzt und gilt bis heute als einer der geschicktesten heimischen Jäger unter den Vögeln.`,
-      },
-      {
-        name: "Kleiberstraße",
-        kurz: `Der Kleiber ist ein kleiner Singvogel, der als einziger heimischer Vogel kopfüber Bäume hinabläuft.`,
-        lang: `Der Kleiber (Sitta europaea) ist an seiner blaugrauen Oberseite, dem kräftigen Schnabel und dem schwarzen Augenstreif gut zu erkennen. Als einzige heimische Vogelart ist er in der Lage, Baumstämme nicht nur hinauf, sondern auch kopfüber hinabzulaufen, auf der Suche nach Insekten in der Rinde. Charakteristisch ist zudem sein Verhalten, den Eingang seiner Bruthöhle mit Lehm auf die passende Größe zu verkleinern, was ihm im Volksmund den Namen „Spechtmeise" eingebracht hat.`,
-      },
-      {
-        name: "Lerchenstraße",
-        kurz: `Die Feldlerche ist ein Vogel offener Felder, bekannt für ihren Gesang im hohen Steigflug.`,
-        lang: `Die Feldlerche (Alauda arvensis), meist einfach als „Lerche" bezeichnet, ist ein unscheinbar braun gefärbter Vogel offener Acker- und Wiesenlandschaften. Bekannt ist sie vor allem für ihren charakteristischen Gesang, den die Männchen oft minutenlang im steilen Aufstiegsflug hoch über dem Feld vortragen. Als Symbol des Frühlings besungen, ist ihr Bestand durch die Intensivierung der Landwirtschaft in den letzten Jahrzehnten spürbar zurückgegangen.`,
-      },
-      {
-        name: "Meisenstraße",
-        kurz: `Meisen sind kleine, gesellige Singvögel, die häufig Gärten und Nistkästen besiedeln.`,
-        lang: `Zur Familie der Meisen (Paridae) gehören mehrere kleine, meist bunt gefärbte Singvogelarten, von denen die Kohlmeise (Parus major) mit ihrer gelben Brust und schwarzer Kopfzeichnung die bekannteste ist. Meisen sind sehr wendige und geschickte Vögel, die sich häufig an Gärten und Futterstellen zeigen und gerne künstliche Nistkästen als Bruthöhle annehmen. Als eifrige Insektenjäger leisten sie zudem einen wichtigen Beitrag zur biologischen Schädlingsbekämpfung.`,
-      },
-      {
-        name: "Schwalbenstraße",
-        kurz: `Schwalben sind Zugvögel, die den Sommer über in Lehmnestern an Gebäuden brüten.`,
-        lang: `Schwalben (Hirundinidae) wie die Rauch- (Hirundo rustica) und die Mehlschwalbe (Delichon urbicum) sind wendige Flieger, die einen Großteil ihrer Zeit jagend in der Luft verbringen, wo sie Insekten im Flug erbeuten. Sie überwintern in Afrika und legen dabei jährlich tausende Kilometer zurück, bevor sie im Frühjahr an ihre Brutplätze zurückkehren. Charakteristisch sind ihre aus Lehm und Speichel gebauten Nester an Gebäuden, weshalb die Schwalbe seit jeher als Glücksbringer und Bote des Sommers gilt.`,
-      },
-      {
-        name: "Sperberstraße",
-        kurz: `Der Sperber ist ein kleiner, wendiger Greifvogel, der vor allem kleine Singvögel jagt.`,
-        lang: `Der Sperber (Accipiter nisus) ist ein kleiner, sehr wendiger Greifvogel, der mit kurzen, gerundeten Flügeln geschickt zwischen Bäumen und Hecken jagt. Er hat sich auf die Jagd nach kleinen bis mittelgroßen Vögeln spezialisiert, die er in schnellen Überraschungsangriffen aus Deckungen heraus erbeutet. Der Sperber ist inzwischen auch in Siedlungsgebieten häufig anzutreffen, wo er gezielt Gärten mit Futterstellen als Jagdrevier nutzt.`,
-      },
-      {
-        name: "Starenweg",
-        kurz: `Der Star ist ein geselliger Singvogel, bekannt für seine riesigen, kunstvoll fliegenden Schwärme im Herbst.`,
-        lang: `Der Star (Sturnus vulgaris) ist ein mittelgroßer Singvogel mit dunklem, im Sonnenlicht metallisch schimmerndem Gefieder. Bekannt ist er vor allem für sein ausgeprägtes Sozialverhalten: Besonders im Herbst versammeln sich Stare zu riesigen Schwärmen, die in eindrucksvoll koordinierten Flugformationen am Himmel Muster bilden. Zudem ist der Star ein begabter Stimmenimitator, der Rufe anderer Vögel und selbst Umgebungsgeräusche in seinen Gesang einbaut.`,
-      },
-      {
-        name: "Taubenstraße",
-        kurz: `Tauben sind weit verbreitete Vögel; die Ringeltaube ist die häufigste heimische Wildtaubenart.`,
-        lang: `Zur Familie der Tauben (Columbidae) zählen sowohl wild lebende Arten wie die Ringeltaube (Columba palumbus), die häufigste heimische Wildtaube, als auch die von der Felsentaube abstammende Haustaube, die seit Jahrtausenden vom Menschen gehalten wird. Tauben sind an ihrem gedrungenen Körperbau, dem kleinen Kopf und dem charakteristischen, gurrenden Ruf zu erkennen. Als Symbol des Friedens ist die Taube zudem tief in Kultur, Religion und Kunst verankert.`,
+        id: "fische",
+        name: "Fischviertel",
+        accent: "#18ada4",
+        beschreibung:
+          `Nach Fischarten benannte Straßen sind seltener als Vogel- oder Pflanzennamen — häufig in Gewässernähe. Die Arten (Forelle, Hecht, Karpfen, Schleie, Zander) zählen zu den bekanntesten heimischen Speise- und Angelfischen. Der regionale Bezug ist deutlich: Alle fünf sind in Gewässern bei Moosburg dokumentiert — in der Isar, im Moosburger Weiher, im Sempt-Flutkanal oder in der Amper.`,
+        strassen: [
+          { name: "Forellenstraße", kurz: `Forellen sind schnelle Raubfische klarer, sauerstoffreicher Gewässer und beliebte Angelfische.`, lang: `Forellen, allen voran die heimische Bachforelle und die Regenbogenforelle, bevorzugen klare, kühle und sauerstoffreiche Fließgewässer. Sie sind schnelle Jäger und zählen zu den beliebtesten Zielfischen beim Sport- und Fliegenfischen. Die Isar bei Moosburg gilt selbst als klassischer Forellenfluss.` },
+          { name: "Hechtstraße", kurz: `Der Hecht ist ein gefräßiger Raubfisch und einer der häufigsten Angelfische heimischer Gewässer.`, lang: `Der Hecht ist ein schlanker, langgestreckter Raubfisch, der reglos im Schilf auf Beute lauert, bevor er blitzschnell zuschnappt. Er zählt zu den größten heimischen Süßwasserfischen. In der Isar sowie im Moosburger Weiher und im Sempt-Flutkanal gehört der Hecht zu den am häufigsten gefangenen Arten.` },
+          { name: "Karpfenstraße", kurz: `Der Karpfen ist ein genügsamer Fisch stehender Gewässer und seit dem Mittelalter beliebter Teichfisch.`, lang: `Der Karpfen ist ein robuster, genügsamer Fisch ruhiger, nährstoffreicher Gewässer. Bereits im Mittelalter wurde er von Klöstern in Teichen gezüchtet, um an Fastentagen eine Fleischalternative zu haben, und zählt seither zu den wichtigsten Speisefischen Mitteleuropas. Auch rund um Moosburg ist der Karpfen weit verbreitet.` },
+          { name: "Schleienstraße", kurz: `Die Schleie ist ein genügsamer Fisch schlammiger Weiher und Seen mit charakteristisch grünlicher Haut.`, lang: `Die Schleie ist an ihrer oliv- bis dunkelgrünen, schleimigen Haut und den kleinen Augen zu erkennen. Sie bevorzugt ruhige, pflanzenreiche und schlammige Gewässer und kommt auch mit geringem Sauerstoffgehalt gut zurecht. Im Moosburger Weiher zählt sie neben Karpfen und Hecht zu den dokumentierten heimischen Fischarten.` },
+          { name: "Zanderstraße", kurz: `Der Zander ist ein kräftiger Raubfisch größerer Flüsse und Seen und ein beliebter Speisefisch.`, lang: `Der Zander ist ein schlanker, kräftiger Raubfisch mit markanten Reißzähnen, der vor allem in größeren, trüberen Flüssen und Seen vorkommt. Er jagt bevorzugt in der Dämmerung. Als schmackhafter Speisefisch ist er bei Anglern sehr beliebt; in der Amper bei Moosburg zählt er zu den Hauptfischarten, deren Bestand durch Besatzmaßnahmen gefördert wird.` },
+        ],
       },
     ],
   },
   {
-    id: "fische",
-    name: "Fischviertel",
-    familie: "Tiere · Vögel & Fische",
-    accent: "var(--color-turquoise-accent)",
-    beschreibung:
-      `Nach Fischarten benannte Straßen sind seltener als etwa Vogel- oder Pflanzennamen, kommen aber ebenfalls vor — häufig in Gewässernähe oder in Gegenden mit Bezug zu Fischerei und Teichwirtschaft. Die hier versammelten Arten (Forelle, Hecht, Karpfen, Schleie und Zander) zählen zu den bekanntesten heimischen Speise- und Angelfischen. Der regionale Bezug ist deutlich: Alle fünf Arten sind in Gewässern bei Moosburg dokumentiert — etwa in der Isar, im Moosburger Weiher, im Sempt-Flutkanal oder in der Amper — und werden dort bis heute aktiv beangelt.`,
-    strassen: [
+    id: "pflanzen",
+    name: "Pflanzen",
+    einleitung:
+      `Von Nutzpflanzen über Ziersträucher bis zu Gartenblumen und Bäumen: Pflanzennamen zählen zu den häufigsten Straßenbenennungen überhaupt. In Moosburg verteilen sie sich auf mehrere Untergruppen — am stärksten belegt ist der Bezug bei der Hopfenstraße, mitten in der Hallertau.`,
+    untergruppen: [
       {
-        name: "Forellenstraße",
-        kurz: `Forellen sind schnelle Raubfische klarer, sauerstoffreicher Gewässer und beliebte Angelfische.`,
-        lang: `Forellen, allen voran die heimische Bachforelle und die ursprünglich aus Nordamerika stammende Regenbogenforelle, bevorzugen klare, kühle und sauerstoffreiche Fließgewässer. Sie sind schnelle Jäger, die sich vor allem von Insekten, Kleinkrebsen und kleineren Fischen ernähren, und zählen zu den beliebtesten Zielfischen beim Sport- und Fliegenfischen. Die Isar bei Moosburg gilt selbst als klassischer Forellenfluss und wird entsprechend zum Fliegen- und Spinnfischen genutzt.`,
+        id: "nutzpflanzen",
+        name: "Nutzpflanzen",
+        accent: "#f4830a",
+        beschreibung:
+          `Nach landwirtschaftlichen Nutzpflanzen benannte Straßen spiegeln die traditionelle Bedeutung des Ackerbaus wider. Weizen und Korn stehen sinnbildlich für den Getreideanbau, Hopfen für eine spezialisierte Sonderkultur. Bei der Hopfenstraße besteht ein besonders starker Moosburg-Bezug: Die Stadt zählt zu den Grenzstädten der Hallertau, mit rund 2.400 km² dem größten zusammenhängenden Hopfenanbaugebiet der Welt.`,
+        strassen: [
+          { name: "Weizenstraße", kurz: `Weizen ist eine der wichtigsten Getreidearten und Grundlage für Brot ebenso wie für Weizenbier.`, lang: `Weizen (Triticum aestivum) zählt weltweit zu den bedeutendsten Getreidearten und bildet die Grundlage für Grundnahrungsmittel wie Brot, Nudeln oder Gebäck. In Bayern ist Weizen zudem als Rohstoff für das obergärige Weizenbier bekannt. Der großflächige Anbau prägt bis heute weite Teile der bayerischen Agrarlandschaft.` },
+          { name: "Hopfenstraße", kurz: `Hopfen ist eine Kletterpflanze, deren Blütendolden Bier ihre Bitterkeit und Haltbarkeit verleihen.`, lang: `Hopfen (Humulus lupulus) ist eine mehrjährige, stark rankende Kletterpflanze, deren weibliche Blütendolden für das Bierbrauen zentral sind: Sie verleihen dem Bier Bitterkeit und Aroma und wirken konservierend. Moosburg liegt am Rand der Hallertau, dem mit rund 2.400 km² größten zusammenhängenden Hopfenanbaugebiet der Welt, das von Städten wie Moosburg, Freising, Landshut und Ingolstadt umgrenzt wird. Der Anbau ist in der Region bereits seit dem 8. Jahrhundert belegt.` },
+          { name: "Kornstraße", kurz: `„Korn" ist ein alter Sammelbegriff für Getreide und steht sinnbildlich für Ackerbau und Ernte.`, lang: `Als „Korn" bezeichnet man traditionell die Körner von Getreidearten wie Weizen, Roggen oder Gerste, regional auch Getreide insgesamt. Getreideanbau zählt zu den ältesten Formen der Landwirtschaft und prägt bis heute weite Teile der bayerischen Kulturlandschaft. Als Straßenname steht „Kornstraße" sinnbildlich für die landwirtschaftliche Prägung des ländlichen Raums.` },
+        ],
       },
       {
-        name: "Hechtstraße",
-        kurz: `Der Hecht ist ein gefräßiger Raubfisch und einer der häufigsten Angelfische heimischer Gewässer.`,
-        lang: `Der Hecht ist ein schlanker, langgestreckter Raubfisch mit charakteristisch nach hinten verlagerten Flossen, der reglos im Schilf oder Krautfeld auf Beute lauert, bevor er blitzschnell zuschnappt. Er zählt zu den größten heimischen Süßwasserfischen und ernährt sich vor allem von anderen Fischen. In der Isar sowie in mehreren Gewässern bei Moosburg, etwa im Moosburger Weiher und im Sempt-Flutkanal, gehört der Hecht zu den am häufigsten gefangenen Arten.`,
+        id: "zierpflanzen",
+        name: "Zierpflanzen & -sträucher",
+        accent: "#e91e8c",
+        beschreibung:
+          `Diese Gruppe vereint dorn- und blütenreiche Ziergehölze (Feuerdorn, Liguster, Ginster, Sanddorn, Oleander), großblütige Ziersträucher und -bäume (Magnolie, Goldregen), einen Wildstrauch mit langer Nutzungstradition (Holunder) sowie kleinere Zier- und Heilpflanzen (Georgine, Eibisch, Veilchen). Solche gemischt bepflanzten Zierpflanzen-Viertel dienten häufig dazu, ein größeres Wohngebiet mit einem einheitlichen, gärtnerischen Namensthema zu versehen.`,
+        strassen: [
+          { name: "Georginestraße", kurz: `Die Georgine (Dahlie) ist eine ursprünglich aus Mexiko stammende Knollenpflanze mit besonders vielfältigen, bunten Blüten.`, lang: `Die Georgine (Dahlia), auch Dahlie genannt, stammt ursprünglich aus Mexiko und gelangte Ende des 18. Jahrhunderts nach Europa. Benannt ist sie nach dem Botaniker Anders Dahl, während der Name „Georgine" auf den russischen Botaniker Johann Gottlieb Georgi zurückgeht. Aus ihren nicht winterharten Wurzelknollen entwickeln sich je nach Sorte sehr unterschiedliche Blüten, weshalb die Georgine besonders im Spätsommer und Herbst zu den auffälligsten Gartenblumen zählt.` },
+          { name: "Magnolienweg", kurz: `Die Magnolie ist ein Zierbaum mit auffällig großen Blüten, die meist schon vor dem Laubaustrieb erscheinen.`, lang: `Magnolien (Magnolia) zählen zu den ältesten bekannten Blütenpflanzen der Erde und bestechen durch ihre großen, meist rosa bis weißen Blüten, die bei vielen Arten bereits im zeitigen Frühjahr vor dem Laubaustrieb erscheinen. Als robuste, pflegeleichte Ziergehölze werden sie in zahlreichen Gärten und Parks kultiviert und gelten als besondere Frühlingsboten.` },
+          { name: "Eibischweg", kurz: `Der Eibisch ist eine alte Heilpflanze, deren schleimhaltige Wurzel traditionell gegen Husten eingesetzt wird.`, lang: `Der Echte Eibisch (Althaea officinalis) ist eine seit der Antike bekannte Heilpflanze aus der Familie der Malvengewächse, deren Wurzeln und Blätter reich an Schleimstoffen sind. Diese wurden traditionell gegen Husten und Reizungen eingesetzt und dienten historisch als Grundlage für die ursprüngliche Rezeptur der Süßware Marshmallow. Die Pflanze ist an ihren samtig behaarten Blättern und zart rosafarbenen Blüten zu erkennen.` },
+          { name: "Goldregenweg", kurz: `Der Goldregen ist ein Zierbaum mit leuchtend gelben Blütentrauben, dessen Samen giftig sind.`, lang: `Der Goldregen (Laburnum anagyroides) ist ein kleiner, im Mai und Juni blühender Baum, der durch üppige, herabhängende Trauben leuchtend gelber Blüten auffällt. Sämtliche Pflanzenteile, besonders die erbsenähnlichen Samen, enthalten das giftige Alkaloid Cytisin. Trotz seiner Giftigkeit zählt der Goldregen wegen seiner Blütenpracht zu den beliebtesten Ziergehölzen des Frühsommers.` },
+          { name: "Ginsterstraße", kurz: `Ginster ist ein genügsamer Strauch mit leuchtend gelben Blüten, der auf kargen, sandigen Böden gedeiht.`, lang: `Ginster (Genista) ist ein anspruchsloser, meist sommergrüner Strauch, der besonders auf kargen, sandigen oder trockenen Böden gedeiht. Charakteristisch sind seine leuchtend gelben Blüten sowie die oft rutenartigen, teils dornigen Zweige. Der Name geht auf die frühere Verwendung der biegsamen Zweige zur Herstellung von Besen zurück.` },
+          { name: "Ligusterstraße", kurz: `Liguster ist ein dichter Heckenstrauch mit kleinen weißen Blüten und schwarzen, giftigen Beeren.`, lang: `Liguster (Ligustrum vulgare) ist ein dicht wachsender, halbimmergrüner Strauch, der wegen seines schnittverträglichen Wuchses zu den beliebtesten Heckenpflanzen zählt. Im Frühsommer bildet er kleine, cremeweiße Blütenrispen, aus denen sich im Herbst schwarze, für Menschen giftige Beeren entwickeln. Wegen seiner Robustheit wird Liguster häufig als Sicht- und Windschutzhecke gepflanzt.` },
+          { name: "Feuerdornstraße", kurz: `Der Feuerdorn ist ein dorniger Zierstrauch mit leuchtend roten Beeren, die im Winter zahlreiche Vögel anlocken.`, lang: `Der Feuerdorn (Pyracantha) ist ein immergrüner, stark dorniger Strauch, der im Frühjahr weiße Blütendolden und im Herbst leuchtend orange-rote Beeren trägt. Wegen seiner dichten, dornigen Wuchsform wird er häufig als blickdichte und einbruchhemmende Hecke gepflanzt. Seine Beeren bleiben oft bis in den Winter am Strauch und dienen zahlreichen Vogelarten als Nahrung.` },
+          { name: "Holunderweg", kurz: `Der Holunder ist ein bekannter Wildstrauch, dessen Blüten und Beeren traditionell zu Sirup und Saft verarbeitet werden.`, lang: `Der Schwarze Holunder (Sambucus nigra) ist ein weit verbreiteter Wildstrauch, der im Frühsommer große, weiße Blütendolden trägt und im Spätsommer dunkelviolette Beeren ausbildet. Blüten wie Beeren werden traditionell zu Sirup, Saft, Gelee oder Kompott verarbeitet und finden in der Volksmedizin Verwendung. Im Volksglauben galt der Holunder lange als schützende, heilige Pflanze.` },
+          { name: "Sanddornstraße", kurz: `Sanddorn ist ein dorniger Strauch mit vitaminreichen orangen Beeren, der auch auf kargen, sandigen Böden gedeiht.`, lang: `Sanddorn (Hippophae rhamnoides) ist ein dorniger, sehr genügsamer Strauch, der auch auf kargen, sandigen oder salzhaltigen Böden gut gedeiht. Seine leuchtend orangefarbenen Beeren enthalten außergewöhnlich viel Vitamin C und werden zu Saft, Marmelade oder Likör verarbeitet. Als robuste Pionierpflanze wird Sanddorn zudem zur Befestigung von Böschungen eingesetzt.` },
+          { name: "Oleanderstraße", kurz: `Der Oleander ist ein mediterraner Zierstrauch mit auffälligen Blüten, dessen Pflanzenteile stark giftig sind.`, lang: `Der Oleander (Nerium oleander) ist ein immergrüner, im Mittelmeerraum beheimateter Strauch, der von Sommer bis Herbst große, meist rosa, weiße oder rote Blüten bildet. Da er in Mitteleuropa nicht winterhart ist, wird er als Kübelpflanze kultiviert. Sämtliche Pflanzenteile enthalten stark wirksame, herzglykosidhaltige Gifte, weshalb im Umgang, besonders mit Kindern und Haustieren, Vorsicht geboten ist.` },
+          { name: "Veilchenweg", kurz: `Das Veilchen ist eine kleine, duftende Frühlingsblume und gilt traditionell als Symbol der Bescheidenheit.`, lang: `Das Duftveilchen (Viola odorata) ist eine niedrig wachsende, meist violett blühende Frühlingsblume, die vor allem an schattigen Wald- und Wegrändern zu finden ist. Ihr zarter Duft machte sie schon in der Antike zu einer geschätzten Pflanze, unter anderem für Parfüm. Wegen ihres unscheinbaren Wuchses gilt das Veilchen seit jeher als Sinnbild für Bescheidenheit.` },
+        ],
       },
       {
-        name: "Karpfenstraße",
-        kurz: `Der Karpfen ist ein genügsamer Fisch stehender Gewässer und seit dem Mittelalter beliebter Teichfisch.`,
-        lang: `Der Karpfen ist ein robuster, genügsamer Fisch, der bevorzugt in ruhigen, nährstoffreichen Gewässern wie Teichen und Weihern lebt und sich dort überwiegend am Gewässergrund von Kleintieren und Pflanzenresten ernährt. Bereits im Mittelalter wurde er von Klöstern gezielt in Teichen gezüchtet, unter anderem um an Fastentagen eine Fleischalternative zu haben, und zählt seither zu den wichtigsten Speisefischen Mitteleuropas. Auch in Gewässern rund um Moosburg, etwa im Moosburger Weiher oder in der Isar selbst, ist der Karpfen weit verbreitet.`,
+        id: "blumen",
+        name: "Garten- & Schnittblumen",
+        accent: "#6b3e7a",
+        beschreibung:
+          `Diese Gruppe versammelt klassische Garten- und Schnittblumen, die seit Jahrhunderten der europäischen Gartenkultur angehören — von der symbolträchtigen Rose über die einst für Parfüm genutzte Reseda bis zur winterblühenden Erika. Solche Namen zählen zu den häufigsten Straßenbenennungen überhaupt, da sie unpolitisch, positiv besetzt und leicht erweiterbar sind.`,
+        strassen: [
+          { name: "Asternstraße", kurz: `Astern sind beliebte Gartenblumen, deren sternförmige Blüten vor allem im Spätsommer und Herbst erscheinen.`, lang: `Astern (Aster) gehören zur Familie der Korbblütler und sind für ihre sternförmig angeordneten Blütenblätter bekannt, denen sie ihren aus dem Griechischen stammenden Namen verdanken („aster" = Stern). Viele Sorten blühen erst spät im Jahr und zählen damit zu den wichtigsten Farbträgern in Gärten nach dem Sommer. Wegen ihrer langen Blühdauer sind Astern seit langem beliebte Beet- und Schnittblumen.` },
+          { name: "Rosenstraße", kurz: `Die Rose ist eine der ältesten Kulturpflanzen der Welt und gilt seit jeher als Symbol der Liebe.`, lang: `Die Rose (Rosa) zählt zu den ältesten und bekanntesten Kulturpflanzen und wird seit Jahrtausenden wegen ihrer Blütenpracht und ihres Dufts kultiviert. Mit tausenden Zuchtsorten ist sie bis heute die wohl beliebteste Gartenblume und wird intensiv als Schnittblume gehandelt. Vor allem die rote Rose gilt traditionell als Symbol der Liebe.` },
+          { name: "Fliederstraße", kurz: `Der Flieder ist ein duftender Zierstrauch, dessen violette oder weiße Blütenrispen den Frühling einläuten.`, lang: `Der Flieder (Syringa vulgaris) ist ein sommergrüner Strauch, der im Mai mit großen, dicht gedrängten Blütenrispen in Violett-, Rosa- oder Weißtönen blüht und dabei einen intensiven Duft verströmt. Ursprünglich aus Südosteuropa stammend, wird er seit Jahrhunderten in europäischen Gärten kultiviert und zählt zu den bekanntesten Frühlingssträuchern.` },
+          { name: "Erikastraße", kurz: `Erika ist ein niedrig wachsender Heidestrauch mit kleinen Blüten, der teils schon im Winter blüht.`, lang: `Erika (Erica), im Volksmund auch Heidekraut, ist ein niedrig wachsender, immergrüner Zwergstrauch mit kleinen, glockenförmigen Blüten. Die Pflanze bevorzugt magere, saure Böden und ist namensgebend für ausgedehnte Heidelandschaften. Einige Arten wie die Schneeheide blühen bereits im Spätwinter, weshalb Erika als Bepflanzung für Balkonkästen und Gräber in der kalten Jahreszeit geschätzt wird.` },
+          { name: "Lilienstraße", kurz: `Lilien sind Zwiebelpflanzen mit großen, trichterförmigen Blüten und gelten traditionell als Symbol der Reinheit.`, lang: `Lilien (Lilium) sind Zwiebelpflanzen mit meist großen, trichter- oder sternförmigen Blüten in zahlreichen Farben. Besonders die weiße Madonnenlilie gilt seit dem Mittelalter als christliches Symbol für Reinheit und ist häufig in religiöser Kunst dargestellt. Aufgrund ihrer eindrucksvollen Blüten und ihres Dufts zählen Lilien bis heute zu den beliebtesten Garten- und Schnittblumen.` },
+          { name: "Tulpenstraße", kurz: `Die Tulpe ist eine beliebte Frühjahrsblume, deren Zwiebeln im 17. Jahrhundert einen regelrechten Handelsboom auslösten.`, lang: `Die Tulpe (Tulipa) stammt ursprünglich aus Zentralasien und dem Osmanischen Reich und gelangte im 16. Jahrhundert nach Europa. Im 17. Jahrhundert entwickelte sich in den Niederlanden mit der „Tulpenmanie" eine der ersten dokumentierten Spekulationsblasen der Geschichte. Heute ist die Tulpe mit tausenden Sorten eine der meistgepflanzten Zwiebelblumen weltweit.` },
+          { name: "Blütenstraße", kurz: `„Blüte" steht allgemein für das Fortpflanzungsorgan blühender Pflanzen und ist Sinnbild für Wachstum und Schönheit.`, lang: `Der Begriff „Blüte" bezeichnet allgemein die Fortpflanzungsorgane von Blütenpflanzen und ist zugleich Sinnbild für Wachstum, Schönheit und den Höhepunkt einer Entwicklung. Anders als die übrigen Namen dieser Gruppe verweist „Blütenstraße" nicht auf eine bestimmte Art, sondern nutzt das Motiv der Blüte als übergeordnetes, positiv besetztes Bild für ein blühendes Wohnviertel.` },
+          { name: "Resedenstraße", kurz: `Reseda ist eine unscheinbare, aber stark duftende Gartenblume, die früher vor allem in der Parfümherstellung geschätzt wurde.`, lang: `Die Reseda (Reseda odorata), auch Duftreseda genannt, trägt eher unscheinbare, grünlich-gelbe Blütenrispen, wird jedoch seit jeher wegen ihres intensiven, süßlichen Dufts geschätzt. Im 19. Jahrhundert war sie eine sehr beliebte Gartenpflanze und wurde in der Parfümherstellung verwendet. Trotz ihrer schlichten Optik zählte die Reseda lange zu den geschätztesten Duftpflanzen europäischer Gärten.` },
+          { name: "Nelkenstraße", kurz: `Nelken sind duftende Gartenblumen mit gezackten Blütenblättern und langer Tradition als Schnittblume.`, lang: `Nelken (Dianthus) zeichnen sich durch ihre gezackten oder gefransten Blütenblätter und ihren würzig-süßen Duft aus, der an Gewürznelken erinnert. Sie zählen seit Jahrhunderten zu den beliebtesten Garten- und Schnittblumen Europas. Bekannt ist die rote Nelke zudem als traditionelles Symbol der Arbeiterbewegung, während sie in anderen Zusammenhängen etwa zum Muttertag verschenkt wird.` },
+        ],
       },
       {
-        name: "Schleienstraße",
-        kurz: `Die Schleie ist ein genügsamer Fisch schlammiger Weiher und Seen mit charakteristisch grünlicher Haut.`,
-        lang: `Die Schleie ist an ihrer oliv- bis dunkelgrünen, schleimigen Haut und den kleinen, tief angesetzten Augen gut zu erkennen. Sie bevorzugt ruhige, pflanzenreiche und schlammige Gewässer wie Weiher und Altarme und kommt dabei auch mit geringem Sauerstoffgehalt gut zurecht. Im Moosburger Weiher zählt die Schleie neben Karpfen und Hecht zu den dokumentierten heimischen Fischarten.`,
+        id: "baeume",
+        name: "Bäume & Sonstige",
+        accent: "#0a9e4c",
+        beschreibung:
+          `Nach Baumarten benannte Straßen gehören zu den häufigsten und ältesten Benennungsmustern in Wohngebieten, oft angelehnt an tatsächlich gepflanzte Straßen- oder Alleebäume. Die Arten reichen von robusten heimischen Bäumen wie Ahorn und Birke bis zu Ziergehölzen. Ein spezifischer Bezug zu vor Ort gepflanzten Beständen oder zum angrenzenden Auwald lässt sich aus den vorliegenden Daten nicht belegen.`,
+        strassen: [
+          { name: "Ahornstraße", kurz: `Der Ahorn ist ein weit verbreiteter Laubbaum mit charakteristisch gelapptem Blatt und auffälliger Herbstfärbung.`, lang: `Ahornbäume (Acer), in Deutschland vor allem Berg-, Spitz- und Feldahorn, sind an ihren handförmig gelappten Blättern zu erkennen. Im Herbst färben sich die Blätter kräftig gelb bis rot. Seine geflügelten, paarweise wachsenden Samen, die sich beim Fallen wie kleine Hubschrauber drehen, sind ebenfalls charakteristisch. Aufgrund seiner Robustheit wird der Ahorn häufig als Park- und Straßenbaum gepflanzt.` },
+          { name: "Birkenstraße", kurz: `Die Birke ist ein schnellwüchsiger Pionierbaum mit charakteristisch weißer, papierartiger Rinde.`, lang: `Die Birke (Betula) zählt zu den Pionierbaumarten, die offene, lichte Flächen als eine der ersten besiedeln und dort schnell wachsen. Am auffälligsten ist ihre weiße, papierartig abblätternde Rinde. Birken sind sehr lichtbedürftig und daher häufig an Waldrändern, auf Brachflächen oder in jungen Aufforstungen zu finden; sie gelten traditionell als Symbol für Frühling und Neubeginn.` },
+          { name: "Waldmeisterstraße", kurz: `Waldmeister ist eine Waldpflanze, deren typischer Duft erst beim Trocknen entsteht und die traditionell zur Maibowle gehört.`, lang: `Waldmeister (Galium odoratum) ist eine niedrig wachsende Pflanze schattiger Laubwälder, erkennbar an ihren quirlständig angeordneten, schmalen Blättern. Ihr charakteristischer, an Heu erinnernder Duft entfaltet sich erst beim Trocknen durch die Bildung des Aromastoffs Cumarin. Traditionell wird Waldmeister zur Maibowle verwendet und ist als Geschmacksrichtung grüner Limonaden bekannt.` },
+        ],
+      },
+    ],
+  },
+  {
+    id: "astronomie",
+    name: "Astronomie",
+    einleitung:
+      `Himmelskörper und Jahreszeiten sind neutrale, beliebig erweiterbare Themen, mit denen sich neu geplante Wohngebiete „in einem Zug" benennen lassen. Eine Sonderrolle spielt der Keplerplatz — benannt nach einer realen Person, die zugleich fachlich zum Thema passt.`,
+    untergruppen: [
+      {
+        id: "himmelskoerper",
+        name: "Planetenviertel",
+        accent: "#3b3f9a",
+        beschreibung:
+          `Nach Himmelskörpern benannte Straßenzüge („Planeten-" oder „Sternenviertel") sind ein wiedererkennbares, relativ verbreitetes Muster, das sich für neu erschlossene, in einem Zug geplante Wohngebiete eignet: Mit Planeten, Sternbildern und astronomischen Objekten lässt sich leicht eine größere Zahl an Straßen nach einem gemeinsamen, unpolitischen Thema benennen. Der Keplerplatz nimmt eine Sonderstellung ein, da er nach einer realen Person benannt ist, die fachlich zum Thema passt.`,
+        strassen: [
+          { name: "Keplerplatz", kurz: `Johannes Kepler (1571–1630) war ein Astronom, der die Gesetze der Planetenbewegung entdeckte.`, lang: `Johannes Kepler (1571–1630) wurde in Weil der Stadt geboren und wirkte unter anderem in Graz, Prag – zeitweise als Mitarbeiter Tycho Brahes – und Linz. Er formulierte die drei nach ihm benannten Gesetze der Planetenbewegung, die die elliptischen Umlaufbahnen der Planeten um die Sonne beschreiben und das heliozentrische Weltbild untermauerten. Er forschte zudem im Bereich der Optik und starb 1630 in Regensburg, nur rund 100 km von Moosburg entfernt.` },
+          { name: "Jupiterstraße", kurz: `Jupiter ist der größte Planet unseres Sonnensystems, benannt nach dem römischen Göttervater.`, lang: `Jupiter ist mit Abstand der größte und massereichste Planet des Sonnensystems, ein Gasriese mit markantem Wolkenband und dem berühmten „Großen Roten Fleck", einem seit Jahrhunderten beobachteten Sturmsystem. Er ist nach dem obersten Gott der römischen Mythologie benannt. Am Nachthimmel zählt Jupiter zu den auffälligsten und hellsten Objekten.` },
+          { name: "Kometstraße", kurz: `Kometen sind Himmelskörper aus Eis und Staub, die beim Vorbeiflug an der Sonne einen Schweif bilden.`, lang: `Kometen sind kleine Himmelskörper aus Eis, Staub und Gestein, die auf stark elliptischen Bahnen die Sonne umkreisen. Nähern sie sich der Sonne, verdampft ein Teil ihres Eises und bildet den charakteristischen, oft weithin sichtbaren Schweif, der stets von der Sonne weg gerichtet ist. Historisch galten Kometen vielerorts als unheilvolle Himmelszeichen.` },
+          { name: "Marsstraße", kurz: `Mars ist der vierte Planet im Sonnensystem – wegen seiner Farbe auch „Roter Planet" genannt.`, lang: `Mars ist der äußere Nachbarplanet der Erde und wird aufgrund seiner durch Eisenoxid rötlich gefärbten Oberfläche „Roter Planet" genannt. Benannt ist er nach dem römischen Gott des Krieges. Er verfügt über die höchste bekannte Vulkanerhebung des Sonnensystems, den Olympus Mons, sowie über zwei kleine Monde und ist seit Jahrzehnten zentrales Ziel der Raumfahrtforschung.` },
+          { name: "Merkurstraße", kurz: `Merkur ist der kleinste und sonnennächste Planet unseres Sonnensystems.`, lang: `Merkur ist der der Sonne am nächsten gelegene und zugleich kleinste Planet des Sonnensystems, mit einer stark von Kratern geprägten, dem Mond ähnelnden Oberfläche. Benannt ist er nach dem schnellen Götterboten der römischen Mythologie, was auf seine kurze Umlaufzeit von nur rund 88 Tagen anspielt. Aufgrund seiner Sonnennähe ist er nur in der Dämmerung zu beobachten.` },
+          { name: "Mondweg", kurz: `Der Mond ist der Erdtrabant und bestimmt seit jeher Kalender, Gezeiten und viele Mythen.`, lang: `Der Mond umkreist als einziger natürlicher Satellit die Erde und bestimmt durch seine Phasen seit jeher Zeitrechnung, Kalendersysteme und kulturelle Bräuche. Er ist maßgeblich für Ebbe und Flut mitverantwortlich und war 1969 Ziel der ersten bemannten Mondlandung (Apollo 11). In Mythologie und Volksglauben vieler Kulturen spielt der Mond eine zentrale Rolle.` },
+          { name: "Neptunstraße", kurz: `Neptun ist der äußerste Planet unseres Sonnensystems, benannt nach dem römischen Meeresgott.`, lang: `Neptun ist der von der Sonne aus äußerste Planet des Sonnensystems und mit seiner tiefblauen Farbe nach dem römischen Gott des Meeres benannt. Er ist ein Eisriese mit den stärksten gemessenen Windgeschwindigkeiten aller Planeten und wurde 1846 als erster Planet auf Basis mathematischer Berechnungen statt direkter Beobachtung entdeckt. Mit bloßem Auge ist er nicht sichtbar.` },
+          { name: "Orionstraße", kurz: `Orion ist eines der bekanntesten Sternbilder am Nachthimmel, benannt nach einem Jäger der griechischen Sage.`, lang: `Orion zählt zu den auffälligsten und bekanntesten Sternbildern des Nachthimmels und ist durch seine markante Reihe dreier Gürtelsterne leicht zu erkennen. Benannt ist es nach Orion, einem Jäger aus der griechischen Mythologie. Im Sternbild liegt zudem der mit bloßem Auge sichtbare Orionnebel, eine Sternentstehungsregion.` },
+          { name: "Saturnstraße", kurz: `Saturn ist der zweitgrößte Planet unseres Sonnensystems, bekannt für sein auffälliges Ringsystem.`, lang: `Saturn ist nach Jupiter der zweitgrößte Planet des Sonnensystems und vor allem für sein ausgeprägtes, aus Eis- und Gesteinspartikeln bestehendes Ringsystem bekannt, das bereits mit einfachen Teleskopen sichtbar ist. Er ist nach dem römischen Gott der Aussaat benannt. Als Gasriese verfügt Saturn über eine große Zahl an Monden, darunter den erforschten Titan.` },
+          { name: "Sonnenstraße", kurz: `Die Sonne ist der Stern in der Mitte unseres Sonnensystems und Grundlage allen Lebens auf der Erde.`, lang: `Die Sonne bildet als Zentralstern das Zentrum unseres Sonnensystems, um das sämtliche Planeten kreisen. Durch Kernfusion erzeugt sie Licht und Wärme und ist damit die grundlegende Energiequelle für nahezu alles Leben auf der Erde. Sie spielt seit jeher eine zentrale Rolle in Mythologie, Religion und Kalendersystemen zahlreicher Kulturen.` },
+          { name: "Sternstraße", kurz: `Sterne sind leuchtende Himmelskörper, die Menschen seit jeher zur Orientierung und für Mythen dienten.`, lang: `Sterne sind massereiche, durch Kernfusion selbstleuchtende Himmelskörper, von denen der Nachthimmel je nach Bedingungen tausende erkennen lässt. Sie dienten historisch als Orientierungshilfe und bildeten die Grundlage für Sternbilder, Kalender und mythologische Erzählungen. Als übergeordneter Sammelbegriff eignet sich „Stern" besonders gut als thematischer Rahmen für ein ganzes Viertel.` },
+          { name: "Venusstraße", kurz: `Venus ist der zweite Planet unseres Sonnensystems und nach dem Mond das hellste Objekt am Nachthimmel.`, lang: `Venus ist der zweite Planet des Sonnensystems und aufgrund ihrer dichten, stark reflektierenden Wolkendecke nach dem Mond das hellste natürliche Objekt am Erdhimmel. Benannt ist sie nach der römischen Göttin der Liebe und Schönheit. Am Erdhimmel ist sie traditionell als „Morgenstern" oder „Abendstern" bekannt, da sie stets nahe der Sonne erscheint.` },
+        ],
       },
       {
-        name: "Zanderstraße",
-        kurz: `Der Zander ist ein kräftiger Raubfisch größerer Flüsse und Seen und ein beliebter Speisefisch.`,
-        lang: `Der Zander ist ein schlanker, kräftiger Raubfisch mit markanten Reißzähnen, der vor allem in größeren, etwas trüberen Flüssen und Seen vorkommt. Er jagt bevorzugt in der Dämmerung und Nacht, wobei ihm seine an schwaches Licht angepassten Augen zugutekommen. Als schmackhafter Speisefisch ist der Zander bei Anglern sehr beliebt. In der Amper bei Moosburg zählt er zu den Hauptfischarten, deren Bestand durch regelmäßige Besatzmaßnahmen gefördert wird.`,
+        id: "jahreszeiten",
+        name: "Jahreszeiten",
+        accent: "#f4830a",
+        beschreibung:
+          `Nach Jahreszeiten benannte Straßen sind ein neutrales, leicht erweiterbares Thema und finden sich verstreut in deutschen Wohngebieten, oft in Kombination mit anderen naturbezogenen Namensgruppen. Sie eignen sich gut zur einheitlichen Benennung mehrerer benachbarter Straßen. Auffällig: Eine Sommerstraße gibt es in Moosburg bislang nicht.`,
+        strassen: [
+          { name: "Frühlingstraße", kurz: `Der Frühling ist die Jahreszeit des Neubeginns, in der die Natur nach dem Winter wieder zu grünen beginnt.`, lang: `Der Frühling folgt auf den Winter und wird astronomisch durch die Tagundnachtgleiche im März eingeleitet, wenn Tag und Nacht etwa gleich lang sind. Er gilt als Zeit des Erwachens, in der Pflanzen wieder austreiben und viele Tiere aus dem Winterschlaf erwachen. In zahlreichen Kulturen ist der Frühlingsbeginn mit Festen rund um Erneuerung und Fruchtbarkeit verbunden.` },
+          { name: "Herbststraße", kurz: `Der Herbst liegt zwischen Sommer und Winter und ist geprägt von Erntezeit und buntem Laub.`, lang: `Der Herbst folgt auf den Sommer und beginnt astronomisch mit der herbstlichen Tagundnachtgleiche im September. Kennzeichnend sind sinkende Temperaturen, kürzer werdende Tage sowie das Verfärben und Abfallen des Laubs. Traditionell gilt der Herbst als Erntezeit und ist vielerorts mit Erntedank- und anderen Herbstfesten verbunden.` },
+          { name: "Winterstraße", kurz: `Der Winter ist die kälteste Jahreszeit des Jahres, geprägt von kurzen Tagen und oft Schnee.`, lang: `Der Winter folgt auf den Herbst und beginnt astronomisch mit der Wintersonnenwende im Dezember, dem kürzesten Tag des Jahres. Er ist die kälteste der vier Jahreszeiten und in vielen Regionen von Frost, Schnee und geringer Sonneneinstrahlung geprägt. In diese Zeit fallen zahlreiche Fest- und Brauchtumstage wie Weihnachten und Silvester.` },
+        ],
       },
     ],
   },
