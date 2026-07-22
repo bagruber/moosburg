@@ -234,9 +234,9 @@ function MobileMapSheet({ visualizing, children }: { visualizing: boolean; child
   const base = state === "peek" ? `translateY(calc(100% - ${PEEK_PX}px))` : "translateY(0)";
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden" style={{ height: "68vh" }}>
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 lg:hidden" style={{ height: "68vh" }}>
       <div
-        className="flex h-full flex-col rounded-t-2xl border border-ink-line/60 bg-cream shadow-[0_-8px_24px_rgba(0,0,0,0.14)]"
+        className="pointer-events-auto flex h-full flex-col rounded-t-2xl border border-ink-line/60 bg-cream shadow-[0_-8px_24px_rgba(0,0,0,0.14)]"
         style={{
           transform: dragY !== null ? `${base} translateY(${dragY}px)` : base,
           transition: dragY !== null ? "none" : "transform 0.3s cubic-bezier(0.32,0.72,0,1)",
