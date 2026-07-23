@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IconPhone, IconMail, IconClock, IconMapPin, IconExternalLink } from "@tabler/icons-react";
 import { RainbowStripe } from "./RainbowStripe";
 import { Logo } from "./Logo";
-import { WappenWatermark } from "./BrandMark";
+import { WappenWatermark, Rose } from "./BrandMark";
 import { partnerLinks } from "@/routes";
 
 const columns = [
@@ -104,7 +104,12 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-cream/15 pt-6 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
-          <div>© {new Date().getFullYear()} Stadt Moosburg an der Isar</div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <span>© {new Date().getFullYear()} Stadt Moosburg an der Isar</span>
+            <Link to="/konzept" className="inline-flex items-center gap-1.5 text-gold-200 hover:text-white">
+              <Rose className="h-3 w-3" /> Konzept &amp; Design
+            </Link>
+          </div>
           <div className="flex flex-wrap gap-5">
             <Link to="/impressum" className="hover:text-white">Impressum</Link>
             <Link to="/datenschutz" className="hover:text-white">Datenschutz</Link>

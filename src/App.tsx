@@ -50,6 +50,7 @@ import { Highlights } from "@/pages/flagship/Highlights";
 import { Anreise } from "@/pages/flagship/Anreise";
 import { DieseWoche } from "@/pages/flagship/DieseWoche";
 import { StadtKarte } from "@/pages/flagship/StadtKarte";
+import { Konzept } from "@/pages/Konzept";
 
 export default function App() {
   return (
@@ -111,6 +112,9 @@ export default function App() {
 
       {/* Account */}
       <Route path="/konto" element={<KontoPage />} />
+
+      {/* Konzept- & Design-Beschreibung (für das Projektteam) */}
+      <Route path="/konzept" element={<Konzept />} />
 
       {/* Hub landing pages */}
       <Route path="/:hub" element={<HubPage />} />
