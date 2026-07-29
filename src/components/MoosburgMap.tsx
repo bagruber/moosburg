@@ -1,25 +1,22 @@
-import { useEffect, useMemo } from "react";
-import L from "leaflet";
+import { useEffect, useRef, useState } from "react";
 import {
-  MapContainer,
-  TileLayer,
+  Map as MapGL,
   Marker,
   Popup,
-  CircleMarker,
-  useMapEvents,
-  useMap,
-} from "react-leaflet";
+  NavigationControl,
+  Source,
+  Layer,
+  type MapRef,
+} from "react-map-gl/maplibre";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { MOOSBURG_CENTER, MOOSBURG_BOUNDS } from "@/data/stadtkarte";
 
 /**
- * Moosburg an der Isar — center + bounding box.
- * Bounds picked to cover the urban core (Stadtgebiet); the map is locked here
- * so users can't pan to neighboring municipalities.
+ * Derselbe Basemap-Style wie Stadtplan und Straßennamen-Karte: „positron" ist
+ * entsättigt, damit die Layer-Farben die Information tragen und nicht mit dem
+ * Kartenbild konkurrieren.
  */
-export const MOOSBURG_CENTER: [number, number] = [48.4675, 11.9367];
-export const MOOSBURG_BOUNDS: [[number, number], [number, number]] = [
-  [48.443, 11.895],
-  [48.493, 11.985],
-];
+const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
 export type MapPin = {
   id: string;
@@ -51,44 +48,17 @@ export const layerConfig: Record<LayerKey, { label: string; color: string; ring:
   fahrradstation: { label: "Rad-Abstellanlagen", color: "#b8964e", ring: "ring-gold-500" },
 };
 
-function ClickCapture({ onPick }: { onPick?: (lat: number, lng: number) => void }) {
-  useMapEvents({
-    click(e) {
-      if (!onPick) return;
-      const b = L.latLngBounds(MOOSBURG_BOUNDS);
-      if (b.contains(e.latlng)) onPick(e.latlng.lat, e.latlng.lng);
-    },
-  });
-  return null;
-}
+/** Meldungen lauter als die Bestandsebenen — sonst gehen sie im Gedränge unter. */
+const dotSize = (layer: LayerKey) => (layer === "mangel" ? 28 : 22);
 
-/** Leaflet's bundler-broken default marker — use a clean DivIcon. */
-function pinIcon(color: string, size = 32) {
-  const html = `
-    <div style="position:relative;width:${size}px;height:${size}px;">
-      <div style="position:absolute;inset:0;background:${color};
-        clip-path:path('M16 30 Q16 30 8 18 A 9 9 0 1 1 24 18 Q 16 30 16 30 Z');
-        filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));"></div>
-      <div style="position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);
-        width:${Math.round(size * 0.28)}px;height:${Math.round(size * 0.28)}px;
-        border-radius:9999px;background:#fff;"></div>
-    </div>`;
-  return L.divIcon({
-    html,
-    className: "",
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size],
-    popupAnchor: [0, -size],
-  });
-}
+const [[WEST, SOUTH], [EAST, NORTH]] = MOOSBURG_BOUNDS;
 
-/** When user picks a new spot, smoothly recenter. */
-function PanTo({ to }: { to: [number, number] | null }) {
-  const map = useMap();
-  useEffect(() => {
-    if (to) map.panTo(to, { animate: true, duration: 0.4 });
-  }, [to, map]);
-  return null;
+/**
+ * maxBounds sperrt den Ausschnitt, ein Klick am Rand kann aber knapp außerhalb
+ * liegen. Meldungen sollen nur aufs Stadtgebiet fallen, darum explizit prüfen.
+ */
+function insideMoosburg(lng: number, lat: number) {
+  return lng >= WEST && lng <= EAST && lat >= SOUTH && lat <= NORTH;
 }
 
 export function MoosburgMap({
@@ -104,67 +74,173 @@ export function MoosburgMap({
   onPick?: (lat: number, lng: number) => void;
   className?: string;
 }) {
-  const icons = useMemo(() => {
-    const out: Record<LayerKey, L.DivIcon> = {} as never;
-    (Object.keys(layerConfig) as LayerKey[]).forEach((k) => {
-      out[k] = pinIcon(layerConfig[k].color, k === "mangel" ? 32 : 26);
-    });
-    return out;
-  }, []);
+  const mapRef = useRef<MapRef>(null);
+  const [selected, setSelected] = useState<MapPin | null>(null);
+  const [userOpen, setUserOpen] = useState(false);
 
-  const userIcon = useMemo(() => pinIcon("#1c1c1c", 38), []);
+  // Neuer Ort gewählt → sanft nachziehen.
+  useEffect(() => {
+    if (userPin) {
+      mapRef.current?.easeTo({ center: [userPin.lng, userPin.lat], duration: 400 });
+    }
+  }, [userPin?.lat, userPin?.lng]);
 
   return (
     <div className={className}>
-      <MapContainer
-        center={MOOSBURG_CENTER}
-        zoom={14}
-        minZoom={13}
-        maxZoom={18}
+      <MapGL
+        ref={mapRef}
+        initialViewState={{
+          longitude: MOOSBURG_CENTER[0],
+          latitude: MOOSBURG_CENTER[1],
+          zoom: 14,
+        }}
+        mapStyle={STYLE_URL}
         maxBounds={MOOSBURG_BOUNDS}
-        maxBoundsViscosity={1.0}
-        style={{ height: "100%", width: "100%" }}
-        className="rounded-md"
+        minZoom={12}
+        maxZoom={18}
+        style={{ width: "100%", height: "100%" }}
+        cursor={onPick ? "crosshair" : "grab"}
+        onClick={(e) => {
+          if (!onPick) return;
+          const { lng, lat } = e.lngLat;
+          if (insideMoosburg(lng, lat)) onPick(lat, lng);
+        }}
       >
-        <TileLayer
-          attribution='© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <ClickCapture onPick={onPick} />
-        <PanTo to={userPin ? [userPin.lat, userPin.lng] : null} />
+        <NavigationControl position="top-right" showCompass={false} />
+
+        {/* Näherungs-Halo um den gesetzten Ort — unter den Markern. */}
+        {userPin && (
+          <Source
+            id="user-halo"
+            type="geojson"
+            data={{
+              type: "Feature",
+              geometry: { type: "Point", coordinates: [userPin.lng, userPin.lat] },
+              properties: {},
+            }}
+          >
+            <Layer
+              id="user-halo-circle"
+              type="circle"
+              paint={{
+                "circle-radius": 28,
+                "circle-color": "#c8102e",
+                "circle-opacity": 0.12,
+                "circle-stroke-color": "#c8102e",
+                "circle-stroke-width": 1,
+                "circle-stroke-opacity": 0.45,
+              }}
+            />
+          </Source>
+        )}
 
         {pins
           .filter((p) => visibleLayers.has(p.layer))
-          .map((p) => (
-            <Marker key={p.id} position={[p.lat, p.lng]} icon={icons[p.layer]}>
-              <Popup>
-                <div className="font-semibold">{p.title}</div>
-                {p.meta && <div className="text-xs text-ink-muted mt-0.5">{p.meta}</div>}
-                <div className="mt-1 text-[10px] uppercase tracking-wider text-ink-muted">
-                  {layerConfig[p.layer].label}
-                </div>
-              </Popup>
-            </Marker>
-          ))}
+          .map((p) => {
+            const size = dotSize(p.layer);
+            return (
+              <Marker
+                key={p.id}
+                longitude={p.lng}
+                latitude={p.lat}
+                anchor="center"
+                onClick={(e) => {
+                  e.originalEvent.stopPropagation();
+                  setUserOpen(false);
+                  setSelected(p);
+                }}
+              >
+                <button
+                  type="button"
+                  aria-label={`${p.title} — ${layerConfig[p.layer].label}`}
+                  className="grid cursor-pointer place-items-center rounded-full border-2 border-white shadow-md transition hover:scale-110"
+                  style={{ backgroundColor: layerConfig[p.layer].color, width: size, height: size }}
+                >
+                  <span
+                    className="rounded-full bg-white/90"
+                    style={{ width: Math.round(size * 0.28), height: Math.round(size * 0.28) }}
+                  />
+                </button>
+              </Marker>
+            );
+          })}
 
-        {userPin && (
-          <>
-            <CircleMarker
-              center={[userPin.lat, userPin.lng]}
-              radius={28}
-              pathOptions={{ color: "#c8102e", fillColor: "#c8102e", fillOpacity: 0.12, weight: 1 }}
-            />
-            <Marker position={[userPin.lat, userPin.lng]} icon={userIcon}>
-              <Popup>
-                <div className="font-semibold">Ihr Standort</div>
-                <div className="text-xs text-ink-muted mt-0.5">
-                  {userPin.lat.toFixed(5)}, {userPin.lng.toFixed(5)}
-                </div>
-              </Popup>
-            </Marker>
-          </>
+        {selected && (
+          <Popup
+            longitude={selected.lng}
+            latitude={selected.lat}
+            anchor="bottom"
+            offset={dotSize(selected.layer) / 2 + 4}
+            closeButton={false}
+            onClose={() => setSelected(null)}
+            maxWidth="280px"
+          >
+            <div className="p-1">
+              <div className="flex items-center gap-2">
+                <span
+                  className="h-2.5 w-2.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: layerConfig[selected.layer].color }}
+                />
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-muted">
+                  {layerConfig[selected.layer].label}
+                </span>
+              </div>
+              <h3 className="mt-1 font-display text-base text-ink">{selected.title}</h3>
+              {selected.meta && <p className="mt-0.5 text-xs text-ink-soft">{selected.meta}</p>}
+            </div>
+          </Popup>
         )}
-      </MapContainer>
+
+        {/* Der selbst gesetzte Ort: Tropfenform, Spitze auf der Koordinate. */}
+        {userPin && (
+          <Marker
+            longitude={userPin.lng}
+            latitude={userPin.lat}
+            anchor="bottom"
+            onClick={(e) => {
+              e.originalEvent.stopPropagation();
+              setSelected(null);
+              setUserOpen(true);
+            }}
+          >
+            <button
+              type="button"
+              aria-label="Ihr gewählter Ort"
+              className="cursor-pointer transition hover:scale-110"
+            >
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 32 32"
+                aria-hidden="true"
+                style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.35))" }}
+              >
+                <path d="M16 30 Q16 30 8 18 A 9 9 0 1 1 24 18 Q 16 30 16 30 Z" fill="#1c1c1c" />
+                <circle cx="16" cy="14" r="4.4" fill="#fff" />
+              </svg>
+            </button>
+          </Marker>
+        )}
+
+        {userPin && userOpen && (
+          <Popup
+            longitude={userPin.lng}
+            latitude={userPin.lat}
+            anchor="bottom"
+            offset={36}
+            closeButton={false}
+            onClose={() => setUserOpen(false)}
+            maxWidth="280px"
+          >
+            <div className="p-1">
+              <h3 className="font-display text-base text-ink">Ihr gewählter Ort</h3>
+              <p className="mt-0.5 text-xs text-ink-soft">
+                {userPin.lat.toFixed(5)}, {userPin.lng.toFixed(5)}
+              </p>
+            </div>
+          </Popup>
+        )}
+      </MapGL>
     </div>
   );
 }
