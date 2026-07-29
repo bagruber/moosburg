@@ -155,18 +155,17 @@ export function Essen() {
               />
             )}
 
-            {SECTIONS.map((s, i) => {
+            {SECTIONS.map((s) => {
               const matches = FOOD_FIRMS.filter((f) => inCategory(f, s.kategorie));
               matches.sort((a, b) =>
                 Number(b.moma_mitglied) - Number(a.moma_mitglied) || a.name.localeCompare(b.name),
               );
               return (
-                <Reveal key={s.id} delay={((i % 2) + 1) as 1 | 2}>
+                <Reveal key={s.id}>
                   <section id={s.id} className="scroll-mt-40">
                     <SectionHeader
                       eyebrow={s.label}
                       heading={s.label}
-                      script={`${matches.length} in der Stadt`}
                     />
                     <p className="-mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
                     {matches.length === 0 ? (

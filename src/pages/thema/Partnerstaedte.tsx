@@ -171,7 +171,6 @@ export function Partnerstaedte() {
           <SectionHeader
             eyebrow="Eine Idee von Europa"
             heading="Freundschaft, die man pflegen muss"
-            script="verbunden"
             light
           />
         </Reveal>

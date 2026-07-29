@@ -157,7 +157,6 @@ export function Heiraten() {
           <SectionHeader
             eyebrow="Was brauche ich?"
             heading="Ihr Unterlagen-Check"
-            script="ganz konkret"
             light
           />
         </Reveal>

@@ -56,7 +56,9 @@ function Hero() {
           </div>
         </div>
 
-        <Reveal delay={1} className="relative">
+        {/* Bewusst ohne <Reveal>: das Hero-Bild ist das LCP-Element und darf
+            nicht erst auf den IntersectionObserver warten. */}
+        <div className="relative">
           <div className="relative overflow-hidden rounded-md shadow-lift">
             <img
               src={IMG("images/altstadt.jpg")}
@@ -72,7 +74,7 @@ function Hero() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -82,7 +84,7 @@ function AktuellesBanner() {
   return (
     <section className="border-y border-ink-line/60 bg-gold-100">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm lg:px-8">
-        <span className="eyebrow rounded-full bg-red-500 px-3 py-1 text-cream">Aktuell</span>
+        <span className="badge rounded-full bg-red-500 px-2.5 py-1 text-cream">Aktuell</span>
         <span className="text-ink">
           <strong>57. Moosburger Frühlingsfest</strong> — 30. April bis 5. Mai 2026, Festgelände am Stadtpark.
         </span>
@@ -102,42 +104,41 @@ function TopTiles() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
       <Reveal>
-        <SectionHeader eyebrow="Oft gesucht" heading="In zwei Klicks zum Ziel" script="Schnell-Service" />
+        <SectionHeader eyebrow="Oft gesucht" heading="In zwei Klicks zum Ziel" />
       </Reveal>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        {topTiles.map((tile, i) => {
+      <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        {topTiles.map((tile) => {
           const Icon = tile.icon;
           return (
-            <Reveal key={tile.slug} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-              <Link
-                to={`/${tile.slug}`}
+            <Link
+              key={tile.slug}
+              to={`/${tile.slug}`}
+              className={cn(
+                "group flex h-full flex-col gap-3 rounded-md border p-5 transition duration-200",
+                tile.accent
+                  ? "border-gold-500 bg-gold-100 hover:-translate-y-0.5 hover:bg-gold-200 hover:shadow-soft"
+                  : "border-ink-line bg-white hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft",
+              )}
+            >
+              <span
                 className={cn(
-                  "group flex h-full flex-col gap-3 rounded-md border p-5 transition duration-200",
+                  "grid h-11 w-11 place-items-center rounded-md transition",
                   tile.accent
-                    ? "border-gold-500 bg-gold-100 hover:-translate-y-0.5 hover:bg-gold-200 hover:shadow-soft"
-                    : "border-ink-line bg-white hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft",
+                    ? "bg-gold-500 text-cream"
+                    : "bg-red-50 text-red-700 group-hover:bg-red-500 group-hover:text-cream",
                 )}
               >
-                <span
-                  className={cn(
-                    "grid h-11 w-11 place-items-center rounded-md transition",
-                    tile.accent
-                      ? "bg-gold-500 text-cream"
-                      : "bg-red-50 text-red-700 group-hover:bg-red-500 group-hover:text-cream",
-                  )}
-                >
-                  <Icon className="h-5 w-5" stroke={1.75} />
-                </span>
-                <div>
-                  <div className="card-title text-sm text-ink">{tile.title}</div>
-                  <div className="mt-0.5 text-xs text-ink-muted">{tile.description}</div>
-                </div>
-              </Link>
-            </Reveal>
+                <Icon className="h-5 w-5" stroke={1.75} />
+              </span>
+              <div>
+                <div className="card-title text-sm text-ink">{tile.title}</div>
+                <div className="mt-0.5 text-xs text-ink-muted">{tile.description}</div>
+              </div>
+            </Link>
           );
         })}
-      </div>
+      </Reveal>
 
       <div className="mt-6">
         <Link to="/rathaus/online-dienste" className="text-sm font-semibold text-red-700 hover:underline">
@@ -173,7 +174,7 @@ function News() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
       <Reveal>
-        <SectionHeader eyebrow="Neuigkeiten" heading="Aktuelles" script="aus Moosburg" />
+        <SectionHeader eyebrow="Neuigkeiten" heading="Aktuelles" />
       </Reveal>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)]">
@@ -205,13 +206,7 @@ function News() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
           </div>
-          <div className="relative bg-gold-200 px-6 pb-6 pt-7">
-            <span
-              aria-hidden="true"
-              className="script-accent pointer-events-none absolute -top-3 left-4 text-[3.5rem] leading-none text-gold-500/40 select-none"
-            >
-              Geschichte
-            </span>
+          <div className="relative bg-gold-200 px-6 py-6">
             <h3 className="headline relative text-xl text-ink">
               1.250 Jahre Moosburg
             </h3>
@@ -245,24 +240,23 @@ function Lebenslagen() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-          {lebenslagen.map((l, i) => {
+        <Reveal className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+          {lebenslagen.map((l) => {
             const Icon = l.icon;
             return (
-              <Reveal key={l.slug} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                <Link
-                  to={`/${l.slug}`}
-                  className="group flex h-full items-center gap-3 rounded-md border border-ink-line bg-white px-4 py-3.5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
-                >
-                  <Icon className="h-5 w-5 shrink-0 text-red-700" stroke={1.75} />
-                  <span className="card-title text-sm text-ink group-hover:text-red-700">
-                    {l.title}
-                  </span>
-                </Link>
-              </Reveal>
+              <Link
+                key={l.slug}
+                to={`/${l.slug}`}
+                className="group flex h-full items-center gap-3 rounded-md border border-ink-line bg-white px-4 py-3.5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
+              >
+                <Icon className="h-5 w-5 shrink-0 text-red-700" stroke={1.75} />
+                <span className="card-title text-sm text-ink group-hover:text-red-700">
+                  {l.title}
+                </span>
+              </Link>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -276,39 +270,37 @@ function Events() {
           <SectionHeader
             eyebrow="Kommende Termine"
             heading="Veranstaltungen"
-            script="in Moosburg"
             light
           />
         </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {upcomingEvents.map((e, i) => (
-            <Reveal key={e.date + e.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-              <Link
-                to="/mein-moosburg/veranstaltungen"
-                className="group flex h-full flex-col gap-4 rounded-md border border-cream/10 bg-cream/5 p-5 transition hover:-translate-y-0.5 hover:border-gold-500/50 hover:bg-cream/10"
-              >
-                <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
-                  <div className="eyebrow text-cream/80">{e.month}</div>
-                  <div className="font-display text-2xl leading-none">{e.day}</div>
+        <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {upcomingEvents.map((e) => (
+            <Link
+              key={e.date + e.title}
+              to="/mein-moosburg/veranstaltungen"
+              className="group flex h-full flex-col gap-4 rounded-md border border-cream/10 bg-cream/5 p-5 transition hover:-translate-y-0.5 hover:border-gold-500/50 hover:bg-cream/10"
+            >
+              <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
+                <div className="badge text-cream/80">{e.month}</div>
+                <div className="font-display text-2xl leading-none">{e.day}</div>
+              </div>
+              <div>
+                <div className="mb-1 inline-block rounded-full border border-cream/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream/70">
+                  {e.category}
                 </div>
-                <div>
-                  <div className="mb-1 inline-block rounded-full border border-cream/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream/70">
-                    {e.category}
-                  </div>
-                  <h3 className="mt-1 card-title text-base text-cream line-clamp-2 group-hover:text-gold-200">
-                    {e.title}
-                  </h3>
-                  <div className="mt-2 flex items-center gap-1 text-xs text-cream/60">
-                    <IconClock className="h-3 w-3" stroke={2} />
-                    <IconMapPin className="h-3 w-3 ml-1" stroke={2} />
-                    <span className="truncate">{e.location}</span>
-                  </div>
+                <h3 className="mt-1 card-title text-base text-cream line-clamp-2 group-hover:text-gold-200">
+                  {e.title}
+                </h3>
+                <div className="mt-2 flex items-center gap-1 text-xs text-cream/60">
+                  <IconClock className="h-3 w-3" stroke={2} />
+                  <IconMapPin className="h-3 w-3 ml-1" stroke={2} />
+                  <span className="truncate">{e.location}</span>
                 </div>
-              </Link>
-            </Reveal>
+              </div>
+            </Link>
           ))}
-        </div>
+        </Reveal>
 
         <div className="mt-10">
           <Link
@@ -374,28 +366,27 @@ function HubsGrid() {
         <Reveal>
           <SectionHeader eyebrow="Vier Wege durch die Stadt" heading="Hauptbereiche" />
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {Object.entries(hubs).map(([slug, h], i) => {
+        <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(hubs).map(([slug, h]) => {
             const Icon = h.icon;
             return (
-              <Reveal key={slug} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                <Link
-                  to={`/${slug}`}
-                  className="group flex h-full flex-col rounded-md bg-white p-7 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift"
-                >
-                  <Icon className="h-8 w-8 text-red-700" stroke={1.5} />
-                  <h3 className="mt-5 card-title text-xl text-ink">{h.title}</h3>
-                  <p className="mt-1 eyebrow text-gold-700">{h.tagline}</p>
-                  <p className="mt-4 flex-1 text-sm text-ink-soft line-clamp-3">{h.intro}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
-                    Bereich öffnen
-                    <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
-                  </span>
-                </Link>
-              </Reveal>
+              <Link
+                key={slug}
+                to={`/${slug}`}
+                className="group flex h-full flex-col rounded-md bg-white p-7 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift"
+              >
+                <Icon className="h-8 w-8 text-red-700" stroke={1.5} />
+                <h3 className="mt-5 card-title text-xl text-ink">{h.title}</h3>
+                <p className="mt-1 text-sm text-gold-700">{h.tagline}</p>
+                <p className="mt-4 flex-1 text-sm text-ink-soft line-clamp-3">{h.intro}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
+                  Bereich öffnen
+                  <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                </span>
+              </Link>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

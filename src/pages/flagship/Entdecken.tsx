@@ -84,7 +84,6 @@ export function Entdecken() {
           <SectionHeader
             eyebrow="Über tausend Jahre an der Isar"
             heading="Die Drei-Rosen-Stadt"
-            script="willkommen"
             light
           />
         </Reveal>
@@ -112,7 +111,6 @@ export function Entdecken() {
           <SectionHeader
             eyebrow="Was Sie sehen sollten"
             heading="Die Wahrzeichen"
-            script="entdecken"
           />
         </Reveal>
         <div className="space-y-16">

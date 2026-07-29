@@ -197,7 +197,6 @@ export function FamilieBildung() {
             <SectionHeader
               eyebrow="Kindergärten · Krippen · Horte"
               heading="Betreuung von 0 bis 14"
-              script="Betreuung"
             />
           </Reveal>
 
@@ -315,7 +314,6 @@ export function FamilieBildung() {
             <SectionHeader
               eyebrow="Schulen in Moosburg"
               heading="Vom ABC bis zum Abitur"
-              script="Bildung"
             />
           </Reveal>
 

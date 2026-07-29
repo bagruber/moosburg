@@ -90,7 +90,6 @@ export function Strassennamen() {
           <SectionHeader
             eyebrow="Wie eine Straße zu ihrem Namen kommt"
             heading="Vom Vorschlag zum Straßenschild"
-            script="benannt"
             light
           />
         </Reveal>

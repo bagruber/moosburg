@@ -80,7 +80,6 @@ export function Einkaufen() {
           <SectionHeader
             eyebrow="Jeden Samstag"
             heading="Wochenmarkt"
-            script="frisch & regional"
             light
           />
         </Reveal>
@@ -130,7 +129,6 @@ export function Einkaufen() {
               <SectionHeader
                 eyebrow="Lokal kaufen"
                 heading="Geschäfte in Moosburg"
-                script={`${GESCHAEFTE.length} in der Stadt`}
               />
             </Reveal>
 
@@ -185,13 +183,13 @@ export function Einkaufen() {
               </span>
             </div>
 
-            <ul className="-mt-10 grid gap-3 sm:grid-cols-2">
-              {visibleGeschaefte.map((f, i) => (
-                <Reveal key={f.id} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+            <Reveal as="ul" className="-mt-10 grid gap-3 sm:grid-cols-2">
+              {visibleGeschaefte.map((f) => (
+                <li key={f.id}>
                   <FirmaCard firma={f} variant="compact" />
-                </Reveal>
+                </li>
               ))}
-            </ul>
+            </Reveal>
 
             <div className="-mt-10 text-center">
               <Link

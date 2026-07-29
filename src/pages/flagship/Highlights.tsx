@@ -26,7 +26,6 @@ export function Highlights() {
           <SectionHeader
             eyebrow="Moosburg im Jahreslauf"
             heading="Die großen Feste"
-            script="durchs Jahr"
           />
         </Reveal>
         <p className="-mt-4 mb-10 max-w-3xl text-base leading-relaxed text-ink-soft">

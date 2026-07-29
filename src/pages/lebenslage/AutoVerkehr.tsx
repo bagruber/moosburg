@@ -80,7 +80,6 @@ export function AutoVerkehr() {
           <SectionHeader
             eyebrow="Am schnellsten geht's digital"
             heading="In wenigen Minuten erledigt"
-            script="ohne Warteschlange"
             light
           />
         </Reveal>

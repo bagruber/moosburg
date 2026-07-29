@@ -407,32 +407,31 @@ function Recommendations() {
         </div>
         <span className="text-xs text-ink-muted">Aktualisiert sich, wenn Sie das Profil ändern</span>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {recs.map((r, i) => {
+      <Reveal className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {recs.map((r) => {
           const s = recCategoryStyles[r.category];
           return (
-            <Reveal key={r.id} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-              <Link
-                to={r.to}
-                className="group flex h-full flex-col rounded-md border border-ink-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-lift"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <span className={cn("rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider", s.chip)}>
-                    {s.label}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-wider text-ink-muted text-right max-w-[55%]">{r.reason}</span>
-                </div>
-                <h3 className="mt-3 card-title text-base text-ink group-hover:text-red-700">{r.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-ink-soft">{r.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
-                  Öffnen
-                  <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+            <Link
+              key={r.id}
+              to={r.to}
+              className="group flex h-full flex-col rounded-md border border-ink-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-lift"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <span className={cn("rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider", s.chip)}>
+                  {s.label}
                 </span>
-              </Link>
-            </Reveal>
+                <span className="text-[10px] uppercase tracking-wider text-ink-muted text-right max-w-[55%]">{r.reason}</span>
+              </div>
+              <h3 className="mt-3 card-title text-base text-ink group-hover:text-red-700">{r.title}</h3>
+              <p className="mt-2 flex-1 text-sm text-ink-soft">{r.desc}</p>
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
+                Öffnen
+                <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+              </span>
+            </Link>
           );
         })}
-      </div>
+      </Reveal>
     </section>
   );
 }

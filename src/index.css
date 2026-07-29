@@ -127,6 +127,18 @@ body {
   font-size: 0.75rem;
 }
 
+/* Status-Marker (Sperrung, Wahltermin, Krisenmeldung) — bewusst NICHT die
+   .eyebrow-Sprache: dichteres Tracking, kleiner, schwerer. Ein Kicker gliedert,
+   ein Badge meldet. Beide gleich zu setzen macht beide unsichtbar. */
+.badge {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+}
+
 /* Card/tile titles — Inter, uppercase-light, not Playfair */
 .card-title {
   font-family: var(--font-sans);

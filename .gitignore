@@ -20,6 +20,10 @@ CLAUDE.md
 # Legacy-site scrapes (research-only, not shipped)
 scrape-out/
 
+# Design-Tooling (lokal installiert, nicht Projektcode)
+.claude/skills/
+.impeccable/
+
 # Python bytecode (scrape scripts)
 __pycache__/
 *.pyc

@@ -305,18 +305,17 @@ export function DieseWoche() {
           <SectionHeader
             eyebrow="Was ist los?"
             heading="Termine dieser Woche"
-            script="vorgemerkt"
           />
         </Reveal>
-        <ul className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleEvents.map((e, i) => (
-            <Reveal key={e.date + e.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+        <Reveal as="ul" className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {visibleEvents.map((e) => (
+            <li key={e.date + e.title}>
               <Link
                 to="/mein-moosburg/veranstaltungen"
                 className="group flex h-full flex-col gap-3 rounded-2xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
               >
                 <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
-                  <div className="eyebrow text-cream/80">{e.month}</div>
+                  <div className="badge text-cream/80">{e.month}</div>
                   <div className="font-display text-2xl leading-none">{e.day}</div>
                 </div>
                 <div>
@@ -333,9 +332,9 @@ export function DieseWoche() {
                   </div>
                 </div>
               </Link>
-            </Reveal>
+            </li>
           ))}
-        </ul>
+        </Reveal>
         <div className="mt-6 text-center">
           <Link
             to="/mein-moosburg/veranstaltungen"
@@ -362,7 +361,6 @@ export function DieseWoche() {
             <SectionHeader
               eyebrow="Im Moment"
               heading={saison.label}
-              script="genau jetzt"
               light
             />
           </Reveal>
@@ -389,11 +387,10 @@ export function DieseWoche() {
           <SectionHeader
             eyebrow="Aus dem Rathaus"
             heading="Neuigkeiten"
-            script="dieser Tage"
           />
         </Reveal>
-        <ul className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {NEWS.map((n, i) => {
+        <Reveal as="ul" className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {NEWS.map((n) => {
             const color = CATEGORY_COLOR[n.category];
             const dateStr = new Date(n.date + "T00:00:00").toLocaleDateString("de-DE", {
               day: "2-digit", month: "short",
@@ -417,15 +414,13 @@ export function DieseWoche() {
             );
             return (
               <li key={n.id}>
-                <Reveal delay={((i % 3) + 1) as 1 | 2 | 3}>
-                  {n.to
-                    ? <Link to={n.to}>{inner}</Link>
-                    : <a href={n.href} target="_blank" rel="noreferrer">{inner}</a>}
-                </Reveal>
+                {n.to
+                  ? <Link to={n.to}>{inner}</Link>
+                  : <a href={n.href} target="_blank" rel="noreferrer">{inner}</a>}
               </li>
             );
           })}
-        </ul>
+        </Reveal>
       </article>
 
       {/* ─────────────────────────────────────────────────────────────────
@@ -436,7 +431,6 @@ export function DieseWoche() {
           <SectionHeader
             eyebrow="Samstag, 7 – 12 Uhr"
             heading="Wochenmarkt auf dem Plan"
-            script="immer einen Besuch wert"
             light
           />
         </Reveal>

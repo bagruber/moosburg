@@ -51,7 +51,6 @@ export function EssenUebernachten() {
               <SectionHeader
                 eyebrow="Hotels, Gasthöfe & Pensionen"
                 heading="Hier schlafen Sie gut"
-                script={`${gastgeber.length} Häuser`}
               />
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

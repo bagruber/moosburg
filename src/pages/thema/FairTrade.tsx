@@ -70,7 +70,6 @@ export function FairTrade() {
           <SectionHeader
             eyebrow="Warum Fair-Trade in Moosburg?"
             heading="Lokal handeln, global wirken"
-            script="bewusst"
             light
           />
         </Reveal>
@@ -133,7 +132,6 @@ export function FairTrade() {
                     <SectionHeader
                       eyebrow="Wer macht mit"
                       heading={g.label}
-                      script={`${partnerInGruppe.length} Partner`}
                     />
                     <div className="-mt-2 mb-5 flex items-center gap-2 text-xs text-ink-muted">
                       <Icon className="h-4 w-4" stroke={1.75} />
