@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconBriefcase,
-  IconSchool,
-  IconBuildingStore,
-  IconArrowRight,
-  IconExternalLink,
-  IconChevronRight,
-} from "@tabler/icons-react";
+  Briefcase,
+  GraduationCap,
+  Storefront,
+  ArrowRight,
+  ArrowSquareOut,
+  CaretRight,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -32,7 +32,7 @@ const AUDIENCES: Audience[] = [
   {
     id: "jobsuche",
     label: "Ich suche Arbeit",
-    icon: IconBriefcase,
+    icon: Briefcase,
     lead: "Ob Neustart oder Wechsel, die wichtigsten Anlaufstellen für Ihre Jobsuche in und um Moosburg.",
     eintraege: [
       { title: "Stellen bei der Stadt Moosburg", desc: "Offene Stellen der Stadtverwaltung und städtischer Einrichtungen.", to: "/rathaus/stellenangebote" },
@@ -44,7 +44,7 @@ const AUDIENCES: Audience[] = [
   {
     id: "ausbildung",
     label: "Ausbildung & Schule",
-    icon: IconSchool,
+    icon: GraduationCap,
     lead: "Vom Übertritt bis zur dualen Ausbildung: Wege in den Beruf für junge Menschen in Moosburg.",
     eintraege: [
       { title: "Ausbildung bei der Stadt", desc: "Ausbildungsplätze und duale Studiengänge bei der Stadtverwaltung.", to: "/rathaus/stellenangebote" },
@@ -56,7 +56,7 @@ const AUDIENCES: Audience[] = [
   {
     id: "arbeitgeber",
     label: "Ich bin Arbeitgeber:in",
-    icon: IconBuildingStore,
+    icon: Storefront,
     lead: "Fachkräfte finden, sichtbar werden und den Standort Moosburg nutzen.",
     eintraege: [
       { title: "Eintrag im Firmenverzeichnis", desc: "Präsentieren Sie Ihren Betrieb im zentralen Verzeichnis der Moosburger Wirtschaft.", to: "/mein-moosburg/firmen" },
@@ -97,7 +97,7 @@ export function ArbeitAusbildung() {
                   on ? "bg-ink text-cream" : "text-ink-soft hover:text-ink",
                 )}
               >
-                <Icon className="h-4 w-4" stroke={1.75} />
+                <Icon className="h-4 w-4" weight="regular" />
                 {a.label}
               </button>
             );
@@ -120,7 +120,7 @@ export function ArbeitAusbildung() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
                     Externe Seite
-                    <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
+                    <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
                   </span>
                 </a>
               ) : (
@@ -133,7 +133,7 @@ export function ArbeitAusbildung() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
                     Öffnen
-                    <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
                   </span>
                 </Link>
               ),
@@ -145,7 +145,7 @@ export function ArbeitAusbildung() {
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
           >
             {audience.cta.label}
-            <IconArrowRight className="h-4 w-4" stroke={2} />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>
         </Reveal>
       </section>
@@ -174,7 +174,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

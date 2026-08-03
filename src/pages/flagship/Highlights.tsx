@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IconMapPin, IconClock, IconArrowRight } from "@tabler/icons-react";
+import { MapPin, Clock, ArrowRight } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -66,12 +66,12 @@ export function Highlights() {
                           </span>
                         </div>
                         <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-ink">
-                          <IconClock className="h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                          <Clock className="h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                           {h.zeit}
                         </p>
                         <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{h.beschreibung}</p>
                         <p className="mt-4 flex items-center gap-1.5 text-xs text-ink-muted">
-                          <IconMapPin className="h-3.5 w-3.5 shrink-0" stroke={1.75} />
+                          <MapPin className="h-3.5 w-3.5 shrink-0" weight="regular" />
                           {h.ort}
                         </p>
                       </article>
@@ -89,7 +89,7 @@ export function Highlights() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
             Zum vollständigen Veranstaltungskalender
-            <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+            <ArrowRight className="h-3.5 w-3.5" weight="regular" />
           </Link>
         </div>
       </section>

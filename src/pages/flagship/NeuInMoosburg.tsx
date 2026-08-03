@@ -1,29 +1,29 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconCalendarEvent,
-  IconCar,
-  IconHome,
-  IconRecycle,
-  IconWifi,
-  IconBabyCarriage,
-  IconSchool,
-  IconBuilding,
-  IconPawFilled,
-  IconHeartHandshake,
-  IconUsers,
-  IconBell,
-  IconMail,
-  IconArrowRight,
-  IconCheck,
-  IconParking,
-  IconUserCircle,
-  IconUserCheck,
-  IconWalk,
-  IconMapPin,
-  IconLock,
-} from "@tabler/icons-react";
+  CalendarDots,
+  Car,
+  House,
+  Recycle,
+  WifiHigh,
+  BabyCarriage,
+  GraduationCap,
+  Building,
+  PawPrint,
+  Handshake,
+  Users,
+  Bell,
+  Envelope,
+  ArrowRight,
+  Check,
+  CarProfile,
+  UserCircle,
+  UserCheck,
+  PersonSimpleWalk,
+  MapPin,
+  Lock,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -54,7 +54,7 @@ const STEPS: Step[] = [
   {
     id: "anmelden",
     tier: "pflicht",
-    icon: IconHome,
+    icon: House,
     title: "Wohnsitz anmelden",
     desc: "Persönlich im Bürgerbüro mit Ausweis und Wohnungsgeberbestätigung. Termin online buchbar, bei Familien beide Erziehungsberechtigte mitbringen.",
     deadline: "innerhalb 14 Tagen nach Einzug",
@@ -63,7 +63,7 @@ const STEPS: Step[] = [
   {
     id: "muell-abo",
     tier: "pflicht",
-    icon: IconRecycle,
+    icon: Recycle,
     title: "Müll-Abo für Ihre Adresse aktivieren",
     desc: "Restmüll-, Bio- und Papiertonne anmelden. Tonnen werden binnen 5 Werktagen geliefert; Abfuhrtag richtet sich nach Stadtteil.",
     cta: { label: "Online-Anmeldung", to: "/rathaus/online-dienste" },
@@ -71,7 +71,7 @@ const STEPS: Step[] = [
   {
     id: "gez",
     tier: "pflicht",
-    icon: IconBell,
+    icon: Bell,
     title: "Rundfunkbeitrag anmelden",
     desc: "Pflicht-Anmeldung beim ARD ZDF Deutschlandradio Beitragsservice, pro Wohnung ein Beitrag, unabhängig von Personenzahl.",
     deadline: "innerhalb 1 Monat",
@@ -80,7 +80,7 @@ const STEPS: Step[] = [
   {
     id: "internet",
     tier: "pflicht",
-    icon: IconWifi,
+    icon: WifiHigh,
     title: "Internetanschluss prüfen / beauftragen",
     desc: "Glasfaserausbau läuft in mehreren Stadtteilen. Verfügbarkeit prüfen und Anbieter wählen.",
     cta: { label: "Glasfaser-Status", to: "/rathaus/breitband" },
@@ -90,7 +90,7 @@ const STEPS: Step[] = [
   {
     id: "kfz-ummelden",
     tier: "profile",
-    icon: IconCar,
+    icon: Car,
     title: "KFZ ummelden",
     desc: "Ummeldung in der Außenstelle der Zulassungsstelle. Nötig sind Personalausweis, Zulassungsbescheinigung und eVB-Nummer.",
     deadline: "innerhalb 6 Monaten",
@@ -102,7 +102,7 @@ const STEPS: Step[] = [
   {
     id: "anwohnerparken",
     tier: "profile",
-    icon: IconParking,
+    icon: CarProfile,
     title: "Anwohnerparkausweis beantragen",
     desc: "In Tarifzonen A und B (Altstadt + Neustadt/Bahnhof) wird die Anwohnerparkkarte empfohlen, gilt 12 Monate.",
     cta: { label: "Online beantragen", to: "/rathaus/online-dienste" },
@@ -113,7 +113,7 @@ const STEPS: Step[] = [
   {
     id: "hund",
     tier: "profile",
-    icon: IconPawFilled,
+    icon: PawPrint,
     title: "Hundesteuer anmelden",
     desc: "Anmeldung bei der Stadtkasse. Aktuelle Sätze: 50 € / Jahr, Listenhunde 100 €.",
     deadline: "innerhalb 4 Wochen",
@@ -125,7 +125,7 @@ const STEPS: Step[] = [
   {
     id: "kita",
     tier: "profile",
-    icon: IconBabyCarriage,
+    icon: BabyCarriage,
     title: "Kita-Platz suchen",
     desc: "Plattform LITTLE BIRD zeigt freie Plätze in städtischen und freien Trägern. Anmeldung jederzeit möglich.",
     cta: { label: "Zur Kita-Suche", to: "/mein-moosburg/familie" },
@@ -136,7 +136,7 @@ const STEPS: Step[] = [
   {
     id: "schule",
     tier: "profile",
-    icon: IconSchool,
+    icon: GraduationCap,
     title: "Schule anmelden",
     desc: "Schulsprengel-Zuordnung erfolgt automatisch nach Adresse. Schulwechsel in laufendes Schuljahr ist mit dem Sekretariat abzusprechen.",
     cta: { label: "Schul-Übersicht", to: "/mein-moosburg/familie/schulen" },
@@ -147,7 +147,7 @@ const STEPS: Step[] = [
   {
     id: "grundsteuer",
     tier: "profile",
-    icon: IconBuilding,
+    icon: Building,
     title: "Grundsteuer anpassen lassen",
     desc: "Bei Eigentümerwechsel ist die Grundsteuer auf Sie umzuschreiben. Notarurkunde reicht der Stadtkasse genügt für die Umstellung.",
     cta: { label: "Stadtkasse kontaktieren", to: "/rathaus/online-dienste" },
@@ -158,7 +158,7 @@ const STEPS: Step[] = [
   {
     id: "pflege",
     tier: "profile",
-    icon: IconHeartHandshake,
+    icon: Handshake,
     title: "Pflegeberatung kennenlernen",
     desc: "Der Pflegestützpunkt des Landkreises bietet kostenlose Erstberatung, auch wenn aktuell kein Pflegegrad besteht.",
     cta: { label: "Beratungstermin", to: "/mein-moosburg/gesundheit" },
@@ -171,7 +171,7 @@ const STEPS: Step[] = [
   {
     id: "newsletter",
     tier: "tipp",
-    icon: IconMail,
+    icon: Envelope,
     title: "Stadt-Newsletter abonnieren",
     desc: "Einmal im Monat: Stadtratsbeschlüsse, Veranstaltungen, Baustellen-Updates. Themenkanäle wählbar.",
     cta: { label: "Newsletter abonnieren", to: "/konto" },
@@ -179,7 +179,7 @@ const STEPS: Step[] = [
   {
     id: "stadtfuehrung",
     tier: "tipp",
-    icon: IconWalk,
+    icon: PersonSimpleWalk,
     title: "Stadtführung „Neu in Moosburg“",
     desc: "Kostenlose 90-Minuten-Führung jeden 1. Samstag im Monat um 11:00 Uhr: Treffpunkt am Stadtplatz, ohne Anmeldung.",
     cta: { label: "Zu den Veranstaltungen", to: "/mein-moosburg/veranstaltungen" },
@@ -187,7 +187,7 @@ const STEPS: Step[] = [
   {
     id: "vereine",
     tier: "tipp",
-    icon: IconUsers,
+    icon: Users,
     title: "Vereinsleben entdecken",
     desc: "Über 120 Vereine prägen Moosburg, von Trachtenvereinen über TSV bis zu modernen Sportgruppen.",
     cta: { label: "Vereine durchsuchen", to: "/mein-moosburg/freizeit" },
@@ -195,7 +195,7 @@ const STEPS: Step[] = [
   {
     id: "buddy",
     tier: "tipp",
-    icon: IconHeartHandshake,
+    icon: Handshake,
     title: "Buddy-Programm „Mit dabei in Moosburg“",
     desc: "Ehrenamtliche Mentor:innen begleiten Neubürger:innen für 3 Monate, beim Behördengang, beim Stammtisch, beim Vereinseinstieg.",
     cta: { label: "Anmelden", to: "/mitgestalten/beteiligung" },
@@ -296,7 +296,7 @@ export function NeuInMoosburg() {
         {hiddenProfileSteps.length > 0 && signedIn && (
           <div className="mt-16 rounded-md border border-dashed border-ink-line bg-white/60 p-7">
             <div className="flex items-start gap-3">
-              <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-turquoise-accent" stroke={1.75} />
+              <UserCheck className="mt-0.5 h-5 w-5 shrink-0 text-turquoise-accent" weight="regular" />
               <div className="flex-1">
                 <h3 className="card-title text-base text-ink">Trifft auch das auf Sie zu?</h3>
                 <p className="mt-1 text-sm text-ink-soft">
@@ -309,7 +309,7 @@ export function NeuInMoosburg() {
                       onClick={() => updateProfile({ [f]: true } as Partial<Profile>)}
                       className="inline-flex items-center gap-1.5 rounded-full border border-ink-line bg-white px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-turquoise-accent hover:text-turquoise-accent"
                     >
-                      <IconCheck className="h-3 w-3" stroke={2.5} />
+                      <Check className="h-3 w-3" weight="bold" />
                       {factorLabel(f)}
                     </button>
                   ))}
@@ -333,17 +333,17 @@ export function NeuInMoosburg() {
               </p>
               <div className="mt-5 flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-1.5">
-                  <IconCalendarEvent className="h-4 w-4 text-red-700" stroke={2} />
+                  <CalendarDots className="h-4 w-4 text-red-700" weight="regular" />
                   <span className="text-ink">Jeden 1. Samstag, 11:00 Uhr</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <IconMapPin className="h-4 w-4 text-red-700" stroke={2} />
+                  <MapPin className="h-4 w-4 text-red-700" weight="regular" />
                   <span className="text-ink">Treffpunkt Stadtplatz</span>
                 </div>
               </div>
               <Link to="/mein-moosburg/veranstaltungen" className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
                 Nächsten Termin sehen
-                <IconArrowRight className="h-4 w-4" stroke={2.5} />
+                <ArrowRight className="h-4 w-4" weight="bold" />
               </Link>
             </div>
 
@@ -354,7 +354,7 @@ export function NeuInMoosburg() {
                 Sie auf eine der Stadtführungen oder schreiben Sie mir direkt. Wir freuen uns auf Sie."
               </blockquote>
               <figcaption className="mt-4 flex items-center gap-3">
-                <IconUserCircle className="h-9 w-9 text-red-700" stroke={1.5} />
+                <UserCircle className="h-9 w-9 text-red-700" weight="light" />
                 <div className="text-sm">
                   <div className="card-title text-ink">Maximilian Mader</div>
                   <div className="text-xs text-ink-muted">Erster Bürgermeister</div>
@@ -373,9 +373,9 @@ export function NeuInMoosburg() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { icon: IconBabyCarriage, title: "Familie & Kinder ankommen lassen", desc: "Kita, Schule, Familienberatung, Spielplätze, Bibliothek.", to: "/mein-moosburg/familie" },
-            { icon: IconCar,           title: "Auto, ÖPNV & Verkehr",             desc: "KFZ-Zulassung, MVV-Tarifgebiet, Park&Ride, Mobilitätsbüro.", to: "/mein-moosburg/mobilitaet" },
-            { icon: IconHeartHandshake, title: "Engagieren & vernetzen",          desc: "Vereine, Ehrenamt, Stammtisch-Tipps, Buddy-Programm.",        to: "/mitgestalten" },
+            { icon: BabyCarriage, title: "Familie & Kinder ankommen lassen", desc: "Kita, Schule, Familienberatung, Spielplätze, Bibliothek.", to: "/mein-moosburg/familie" },
+            { icon: Car,           title: "Auto, ÖPNV & Verkehr",             desc: "KFZ-Zulassung, MVV-Tarifgebiet, Park&Ride, Mobilitätsbüro.", to: "/mein-moosburg/mobilitaet" },
+            { icon: Handshake, title: "Engagieren & vernetzen",          desc: "Vereine, Ehrenamt, Stammtisch-Tipps, Buddy-Programm.",        to: "/mitgestalten" },
           ].map((c) => {
             const Icon = c.icon;
             return (
@@ -385,13 +385,13 @@ export function NeuInMoosburg() {
                 className="group flex flex-col rounded-md border border-ink-line bg-white p-6 transition hover:border-red-500 hover:shadow-soft"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                  <Icon className="h-5 w-5" stroke={1.75} />
+                  <Icon className="h-5 w-5" weight="regular" />
                 </span>
                 <h3 className="mt-5 card-title text-base text-ink">{c.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-ink-soft">{c.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                   Bereich öffnen
-                  <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
                 </span>
               </Link>
             );
@@ -424,7 +424,7 @@ function PersonalizationBanner() {
       <section className="border-b border-ink-line/60 bg-cream">
         <div className="mx-auto max-w-7xl px-4 py-5 lg:px-8">
           <div className="flex flex-wrap items-start gap-3 rounded-md border border-ink-line bg-white p-4 text-sm">
-            <IconLock className="mt-0.5 h-5 w-5 shrink-0 text-ink-soft" stroke={1.75} />
+            <Lock className="mt-0.5 h-5 w-5 shrink-0 text-ink-soft" weight="regular" />
             <div className="flex-1">
               <strong className="text-ink">Diese Liste passt sich Ihrer Situation an.</strong>{" "}
               <span className="text-ink-soft">
@@ -443,7 +443,7 @@ function PersonalizationBanner() {
       <section className="border-b border-ink-line/60 bg-cream">
         <div className="mx-auto max-w-7xl px-4 py-5 lg:px-8">
           <div className="flex flex-wrap items-start gap-3 rounded-md border border-gold-500/30 bg-gold-100/40 p-4 text-sm">
-            <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+            <UserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" weight="regular" />
             <div className="flex-1">
               <strong className="text-ink">Markieren Sie „Neu in Moosburg" in Ihrem Profil,</strong>{" "}
               <span className="text-ink-soft">
@@ -473,7 +473,7 @@ function PersonalizationBanner() {
             was wegen Auto, Kindern, Hund usw. zusätzlich zutrifft.
           </span>
           <Link to="/konto" className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-turquoise-accent hover:underline">
-            Profil bearbeiten <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+            Profil bearbeiten <ArrowRight className="h-3.5 w-3.5" weight="regular" />
           </Link>
         </div>
       </div>
@@ -504,12 +504,12 @@ function StepCard({ step, done, onToggle }: { step: Step; done: boolean; onToggl
             done ? "border-rb-5 bg-rb-5 text-cream" : "border-ink-line bg-white text-ink-line hover:border-red-500",
           )}
         >
-          {done ? <IconCheck className="h-4 w-4" stroke={3} /> : <span className="block h-3 w-3" />}
+          {done ? <Check className="h-4 w-4" weight="bold" /> : <span className="block h-3 w-3" />}
         </button>
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <Icon className={cn("h-5 w-5", done ? "text-rb-5" : "text-red-700")} stroke={1.75} />
+            <Icon className={cn("h-5 w-5", done ? "text-rb-5" : "text-red-700")} weight="regular" />
             <h4 className={cn("card-title text-base", done ? "text-ink-muted line-through" : "text-ink")}>
               {step.title}
             </h4>
@@ -539,7 +539,7 @@ function StepCard({ step, done, onToggle }: { step: Step; done: boolean; onToggl
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline"
               >
                 {step.cta.label}
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2.5} />
+                <ArrowRight className="h-3.5 w-3.5" weight="bold" />
               </a>
             ) : (
               <Link
@@ -547,7 +547,7 @@ function StepCard({ step, done, onToggle }: { step: Step; done: boolean; onToggl
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline"
               >
                 {step.cta.label}
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2.5} />
+                <ArrowRight className="h-3.5 w-3.5" weight="bold" />
               </Link>
             )}
           </div>

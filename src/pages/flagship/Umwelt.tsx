@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconLeaf,
-  IconSun,
-  IconFlame,
-  IconBolt,
-  IconUsers,
-  IconChartHistogram,
-  IconBuildingFactory,
-  IconCalendar,
-  IconExternalLink,
-  IconChevronRight,
-  IconArrowRight,
-  IconSchool,
-  IconBike,
-} from "@tabler/icons-react";
+  Leaf,
+  Sun,
+  Fire,
+  Lightning,
+  Users,
+  ChartLineUp,
+  Factory,
+  Calendar,
+  ArrowSquareOut,
+  CaretRight,
+  ArrowRight,
+  GraduationCap,
+  Bicycle,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { HeuteBanner } from "@/components/HeuteBanner";
@@ -25,11 +25,11 @@ import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
 const route = findRoute("mein-moosburg/umwelt")!;
 
 const SECTIONS = [
-  { id: "konzept",   label: "Klimaschutz-Konzept", icon: IconLeaf,   accent: "rb-5" },
-  { id: "waerme",    label: "Wärmeplanung",         icon: IconFlame,  accent: "rb-3" },
-  { id: "solar",     label: "Solar & PV",           icon: IconSun,    accent: "rb-4" },
-  { id: "beratung",  label: "Beratung & Förderung", icon: IconBolt,   accent: "rb-6" },
-  { id: "mitwirken", label: "Mitwirken",            icon: IconUsers,  accent: "rb-7" },
+  { id: "konzept",   label: "Klimaschutz-Konzept", icon: Leaf,   accent: "rb-5" },
+  { id: "waerme",    label: "Wärmeplanung",         icon: Fire,  accent: "rb-3" },
+  { id: "solar",     label: "Solar & PV",           icon: Sun,    accent: "rb-4" },
+  { id: "beratung",  label: "Beratung & Förderung", icon: Lightning,   accent: "rb-6" },
+  { id: "mitwirken", label: "Mitwirken",            icon: Users,  accent: "rb-7" },
 ] as const;
 
 /* ── Chronik der Energiewende in Moosburg (aus Klimaschutz-Seite) ──── */
@@ -65,7 +65,7 @@ export function Umwelt() {
           <div className="space-y-16">
 
             {/* ── Klimaschutz-Konzept ───────────────────────────── */}
-            <Sec id="konzept" icon={IconLeaf} accent="rb-5"
+            <Sec id="konzept" icon={Leaf} accent="rb-5"
               title="Klimaschutz-Konzept"
               lead="Moosburg hat sich 2007 die Energiewende ins Stadtrats­buch geschrieben, bis 2035 soll der gesamte hier verbrauchte Energie­bedarf aus erneuerbaren Quellen kommen." />
             <div className="grid gap-5 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
@@ -109,74 +109,74 @@ export function Umwelt() {
             />
 
             {/* ── Wärmeplanung ──────────────────────────────────── */}
-            <Sec id="waerme" icon={IconFlame} accent="rb-3"
+            <Sec id="waerme" icon={Fire} accent="rb-3"
               title="Wärmeplanung"
               lead="Die kommunale Wärmeplanung zeigt, welche Stadt­teile sich für Fern-/Nahwärme, Wärmepumpen oder andere Lösungen eignen. Gefördert vom Bund (KZL 67K27027)." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconChartHistogram} accent="rb-3" title="Ergebnisse & digitaler Zwilling"
+              <InfoCard icon={ChartLineUp} accent="rb-3" title="Ergebnisse & digitaler Zwilling"
                 body="Wärme­bedarfs­karten, Eignungs­zonen und Empfehlungen pro Quartier."
                 href="https://www.moosburg.de/kommunale-waermeplanung-nav" external />
-              <InfoCard icon={IconCalendar} accent="rb-3" title="Wärmepumpen-Infotag"
+              <InfoCard icon={Calendar} accent="rb-3" title="Wärmepumpen-Infotag"
                 body="Jährliche Veranstaltung mit Beratung und Hersteller-Ausstellungen."
                 href="https://www.moosburg.de/waermepumpen-infotag" external />
-              <InfoCard icon={IconBuildingFactory} accent="rb-3" title="Nahwärme: Fa. Bader Energie"
+              <InfoCard icon={Factory} accent="rb-3" title="Nahwärme: Fa. Bader Energie"
                 body="Externer Betreiber für die bestehenden Nahwärme­insel in Moosburg (nicht städtisch)."
                 href="https://www.moosburg.de/nahwaerme-fa.-bader-energie-gmbh" external />
-              <InfoCard icon={IconFlame} accent="rb-3" title="Wärmebild-Kampagne"
+              <InfoCard icon={Fire} accent="rb-3" title="Wärmebild-Kampagne"
                 body="Kostenlose Wärmebild­aufnahmen Ihres Hauses, zeigt Sanierungs­bedarf."
                 href="https://www.moosburg.de/waermebild-kampagne" external />
             </div>
 
             {/* ── Solar & PV ─────────────────────────────────────── */}
-            <Sec id="solar" icon={IconSun} accent="rb-4"
+            <Sec id="solar" icon={Sun} accent="rb-4"
               title="Solar & Photovoltaik"
               lead="Wo sich ein Solar­dach in Moosburg lohnt und welche Frei­flächen-PV-Anlagen geplant sind." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconSun} accent="rb-4" title="Solar­potenzial­kataster"
+              <InfoCard icon={Sun} accent="rb-4" title="Solar­potenzial­kataster"
                 body="Online-Kataster zeigt für jedes Moosburger Dach das Ertragspotenzial."
                 href="https://www.moosburg.de/solarpotenzialkataster" external />
-              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 69: PV-Anlage Kurlandstraße"
+              <InfoCard icon={Sun} accent="rb-4" title="Bebauungsplan Nr. 69: PV-Anlage Kurlandstraße"
                 body="SO Freiflächen-PV; Satzungs­beschluss erfolgt."
                 href="https://www.moosburg.de/pv-anlage-kurlandstrasse" external />
-              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 73: PV-Anlage Preisinger Loh"
+              <InfoCard icon={Sun} accent="rb-4" title="Bebauungsplan Nr. 73: PV-Anlage Preisinger Loh"
                 body="Zweite Frei­flächen-PV in Moosburg."
                 href="https://www.moosburg.de/BP-bebauungsplan-nr-73-so-freiflaechen-pv-anlage-preisinger-loh" external />
             </div>
 
             {/* ── Beratung & Förderung ──────────────────────────── */}
-            <Sec id="beratung" icon={IconBolt} accent="rb-6"
+            <Sec id="beratung" icon={Lightning} accent="rb-6"
               title="Beratung & Förderung"
               lead="Welche Förderprogramme gerade laufen, wer berät, und wie Sie selbst Energie sparen können." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconBolt} accent="rb-6" title="Energiekarawane"
+              <InfoCard icon={Lightning} accent="rb-6" title="Energiekarawane"
                 body="Stadt­teil­bezogene Vor-Ort-Beratung zu Energie­einsparung und Sanierung."
                 href="https://www.moosburg.de/energiekarawane" external />
-              <InfoCard icon={IconChartHistogram} accent="rb-6" title="Energiekonferenzen"
+              <InfoCard icon={ChartLineUp} accent="rb-6" title="Energiekonferenzen"
                 body="Regel­mäßige Bürger­konferenzen zum Stand der Energiewende."
                 href="https://www.moosburg.de/energiekonferenzen" external />
-              <InfoCard icon={IconLeaf} accent="rb-6" title="Energiespartipp des Monats"
+              <InfoCard icon={Leaf} accent="rb-6" title="Energiespartipp des Monats"
                 body="Aktuelle Tipps zum Energie­sparen für Privat­haushalte."
                 href="https://www.moosburg.de/energietipps" external />
-              <InfoCard icon={IconUsers} accent="rb-6" title="Energiespardorf"
+              <InfoCard icon={Users} accent="rb-6" title="Energiespardorf"
                 body="Spielerische Energie-Bildung für Schulklassen und Jugend­gruppen."
                 href="https://www.moosburg.de/energiespardorf" external />
             </div>
 
             {/* ── Mitwirken ──────────────────────────────────────── */}
-            <Sec id="mitwirken" icon={IconUsers} accent="rb-7"
+            <Sec id="mitwirken" icon={Users} accent="rb-7"
               title="Mitwirken"
               lead="Gremien und Initiativen, in denen Sie sich für Klimaschutz in Moosburg engagieren können." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconUsers} accent="rb-7" title="Energiebeirat"
+              <InfoCard icon={Users} accent="rb-7" title="Energiebeirat"
                 body="Lenkungs­gruppe aus Stadt­räten und engagierten Moosburger:innen. Begleitet die Umsetzung des KSK."
                 href="https://www.moosburg.de/energiebeirat" external />
-              <InfoCard icon={IconSchool} accent="rb-7" title="KiGas und Schulen"
+              <InfoCard icon={GraduationCap} accent="rb-7" title="KiGas und Schulen"
                 body="Klimaschutz im Bildungsalltag: Aktionen in Kindergärten und Schulen."
                 href="https://www.moosburg.de/kigas-und-schulen" external />
-              <InfoCard icon={IconLeaf} accent="rb-7" title="Fair-Trade-Stadt"
+              <InfoCard icon={Leaf} accent="rb-7" title="Fair-Trade-Stadt"
                 body="Moosburg ist seit 2019 Fairtrade-Stadt: Schoki, Kaffee, Tee, Wein im eigenen Design."
                 href="/mein-moosburg/einkaufen" />
-              <InfoCard icon={IconBike} accent="rb-7" title="Fuß- und Radverkehrskonzept"
+              <InfoCard icon={Bicycle} accent="rb-7" title="Fuß- und Radverkehrskonzept"
                 body="Bestandteil des Klimaschutz­konzepts, fördert nicht-motorisierten Verkehr."
                 href="/mein-moosburg/mobilitaet" />
             </div>
@@ -201,26 +201,26 @@ export function Umwelt() {
                 <li>
                   <Link to="/mein-moosburg/mobilitaet" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Mobilität & Verkehr</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/einkaufen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Fair-Trade & lokales Einkaufen</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/rathaus/satzungen?lebenslage=natur" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Stadtgrünverordnung & Naturschutz­regeln</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <a href="https://www.moosburg.de/klimaschutz" target="_blank" rel="noreferrer"
                     className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Klimaschutz-Übersicht (Stadtseite)</span>
-                    <IconExternalLink className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowSquareOut className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </a>
                 </li>
               </ul>
@@ -255,7 +255,7 @@ function Sec({ id, icon: Icon, accent, title, lead }: {
           style={{ backgroundColor: `${color}1A`, color }}
           aria-hidden="true"
         >
-          <Icon className="h-5 w-5" stroke={1.75} />
+          <Icon className="h-5 w-5" weight="regular" />
         </span>
         <h2 className="headline text-2xl lg:text-3xl text-ink">{title}</h2>
       </div>
@@ -274,19 +274,19 @@ function InfoCard({ icon: Icon, accent, title, body, href, hrefLabel, external }
     <>
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg"
         style={{ backgroundColor: `${color}1A`, color }} aria-hidden="true">
-        <Icon className="h-5 w-5" stroke={1.75} />
+        <Icon className="h-5 w-5" weight="regular" />
       </span>
       <div className="min-w-0 flex-1">
         <h3 className="card-title text-base text-ink">{title}</h3>
         <p className="mt-1 text-xs text-ink-soft">{body}</p>
         {hrefLabel && (
           <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-700">
-            {hrefLabel} <IconArrowRight className="h-3 w-3" stroke={2} />
+            {hrefLabel} <ArrowRight className="h-3 w-3" weight="regular" />
           </span>
         )}
       </div>
       {isExternal && (
-        <IconExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" stroke={2} />
+        <ArrowSquareOut className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" weight="regular" />
       )}
     </>
   );

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconRocket,
-  IconLicense,
-  IconMapPin,
-  IconAffiliate,
-  IconArrowRight,
-  IconExternalLink,
-  IconChevronRight,
-  IconPlane,
-  IconRoad,
-  IconBuildingFactory2,
-} from "@tabler/icons-react";
+  Rocket,
+  Certificate,
+  MapPin,
+  ShareNetwork,
+  ArrowRight,
+  ArrowSquareOut,
+  CaretRight,
+  Airplane,
+  RoadHorizon,
+  Factory,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
@@ -36,7 +36,7 @@ const PHASEN: Phase[] = [
   {
     id: "gruenden",
     label: "Gründen",
-    icon: IconRocket,
+    icon: Rocket,
     lead: "Von der Idee zum eigenen Betrieb, mit Beratung und Förderung gut vorbereitet starten.",
     eintraege: [
       { title: "Gründungsberatung", desc: "Erste Orientierung, Businessplan und die richtigen Ansprechpartner.", to: "/rathaus/kontakt?topic=wirtschaft" },
@@ -47,7 +47,7 @@ const PHASEN: Phase[] = [
   {
     id: "anmelden",
     label: "Anmelden & Genehmigen",
-    icon: IconLicense,
+    icon: Certificate,
     lead: "Die formalen Schritte, vieles davon erledigen Sie online oder mit einem Termin.",
     eintraege: [
       { title: "Gewerbe anmelden", desc: "Gewerbeanmeldung, -ummeldung und -abmeldung bei der Stadt.", to: "/rathaus/online-dienste" },
@@ -58,7 +58,7 @@ const PHASEN: Phase[] = [
   {
     id: "standort",
     label: "Standort & Wachstum",
-    icon: IconMapPin,
+    icon: MapPin,
     lead: "Räume, Flächen und Fachkräfte für den nächsten Schritt Ihres Unternehmens.",
     eintraege: [
       { title: "Gewerbeflächen & Ansiedlung", desc: "Verfügbare Flächen und Unterstützung bei der Ansiedlung.", to: "/rathaus/kontakt?topic=wirtschaft" },
@@ -69,7 +69,7 @@ const PHASEN: Phase[] = [
   {
     id: "vernetzen",
     label: "Vernetzen & Sichtbar werden",
-    icon: IconAffiliate,
+    icon: ShareNetwork,
     lead: "In Moosburg sichtbar sein und Teil der lokalen Wirtschaftsgemeinschaft werden.",
     eintraege: [
       { title: "Eintrag im Firmenverzeichnis", desc: "Präsentieren Sie Ihren Betrieb im zentralen Verzeichnis der Moosburger Wirtschaft.", to: "/mein-moosburg/firmen" },
@@ -120,7 +120,7 @@ export function UnternehmenGewerbe() {
                   <span className={cn("font-display text-sm", on ? "text-cream/70" : "text-ink-muted")}>
                     {i + 1}
                   </span>
-                  <Icon className={cn("h-6 w-6", on ? "text-cream" : "text-red-700")} stroke={1.5} />
+                  <Icon className={cn("h-6 w-6", on ? "text-cream" : "text-red-700")} weight="light" />
                 </div>
                 <span className="card-title text-sm">{p.label}</span>
               </button>
@@ -145,7 +145,7 @@ export function UnternehmenGewerbe() {
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
                       Externe Seite
-                      <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
+                      <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
                     </span>
                   </a>
                 ) : (
@@ -158,7 +158,7 @@ export function UnternehmenGewerbe() {
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
                       Öffnen
-                      <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                      <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
                     </span>
                   </Link>
                 ),
@@ -179,9 +179,9 @@ export function UnternehmenGewerbe() {
           />
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <VorteilCard icon={IconRoad} title="Direkt an der A92" body="Schnelle Anbindung Richtung München und Deggendorf." />
-          <VorteilCard icon={IconPlane} title="Flughafen München um die Ecke" body="Rund 25 km zum internationalen Drehkreuz." />
-          <VorteilCard icon={IconBuildingFactory2} title="Wirtschaftsraum München & Hallertau" body="Mitten in einer der stärksten Regionen Bayerns." />
+          <VorteilCard icon={RoadHorizon} title="Direkt an der A92" body="Schnelle Anbindung Richtung München und Deggendorf." />
+          <VorteilCard icon={Airplane} title="Flughafen München um die Ecke" body="Rund 25 km zum internationalen Drehkreuz." />
+          <VorteilCard icon={Factory} title="Wirtschaftsraum München & Hallertau" body="Mitten in einer der stärksten Regionen Bayerns." />
         </div>
       </SpotlightSection>
 
@@ -201,7 +201,7 @@ export function UnternehmenGewerbe() {
               className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
             >
               Zu den Online-Diensten
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </div>
@@ -222,7 +222,7 @@ export function UnternehmenGewerbe() {
 function VorteilCard({ icon: Icon, title, body }: { icon: Icon; title: string; body: string }) {
   return (
     <div className="rounded-2xl border border-cream/20 bg-cream/5 p-5">
-      <Icon className="h-6 w-6 text-gold-200" stroke={1.5} />
+      <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>
       <p className="mt-1 text-sm text-cream/75">{body}</p>
     </div>
@@ -236,7 +236,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

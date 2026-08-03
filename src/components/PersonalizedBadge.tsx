@@ -1,4 +1,4 @@
-import { IconUserCheck, IconAlertTriangle, IconStar } from "@tabler/icons-react";
+import { UserCheck, Warning, Star } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -26,7 +26,7 @@ export function PersonalizedBadge({
     tipp:    "bg-gold-100 text-gold-700 border-gold-500/30",
   } as const;
 
-  const Icon = tone === "pflicht" ? IconAlertTriangle : tone === "tipp" ? IconStar : IconUserCheck;
+  const Icon = tone === "pflicht" ? Warning : tone === "tipp" ? Star : UserCheck;
 
   return (
     <span
@@ -36,7 +36,7 @@ export function PersonalizedBadge({
         className,
       )}
     >
-      <Icon className="h-3 w-3" stroke={2.25} />
+      <Icon className="h-3 w-3" weight="bold" />
       {reason}
     </span>
   );

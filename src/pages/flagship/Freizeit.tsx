@@ -1,24 +1,24 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconBook2,
-  IconSnowflake,
-  IconSwimming,
-  IconBuildingCommunity,
-  IconBuildingChurch,
-  IconBallpen,
-  IconBallFootball,
-  IconMusic,
-  IconUsersGroup,
-  IconUserCheck,
-  IconExternalLink,
-  IconChevronRight,
-  IconMapPin,
-  IconArrowRight,
-  IconBabyCarriage,
-  IconConfetti,
-  IconCalendarEvent,
-} from "@tabler/icons-react";
+  BookOpen,
+  Snowflake,
+  PersonSimpleSwim,
+  Buildings,
+  Church,
+  PenNib,
+  SoccerBall,
+  MusicNotes,
+  UsersThree,
+  UserCheck,
+  ArrowSquareOut,
+  CaretRight,
+  MapPin,
+  ArrowRight,
+  BabyCarriage,
+  Confetti,
+  CalendarDots,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -46,37 +46,37 @@ type Einrichtung = {
 };
 
 const STADT_EINRICHTUNGEN: Einrichtung[] = [
-  { id: "buecherei", name: "Stadtbücherei", icon: IconBook2,
+  { id: "buecherei", name: "Stadtbücherei", icon: BookOpen,
     hint: "Bücher, Hörbücher, E-Books, Veranstaltungen für Kinder und Erwachsene.",
     address: "Stadtplatz · Rathausanbau",
     accent: "rb-6",
     link: "https://meinmoosburg.de/freizeit-kultur/stadtbuecherei/" },
-  { id: "eisstadion", name: "Eisstadion Clariant Arena", icon: IconSnowflake,
+  { id: "eisstadion", name: "Eisstadion Clariant Arena", icon: Snowflake,
     hint: "Eislauf, Eishockey, Familien-Sonntag, von Oktober bis März.",
     address: "Bonau",
     accent: "rb-6",
     link: "https://meinmoosburg.de/freizeit-kultur/eisstadion/" },
-  { id: "freibad", name: "Städtisches Freibad", icon: IconSwimming,
+  { id: "freibad", name: "Städtisches Freibad", icon: PersonSimpleSwim,
     hint: "Drei Becken, große Liegewiese: Mai bis September.",
     address: "Stadtbadstraße",
     accent: "rb-5",
     link: "https://meinmoosburg.de/freizeit-kultur/freibad/" },
-  { id: "hallenbad", name: "Städtisches Hallenbad", icon: IconSwimming,
+  { id: "hallenbad", name: "Städtisches Hallenbad", icon: PersonSimpleSwim,
     hint: "Schwimmen das ganze Jahr: Frühschwimmer, Schulschwimmen, Vereins­zeiten.",
     address: "Stadtbadstraße",
     accent: "rb-7",
     link: "https://meinmoosburg.de/freizeit-kultur/freibad-2/" },
-  { id: "stadthalle", name: "Stadthalle", icon: IconBuildingCommunity,
+  { id: "stadthalle", name: "Stadthalle", icon: Buildings,
     hint: "Konzerte, Bälle, Versammlungen: Moosburgs Saal für die großen Anlässe.",
     address: "Thalbacher Straße",
     accent: "rb-3",
     link: "https://www.moosburg.de/Stadthalle" },
-  { id: "heimatmuseum", name: "Heimatmuseum", icon: IconBuildingChurch,
+  { id: "heimatmuseum", name: "Heimatmuseum", icon: Church,
     hint: "Stadtgeschichte vom Mittelalter bis ins 20. Jahrhundert.",
     address: "Kastulus-Platz",
     accent: "rb-8",
     link: "https://meinmoosburg.de/tourismus/heimatmuseum/" },
-  { id: "muenster", name: "Kastulus-Münster", icon: IconBuildingChurch,
+  { id: "muenster", name: "Kastulus-Münster", icon: Church,
     hint: "Romanisch-gotisches Wahrzeichen der Stadt mit gotischem Lettner.",
     address: "Kastulus-Platz",
     accent: "rb-4",
@@ -97,7 +97,7 @@ const SECTIONS: Section[] = [
   {
     id: "sport",
     label: "Sport & Sportangebote",
-    icon: IconBallFootball,
+    icon: SoccerBall,
     accent: "rb-5",
     lead: "Sport­vereine, Fitness­studios, Outdoor-Angebote und Stadt-eigene Sport­plätze.",
     match: (f) =>
@@ -108,7 +108,7 @@ const SECTIONS: Section[] = [
   {
     id: "kunst-kultur",
     label: "Kunst, Kultur & Musik",
-    icon: IconBallpen,
+    icon: PenNib,
     accent: "rb-3",
     lead: "Galerien, Musikschulen, Chöre und Theater­gruppen aus Moosburg.",
     match: (f) =>
@@ -120,7 +120,7 @@ const SECTIONS: Section[] = [
   {
     id: "vereine",
     label: "Vereine & Gemeinschaft",
-    icon: IconUsersGroup,
+    icon: UsersThree,
     accent: "rb-7",
     lead: "Über 100 eingetragene Vereine prägen das gesellschaftliche Leben in Moosburg, vom Trachten- bis zum Sport­verein, von der Wasserwacht bis zum Fasching.",
     match: (f) =>
@@ -132,7 +132,7 @@ const SECTIONS: Section[] = [
   {
     id: "kinder-jugend",
     label: "Kinder, Jugend & Familie",
-    icon: IconUserCheck,
+    icon: UserCheck,
     accent: "rb-1",
     lead: "Jugend­zentrum, Familien­zentren, Pfadfinder, Zeltlager und mehr für die jungen Moosburger:innen.",
     match: (f) =>
@@ -195,17 +195,17 @@ export function Freizeit() {
                           style={{ backgroundColor: `${accent}1A`, color: accent }}
                           aria-hidden="true"
                         >
-                          <Icon className="h-5 w-5" stroke={1.75} />
+                          <Icon className="h-5 w-5" weight="regular" />
                         </span>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-2">
                             <h3 className="card-title text-base text-ink">{e.name}</h3>
-                            <IconExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                            <ArrowSquareOut className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
                           </div>
                           <p className="mt-1 text-xs text-ink-soft">{e.hint}</p>
                           {e.address && (
                             <p className="mt-2 inline-flex items-center gap-1 text-xs text-ink-muted">
-                              <IconMapPin className="h-3 w-3" stroke={1.75} />
+                              <MapPin className="h-3 w-3" weight="regular" />
                               {e.address}
                             </p>
                           )}
@@ -235,7 +235,7 @@ export function Freizeit() {
             {/* Profile-driven hint */}
             {profile.hasChildren && (
               <TipCard
-                icon={IconBabyCarriage}
+                icon={BabyCarriage}
                 title="Familien­zeiten in den städt. Bädern"
                 body="Freibad: Kinder bis 6 frei, Familien­tarife am Wochenende. Eisstadion: Familien-Sonntag von 14–17 Uhr."
                 personalReason="Sie haben Kinder"
@@ -284,25 +284,25 @@ export function Freizeit() {
                 <li>
                   <Link to="/mein-moosburg/veranstaltungen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Was ist los?: Veranstaltungen</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/zu-besuch/entdecken" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Sehens­würdig­keiten (Zu Besuch)</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/familie" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Familie & Bildung</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/firmen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Firmen­verzeichnis komplett</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -311,7 +311,7 @@ export function Freizeit() {
             <section className="rounded-2xl border border-ink-line/50 bg-white p-5">
               <div className="flex items-start gap-3">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-100 text-gold-700">
-                  <IconMusic className="h-4 w-4" stroke={1.75} />
+                  <MusicNotes className="h-4 w-4" weight="regular" />
                 </span>
                 <div>
                   <h3 className="card-title text-base text-ink">Vereins­förderung</h3>
@@ -324,7 +324,7 @@ export function Freizeit() {
                     className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-700 hover:underline"
                   >
                     Antrag stellen (PDF)
-                    <IconArrowRight className="h-3 w-3" stroke={2} />
+                    <ArrowRight className="h-3 w-3" weight="regular" />
                   </Link>
                 </div>
               </div>
@@ -366,10 +366,10 @@ export function Freizeit() {
         </Reveal>
         <Reveal delay={2}>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <FestPill icon={IconConfetti} label="Frühlingsfest" hint="Ende April · Festgelände" />
-            <FestPill icon={IconConfetti} label="Volksfest"     hint="September · Stadtpark" />
-            <FestPill icon={IconConfetti} label="Hodschager Bratwurstessen" hint="Sommer · Partnerstadt-Fest" />
-            <FestPill icon={IconConfetti} label="Christkindl­markt" hint="Advent · Stadtplatz" />
+            <FestPill icon={Confetti} label="Frühlingsfest" hint="Ende April · Festgelände" />
+            <FestPill icon={Confetti} label="Volksfest"     hint="September · Stadtpark" />
+            <FestPill icon={Confetti} label="Hodschager Bratwurstessen" hint="Sommer · Partnerstadt-Fest" />
+            <FestPill icon={Confetti} label="Christkindl­markt" hint="Advent · Stadtplatz" />
           </div>
         </Reveal>
         <Reveal delay={3}>
@@ -379,14 +379,14 @@ export function Freizeit() {
               className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
             >
               Veranstaltungs­kalender öffnen
-              <IconCalendarEvent className="h-4 w-4" stroke={2} />
+              <CalendarDots className="h-4 w-4" weight="regular" />
             </Link>
             <Link
               to="/zu-besuch/highlights"
               className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-2.5 text-sm font-medium text-cream hover:bg-cream/10"
             >
               Auch für Besucher
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </Reveal>
@@ -398,7 +398,7 @@ export function Freizeit() {
 function FestPill({ icon: Icon, label, hint }: { icon: Icon; label: string; hint: string }) {
   return (
     <div className="rounded-xl border border-cream/15 bg-cream/5 p-4">
-      <Icon className="h-5 w-5 text-gold-200" stroke={1.75} />
+      <Icon className="h-5 w-5 text-gold-200" weight="regular" />
       <h3 className="mt-2 card-title text-sm text-cream">{label}</h3>
       <p className="mt-0.5 text-xs text-cream/75">{hint}</p>
     </div>

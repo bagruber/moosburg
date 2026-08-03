@@ -1,17 +1,17 @@
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconAmbulance,
-  IconShieldChevron,
-  IconFlame,
-  IconBiohazard,
-  IconStethoscope,
-  IconCloudStorm,
-  IconPhone,
-  IconExternalLink,
-  IconMapPin,
-  IconHeartHandshake,
-  IconAlertTriangle,
-} from "@tabler/icons-react";
+  Ambulance,
+  ShieldChevron,
+  Fire,
+  Biohazard,
+  Stethoscope,
+  CloudLightning,
+  Phone,
+  ArrowSquareOut,
+  MapPin,
+  Handshake,
+  Warning,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -32,10 +32,10 @@ type AkutItem = {
 };
 
 const AKUT: AkutItem[] = [
-  { label: "Notruf",        number: "112",     hint: "Rettung · Feuer · Notarzt", icon: IconAmbulance,     tone: "red" },
-  { label: "Polizei",       number: "110",     hint: "Akute Gefahr · Verbrechen", icon: IconShieldChevron, tone: "red" },
-  { label: "Ärzt. Bereitschaft", number: "116 117", hint: "Außerhalb Sprechzeiten", icon: IconStethoscope, tone: "ink" },
-  { label: "Giftnotruf",    number: "089 19240", hint: "Klinikum r. d. Isar",     icon: IconBiohazard,   tone: "ink" },
+  { label: "Notruf",        number: "112",     hint: "Rettung · Feuer · Notarzt", icon: Ambulance,     tone: "red" },
+  { label: "Polizei",       number: "110",     hint: "Akute Gefahr · Verbrechen", icon: ShieldChevron, tone: "red" },
+  { label: "Ärzt. Bereitschaft", number: "116 117", hint: "Außerhalb Sprechzeiten", icon: Stethoscope, tone: "ink" },
+  { label: "Giftnotruf",    number: "089 19240", hint: "Klinikum r. d. Isar",     icon: Biohazard,   tone: "ink" },
 ];
 
 /* ── Themen-Sektionen (vier Lebenslagen) ──────────────────────────────── */
@@ -60,7 +60,7 @@ type Section = {
 const SECTIONS: Section[] = [
   {
     id: "medizin",
-    icon: IconStethoscope,
+    icon: Stethoscope,
     accent: "rb-5",
     title: "Medizinischer Notfall",
     lead: "Bei lebensbedrohlichen Zuständen immer 112. Für nicht-akute Beschwerden außerhalb der Praxisöffnungszeiten ist 116 117 die richtige Nummer.",
@@ -79,7 +79,7 @@ const SECTIONS: Section[] = [
   },
   {
     id: "sicherheit",
-    icon: IconFlame,
+    icon: Fire,
     accent: "rb-3",
     title: "Feuer & Sicherheit",
     lead: "Im Brand- oder Gefahrenfall sofort die 112 wählen, die Leitstelle alarmiert die Feuerwehr und ggf. weitere Dienste.",
@@ -94,7 +94,7 @@ const SECTIONS: Section[] = [
   },
   {
     id: "wetter",
-    icon: IconCloudStorm,
+    icon: CloudLightning,
     accent: "rb-6",
     title: "Wetter, Hochwasser & Katastrophen",
     lead: "Pegelstände, Unwetterwarnungen und Katastrophen-Apps, vor allem für Anwohner an Isar und Amper.",
@@ -121,7 +121,7 @@ const SECTIONS: Section[] = [
   },
   {
     id: "alltag",
-    icon: IconHeartHandshake,
+    icon: Handshake,
     accent: "rb-7",
     title: "Beratung & Alltagsnotlagen",
     lead: "Vertraulich, oft kostenlos, häufig rund um die Uhr, bei seelischer Belastung, Gewalt, Sucht oder familiärer Überforderung.",
@@ -159,7 +159,7 @@ function AkutButton({ item }: { item: AkutItem }) {
           : "border-ink bg-cream text-ink hover:bg-cream-dark",
       )}
     >
-      <Icon className="h-9 w-9 shrink-0" stroke={1.75} />
+      <Icon className="h-9 w-9 shrink-0" weight="regular" />
       <div className="min-w-0">
         <div className={cn("text-xs font-display uppercase tracking-wider",
           isRed ? "text-cream/80" : "text-ink-muted")}>
@@ -195,7 +195,7 @@ function Anlaufkachel({ item, accent }: { item: Anlaufstelle; accent: string }) 
             aria-label={`${item.name}: Website öffnen`}
             title="Website öffnen"
           >
-            <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
+            <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
           </a>
         )}
       </div>
@@ -209,7 +209,7 @@ function Anlaufkachel({ item, accent }: { item: Anlaufstelle; accent: string }) 
                 className="inline-flex items-center gap-2 rounded-md px-2 py-1 font-display text-lg hover:bg-cream"
                 style={{ color: accentVar }}
               >
-                <IconPhone className="h-4 w-4" stroke={1.75} />
+                <Phone className="h-4 w-4" weight="regular" />
                 {num}
               </a>
             </li>
@@ -219,7 +219,7 @@ function Anlaufkachel({ item, accent }: { item: Anlaufstelle; accent: string }) 
 
       {item.address && (
         <p className="mt-2 flex items-start gap-1.5 text-xs text-ink-muted">
-          <IconMapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" stroke={1.75} />
+          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" weight="regular" />
           {item.address}
         </p>
       )}
@@ -233,7 +233,7 @@ function SectionAnchor({ id, label, icon: Icon }: { id: string; label: string; i
       href={`#${id}`}
       className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft hover:border-red-500 hover:text-red-700"
     >
-      <Icon className="h-4 w-4" stroke={1.75} />
+      <Icon className="h-4 w-4" weight="regular" />
       {label}
     </a>
   );
@@ -283,7 +283,7 @@ export function Notfall() {
                     style={{ backgroundColor: `${accent}1A`, color: accent }}
                     aria-hidden="true"
                   >
-                    <Icon className="h-5 w-5" stroke={1.75} />
+                    <Icon className="h-5 w-5" weight="regular" />
                   </span>
                   <h2 className="headline text-2xl lg:text-3xl text-ink">{s.title}</h2>
                 </div>
@@ -301,7 +301,7 @@ export function Notfall() {
           {/* ── Footer note: legal/disclaimer ────────────────────────── */}
           <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
             <div className="flex items-start gap-3">
-              <IconAlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+              <Warning className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" weight="regular" />
               <div className="text-sm">
                 <p className="text-ink">
                   <strong>Im Zweifel immer 112.</strong> Die Rettungsleitstelle alarmiert je nach

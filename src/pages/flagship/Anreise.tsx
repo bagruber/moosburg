@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconCar,
-  IconTrain,
-  IconBike,
-  IconBus,
-  IconPlane,
-  IconArrowRight,
-  IconParking,
-} from "@tabler/icons-react";
+  Car,
+  Train,
+  Bicycle,
+  Bus,
+  Airplane,
+  ArrowRight,
+  CarProfile,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -20,11 +20,11 @@ const route = findRoute("zu-besuch/anreise")!;
 
 type ModusId = "auto" | "bahn" | "rad" | "bus";
 
-const MODI: { id: ModusId; label: string; icon: typeof IconCar }[] = [
-  { id: "auto", label: "Mit dem Auto", icon: IconCar },
-  { id: "bahn", label: "Mit der Bahn", icon: IconTrain },
-  { id: "rad", label: "Mit dem Rad", icon: IconBike },
-  { id: "bus", label: "Mit dem Bus", icon: IconBus },
+const MODI: { id: ModusId; label: string; icon: typeof Car }[] = [
+  { id: "auto", label: "Mit dem Auto", icon: Car },
+  { id: "bahn", label: "Mit der Bahn", icon: Train },
+  { id: "rad", label: "Mit dem Rad", icon: Bicycle },
+  { id: "bus", label: "Mit dem Bus", icon: Bus },
 ];
 
 const INHALT: Record<ModusId, { lead: string; punkte: string[] }> = {
@@ -115,7 +115,7 @@ export function Anreise() {
                       : "border-ink-line bg-cream text-ink hover:border-red-500/40",
                   )}
                 >
-                  <Icon className="h-5 w-5 shrink-0" stroke={1.75} />
+                  <Icon className="h-5 w-5 shrink-0" weight="regular" />
                   {m.label}
                 </button>
               );
@@ -128,14 +128,14 @@ export function Anreise() {
             <ul className="mt-5 space-y-3">
               {aktiv.punkte.map((p) => (
                 <li key={p} className="flex items-start gap-2.5 text-ink-soft">
-                  <IconArrowRight className="mt-1 h-4 w-4 shrink-0 text-red-600" stroke={2} />
+                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-red-600" weight="regular" />
                   <span>{p}</span>
                 </li>
               ))}
             </ul>
             {modus === "auto" && (
               <div className="mt-6 flex items-center gap-2 rounded-xl bg-cream-dark px-4 py-3 text-sm text-ink-soft">
-                <IconPlane className="h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+                <Airplane className="h-4 w-4 shrink-0 text-gold-700" weight="regular" />
                 Praktisch für Gäste aus aller Welt: der Flughafen München liegt quasi um die Ecke.
               </div>
             )}
@@ -145,7 +145,7 @@ export function Anreise() {
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
               >
                 Zum Mobilitätsportal & ÖPNV
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                <ArrowRight className="h-3.5 w-3.5" weight="regular" />
               </Link>
             )}
           </div>
@@ -161,7 +161,7 @@ export function Anreise() {
           <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
             {PARKEN.map((p) => (
               <li key={p.name} className="flex items-center gap-4 px-5 py-4">
-                <IconParking className="h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
+                <CarProfile className="h-5 w-5 shrink-0 text-ink-muted" weight="regular" />
                 <div className="min-w-0 flex-1">
                   <div className="card-title text-ink">{p.name}</div>
                   <div className="text-sm text-ink-muted">{p.hinweis}</div>

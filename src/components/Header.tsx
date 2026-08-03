@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { IconBell, IconUserCircle, IconMenu2, IconX } from "@tabler/icons-react";
+import { Bell, UserCircle, List, X } from "@phosphor-icons/react";
 import { Logo } from "./Logo";
 import { RainbowStripe } from "./RainbowStripe";
 import { SearchField } from "./SearchField";
@@ -54,21 +54,21 @@ export function Header() {
               aria-label="Benachrichtigungen"
               className="hidden sm:grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark hover:text-red-700"
             >
-              <IconBell className="h-5 w-5" stroke={1.75} />
+              <Bell className="h-5 w-5" weight="regular" />
             </Link>
             <Link
               to="/konto"
               aria-label="Mein Konto"
               className="grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark hover:text-red-700"
             >
-              <IconUserCircle className="h-6 w-6" stroke={1.75} />
+              <UserCircle className="h-6 w-6" weight="regular" />
             </Link>
             <button
               aria-label={open ? "Menü schließen" : "Menü öffnen"}
               className="grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark lg:hidden"
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
+              {open ? <X className="h-5 w-5" /> : <List className="h-5 w-5" />}
             </button>
           </div>
         </div>

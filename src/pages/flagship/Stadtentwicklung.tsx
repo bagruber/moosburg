@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconExternalLink,
-  IconFileText,
-  IconCalendarEvent,
-} from "@tabler/icons-react";
+  ArrowRight,
+  ArrowSquareOut,
+  FileText,
+  CalendarDots,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -95,11 +95,11 @@ export function Stadtentwicklung() {
                 <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
                   {p.frist && (
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium text-red-700">
-                      <IconCalendarEvent className="h-3.5 w-3.5" stroke={1.75} /> {p.frist}
+                      <CalendarDots className="h-3.5 w-3.5" weight="regular" /> {p.frist}
                     </span>
                   )}
                   <a href="#" className="inline-flex items-center gap-1.5 text-xs text-ink-muted hover:text-red-700">
-                    <IconFileText className="h-3.5 w-3.5" stroke={1.75} /> Unterlagen
+                    <FileText className="h-3.5 w-3.5" weight="regular" /> Unterlagen
                   </a>
                   {p.beteiligung && (
                     <Link
@@ -107,7 +107,7 @@ export function Stadtentwicklung() {
                       className="inline-flex items-center gap-1.5 text-xs font-medium text-red-700 hover:underline"
                     >
                       Jetzt mitreden
-                      <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                      <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                     </Link>
                   )}
                 </div>
@@ -137,14 +137,14 @@ export function Stadtentwicklung() {
                 className="inline-flex items-center justify-between gap-2 rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
               >
                 Abstimmungsverhalten ansehen
-                <IconExternalLink className="h-4 w-4" stroke={2} />
+                <ArrowSquareOut className="h-4 w-4" weight="regular" />
               </a>
               <Link
                 to="/mitgestalten/stadtrat"
                 className="inline-flex items-center justify-between gap-2 rounded-lg border border-ink-line bg-cream px-5 py-3 text-sm font-medium text-ink transition hover:border-red-500/40"
               >
                 Stadtrat & Sitzungen
-                <IconArrowRight className="h-4 w-4" stroke={2} />
+                <ArrowRight className="h-4 w-4" weight="regular" />
               </Link>
             </div>
           </div>

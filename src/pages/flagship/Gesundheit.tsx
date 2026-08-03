@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconAmbulance,
-  IconPill,
-  IconStethoscope,
-  IconYoga,
-  IconActivityHeartbeat,
-  IconPaw,
-  IconHeart,
-  IconDental,
-  IconArrowRight,
-  IconExternalLink,
-  IconChevronRight,
-  IconPhone,
-  IconBabyCarriage,
-  IconHandStop,
-  IconHomeHeart,
-} from "@tabler/icons-react";
+  Ambulance,
+  Pill as PillIcon,
+  Stethoscope,
+  PersonSimpleTaiChi,
+  Pulse,
+  PawPrint,
+  Heart,
+  Tooth,
+  ArrowRight,
+  ArrowSquareOut,
+  CaretRight,
+  Phone,
+  BabyCarriage,
+  HandPalm,
+  HouseLine,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -57,7 +57,7 @@ const SECTIONS: Section[] = [
   {
     id: "apotheken",
     label: "Apotheken",
-    icon: IconPill,
+    icon: PillIcon,
     accent: "rb-5",
     lead: "Drei Apotheken in der Innenstadt. Notdienst rotiert mit den Apotheken im Landkreis. Die Suche der Bayerischen Apothekerkammer zeigt die heute geöffnete.",
     match: (f) => inAny(f, ["Apotheke"]),
@@ -65,7 +65,7 @@ const SECTIONS: Section[] = [
   {
     id: "aerzte",
     label: "Ärztinnen & Ärzte",
-    icon: IconStethoscope,
+    icon: Stethoscope,
     accent: "rb-6",
     lead: "Allgemein- und Fach­ärzt­innen vor Ort. Für den ärztlichen Bereit­schafts­dienst außerhalb der Sprech­zeiten gilt die <strong>116 117</strong>.",
     match: (f) => !isDental(f) && inAny(f, ["Arzt", "Allgemeinarzt", "Facharzt"]),
@@ -73,7 +73,7 @@ const SECTIONS: Section[] = [
   {
     id: "zahn",
     label: "Zahn­medizin & Kiefer­orthopädie",
-    icon: IconDental,
+    icon: Tooth,
     accent: "rb-4",
     lead: "Zahn­arzt­praxen und kiefer­orthopädische Behandlung in Moosburg.",
     match: isDental,
@@ -81,7 +81,7 @@ const SECTIONS: Section[] = [
   {
     id: "physio",
     label: "Physiotherapie & Osteopathie",
-    icon: IconYoga,
+    icon: PersonSimpleTaiChi,
     accent: "rb-7",
     lead: "Praxen für Bewegungs- und manuelle Therapie.",
     match: (f) => inAny(f, ["Physiotherapie & Osteopathie"]),
@@ -89,7 +89,7 @@ const SECTIONS: Section[] = [
   {
     id: "heilpraktiker",
     label: "Heilpraktiker, Beratung & Therapie",
-    icon: IconActivityHeartbeat,
+    icon: Pulse,
     accent: "rb-3",
     lead: "Alternativ­medizin, Psycho­therapie, Sucht- und Lebensberatung.",
     match: (f) => inAny(f, ["Heilpraktiker", "Beratung & Therapie"]),
@@ -97,7 +97,7 @@ const SECTIONS: Section[] = [
   {
     id: "geburt",
     label: "Geburtshilfe & Kleinkind",
-    icon: IconHeart,
+    icon: Heart,
     accent: "rb-1",
     lead: "Hebammen, Stillberatung und Angebote rund um die frühe Kindheit.",
     match: (f) => inAny(f, ["Geburtshilfe & Kleinkind"]),
@@ -105,7 +105,7 @@ const SECTIONS: Section[] = [
   {
     id: "tierarzt",
     label: "Tier­ärztinnen & Tier­ärzte",
-    icon: IconPaw,
+    icon: PawPrint,
     accent: "rb-8",
     lead: "Veterinär­medizinische Praxen für Haustiere.",
     match: (f) => inAny(f, ["Tierarzt"]),
@@ -138,7 +138,7 @@ export function Gesundheit() {
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border-2 border-red-500/80 bg-red-50 p-4">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-red-500 text-cream">
-                <IconAmbulance className="h-5 w-5" stroke={1.75} />
+                <Ambulance className="h-5 w-5" weight="regular" />
               </span>
               <div>
                 <div className="text-sm font-semibold text-ink">Im Notfall</div>
@@ -163,7 +163,7 @@ export function Gesundheit() {
               className="inline-flex items-center gap-1.5 rounded-lg border border-red-500 bg-white px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100"
             >
               Alle Notfall-Nummern
-              <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+              <ArrowRight className="h-3.5 w-3.5" weight="regular" />
             </Link>
           </div>
         </div>
@@ -189,7 +189,7 @@ export function Gesundheit() {
             {/* Profile-driven hints */}
             {profile.hasChildren && (
               <TipCard
-                icon={IconBabyCarriage}
+                icon={BabyCarriage}
                 title="Kinder­ärzt:innen & Hebammen"
                 body="Für Kinder und werdende Eltern: Pädiater­praxen, Vorsorge, Hebammen­dienste."
                 personalReason="Sie haben Kinder"
@@ -199,7 +199,7 @@ export function Gesundheit() {
             )}
             {profile.receivesPension && (
               <TipCard
-                icon={IconHomeHeart}
+                icon={HouseLine}
                 title="Hausärzt:innen mit Hausbesuchen"
                 body="Mehrere Moosburger Praxen bieten Hausbesuche für ältere Patient:innen an, siehe Hinweis in der Praxis-Detailansicht."
                 personalReason="Sie beziehen Rente"
@@ -251,19 +251,19 @@ export function Gesundheit() {
                 <li>
                   <Link to="/rathaus/notfall" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Notdienste & Notfall­nummern</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/lebenslage/pflege-alter" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Lebenslage: Pflege & Alter</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/firmen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Firmen­verzeichnis komplett</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -282,7 +282,7 @@ export function Gesundheit() {
                 className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-red-700 hover:underline"
               >
                 Notdienst­suche öffnen
-                <IconExternalLink className="h-3 w-3" stroke={2} />
+                <ArrowSquareOut className="h-3 w-3" weight="regular" />
               </a>
             </section>
 
@@ -299,13 +299,13 @@ export function Gesundheit() {
                 className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-red-700 hover:underline"
               >
                 Zur Arzt­suche der BLÄK
-                <IconExternalLink className="h-3 w-3" stroke={2} />
+                <ArrowSquareOut className="h-3 w-3" weight="regular" />
               </a>
             </section>
 
             <section className="rounded-xl border border-ink-line/40 bg-cream-dark/30 p-4 text-xs text-ink-soft">
               <div className="flex items-start gap-2">
-                <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                 <p>
                   Hinweis: Alle Einträge stammen aus dem Firmen­verzeichnis von{" "}
                   <a href="https://meinmoosburg.de" target="_blank" rel="noreferrer" className="text-red-700 hover:underline">meinmoosburg.de</a>.
@@ -332,13 +332,13 @@ export function Gesundheit() {
         </Reveal>
         <Reveal delay={1}>
           <div className="mt-6 grid gap-6 sm:grid-cols-3">
-            <Pill icon={IconHandStop}
+            <Pill icon={HandPalm}
               title="Pflegeberatung"
               body="Erstauskunft, Pflegegrad, ambulant vs. stationär, neutrale Beratung im Landkreis Freising." />
-            <Pill icon={IconHomeHeart}
+            <Pill icon={HouseLine}
               title="Senioren­einrichtungen"
               body="AWO Seniorenpark, Caritas-Pflegedienste, ambulante Krankenpflege David, Pflegedienst Mann." />
-            <Pill icon={IconPhone}
+            <Pill icon={Phone}
               title="Krisendienst Psychiatrie"
               body="0180 655 3000 · 365 Tage, 0–24 Uhr für seelische Krisen im Alter." />
           </div>
@@ -350,7 +350,7 @@ export function Gesundheit() {
               className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
             >
               Lebenslage „Pflege & Alter" öffnen
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </Reveal>
@@ -363,7 +363,7 @@ function Pill({ icon: Icon, title, body }: { icon: Icon; title: string; body: st
   return (
     <div className="rounded-xl border border-cream/15 bg-cream/5 p-5">
       <span className="grid h-10 w-10 place-items-center rounded-lg bg-cream/10 text-gold-200">
-        <Icon className="h-5 w-5" stroke={1.75} />
+        <Icon className="h-5 w-5" weight="regular" />
       </span>
       <h3 className="mt-3 card-title text-base text-cream">{title}</h3>
       <p className="mt-1 text-xs text-cream/75">{body}</p>

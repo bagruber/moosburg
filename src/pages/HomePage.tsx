@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IconArrowRight, IconCalendarEvent, IconMapPin, IconClock } from "@tabler/icons-react";
+import { ArrowRight, CalendarDots, MapPin, Clock } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { RainbowStripe } from "@/components/RainbowStripe";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -93,7 +93,7 @@ function AktuellesBanner() {
           className="ml-auto inline-flex items-center gap-1 font-semibold text-red-700 hover:underline"
         >
           Mehr erfahren
-          <IconArrowRight className="h-4 w-4" stroke={2} />
+          <ArrowRight className="h-4 w-4" weight="regular" />
         </Link>
       </div>
     </section>
@@ -129,7 +129,7 @@ function TopTiles() {
                     : "bg-red-50 text-red-700 group-hover:bg-red-500 group-hover:text-cream",
                 )}
               >
-                <Icon className="h-5 w-5" stroke={1.75} />
+                <Icon className="h-5 w-5" weight="regular" />
               </span>
               <div>
                 <div className="card-title text-sm text-ink">{tile.title}</div>
@@ -219,7 +219,7 @@ function News() {
               className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-gold-500 px-4 py-2 text-sm font-semibold text-cream transition hover:bg-gold-600"
             >
               Mehr erfahren
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </Reveal>
@@ -249,7 +249,7 @@ function Lebenslagen() {
                 to={`/${l.slug}`}
                 className="group flex h-full items-center gap-3 rounded-md border border-ink-line bg-white px-4 py-3.5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
               >
-                <Icon className="h-5 w-5 shrink-0 text-red-700" stroke={1.75} />
+                <Icon className="h-5 w-5 shrink-0 text-red-700" weight="regular" />
                 <span className="card-title text-sm text-ink group-hover:text-red-700">
                   {l.title}
                 </span>
@@ -293,8 +293,8 @@ function Events() {
                   {e.title}
                 </h3>
                 <div className="mt-2 flex items-center gap-1 text-xs text-cream/60">
-                  <IconClock className="h-3 w-3" stroke={2} />
-                  <IconMapPin className="h-3 w-3 ml-1" stroke={2} />
+                  <Clock className="h-3 w-3" weight="regular" />
+                  <MapPin className="h-3 w-3 ml-1" weight="regular" />
                   <span className="truncate">{e.location}</span>
                 </div>
               </div>
@@ -307,7 +307,7 @@ function Events() {
             to="/mein-moosburg/veranstaltungen"
             className="inline-flex items-center gap-1.5 rounded-md border border-cream/25 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream transition hover:border-cream/60 hover:bg-cream/5"
           >
-            <IconCalendarEvent className="h-4 w-4" stroke={2} />
+            <CalendarDots className="h-4 w-4" weight="regular" />
             Alle Veranstaltungen
           </Link>
         </div>
@@ -376,13 +376,13 @@ function HubsGrid() {
                 to={`/${slug}`}
                 className="group flex h-full flex-col rounded-md bg-white p-7 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift"
               >
-                <Icon className="h-8 w-8 text-red-700" stroke={1.5} />
+                <Icon className="h-8 w-8 text-red-700" weight="light" />
                 <h3 className="mt-5 card-title text-xl text-ink">{h.title}</h3>
                 <p className="mt-1 text-sm text-gold-700">{h.tagline}</p>
                 <p className="mt-4 flex-1 text-sm text-ink-soft line-clamp-3">{h.intro}</p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
                   Bereich öffnen
-                  <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
                 </span>
               </Link>
             );

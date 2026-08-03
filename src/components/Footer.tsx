@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IconPhone, IconMail, IconClock, IconMapPin, IconExternalLink } from "@tabler/icons-react";
+import { Phone, Envelope, Clock, MapPin, ArrowSquareOut } from "@phosphor-icons/react";
 import { RainbowStripe } from "./RainbowStripe";
 import { Logo } from "./Logo";
 import { WappenWatermark, Rose } from "./BrandMark";
@@ -56,19 +56,19 @@ export function Footer() {
             <Logo tone="light" />
             <dl className="mt-6 space-y-3 text-sm text-cream/90">
               <div className="flex gap-2.5">
-                <IconMapPin className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <MapPin className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" weight="regular" />
                 <span>Stadtplatz 13<br />85368 Moosburg a. d. Isar</span>
               </div>
               <div className="flex gap-2.5">
-                <IconPhone className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <Phone className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" weight="regular" />
                 <a href="tel:+49876168400" className="hover:text-white">08761 684-0</a>
               </div>
               <div className="flex gap-2.5">
-                <IconMail className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <Envelope className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" weight="regular" />
                 <a href="mailto:info@moosburg.de" className="hover:text-white">info@moosburg.de</a>
               </div>
               <div className="flex gap-2.5">
-                <IconClock className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" stroke={1.75} />
+                <Clock className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" weight="regular" />
                 <span>Mo 8–12 · 14–16<br />Di/Mi/Fr 8–12<br />Do 8–12 · 14–18</span>
               </div>
             </dl>
@@ -94,7 +94,7 @@ export function Footer() {
                 <li key={p.label}>
                   <a href={p.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 hover:text-white">
                     {p.label}
-                    <IconExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" stroke={1.75} />
+                    <ArrowSquareOut className="h-3 w-3 opacity-60 group-hover:opacity-100" weight="regular" />
                   </a>
                   <div className="text-xs text-cream/50">{p.description}</div>
                 </li>

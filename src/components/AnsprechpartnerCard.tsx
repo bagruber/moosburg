@@ -1,4 +1,4 @@
-import { IconPhone, IconMail, IconMapPin } from "@tabler/icons-react";
+import { Phone, Envelope, MapPin } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import {
   type Ansprechpartner,
@@ -81,7 +81,7 @@ export function AnsprechpartnerCard({
                 className="shrink-0 rounded-full border border-ink-line/60 p-1.5 text-ink-muted hover:border-red-500 hover:text-red-700"
                 aria-label={`${disp} anrufen`}
               >
-                <IconPhone className="h-3.5 w-3.5" stroke={1.75} />
+                <Phone className="h-3.5 w-3.5" weight="regular" />
               </a>
             )}
           </div>
@@ -117,7 +117,7 @@ export function AnsprechpartnerCard({
         <dl className="mt-3 space-y-1.5 text-sm">
           {person.phone && (
             <div className="flex items-start gap-2">
-              <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
               <a href={`tel:${person.phone.replace(/\s+/g, "")}`} className="text-ink hover:text-red-700">
                 {person.phone}
               </a>
@@ -125,7 +125,7 @@ export function AnsprechpartnerCard({
           )}
           {person.email && (
             <div className="flex items-start gap-2">
-              <IconMail className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+              <Envelope className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
               <a href={`mailto:${person.email}`} className="text-ink hover:text-red-700">
                 {person.email}
               </a>
@@ -133,7 +133,7 @@ export function AnsprechpartnerCard({
           )}
           {person.zimmer && (
             <div className="flex items-start gap-2 text-ink-muted">
-              <IconMapPin className="mt-0.5 h-4 w-4 shrink-0" stroke={1.75} />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0" weight="regular" />
               <span>{person.zimmer}</span>
             </div>
           )}

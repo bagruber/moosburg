@@ -1,21 +1,21 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconBabyCarriage,
-  IconSchool,
-  IconBallFootball,
-  IconMapPin,
-  IconPhone,
-  IconMail,
-  IconExternalLink,
-  IconArrowRight,
-  IconSearch,
-  IconCalendarEvent,
-  IconBook2,
-  IconHeartHandshake,
-  IconUserCheck,
-  IconClock,
-} from "@tabler/icons-react";
+  BabyCarriage,
+  GraduationCap,
+  SoccerBall,
+  MapPin,
+  Phone,
+  Envelope,
+  ArrowSquareOut,
+  ArrowRight,
+  MagnifyingGlass,
+  CalendarDots,
+  BookOpen,
+  Handshake,
+  UserCheck,
+  Clock,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -60,7 +60,7 @@ const schulTypGroup: Record<SchulTyp, string> = {
 
 const quickTasks = [
   {
-    icon: IconBabyCarriage,
+    icon: BabyCarriage,
     title: "Kita-Platz finden",
     desc: "Anmeldung zentral über LITTLE BIRD.",
     to: "https://portal.little-bird.de/moosburg",
@@ -68,7 +68,7 @@ const quickTasks = [
     accent: "red",
   },
   {
-    icon: IconSchool,
+    icon: GraduationCap,
     title: "Schuleinschreibung",
     desc: "Termine & Sprengel-Auskunft.",
     to: "#schulen",
@@ -76,7 +76,7 @@ const quickTasks = [
     accent: "ink",
   },
   {
-    icon: IconMapPin,
+    icon: MapPin,
     title: "Spielplatz-Karte",
     desc: "27 Spielplätze im Stadtgebiet.",
     to: "/mitgestalten/maengel-melden",
@@ -84,7 +84,7 @@ const quickTasks = [
     accent: "ink",
   },
   {
-    icon: IconCalendarEvent,
+    icon: CalendarDots,
     title: "Ferienprogramm",
     desc: "Anmeldung über die Stadtjugendpflege.",
     to: "#jugend",
@@ -138,12 +138,12 @@ export function FamilieBildung() {
       {personalized && (
         <section className="border-b border-ink-line/60 bg-turquoise-accent/10">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 lg:px-8">
-            <IconUserCheck className="h-4 w-4 text-turquoise-accent" stroke={2} />
+            <UserCheck className="h-4 w-4 text-turquoise-accent" weight="regular" />
             <span className="text-sm text-ink">
               Diese Seite ist auf <strong>Familien mit Kindern</strong> zugeschnitten, basierend auf Ihrem Profil heben wir relevante Angebote hervor.
             </span>
             <Link to="/konto" className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-turquoise-accent hover:underline">
-              Profil ansehen <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+              Profil ansehen <ArrowRight className="h-3.5 w-3.5" weight="regular" />
             </Link>
           </div>
         </section>
@@ -163,13 +163,13 @@ export function FamilieBildung() {
                     "grid h-10 w-10 place-items-center rounded-md",
                     t.accent === "red" ? "bg-red-700 text-cream" : "bg-ink text-cream",
                   )}>
-                    <t.icon className="h-5 w-5" stroke={1.6} />
+                    <t.icon className="h-5 w-5" weight="light" />
                   </div>
                   <h3 className="mt-4 font-semibold text-ink">{t.title}</h3>
                   <p className="mt-1 text-sm text-ink-soft">{t.desc}</p>
                   <div className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                     Öffnen
-                    {t.external ? <IconExternalLink className="h-3.5 w-3.5" stroke={2} /> : <IconArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" stroke={2} />}
+                    {t.external ? <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" /> : <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" weight="regular" />}
                   </div>
                 </div>
               );
@@ -220,7 +220,7 @@ export function FamilieBildung() {
                 rel="noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-md bg-cream px-5 py-3 font-semibold text-red-900 hover:bg-gold-200 lg:mt-0"
               >
-                Zum Portal <IconExternalLink className="h-4 w-4" stroke={2} />
+                Zum Portal <ArrowSquareOut className="h-4 w-4" weight="regular" />
               </a>
             </div>
           </Reveal>
@@ -229,7 +229,7 @@ export function FamilieBildung() {
           <Reveal>
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <div className="relative flex-1 min-w-[220px]">
-                <IconSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-soft" stroke={1.8} />
+                <MagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-soft" weight="regular" />
                 <input
                   type="text"
                   value={query}
@@ -264,7 +264,7 @@ export function FamilieBildung() {
                 <article className="flex h-full flex-col rounded-md border border-ink-line bg-cream p-5 transition-colors hover:border-red-700">
                   <div className="flex items-start justify-between gap-2">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-cream-dark text-red-700">
-                      <IconBabyCarriage className="h-5 w-5" stroke={1.6} />
+                      <BabyCarriage className="h-5 w-5" weight="light" />
                     </div>
                     <span className="rounded-full bg-cream-dark px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ink-soft">
                       {k.traegerLabel}
@@ -276,24 +276,24 @@ export function FamilieBildung() {
                   )}
                   <ul className="mt-3 space-y-1.5 text-sm text-ink-soft">
                     <li className="flex items-start gap-2">
-                      <IconMapPin className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                      <MapPin className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                       <span>{k.address}</span>
                     </li>
                     {k.phone && (
                       <li className="flex items-start gap-2">
-                        <IconPhone className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <Phone className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={`tel:${k.phone.replace(/\s/g, "")}`} className="hover:text-red-700">{k.phone}</a>
                       </li>
                     )}
                     {k.email && (
                       <li className="flex items-start gap-2">
-                        <IconMail className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <Envelope className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={`mailto:${k.email}`} className="break-all hover:text-red-700">{k.email}</a>
                       </li>
                     )}
                     {k.website && (
                       <li className="flex items-start gap-2">
-                        <IconExternalLink className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <ArrowSquareOut className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={k.website} target="_blank" rel="noreferrer" className="break-all hover:text-red-700">
                           {k.website.replace(/^https?:\/\//, "")}
                         </a>
@@ -341,9 +341,9 @@ export function FamilieBildung() {
                         <div className="flex items-start gap-3">
                           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-ink text-cream">
                             {s.typ === "vhs" ? (
-                              <IconBook2 className="h-5 w-5" stroke={1.6} />
+                              <BookOpen className="h-5 w-5" weight="light" />
                             ) : (
-                              <IconSchool className="h-5 w-5" stroke={1.6} />
+                              <GraduationCap className="h-5 w-5" weight="light" />
                             )}
                           </div>
                           <div className="min-w-0">
@@ -356,16 +356,16 @@ export function FamilieBildung() {
                         )}
                         <ul className="mt-3 space-y-1.5 text-sm text-ink-soft">
                           <li className="flex items-start gap-2">
-                            <IconMapPin className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                            <MapPin className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                             <span>{s.address}</span>
                           </li>
                           <li className="flex items-start gap-2">
-                            <IconPhone className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                            <Phone className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                             <a href={`tel:${s.phone.replace(/\s/g, "")}`} className="hover:text-red-700">{s.phone}</a>
                           </li>
                           {s.website && (
                             <li className="flex items-start gap-2">
-                              <IconExternalLink className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                              <ArrowSquareOut className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                               <a href={s.website} target="_blank" rel="noreferrer" className="break-all hover:text-red-700">
                                 {s.website.replace(/^https?:\/\//, "")}
                               </a>
@@ -384,7 +384,7 @@ export function FamilieBildung() {
           <Reveal>
             <div className="mt-10 rounded-md border border-ink-line bg-cream p-6 lg:flex lg:gap-6">
               <div className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-gold-500 text-cream">
-                <IconCalendarEvent className="h-6 w-6" stroke={1.6} />
+                <CalendarDots className="h-6 w-6" weight="light" />
               </div>
               <div className="mt-4 flex-1 lg:mt-0">
                 <h3 className="font-semibold text-ink">Schuleinschreibung Schuljahr 2026/27</h3>
@@ -393,7 +393,7 @@ export function FamilieBildung() {
                   Übertrittsberatung an den Grundschulen jeweils im Januar.
                 </p>
                 <div className="mt-3 inline-flex items-center gap-2 text-sm">
-                  <IconClock className="h-4 w-4 text-red-700" stroke={1.8} />
+                  <Clock className="h-4 w-4 text-red-700" weight="regular" />
                   <span className="text-ink">Anmeldewoche: <strong>16. – 20. März 2026</strong></span>
                 </div>
               </div>
@@ -417,9 +417,9 @@ export function FamilieBildung() {
                 <article className="flex h-full flex-col rounded-md border border-ink-line bg-cream p-5 hover:border-red-700">
                   <div className="grid h-11 w-11 place-items-center rounded-md bg-red-700 text-cream">
                     {j.id === "jugendhaus" ? (
-                      <IconHeartHandshake className="h-5 w-5" stroke={1.6} />
+                      <Handshake className="h-5 w-5" weight="light" />
                     ) : (
-                      <IconBallFootball className="h-5 w-5" stroke={1.6} />
+                      <SoccerBall className="h-5 w-5" weight="light" />
                     )}
                   </div>
                   <h3 className="mt-4 font-semibold text-ink">{j.name}</h3>
@@ -427,25 +427,25 @@ export function FamilieBildung() {
                   <ul className="mt-3 space-y-1.5 text-sm text-ink-soft">
                     {j.address && (
                       <li className="flex items-start gap-2">
-                        <IconMapPin className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <MapPin className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <span>{j.address}</span>
                       </li>
                     )}
                     {j.phone && (
                       <li className="flex items-start gap-2">
-                        <IconPhone className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <Phone className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={`tel:${j.phone.replace(/\s/g, "")}`} className="hover:text-red-700">{j.phone}</a>
                       </li>
                     )}
                     {j.email && (
                       <li className="flex items-start gap-2">
-                        <IconMail className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <Envelope className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={`mailto:${j.email}`} className="break-all hover:text-red-700">{j.email}</a>
                       </li>
                     )}
                     {j.website && (
                       <li className="flex items-start gap-2">
-                        <IconExternalLink className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <ArrowSquareOut className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <a href={j.website} target="_blank" rel="noreferrer" className="break-all hover:text-red-700">
                           {j.website.replace(/^https?:\/\//, "")}
                         </a>
@@ -453,7 +453,7 @@ export function FamilieBildung() {
                     )}
                     {j.hours && (
                       <li className="flex items-start gap-2">
-                        <IconClock className="h-4 w-4 shrink-0 text-ink-soft/70" stroke={1.6} />
+                        <Clock className="h-4 w-4 shrink-0 text-ink-soft/70" weight="light" />
                         <span>{j.hours}</span>
                       </li>
                     )}
@@ -497,7 +497,7 @@ export function FamilieBildung() {
               to="/mitgestalten/maengel-melden"
               className="mt-8 inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 text-sm font-semibold text-cream hover:bg-red-900"
             >
-              Auf der Karte ansehen <IconArrowRight className="h-4 w-4" stroke={2} />
+              Auf der Karte ansehen <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </Reveal>
         </div>

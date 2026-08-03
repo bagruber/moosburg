@@ -1,10 +1,10 @@
 import {
-  IconCalendarEvent,
-  IconFileText,
-  IconPlayerPlayFilled,
-  IconArrowRight,
-  IconMapPin,
-} from "@tabler/icons-react";
+  CalendarDots,
+  FileText,
+  Play,
+  ArrowRight,
+  MapPin,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -96,7 +96,7 @@ export function Stadtrat() {
               {"„Moosburg ist eine lebendige, zukunftsorientierte Stadt, und das wird sie nur bleiben, wenn wir gemeinsam gestalten. Kommen Sie zu den Sitzungen, schreiben Sie, rufen Sie an.“"}
             </p>
             <div className="mt-5 inline-flex items-center gap-1 text-xs text-gold-200">
-              <IconMapPin className="h-3.5 w-3.5" stroke={2} />
+              <MapPin className="h-3.5 w-3.5" weight="regular" />
               Rathaus, 1. OG, Zimmer 14
             </div>
           </div>
@@ -120,7 +120,7 @@ export function Stadtrat() {
                 className={`flex flex-wrap items-center gap-4 p-5 ${i !== sessions.length - 1 ? "border-b border-ink-line" : ""}`}
               >
                 <div className="flex items-center gap-3">
-                  <IconCalendarEvent className="h-5 w-5 text-red-700" stroke={1.75} />
+                  <CalendarDots className="h-5 w-5 text-red-700" weight="regular" />
                   <div>
                     <div className="card-title text-sm">{s.date}</div>
                     <div className="text-xs text-ink-muted">{s.time} Uhr · Sitzungssaal</div>
@@ -130,7 +130,7 @@ export function Stadtrat() {
                 <div className="flex gap-2">
                   {s.live && (
                     <span className="inline-flex items-center gap-1 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cream">
-                      <IconPlayerPlayFilled className="h-3 w-3" /> Live
+                      <Play className="h-3 w-3" /> Live
                     </span>
                   )}
                   {s.hasProtocol && (
@@ -138,7 +138,7 @@ export function Stadtrat() {
                       href="#"
                       className="inline-flex items-center gap-1 rounded-full border border-ink-line bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink hover:border-red-500 hover:text-red-700"
                     >
-                      <IconFileText className="h-3 w-3" stroke={2} /> Protokoll
+                      <FileText className="h-3 w-3" weight="regular" /> Protokoll
                     </a>
                   )}
                 </div>
@@ -193,7 +193,7 @@ export function Stadtrat() {
               <p className="mt-2 text-sm text-ink-soft">{t.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                 Öffnen
-                <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
               </span>
             </a>
           ))}

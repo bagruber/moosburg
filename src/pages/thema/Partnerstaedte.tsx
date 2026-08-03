@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import {
-  IconArrowNarrowUp,
-  IconArrowRight,
-  IconExternalLink,
-  IconCheck,
-  IconUsers,
-  IconWorld,
-  IconCalendarHeart,
-  IconHeartHandshake,
-} from "@tabler/icons-react";
+  ArrowUp,
+  ArrowRight,
+  ArrowSquareOut,
+  Check,
+  Users,
+  Globe,
+  CalendarHeart,
+  Handshake,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -34,10 +34,10 @@ function Kompass({ deg, km, richtung }: { deg: number; km: number; richtung: str
     <div className="flex items-center gap-3">
       <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full border border-ink-line bg-cream">
         <span className="absolute top-1 text-[8px] font-semibold text-ink-muted">N</span>
-        <IconArrowNarrowUp
+        <ArrowUp
           className="h-6 w-6 text-red-600"
           style={{ transform: `rotate(${deg}deg)` }}
-          stroke={2}
+          weight="regular"
         />
       </div>
       <div className="leading-tight">
@@ -53,7 +53,7 @@ function HighlightListe({ items }: { items: string[] }) {
     <ul className="space-y-2">
       {items.map((h) => (
         <li key={h} className="flex items-start gap-2.5 text-sm text-ink-soft">
-          <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-rb-5" stroke={2.5} />
+          <Check className="mt-0.5 h-4 w-4 shrink-0 text-rb-5" weight="bold" />
           <span>{h}</span>
         </li>
       ))}
@@ -95,7 +95,7 @@ function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
             {stadt.website.label}
-            <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
+            <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
           </a>
         </aside>
 
@@ -132,7 +132,7 @@ function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
                 {stadt.rituale.map((r) => (
                   <li key={r.zeit} className="flex gap-4">
                     <div className="flex w-28 shrink-0 items-center gap-2 text-sm font-medium text-red-700">
-                      <IconCalendarHeart className="h-4 w-4 shrink-0" stroke={1.75} />
+                      <CalendarHeart className="h-4 w-4 shrink-0" weight="regular" />
                       {r.zeit}
                     </div>
                     <p className="text-sm leading-relaxed text-ink-soft">{r.text}</p>
@@ -217,7 +217,7 @@ export function Partnerstaedte() {
                 <span className="text-ink-soft">{s.einwohner} Einw.</span>
                 <span className="inline-flex items-center gap-1 font-medium text-red-700">
                   seit {s.seit}
-                  <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                  <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
                 </span>
               </div>
             </a>
@@ -273,7 +273,7 @@ export function Partnerstaedte() {
                 className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
               >
                 Kontakt aufnehmen
-                <IconArrowRight className="h-4 w-4" stroke={2} />
+                <ArrowRight className="h-4 w-4" weight="regular" />
               </Link>
               <Link
                 to="/mein-moosburg/veranstaltungen"
@@ -284,9 +284,9 @@ export function Partnerstaedte() {
             </div>
           </div>
           <div className="flex justify-center gap-6 text-cream/80">
-            <IconHeartHandshake className="h-12 w-12" stroke={1.25} />
-            <IconUsers className="h-12 w-12" stroke={1.25} />
-            <IconWorld className="h-12 w-12" stroke={1.25} />
+            <Handshake className="h-12 w-12" weight="light" />
+            <Users className="h-12 w-12" weight="light" />
+            <Globe className="h-12 w-12" weight="light" />
           </div>
         </div>
       </SpotlightSection>

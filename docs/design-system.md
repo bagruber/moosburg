@@ -84,11 +84,67 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 
 ## Iconografie
 
-**Tabler Icons** (`@tabler/icons-react`). ~5.800 Icons, stroke-basiert, `stroke-width: 1.75` als Default.
+**Phosphor Icons** (`@phosphor-icons/react`, MIT). ~1.500 Icons mit runden Abschlüssen —
+freundlicher als eine rein geometrische Strichfamilie und damit näher an Cremeweiß,
+Playfair und Regenbogenstreifen. Ersetzt Tabler seit 0.40.
 
 - Service-Kacheln: 24px oder 28px, Gold oder Rot je nach Kontext
 - Inline-Icons (Telefon, Adresse): 16px, `ink-muted`
 - Große Illustration: 40–48px in kreisrundem Badge (`bg-red-50`/`bg-gold-100`)
+
+### Gewichte
+
+Phosphor steuert die Strichstärke über `weight`, nicht über `stroke`. Erlaubt sind
+**genau drei**:
+
+| `weight` | Einsatz |
+|---|---|
+| `light` | große, zurückhaltende Icons ab ~32px |
+| `regular` | Standard, praktisch überall |
+| `bold` | kleine Icons unter 16px, Häkchen, Pfeile in Buttons |
+
+`thin`, `fill` und `duotone` sind **nicht in Gebrauch und werden beim Build entfernt**
+(`phosphorTrimWeights` in `vite.config.ts`). Jedes Phosphor-Icon liefert sonst alle sechs
+Gewichte als Map mit — bei 157 verwendeten Icons rund 265 kB, die nie gerendert werden.
+Wer ein viertes Gewicht einführt, muss `USED_WEIGHTS` dort ergänzen, sonst rendert das
+Icon leer.
+
+### Auswahlregeln
+
+- **Ein Icon, eine Bedeutung.** Kein Glyph zweimal für verschiedene Ziele. Ein Audit fand
+  zehn solcher Kollisionen, u. a. denselben Handschlag für *Heiraten* und *Ehrenamt*.
+- **Metapher vor Verfügbarkeit.** Eine abwehrende Handfläche für *Pflege & Alter* oder ein
+  Wolkenkratzer für das Firmenverzeichnis einer 19.000-Einwohner-Stadt sind
+  Namenstreffer, keine Bedeutungstreffer.
+- **Kein Funkel-Icon.** `Sparkle` und Verwandte sind als KI-Signet verbrannt und
+  insbesondere für personalisierte Inhalte tabu — dort `UserCheck`.
+- **Konfessionsfrei bleiben.** Für *Im Trauerfall* steht `HandHeart` (Anteilnahme), nicht
+  Kreuz oder Kerze.
+
+---
+
+## Textrhythmus
+
+Diese Regeln stammen aus einem Audit, das gezielt nach maschinell wirkenden Stellen
+gesucht hat (0.39). Der Befund: Das Vokabular war unauffällig — keine Werbe-Adjektive wie
+„vielfältig" oder „umfassend" —, aber der **Rhythmus** war es nicht.
+
+- **Gedankenstrich sparsam.** Er war 314-mal im Einsatz, in 74,5 % aller Intros genau
+  einmal, immer als Drehpunkt zwischen Aufzählung und Nutzenversprechen. Zum Vergleich:
+  Die aus den Altseiten übernommenen Firmenbeschreibungen (`firmen.ts`, 1.406 Texte)
+  verwenden ihn **kein einziges Mal**. Je nach Satzbau Punkt, Doppelpunkt oder Komma —
+  aber nicht überall dasselbe Ersatzzeichen.
+- **Nicht jedes Intro gleich lang.** Die 51 Intros lagen bei 17,6 Wörtern Mittel mit einer
+  Streuung von 4,4; über die Hälfte in einem einzigen Fünf-Wort-Fenster. Acht Wörter sind
+  erlaubt, dreißig auch.
+- **Aufzählungen bleiben.** Sie tragen die Scanbarkeit — man sieht sofort, was einen auf
+  der Seite erwartet. Das Muster war der Gedankenstrich dahinter, nicht die Liste davor.
+- **Keine Floskel-Abbinder.** „auf einen Blick", „an einem Ort", „der rote Faden",
+  „den passenden Einstieg" standen am Ende von 23,5 % aller Intros.
+- **Überschriften dürfen länger als fünf Wörter sein.** Alle 62 H2 lagen zwischen einem
+  und fünf Wörtern — keine einzige darüber. Das ist keine Regel, das war ein Reflex.
+- **Nichts zweimal sagen.** 17,6 % der Intros hatten weiter unten auf derselben Seite eine
+  fast wortgleiche Wiederholung.
 
 ---
 
@@ -107,6 +163,38 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 - Props ähneln shadcn-Stil (variant, size) wo sinnvoll
 - Kein CSS-in-JS — alles Tailwind über die Design-Tokens
 - Keine inline-Farbwerte außerhalb `index.css` — immer Token verwenden
+
+### Abschnitts-Überschriften haben zwei Stufen
+
+`SectionHeader` kennt `size="lg"` (Vorgabe) und `size="sm"`.
+
+- **`lg`** eröffnet ein Kapitel: große Playfair-Zeile, Eyebrow **mit Rose**.
+- **`sm`** führt fort oder bindet ab: kleinere Zeile, engerer Abstand, Eyebrow **ohne Rose**.
+
+Die Rose ist ein Markenzeichen, kein Aufzählungspunkt. Vor 0.39 trug sie alle 64 Eyebrows
+und markierte damit nichts mehr. Ein Formularschritt und ein Navigations-Abbinder dürfen
+nicht dasselbe Gewicht haben.
+
+### Übersichtsseiten brauchen eine Rangfolge
+
+`HubPage` zeigt **zwei hervorgehobene Einstiege**, alles Weitere als geführte Liste ohne
+Icon-Kacheln. Die Zuordnung steht in `hubFeatured` (`src/pages/HubPage.tsx`).
+
+Notrufnummern laufen **nicht** in dieser Rangfolge mit, sondern stehen als eigene Leiste
+darüber (`URGENT_SLUG`). Eine Kachelmatrix, in der „Notdienste" so schwer wiegt wie
+„Stellenangebote", ist keine Übersicht, sondern eine Aufzählung.
+
+### Tailwind: Grid-Tracklisten mit Unterstrich
+
+```
+✗ grid-cols-[minmax(0,2fr),minmax(0,1fr)]   → ungültiges CSS, Deklaration verworfen
+✓ grid-cols-[minmax(0,2fr)_minmax(0,1fr)]
+```
+
+`grid-template-columns` ist leerzeichensepariert; in Tailwind-Arbitrary-Values maskiert
+der Unterstrich das Leerzeichen. Das Komma innerhalb von `minmax(0,1fr)` bleibt. 0.39 hat
+52 solcher Klassen repariert — sie hatten dazu geführt, dass jede zweispaltige Sektion
+still zu einer gestapelten Spalte zusammenfiel.
 
 ---
 

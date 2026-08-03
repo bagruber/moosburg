@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconTruck,
-  IconHome2,
-  IconMapPin2,
-  IconLuggage,
-  IconCheck,
-  IconArrowRight,
-  IconChevronRight,
-} from "@tabler/icons-react";
+  Truck,
+  House,
+  MapPin,
+  Suitcase,
+  Check,
+  ArrowRight,
+  CaretRight,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -36,7 +36,7 @@ const SCENARIOS: Scenario[] = [
     id: "zuzug",
     label: "Neu nach Moosburg",
     sub: "Zuzug von auswärts",
-    icon: IconTruck,
+    icon: Truck,
     intro: "Willkommen! Als Neubürger:in gibt es ein paar Pflichten und danach viel zu entdecken.",
     schritte: [
       { id: "umz-zu-anmelden", title: "Wohnsitz anmelden", desc: "Persönlich im Bürgerbüro mit Ausweis und Wohnungsgeberbestätigung.", frist: "innerhalb 14 Tagen", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
@@ -50,7 +50,7 @@ const SCENARIOS: Scenario[] = [
     id: "intern",
     label: "Umzug in Moosburg",
     sub: "innerhalb der Stadt",
-    icon: IconHome2,
+    icon: House,
     intro: "Nur die Straße wechselt, die Stadt bleibt, das meiste erledigen Sie mit einer Ummeldung.",
     schritte: [
       { id: "umz-in-ummelden", title: "Adresse ummelden", desc: "Neue Anschrift beim Einwohnermeldeamt melden: Ausweis und Wohnungsgeberbestätigung mitbringen.", frist: "innerhalb 14 Tagen", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
@@ -64,7 +64,7 @@ const SCENARIOS: Scenario[] = [
     id: "wegzug",
     label: "Wegzug aus Moosburg",
     sub: "Umzug nach auswärts",
-    icon: IconLuggage,
+    icon: Suitcase,
     intro: "Schade, dass Sie gehen. Diese Punkte sorgen für einen sauberen Abschluss.",
     schritte: [
       { id: "umz-weg-abmelden", title: "Abmeldung (nur ins Ausland)", desc: "Bei einem Umzug innerhalb Deutschlands genügt die Anmeldung am neuen Wohnort. Nur beim Wegzug ins Ausland ist eine Abmeldung nötig.", frist: "innerhalb 14 Tagen" },
@@ -115,7 +115,7 @@ export function Umziehen() {
                   on ? "border-red-500 bg-red-500 text-cream shadow-lift" : "border-ink-line bg-cream text-ink hover:border-red-500/40",
                 )}
               >
-                <Icon className={cn("h-7 w-7 shrink-0", on ? "text-cream" : "text-red-700")} stroke={1.5} />
+                <Icon className={cn("h-7 w-7 shrink-0", on ? "text-cream" : "text-red-700")} weight="light" />
                 <div>
                   <div className="card-title">{s.label}</div>
                   <div className={cn("text-xs", on ? "text-cream/80" : "text-ink-muted")}>{s.sub}</div>
@@ -153,7 +153,7 @@ export function Umziehen() {
                             isDone ? "border-rb-5 bg-rb-5 text-cream" : "border-ink-line bg-cream text-ink-line hover:border-red-500",
                           )}
                         >
-                          {isDone ? <IconCheck className="h-4 w-4" stroke={3} /> : <span className="block h-3 w-3" />}
+                          {isDone ? <Check className="h-4 w-4" weight="bold" /> : <span className="block h-3 w-3" />}
                         </button>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
@@ -164,7 +164,7 @@ export function Umziehen() {
                           {s.cta && (
                             <Link to={s.cta.to} className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline">
                               {s.cta.label}
-                              <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                              <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                             </Link>
                           )}
                         </div>
@@ -184,12 +184,12 @@ export function Umziehen() {
                 to="/lebenslage/neu-in-moosburg"
                 className="group flex items-center gap-3 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5 transition hover:border-gold-500/60"
               >
-                <IconMapPin2 className="h-6 w-6 shrink-0 text-gold-700" stroke={1.5} />
+                <MapPin className="h-6 w-6 shrink-0 text-gold-700" weight="light" />
                 <div className="flex-1">
                   <div className="card-title text-ink">Die komplette Neubürger-Checkliste</div>
                   <div className="text-sm text-ink-soft">Personalisiert, mit allen Schritten fürs Ankommen.</div>
                 </div>
-                <IconChevronRight className="h-4 w-4 shrink-0 text-gold-700 transition group-hover:translate-x-0.5" stroke={2} />
+                <CaretRight className="h-4 w-4 shrink-0 text-gold-700 transition group-hover:translate-x-0.5" weight="regular" />
               </Link>
             )}
           </aside>

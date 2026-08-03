@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconMap2,
-  IconFileDescription,
-  IconHelp,
-  IconArrowRight,
-  IconExternalLink,
-  IconAlertCircle,
-  IconRouter,
-  IconCalendarEvent,
-  IconCheck,
-} from "@tabler/icons-react";
+  MapTrifold,
+  FileText,
+  Question,
+  ArrowRight,
+  ArrowSquareOut,
+  WarningCircle,
+  WifiHigh,
+  CalendarDots,
+  Check,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -36,7 +36,7 @@ type Journey = {
 const JOURNEYS: Journey[] = [
   {
     id: "was-darf-ich",
-    icon: IconMap2,
+    icon: MapTrifold,
     accent: "rb-6",
     question: "Was darf ich auf meinem Grundstück bauen?",
     lead:
@@ -54,7 +54,7 @@ const JOURNEYS: Journey[] = [
   },
   {
     id: "bauantrag-stellen",
-    icon: IconFileDescription,
+    icon: FileText,
     accent: "rb-3",
     question: "Ich möchte einen Bauantrag stellen",
     lead:
@@ -74,7 +74,7 @@ const JOURNEYS: Journey[] = [
   },
   {
     id: "verfahrensfrei",
-    icon: IconHelp,
+    icon: Question,
     accent: "rb-5",
     question: "Brauche ich überhaupt einen Bauantrag?",
     lead:
@@ -104,7 +104,7 @@ function JourneyCard({ j }: { j: Journey }) {
           style={{ backgroundColor: `${accent}1A`, color: accent }}
           aria-hidden="true"
         >
-          <Icon className="h-6 w-6" stroke={1.75} />
+          <Icon className="h-6 w-6" weight="regular" />
         </span>
         <div className="min-w-0 flex-1">
           <h3 className="card-title text-lg text-ink">{j.question}</h3>
@@ -140,10 +140,10 @@ function JourneyCard({ j }: { j: Journey }) {
                 className="rounded-lg border border-ink-line/40 bg-cream/40 p-3"
               >
                 <div className="flex items-start gap-2">
-                  <IconCheck
+                  <Check
                     className="mt-0.5 h-4 w-4 shrink-0"
                     style={{ color: accent }}
-                    stroke={2.25}
+                    weight="bold"
                   />
                   <div className="min-w-0">
                     <div className="text-sm font-medium text-ink">{it.label}</div>
@@ -162,7 +162,7 @@ function JourneyCard({ j }: { j: Journey }) {
               className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-medium text-cream hover:bg-red-600"
             >
               {j.primary.label}
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           ) : j.primary.external ? (
             <a
@@ -172,7 +172,7 @@ function JourneyCard({ j }: { j: Journey }) {
               className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-medium text-cream hover:bg-red-600"
             >
               {j.primary.label}
-              <IconExternalLink className="h-4 w-4" stroke={2} />
+              <ArrowSquareOut className="h-4 w-4" weight="regular" />
             </a>
           ) : (
             <a
@@ -180,14 +180,14 @@ function JourneyCard({ j }: { j: Journey }) {
               className="inline-flex items-center gap-2 rounded-lg border-2 border-ink bg-cream px-4 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
             >
               {j.primary.label}
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </a>
           )}
         </div>
 
         {j.note && (
           <p className="mt-4 flex items-start gap-2 text-xs text-ink-muted">
-            <IconAlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" stroke={1.75} />
+            <WarningCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" weight="regular" />
             <span>{j.note}</span>
           </p>
         )}
@@ -245,7 +245,7 @@ export function Bauen() {
                   style={{ backgroundColor: "var(--color-rb-7)1A", color: "var(--color-rb-7)" }}
                   aria-hidden="true"
                 >
-                  <IconRouter className="h-5 w-5" stroke={1.75} />
+                  <WifiHigh className="h-5 w-5" weight="regular" />
                 </span>
                 <h2 className="headline text-2xl lg:text-3xl text-ink">Internet & Glasfaser</h2>
               </div>
@@ -255,11 +255,11 @@ export function Bauen() {
               </p>
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm">
-                  <IconCheck className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} stroke={2.25} />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} weight="bold" />
                   <span><strong>Glasfaserausbau 2023</strong>: wie weit ist die Stadt?</span>
                 </li>
                 <li className="flex items-start gap-2 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm">
-                  <IconCheck className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} stroke={2.25} />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} weight="bold" />
                   <span><strong>Alternative DSL-Anbieter</strong>, wenn Glasfaser nicht verfügbar ist</span>
                 </li>
               </ul>
@@ -283,10 +283,10 @@ export function Bauen() {
                     className="group flex items-center justify-between gap-2 rounded-lg border border-ink-line/50 bg-white px-3 py-2.5 hover:border-red-500"
                   >
                     <span className="flex items-center gap-2 text-ink">
-                      <IconCalendarEvent className="h-4 w-4 text-ink-muted" stroke={1.75} />
+                      <CalendarDots className="h-4 w-4 text-ink-muted" weight="regular" />
                       Bauberatungs­termin buchen
                     </span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
                   </Link>
                 </li>
                 <li>
@@ -295,10 +295,10 @@ export function Bauen() {
                     className="group flex items-center justify-between gap-2 rounded-lg border border-ink-line/50 bg-white px-3 py-2.5 hover:border-red-500"
                   >
                     <span className="flex items-center gap-2 text-ink">
-                      <IconMap2 className="h-4 w-4 text-ink-muted" stroke={1.75} />
+                      <MapTrifold className="h-4 w-4 text-ink-muted" weight="regular" />
                       Bebauungs- & Flächen­nutzungspläne
                     </span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
                   </Link>
                 </li>
                 <li>
@@ -307,10 +307,10 @@ export function Bauen() {
                     className="group flex items-center justify-between gap-2 rounded-lg border border-ink-line/50 bg-white px-3 py-2.5 hover:border-red-500"
                   >
                     <span className="flex items-center gap-2 text-ink">
-                      <IconFileDescription className="h-4 w-4 text-ink-muted" stroke={1.75} />
+                      <FileText className="h-4 w-4 text-ink-muted" weight="regular" />
                       Verwandte Leistungen A–Z
                     </span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -330,7 +330,7 @@ export function Bauen() {
                 className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
               >
                 Zum Landratsamt-Bauamt
-                <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
+                <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
               </a>
             </section>
 

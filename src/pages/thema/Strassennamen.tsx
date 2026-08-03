@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconSearch,
-  IconArrowRight,
-  IconSignRight,
-  IconClipboardCheck,
-  IconBuildingCommunity,
-  IconRubberStamp,
-  IconBulb,
-} from "@tabler/icons-react";
+  MagnifyingGlass,
+  ArrowRight,
+  Signpost,
+  ClipboardText,
+  Buildings,
+  Stamp,
+  Lightbulb,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -21,11 +21,11 @@ import { strassen, strassenThemen, type ThemeId } from "@/data/strassennamen";
 
 /* Naming-process steps for the spotlight band. */
 const SCHRITTE = [
-  { icon: IconBulb, title: "Bedarf", text: "Ein neues Baugebiet entsteht, die frischen Straßen brauchen Namen." },
-  { icon: IconSignRight, title: "Vorschlag", text: "Verwaltung, Stadtrat oder Bürgerinnen schlagen Namen vor, meist passend zum Thema des Viertels." },
-  { icon: IconClipboardCheck, title: "Prüfung", text: "Der Ausschuss prüft: Gibt es den Namen schon? Passt er ins Viertel? Ist eine geehrte Person bereits verstorben?" },
-  { icon: IconBuildingCommunity, title: "Beschluss", text: "Der Stadtrat entscheidet öffentlich über den endgültigen Namen." },
-  { icon: IconRubberStamp, title: "Widmung", text: "Die Straße wird amtlich gewidmet, beschildert und ins Adressregister aufgenommen." },
+  { icon: Lightbulb, title: "Bedarf", text: "Ein neues Baugebiet entsteht, die frischen Straßen brauchen Namen." },
+  { icon: Signpost, title: "Vorschlag", text: "Verwaltung, Stadtrat oder Bürgerinnen schlagen Namen vor, meist passend zum Thema des Viertels." },
+  { icon: ClipboardText, title: "Prüfung", text: "Der Ausschuss prüft: Gibt es den Namen schon? Passt er ins Viertel? Ist eine geehrte Person bereits verstorben?" },
+  { icon: Buildings, title: "Beschluss", text: "Der Stadtrat entscheidet öffentlich über den endgültigen Namen." },
+  { icon: Stamp, title: "Widmung", text: "Die Straße wird amtlich gewidmet, beschildert und ins Adressregister aufgenommen." },
 ];
 
 const KRITERIEN = [
@@ -100,7 +100,7 @@ export function Strassennamen() {
               return (
                 <li key={s.title} className="relative">
                   <div className="flex items-center gap-2 text-cream">
-                    <Icon className="h-5 w-5 text-gold-200" stroke={1.75} />
+                    <Icon className="h-5 w-5 text-gold-200" weight="regular" />
                     <span className="font-display text-2xl text-gold-200">{i + 1}</span>
                   </div>
                   <div className="mt-2 card-title text-cream">{s.title}</div>
@@ -151,7 +151,7 @@ export function Strassennamen() {
               Viertel oder suchen Sie gezielt nach Ihrer Straße.
             </p>
             <label className="group flex items-center gap-3 rounded-xl border border-ink-line bg-cream px-4 py-3 focus-within:border-red-500">
-              <IconSearch className="h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
+              <MagnifyingGlass className="h-5 w-5 shrink-0 text-ink-muted" weight="regular" />
               <input
                 type="search"
                 value={query}
@@ -246,7 +246,7 @@ export function Strassennamen() {
             className="inline-flex items-center gap-2 self-start rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
           >
             Hinweis geben
-            <IconArrowRight className="h-4 w-4" stroke={2} />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>
         </div>
       </SpotlightSection>

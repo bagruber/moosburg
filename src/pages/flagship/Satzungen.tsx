@@ -1,15 +1,15 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconSearch,
-  IconFileText,
-  IconDownload,
-  IconChevronDown,
-  IconInfoCircle,
-  IconAlertCircle,
-  IconCalendar,
-  IconRefresh,
-} from "@tabler/icons-react";
+  MagnifyingGlass,
+  FileText,
+  DownloadSimple,
+  CaretDown,
+  Info,
+  WarningCircle,
+  Calendar,
+  ArrowsClockwise,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -73,7 +73,7 @@ export function Satzungen() {
         <div className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <label className="flex flex-1 items-center rounded-full border-2 border-ink-line bg-white px-5 focus-within:border-red-500">
-              <IconSearch className="h-5 w-5 text-ink-muted" stroke={1.75} />
+              <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
               <input
                 type="search"
                 placeholder="Satzung suchen (Titel, Stichwort, Erklärung)…"
@@ -120,7 +120,7 @@ export function Satzungen() {
                 onClick={() => { setKategorieFilter(null); setLebenslageFilter(null); }}
                 className="ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs text-ink-muted hover:text-red-700"
               >
-                <IconRefresh className="h-3 w-3" stroke={2} />
+                <ArrowsClockwise className="h-3 w-3" weight="regular" />
                 alle Filter zurücksetzen
               </button>
             )}
@@ -136,7 +136,7 @@ export function Satzungen() {
             {/* Disclaimer */}
             <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="flex items-start gap-3">
-                <IconAlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+                <WarningCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" weight="regular" />
                 <div className="text-sm">
                   <p className="text-ink">
                     Rechtsverbindlich sind nur die <strong>unterzeichneten Originale</strong>, die
@@ -176,9 +176,9 @@ export function Satzungen() {
                     <li key={s.id}>
                       <details className="group rounded-lg border border-ink-line/50 bg-white open:shadow-soft">
                         <summary className="flex cursor-pointer list-none items-start gap-3 px-4 py-3 marker:content-none hover:bg-cream">
-                          <IconChevronDown
+                          <CaretDown
                             className="mt-1 h-4 w-4 shrink-0 text-ink-muted transition-transform group-open:rotate-180"
-                            stroke={2}
+                            weight="regular"
                           />
                           <span className="min-w-0 flex-1">
                             <span className="block text-sm font-medium text-ink">
@@ -199,19 +199,19 @@ export function Satzungen() {
                             href={s.href}
                             className="inline-flex items-center gap-2 rounded-lg border-2 border-ink bg-cream px-4 py-2 text-sm font-medium text-ink hover:bg-cream-dark"
                           >
-                            <IconDownload className="h-4 w-4" stroke={1.75} />
+                            <DownloadSimple className="h-4 w-4" weight="regular" />
                             {s.title} herunterladen (PDF)
                           </a>
                           <dl className="grid gap-1 text-xs text-ink-muted sm:grid-cols-2">
                             {s.inkrafttreten && (
                               <div className="flex items-center gap-1.5">
-                                <IconCalendar className="h-3 w-3" stroke={1.75} />
+                                <Calendar className="h-3 w-3" weight="regular" />
                                 <span>In Kraft seit <strong className="font-normal text-ink-soft">{s.inkrafttreten}</strong></span>
                               </div>
                             )}
                             {s.geaendert && (
                               <div className="flex items-center gap-1.5">
-                                <IconRefresh className="h-3 w-3" stroke={1.75} />
+                                <ArrowsClockwise className="h-3 w-3" weight="regular" />
                                 <span>Letzte Änderung <strong className="font-normal text-ink-soft">{s.geaendert}</strong></span>
                               </div>
                             )}
@@ -234,7 +234,7 @@ export function Satzungen() {
                           )}
                           {s.hinweis && (
                             <p className="flex items-start gap-2 rounded-md bg-cream-dark/40 px-3 py-2 text-xs text-ink-soft">
-                              <IconInfoCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" stroke={1.75} />
+                              <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" weight="regular" />
                               {s.hinweis}
                             </p>
                           )}
@@ -292,7 +292,7 @@ export function Satzungen() {
 
             <section className="rounded-xl border border-ink-line/40 bg-cream-dark/40 p-4 text-xs text-ink-soft">
               <div className="flex items-start gap-2">
-                <IconFileText className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                <FileText className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                 <p>
                   Diese Übersicht wird bei jeder neuen Bekanntmachung aktualisiert. Quelle:
                   Beschluss­sammlung des Stadtrats.

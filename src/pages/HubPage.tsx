@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { IconArrowRight } from "@tabler/icons-react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { hubs, routesForHub, type Hub } from "@/routes";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
@@ -76,16 +76,16 @@ export function HubPage() {
             to={`/${urgent.slug}`}
             className="group mb-10 flex items-center gap-4 rounded-md border-l-4 border-red-500 bg-red-50/60 px-5 py-4 transition hover:bg-red-50"
           >
-            <urgent.icon className="h-5 w-5 shrink-0 text-red-700" stroke={2} />
+            <urgent.icon className="h-5 w-5 shrink-0 text-red-700" weight="regular" />
             <span className="flex-1">
               <span className="card-title text-base text-ink">{urgent.title}</span>
               <span className="ml-2 text-sm text-ink-soft">
                 112 · 110 · ärztlicher Bereitschaftsdienst
               </span>
             </span>
-            <IconArrowRight
+            <ArrowRight
               className="h-4 w-4 shrink-0 text-red-700 transition group-hover:translate-x-0.5"
-              stroke={2}
+              weight="regular"
             />
           </Link>
         )}
@@ -101,7 +101,7 @@ export function HubPage() {
                   className="group flex flex-col gap-4 rounded-md border border-ink-line bg-white p-7 shadow-soft transition hover:border-red-500 hover:shadow-lift lg:p-8"
                 >
                   <span className="grid h-11 w-11 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                    <Icon className="h-5 w-5" stroke={1.75} />
+                    <Icon className="h-5 w-5" weight="regular" />
                   </span>
                   <div>
                     <h2 className="font-display text-xl text-ink lg:text-2xl">{r.title}</h2>
@@ -109,7 +109,7 @@ export function HubPage() {
                   </div>
                   <div className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
                     Öffnen
-                    <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
                   </div>
                 </Link>
               );
@@ -129,9 +129,9 @@ export function HubPage() {
                     {r.title}
                   </span>
                   <span className="hidden flex-1 text-sm text-ink-soft sm:block">{r.intro}</span>
-                  <IconArrowRight
+                  <ArrowRight
                     className="h-4 w-4 shrink-0 self-center text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700"
-                    stroke={2}
+                    weight="regular"
                   />
                 </Link>
               </li>

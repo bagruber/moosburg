@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconChevronRight,
-  IconId,
-  IconHeartHandshake,
-} from "@tabler/icons-react";
+  ArrowRight,
+  CaretRight,
+  IdentificationCard,
+  Handshake,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
@@ -121,7 +121,7 @@ export function Ehrenamt() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">
-              <IconId className="h-6 w-6 text-gold-200" stroke={1.5} />
+              <IdentificationCard className="h-6 w-6 text-gold-200" weight="light" />
               <div className="eyebrow text-gold-200">Danke fürs Engagement</div>
             </div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">Die Bayerische Ehrenamtskarte</h2>
@@ -137,7 +137,7 @@ export function Ehrenamt() {
             className="inline-flex items-center gap-2 self-start rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
           >
             Karte beantragen
-            <IconArrowRight className="h-4 w-4" stroke={2} />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>
         </div>
       </SpotlightSection>
@@ -176,10 +176,10 @@ function RelatedLink({ to, label, icon }: { to: string; label: string; icon?: bo
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="flex items-center gap-2">
-        {icon && <IconHeartHandshake className="h-5 w-5 text-red-700" stroke={1.75} />}
+        {icon && <Handshake className="h-5 w-5 text-red-700" weight="regular" />}
         <span className="card-title text-ink">{label}</span>
       </span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

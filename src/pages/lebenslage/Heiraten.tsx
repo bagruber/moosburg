@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconHeartHandshake,
-  IconCheck,
-  IconArrowRight,
-  IconChevronRight,
-  IconBuildingCommunity,
-  IconBuildingChurch,
-  IconConfetti,
-  IconFileText,
-} from "@tabler/icons-react";
+  Handshake,
+  Check,
+  ArrowRight,
+  CaretRight,
+  Buildings,
+  Church,
+  Confetti,
+  FileText,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -75,9 +75,9 @@ const ZUSATZ_UNTERLAGEN: Record<SituationId, string[]> = {
 };
 
 const TRAUORTE: { icon: Icon; name: string; desc: string }[] = [
-  { icon: IconBuildingCommunity, name: "Trausaal im historischen Rathaus", desc: "Der klassische standesamtliche Trauort im Herzen der Altstadt." },
-  { icon: IconConfetti, name: "Besondere Trauorte", desc: "Zu ausgewählten Anlässen sind auch Trauungen an besonderen Orten möglich. Fragen Sie beim Standesamt nach." },
-  { icon: IconBuildingChurch, name: "Kirchliche Trauung", desc: "Die kirchliche Trauung, etwa im Kastulus-Münster, vereinbaren Sie direkt mit der Pfarrei." },
+  { icon: Buildings, name: "Trausaal im historischen Rathaus", desc: "Der klassische standesamtliche Trauort im Herzen der Altstadt." },
+  { icon: Confetti, name: "Besondere Trauorte", desc: "Zu ausgewählten Anlässen sind auch Trauungen an besonderen Orten möglich. Fragen Sie beim Standesamt nach." },
+  { icon: Church, name: "Kirchliche Trauung", desc: "Die kirchliche Trauung, etwa im Kastulus-Münster, vereinbaren Sie direkt mit der Pfarrei." },
 ];
 
 export function Heiraten() {
@@ -135,14 +135,14 @@ export function Heiraten() {
                     isDone ? "border-rb-5 bg-rb-5 text-cream" : "border-ink-line bg-cream text-ink-muted hover:border-red-500",
                   )}
                 >
-                  {isDone ? <IconCheck className="h-4 w-4" stroke={3} /> : <span className="font-display text-sm">{i + 1}</span>}
+                  {isDone ? <Check className="h-4 w-4" weight="bold" /> : <span className="font-display text-sm">{i + 1}</span>}
                 </button>
                 <h3 className={cn("card-title text-lg", isDone ? "text-ink-muted line-through" : "text-ink")}>{s.title}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
                 {s.cta && (
                   <Link to={s.cta.to} className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline">
                     {s.cta.label}
-                    <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                   </Link>
                 )}
               </li>
@@ -187,7 +187,7 @@ export function Heiraten() {
                         on ? "border-gold-200 bg-gold-200 text-ink" : "border-cream/40",
                       )}
                     >
-                      {on && <IconCheck className="h-4 w-4" stroke={3} />}
+                      {on && <Check className="h-4 w-4" weight="bold" />}
                     </span>
                     {s.label}
                   </button>
@@ -203,7 +203,7 @@ export function Heiraten() {
               <ul className="mt-4 space-y-2.5 text-sm text-cream/90">
                 {[...BASIS_UNTERLAGEN, ...zusatz].map((u) => (
                   <li key={u} className="flex items-start gap-2.5">
-                    <IconFileText className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                    <FileText className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" weight="regular" />
                     <span>{u}</span>
                   </li>
                 ))}
@@ -228,7 +228,7 @@ export function Heiraten() {
             const Icon = t.icon;
             return (
               <div key={t.name} className="rounded-2xl border border-ink-line/70 bg-cream p-6">
-                <Icon className="h-7 w-7 text-red-700" stroke={1.5} />
+                <Icon className="h-7 w-7 text-red-700" weight="light" />
                 <h3 className="mt-3 card-title text-lg text-ink">{t.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t.desc}</p>
               </div>
@@ -244,10 +244,10 @@ export function Heiraten() {
               className="group flex w-full items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
             >
               <span className="flex items-center gap-2">
-                <IconHeartHandshake className="h-5 w-5 text-red-700" stroke={1.75} />
+                <Handshake className="h-5 w-5 text-red-700" weight="regular" />
                 <span className="card-title text-ink">Danach: Familie & Kind</span>
               </span>
-              <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+              <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
             </Link>
           </div>
         </div>

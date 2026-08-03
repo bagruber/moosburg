@@ -1,4 +1,4 @@
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 import { RainbowStripe } from "./RainbowStripe";
 import { cn } from "@/lib/cn";
@@ -162,7 +162,7 @@ export function PageHeader({
         <div className="mt-6 flex items-start gap-5">
           {Icon && (
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-md bg-red-500 text-cream">
-              <Icon className="h-7 w-7" stroke={1.5} />
+              <Icon className="h-7 w-7" weight="light" />
             </span>
           )}
           <div className="min-w-0">

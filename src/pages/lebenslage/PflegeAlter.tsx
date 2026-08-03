@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconMessageHeart,
-  IconHome2,
-  IconBuildingHospital,
-  IconCoin,
-  IconUsersGroup,
-  IconArrowRight,
-  IconChevronDown,
-  IconHeartHandshake,
-  IconPhone,
-  IconChevronRight,
-} from "@tabler/icons-react";
+  ChatCircleText,
+  House,
+  Hospital,
+  Coin,
+  UsersThree,
+  ArrowRight,
+  CaretDown,
+  Handshake,
+  Phone,
+  CaretRight,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -28,7 +28,7 @@ type Bedarf = {
 const BEDARFE: Bedarf[] = [
   {
     id: "beratung",
-    icon: IconMessageHeart,
+    icon: ChatCircleText,
     frage: "Ich suche Beratung",
     intro: "Der erste Schritt ist oft ein Gespräch. Die Beratung ist kostenlos, auch wenn noch kein Pflegegrad besteht.",
     links: [
@@ -38,7 +38,7 @@ const BEDARFE: Bedarf[] = [
   },
   {
     id: "zuhause",
-    icon: IconHome2,
+    icon: House,
     frage: "Pflege zu Hause organisieren",
     intro: "Möglichst lange in den eigenen vier Wänden bleiben, mit der richtigen Unterstützung geht das.",
     links: [
@@ -49,7 +49,7 @@ const BEDARFE: Bedarf[] = [
   },
   {
     id: "heim",
-    icon: IconBuildingHospital,
+    icon: Hospital,
     frage: "Einen Platz im Heim finden",
     intro: "Wenn es zu Hause nicht mehr geht, unterstützen die Einrichtungen vor Ort, dauerhaft oder zur Entlastung.",
     links: [
@@ -59,7 +59,7 @@ const BEDARFE: Bedarf[] = [
   },
   {
     id: "finanzen",
-    icon: IconCoin,
+    icon: Coin,
     frage: "Finanzielle Unterstützung",
     intro: "Pflege kostet, es gibt jedoch zahlreiche Leistungen, die Sie beantragen können.",
     links: [
@@ -70,7 +70,7 @@ const BEDARFE: Bedarf[] = [
   },
   {
     id: "teilhabe",
-    icon: IconUsersGroup,
+    icon: UsersThree,
     frage: "Aktiv & in Gesellschaft bleiben",
     intro: "Begegnung tut gut. Moosburg hat viele Angebote, um in Kontakt und in Bewegung zu bleiben.",
     links: [
@@ -110,10 +110,10 @@ export function PflegeAlter() {
               >
                 <summary className="flex cursor-pointer list-none items-center gap-4 p-5 marker:content-none">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-100 text-gold-700">
-                    <Icon className="h-5 w-5" stroke={1.75} />
+                    <Icon className="h-5 w-5" weight="regular" />
                   </span>
                   <span className="flex-1 card-title text-lg text-ink">{b.frage}</span>
-                  <IconChevronDown className="h-5 w-5 shrink-0 text-ink-muted transition group-open:rotate-180" stroke={2} />
+                  <CaretDown className="h-5 w-5 shrink-0 text-ink-muted transition group-open:rotate-180" weight="regular" />
                 </summary>
                 <div className="border-t border-ink-line/50 px-5 pb-5 pt-4">
                   <p className="text-sm leading-relaxed text-ink-soft">{b.intro}</p>
@@ -125,7 +125,7 @@ export function PflegeAlter() {
                           className="group/link flex items-center justify-between gap-3 rounded-lg bg-cream-dark/50 px-4 py-2.5 text-sm text-ink transition hover:bg-cream-dark"
                         >
                           <span>{l.title}</span>
-                          <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover/link:translate-x-0.5 group-hover/link:text-red-700" stroke={2} />
+                          <ArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover/link:translate-x-0.5 group-hover/link:text-red-700" weight="regular" />
                         </Link>
                       </li>
                     ))}
@@ -142,7 +142,7 @@ export function PflegeAlter() {
         <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
           <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-7">
             <div className="flex items-start gap-4">
-              <IconHeartHandshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" stroke={1.5} />
+              <Handshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" weight="light" />
               <div>
                 <h2 className="headline text-xl text-ink">Sie sind nicht allein</h2>
                 <p className="mt-2 text-ink-soft">
@@ -153,7 +153,7 @@ export function PflegeAlter() {
                   href="tel:+49876168400"
                   className="mt-4 inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-medium text-cream hover:bg-red-700"
                 >
-                  <IconPhone className="h-4 w-4" stroke={2} />
+                  <Phone className="h-4 w-4" weight="regular" />
                   Pflegeberatung: 08761 684-0
                 </a>
               </div>
@@ -184,7 +184,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

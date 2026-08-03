@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
+import { ArrowRight, Envelope, Phone } from "@phosphor-icons/react";
 import { findRoute, hubs, routesForHub } from "@/routes";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
@@ -21,7 +21,7 @@ export function StubPage() {
         <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-red-700 hover:underline">
             Zur Startseite
-            <IconArrowRight className="h-4 w-4" stroke={2} />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>
         </div>
       </PageLayout>
@@ -110,11 +110,11 @@ export function StubPage() {
               </p>
               <dl className="mt-4 space-y-2 text-sm">
                 <div className="flex gap-2">
-                  <IconPhone className="h-4 w-4 mt-0.5 text-gold-700 shrink-0" stroke={1.75} />
+                  <Phone className="h-4 w-4 mt-0.5 text-gold-700 shrink-0" weight="regular" />
                   <a href="tel:+49876168400" className="text-ink hover:text-red-700">08761 684-0</a>
                 </div>
                 <div className="flex gap-2">
-                  <IconMail className="h-4 w-4 mt-0.5 text-gold-700 shrink-0" stroke={1.75} />
+                  <Envelope className="h-4 w-4 mt-0.5 text-gold-700 shrink-0" weight="regular" />
                   <a href="mailto:info@moosburg.de" className="text-ink hover:text-red-700">info@moosburg.de</a>
                 </div>
               </dl>
@@ -130,7 +130,7 @@ export function StubPage() {
                       className="group flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm text-ink hover:bg-cream-dark"
                     >
                       <span className="truncate">{s.title}</span>
-                      <IconArrowRight className="h-4 w-4 text-ink-muted group-hover:text-red-700" stroke={2} />
+                      <ArrowRight className="h-4 w-4 text-ink-muted group-hover:text-red-700" weight="regular" />
                     </Link>
                   </li>
                 ))}

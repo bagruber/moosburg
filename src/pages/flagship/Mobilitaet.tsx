@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconTrafficCone,
-  IconParking,
-  IconBike,
-  IconBus,
-  IconPlug,
-  IconCar,
-  IconCalendar,
-  IconExternalLink,
-  IconChevronRight,
-  IconArrowRight,
-  IconAlertTriangle,
-  IconMapPin,
-  IconBuildingFactory,
-  IconUsers,
-  IconTrain,
-} from "@tabler/icons-react";
+  TrafficCone,
+  CarProfile,
+  Bicycle,
+  Bus,
+  Plug,
+  Car,
+  Calendar,
+  ArrowSquareOut,
+  CaretRight,
+  ArrowRight,
+  Warning,
+  MapPin as MapPinIcon,
+  Factory,
+  Users,
+  Train,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { HeuteBanner } from "@/components/HeuteBanner";
@@ -67,15 +67,15 @@ const BAUSTELLEN: Baustelle[] = [
 
 /* ── Sub-section anchor nav ───────────────────────────────────────────── */
 const SECTIONS = [
-  { id: "karte",         label: "Karte",                 icon: IconMapPin,         accent: "rb-2" },
-  { id: "baustellen",    label: "Baustellen",             icon: IconTrafficCone,    accent: "rb-2" },
-  { id: "parken",        label: "Parken",                 icon: IconParking,        accent: "rb-7" },
-  { id: "fahrrad",       label: "Fahrrad",                icon: IconBike,           accent: "rb-5" },
-  { id: "oepnv",         label: "ÖPNV & Bahn",            icon: IconBus,            accent: "rb-6" },
-  { id: "e-mobil",       label: "E-Mobilität",            icon: IconPlug,           accent: "rb-3" },
-  { id: "werkstaetten",  label: "Werkstätten & Autohäuser", icon: IconBuildingFactory, accent: "rb-8" },
-  { id: "taxi",          label: "Taxi & Beförderung",     icon: IconCar,            accent: "rb-1" },
-  { id: "sharing",       label: "Sharing & Smart Mobility", icon: IconUsers,        accent: "rb-3" },
+  { id: "karte",         label: "Karte",                 icon: MapPinIcon,         accent: "rb-2" },
+  { id: "baustellen",    label: "Baustellen",             icon: TrafficCone,    accent: "rb-2" },
+  { id: "parken",        label: "Parken",                 icon: CarProfile,        accent: "rb-7" },
+  { id: "fahrrad",       label: "Fahrrad",                icon: Bicycle,           accent: "rb-5" },
+  { id: "oepnv",         label: "ÖPNV & Bahn",            icon: Bus,            accent: "rb-6" },
+  { id: "e-mobil",       label: "E-Mobilität",            icon: Plug,           accent: "rb-3" },
+  { id: "werkstaetten",  label: "Werkstätten & Autohäuser", icon: Factory, accent: "rb-8" },
+  { id: "taxi",          label: "Taxi & Beförderung",     icon: Car,            accent: "rb-1" },
+  { id: "sharing",       label: "Sharing & Smart Mobility", icon: Users,        accent: "rb-3" },
 ] as const;
 
 function inAny(f: Firma, ...needles: string[]): boolean {
@@ -150,7 +150,7 @@ export function Mobilitaet() {
           <div className="space-y-16">
 
             {/* ── Karte ─────────────────────────────────────────── */}
-            <SectionHeader id="karte" icon={IconMapPin} accent="rb-2"
+            <SectionHeader id="karte" icon={MapPinIcon} accent="rb-2"
               title="Mobilität auf einen Blick"
               lead="Baustellen, Parkmöglichkeiten, E-Ladesäulen, Rad-Abstellanlagen und ÖPNV-Halte­stellen, die Ebenen lassen sich einzeln ein- und ausblenden." />
             <div className="mt-4 flex flex-wrap gap-2">
@@ -191,7 +191,7 @@ export function Mobilitaet() {
             />
 
             {/* ── Baustellen ─────────────────────────────────────── */}
-            <SectionHeader id="baustellen" icon={IconTrafficCone} accent="rb-2"
+            <SectionHeader id="baustellen" icon={TrafficCone} accent="rb-2"
               title="Aktuelle Baustellen & Sperrungen"
               lead="Stand letzter Aktualisierung der Stadtverwaltung. Bei akut neuen Sperrungen oder gefährlichen Stellen bitte über „Mängel melden“ Bescheid geben." />
             <ul className="space-y-3">
@@ -204,16 +204,16 @@ export function Mobilitaet() {
                     className="group flex items-start gap-4 rounded-xl border border-ink-line/50 bg-white p-4 transition hover:border-red-500"
                   >
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-red-50 text-red-700">
-                      <IconAlertTriangle className="h-5 w-5" stroke={1.75} />
+                      <Warning className="h-5 w-5" weight="regular" />
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="card-title text-base text-ink">{b.strasse}</h3>
-                        <IconExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                        <ArrowSquareOut className="mt-1 h-3.5 w-3.5 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
                       </div>
                       {b.abschnitt && <p className="mt-0.5 text-xs text-ink-soft">{b.abschnitt}</p>}
                       <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-ink-muted">
-                        <IconCalendar className="h-3 w-3" stroke={1.75} />
+                        <Calendar className="h-3 w-3" weight="regular" />
                         {b.zeitraum}
                       </p>
                     </div>
@@ -230,71 +230,71 @@ export function Mobilitaet() {
             </div>
 
             {/* ── Parken ─────────────────────────────────────────── */}
-            <SectionHeader id="parken" icon={IconParking} accent="rb-7"
+            <SectionHeader id="parken" icon={CarProfile} accent="rb-7"
               title="Parken in Moosburg"
               lead="Tarifzonen rund um den Stadtplatz, Parkhaus am Bahnhof, Behinderten- und P&R-Parkplätze." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconParking} accent="rb-7" title="Parkhaus Bahnhof"
+              <InfoCard icon={CarProfile} accent="rb-7" title="Parkhaus Bahnhof"
                 body="Tages-, Wochen- und Dauerkarten. Tarife gem. Park­haus-Gebührensatzung."
                 href="/rathaus/satzungen" hrefLabel="Gebühren­satzung" />
-              <InfoCard icon={IconMapPin} accent="rb-7" title="Plan Innenstadt / Parken"
+              <InfoCard icon={MapPinIcon} accent="rb-7" title="Plan Innenstadt / Parken"
                 body="Aktueller Plan inkl. Umbauten am Stadtplatz und Leinbergerstraße."
                 href="https://meinmoosburg.de/informationen/plan-innenstadt-parken/" external />
-              <InfoCard icon={IconMapPin} accent="rb-7" title="Behindertenparkplätze"
+              <InfoCard icon={MapPinIcon} accent="rb-7" title="Behindertenparkplätze"
                 body="Übersicht aller ausgewiesenen Behinderten-Stellplätze im Stadtgebiet."
                 href="https://meinmoosburg.de/informationen/plan-innenstadt-parken/" external />
-              <InfoCard icon={IconParking} accent="rb-7" title="Anwohnerparkausweis"
+              <InfoCard icon={CarProfile} accent="rb-7" title="Anwohnerparkausweis"
                 body="In den Zonen A und B (Altstadt + Neustadt/Bahnhof) empfohlen."
                 href="/rathaus/online-dienste" hrefLabel="Online beantragen" />
             </div>
 
             {/* ── Fahrrad ────────────────────────────────────────── */}
-            <SectionHeader id="fahrrad" icon={IconBike} accent="rb-5"
+            <SectionHeader id="fahrrad" icon={Bicycle} accent="rb-5"
               title="Fahrrad"
               lead="Moosburg ist Fahrradstadt: ausgebautes Radwegenetz, Fahrradkonzept, Lastenrad-Sharing, Stadtradeln und die jährliche Fahrradbörse." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconBike} accent="rb-5" title="Fuß- und Radverkehrskonzept"
+              <InfoCard icon={Bicycle} accent="rb-5" title="Fuß- und Radverkehrskonzept"
                 body="Strategie der Stadt für sicheren Rad- und Fußverkehr im gesamten Stadtgebiet."
                 href="https://www.moosburg.de/fahrradkonzept" external />
-              <InfoCard icon={IconBike} accent="rb-5" title="Freies Lastenfahrrad"
+              <InfoCard icon={Bicycle} accent="rb-5" title="Freies Lastenfahrrad"
                 body="Kostenlos ausleihbares Lasten-E-Bike der Stadt, für Großeinkäufe oder den Umzug."
                 href="https://www.moosburg.de/freies-lastenfahrrad" external />
-              <InfoCard icon={IconCalendar} accent="rb-5" title="Fahrradbörse im Zehentstadel"
+              <InfoCard icon={Calendar} accent="rb-5" title="Fahrradbörse im Zehentstadel"
                 body="Markt für gebrauchte Fahrräder, einmal jährlich, organisiert vom ADFC."
                 href="https://www.moosburg.de/fahrradboerse" external />
-              <InfoCard icon={IconMapPin} accent="rb-5" title="Radabstellanlagen"
+              <InfoCard icon={MapPinIcon} accent="rb-5" title="Radabstellanlagen"
                 body="Überdachte Stellplätze am Bahnhof und an wichtigen Knotenpunkten."
                 href="https://www.moosburg.de/radabstellanlagen-nav" external />
             </div>
 
             {/* ── ÖPNV ───────────────────────────────────────────── */}
-            <SectionHeader id="oepnv" icon={IconBus} accent="rb-6"
+            <SectionHeader id="oepnv" icon={Bus} accent="rb-6"
               title="ÖPNV & Bahn"
               lead="Moosburg liegt an der Bahnlinie München – Landshut. Bus-Verbindungen ins Umland und in die Ortsteile." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconTrain} accent="rb-6" title="DB: Fahrplan & Tickets"
+              <InfoCard icon={Train} accent="rb-6" title="DB: Fahrplan & Tickets"
                 body="Moosburg an der KBS 940 München–Landshut. Tickets, Verspätungen, Reservierungen."
                 href="https://www.bahn.de" external />
-              <InfoCard icon={IconBus} accent="rb-6" title="MVV: Verbund München"
+              <InfoCard icon={Bus} accent="rb-6" title="MVV: Verbund München"
                 body="Tarif­zone M-3. Verbindungs­auskunft, Tickets, MVV-App für Bus und S-Bahn."
                 href="https://www.mvv-muenchen.de" external />
-              <InfoCard icon={IconBus} accent="rb-6" title="Schulbusplan"
+              <InfoCard icon={Bus} accent="rb-6" title="Schulbusplan"
                 body="Pläne für die städtischen Schulen und Anbindung an die Ortsteile."
                 href="https://www.moosburg.de/schulbusplaene" external />
-              <InfoCard icon={IconBus} accent="rb-6" title="Mobilitätsportal der Stadt"
+              <InfoCard icon={Bus} accent="rb-6" title="Mobilitätsportal der Stadt"
                 body="Alle Mobilitäts­optionen im Überblick: Fußgänger, Rad, ÖPNV, E-Mobilität, Straßenverkehr."
                 href="https://www.moosburg.de/angebote-fuer-buerger-mobilitaetsportal" external />
             </div>
 
             {/* ── E-Mobilität ────────────────────────────────────── */}
-            <SectionHeader id="e-mobil" icon={IconPlug} accent="rb-3"
+            <SectionHeader id="e-mobil" icon={Plug} accent="rb-3"
               title="E-Mobilität"
               lead="E-Ladestationen im Stadtgebiet (Echtzeit-Verfügbarkeit in den meisten Apps), E-Bike-Lade­stationen und Carsharing." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconPlug} accent="rb-3" title="Lademöglichkeiten in Moosburg"
+              <InfoCard icon={Plug} accent="rb-3" title="Lademöglichkeiten in Moosburg"
                 body="Mehrere Anbieter, in Echtzeit über Apps und Auto-Navis sichtbar."
                 href="https://meinmoosburg.de/firma/ladestationen-e-mobilitaet/" external />
-              <InfoCard icon={IconBike} accent="rb-3" title="Schließfächer mit E-Bike-Ladestation"
+              <InfoCard icon={Bicycle} accent="rb-3" title="Schließfächer mit E-Bike-Ladestation"
                 body="Sicher abschließbare E-Bike-Boxen mit Lademöglichkeit am Bahnhof."
                 href="https://meinmoosburg.de/firma/schliessfaecher-mit-e-bike-ladestation/" external />
             </div>
@@ -311,19 +311,19 @@ export function Mobilitaet() {
             </div>
 
             {/* ── Werkstätten & Autohäuser ───────────────────────── */}
-            <SectionHeader id="werkstaetten" icon={IconBuildingFactory} accent="rb-8"
+            <SectionHeader id="werkstaetten" icon={Factory} accent="rb-8"
               title="Werkstätten & Autohäuser"
               lead="Reparatur, Inspektion und Fahrzeug­kauf vor Ort." />
             <FirmaList firmen={werkstaetten} emptyLabel="Aktuell kein Eintrag, siehe Firmen­verzeichnis." />
 
             {/* ── Taxi & Beförderung ─────────────────────────────── */}
-            <SectionHeader id="taxi" icon={IconCar} accent="rb-1"
+            <SectionHeader id="taxi" icon={Car} accent="rb-1"
               title="Taxi & Beförderung"
               lead="Personen­beförderung in Moosburg und Umgebung." />
             <FirmaList firmen={taxi} emptyLabel="Aktuell kein Eintrag." />
 
             {/* ── Sharing & Smart Mobility ───────────────────────── */}
-            <SectionHeader id="sharing" icon={IconUsers} accent="rb-3"
+            <SectionHeader id="sharing" icon={Users} accent="rb-3"
               title="Sharing & Smart Mobility"
               lead="Carsharing, Mitfahrerbänke, smart-services rund um die Mobilität in Moosburg." />
             <FirmaList firmen={sharing} emptyLabel="Aktuell kein Eintrag." />
@@ -341,7 +341,7 @@ export function Mobilitaet() {
                 className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-2 text-sm font-medium text-cream hover:bg-red-600"
               >
                 Jetzt melden
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                <ArrowRight className="h-3.5 w-3.5" weight="regular" />
               </Link>
             </section>
 
@@ -351,19 +351,19 @@ export function Mobilitaet() {
                 <li>
                   <Link to="/lebenslage/auto-verkehr" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Lebenslage: Auto & Verkehr</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/rathaus/termin-buchen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>KFZ-Termin bei der Zulassungs­behörde</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/umwelt" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Klimaschutz & E-Mobilität</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -397,7 +397,7 @@ function SectionHeader({ id, icon: Icon, accent, title, lead }: {
           style={{ backgroundColor: `${color}1A`, color }}
           aria-hidden="true"
         >
-          <Icon className="h-5 w-5" stroke={1.75} />
+          <Icon className="h-5 w-5" weight="regular" />
         </span>
         <h2 className="headline text-2xl lg:text-3xl text-ink">{title}</h2>
       </div>
@@ -441,7 +441,7 @@ function InfoCard({ icon: Icon, accent, title, body, href, hrefLabel, external }
         style={{ backgroundColor: `${color}1A`, color }}
         aria-hidden="true"
       >
-        <Icon className="h-5 w-5" stroke={1.75} />
+        <Icon className="h-5 w-5" weight="regular" />
       </span>
       <div className="min-w-0 flex-1">
         <h3 className="card-title text-base text-ink">{title}</h3>
@@ -449,12 +449,12 @@ function InfoCard({ icon: Icon, accent, title, body, href, hrefLabel, external }
         {hrefLabel && (
           <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-700">
             {hrefLabel}
-            <IconArrowRight className="h-3 w-3" stroke={2} />
+            <ArrowRight className="h-3 w-3" weight="regular" />
           </span>
         )}
       </div>
       {isLink && (
-        <IconExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" stroke={2} />
+        <ArrowSquareOut className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" weight="regular" />
       )}
     </>
   );

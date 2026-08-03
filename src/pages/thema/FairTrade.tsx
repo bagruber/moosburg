@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import {
-  IconLeaf,
-  IconArrowRight,
-  IconExternalLink,
-  IconBuildingStore,
-  IconCoffee,
-  IconBuildingCommunity,
-  IconChevronRight,
-  IconArrowLeft,
-} from "@tabler/icons-react";
+  Leaf,
+  ArrowRight,
+  ArrowSquareOut,
+  Storefront,
+  Coffee,
+  Buildings,
+  CaretRight,
+  ArrowLeft,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -32,16 +32,16 @@ const FAIR_PRODUKTE = [
   { name: "Wein „Moosburg zum Genießen“",  hint: "weiß und rot" },
 ];
 
-const GRUPPEN: { id: string; label: string; icon: typeof IconBuildingStore; tags: string[] }[] = [
+const GRUPPEN: { id: string; label: string; icon: typeof Storefront; tags: string[] }[] = [
   { id: "einzelhandel", label: "Einzelhandel",
-    icon: IconBuildingStore,
+    icon: Storefront,
     tags: ["Geschäfte", "Wohnen & Deko", "Kleidung & Mode", "Blumen & Garten",
            "Lebensmittel & Genuss", "Schreib- und Spielwaren", "Bücher"] },
   { id: "gastronomie",  label: "Gastronomie",
-    icon: IconCoffee,
+    icon: Coffee,
     tags: ["Kulinarisches", "Bäckereien & Metzgereien", "Cafés & Eisdielen", "Restaurants & Gaststätten"] },
   { id: "institutionen",label: "Vereine & Institutionen",
-    icon: IconBuildingCommunity,
+    icon: Buildings,
     tags: ["Schulen", "Bildung & Soziales", "Vereine & Kulturelles", "Gesellschaft"] },
 ];
 
@@ -108,7 +108,7 @@ export function FairTrade() {
                 <li key={p.name} className="flex items-center gap-3 rounded-lg border border-rb-5/30 bg-rb-5/5 px-4 py-3 text-sm"
                   style={{ borderColor: "color-mix(in srgb, var(--color-rb-5) 30%, transparent)",
                            backgroundColor: "color-mix(in srgb, var(--color-rb-5) 5%, transparent)" }}>
-                  <IconLeaf className="h-4 w-4 shrink-0" style={{ color: "var(--color-rb-5)" }} stroke={1.75} />
+                  <Leaf className="h-4 w-4 shrink-0" style={{ color: "var(--color-rb-5)" }} weight="regular" />
                   <div className="min-w-0 flex-1">
                     <div className="font-medium text-ink">{p.name}</div>
                     {p.hint && <div className="text-xs text-ink-muted">{p.hint}</div>}
@@ -134,7 +134,7 @@ export function FairTrade() {
                       heading={g.label}
                     />
                     <div className="-mt-2 mb-5 flex items-center gap-2 text-xs text-ink-muted">
-                      <Icon className="h-4 w-4" stroke={1.75} />
+                      <Icon className="h-4 w-4" weight="regular" />
                       <span>
                         Diese Betriebe führen mindestens ein Fair-Trade-Sortiment. Sie sind im
                         Firmen­verzeichnis mit <FairTradeBadge className="mx-0.5" /> markiert.
@@ -185,7 +185,7 @@ export function FairTrade() {
                 className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
               >
                 Steuerungs­gruppe kontaktieren
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                <ArrowRight className="h-3.5 w-3.5" weight="regular" />
               </Link>
             </section>
 
@@ -196,26 +196,26 @@ export function FairTrade() {
                   <a href="https://www.fairtrade-towns.de" target="_blank" rel="noreferrer"
                     className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Fairtrade-Towns Deutschland</span>
-                    <IconExternalLink className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowSquareOut className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.fairtrade-deutschland.de" target="_blank" rel="noreferrer"
                     className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Fairtrade Deutschland e.V.</span>
-                    <IconExternalLink className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowSquareOut className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </a>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/umwelt" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Klima & Umwelt in Moosburg</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/einkaufen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Einkaufen & Märkte</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -225,7 +225,7 @@ export function FairTrade() {
               to="/mein-moosburg/einkaufen"
               className="inline-flex items-center gap-1.5 text-xs text-ink-muted hover:text-red-700"
             >
-              <IconArrowLeft className="h-3 w-3" stroke={2} />
+              <ArrowLeft className="h-3 w-3" weight="regular" />
               Zurück zu Einkaufen & Märkte
             </Link>
           </aside>

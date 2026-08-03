@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconMessageDots,
-  IconArrowRight,
-  IconExternalLink,
-  IconMapPin,
-  IconCalendarEvent,
-  IconSend,
-  IconCheck,
-  IconChartBar,
-} from "@tabler/icons-react";
+  ChatCircleDots,
+  ArrowRight,
+  ArrowSquareOut,
+  MapPin,
+  CalendarDots,
+  PaperPlaneTilt,
+  Check,
+  ChartBar,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -98,10 +98,10 @@ export function Beteiligung() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{v.desc}</p>
                 <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-muted">
                   <span className="inline-flex items-center gap-1.5">
-                    <IconMessageDots className="h-3.5 w-3.5" stroke={1.75} /> {v.phase}
+                    <ChatCircleDots className="h-3.5 w-3.5" weight="regular" /> {v.phase}
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <IconCalendarEvent className="h-3.5 w-3.5" stroke={1.75} /> {v.frist}
+                    <CalendarDots className="h-3.5 w-3.5" weight="regular" /> {v.frist}
                   </span>
                 </div>
               </article>
@@ -128,7 +128,7 @@ export function Beteiligung() {
                 to="/mitgestalten/maengel-melden"
                 className="mt-5 inline-flex items-center gap-2 self-start rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
               >
-                <IconMapPin className="h-4 w-4" stroke={2} />
+                <MapPin className="h-4 w-4" weight="regular" />
                 Mangel melden
               </Link>
             </div>
@@ -171,7 +171,7 @@ export function Beteiligung() {
               )}
             >
               <div className="flex items-center justify-between">
-                <IconChartBar className="h-5 w-5 text-gold-200" stroke={1.75} />
+                <ChartBar className="h-5 w-5 text-gold-200" weight="regular" />
                 <span className="text-xs text-cream/60">{u.jahr}</span>
               </div>
               <h3 className="mt-3 card-title text-cream">{u.titel}</h3>
@@ -180,7 +180,7 @@ export function Beteiligung() {
                 <span className="font-display text-lg text-cream">
                   n = {u.n.toLocaleString("de-DE")}
                 </span>
-                <IconExternalLink className="h-4 w-4 text-gold-200 opacity-70 transition group-hover:opacity-100" stroke={2} />
+                <ArrowSquareOut className="h-4 w-4 text-gold-200 opacity-70 transition group-hover:opacity-100" weight="regular" />
               </div>
             </a>
           ))}
@@ -193,7 +193,7 @@ export function Beteiligung() {
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-gold-100"
           >
             Alle Datensätze im Data Hub
-            <IconExternalLink className="h-4 w-4" stroke={2} />
+            <ArrowSquareOut className="h-4 w-4" weight="regular" />
           </a>
         </Reveal>
       </SpotlightSection>
@@ -215,7 +215,7 @@ export function Beteiligung() {
               className="inline-flex items-center gap-2 text-sm font-medium text-red-700 hover:underline"
             >
               Nächsten Termin sehen
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </div>
@@ -235,7 +235,7 @@ function FeedbackForm() {
     return (
       <div className="flex flex-col items-start justify-center rounded-2xl border border-rb-5/30 bg-rb-5/5 p-7">
         <span className="grid h-12 w-12 place-items-center rounded-full bg-rb-5 text-cream">
-          <IconCheck className="h-6 w-6" stroke={2.5} />
+          <Check className="h-6 w-6" weight="bold" />
         </span>
         <h3 className="headline mt-4 text-xl text-ink">Danke für Ihren Hinweis!</h3>
         <p className="mt-2 text-sm text-ink-soft">
@@ -284,7 +284,7 @@ function FeedbackForm() {
         type="submit"
         className="mt-4 inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
       >
-        <IconSend className="h-4 w-4" stroke={2} />
+        <PaperPlaneTilt className="h-4 w-4" weight="regular" />
         Absenden
       </button>
       <p className="mt-3 text-xs text-ink-muted">

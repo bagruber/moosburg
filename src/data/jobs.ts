@@ -1,15 +1,15 @@
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconBuildingCommunity,
-  IconBabyCarriage,
-  IconBuildingBridge,
-  IconDeviceDesktop,
-  IconShovel,
-  IconSchool,
-  IconBook2,
-  IconTree,
-  IconHeartbeat,
-} from "@tabler/icons-react";
+  Buildings,
+  BabyCarriage,
+  Bridge,
+  Desktop,
+  Shovel,
+  GraduationCap,
+  BookOpen,
+  Tree,
+  Heartbeat,
+} from "@phosphor-icons/react";
 
 export type Bereich =
   | "Verwaltung"
@@ -57,7 +57,7 @@ export const jobs: Job[] = [
     spotlight: true,
     deadline: "2026-05-15",
     location: "Rathaus, 2. OG",
-    icon: IconTree,
+    icon: Tree,
     summary:
       "Treiben Sie das Klimaschutzkonzept der Stadt voran — von der CO₂-Bilanz über Förderanträge bis zur Bürgerbeteiligung.",
     highlights: [
@@ -80,7 +80,7 @@ export const jobs: Job[] = [
     deadline: "2026-05-08",
     closingSoon: true,
     location: "Bürgerbüro, EG",
-    icon: IconBuildingCommunity,
+    icon: Buildings,
     summary:
       "Erste Anlaufstelle für die Bürgerinnen und Bürger Moosburgs — An- und Ummeldungen, Pässe, Führungszeugnisse.",
     highlights: [
@@ -102,7 +102,7 @@ export const jobs: Job[] = [
     newPosting: true,
     deadline: "2026-06-30",
     location: "Drei-Rosen-Kindergarten, Pfettrach",
-    icon: IconBabyCarriage,
+    icon: BabyCarriage,
     summary:
       "Drei Stellen für unseren Drei-Rosen-Kindergarten — Krippe und Kindergartenbereich. Eigene KiTa-Plätze für Mitarbeitende möglich.",
     highlights: [
@@ -123,7 +123,7 @@ export const jobs: Job[] = [
     unbefristet: true,
     deadline: "2026-05-31",
     location: "Bauamt, 2. OG",
-    icon: IconBuildingBridge,
+    icon: Bridge,
     summary:
       "Planung, Ausschreibung und Bauleitung von Straßen- und Kanalbauprojekten in der Stadt.",
     highlights: [
@@ -144,7 +144,7 @@ export const jobs: Job[] = [
     newPosting: true,
     deadline: "2026-05-22",
     location: "Stadt-IT, Rathaus 2. OG",
-    icon: IconDeviceDesktop,
+    icon: Desktop,
     summary:
       "Betrieb der städtischen IT-Infrastruktur — Server, Netzwerk, Clients und Fachverfahren.",
     highlights: [
@@ -164,7 +164,7 @@ export const jobs: Job[] = [
     unbefristet: true,
     deadline: "2026-05-20",
     location: "Bauhof Moosburg-Süd",
-    icon: IconShovel,
+    icon: Shovel,
     summary:
       "Pflege öffentlicher Anlagen und Straßen, Winterdienst, Baumpflege — abwechslungsreiche Tätigkeit im Freien.",
     highlights: [
@@ -183,7 +183,7 @@ export const jobs: Job[] = [
     befristet: "3 Jahre, Ausbildungsbeginn September 2026",
     deadline: "2026-06-15",
     location: "Rathaus + Berufsschule Freising",
-    icon: IconSchool,
+    icon: GraduationCap,
     summary:
       "Drei spannende Ausbildungsjahre durch alle Ämter der Stadtverwaltung — wir suchen 2 Azubis ab Herbst.",
     highlights: [
@@ -204,7 +204,7 @@ export const jobs: Job[] = [
     deadline: "2026-05-12",
     closingSoon: true,
     location: "Stadtbibliothek Moosburg",
-    icon: IconBook2,
+    icon: BookOpen,
     summary:
       "Betreuung des Gebäudes der Stadtbibliothek — kleinere Reparaturen, Einrichtung von Veranstaltungsbestuhlung, Pflege Außenanlage.",
     highlights: ["50%-Stelle, flexible Lagezeiten", "Kombinierbar mit weiterer städt. Stelle"],
@@ -220,7 +220,7 @@ export const jobs: Job[] = [
     befristet: "saisonal, März bis Oktober",
     deadline: "2026-02-28",
     location: "Stadtgärtnerei",
-    icon: IconTree,
+    icon: Tree,
     summary:
       "Saisonale Verstärkung in der Stadtgärtnerei für die Sommermonate — Pflanzenpflege, Sommerflor.",
     highlights: ["Saisonarbeit Mär–Okt", "Wiedereinstellung im Folgejahr möglich"],
@@ -235,7 +235,7 @@ export const jobs: Job[] = [
     unbefristet: true,
     deadline: "2026-06-30",
     location: "BRK Kinderhort Sonnenschein, Mühltalstraße",
-    icon: IconBabyCarriage,
+    icon: BabyCarriage,
     external: true,
     summary:
       "Stellenanzeige des Bayerischen Roten Kreuzes — Kinderhort in städtischer Trägerschaftsbeziehung.",
@@ -252,7 +252,7 @@ export const jobs: Job[] = [
     unbefristet: true,
     deadline: "2026-07-15",
     location: "Haus St. Kastulus, Moosburg",
-    icon: IconHeartbeat,
+    icon: Heartbeat,
     external: true,
     summary:
       "Vollstationäre Pflegeeinrichtung der Caritas in Moosburg — Pflegefachkräfte für Wohnbereich C gesucht.",

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconSun,
-  IconCalendarEvent,
-  IconAlertTriangle,
-  IconBulb,
-  IconArrowRight,
-} from "@tabler/icons-react";
+  Sun,
+  CalendarDots,
+  Warning,
+  Lightbulb,
+  ArrowRight,
+} from "@phosphor-icons/react";
 import { upcomingEvents } from "@/routes";
 import { cn } from "@/lib/cn";
 
@@ -83,7 +83,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
 
   const tiles: Tile[] = [
     {
-      icon: IconSun,
+      icon: Sun,
       eyebrow: "Wetter heute",
       body: "Heiter, 18 °C",
       meta: "Pegel Isar: 1,32 m (normal)",
@@ -91,7 +91,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
       accent: "var(--color-gold-700)",
     },
     {
-      icon: IconCalendarEvent,
+      icon: CalendarDots,
       eyebrow: "Nächstes Event",
       body: event.title,
       meta: `${event.day}. ${event.month} · ${event.location}`,
@@ -99,7 +99,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
       accent: "var(--color-red-500)",
     },
     {
-      icon: IconAlertTriangle,
+      icon: Warning,
       eyebrow: "Akute Sperrung",
       body: "Stadtwaldstraße",
       meta: "Vollsperrung bis 07.08.2026",
@@ -107,7 +107,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
       accent: "var(--color-rb-3)",
     },
     ...(hideSeason ? [] : [{
-      icon: IconBulb,
+      icon: Lightbulb,
       eyebrow: "Tipp der Saison",
       body: season.label,
       to: season.to,
@@ -138,7 +138,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
                   style={{ backgroundColor: `color-mix(in srgb, ${t.accent} 12%, transparent)`, color: t.accent }}
                   aria-hidden="true"
                 >
-                  <Icon className="h-4.5 w-4.5" stroke={1.75} />
+                  <Icon className="h-4.5 w-4.5" weight="regular" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] font-display uppercase tracking-wider text-ink-muted">{t.eyebrow}</div>
@@ -147,7 +147,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
                     <div className="truncate text-xs text-ink-muted">{t.meta}</div>
                   )}
                 </div>
-                <IconArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" stroke={2} />
+                <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" weight="regular" />
               </>
             );
             const cls = "group flex items-start gap-2.5 rounded-xl border border-ink-line/40 bg-white p-3 transition hover:border-ink-line";

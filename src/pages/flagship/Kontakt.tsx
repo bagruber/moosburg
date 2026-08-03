@@ -1,34 +1,33 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconSearch,
-  IconPhone,
-  IconMail,
-  IconMapPin,
-  IconUsersGroup,
-  IconChevronRight,
-  IconClockHour4,
-  IconBuildingCommunity,
-  IconBuildingSkyscraper,
-  IconBuildingBank,
-  IconTools,
-  IconId,
-  IconHeart,
-  IconCar,
-  IconShield,
-  IconBook2,
-  IconUserCheck,
-  IconTrafficCone,
-  IconReceipt,
-  IconCash,
-  IconCoin,
-  IconSchool,
-  IconTruck,
-  IconPlant,
-  IconRecycle,
-  IconSwimming,
-} from "@tabler/icons-react";
+  Bank,
+  BookOpen,
+  Buildings,
+  Car,
+  CaretRight,
+  Clock,
+  Coin,
+  Envelope,
+  GraduationCap,
+  Heart,
+  IdentificationCard,
+  MagnifyingGlass,
+  MapPin,
+  Money,
+  PersonSimpleSwim,
+  Phone,
+  Plant,
+  Receipt,
+  Recycle,
+  Shield,
+  TrafficCone,
+  Truck,
+  UserCheck,
+  UsersThree,
+  Wrench,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -70,28 +69,28 @@ const ABTEILUNGEN: AbteilungDef[] = [
   {
     label: "Abteilung I: Allgemeine Verwaltung",
     lead: "Bürger­service, Standes­amt, Ordnung, IT, Stadt­marketing.",
-    icon: IconBuildingCommunity,
+    icon: Buildings,
     accentVar: "rb-6",   // cyan
     match: (n) => /^SG\s+1\d/i.test(n),
   },
   {
     label: "Abteilung II: Stadtbauamt",
     lead: "Bauen, Planung, Tiefbau, Straßen­verkehr, Gebühren.",
-    icon: IconBuildingSkyscraper,
+    icon: Buildings,
     accentVar: "rb-3",   // orange
     match: (n) => /^SG\s+2\d/i.test(n),
   },
   {
     label: "Abteilung III: Finanzwesen, Liegenschaften, Bildung",
     lead: "Kämmerei, Stadtkasse, Bildungs- und Erziehungs­wesen.",
-    icon: IconBuildingBank,
+    icon: Bank,
     accentVar: "rb-5",   // green
     match: (n) => /^SG\s+3\d/i.test(n),
   },
   {
     label: "Operative Einheiten",
     lead: "Kommunaler Hochbau und die zugeordneten städtischen Betriebe.",
-    icon: IconTools,
+    icon: Wrench,
     accentVar: "rb-7",   // indigo
     match: (n) => OPERATIVE_NAMES.has(n),
   },
@@ -104,23 +103,23 @@ function abteilungFor(sgName: string): number | null {
 
 /** Per-Sachgebiet icon, keyed by exact name. */
 const SG_ICONS: Record<string, Icon> = {
-  "SG 10 Geschäftsleitung, Organisation, Stadtmarketing, Kultur, Informations- und Kommunikationstechnik, Volksfeste": IconUserCheck,
-  "SG 11 Gewerbe-, Ordnungs-, Sozial-und Fundamt": IconShield,
-  "SG 12 Einwohnermelde- und Passamt": IconId,
-  "SG 12 Standesamt": IconHeart,
-  "SG 13 Personal, Stadtbücherei, Archiv": IconBook2,
-  "SG 14 Kraftfahrzeugzulassungsbehörde": IconCar,
-  "SG 20 Stadtbau- und Planungsamt, Tiefbau, Kaufm. Leitung Wasserwerk": IconBuildingSkyscraper,
-  "SG 21 Straßenverkehrsbehörde": IconTrafficCone,
-  "SG 22 Beitrags- und Gebührenstelle": IconReceipt,
-  "SG 30 Kämmerei, Steueramt, Liegenschaftsamt": IconCash,
-  "SG 31 Stadtkasse": IconCoin,
-  "SG 32 Bildungs- und Erziehungswesen, Stadtjugendpflege, KVÜ, Parkraumbewirtschaftung": IconSchool,
-  "SG Kommunaler Hochbau": IconTools,
-  "Bauhof": IconTruck,
-  "Stadtgärtnerei": IconPlant,
-  "Wertstoffhof": IconRecycle,
-  "Badebetriebe": IconSwimming,
+  "SG 10 Geschäftsleitung, Organisation, Stadtmarketing, Kultur, Informations- und Kommunikationstechnik, Volksfeste": UserCheck,
+  "SG 11 Gewerbe-, Ordnungs-, Sozial-und Fundamt": Shield,
+  "SG 12 Einwohnermelde- und Passamt": IdentificationCard,
+  "SG 12 Standesamt": Heart,
+  "SG 13 Personal, Stadtbücherei, Archiv": BookOpen,
+  "SG 14 Kraftfahrzeugzulassungsbehörde": Car,
+  "SG 20 Stadtbau- und Planungsamt, Tiefbau, Kaufm. Leitung Wasserwerk": Buildings,
+  "SG 21 Straßenverkehrsbehörde": TrafficCone,
+  "SG 22 Beitrags- und Gebührenstelle": Receipt,
+  "SG 30 Kämmerei, Steueramt, Liegenschaftsamt": Money,
+  "SG 31 Stadtkasse": Coin,
+  "SG 32 Bildungs- und Erziehungswesen, Stadtjugendpflege, KVÜ, Parkraumbewirtschaftung": GraduationCap,
+  "SG Kommunaler Hochbau": Wrench,
+  "Bauhof": Truck,
+  "Stadtgärtnerei": Plant,
+  "Wertstoffhof": Recycle,
+  "Badebetriebe": PersonSimpleSwim,
 };
 
 const onlySachgebiete = sachgebiete.filter((sg) => abteilungFor(sg.name) !== null);
@@ -193,7 +192,7 @@ export function Kontakt() {
                           style={{ backgroundColor: `${accent}1A`, color: accent }}
                           aria-hidden="true"
                         >
-                          <AbtIcon className="h-5 w-5" stroke={1.75} />
+                          <AbtIcon className="h-5 w-5" weight="regular" />
                         </span>
                         <div className="min-w-0">
                           <h3 className="card-title text-lg text-ink">{abt.label}</h3>
@@ -202,7 +201,7 @@ export function Kontakt() {
                       </div>
                       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                         {sgsInAbt.map(({ sg, count }) => {
-                          const SgIcon = SG_ICONS[sg.name] ?? IconBuildingCommunity;
+                          const SgIcon = SG_ICONS[sg.name] ?? Buildings;
                           const isActive = filterSg === sg.name;
                           return (
                             <li key={sg.id}>
@@ -229,7 +228,7 @@ export function Kontakt() {
                                   style={{ backgroundColor: `${accent}14`, color: accent }}
                                   aria-hidden="true"
                                 >
-                                  <SgIcon className="h-3.5 w-3.5" stroke={1.75} />
+                                  <SgIcon className="h-3.5 w-3.5" weight="regular" />
                                 </span>
                                 <span className="min-w-0 flex-1">
                                   <span className={cn("block truncate font-medium", isActive ? "" : "text-ink")}>
@@ -243,7 +242,7 @@ export function Kontakt() {
                                 </span>
                                 <span className={cn("flex shrink-0 items-center gap-1 text-xs", isActive ? "opacity-80" : "text-ink-muted")}>
                                   <span>{count}</span>
-                                  <IconUsersGroup className="h-3.5 w-3.5" stroke={1.75} />
+                                  <UsersThree className="h-3.5 w-3.5" weight="regular" />
                                 </span>
                               </button>
                             </li>
@@ -267,7 +266,7 @@ export function Kontakt() {
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <label className="flex flex-1 items-center rounded-full border-2 border-ink-line bg-white px-4 focus-within:border-red-500">
-                  <IconSearch className="h-5 w-5 text-ink-muted" stroke={1.75} />
+                  <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
                   <input
                     type="search"
                     placeholder="Name, Aufgabe oder Sachgebiet suchen…"
@@ -323,20 +322,20 @@ export function Kontakt() {
               <h3 className="card-title text-base text-ink">Rathaus Moosburg</h3>
               <dl className="mt-3 space-y-2.5 text-sm">
                 <div className="flex items-start gap-2">
-                  <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
                   <span className="text-ink">
                     Stadtplatz 13<br />
                     85368 Moosburg an der Isar
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
                   <a href="tel:+49876168400" className="text-ink hover:text-red-700">
                     08761 684-0
                   </a>
                 </div>
                 <div className="flex items-start gap-2">
-                  <IconMail className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+                  <Envelope className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
                   <a href="mailto:info@moosburg.de" className="text-ink hover:text-red-700">
                     info@moosburg.de
                   </a>
@@ -344,7 +343,7 @@ export function Kontakt() {
               </dl>
               <div className="mt-4 border-t border-gold-500/30 pt-3">
                 <div className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gold-700">
-                  <IconClockHour4 className="h-3.5 w-3.5" stroke={2} />
+                  <Clock className="h-3.5 w-3.5" weight="regular" />
                   Öffnungszeiten
                 </div>
                 <ul className="space-y-0.5 text-xs text-ink-soft">
@@ -372,7 +371,7 @@ export function Kontakt() {
                     Über 130 Verwaltungsleistungen mit Ansprechpartner.
                   </p>
                 </div>
-                <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted group-hover:text-red-700" stroke={2} />
+                <CaretRight className="h-4 w-4 shrink-0 text-ink-muted group-hover:text-red-700" weight="regular" />
               </Link>
             </section>
           </aside>

@@ -1,13 +1,13 @@
 import { useMemo, useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
-  IconSearch,
-  IconExternalLink,
-  IconStar,
-  IconCheck,
-  IconRefresh,
-  IconChevronDown,
-} from "@tabler/icons-react";
+  MagnifyingGlass,
+  ArrowSquareOut,
+  Star,
+  Check,
+  ArrowsClockwise,
+  CaretDown,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -111,7 +111,7 @@ export function Firmen() {
         <div className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
             <label className="flex flex-1 items-center rounded-full border-2 border-ink-line bg-white px-5 focus-within:border-red-500">
-              <IconSearch className="h-5 w-5 text-ink-muted" stroke={1.75} />
+              <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
               <input
                 type="search"
                 placeholder="Name, Branche, Stichwort suchen…"
@@ -131,7 +131,7 @@ export function Firmen() {
                 active={onlyMoma}
                 onClick={() => setOnlyMoma(!onlyMoma)}
                 activeColor="var(--color-gold-700)"
-                icon={<IconStar className="h-3.5 w-3.5" stroke={2.25} />}
+                icon={<Star className="h-3.5 w-3.5" weight="bold" />}
                 label="MoMa-Mitglieder"
               />
               <FilterChip
@@ -147,7 +147,7 @@ export function Firmen() {
               {anyFilter && (
                 <button onClick={resetFilters}
                   className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs text-ink-muted hover:text-red-700">
-                  <IconRefresh className="h-3 w-3" stroke={2} />
+                  <ArrowsClockwise className="h-3 w-3" weight="regular" />
                   alle zurücksetzen
                 </button>
               )}
@@ -182,9 +182,9 @@ export function Firmen() {
               onClick={() => setShowAllKats(!showAllKats)}
               className="inline-flex items-center gap-1 rounded-full border border-dashed border-ink-line px-3 py-1 text-xs font-medium text-ink-soft hover:border-red-500 hover:text-red-700"
             >
-              <IconChevronDown
+              <CaretDown
                 className={cn("h-3 w-3 transition-transform", showMore && "rotate-180")}
-                stroke={2}
+                weight="regular"
               />
               {showMore ? "weniger Branchen" : `${moreKats.length} weitere Branchen`}
             </button>
@@ -206,7 +206,7 @@ export function Firmen() {
             className="ml-auto inline-flex items-center gap-1 text-xs font-medium text-red-700 hover:underline"
           >
             Eintrag hinzufügen / ändern
-            <IconExternalLink className="h-3 w-3" stroke={2} />
+            <ArrowSquareOut className="h-3 w-3" weight="regular" />
           </a>
         </div>
 
@@ -245,7 +245,7 @@ export function Firmen() {
                 <li key={x.to}>
                   <Link to={x.to} className="flex items-center justify-between gap-2 rounded-lg bg-white px-3 py-2 text-sm text-ink hover:bg-cream-dark">
                     <span>{x.label}</span>
-                    <IconCheck className="h-3.5 w-3.5 text-ink-muted" stroke={2} />
+                    <Check className="h-3.5 w-3.5 text-ink-muted" weight="regular" />
                   </Link>
                 </li>
               ))}

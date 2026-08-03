@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
-import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
+import { ArrowRight, ArrowSquareOut } from "@phosphor-icons/react";
 import { PersonalizedBadge } from "./PersonalizedBadge";
 import { cn } from "@/lib/cn";
 
@@ -46,7 +46,7 @@ export function TipCard({
         style={{ backgroundColor: `color-mix(in srgb, ${color} 14%, transparent)`, color }}
         aria-hidden="true"
       >
-        <Icon className="h-4.5 w-4.5" stroke={1.75} />
+        <Icon className="h-4.5 w-4.5" weight="regular" />
       </span>
       <div className="min-w-0 flex-1">
         {personalReason && (
@@ -57,8 +57,8 @@ export function TipCard({
         <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium" style={{ color }}>
           {ctaLabel}
           {isExternal
-            ? <IconExternalLink className="h-3 w-3" stroke={2} />
-            : <IconArrowRight className="h-3 w-3" stroke={2} />}
+            ? <ArrowSquareOut className="h-3 w-3" weight="regular" />
+            : <ArrowRight className="h-3 w-3" weight="regular" />}
         </span>
       </div>
     </>

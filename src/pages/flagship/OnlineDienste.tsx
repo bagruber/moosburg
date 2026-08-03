@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
 import {
-  IconSearch,
-  IconExternalLink,
-  IconWorld,
-  IconChevronDown,
-  IconFileText,
-  IconPencil,
-  IconCalendarEvent,
-} from "@tabler/icons-react";
+  MagnifyingGlass,
+  ArrowSquareOut,
+  Globe,
+  CaretDown,
+  FileText,
+  Pencil,
+  CalendarDots,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -160,11 +160,11 @@ function groupByLetter(items: string[]) {
 const ALL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split("");
 
 const MODE_META: Record<ServiceMode["kind"], {
-  badge: string; icon: typeof IconWorld; accent: string;
+  badge: string; icon: typeof Globe; accent: string;
 }> = {
-  external: { badge: "Online",          icon: IconWorld,          accent: "rb-6" },
-  inline:   { badge: "Anfrage hier",    icon: IconPencil,         accent: "rb-5" },
-  pdf:      { badge: "PDF-Antrag",      icon: IconFileText,       accent: "rb-3" },
+  external: { badge: "Online",          icon: Globe,          accent: "rb-6" },
+  inline:   { badge: "Anfrage hier",    icon: Pencil,         accent: "rb-5" },
+  pdf:      { badge: "PDF-Antrag",      icon: FileText,       accent: "rb-3" },
 };
 
 function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
@@ -177,7 +177,7 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
         className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-medium text-cream hover:bg-red-600"
       >
         Auf {mode.portal} erledigen
-        <IconExternalLink className="h-4 w-4" stroke={2} />
+        <ArrowSquareOut className="h-4 w-4" weight="regular" />
       </a>
     );
   }
@@ -188,7 +188,7 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
           href={mode.href}
           className="inline-flex items-center gap-2 rounded-lg border-2 border-ink bg-cream px-4 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
         >
-          <IconFileText className="h-4 w-4" stroke={1.75} />
+          <FileText className="h-4 w-4" weight="regular" />
           {mode.formName} (PDF)
         </a>
         {mode.mailto && (
@@ -237,7 +237,7 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
 function ServiceFallback() {
   return (
     <div className="flex items-start gap-3 rounded-lg border border-ink-line/40 bg-cream-dark/30 p-3">
-      <IconCalendarEvent className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+      <CalendarDots className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
       <p className="text-sm text-ink-soft">
         Für diese Leistung ist <strong>kein Online-Vorgang</strong> hinterlegt. Bitte
         wenden Sie sich an die unten genannte Ansprechperson oder vereinbaren Sie einen{" "}
@@ -280,7 +280,7 @@ export function OnlineDienste() {
         <div className="mx-auto max-w-7xl px-4 py-4 lg:px-8">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <label className="flex flex-1 items-center rounded-full border-2 border-ink-line bg-white px-5 focus-within:border-red-500">
-              <IconSearch className="h-5 w-5 text-ink-muted" stroke={1.75} />
+              <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
               <input
                 type="search"
                 placeholder="Dienstleistung suchen…"
@@ -312,7 +312,7 @@ export function OnlineDienste() {
               }
               aria-pressed={onlyOnline}
             >
-              <IconWorld className="h-4 w-4" stroke={1.75} />
+              <Globe className="h-4 w-4" weight="regular" />
               Nur online erledigbar
               {onlyOnline && <span className="opacity-70">({filtered.length})</span>}
             </button>
@@ -376,9 +376,9 @@ export function OnlineDienste() {
                   <li key={aufgabe}>
                     <details className="group rounded-lg border border-ink-line/50 bg-white open:shadow-soft">
                       <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 marker:content-none hover:bg-cream">
-                        <IconChevronDown
+                        <CaretDown
                           className="h-4 w-4 shrink-0 text-ink-muted transition-transform group-open:rotate-180"
-                          stroke={2}
+                          weight="regular"
                         />
                         <span className="min-w-0 flex-1 text-sm text-ink">{aufgabe}</span>
                         {meta && (
@@ -389,7 +389,7 @@ export function OnlineDienste() {
                               color: `var(--color-${meta.accent})`,
                             }}
                           >
-                            <meta.icon className="h-3 w-3" stroke={2} />
+                            <meta.icon className="h-3 w-3" weight="regular" />
                             {meta.badge}
                           </span>
                         )}

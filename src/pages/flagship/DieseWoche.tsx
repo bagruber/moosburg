@@ -1,25 +1,25 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconUserCheck,
-  IconArrowRight,
-  IconClock,
-  IconMapPin,
-  IconSun,
-  IconCloud,
-  IconCloudRain,
-  IconDroplet,
-  IconChevronRight,
-  IconBabyCarriage,
-  IconUsersGroup,
-  IconShoppingBag,
-  IconToolsKitchen2,
-  IconStethoscope,
-  IconBallFootball,
-  IconCar,
-  IconLeaf,
-  IconConfetti,
-} from "@tabler/icons-react";
+  UserCheck,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Sun,
+  Cloud,
+  CloudRain,
+  Drop,
+  CaretRight,
+  BabyCarriage,
+  UsersThree,
+  ShoppingBag,
+  ForkKnife,
+  Stethoscope,
+  SoccerBall,
+  Car,
+  Leaf,
+  Confetti,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -124,9 +124,9 @@ const SAISON: Saison[] = [
    springt. In einer echten Site käme das vom DWD. ─────────────────────── */
 type Wetter = { icon: Icon; label: string; temp: string };
 const WETTER_POOL: Wetter[] = [
-  { icon: IconSun,       label: "Heiter",          temp: "18 °C" },
-  { icon: IconCloud,     label: "Wolkig",          temp: "15 °C" },
-  { icon: IconCloudRain, label: "Leichter Regen",  temp: "12 °C" },
+  { icon: Sun,       label: "Heiter",          temp: "18 °C" },
+  { icon: Cloud,     label: "Wolkig",          temp: "15 °C" },
+  { icon: CloudRain, label: "Leichter Regen",  temp: "12 °C" },
 ];
 function pickWetter(now: Date): Wetter {
   // Tages-stabiler Index: Tag-im-Jahr modulo Pool-Länge
@@ -211,14 +211,14 @@ export function DieseWoche() {
   const personalSection = (
     <section>
       <div className="flex items-center gap-2 text-xs font-display uppercase tracking-wider text-turquoise-accent">
-        <IconUserCheck className="h-3.5 w-3.5" stroke={2} />
+        <UserCheck className="h-3.5 w-3.5" weight="regular" />
         Für Sie diese Woche
       </div>
       <ul className="mt-3 grid gap-3 sm:grid-cols-2">
         {profile.hasChildren && (
           <li>
             <TipCard
-              icon={IconBabyCarriage}
+              icon={BabyCarriage}
               title="Familien-Sonntag im Eisstadion"
               body="Sonntag 14–17 Uhr · Kinder bis 12 frei, mit Familien­tarif für Eltern."
               personalReason="Sie haben Kinder"
@@ -230,7 +230,7 @@ export function DieseWoche() {
         {profile.newInTown && (
           <li>
             <TipCard
-              icon={IconUsersGroup}
+              icon={UsersThree}
               title="Neubürger­empfang im Juni"
               body="Die Stadt lädt alle Zugezogenen der letzten 12 Monate ein. Rundgang, Sektempfang im Rathaus."
               personalReason="Sie sind neu in Moosburg"
@@ -242,7 +242,7 @@ export function DieseWoche() {
         {profile.receivesPension && (
           <li>
             <TipCard
-              icon={IconUsersGroup}
+              icon={UsersThree}
               title="Seniorennachmittag im Pfarrheim"
               body="Donnerstag 14:30 · Kaffee, Kuchen, Vortrag „Sicher zuhause leben“."
               personalReason="Sie beziehen Rente"
@@ -277,18 +277,18 @@ export function DieseWoche() {
             <span className="font-display text-ink">{weekdayDate}</span>
             {heutFeiertag && (
               <span className="inline-flex items-center gap-1 rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream">
-                <IconConfetti className="h-3 w-3" stroke={2} />
+                <Confetti className="h-3 w-3" weight="regular" />
                 Feiertag · {heutFeiertag}
               </span>
             )}
           </div>
           <div className="flex items-center gap-4 text-xs text-ink-soft">
             <span className="inline-flex items-center gap-1.5">
-              <WetterIcon className="h-3.5 w-3.5 text-gold-700" stroke={1.75} />
+              <WetterIcon className="h-3.5 w-3.5 text-gold-700" weight="regular" />
               {wetter.label}, {wetter.temp}
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <IconDroplet className="h-3.5 w-3.5" style={{ color: "var(--color-rb-6)" }} stroke={1.75} />
+              <Drop className="h-3.5 w-3.5" style={{ color: "var(--color-rb-6)" }} weight="regular" />
               Isar-Pegel 1,32 m · normal
             </span>
           </div>
@@ -326,8 +326,8 @@ export function DieseWoche() {
                     {e.title}
                   </h3>
                   <div className="mt-2 flex items-center gap-1 text-xs text-ink-muted">
-                    <IconClock className="h-3 w-3" stroke={2} />
-                    <IconMapPin className="ml-1 h-3 w-3" stroke={2} />
+                    <Clock className="h-3 w-3" weight="regular" />
+                    <MapPin className="ml-1 h-3 w-3" weight="regular" />
                     <span className="truncate">{e.location}</span>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ export function DieseWoche() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
             Vollständiger Veranstaltungs­kalender
-            <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+            <ArrowRight className="h-3.5 w-3.5" weight="regular" />
           </Link>
         </div>
       </article>
@@ -375,7 +375,7 @@ export function DieseWoche() {
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-3 text-sm font-medium text-ink hover:bg-cream-dark"
             >
               {saison.cta}
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </Reveal>
         </div>
@@ -471,12 +471,12 @@ export function DieseWoche() {
         </Reveal>
         <ul className="-mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { to: "/mein-moosburg/einkaufen",  icon: IconShoppingBag,    label: "Einkaufen & Märkte" },
-            { to: "/mein-moosburg/essen",      icon: IconToolsKitchen2,  label: "Essen & Trinken" },
-            { to: "/mein-moosburg/gesundheit", icon: IconStethoscope,    label: "Gesundheit" },
-            { to: "/mein-moosburg/freizeit",   icon: IconBallFootball,   label: "Freizeit & Sport" },
-            { to: "/mein-moosburg/mobilitaet", icon: IconCar,            label: "Mobilität & Verkehr" },
-            { to: "/mein-moosburg/umwelt",     icon: IconLeaf,           label: "Umwelt & Klima" },
+            { to: "/mein-moosburg/einkaufen",  icon: ShoppingBag,    label: "Einkaufen & Märkte" },
+            { to: "/mein-moosburg/essen",      icon: ForkKnife,  label: "Essen & Trinken" },
+            { to: "/mein-moosburg/gesundheit", icon: Stethoscope,    label: "Gesundheit" },
+            { to: "/mein-moosburg/freizeit",   icon: SoccerBall,   label: "Freizeit & Sport" },
+            { to: "/mein-moosburg/mobilitaet", icon: Car,            label: "Mobilität & Verkehr" },
+            { to: "/mein-moosburg/umwelt",     icon: Leaf,           label: "Umwelt & Klima" },
           ].map((t) => {
             const Icon = t.icon;
             return (
@@ -485,9 +485,9 @@ export function DieseWoche() {
                   to={t.to}
                   className="group flex items-center gap-3 rounded-xl border border-ink-line/50 bg-white px-4 py-3 text-sm transition hover:border-red-500"
                 >
-                  <Icon className="h-4 w-4 text-ink-muted group-hover:text-red-700" stroke={1.75} />
+                  <Icon className="h-4 w-4 text-ink-muted group-hover:text-red-700" weight="regular" />
                   <span className="flex-1 text-ink">{t.label}</span>
-                  <IconChevronRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" stroke={2} />
+                  <CaretRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" weight="regular" />
                 </Link>
               </li>
             );

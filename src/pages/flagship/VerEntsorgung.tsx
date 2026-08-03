@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconTrash,
-  IconDroplet,
-  IconMap2,
-  IconRecycle,
-  IconBottle,
-  IconNews,
-  IconClockHour4,
-  IconMapPin,
-  IconPhone,
-  IconAlertTriangle,
-  IconArrowRight,
-  IconExternalLink,
-  IconFileText,
-} from "@tabler/icons-react";
+  Trash,
+  Drop,
+  MapTrifold,
+  Recycle,
+  Wine,
+  Newspaper,
+  Clock,
+  MapPin,
+  Phone,
+  Warning,
+  ArrowRight,
+  ArrowSquareOut,
+  FileText,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -24,9 +24,9 @@ import { AnsprechpartnerCard, AnsprechpartnerStrip } from "@/components/Ansprech
 const route = findRoute("rathaus/ver-entsorgung")!;
 
 const SECTIONS = [
-  { id: "abfall",     label: "Abfall & Wertstoffe", icon: IconTrash },
-  { id: "wasser",     label: "Wasser & Abwasser",   icon: IconDroplet },
-  { id: "standorte",  label: "Standorte im Stadtgebiet", icon: IconMap2 },
+  { id: "abfall",     label: "Abfall & Wertstoffe", icon: Trash },
+  { id: "wasser",     label: "Wasser & Abwasser",   icon: Drop },
+  { id: "standorte",  label: "Standorte im Stadtgebiet", icon: MapTrifold },
 ] as const;
 
 /* ── Abfall: real gebühren-rows from /Abfallentsorgung scrape ─────────── */
@@ -110,18 +110,18 @@ function EinrichtungCard({ data, accent = "rb-6" }: { data: Einrichtung; accent?
       <h3 className="card-title text-lg text-ink">{data.name}</h3>
       <dl className="mt-3 space-y-2 text-sm">
         <div className="flex items-start gap-2">
-          <IconMapPin className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} stroke={1.75} />
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} weight="regular" />
           <span className="text-ink">{data.adresse}</span>
         </div>
         <div className="flex items-start gap-2">
-          <IconPhone className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} stroke={1.75} />
+          <Phone className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} weight="regular" />
           <a href={`tel:${data.telefon.replace(/\s+/g, "")}`} className="text-ink hover:text-red-700">
             {data.telefon}
           </a>
         </div>
         {data.www && (
           <div className="flex items-start gap-2">
-            <IconExternalLink className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} stroke={1.75} />
+            <ArrowSquareOut className="mt-0.5 h-4 w-4 shrink-0" style={{ color }} weight="regular" />
             <a
               href={`https://${data.www}`}
               target="_blank"
@@ -146,7 +146,7 @@ function SectionAnchor({ id, icon: Icon, label }: { id: string; icon: Icon; labe
       href={`#${id}`}
       className="group flex items-center gap-2 rounded-full border border-ink-line bg-white px-4 py-2 text-sm text-ink-soft transition hover:border-red-500 hover:text-red-700"
     >
-      <Icon className="h-4 w-4" stroke={1.75} />
+      <Icon className="h-4 w-4" weight="regular" />
       <span>{label}</span>
     </a>
   );
@@ -186,7 +186,7 @@ export function VerEntsorgung() {
                   className="grid h-11 w-11 place-items-center rounded-xl"
                   style={{ backgroundColor: "var(--color-rb-5)1A", color: "var(--color-rb-5)" }}
                 >
-                  <IconTrash className="h-5 w-5" stroke={1.75} />
+                  <Trash className="h-5 w-5" weight="regular" />
                 </span>
                 <h2 className="headline text-2xl lg:text-3xl text-ink">Abfall & Wertstoffe</h2>
               </div>
@@ -194,7 +194,7 @@ export function VerEntsorgung() {
               {/* Müllkalender Quick-Link */}
               <div className="mt-6 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
                 <div className="flex items-start gap-3">
-                  <IconNews className="mt-0.5 h-5 w-5 text-gold-700 shrink-0" stroke={1.75} />
+                  <Newspaper className="mt-0.5 h-5 w-5 text-gold-700 shrink-0" weight="regular" />
                   <div className="flex-1">
                     <h3 className="card-title text-base text-ink">Müllkalender für Ihre Adresse</h3>
                     <p className="mt-1 text-sm text-ink-soft">
@@ -206,7 +206,7 @@ export function VerEntsorgung() {
                       className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
                     >
                       Termine ansehen
-                      <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                      <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                     </Link>
                   </div>
                 </div>
@@ -222,11 +222,11 @@ export function VerEntsorgung() {
                   <div className="rounded-2xl border border-ink-line/50 bg-white p-5">
                     <dl className="space-y-2 text-sm">
                       <div className="flex items-start gap-2">
-                        <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                         <span className="text-ink">{WERTSTOFFHOF.adresse}</span>
                       </div>
                       <div className="flex items-start gap-2">
-                        <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                        <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                         <a href={`tel:${WERTSTOFFHOF.telefon.replace(/\s+/g, "")}`} className="text-ink hover:text-red-700">
                           {WERTSTOFFHOF.telefon}
                         </a>
@@ -234,7 +234,7 @@ export function VerEntsorgung() {
                     </dl>
                     <div className="mt-4 border-t border-ink-line/30 pt-3">
                       <div className="mb-2 flex items-center gap-1.5 text-xs font-display uppercase tracking-wider text-ink-muted">
-                        <IconClockHour4 className="h-3.5 w-3.5" stroke={2} />
+                        <Clock className="h-3.5 w-3.5" weight="regular" />
                         Öffnungszeiten
                       </div>
                       <ul className="space-y-0.5 text-sm text-ink-soft">
@@ -302,7 +302,7 @@ export function VerEntsorgung() {
                   className="grid h-11 w-11 place-items-center rounded-xl"
                   style={{ backgroundColor: "var(--color-rb-6)1A", color: "var(--color-rb-6)" }}
                 >
-                  <IconDroplet className="h-5 w-5" stroke={1.75} />
+                  <Drop className="h-5 w-5" weight="regular" />
                 </span>
                 <h2 className="headline text-2xl lg:text-3xl text-ink">Wasser & Abwasser</h2>
               </div>
@@ -329,7 +329,7 @@ export function VerEntsorgung() {
 
               <div className="mt-8 rounded-xl border border-red-500/30 bg-red-50 p-4">
                 <div className="flex items-start gap-3">
-                  <IconAlertTriangle className="mt-0.5 h-5 w-5 text-red-700 shrink-0" stroke={1.75} />
+                  <Warning className="mt-0.5 h-5 w-5 text-red-700 shrink-0" weight="regular" />
                   <div>
                     <h4 className="card-title text-base text-ink">Störung oder Wasserrohrbruch?</h4>
                     <p className="mt-1 text-sm text-ink-soft">
@@ -350,7 +350,7 @@ export function VerEntsorgung() {
                   className="grid h-11 w-11 place-items-center rounded-xl"
                   style={{ backgroundColor: "var(--color-rb-7)1A", color: "var(--color-rb-7)" }}
                 >
-                  <IconMap2 className="h-5 w-5" stroke={1.75} />
+                  <MapTrifold className="h-5 w-5" weight="regular" />
                 </span>
                 <h2 className="headline text-2xl lg:text-3xl text-ink">Standorte im Stadtgebiet</h2>
               </div>
@@ -359,7 +359,7 @@ export function VerEntsorgung() {
               <div className="mt-6">
                 <div className="flex items-baseline gap-2">
                   <h3 className="card-title text-xl text-ink">Altglas- und Papiercontainer</h3>
-                  <IconBottle className="h-4 w-4 text-ink-muted" stroke={1.75} />
+                  <Wine className="h-4 w-4 text-ink-muted" weight="regular" />
                 </div>
                 <p className="mt-1 text-sm text-ink-soft">
                   Standorte im Stadtgebiet. Papiercontainer sind nur an drei davon vorhanden —
@@ -374,7 +374,7 @@ export function VerEntsorgung() {
                     style={{ backgroundColor: "var(--color-rb-5)1A", color: "var(--color-rb-5)" }}
                     aria-hidden="true"
                   >
-                    <IconFileText className="h-3.5 w-3.5" stroke={1.75} />
+                    <FileText className="h-3.5 w-3.5" weight="regular" />
                   </span>
                   <span>= Papiercontainer vorhanden</span>
                 </div>
@@ -385,7 +385,7 @@ export function VerEntsorgung() {
                       key={s.strasse}
                       className="flex items-start gap-3 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm"
                     >
-                      <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                       <div className="flex-1">
                         <div className="font-medium text-ink">{s.strasse}</div>
                         {s.hinweis && <div className="text-xs text-ink-muted">{s.hinweis}</div>}
@@ -397,7 +397,7 @@ export function VerEntsorgung() {
                           title="Papiercontainer vorhanden"
                           aria-label="Papiercontainer vorhanden"
                         >
-                          <IconFileText className="h-3.5 w-3.5" stroke={1.75} />
+                          <FileText className="h-3.5 w-3.5" weight="regular" />
                         </span>
                       )}
                     </li>
@@ -417,7 +417,7 @@ export function VerEntsorgung() {
                       key={s}
                       className="flex items-start gap-3 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm"
                     >
-                      <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                       <span className="text-ink">{s}</span>
                     </li>
                   ))}
@@ -434,19 +434,19 @@ export function VerEntsorgung() {
                 <li>
                   <Link to="/konto" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Mein persönlicher Abfallkalender</span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/rathaus/online-dienste" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Sperrmüll-Anmeldung</span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mitgestalten/maengel-melden" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Defekten Container melden</span>
-                    <IconArrowRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -458,11 +458,11 @@ export function VerEntsorgung() {
                 <h4 className="card-title text-base text-ink">Abfallberatung im Landratsamt Freising</h4>
                 <dl className="mt-2 space-y-1.5 text-sm">
                   <div className="flex items-start gap-2">
-                    <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                     <span className="text-ink-soft">Landshuter Str. 31 · 85356 Freising</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
                     <a href="tel:08161600417" className="text-ink hover:text-red-700">08161 600417</a>
                   </div>
                 </dl>
@@ -471,7 +471,7 @@ export function VerEntsorgung() {
 
             <section className="rounded-xl border border-ink-line/40 bg-cream-dark/40 p-4">
               <div className="flex items-start gap-3">
-                <IconRecycle className="mt-0.5 h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
+                <Recycle className="mt-0.5 h-5 w-5 shrink-0 text-ink-muted" weight="regular" />
                 <p className="text-xs text-ink-soft">
                   Müll vermeiden, Wertstoffe trennen, Hundebesitzer-Etikette. Moosburg ist sauber,
                   wenn alle mitmachen. Vielen Dank!

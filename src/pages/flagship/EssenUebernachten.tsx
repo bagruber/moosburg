@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { IconBed, IconToolsKitchen2, IconMapPin, IconArrowRight, IconChevronRight } from "@tabler/icons-react";
+import { Bed, ForkKnife, MapPin, ArrowRight, CaretRight } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -37,10 +37,10 @@ export function EssenUebernachten() {
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         {/* Tab-Umschalter */}
         <div className="mb-10 inline-flex rounded-xl border border-ink-line bg-cream p-1">
-          <TabButton active={tab === "uebernachten"} onClick={() => setTab("uebernachten")} icon={IconBed}>
+          <TabButton active={tab === "uebernachten"} onClick={() => setTab("uebernachten")} icon={Bed}>
             Übernachten
           </TabButton>
-          <TabButton active={tab === "essen"} onClick={() => setTab("essen")} icon={IconToolsKitchen2}>
+          <TabButton active={tab === "essen"} onClick={() => setTab("essen")} icon={ForkKnife}>
             Essen gehen
           </TabButton>
         </div>
@@ -67,7 +67,7 @@ export function EssenUebernachten() {
                       </span>
                     </div>
                     <div className="mt-2 flex items-center gap-1.5 text-sm text-ink-muted">
-                      <IconMapPin className="h-4 w-4 shrink-0" stroke={1.75} />
+                      <MapPin className="h-4 w-4 shrink-0" weight="regular" />
                       {g.lage}
                     </div>
                     <p className="mt-3 text-sm leading-relaxed text-ink-soft">{g.beschreibung}</p>
@@ -110,7 +110,7 @@ export function EssenUebernachten() {
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
             >
               Alle Lokale unter „Essen & Trinken“
-              <IconChevronRight className="h-3.5 w-3.5" stroke={2} />
+              <CaretRight className="h-3.5 w-3.5" weight="regular" />
             </Link>
           </>
         )}
@@ -138,7 +138,7 @@ function TabButton({
 }: {
   active: boolean;
   onClick: () => void;
-  icon: typeof IconBed;
+  icon: typeof Bed;
   children: React.ReactNode;
 }) {
   return (
@@ -149,7 +149,7 @@ function TabButton({
         active ? "bg-ink text-cream" : "text-ink-soft hover:text-ink",
       )}
     >
-      <Icon className="h-4 w-4" stroke={1.75} />
+      <Icon className="h-4 w-4" weight="regular" />
       {children}
     </button>
   );
@@ -165,7 +165,7 @@ function CrossLink({ to, title, body }: { to: string; title: string; body: strin
         <div className="card-title text-ink">{title}</div>
         <div className="text-sm text-ink-muted">{body}</div>
       </div>
-      <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <ArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

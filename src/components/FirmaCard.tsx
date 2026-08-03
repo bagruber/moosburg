@@ -1,12 +1,12 @@
 import {
-  IconMapPin,
-  IconPhone,
-  IconMail,
-  IconExternalLink,
-  IconClock,
-  IconStar,
-  IconLeaf,
-} from "@tabler/icons-react";
+  MapPin,
+  Phone,
+  Envelope,
+  ArrowSquareOut,
+  Clock,
+  Star,
+  Leaf,
+} from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import type { Firma } from "@/data/firmen";
 
@@ -89,7 +89,7 @@ export function FairTradeBadge({ className }: { className?: string }) {
       }}
       title="Fair-Trade-Partner der Stadt Moosburg"
     >
-      <IconLeaf className="h-2.5 w-2.5" stroke={2.25} />
+      <Leaf className="h-2.5 w-2.5" weight="bold" />
       Fair-Trade
     </span>
   );
@@ -107,7 +107,7 @@ export function MomaBadge({ className }: { className?: string }) {
       )}
       title="Mitglied der Moosburg Marketing eG"
     >
-      <IconStar className="h-2.5 w-2.5" stroke={2.5} />
+      <Star className="h-2.5 w-2.5" weight="bold" />
       MoMa
     </span>
   );
@@ -142,13 +142,13 @@ export function FirmaCard({
           </div>
         </header>
         <p className="flex items-start gap-1.5 text-xs text-ink-soft">
-          <IconMapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" stroke={1.75} />
+          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-muted" weight="regular" />
           <span>{firma.strasse}{firma.plz_ort ? ` · ${firma.plz_ort}` : ""}</span>
         </p>
         <div className="flex flex-wrap gap-3 text-xs">
           {firma.phone && (
             <a href={`tel:${dial}`} className="inline-flex items-center gap-1 text-ink hover:text-red-700">
-              <IconPhone className="h-3 w-3" stroke={1.75} />
+              <Phone className="h-3 w-3" weight="regular" />
               {firma.phone}
             </a>
           )}
@@ -160,7 +160,7 @@ export function FirmaCard({
               className="inline-flex items-center gap-1 text-ink hover:text-red-700"
               title={firma.website}
             >
-              <IconExternalLink className="h-3 w-3" stroke={1.75} />
+              <ArrowSquareOut className="h-3 w-3" weight="regular" />
               Website
             </a>
           )}
@@ -197,7 +197,7 @@ export function FirmaCard({
 
       <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
         <div className="flex items-start gap-2">
-          <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
           <span className="text-ink">
             {firma.strasse}
             {firma.plz_ort && <><br />{firma.plz_ort}</>}
@@ -206,13 +206,13 @@ export function FirmaCard({
         <div className="space-y-1.5">
           {firma.phone && (
             <a href={`tel:${dial}`} className="flex items-center gap-2 text-ink hover:text-red-700">
-              <IconPhone className="h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+              <Phone className="h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
               {firma.phone}
             </a>
           )}
           {firma.email && (
             <a href={`mailto:${firma.email}`} className="flex items-center gap-2 text-ink hover:text-red-700">
-              <IconMail className="h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+              <Envelope className="h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
               {firma.email}
             </a>
           )}
@@ -223,7 +223,7 @@ export function FirmaCard({
               rel="noreferrer"
               className="flex items-center gap-2 text-ink hover:text-red-700"
             >
-              <IconExternalLink className="h-4 w-4 shrink-0 text-ink-muted" stroke={1.75} />
+              <ArrowSquareOut className="h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
               <span className="truncate">{firma.website.replace(/^https?:\/\//, "")}</span>
             </a>
           )}
@@ -233,7 +233,7 @@ export function FirmaCard({
       {hourGroups && (
         <div className="mt-4 border-t border-ink-line/30 pt-3">
           <div className="mb-1.5 flex items-center gap-1.5">
-            <IconClock className="h-3.5 w-3.5 text-ink-muted" stroke={2} />
+            <Clock className="h-3.5 w-3.5 text-ink-muted" weight="regular" />
             <span className="text-xs font-display uppercase tracking-wider text-ink-muted">
               Öffnungszeiten
             </span>

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import {
-  IconFlower,
-  IconPhone,
-  IconFileText,
-  IconHeartHandshake,
-  IconChevronRight,
-  IconClock,
-} from "@tabler/icons-react";
+  Flower,
+  Phone,
+  FileText,
+  Handshake,
+  CaretRight,
+  Clock,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -68,7 +68,7 @@ export function Trauerfall() {
         title="Im Trauerfall"
         intro="Der Verlust eines nahen Menschen ist schwer. Diese Seite gibt Ihnen einen ruhigen Überblick, was in welcher Reihenfolge zu tun ist: Schritt für Schritt, ohne Druck."
         crumbs={[{ label: "Lebenslagen" }, { label: "Im Trauerfall" }]}
-        icon={IconFlower}
+        icon={Flower}
         variant="cream"
       />
 
@@ -89,7 +89,7 @@ export function Trauerfall() {
             <Reveal key={p.id}>
               <section>
                 <div className="mb-5 flex items-center gap-2.5">
-                  <IconClock className="h-5 w-5 text-gold-700" stroke={1.5} />
+                  <Clock className="h-5 w-5 text-gold-700" weight="light" />
                   <div>
                     <div className="eyebrow text-gold-700">{p.zeit}</div>
                     <h2 className="headline text-xl text-ink sm:text-2xl">{p.titel}</h2>
@@ -122,7 +122,7 @@ export function Trauerfall() {
           <ul className="space-y-2.5">
             {STERBEURKUNDE_UNTERLAGEN.map((u) => (
               <li key={u} className="flex items-start gap-2.5 rounded-lg bg-cream px-4 py-3 text-sm text-ink-soft">
-                <IconFileText className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+                <FileText className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
                 <span>{u}</span>
               </li>
             ))}
@@ -137,7 +137,7 @@ export function Trauerfall() {
       <section className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
         <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-7">
           <div className="flex items-start gap-4">
-            <IconHeartHandshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" stroke={1.5} />
+            <Handshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" weight="light" />
             <div>
               <h2 className="headline text-xl text-ink">Sie müssen das nicht allein tragen</h2>
               <p className="mt-2 text-ink-soft">
@@ -149,7 +149,7 @@ export function Trauerfall() {
                   href="tel:08001110111"
                   className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-medium text-cream hover:bg-red-700"
                 >
-                  <IconPhone className="h-4 w-4" stroke={2} />
+                  <Phone className="h-4 w-4" weight="regular" />
                   Telefonseelsorge: 0800 111 0 111
                 </a>
                 <SupportLink to="/mein-moosburg/gesundheit" label="Beratung & Seelsorge vor Ort" />
@@ -182,7 +182,7 @@ function SupportLink({ to, label, block }: { to: string; label: string; block?: 
       }
     >
       <span className={block ? "card-title text-ink" : ""}>{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

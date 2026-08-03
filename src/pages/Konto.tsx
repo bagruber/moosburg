@@ -1,37 +1,37 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconMail,
-  IconLock,
-  IconArrowRight,
-  IconShieldCheck,
-  IconUserCircle,
-  IconHome,
-  IconRecycle,
-  IconBell,
-  IconBookmark,
-  IconFileDescription,
-  IconLogout,
-  IconUserCheck,
-  IconCircleCheck,
-  IconCalendarEvent,
-  IconClock,
-  IconMapPin,
-  IconCheck,
-  IconBuilding,
-  IconTree,
-  IconBarrierBlock,
-  IconSchool,
-  IconPawFilled,
-  IconCar,
-  IconUsers,
-  IconHomePlus,
-  IconBriefcase,
-  IconHeartHandshake,
-  IconExternalLink,
-  IconX,
-  IconParking,
-} from "@tabler/icons-react";
+  Envelope,
+  Lock,
+  ArrowRight,
+  ShieldCheck,
+  UserCircle,
+  House,
+  Recycle,
+  Bell,
+  BookmarkSimple,
+  FileText,
+  SignOut,
+  UserCheck,
+  CheckCircle,
+  CalendarDots,
+  Clock,
+  MapPin,
+  Check,
+  Building,
+  Tree,
+  Barricade,
+  GraduationCap,
+  PawPrint,
+  Car,
+  Users,
+  HouseLine,
+  Briefcase,
+  Handshake,
+  ArrowSquareOut,
+  X,
+  CarProfile,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -43,7 +43,7 @@ import { districtFor, districts } from "@/data/moosburgStreets";
 import { jobs } from "@/data/jobs";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
 import { cn } from "@/lib/cn";
-import { IconBookmarkFilled } from "@tabler/icons-react";
+import { Bookmark } from "@phosphor-icons/react";
 
 type Stage = "signed-out" | "awaiting-link" | "logging-in" | "signed-in";
 
@@ -89,21 +89,21 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
             <label className="block">
               <span className="eyebrow text-ink-muted">E-Mail-Adresse</span>
               <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-cream focus-within:border-red-500 focus-within:bg-white">
-                <IconMail className="ml-3 h-4 w-4 text-ink-muted" stroke={1.75} />
+                <Envelope className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
                 <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="ihre.adresse@beispiel.de"
                   className="w-full bg-transparent py-3 pl-2.5 pr-3 text-sm outline-none" />
               </div>
             </label>
             <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700">
               Anmeldelink senden
-              <IconArrowRight className="h-4 w-4" stroke={2.5} />
+              <ArrowRight className="h-4 w-4" weight="bold" />
             </button>
           </form>
 
           <ul className="mt-6 space-y-2 text-xs text-ink-soft">
-            <li className="flex gap-2"><IconCircleCheck className="h-4 w-4 shrink-0 text-rb-5" stroke={2} />Termine, Favoriten, laufende Anträge speichern</li>
-            <li className="flex gap-2"><IconCircleCheck className="h-4 w-4 shrink-0 text-rb-5" stroke={2} />Optional: Adresse für Abfallkalender, Wahllokal, Baustellen</li>
-            <li className="flex gap-2"><IconCircleCheck className="h-4 w-4 shrink-0 text-rb-5" stroke={2} />Daten jederzeit löschbar</li>
+            <li className="flex gap-2"><CheckCircle className="h-4 w-4 shrink-0 text-rb-5" weight="regular" />Termine, Favoriten, laufende Anträge speichern</li>
+            <li className="flex gap-2"><CheckCircle className="h-4 w-4 shrink-0 text-rb-5" weight="regular" />Optional: Adresse für Abfallkalender, Wahllokal, Baustellen</li>
+            <li className="flex gap-2"><CheckCircle className="h-4 w-4 shrink-0 text-rb-5" weight="regular" />Daten jederzeit löschbar</li>
           </ul>
         </Reveal>
 
@@ -127,7 +127,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
                   <div className="card-title text-sm text-ink">{p.name}</div>
                   <div className="text-xs text-ink-muted">{p.desc}</div>
                 </div>
-                <IconLock className="h-4 w-4 text-ink-muted" stroke={1.75} />
+                <Lock className="h-4 w-4 text-ink-muted" weight="regular" />
               </div>
             ))}
           </div>
@@ -138,7 +138,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
       </div>
 
       <div className="mt-8 flex items-center justify-center gap-2 text-xs text-ink-muted">
-        <IconShieldCheck className="h-4 w-4 text-rb-5" stroke={1.75} />
+        <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
         Datenschutz nach DSGVO · Alle Daten bleiben in Deutschland · keine Weitergabe an Dritte
       </div>
     </section>
@@ -150,7 +150,7 @@ function AwaitingLink({ email, onContinue }: { email: string; onContinue: () => 
     <section className="mx-auto max-w-lg px-4 py-24 lg:px-8">
       <Reveal className="rounded-md border border-ink-line bg-white p-10 text-center shadow-soft">
         <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-gold-100 text-gold-700">
-          <IconMail className="h-7 w-7" stroke={1.5} />
+          <Envelope className="h-7 w-7" weight="light" />
         </div>
         <h2 className="headline mt-5 text-2xl text-ink">E-Mail überprüfen</h2>
         <p className="mt-3 text-sm text-ink-soft">
@@ -161,7 +161,7 @@ function AwaitingLink({ email, onContinue }: { email: string; onContinue: () => 
         </div>
         <button onClick={onContinue} className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
           Anmeldung simulieren
-          <IconArrowRight className="h-4 w-4" stroke={2.5} />
+          <ArrowRight className="h-4 w-4" weight="bold" />
         </button>
       </Reveal>
     </section>
@@ -182,14 +182,14 @@ function ProfileFactors() {
     });
   };
 
-  const factors: { key: keyof typeof profile; label: string; icon: typeof IconHome; hint?: string }[] = [
-    { key: "ownsProperty",    label: "Eigentum in Moosburg",  icon: IconBuilding,     hint: "Haus, Wohnung oder Grundstück" },
-    { key: "hasChildren",     label: "Kinder im Haushalt",     icon: IconUsers },
-    { key: "ownsCar",         label: "Auto angemeldet",        icon: IconCar },
-    { key: "ownsDog",         label: "Hund angemeldet",        icon: IconPawFilled },
-    { key: "newInTown",       label: "Neu in Moosburg",        icon: IconHomePlus,     hint: "Zugezogen in den letzten 6 Monaten" },
-    { key: "worksInMoosburg", label: "Arbeit in Moosburg",     icon: IconBriefcase },
-    { key: "receivesPension", label: "Rente / Pension",        icon: IconHeartHandshake },
+  const factors: { key: keyof typeof profile; label: string; icon: typeof House; hint?: string }[] = [
+    { key: "ownsProperty",    label: "Eigentum in Moosburg",  icon: Building,     hint: "Haus, Wohnung oder Grundstück" },
+    { key: "hasChildren",     label: "Kinder im Haushalt",     icon: Users },
+    { key: "ownsCar",         label: "Auto angemeldet",        icon: Car },
+    { key: "ownsDog",         label: "Hund angemeldet",        icon: PawPrint },
+    { key: "newInTown",       label: "Neu in Moosburg",        icon: HouseLine,     hint: "Zugezogen in den letzten 6 Monaten" },
+    { key: "worksInMoosburg", label: "Arbeit in Moosburg",     icon: Briefcase },
+    { key: "receivesPension", label: "Rente / Pension",        icon: Handshake },
   ];
 
   return (
@@ -251,7 +251,7 @@ function ProfileFactors() {
               )}
             >
               <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-md", on ? "bg-red-500 text-cream" : "bg-cream-dark text-ink-soft")}>
-                <Icon className="h-4 w-4" stroke={1.75} />
+                <Icon className="h-4 w-4" weight="regular" />
               </span>
               <div className="flex-1">
                 <div className="card-title text-sm text-ink">{f.label}</div>
@@ -310,7 +310,7 @@ function DistrictInfo() {
       <section className="border-y border-ink-line/60 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
           <div className="rounded-md border border-dashed border-ink-line bg-white/60 p-10 text-center">
-            <IconHome className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
+            <House className="mx-auto h-8 w-8 text-ink-muted" weight="light" />
             <p className="mt-3 text-sm text-ink-soft max-w-md mx-auto">
               Geben Sie oben Ihre Adresse ein, um Müllkalender, Wahllokal, Schulsprengel und aktuelle
               Baustellen rund um Ihre Straße zu sehen.
@@ -323,12 +323,12 @@ function DistrictInfo() {
 
   const d = districts[districtId];
   const cards = [
-    { icon: IconRecycle,   label: "Nächste Abfuhr",     value: `Restmüll · ${d.trashCollection.rest}`, sub: `Bio: ${d.trashCollection.bio} · Papier: ${d.trashCollection.papier}` },
-    { icon: IconCheck,     label: "Ihr Wahllokal",      value: d.wahllokal,                            sub: d.wahllokalDistance + " entfernt" },
-    { icon: IconBarrierBlock, label: "Baustellen", value: d.activeBaustellen > 0 ? `${d.activeBaustellen} aktive Meldungen` : "Keine Meldungen", sub: d.nearestBaustelle },
-    { icon: IconSchool,    label: "Schulsprengel",      value: d.grundschule,                          sub: "Grundschul-Einzugsgebiet" },
-    { icon: IconTree,      label: "Spielplatz in der Nähe", value: d.nearestSpielplatz.name,            sub: `${d.nearestSpielplatz.distance} entfernt` },
-    { icon: IconParking,   label: "Parken",             value: d.parking,                              sub: d.ortsteil },
+    { icon: Recycle,   label: "Nächste Abfuhr",     value: `Restmüll · ${d.trashCollection.rest}`, sub: `Bio: ${d.trashCollection.bio} · Papier: ${d.trashCollection.papier}` },
+    { icon: Check,     label: "Ihr Wahllokal",      value: d.wahllokal,                            sub: d.wahllokalDistance + " entfernt" },
+    { icon: Barricade, label: "Baustellen", value: d.activeBaustellen > 0 ? `${d.activeBaustellen} aktive Meldungen` : "Keine Meldungen", sub: d.nearestBaustelle },
+    { icon: GraduationCap,    label: "Schulsprengel",      value: d.grundschule,                          sub: "Grundschul-Einzugsgebiet" },
+    { icon: Tree,      label: "Spielplatz in der Nähe", value: d.nearestSpielplatz.name,            sub: `${d.nearestSpielplatz.distance} entfernt` },
+    { icon: CarProfile,   label: "Parken",             value: d.parking,                              sub: d.ortsteil },
   ];
 
   return (
@@ -342,7 +342,7 @@ function DistrictInfo() {
             </h2>
           </div>
           <Link to="/mitgestalten/maengel-melden" className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline">
-            <IconMapPin className="h-4 w-4" stroke={2} />
+            <MapPin className="h-4 w-4" weight="regular" />
             Auf der Karte ansehen
           </Link>
         </div>
@@ -352,7 +352,7 @@ function DistrictInfo() {
             return (
               <div key={c.label} className="rounded-md border border-ink-line bg-white p-5 shadow-soft">
                 <div className="flex items-center gap-2">
-                  <Icon className="h-5 w-5 text-red-700" stroke={1.75} />
+                  <Icon className="h-5 w-5 text-red-700" weight="regular" />
                   <span className="eyebrow text-ink-muted">{c.label}</span>
                 </div>
                 <div className="mt-3 card-title text-base text-ink">{c.value}</div>
@@ -388,7 +388,7 @@ function Recommendations() {
           <h2 className="headline mt-1 text-2xl text-ink">Könnte Sie interessieren</h2>
         </div>
         <div className="rounded-md border border-dashed border-ink-line bg-white/60 p-8 text-center">
-          <IconUserCheck className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
+          <UserCheck className="mx-auto h-8 w-8 text-ink-muted" weight="light" />
           <p className="mt-3 text-sm text-ink-soft max-w-md mx-auto">
             Sobald Sie oben Profil-Angaben machen, schlagen wir hier passende Dienstleistungen,
             Beratungsangebote und Förderungen vor.
@@ -426,7 +426,7 @@ function Recommendations() {
               <p className="mt-2 flex-1 text-sm text-ink-soft">{r.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                 Öffnen
-                <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
               </span>
             </Link>
           );
@@ -452,11 +452,11 @@ function MyBookings() {
           </div>
         </div>
         <div className="rounded-md border border-dashed border-ink-line bg-white/60 p-8 text-center">
-          <IconCalendarEvent className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
+          <CalendarDots className="mx-auto h-8 w-8 text-ink-muted" weight="light" />
           <p className="mt-3 text-sm text-ink-soft">Sie haben noch keine Termine gebucht.</p>
           <Link to="/rathaus/termin-buchen" className="mt-4 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
             Termin buchen
-            <IconArrowRight className="h-4 w-4" stroke={2.5} />
+            <ArrowRight className="h-4 w-4" weight="bold" />
           </Link>
         </div>
       </section>
@@ -471,7 +471,7 @@ function MyBookings() {
           <h2 className="headline mt-1 text-2xl text-ink">Anstehende Termine ({bookings.length})</h2>
         </div>
         <Link to="/rathaus/termin-buchen" className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline">
-          <IconCalendarEvent className="h-4 w-4" stroke={2} /> Weiteren Termin buchen
+          <CalendarDots className="h-4 w-4" weight="regular" /> Weiteren Termin buchen
         </Link>
       </div>
 
@@ -491,15 +491,15 @@ function MyBookings() {
                 <div className="eyebrow text-red-700">{b.category}</div>
                 <h3 className="mt-1 card-title text-base text-ink">{b.service}</h3>
                 <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-muted">
-                  <div className="flex items-center gap-1"><IconClock className="h-3.5 w-3.5" stroke={2} />{b.time} Uhr</div>
-                  <div className="flex items-center gap-1"><IconMapPin className="h-3.5 w-3.5" stroke={2} />{b.location}</div>
+                  <div className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" weight="regular" />{b.time} Uhr</div>
+                  <div className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" weight="regular" />{b.location}</div>
                 </dl>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   <span className="font-mono text-[11px] text-ink-muted">Ref. {b.reference}</span>
                   <button className="text-xs font-semibold text-red-700 hover:underline">In den Kalender (.ics)</button>
                   <button className="text-xs font-semibold text-ink-soft hover:text-red-700">Verschieben</button>
                   <button onClick={() => removeBooking(b.id)} className="ml-auto inline-flex items-center gap-1 text-xs text-ink-muted hover:text-red-700">
-                    <IconX className="h-3.5 w-3.5" stroke={2} /> Absagen
+                    <X className="h-3.5 w-3.5" weight="regular" /> Absagen
                   </button>
                 </div>
               </div>
@@ -530,7 +530,7 @@ function WatchedJobs() {
           <h2 className="headline mt-1 text-2xl text-ink">{watched.length} {watched.length === 1 ? "Stelle" : "Stellen"} im Auge</h2>
         </div>
         <Link to="/rathaus/stellenangebote" className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline">
-          <IconBriefcase className="h-4 w-4" stroke={2} /> Alle Stellen
+          <Briefcase className="h-4 w-4" weight="regular" /> Alle Stellen
         </Link>
       </div>
 
@@ -539,7 +539,7 @@ function WatchedJobs() {
           <li key={j.id}>
             <article className="flex items-start gap-4 rounded-md border border-ink-line bg-white p-4">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-red-50 text-red-700">
-                <IconBriefcase className="h-5 w-5" stroke={1.75} />
+                <Briefcase className="h-5 w-5" weight="regular" />
               </span>
               <div className="min-w-0 flex-1">
                 <h3 className="card-title text-sm text-ink">{j.title}</h3>
@@ -547,7 +547,7 @@ function WatchedJobs() {
                 <div className="mt-2 flex items-center gap-3">
                   <Link to="/rathaus/stellenangebote" className="text-xs font-semibold text-red-700 hover:underline">Details</Link>
                   <button onClick={() => toggleWatchedJob(j.id)} className="ml-auto inline-flex items-center gap-1 text-xs text-ink-muted hover:text-red-700">
-                    <IconBookmarkFilled className="h-3.5 w-3.5" /> Entfernen
+                    <Bookmark className="h-3.5 w-3.5" /> Entfernen
                   </button>
                 </div>
               </div>
@@ -583,7 +583,7 @@ function NeuInMoosburgWidget() {
       >
         <div className="flex flex-wrap items-center gap-4">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-turquoise-accent text-cream">
-            <IconHomePlus className="h-6 w-6" stroke={1.5} />
+            <HouseLine className="h-6 w-6" weight="light" />
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
@@ -596,7 +596,7 @@ function NeuInMoosburgWidget() {
               <div className="h-full bg-turquoise-accent transition-all" style={{ width: `${pct}%` }} />
             </div>
           </div>
-          <IconArrowRight className="h-5 w-5 text-turquoise-accent transition group-hover:translate-x-0.5" stroke={2} />
+          <ArrowRight className="h-5 w-5 text-turquoise-accent transition group-hover:translate-x-0.5" weight="regular" />
         </div>
       </Link>
     </section>
@@ -634,7 +634,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
         <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
           <div className="flex flex-wrap items-center gap-6">
             <div className="grid h-16 w-16 place-items-center rounded-full bg-red-500 text-cream shadow-soft">
-              <IconUserCircle className="h-9 w-9" stroke={1.5} />
+              <UserCircle className="h-9 w-9" weight="light" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="eyebrow text-red-700">Willkommen zurück</div>
@@ -644,13 +644,13 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
               <div className="mt-0.5 text-sm text-ink-soft">{profile.email}</div>
             </div>
             <button onClick={onSignOut} className="inline-flex items-center gap-1.5 rounded-md border border-ink-line bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-red-500 hover:text-red-700">
-              <IconLogout className="h-4 w-4" stroke={2} />
+              <SignOut className="h-4 w-4" weight="regular" />
               Abmelden
             </button>
           </div>
 
           <div className="mt-6 flex items-start gap-3 rounded-md border border-gold-500/30 bg-gold-100/40 p-4 text-sm">
-            <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+            <UserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" weight="regular" />
             <div className="flex-1">
               <strong className="block text-ink">Ihr Konto ist aktiv (E-Mail-Basis).</strong>
               <span className="text-ink-soft">
@@ -676,7 +676,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
           <div className="grid gap-8 lg:grid-cols-3">
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <IconBookmark className="h-5 w-5 text-red-700" stroke={1.75} />
+                <BookmarkSimple className="h-5 w-5 text-red-700" weight="regular" />
                 <h3 className="headline text-xl text-ink">Favoriten</h3>
               </div>
               <ul className="space-y-2">
@@ -684,7 +684,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
                   <li key={f.slug}>
                     <Link to={`/${f.slug}`} className="group flex items-center justify-between gap-3 rounded-md border border-ink-line bg-white px-4 py-3 text-sm text-ink transition hover:border-red-500">
                       <span className="card-title">{f.title}</span>
-                      <IconArrowRight className="h-4 w-4 text-ink-muted group-hover:text-red-700" stroke={2} />
+                      <ArrowRight className="h-4 w-4 text-ink-muted group-hover:text-red-700" weight="regular" />
                     </Link>
                   </li>
                 ))}
@@ -693,7 +693,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
 
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <IconFileDescription className="h-5 w-5 text-red-700" stroke={1.75} />
+                <FileText className="h-5 w-5 text-red-700" weight="regular" />
                 <h3 className="headline text-xl text-ink">Laufende Anträge</h3>
               </div>
               <ul className="space-y-2">
@@ -712,7 +712,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
 
             <div>
               <div className="mb-4 flex items-center gap-2">
-                <IconBell className="h-5 w-5 text-red-700" stroke={1.75} />
+                <Bell className="h-5 w-5 text-red-700" weight="regular" />
                 <h3 className="headline text-xl text-ink">Benachrichtigungen</h3>
               </div>
               <ul className="space-y-2">
@@ -724,8 +724,8 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3 text-xs text-ink-muted">
-            <a href="#" className="inline-flex items-center gap-1 hover:text-red-700"><IconExternalLink className="h-3 w-3" stroke={2} /> Daten exportieren (JSON)</a>
-            <a href="#" className="inline-flex items-center gap-1 hover:text-red-700"><IconExternalLink className="h-3 w-3" stroke={2} /> Konto löschen</a>
+            <a href="#" className="inline-flex items-center gap-1 hover:text-red-700"><ArrowSquareOut className="h-3 w-3" weight="regular" /> Daten exportieren (JSON)</a>
+            <a href="#" className="inline-flex items-center gap-1 hover:text-red-700"><ArrowSquareOut className="h-3 w-3" weight="regular" /> Konto löschen</a>
           </div>
         </div>
       </section>

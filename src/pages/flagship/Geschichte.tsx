@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconExternalLink,
-  IconChevronRight,
-} from "@tabler/icons-react";
+  ArrowRight,
+  ArrowSquareOut,
+  CaretRight,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -128,7 +128,7 @@ export function Geschichte() {
                   className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
                 >
                   {m.link.label}
-                  <IconChevronRight className="h-3.5 w-3.5" stroke={2} />
+                  <CaretRight className="h-3.5 w-3.5" weight="regular" />
                 </Link>
               )}
             </Reveal>
@@ -174,7 +174,7 @@ export function Geschichte() {
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-cream px-4 py-2.5 text-sm font-medium text-ink transition hover:bg-gold-100"
               >
                 stalag7a.de öffnen
-                <IconExternalLink className="h-4 w-4" stroke={2} />
+                <ArrowSquareOut className="h-4 w-4" weight="regular" />
               </a>
             </div>
           </div>
@@ -201,7 +201,7 @@ export function Geschichte() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="card-title text-lg text-ink">{e.label}</h3>
-                <IconExternalLink className="h-4 w-4 text-ink-muted group-hover:text-red-700" stroke={2} />
+                <ArrowSquareOut className="h-4 w-4 text-ink-muted group-hover:text-red-700" weight="regular" />
               </div>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{e.beschreibung}</p>
             </a>
@@ -214,7 +214,7 @@ export function Geschichte() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
             Zurück zu „Moosburg entdecken“
-            <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+            <ArrowRight className="h-3.5 w-3.5" weight="regular" />
           </Link>
         </div>
       </section>

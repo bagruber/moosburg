@@ -1,22 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  IconCalendarEvent,
-  IconCar,
-  IconHeart,
-  IconId,
-  IconArrowRight,
-  IconArrowLeft,
-  IconInfoCircle,
-  IconCheck,
-  IconHome,
-  IconBuilding,
-  IconChevronLeft,
-  IconChevronRight,
-  IconClock,
-  IconShieldCheck,
-  IconCircleCheck,
-} from "@tabler/icons-react";
+  CalendarDots,
+  Car,
+  Heart,
+  IdentificationCard,
+  ArrowRight,
+  ArrowLeft,
+  Info,
+  Check,
+  House,
+  Building,
+  CaretLeft,
+  CaretRight,
+  Clock,
+  ShieldCheck,
+  CheckCircle,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { RoseLoader } from "@/components/RoseLoader";
@@ -29,7 +29,7 @@ const route = findRoute("rathaus/termin-buchen")!;
 
 type ServiceCategory = {
   id: string;
-  icon: typeof IconId;
+  icon: typeof IdentificationCard;
   title: string;
   location: string;
   hours?: string[];
@@ -45,7 +45,7 @@ type ServiceCategory = {
 const categories: ServiceCategory[] = [
   {
     id: "einwohner",
-    icon: IconId,
+    icon: IdentificationCard,
     title: "Einwohnermelde- & Passamt",
     location: "Rathaus, EG · Zimmer R0.01",
     hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Mo: zusätzl. 14:00 – 16:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
@@ -64,7 +64,7 @@ const categories: ServiceCategory[] = [
   },
   {
     id: "kfz",
-    icon: IconCar,
+    icon: Car,
     title: "KFZ-Zulassungsbehörde",
     location: "Sudetenlandstraße 14 · separates Gebäude",
     hours: [
@@ -84,7 +84,7 @@ const categories: ServiceCategory[] = [
   },
   {
     id: "standesamt",
-    icon: IconHeart,
+    icon: Heart,
     title: "Standesamt",
     location: "Rathaus, EG · Zimmer R0.01",
     hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Mo: zusätzl. 14:00 – 16:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
@@ -99,7 +99,7 @@ const categories: ServiceCategory[] = [
   },
   {
     id: "bauamt",
-    icon: IconBuilding,
+    icon: Building,
     title: "Stadtbauamt: Beratung",
     location: "Rathaus · Stadtbauamt",
     hours: ["Termin nach Vereinbarung"],
@@ -114,7 +114,7 @@ const categories: ServiceCategory[] = [
   },
   {
     id: "wohnen",
-    icon: IconHome,
+    icon: House,
     title: "Wohnen & Soziales",
     location: "Rathaus · Sozialamt",
     hours: ["Mo, Di, Mi, Fr: 8:00 – 12:00", "Do: 8:00 – 12:00, 14:00 – 18:00"],
@@ -241,7 +241,7 @@ export function TerminBuchen() {
                         !done && !active && "border-ink-line bg-white text-ink-muted",
                       )}
                     >
-                      {done ? <IconCheck className="h-3 w-3" stroke={3} /> : n}
+                      {done ? <Check className="h-3 w-3" weight="bold" /> : n}
                     </span>
                     <span className={cn("uppercase tracking-wider font-semibold", active ? "text-ink" : "text-ink-muted")}>
                       {label}
@@ -277,7 +277,7 @@ export function TerminBuchen() {
                   )}
                 >
                   <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                    <Icon className="h-5 w-5" stroke={1.75} />
+                    <Icon className="h-5 w-5" weight="regular" />
                   </span>
                   <h3 className="mt-5 card-title text-base text-ink">{c.title}</h3>
                   <p className="mt-1 text-xs text-ink-muted">
@@ -286,7 +286,7 @@ export function TerminBuchen() {
                   <p className="mt-2 line-clamp-2 text-xs text-ink-soft">{c.location}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
                     Auswählen
-                    <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" stroke={2} />
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" weight="regular" />
                   </span>
                 </button>
               );
@@ -304,7 +304,7 @@ export function TerminBuchen() {
               <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Konkretes Anliegen wählen</h2>
             </div>
             <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <IconArrowLeft className="h-4 w-4" stroke={2} /> Zurück
+              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
             </button>
           </div>
 
@@ -317,7 +317,7 @@ export function TerminBuchen() {
             {cat.hours && cat.hours.length > 0 && (
               <div>
                 <div className="flex items-center gap-1.5">
-                  <IconClock className="h-3.5 w-3.5 text-ink-muted" stroke={2} />
+                  <Clock className="h-3.5 w-3.5 text-ink-muted" weight="regular" />
                   <div className="eyebrow text-ink-muted">Öffnungszeiten</div>
                 </div>
                 <ul className="mt-1 space-y-0.5 text-sm text-ink-soft">
@@ -331,7 +331,7 @@ export function TerminBuchen() {
 
           {cat.note && (
             <div className="mt-4 flex items-start gap-3 rounded-xl border border-gold-500/30 bg-gold-100/40 p-4 text-sm text-ink-soft">
-              <IconInfoCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
               <p>{cat.note}</p>
             </div>
           )}
@@ -392,7 +392,7 @@ export function TerminBuchen() {
               <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Termin wählen</h2>
             </div>
             <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <IconArrowLeft className="h-4 w-4" stroke={2} /> Zurück
+              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
             </button>
           </div>
 
@@ -407,7 +407,7 @@ export function TerminBuchen() {
                     disabled={dateIdx === 0}
                     className="grid h-7 w-7 place-items-center rounded border border-ink-line text-ink hover:bg-cream-dark disabled:opacity-40"
                   >
-                    <IconChevronLeft className="h-4 w-4" stroke={2} />
+                    <CaretLeft className="h-4 w-4" weight="regular" />
                   </button>
                   <button
                     aria-label="Nächster Tag"
@@ -415,7 +415,7 @@ export function TerminBuchen() {
                     disabled={dateIdx === days.length - 1}
                     className="grid h-7 w-7 place-items-center rounded border border-ink-line text-ink hover:bg-cream-dark disabled:opacity-40"
                   >
-                    <IconChevronRight className="h-4 w-4" stroke={2} />
+                    <CaretRight className="h-4 w-4" weight="regular" />
                   </button>
                 </div>
               </div>
@@ -474,7 +474,7 @@ export function TerminBuchen() {
               </div>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink-line pt-5 text-sm">
                 <span className="text-ink-muted flex items-center gap-1.5">
-                  <IconClock className="h-4 w-4" stroke={1.75} />
+                  <Clock className="h-4 w-4" weight="regular" />
                   {service.durationOverride ?? cat.duration} Minuten · vor Ort
                 </span>
                 <button
@@ -483,7 +483,7 @@ export function TerminBuchen() {
                   className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
                 >
                   Weiter
-                  <IconArrowRight className="h-4 w-4" stroke={2.5} />
+                  <ArrowRight className="h-4 w-4" weight="bold" />
                 </button>
               </div>
             </div>
@@ -492,13 +492,13 @@ export function TerminBuchen() {
           {service.preparation && (
             <div className="mt-8 rounded-md border border-gold-500/30 bg-gold-100/50 p-5">
               <div className="flex items-start gap-3">
-                <IconInfoCircle className="h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+                <Info className="h-5 w-5 shrink-0 text-gold-700" weight="regular" />
                 <div>
                   <strong className="card-title text-sm text-ink">Bitte zum Termin mitbringen</strong>
                   <ul className="mt-2 space-y-0.5 text-sm text-ink-soft">
                     {service.preparation.map((p) => (
                       <li key={p} className="flex gap-2">
-                        <IconCircleCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-700" stroke={2.5} />
+                        <CheckCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-700" weight="bold" />
                         {p}
                       </li>
                     ))}
@@ -516,7 +516,7 @@ export function TerminBuchen() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <h2 className="headline text-2xl lg:text-3xl text-ink">Daten bestätigen</h2>
             <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <IconArrowLeft className="h-4 w-4" stroke={2} /> Zurück
+              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
             </button>
           </div>
 
@@ -551,7 +551,7 @@ export function TerminBuchen() {
 
               <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
                 <div className="flex items-center gap-2 text-xs text-ink-muted">
-                  <IconShieldCheck className="h-4 w-4 text-rb-5" stroke={1.75} />
+                  <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
                   Verschlüsselte Übertragung
                 </div>
                 <button
@@ -560,7 +560,7 @@ export function TerminBuchen() {
                   className="inline-flex items-center gap-2 rounded-full bg-red-500 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream shadow-soft transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
                 >
                   Termin verbindlich buchen
-                  <IconArrowRight className="h-4 w-4" stroke={2.5} />
+                  <ArrowRight className="h-4 w-4" weight="bold" />
                 </button>
               </div>
             </form>
@@ -604,7 +604,7 @@ export function TerminBuchen() {
         <section className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
           <div className="rounded-md border border-rb-5/30 bg-white p-8 text-center shadow-soft">
             <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-rb-5 text-cream">
-              <IconCheck className="h-8 w-8" stroke={3} />
+              <Check className="h-8 w-8" weight="bold" />
             </div>
             <h2 className="headline mt-5 text-3xl text-ink">Termin gebucht!</h2>
             <p className="mt-3 text-sm text-ink-soft">
@@ -620,7 +620,7 @@ export function TerminBuchen() {
                 onClick={() => navigate("/konto")}
                 className="inline-flex items-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700"
               >
-                <IconCalendarEvent className="h-4 w-4" stroke={2} />
+                <CalendarDots className="h-4 w-4" weight="regular" />
                 Im Konto ansehen ({bookings.length + (confirmed ? 0 : 1)})
               </button>
               <button

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconBabyCarriage,
-  IconMoodKid,
-  IconSchool,
-  IconBackpack,
-  IconArrowRight,
-  IconFileDescription,
-  IconBallpen,
-  IconHeartHandshake,
-  IconPhone,
-  IconChevronRight,
-} from "@tabler/icons-react";
+  BabyCarriage,
+  Baby,
+  GraduationCap,
+  Backpack,
+  ArrowRight,
+  FileText,
+  PenNib,
+  Handshake,
+  Phone,
+  CaretRight,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -44,7 +44,7 @@ const STAGES: Stage[] = [
     id: "baby",
     label: "Schwangerschaft & Baby",
     sub: "0–3 Jahre",
-    icon: IconBabyCarriage,
+    icon: BabyCarriage,
     intro: "Von der Geburtsurkunde bis zum ersten Krabbeltreff, die wichtigsten Wege für den Start ins Familienleben.",
     behoerdlich: [
       { title: "Geburt beurkunden", desc: "Die Geburtsurkunde stellt das Standesamt aus: Grundlage für Kindergeld, Krankenversicherung und mehr.", to: "/rathaus/kontakt?topic=standesamt" },
@@ -62,7 +62,7 @@ const STAGES: Stage[] = [
     id: "kita",
     label: "Kindergarten",
     sub: "4–6 Jahre",
-    icon: IconMoodKid,
+    icon: Baby,
     intro: "Kita-Platz finden, anmelden und die Zeit bis zur Einschulung gut gestalten.",
     behoerdlich: [
       { title: "Kita-Platz finden", desc: "Freie Plätze bei städtischen und freien Trägern über LITTLE BIRD suchen und anfragen.", to: "/mein-moosburg/familie" },
@@ -79,7 +79,7 @@ const STAGES: Stage[] = [
     id: "grundschule",
     label: "Grundschule",
     sub: "7–10 Jahre",
-    icon: IconSchool,
+    icon: GraduationCap,
     intro: "Einschulung, Mittagsbetreuung und ein aktives Nachmittagsprogramm.",
     behoerdlich: [
       { title: "Schuleinschreibung", desc: "Die Zuordnung erfolgt nach Schulsprengel und Adresse. Termine gibt die Grundschule bekannt.", to: "/mein-moosburg/familie/schulen" },
@@ -96,7 +96,7 @@ const STAGES: Stage[] = [
     id: "jugend",
     label: "Weiterführend & Jugend",
     sub: "11–18 Jahre",
-    icon: IconBackpack,
+    icon: Backpack,
     intro: "Übertritt, weiterführende Schulen und Angebote für Jugendliche.",
     behoerdlich: [
       { title: "Übertritt & Schulwahl", desc: "Nach der Grundschule geht es an Mittelschule, Realschule oder Gymnasium.", to: "/mein-moosburg/familie/schulen" },
@@ -162,7 +162,7 @@ export function FamilieKind() {
                     : "border-ink-line bg-cream text-ink hover:border-red-500/40",
                 )}
               >
-                <Icon className={cn("h-7 w-7", isActive ? "text-cream" : "text-red-700")} stroke={1.5} />
+                <Icon className={cn("h-7 w-7", isActive ? "text-cream" : "text-red-700")} weight="light" />
                 <div>
                   <div className="card-title text-sm">{s.label}</div>
                   <div className={cn("text-xs", isActive ? "text-cream/80" : "text-ink-muted")}>{s.sub}</div>
@@ -182,13 +182,13 @@ export function FamilieKind() {
             <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
               <div className="space-y-10">
                 <StageGroup
-                  icon={IconFileDescription}
+                  icon={FileText}
                   eyebrow="Behördliches erledigen"
                   heading="Das steht jetzt an"
                   items={stage.behoerdlich}
                 />
                 <StageGroup
-                  icon={IconBallpen}
+                  icon={PenNib}
                   eyebrow="Angebote & Freizeit"
                   heading="Das gibt es für Sie"
                   items={stage.angebote}
@@ -196,7 +196,7 @@ export function FamilieKind() {
               </div>
               <aside className="space-y-5">
                 <TipCard
-                  icon={IconHeartHandshake}
+                  icon={Handshake}
                   title={stage.tipp.title}
                   body={stage.tipp.body}
                   to={stage.tipp.to}
@@ -226,19 +226,19 @@ export function FamilieKind() {
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <AlwaysCard
-            icon={IconHeartHandshake}
+            icon={Handshake}
             title="Familien- & Erziehungsberatung"
             body="Vertrauliche Beratung in allen Lebenslagen, kostenlos und auf Wunsch anonym."
             to="/mein-moosburg/gesundheit"
           />
           <AlwaysCard
-            icon={IconBallpen}
+            icon={PenNib}
             title="Familie & Bildung"
             body="Der komplette Bereich mit Kitas, Schulen und allen Angeboten."
             to="/mein-moosburg/familie"
           />
           <AlwaysCard
-            icon={IconPhone}
+            icon={Phone}
             title="Notdienste & Notrufe"
             body="Kinder- und Jugendnotruf sowie wichtige Nummern im Notfall."
             to="/rathaus/notfall"
@@ -273,7 +273,7 @@ function StageGroup({
   return (
     <section>
       <div className="mb-4 flex items-center gap-2">
-        <Icon className="h-5 w-5 text-red-700" stroke={1.75} />
+        <Icon className="h-5 w-5 text-red-700" weight="regular" />
         <div>
           <div className="eyebrow text-red-700">{eyebrow}</div>
           <h3 className="headline text-xl text-ink">{heading}</h3>
@@ -290,7 +290,7 @@ function StageGroup({
                 <div className="card-title text-ink">{e.title}</div>
                 <p className="mt-1 text-sm text-ink-soft">{e.desc}</p>
               </div>
-              <IconArrowRight className="mt-1 h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+              <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
             </Link>
           </li>
         ))}
@@ -305,12 +305,12 @@ function AlwaysCard({ icon: Icon, title, body, to }: { icon: Icon; title: string
       to={to}
       className="group flex flex-col rounded-2xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
     >
-      <Icon className="h-6 w-6 text-gold-200" stroke={1.5} />
+      <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>
       <p className="mt-1 flex-1 text-sm text-cream/75">{body}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-200">
         Öffnen
-        <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
       </span>
     </Link>
   );
@@ -323,7 +323,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

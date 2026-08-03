@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IconSearch, IconCornerDownLeft, IconX } from "@tabler/icons-react";
+import { MagnifyingGlass, ArrowElbowDownLeft, X } from "@phosphor-icons/react";
 import { allSearchEntries } from "@/routes";
 import { cn } from "@/lib/cn";
 
@@ -105,7 +105,7 @@ export function SearchField({
             : "rounded-full border border-ink-line bg-cream px-4 focus-within:border-red-500 focus-within:bg-white",
         )}
       >
-        <IconSearch className={cn("text-ink-muted", isHero ? "h-5 w-5" : "h-4 w-4")} stroke={1.75} />
+        <MagnifyingGlass className={cn("text-ink-muted", isHero ? "h-5 w-5" : "h-4 w-4")} weight="regular" />
         <input
           type="search"
           value={query}
@@ -133,7 +133,7 @@ export function SearchField({
             aria-label="Eingabe löschen"
             className="grid h-7 w-7 place-items-center rounded-full text-ink-muted hover:bg-cream-dark hover:text-ink"
           >
-            <IconX className="h-4 w-4" stroke={2} />
+            <X className="h-4 w-4" weight="regular" />
           </button>
         )}
         {isHero && (
@@ -173,7 +173,7 @@ export function SearchField({
               <div className="flex items-center justify-between border-b border-ink-line/60 bg-cream-dark px-4 py-2 text-[11px] uppercase tracking-wider text-ink-muted">
                 <span>{results.length} {results.length === 1 ? "Treffer" : "Treffer"}</span>
                 <span className="flex items-center gap-1">
-                  <IconCornerDownLeft className="h-3 w-3" stroke={2} />
+                  <ArrowElbowDownLeft className="h-3 w-3" weight="regular" />
                   zum Öffnen
                 </span>
               </div>
@@ -192,12 +192,12 @@ export function SearchField({
                         <div className="card-title text-sm text-ink">{highlight(r.title)}</div>
                         <div className="mt-0.5 text-xs text-ink-muted">{r.context}</div>
                       </div>
-                      <IconCornerDownLeft
+                      <ArrowElbowDownLeft
                         className={cn(
                           "h-4 w-4 transition",
                           i === cursor ? "text-red-700" : "text-ink-line",
                         )}
-                        stroke={2}
+                        weight="regular"
                       />
                     </button>
                   </li>

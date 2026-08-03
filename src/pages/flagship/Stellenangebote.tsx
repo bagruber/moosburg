@@ -1,20 +1,20 @@
 import { useMemo, useState } from "react";
 import {
-  IconBookmark,
-  IconBookmarkFilled,
-  IconArrowRight,
-  IconClock,
-  IconMapPin,
-  IconSearch,
-  IconHeartHandshake,
-  IconBook,
-  IconHomeHeart,
-  IconBell,
-  IconExternalLink,
-  IconCheck,
-  IconCalendarEvent,
-  IconUsers,
-} from "@tabler/icons-react";
+  BookmarkSimple,
+  Bookmark,
+  ArrowRight,
+  Clock,
+  MapPin,
+  MagnifyingGlass,
+  Handshake,
+  Book,
+  HouseLine,
+  Bell,
+  ArrowSquareOut,
+  Check,
+  CalendarDots,
+  Users,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
@@ -70,13 +70,13 @@ export function Stellenangebote() {
       {signedIn && watchedJobs.length > 0 && (
         <section className="border-b border-ink-line/60 bg-turquoise-accent/10">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 lg:px-8">
-            <IconBookmarkFilled className="h-4 w-4 text-turquoise-accent" stroke={2} />
+            <Bookmark className="h-4 w-4 text-turquoise-accent" weight="regular" />
             <span className="text-sm text-ink">
               Sie haben <strong>{watchedJobs.length}</strong>{" "}
               {watchedJobs.length === 1 ? "Stelle" : "Stellen"} beobachtet.
             </span>
             <a href="/konto" className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-turquoise-accent hover:underline">
-              Im Konto ansehen <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+              Im Konto ansehen <ArrowRight className="h-3.5 w-3.5" weight="regular" />
             </a>
           </div>
         </section>
@@ -110,7 +110,7 @@ export function Stellenangebote() {
                   <ul className="mt-6 space-y-2 text-sm text-ink-soft">
                     {spotlight.highlights.slice(0, 3).map((h) => (
                       <li key={h} className="flex gap-2">
-                        <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red-700" stroke={2.5} />
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-red-700" weight="bold" />
                         {h}
                       </li>
                     ))}
@@ -119,7 +119,7 @@ export function Stellenangebote() {
                   <div className="mt-7 flex flex-wrap items-center gap-3">
                     <button className="inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
                       Jetzt bewerben
-                      <IconArrowRight className="h-4 w-4" stroke={2.5} />
+                      <ArrowRight className="h-4 w-4" weight="bold" />
                     </button>
                     <button
                       onClick={() => toggleWatchedJob(spotlight.id)}
@@ -130,7 +130,7 @@ export function Stellenangebote() {
                           : "border-ink-line bg-white text-ink hover:border-red-500",
                       )}
                     >
-                      {watchedJobs.includes(spotlight.id) ? <IconBookmarkFilled className="h-4 w-4" /> : <IconBookmark className="h-4 w-4" stroke={2} />}
+                      {watchedJobs.includes(spotlight.id) ? <Bookmark className="h-4 w-4" /> : <BookmarkSimple className="h-4 w-4" weight="regular" />}
                       {watchedJobs.includes(spotlight.id) ? "Beobachtet" : "Beobachten"}
                     </button>
                   </div>
@@ -185,7 +185,7 @@ export function Stellenangebote() {
               <label className="block">
                 <span className="eyebrow text-ink-muted">Suche</span>
                 <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-cream focus-within:border-red-500 focus-within:bg-white">
-                  <IconSearch className="ml-3 h-4 w-4 text-ink-muted" stroke={1.75} />
+                  <MagnifyingGlass className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -252,7 +252,7 @@ export function Stellenangebote() {
                       "grid h-12 w-12 shrink-0 place-items-center rounded-md",
                       j.external ? "bg-purple-accent/10 text-purple-accent" : "bg-red-50 text-red-700",
                     )}>
-                      <Icon className="h-6 w-6" stroke={1.5} />
+                      <Icon className="h-6 w-6" weight="light" />
                     </span>
 
                     <div className="min-w-0 flex-1">
@@ -273,7 +273,7 @@ export function Stellenangebote() {
                         )}
                         {j.vacancies && j.vacancies > 1 && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-ink-muted">
-                            <IconUsers className="h-3 w-3" stroke={2} />
+                            <Users className="h-3 w-3" weight="regular" />
                             {j.vacancies} Stellen
                           </span>
                         )}
@@ -285,9 +285,9 @@ export function Stellenangebote() {
                         </div>
                         <div>{j.umfang.join(" / ")}</div>
                         <div>{j.eingruppierung}</div>
-                        <div className="flex items-center gap-1"><IconMapPin className="h-3 w-3" stroke={2} />{j.location}</div>
+                        <div className="flex items-center gap-1"><MapPin className="h-3 w-3" weight="regular" />{j.location}</div>
                         <div className={cn("flex items-center gap-1", days <= 7 && "text-red-700 font-semibold")}>
-                          <IconClock className="h-3 w-3" stroke={2} />
+                          <Clock className="h-3 w-3" weight="regular" />
                           bis {formatDeadline(j.deadline)} ({days} Tage)
                         </div>
                       </dl>
@@ -310,11 +310,11 @@ export function Stellenangebote() {
                             : "border-ink-line bg-white text-ink-soft hover:border-red-500 hover:text-red-700",
                         )}
                       >
-                        {watched ? <IconBookmarkFilled className="h-4 w-4" /> : <IconBookmark className="h-4 w-4" stroke={2} />}
+                        {watched ? <Bookmark className="h-4 w-4" /> : <BookmarkSimple className="h-4 w-4" weight="regular" />}
                       </button>
                       <button className="inline-flex items-center gap-1.5 rounded-md bg-red-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700">
                         Bewerben
-                        <IconArrowRight className="h-3.5 w-3.5" stroke={2.5} />
+                        <ArrowRight className="h-3.5 w-3.5" weight="bold" />
                       </button>
                     </div>
                   </article>
@@ -325,7 +325,7 @@ export function Stellenangebote() {
 
           {list.length === 0 && (
             <div className="rounded-md border border-ink-line bg-white p-10 text-center">
-              <IconSearch className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
+              <MagnifyingGlass className="mx-auto h-8 w-8 text-ink-muted" weight="light" />
               <p className="mt-3 text-sm text-ink-soft">Keine offenen Stellen passen zu diesen Filtern.</p>
               <button
                 onClick={() => { setQuery(""); setBereich("Alle"); setUmfang("Alle"); setFamilyOnly(false); }}
@@ -355,17 +355,17 @@ export function Stellenangebote() {
           <div className="grid gap-4 md:grid-cols-3">
             {[
               {
-                icon: IconHomeHeart,
+                icon: HouseLine,
                 title: "Vereinbarkeit",
                 desc: "Flexible Arbeitszeiten, KiTa-Plätze für Beschäftigte, mobiles Arbeiten in vielen Stellen, Eltern-Kind-Büro im Rathaus.",
               },
               {
-                icon: IconBook,
+                icon: Book,
                 title: "Weiterbildung",
                 desc: "1.000 € Fortbildungsbudget pro Jahr, Verwaltungslehrgänge BVS/AKDB, individuelle Aufstiegsbegleitung.",
               },
               {
-                icon: IconHeartHandshake,
+                icon: Handshake,
                 title: "Drumherum",
                 desc: "Jobticket MVV-Region, Fahrradleasing, vergünstigtes Mittagessen Rathauskantine, betriebliche Altersvorsorge ZVK.",
               },
@@ -374,7 +374,7 @@ export function Stellenangebote() {
               return (
                 <div key={c.title} className="rounded-md border border-ink-line bg-white p-6 shadow-soft">
                   <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700">
-                    <Icon className="h-5 w-5" stroke={1.75} />
+                    <Icon className="h-5 w-5" weight="regular" />
                   </span>
                   <h3 className="mt-4 card-title text-base text-ink">{c.title}</h3>
                   <p className="mt-2 text-sm text-ink-soft">{c.desc}</p>
@@ -389,7 +389,7 @@ export function Stellenangebote() {
       <section className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
         <div className="rounded-md border border-gold-500/30 bg-gold-100/40 p-7 text-center">
           <span className="grid mx-auto h-12 w-12 place-items-center rounded-full bg-gold-500 text-cream">
-            <IconBell className="h-6 w-6" stroke={1.75} />
+            <Bell className="h-6 w-6" weight="regular" />
           </span>
           <h3 className="headline mt-4 text-xl text-ink">Job-Alert abonnieren</h3>
           <p className="mt-2 text-sm text-ink-soft mx-auto max-w-md">
@@ -398,7 +398,7 @@ export function Stellenangebote() {
           <form className="mt-5 mx-auto flex max-w-md flex-col gap-2 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
             <input type="email" placeholder="ihre.adresse@beispiel.de" className="flex-1 rounded-md border border-ink-line bg-white px-3 py-2.5 text-sm outline-none focus:border-red-500" />
             <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-red-500 px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
-              <IconCalendarEvent className="h-4 w-4" stroke={2} />
+              <CalendarDots className="h-4 w-4" weight="regular" />
               Abonnieren
             </button>
           </form>
@@ -407,12 +407,12 @@ export function Stellenangebote() {
 
         <div className="mt-10 flex items-center justify-center gap-3 text-xs text-ink-muted">
           <a href="#" className="inline-flex items-center gap-1 hover:text-red-700">
-            <IconExternalLink className="h-3 w-3" stroke={2} />
+            <ArrowSquareOut className="h-3 w-3" weight="regular" />
             Initiativbewerbung
           </a>
           <span>·</span>
           <a href="#" className="inline-flex items-center gap-1 hover:text-red-700">
-            <IconExternalLink className="h-3 w-3" stroke={2} />
+            <ArrowSquareOut className="h-3 w-3" weight="regular" />
             Personalleitung kontaktieren
           </a>
           <span>·</span>

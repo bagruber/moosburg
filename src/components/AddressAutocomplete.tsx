@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { IconMapPin, IconCheck } from "@tabler/icons-react";
+import { MapPin, Check } from "@phosphor-icons/react";
 import { moosburgStreets } from "@/data/moosburgStreets";
 import { cn } from "@/lib/cn";
 
@@ -58,7 +58,7 @@ export function AddressAutocomplete({
   return (
     <div ref={ref} className={cn("relative", className)}>
       <div className="flex items-center rounded-md border border-ink-line bg-white focus-within:border-red-500">
-        <IconMapPin className="ml-3 h-4 w-4 text-ink-muted" stroke={1.75} />
+        <MapPin className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
         <input
           ref={inputRef}
           type="text"
@@ -82,7 +82,7 @@ export function AddressAutocomplete({
           className="w-full bg-transparent py-3 pl-2.5 pr-10 text-sm outline-none"
         />
         {exactMatch && (
-          <IconCheck className="mr-3 h-4 w-4 text-rb-5" stroke={2.5} />
+          <Check className="mr-3 h-4 w-4 text-rb-5" weight="bold" />
         )}
       </div>
 
@@ -102,7 +102,7 @@ export function AddressAutocomplete({
                   i === active ? "bg-red-50 text-red-700" : "text-ink hover:bg-cream-dark",
                 )}
               >
-                <IconMapPin className="h-3.5 w-3.5 shrink-0 text-ink-muted" stroke={1.75} />
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-ink-muted" weight="regular" />
                 <span className="flex-1">
                   {highlight(s, streetPart)}
                 </span>

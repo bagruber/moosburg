@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconExternalLink,
-  IconCalendarEvent,
-  IconMapPin,
-  IconMail,
-} from "@tabler/icons-react";
+  ArrowRight,
+  ArrowSquareOut,
+  CalendarDots,
+  MapPin,
+  Envelope,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -138,7 +138,7 @@ export function Wahlen() {
               className="inline-flex items-center justify-between gap-2 self-start rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-cream transition hover:bg-red-700"
             >
               Abstimmungsverhalten ansehen
-              <IconExternalLink className="h-4 w-4" stroke={2} />
+              <ArrowSquareOut className="h-4 w-4" weight="regular" />
             </a>
           </div>
         </div>
@@ -154,7 +154,7 @@ export function Wahlen() {
             <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
               {kommendeWahlen.map((w) => (
                 <li key={w.wahl} className="flex items-center gap-3 px-5 py-4">
-                  <IconCalendarEvent className="h-5 w-5 shrink-0 text-red-700" stroke={1.75} />
+                  <CalendarDots className="h-5 w-5 shrink-0 text-red-700" weight="regular" />
                   <span className="flex-1 card-title text-ink">{w.wahl}</span>
                   <span className="text-sm text-ink-muted">{w.zeit}</span>
                 </li>
@@ -167,8 +167,8 @@ export function Wahlen() {
               <SectionHeader eyebrow="Rund ums Wählen" heading="Wahllokal & Briefwahl" />
             </Reveal>
             <div className="space-y-3">
-              <InfoRow icon={IconMapPin} title="Ihr Wahllokal" body="Das zuständige Wahllokal richtet sich nach Ihrer Adresse, im Konto adressbasiert abrufbar." to="/konto" />
-              <InfoRow icon={IconMail} title="Briefwahl beantragen" body="Briefwahlunterlagen bequem online anfordern." to="/rathaus/online-dienste" />
+              <InfoRow icon={MapPin} title="Ihr Wahllokal" body="Das zuständige Wahllokal richtet sich nach Ihrer Adresse, im Konto adressbasiert abrufbar." to="/konto" />
+              <InfoRow icon={Envelope} title="Briefwahl beantragen" body="Briefwahlunterlagen bequem online anfordern." to="/rathaus/online-dienste" />
             </div>
           </div>
         </div>
@@ -234,18 +234,18 @@ function StatTile({ value, label }: { value: string; label: string }) {
   );
 }
 
-function InfoRow({ icon: Icon, title, body, to }: { icon: typeof IconMapPin; title: string; body: string; to: string }) {
+function InfoRow({ icon: Icon, title, body, to }: { icon: typeof MapPin; title: string; body: string; to: string }) {
   return (
     <Link
       to={to}
       className="group flex items-start gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
-      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-red-700" stroke={1.75} />
+      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-red-700" weight="regular" />
       <div className="flex-1">
         <div className="card-title text-ink">{title}</div>
         <div className="text-sm text-ink-muted">{body}</div>
       </div>
-      <IconArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

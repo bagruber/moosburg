@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Map, Marker, Popup, NavigationControl, Source, Layer, type MapLayerMouseEvent } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
-  IconArrowRight,
-  IconMapPin,
-  IconChevronUp,
-} from "@tabler/icons-react";
+  ArrowRight,
+  MapPin,
+  CaretUp,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -212,7 +212,7 @@ export function StadtKarte() {
                   {selected.to && (
                     <Link to={selected.to} className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-700 hover:underline">
                       Mehr erfahren
-                      <IconArrowRight className="h-3 w-3" stroke={2} />
+                      <ArrowRight className="h-3 w-3" weight="regular" />
                     </Link>
                   )}
                 </div>
@@ -235,7 +235,7 @@ export function StadtKarte() {
                   {selectedArea.to && (
                     <Link to={selectedArea.to} className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-red-700 hover:underline">
                       Mehr erfahren
-                      <IconArrowRight className="h-3 w-3" stroke={2} />
+                      <ArrowRight className="h-3 w-3" weight="regular" />
                     </Link>
                   )}
                 </div>
@@ -255,7 +255,7 @@ export function StadtKarte() {
 
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-[11px] text-ink-muted lg:px-8">
           <span className="inline-flex items-center gap-1.5">
-            <IconMapPin className="h-3 w-3" stroke={2} />
+            <MapPin className="h-3 w-3" weight="regular" />
             {visible.length} Orte · {activeFl.size} Gebiete sichtbar · tippen für Details
           </span>
           <span>Karte: © OpenFreeMap · © OpenStreetMap-Mitwirkende</span>
@@ -282,15 +282,15 @@ export function StadtKarte() {
             <div className="eyebrow text-ink-muted">Verwandt</div>
             <Link to="/mitgestalten/maengel-melden" className="group flex items-center justify-between gap-2 rounded-xl border border-ink-line/50 bg-white px-4 py-3 text-sm hover:border-red-500">
               <span className="text-ink">Mangel auf der Karte melden</span>
-              <IconArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" stroke={2} />
+              <ArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" weight="regular" />
             </Link>
             <Link to="/mein-moosburg/mobilitaet" className="group flex items-center justify-between gap-2 rounded-xl border border-ink-line/50 bg-white px-4 py-3 text-sm hover:border-red-500">
               <span className="text-ink">Mobilität & Baustellen</span>
-              <IconArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" stroke={2} />
+              <ArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" weight="regular" />
             </Link>
             <Link to="/rathaus/satzungen" className="group flex items-center justify-between gap-2 rounded-xl border border-ink-line/50 bg-white px-4 py-3 text-sm hover:border-red-500">
               <span className="text-ink">Satzungen (Sanierungsgebiete)</span>
-              <IconArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" stroke={2} />
+              <ArrowRight className="h-3.5 w-3.5 text-ink-muted group-hover:text-red-700" weight="regular" />
             </Link>
           </aside>
         </div>
@@ -381,7 +381,7 @@ function MobileLayerSheet({
           <div className="mx-auto h-1 w-10 rounded-full bg-ink-line" />
           <div className="mt-2 flex items-center justify-between">
             <span className="flex items-center gap-2 text-sm font-display text-ink">
-              <IconChevronUp className={cn("h-4 w-4 text-red-700 transition-transform", state === "full" && "rotate-180")} stroke={2} />
+              <CaretUp className={cn("h-4 w-4 text-red-700 transition-transform", state === "full" && "rotate-180")} weight="regular" />
               Ebenen
             </span>
             <span className="text-xs text-ink-muted">{activeTotal}/{totalLayers} aktiv</span>

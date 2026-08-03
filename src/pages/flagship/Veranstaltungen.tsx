@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import {
-  IconMapPin,
-  IconCalendarEvent,
-  IconClock,
-  IconChevronLeft,
-  IconChevronRight,
-  IconList,
-  IconLayoutGrid,
-  IconX,
-} from "@tabler/icons-react";
+  MapPin,
+  CalendarDots,
+  Clock,
+  CaretLeft,
+  CaretRight,
+  List,
+  SquaresFour,
+  X,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
@@ -148,7 +148,7 @@ export function Veranstaltungen() {
                 view === "liste" ? "bg-ink text-cream" : "text-ink hover:bg-cream-dark",
               )}
             >
-              <IconList className="h-4 w-4" stroke={2} /> Liste
+              <List className="h-4 w-4" weight="regular" /> Liste
             </button>
             <button
               onClick={() => setView("monat")}
@@ -157,7 +157,7 @@ export function Veranstaltungen() {
                 view === "monat" ? "bg-ink text-cream" : "text-ink hover:bg-cream-dark",
               )}
             >
-              <IconLayoutGrid className="h-4 w-4" stroke={2} /> Monat
+              <SquaresFour className="h-4 w-4" weight="regular" /> Monat
             </button>
           </div>
         </div>
@@ -176,7 +176,7 @@ export function Veranstaltungen() {
                 onClick={() => stepMonth(-1)}
                 className="grid h-9 w-9 place-items-center text-ink hover:bg-cream-dark"
               >
-                <IconChevronLeft className="h-4 w-4" stroke={2} />
+                <CaretLeft className="h-4 w-4" weight="regular" />
               </button>
               <button
                 onClick={() => { setMonthIdx(3); setYear(2026); setSelectedDay(null); }}
@@ -189,7 +189,7 @@ export function Veranstaltungen() {
                 onClick={() => stepMonth(1)}
                 className="grid h-9 w-9 place-items-center text-ink hover:bg-cream-dark"
               >
-                <IconChevronRight className="h-4 w-4" stroke={2} />
+                <CaretRight className="h-4 w-4" weight="regular" />
               </button>
             </div>
           </div>
@@ -255,14 +255,14 @@ export function Veranstaltungen() {
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         {selectedDay && (
           <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1.5 text-sm font-semibold text-red-700">
-            <IconCalendarEvent className="h-4 w-4" stroke={2} />
+            <CalendarDots className="h-4 w-4" weight="regular" />
             Termine am {new Date(selectedDay).toLocaleDateString("de-DE", { weekday: "long", day: "2-digit", month: "long", year: "numeric" })}
             <button
               aria-label="Filter zurücksetzen"
               onClick={() => setSelectedDay(null)}
               className="ml-1 grid h-5 w-5 place-items-center rounded-full hover:bg-red-100"
             >
-              <IconX className="h-3 w-3" stroke={2.5} />
+              <X className="h-3 w-3" weight="bold" />
             </button>
           </div>
         )}
@@ -291,11 +291,11 @@ export function Veranstaltungen() {
                 <p className="mt-2 text-sm text-ink-soft line-clamp-2">{e.description}</p>
                 <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-muted">
                   <div className="flex items-center gap-1">
-                    <IconClock className="h-3.5 w-3.5" stroke={2} />
+                    <Clock className="h-3.5 w-3.5" weight="regular" />
                     {e.time}
                   </div>
                   <div className="flex items-center gap-1">
-                    <IconMapPin className="h-3.5 w-3.5" stroke={2} />
+                    <MapPin className="h-3.5 w-3.5" weight="regular" />
                     {e.location}
                   </div>
                 </dl>
@@ -306,7 +306,7 @@ export function Veranstaltungen() {
 
         {filtered.length === 0 && (
           <div className="rounded-md border border-ink-line bg-white p-10 text-center text-ink-muted">
-            <IconCalendarEvent className="mx-auto h-8 w-8" stroke={1.5} />
+            <CalendarDots className="mx-auto h-8 w-8" weight="light" />
             <p className="mt-3">
               {selectedDay
                 ? "Keine Veranstaltungen an diesem Tag in der gewählten Kategorie."

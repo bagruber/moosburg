@@ -1,18 +1,18 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconBuildingStore,
-  IconCalendarEvent,
-  IconClock,
-  IconMapPin,
-  IconLeaf,
-  IconPackage,
-  IconArrowRight,
-  IconChevronRight,
-  IconBabyCarriage,
-  IconPaw,
-  IconShoppingBag,
-} from "@tabler/icons-react";
+  Storefront,
+  CalendarDots,
+  Clock,
+  MapPin,
+  Leaf,
+  Package,
+  ArrowRight,
+  CaretRight,
+  BabyCarriage,
+  PawPrint,
+  ShoppingBag,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -92,14 +92,14 @@ export function Einkaufen() {
             </p>
             <dl className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
-                <IconClock className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" weight="regular" />
                 <div>
                   <div className="text-cream"><strong>Samstag</strong> · 7:00 – 12:00 Uhr</div>
                   <div className="text-xs text-cream/70">Mi: kleine Auswahl</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" weight="regular" />
                 <span className="text-cream">Auf dem Plan, 85368 Moosburg</span>
               </div>
             </dl>
@@ -108,12 +108,12 @@ export function Einkaufen() {
         <Reveal delay={2}>
           <div className="mt-8 inline-flex flex-wrap items-center gap-3 text-sm text-cream/70">
             <Link to="/mein-moosburg/veranstaltungen" className="inline-flex items-center gap-1.5 text-cream hover:text-gold-200">
-              <IconCalendarEvent className="h-4 w-4" stroke={1.75} />
+              <CalendarDots className="h-4 w-4" weight="regular" />
               Markt-Sondertage im Veranstaltungs­kalender
             </Link>
             <span className="hidden text-cream/30 sm:inline">·</span>
             <Link to="/mein-moosburg/mobilitaet#parken" className="inline-flex items-center gap-1.5 text-cream hover:text-gold-200">
-              <IconMapPin className="h-4 w-4" stroke={1.75} />
+              <MapPin className="h-4 w-4" weight="regular" />
               Parken in der Nähe
             </Link>
           </div>
@@ -197,14 +197,14 @@ export function Einkaufen() {
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
               >
                 Alle {GESCHAEFTE.length} Geschäfte im Firmen­verzeichnis
-                <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                <ArrowRight className="h-3.5 w-3.5" weight="regular" />
               </Link>
             </div>
 
             {/* Profil-driven Tip (only renders if profile matches) */}
             {profile.hasChildren && (
               <TipCard
-                icon={IconBabyCarriage}
+                icon={BabyCarriage}
                 title="Spiel- und Kinderkleider­läden in Moosburg"
                 body="Mode Neu hat eine Kinder­abteilung, der Eine-Welt-Laden führt fair gehandeltes Spielzeug."
                 personalReason="Sie haben Kinder"
@@ -214,7 +214,7 @@ export function Einkaufen() {
             )}
             {profile.ownsDog && (
               <TipCard
-                icon={IconPaw}
+                icon={PawPrint}
                 title="Heim­tier­bedarf in Moosburg"
                 body="Tier­fachgeschäft und Bauer Gärtnerei führen Futter und Zubehör."
                 personalReason="Sie haben einen Hund"
@@ -239,7 +239,7 @@ export function Einkaufen() {
                     style={{ backgroundColor: "color-mix(in srgb, var(--color-rb-5) 15%, transparent)",
                              color: "var(--color-rb-5)" }}
                   >
-                    <IconLeaf className="h-6 w-6" stroke={1.75} />
+                    <Leaf className="h-6 w-6" weight="regular" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="eyebrow" style={{ color: "var(--color-rb-5)" }}>
@@ -255,7 +255,7 @@ export function Einkaufen() {
                     <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium"
                       style={{ color: "var(--color-rb-5)" }}>
                       Zur Themenseite öffnen
-                      <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                      <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
                     </span>
                   </div>
                 </div>
@@ -265,14 +265,14 @@ export function Einkaufen() {
             {/* Cross-link strip — bridge to umwelt / souvenirs */}
             <div className="grid gap-3 sm:grid-cols-2">
               <TipCard
-                icon={IconPackage}
+                icon={Package}
                 title="Müllreduziert einkaufen"
                 body="„Einmal ohne, bitte“-Initiative: Geschäfte, die ohne Verpackung verkaufen. In Vorbereitung."
                 to="/mein-moosburg/umwelt"
                 accent="rb-5"
               />
               <TipCard
-                icon={IconShoppingBag}
+                icon={ShoppingBag}
                 title="Moosburg-Souvenirs"
                 body="Stadttaschen mit Schabert-Motiv, Postkarten, Stofftaschen, kleine Mitbringsel."
                 to="/zu-besuch/entdecken"
@@ -289,26 +289,26 @@ export function Einkaufen() {
                 <li>
                   <Link to="/mein-moosburg/firmen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Komplettes Firmen­verzeichnis</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/essen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Essen & Trinken</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/veranstaltungen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Märkte & Veranstaltungen</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
             </section>
 
             <TipCard
-              icon={IconLeaf}
+              icon={Leaf}
               title="Wussten Sie?"
               body="„Moosburg-Card“-Umsätze bleiben zu 100 % im lokalen Kreislauf, anders als bei Online-Versand­händlern."
               to="/mein-moosburg/firmen?moosburgCard=1"
@@ -317,7 +317,7 @@ export function Einkaufen() {
             />
 
             <TipCard
-              icon={IconBuildingStore}
+              icon={Storefront}
               title="Eintrag fehlt oder veraltet?"
               body="Das Verzeichnis wird von der Moosburg Marketing eG gepflegt."
               href="https://meinmoosburg.de/digitale-stadt/eintrag-aendern/"

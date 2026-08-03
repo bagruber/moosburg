@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { IconSearch, IconArrowRight, IconChevronRight, IconUsersGroup } from "@tabler/icons-react";
+import { MagnifyingGlass, ArrowRight, CaretRight, UsersThree } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
@@ -89,7 +89,7 @@ export function Vereinsleben() {
 
         {/* Suche */}
         <label className="mb-4 flex max-w-xl items-center gap-3 rounded-xl border border-ink-line bg-cream px-4 py-3 focus-within:border-red-500">
-          <IconSearch className="h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
+          <MagnifyingGlass className="h-5 w-5 shrink-0 text-ink-muted" weight="regular" />
           <input
             type="search"
             value={query}
@@ -127,7 +127,7 @@ export function Vereinsleben() {
                 className="flex items-center gap-3 rounded-xl border border-ink-line/70 bg-cream px-4 py-3"
               >
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-50 text-red-700">
-                  <IconUsersGroup className="h-4.5 w-4.5" stroke={1.75} />
+                  <UsersThree className="h-4.5 w-4.5" weight="regular" />
                 </span>
                 <div className="min-w-0">
                   <div className="card-title text-sm text-ink">{v.name}</div>
@@ -172,7 +172,7 @@ export function Vereinsleben() {
               className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-gold-100"
             >
               Verein eintragen lassen
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
             <Link
               to="/lebenslage/ehrenamt"
@@ -204,7 +204,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

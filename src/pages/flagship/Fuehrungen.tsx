@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconClock,
-  IconMapPin,
-  IconTicket,
-  IconCalendarRepeat,
-  IconArrowRight,
-  IconRoute,
-} from "@tabler/icons-react";
+  Clock,
+  MapPin,
+  Ticket,
+  ArrowsClockwise,
+  ArrowRight,
+  Path,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -70,17 +70,17 @@ export function Fuehrungen() {
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.beschreibung}</p>
                 <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-ink-line/50 pt-4 text-sm">
-                  <Detail icon={IconClock} value={f.dauer} />
-                  <Detail icon={IconTicket} value={f.preis} />
-                  <Detail icon={IconMapPin} value={f.treffpunkt} />
-                  <Detail icon={IconCalendarRepeat} value={f.turnus} />
+                  <Detail icon={Clock} value={f.dauer} />
+                  <Detail icon={Ticket} value={f.preis} />
+                  <Detail icon={MapPin} value={f.treffpunkt} />
+                  <Detail icon={ArrowsClockwise} value={f.turnus} />
                 </dl>
                 <Link
                   to={`/rathaus/kontakt?topic=fuehrung&fuehrung=${f.id}`}
                   className="mt-5 inline-flex items-center gap-1.5 self-start text-sm font-medium text-red-700 hover:underline"
                 >
                   Anfragen & buchen
-                  <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                  <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                 </Link>
               </article>
             </Reveal>
@@ -133,7 +133,7 @@ export function Fuehrungen() {
               to="/mein-moosburg/stadtplan"
               className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-gold-100"
             >
-              <IconRoute className="h-4 w-4" stroke={2} />
+              <Path className="h-4 w-4" weight="regular" />
               Route auf dem Stadtplan
             </Link>
             <Link
@@ -149,10 +149,10 @@ export function Fuehrungen() {
   );
 }
 
-function Detail({ icon: Icon, value }: { icon: typeof IconClock; value: string }) {
+function Detail({ icon: Icon, value }: { icon: typeof Clock; value: string }) {
   return (
     <div className="flex items-start gap-2 text-ink-soft">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" stroke={1.75} />
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" weight="regular" />
       <span>{value}</span>
     </div>
   );

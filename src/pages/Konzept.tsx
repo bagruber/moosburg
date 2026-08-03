@@ -1,26 +1,26 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconClock,
-  IconHeart,
-  IconDeviceMobile,
-  IconScale,
-  IconSearch,
-  IconArrowRight,
-  IconRoute,
-  IconMap2,
-  IconLayoutCards,
-  IconUserCheck,
-  IconPhone,
-  IconMail,
-  IconCalendarEvent,
-  IconTrash,
-  IconChevronDown,
-  IconCheck,
-  IconBuildingCommunity,
-  IconMessageChatbot,
-  IconDatabase,
-} from "@tabler/icons-react";
+  Clock,
+  Heart,
+  DeviceMobile,
+  Scales,
+  MagnifyingGlass,
+  ArrowRight,
+  Path,
+  MapTrifold,
+  SquaresFour,
+  UserCheck,
+  Phone,
+  Envelope,
+  CalendarDots,
+  Trash,
+  CaretDown,
+  Check,
+  Buildings,
+  Robot,
+  Database,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -42,7 +42,7 @@ import { mockPins } from "@/data/mapPins";
 
 const personas = [
   {
-    icon: IconClock,
+    icon: Clock,
     name: "Peter Praktisch",
     age: "45, Familie",
     need: "Bedürfnis: Kompetenz",
@@ -52,7 +52,7 @@ const personas = [
     folge: "Schnell-Navigation, Suche prominent, A-Z-Index als Rückfallebene",
   },
   {
-    icon: IconHeart,
+    icon: Heart,
     name: "Mia Miteinander",
     age: "34, junge Familie",
     need: "Bedürfnis: Verbundenheit",
@@ -62,7 +62,7 @@ const personas = [
     folge: "Event-Vorschau, Familien-Lebenslage, lokale Bildsprache",
   },
   {
-    icon: IconDeviceMobile,
+    icon: DeviceMobile,
     name: "Ina Innovativ",
     age: "28, ledig",
     need: "Bedürfnis: Stimulation",
@@ -72,7 +72,7 @@ const personas = [
     folge: "Mobile-First, moderne Interaktionsmuster, Konto-Features",
   },
   {
-    icon: IconScale,
+    icon: Scales,
     name: "Armin Aktiv",
     age: "58, Kinder aus dem Haus",
     need: "Bedürfnis: Kompetenz und Partizipation",
@@ -155,14 +155,14 @@ const ALL_LAYERS: LayerKey[] = [
 ];
 
 const technik: {
-  icon: typeof IconSearch;
+  icon: typeof MagnifyingGlass;
   title: string;
   jetzt: string;
   anknuepfung: string;
   stufe: "Muss" | "Soll" | "Kann";
 }[] = [
   {
-    icon: IconSearch,
+    icon: MagnifyingGlass,
     title: "Suche & Query-Seite",
     jetzt: "Client-Index über statische Daten, ohne Server.",
     anknuepfung:
@@ -170,7 +170,7 @@ const technik: {
     stufe: "Kann",
   },
   {
-    icon: IconMap2,
+    icon: MapTrifold,
     title: "Map & Mängel melden",
     jetzt: "Leaflet plus OpenStreetMap, Mock-Pins, Meldung ohne Versand.",
     anknuepfung:
@@ -178,7 +178,7 @@ const technik: {
     stufe: "Muss",
   },
   {
-    icon: IconLayoutCards,
+    icon: SquaresFour,
     title: "Formulare",
     jetzt: "Reine UI, kein Absenden.",
     anknuepfung:
@@ -186,7 +186,7 @@ const technik: {
     stufe: "Muss",
   },
   {
-    icon: IconUserCheck,
+    icon: UserCheck,
     title: "Profil & dynamische Smart Cards",
     jetzt: "State nur in der Session, kein localStorage, kein Tracking.",
     anknuepfung:
@@ -194,7 +194,7 @@ const technik: {
     stufe: "Muss",
   },
   {
-    icon: IconCalendarEvent,
+    icon: CalendarDots,
     title: "Termin & Online-Dienste",
     jetzt: "Mock-Slots und Linkliste.",
     anknuepfung:
@@ -202,7 +202,7 @@ const technik: {
     stufe: "Muss",
   },
   {
-    icon: IconBuildingCommunity,
+    icon: Buildings,
     title: "Redaktion (CMS)",
     jetzt: "Kein CMS, Inhalte liegen im Code.",
     anknuepfung:
@@ -210,7 +210,7 @@ const technik: {
     stufe: "Soll",
   },
   {
-    icon: IconDatabase,
+    icon: Database,
     title: "Ratsinfos, Wahlen, Finanzen",
     jetzt: "Statische Beispieldaten.",
     anknuepfung:
@@ -336,7 +336,7 @@ export function Konzept() {
                 <article className="h-full rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:shadow-soft">
                   <div className="flex items-center gap-4">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-red-500 text-cream">
-                      <p.icon className="h-6 w-6" stroke={1.5} />
+                      <p.icon className="h-6 w-6" weight="light" />
                     </span>
                     <div>
                       <div className="card-title text-lg text-ink">{p.name}</div>
@@ -545,10 +545,10 @@ export function Konzept() {
                   Sekundär
                 </span>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-red-700">
-                  Text-Link <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                  Text-Link <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                 </span>
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-ink-line text-ink-soft">
-                  <IconSearch className="h-4.5 w-4.5" stroke={1.75} />
+                  <MagnifyingGlass className="h-4.5 w-4.5" weight="regular" />
                 </span>
               </div>
               <div className="mt-4 rounded-lg bg-ink p-4">
@@ -566,19 +566,19 @@ export function Konzept() {
               <div className="eyebrow mb-4 text-ink-muted">Ikonografie (Tabler, stroke 1.75)</div>
               <div className="flex flex-wrap items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-md bg-red-500 text-cream">
-                  <IconCalendarEvent className="h-6 w-6" stroke={1.5} />
+                  <CalendarDots className="h-6 w-6" weight="light" />
                 </span>
                 <span className="grid h-12 w-12 place-items-center rounded-full bg-gold-100 text-gold-700">
-                  <IconMap2 className="h-6 w-6" stroke={1.5} />
+                  <MapTrifold className="h-6 w-6" weight="light" />
                 </span>
                 <span
                   className="grid h-9 w-9 place-items-center rounded-lg"
                   style={{ background: "color-mix(in srgb, var(--color-rb-6) 14%, transparent)", color: "var(--color-rb-6)" }}
                 >
-                  <IconMessageChatbot className="h-4.5 w-4.5" stroke={1.75} />
+                  <Robot className="h-4.5 w-4.5" weight="regular" />
                 </span>
                 <span className="grid h-9 w-9 place-items-center rounded-lg bg-red-50 text-red-700">
-                  <IconRoute className="h-4.5 w-4.5" stroke={1.75} />
+                  <Path className="h-4.5 w-4.5" weight="regular" />
                 </span>
               </div>
               <p className="mt-4 text-xs text-ink-muted">
@@ -655,7 +655,7 @@ export function Konzept() {
           >
             {/* Fake Suchleiste */}
             <div className="flex items-center gap-2 rounded-full border border-ink-line bg-cream px-4 py-2.5">
-              <IconSearch className="h-5 w-5 text-ink-muted" stroke={1.75} />
+              <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
               <span className="flex-1 text-sm text-ink">{queryLabel[query]}</span>
               <span className="rounded-full bg-red-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cream">
                 Fragen
@@ -776,7 +776,7 @@ export function Konzept() {
                         "Erhalt des Ufergrünzugs entlang der Amper",
                       ].map((f) => (
                         <li key={f} className="flex items-start gap-2.5 text-[0.95rem] text-ink">
-                          <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-rb-5" stroke={2.5} />
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-rb-5" weight="bold" />
                           {f}
                         </li>
                       ))}
@@ -919,7 +919,7 @@ export function Konzept() {
                         <option>Grünanlage / Baum</option>
                         <option>Sonstiges</option>
                       </select>
-                      <IconChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" stroke={2} />
+                      <CaretDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" weight="regular" />
                     </div>
                     <div className="mt-2 font-mono text-xs text-ink-muted">
                       {pin.lat.toFixed(5)}, {pin.lng.toFixed(5)}
@@ -933,7 +933,7 @@ export function Konzept() {
                     </button>
                     {sent && (
                       <div className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-rb-5">
-                        <IconCheck className="h-4 w-4" stroke={2.5} /> Danke, Referenz M-2026-0421.
+                        <Check className="h-4 w-4" weight="bold" /> Danke, Referenz M-2026-0421.
                       </div>
                     )}
                   </div>
@@ -992,13 +992,13 @@ export function Konzept() {
                   </div>
                   <div className="mt-4 space-y-2 text-sm">
                     <a href="tel:+49876168140" className="flex items-center gap-2 rounded-lg bg-cream-dark px-3 py-2 text-ink hover:text-red-700">
-                      <IconPhone className="h-4 w-4 text-ink-muted" stroke={1.75} /> 08761 684-140
+                      <Phone className="h-4 w-4 text-ink-muted" weight="regular" /> 08761 684-140
                     </a>
                     <a href="mailto:standesamt@moosburg.de" className="flex items-center gap-2 rounded-lg bg-cream-dark px-3 py-2 text-ink hover:text-red-700">
-                      <IconMail className="h-4 w-4 text-ink-muted" stroke={1.75} /> standesamt@moosburg.de
+                      <Envelope className="h-4 w-4 text-ink-muted" weight="regular" /> standesamt@moosburg.de
                     </a>
                     <Link to="/rathaus/termin-buchen" className="flex items-center gap-2 rounded-lg bg-cream-dark px-3 py-2 text-ink hover:text-red-700">
-                      <IconArrowRight className="h-4 w-4 text-red-700" stroke={2} /> Termin für Trauung buchen
+                      <ArrowRight className="h-4 w-4 text-red-700" weight="regular" /> Termin für Trauung buchen
                     </Link>
                   </div>
                 </div>
@@ -1007,7 +1007,7 @@ export function Konzept() {
               {/* Dynamic */}
               <div className="overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
                 <div className="flex items-center gap-2 bg-red-500/10 px-4 py-2 text-[0.66rem] font-bold uppercase tracking-wider text-red-700">
-                  <IconUserCheck className="h-3.5 w-3.5" stroke={2.25} /> Dynamische Smart Card, über Profil
+                  <UserCheck className="h-3.5 w-3.5" weight="bold" /> Dynamische Smart Card, über Profil
                 </div>
                 <div className="p-5">
                   {!profil ? (
@@ -1017,22 +1017,22 @@ export function Konzept() {
                         persönliche, adressbasierte Infos zu sehen. Freiwillig, jederzeit widerrufbar.
                       </p>
                       <Link to="/konto" className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-red-700 hover:underline">
-                        Was bringt mir ein Konto? <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+                        Was bringt mir ein Konto? <ArrowRight className="h-3.5 w-3.5" weight="regular" />
                       </Link>
                     </div>
                   ) : (
                     <div className="space-y-3">
                       <PersonalizedBadge reason="Wegen Ihres Profils" tone="profile" />
                       {[
-                        [IconTrash, "Restmüll: Dienstag, 28. Juli", "Bezirk 3, Bahnhofstraße, Biotonne am Folgetag"],
-                        [IconCheck, "Wahllokal: Grundschule, Raum 4", "fußläufig 6 Minuten, barrierefrei"],
-                        [IconRoute, "Baustelle in Ihrer Straße", "Bahnhofstraße gesperrt bis 12. August"],
+                        [Trash, "Restmüll: Dienstag, 28. Juli", "Bezirk 3, Bahnhofstraße, Biotonne am Folgetag"],
+                        [Check, "Wahllokal: Grundschule, Raum 4", "fußläufig 6 Minuten, barrierefrei"],
+                        [Path, "Baustelle in Ihrer Straße", "Bahnhofstraße gesperrt bis 12. August"],
                       ].map(([Ic, t, d], i) => {
-                        const Icon = Ic as typeof IconTrash;
+                        const Icon = Ic as typeof Trash;
                         return (
                           <div key={i} className="flex gap-3 border-b border-ink-line/50 pb-3 last:border-0 last:pb-0">
                             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-cream-dark text-red-700">
-                              <Icon className="h-4.5 w-4.5" stroke={1.75} />
+                              <Icon className="h-4.5 w-4.5" weight="regular" />
                             </span>
                             <div>
                               <div className="text-sm font-semibold text-ink">{t as string}</div>
@@ -1068,7 +1068,7 @@ export function Konzept() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-red-50 text-red-700">
-                      <t.icon className="h-5 w-5" stroke={1.75} />
+                      <t.icon className="h-5 w-5" weight="regular" />
                     </span>
                     <h3 className="card-title text-base text-ink">{t.title}</h3>
                   </div>
@@ -1243,7 +1243,7 @@ function ThemeCover({
       <span className="headline relative mt-2 text-xl leading-tight">{title}</span>
       <span className="relative mt-2 max-w-[26ch] text-sm text-cream/90">{text}</span>
       <span className="relative mt-3 inline-flex items-center gap-1 text-sm font-medium">
-        Ansehen <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+        Ansehen <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
       </span>
     </Link>
   );

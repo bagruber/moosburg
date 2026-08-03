@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconChevronRight,
-  IconHelpCircle,
-} from "@tabler/icons-react";
+  ArrowRight,
+  CaretRight,
+  Question,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
@@ -89,7 +89,7 @@ export function BauenWohnen() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{r.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
                   Öffnen
-                  <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+                  <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
                 </span>
               </Link>
             </Reveal>
@@ -102,7 +102,7 @@ export function BauenWohnen() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">
-              <IconHelpCircle className="h-6 w-6 text-gold-200" stroke={1.75} />
+              <Question className="h-6 w-6 text-gold-200" weight="regular" />
               <div className="eyebrow text-gold-200">Häufigste Frage</div>
             </div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">Brauche ich eine Baugenehmigung?</h2>
@@ -117,7 +117,7 @@ export function BauenWohnen() {
             className="inline-flex items-center gap-2 self-start rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
           >
             Zur Bauberatung
-            <IconArrowRight className="h-4 w-4" stroke={2} />
+            <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>
         </div>
       </SpotlightSection>
@@ -144,7 +144,7 @@ function RelatedLink({ to, label }: { to: string; label: string }) {
       className="group flex items-center justify-between gap-3 rounded-xl border border-ink-line/70 bg-cream px-5 py-4 transition hover:border-red-500/40"
     >
       <span className="card-title text-ink">{label}</span>
-      <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+      <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
     </Link>
   );
 }

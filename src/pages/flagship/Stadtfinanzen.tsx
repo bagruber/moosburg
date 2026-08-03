@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconExternalLink,
-  IconCalculator,
-  IconInfoCircle,
-} from "@tabler/icons-react";
+  ArrowRight,
+  ArrowSquareOut,
+  Calculator,
+  Info,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -56,7 +56,7 @@ export function Stadtfinanzen() {
           <StatTile value={einwohner.toLocaleString("de-DE")} label="Einwohner (2025)" />
         </div>
         <p className="mt-4 flex items-start gap-2 text-xs text-ink-muted">
-          <IconInfoCircle className="mt-0.5 h-4 w-4 shrink-0" stroke={1.75} />
+          <Info className="mt-0.5 h-4 w-4 shrink-0" weight="regular" />
           Ansatz {haushaltJahr}, Brutto-Werte inkl. innerer Verrechnungen. Berechnet aus den Rohdaten
           des Projekts „haushaltvis". Im Zweifel ist der offizielle Haushaltsplan verbindlich.
         </p>
@@ -115,7 +115,7 @@ export function Stadtfinanzen() {
                 className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
               >
                 Haushalt erkunden
-                <IconExternalLink className="h-4 w-4" stroke={2} />
+                <ArrowSquareOut className="h-4 w-4" weight="regular" />
               </a>
               <a
                 href={`${HAUSHALTVIS_URL}/wofuer-zahle-ich`}
@@ -123,7 +123,7 @@ export function Stadtfinanzen() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-3 font-medium text-cream transition hover:bg-cream/10"
               >
-                <IconCalculator className="h-4 w-4" stroke={1.75} />
+                <Calculator className="h-4 w-4" weight="regular" />
                 Wofür zahle ich?
               </a>
             </div>
@@ -138,7 +138,7 @@ export function Stadtfinanzen() {
               className="mt-4 inline-flex items-center gap-1.5 font-medium text-gold-200 hover:underline"
             >
               Wer den Haushalt beschließt
-              <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+              <ArrowRight className="h-3.5 w-3.5" weight="regular" />
             </Link>
           </div>
         </div>

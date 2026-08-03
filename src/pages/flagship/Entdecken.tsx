@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import {
-  IconArrowRight,
-  IconChevronRight,
-  IconMapPin,
-  IconCalendarEvent,
-  IconBook2,
-} from "@tabler/icons-react";
+  ArrowRight,
+  CaretRight,
+  MapPin,
+  CalendarDots,
+  BookOpen,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -57,7 +57,7 @@ function WahrzeichenBlock({ s, flip }: { s: Sehenswuerdigkeit; flip: boolean }) 
             className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
             {s.link.label}
-            <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
+            <ArrowRight className="h-3.5 w-3.5" weight="regular" />
           </Link>
         )}
       </div>
@@ -147,7 +147,7 @@ export function Entdecken() {
                     className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
                   >
                     {s.link.label}
-                    <IconChevronRight className="h-3.5 w-3.5" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5" weight="regular" />
                   </Link>
                 )}
               </div>
@@ -165,7 +165,7 @@ export function Entdecken() {
                   <div className="card-title text-ink">Straßennamen & Stadtviertel</div>
                   <div className="text-sm text-ink-muted">Warum ganze Viertel einem Thema folgen.</div>
                 </div>
-                <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+                <ArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
               </Link>
               <Link
                 to="/thema/partnerstaedte"
@@ -175,7 +175,7 @@ export function Entdecken() {
                   <div className="card-title text-ink">Partnerstädte</div>
                   <div className="text-sm text-ink-muted">Moosburgs Freundschaften über Grenzen hinweg.</div>
                 </div>
-                <IconArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+                <ArrowRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
               </Link>
             </div>
           </div>
@@ -195,19 +195,19 @@ export function Entdecken() {
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <WeiterCard
-            icon={IconMapPin}
+            icon={MapPin}
             title="Stadtführungen"
             body="Geführte und digitale Rundgänge durch die Altstadt."
             to="/zu-besuch/fuehrungen"
           />
           <WeiterCard
-            icon={IconBook2}
+            icon={BookOpen}
             title="Geschichte & Erinnerung"
             body="Von der Klostergründung bis zum Stalag VII A."
             to="/zu-besuch/geschichte"
           />
           <WeiterCard
-            icon={IconCalendarEvent}
+            icon={CalendarDots}
             title="Veranstaltungs-Highlights"
             body="Frühlingsfest, Volksfest, Christkindlmarkt."
             to="/zu-besuch/highlights"
@@ -233,7 +233,7 @@ function WeiterCard({
   body,
   to,
 }: {
-  icon: typeof IconMapPin;
+  icon: typeof MapPin;
   title: string;
   body: string;
   to: string;
@@ -243,12 +243,12 @@ function WeiterCard({
       to={to}
       className="group flex flex-col rounded-2xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
     >
-      <Icon className="h-6 w-6 text-gold-200" stroke={1.5} />
+      <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>
       <p className="mt-1 text-sm text-cream/75">{body}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-200">
         Mehr
-        <IconArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" stroke={2} />
+        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
       </span>
     </Link>
   );

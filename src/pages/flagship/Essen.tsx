@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
-import type { Icon } from "@tabler/icons-react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  IconCoffee,
-  IconBread,
-  IconBeer,
-  IconToolsKitchen2,
-  IconTruckDelivery,
-  IconFlame,
-  IconChevronRight,
-  IconArrowRight,
-  IconExternalLink,
-  IconBabyCarriage,
-  IconLeaf,
-} from "@tabler/icons-react";
+  Coffee,
+  Bread,
+  BeerStein,
+  ForkKnife,
+  Truck,
+  Fire,
+  CaretRight,
+  ArrowRight,
+  ArrowSquareOut,
+  BabyCarriage,
+  Leaf,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -58,7 +58,7 @@ const SECTIONS: Section[] = [
     id: "restaurants",
     kategorie: "Restaurants & Gaststätten",
     label: "Restaurants & Gaststätten",
-    icon: IconToolsKitchen2,
+    icon: ForkKnife,
     accent: "rb-3",
     lead: "Von bayerischer Wirtshausküche bis griechisch, indisch und italienisch.",
   },
@@ -66,7 +66,7 @@ const SECTIONS: Section[] = [
     id: "baeckereien",
     kategorie: "Bäckereien & Metzgereien",
     label: "Bäckereien & Metzgereien",
-    icon: IconBread,
+    icon: Bread,
     accent: "rb-4",
     lead: "Frische Backwaren, Wurst aus eigener Herstellung, Mittagstisch.",
   },
@@ -74,7 +74,7 @@ const SECTIONS: Section[] = [
     id: "cafes",
     kategorie: "Cafés & Eisdielen",
     label: "Cafés & Eisdielen",
-    icon: IconCoffee,
+    icon: Coffee,
     accent: "rb-8",
     lead: "Frühstücken, Kaffeepause, Kuchen und im Sommer das Eis am Plan.",
   },
@@ -82,7 +82,7 @@ const SECTIONS: Section[] = [
     id: "imbiss",
     kategorie: "Schnelle Küche",
     label: "Imbiss & Schnelle Küche",
-    icon: IconFlame,
+    icon: Fire,
     accent: "rb-1",
     lead: "Döner, Pizza, Asian Food, fürs schnelle Mittagessen oder den Hunger zwischendurch.",
   },
@@ -90,7 +90,7 @@ const SECTIONS: Section[] = [
     id: "bars",
     kategorie: "Kneipen & Bars",
     label: "Kneipen & Bars",
-    icon: IconBeer,
+    icon: BeerStein,
     accent: "rb-7",
     lead: "Feierabend-Treffpunkte und Lokale für den Abend.",
   },
@@ -98,7 +98,7 @@ const SECTIONS: Section[] = [
     id: "lieferservice",
     kategorie: "Lieferservice & Catering",
     label: "Lieferservice & Catering",
-    icon: IconTruckDelivery,
+    icon: Truck,
     accent: "rb-5",
     lead: "Liefer­service nach Hause und Catering für Feiern und Firmenanlässe.",
   },
@@ -146,7 +146,7 @@ export function Essen() {
             {/* Profile-driven hint (only renders if profile matches) */}
             {profile.hasChildren && (
               <TipCard
-                icon={IconBabyCarriage}
+                icon={BabyCarriage}
                 title="Familien­freundliche Lokale"
                 body="Tagwerk Biomarkt-Café und Mühlbachcafé Beubl haben Spiel­ecken; viele Restaurants bieten Kinder­karten."
                 personalReason="Sie haben Kinder"
@@ -196,25 +196,25 @@ export function Essen() {
                 <li>
                   <Link to="/mein-moosburg/einkaufen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Wochenmarkt & Einkaufen</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/veranstaltungen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Volksfeste & Märkte</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/mein-moosburg/firmen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Firmen­verzeichnis komplett</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
                 <li>
                   <Link to="/zu-besuch/essen-uebernachten" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
                     <span>Essen & Übernachten für Besucher</span>
-                    <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
+                    <CaretRight className="h-3.5 w-3.5 shrink-0" weight="regular" />
                   </Link>
                 </li>
               </ul>
@@ -233,7 +233,7 @@ export function Essen() {
                 className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-red-700 hover:underline"
               >
                 Eintrag hinzufügen / ändern
-                <IconExternalLink className="h-3 w-3" stroke={2} />
+                <ArrowSquareOut className="h-3 w-3" weight="regular" />
               </a>
             </section>
 
@@ -248,7 +248,7 @@ export function Essen() {
                 className="mt-2 inline-flex items-center gap-1 text-red-700 hover:underline"
               >
                 Mehr zum Wochenmarkt
-                <IconArrowRight className="h-3 w-3" stroke={2} />
+                <ArrowRight className="h-3 w-3" weight="regular" />
               </Link>
             </section>
           </aside>
@@ -281,7 +281,7 @@ export function Essen() {
                   className="rounded-xl border border-cream/15 bg-cream/5 p-4 transition hover:bg-cream/10">
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="font-display text-base text-cream">{f.name}</h3>
-                    <IconLeaf className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" stroke={1.75} />
+                    <Leaf className="mt-0.5 h-4 w-4 shrink-0 text-gold-200" weight="regular" />
                   </div>
                   <p className="mt-1 text-xs text-cream/70">{f.primary_kategorie}</p>
                   <p className="mt-2 text-xs text-cream/80">{f.strasse}</p>
@@ -297,14 +297,14 @@ export function Essen() {
               className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-2.5 text-sm font-medium text-ink hover:bg-cream-dark"
             >
               Alles zur Fair-Trade-Stadt
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
             <Link
               to="/mein-moosburg/firmen?moosburgCard=1"
               className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-2.5 text-sm font-medium text-cream hover:bg-cream/10"
             >
               Moosburg-Card in der Gastronomie
-              <IconArrowRight className="h-4 w-4" stroke={2} />
+              <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
           </div>
         </Reveal>

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { IconArrowLeft, IconChevronDown, IconChevronRight, IconMap2 } from "@tabler/icons-react";
+import { ArrowLeft, CaretDown, CaretRight, MapTrifold } from "@phosphor-icons/react";
 import { StrassenKarte, type MapLayer } from "@/components/StrassenKarte";
 import { motivgruppen } from "@/data/motivgruppen";
 import { loadStrassenGeo, centroidMap, clusterStreets } from "@/lib/strassenGeo";
@@ -88,7 +88,7 @@ export function StrassenExplorer() {
             onClick={backToGruppe}
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
           >
-            <IconArrowLeft className="h-3.5 w-3.5" stroke={2} />
+            <ArrowLeft className="h-3.5 w-3.5" weight="regular" />
             Zurück zu {gruppe.name}
           </button>
         )}
@@ -110,7 +110,7 @@ export function StrassenExplorer() {
                     <span className="card-title text-ink">{u.name}</span>
                     <span className="ml-2 text-xs text-ink-muted">{u.strassen.length} Straßen</span>
                   </span>
-                  <IconChevronRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" stroke={2} />
+                  <CaretRight className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700" weight="regular" />
                 </button>
               </li>
             ))}
@@ -156,7 +156,7 @@ export function StrassenExplorer() {
                   </button>
                   <details className="group px-4 pb-3 pl-9">
                     <summary className="mt-1 inline-flex cursor-pointer list-none items-center gap-1 text-xs font-medium text-red-700 marker:content-none">
-                      <IconChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" stroke={2} />
+                      <CaretDown className="h-3.5 w-3.5 transition group-open:rotate-180" weight="regular" />
                       weiterführende Info
                     </summary>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.lang}</p>
@@ -253,9 +253,9 @@ function MobileMapSheet({ visualizing, children }: { visualizing: boolean; child
         >
           <span className="mx-auto block h-1 w-10 rounded-full bg-ink-line" />
           <span className="mt-2 flex items-center gap-2 text-sm font-display text-ink">
-            <IconMap2 className="h-4 w-4 text-red-700" stroke={1.75} />
+            <MapTrifold className="h-4 w-4 text-red-700" weight="regular" />
             {state === "peek" ? "Karte anzeigen" : "Auf der Karte"}
-            <IconChevronDown className={cn("ml-auto h-4 w-4 text-ink-muted transition", state === "peek" && "rotate-180")} stroke={2} />
+            <CaretDown className={cn("ml-auto h-4 w-4 text-ink-muted transition", state === "peek" && "rotate-180")} weight="regular" />
           </span>
         </button>
         <div className="min-h-0 flex-1">{children}</div>

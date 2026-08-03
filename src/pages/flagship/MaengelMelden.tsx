@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import {
-  IconMapPin,
-  IconCamera,
-  IconCheck,
-  IconInfoCircle,
-  IconChevronDown,
-  IconShieldCheck,
-} from "@tabler/icons-react";
+  MapPin,
+  Camera,
+  Check,
+  Info,
+  CaretDown,
+  ShieldCheck,
+} from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import {
@@ -133,7 +133,7 @@ export function MaengelMelden() {
             <label className="block">
               <span className="eyebrow text-ink-muted">Adresse</span>
               <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-white focus-within:border-red-500">
-                <IconMapPin className="ml-3 h-4 w-4 text-ink-muted" stroke={1.75} />
+                <MapPin className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
                 <input
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
@@ -163,7 +163,7 @@ export function MaengelMelden() {
 
             <div className="rounded-md bg-gold-100/60 p-4 text-xs text-ink-soft">
               <div className="flex gap-2">
-                <IconInfoCircle className="h-4 w-4 shrink-0 text-gold-700 mt-0.5" stroke={1.75} />
+                <Info className="h-4 w-4 shrink-0 text-gold-700 mt-0.5" weight="regular" />
                 <span>
                   Die Karte zeigt nur das <strong>Stadtgebiet Moosburg</strong>. Für Meldungen in
                   Nachbargemeinden wenden Sie sich bitte an deren jeweilige Stadtverwaltung.
@@ -198,7 +198,7 @@ export function MaengelMelden() {
                     <option key={c} value={c}>{c}</option>
                   ))}
                 </select>
-                <IconChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" stroke={2} />
+                <CaretDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" weight="regular" />
               </div>
             </label>
 
@@ -221,7 +221,7 @@ export function MaengelMelden() {
             <div>
               <span className="eyebrow text-ink-muted">Foto (optional)</span>
               <label className="mt-1.5 flex cursor-pointer items-center gap-4 rounded-md border-2 border-dashed border-ink-line bg-white p-5 text-sm transition hover:border-red-500">
-                <IconCamera className="h-8 w-8 shrink-0 text-red-700" stroke={1.5} />
+                <Camera className="h-8 w-8 shrink-0 text-red-700" weight="light" />
                 <div>
                   <div className="card-title text-sm">Foto hochladen oder aufnehmen</div>
                   <div className="mt-0.5 text-xs text-ink-muted">
@@ -296,7 +296,7 @@ export function MaengelMelden() {
 
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-xs text-ink-muted">
-              <IconShieldCheck className="h-4 w-4 text-rb-5" stroke={1.75} />
+              <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
               Ihre Meldung wird verschlüsselt übertragen und nach 12 Monaten gelöscht.
             </div>
             <button className="inline-flex items-center gap-2 rounded-md bg-red-500 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream shadow-soft hover:bg-red-700">
@@ -330,7 +330,7 @@ export function MaengelMelden() {
                 <div className="text-xs text-ink-muted">{r.location} · {r.time}</div>
               </div>
               <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${statusStyle[r.status]}`}>
-                {r.status === "behoben" && <IconCheck className="mr-0.5 inline h-3 w-3" stroke={3} />}
+                {r.status === "behoben" && <Check className="mr-0.5 inline h-3 w-3" weight="bold" />}
                 {r.status}
               </span>
             </div>
