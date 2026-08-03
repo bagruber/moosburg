@@ -19,7 +19,7 @@ import {
   IconCheck,
   IconParking,
   IconUserCircle,
-  IconSparkles,
+  IconUserCheck,
   IconWalk,
   IconMapPin,
   IconLock,
@@ -56,7 +56,7 @@ const STEPS: Step[] = [
     tier: "pflicht",
     icon: IconHome,
     title: "Wohnsitz anmelden",
-    desc: "Persönlich im Bürgerbüro mit Ausweis und Wohnungsgeberbestätigung. Termin online buchbar — bei Familien beide Erziehungsberechtigte mitbringen.",
+    desc: "Persönlich im Bürgerbüro mit Ausweis und Wohnungsgeberbestätigung. Termin online buchbar, bei Familien beide Erziehungsberechtigte mitbringen.",
     deadline: "innerhalb 14 Tagen nach Einzug",
     cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" },
   },
@@ -73,7 +73,7 @@ const STEPS: Step[] = [
     tier: "pflicht",
     icon: IconBell,
     title: "Rundfunkbeitrag anmelden",
-    desc: "Pflicht-Anmeldung beim ARD ZDF Deutschlandradio Beitragsservice — pro Wohnung ein Beitrag, unabhängig von Personenzahl.",
+    desc: "Pflicht-Anmeldung beim ARD ZDF Deutschlandradio Beitragsservice, pro Wohnung ein Beitrag, unabhängig von Personenzahl.",
     deadline: "innerhalb 1 Monat",
     cta: { label: "Zum Beitragsservice", to: "https://www.rundfunkbeitrag.de/", external: true },
   },
@@ -104,7 +104,7 @@ const STEPS: Step[] = [
     tier: "profile",
     icon: IconParking,
     title: "Anwohnerparkausweis beantragen",
-    desc: "In Tarifzonen A und B (Altstadt + Neustadt/Bahnhof) wird die Anwohnerparkkarte empfohlen — gilt 12 Monate.",
+    desc: "In Tarifzonen A und B (Altstadt + Neustadt/Bahnhof) wird die Anwohnerparkkarte empfohlen, gilt 12 Monate.",
     cta: { label: "Online beantragen", to: "/rathaus/online-dienste" },
     appliesIf: (p, d) => p.ownsCar && (d === "altstadt" || d === "neustadt"),
     reason: "Auto + Adresse in Tarifzone",
@@ -160,7 +160,7 @@ const STEPS: Step[] = [
     tier: "profile",
     icon: IconHeartHandshake,
     title: "Pflegeberatung kennenlernen",
-    desc: "Der Pflegestützpunkt des Landkreises bietet kostenlose Erstberatung — auch wenn aktuell kein Pflegegrad besteht.",
+    desc: "Der Pflegestützpunkt des Landkreises bietet kostenlose Erstberatung, auch wenn aktuell kein Pflegegrad besteht.",
     cta: { label: "Beratungstermin", to: "/mein-moosburg/gesundheit" },
     appliesIf: (p) => p.ageGroup === "65plus" || p.receivesPension,
     reason: "Senioren-Angebote in Moosburg",
@@ -181,7 +181,7 @@ const STEPS: Step[] = [
     tier: "tipp",
     icon: IconWalk,
     title: "Stadtführung „Neu in Moosburg“",
-    desc: "Kostenlose 90-Minuten-Führung jeden 1. Samstag im Monat um 11:00 Uhr — Treffpunkt am Stadtplatz, ohne Anmeldung.",
+    desc: "Kostenlose 90-Minuten-Führung jeden 1. Samstag im Monat um 11:00 Uhr: Treffpunkt am Stadtplatz, ohne Anmeldung.",
     cta: { label: "Zu den Veranstaltungen", to: "/mein-moosburg/veranstaltungen" },
   },
   {
@@ -189,7 +189,7 @@ const STEPS: Step[] = [
     tier: "tipp",
     icon: IconUsers,
     title: "Vereinsleben entdecken",
-    desc: "Über 120 Vereine prägen Moosburg — von Trachtenvereinen über TSV bis zu modernen Sportgruppen.",
+    desc: "Über 120 Vereine prägen Moosburg, von Trachtenvereinen über TSV bis zu modernen Sportgruppen.",
     cta: { label: "Vereine durchsuchen", to: "/mein-moosburg/freizeit" },
   },
   {
@@ -197,7 +197,7 @@ const STEPS: Step[] = [
     tier: "tipp",
     icon: IconHeartHandshake,
     title: "Buddy-Programm „Mit dabei in Moosburg“",
-    desc: "Ehrenamtliche Mentor:innen begleiten Neubürger:innen für 3 Monate — beim Behördengang, beim Stammtisch, beim Vereinseinstieg.",
+    desc: "Ehrenamtliche Mentor:innen begleiten Neubürger:innen für 3 Monate, beim Behördengang, beim Stammtisch, beim Vereinseinstieg.",
     cta: { label: "Anmelden", to: "/mitgestalten/beteiligung" },
   },
 ];
@@ -223,7 +223,7 @@ export function NeuInMoosburg() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Neu in Moosburg"
-        intro="Frisch zugezogen oder Sie überlegen, nach Moosburg zu ziehen? Diese Seite bündelt alles Wichtige für die ersten Wochen — sortiert nach Pflicht, Ihrer Situation und Empfehlungen."
+        intro="Frisch zugezogen oder Sie überlegen, nach Moosburg zu ziehen? Diese Seite bündelt alles Wichtige für die ersten Wochen, sortiert nach Pflicht, Ihrer Situation und Empfehlungen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Neu in Moosburg" }]}
         variant="cream"
         script="willkommen"
@@ -255,7 +255,7 @@ export function NeuInMoosburg() {
         <Reveal>
           <div className="mt-12">
             <div className="mb-4 flex items-center gap-3">
-              <h3 className="headline text-xl text-ink">Pflicht — für alle Neubürger:innen</h3>
+              <h3 className="headline text-xl text-ink">Pflicht, für alle Neubürger:innen</h3>
               <PersonalizedBadge reason="Pflicht für alle" tone="pflicht" />
             </div>
             <ul className="grid gap-3 lg:grid-cols-2">
@@ -283,7 +283,7 @@ export function NeuInMoosburg() {
         <Reveal delay={2}>
           <div className="mt-14">
             <div className="mb-4 flex items-center gap-3">
-              <h3 className="headline text-xl text-ink">Empfohlen — Lust auf Moosburg</h3>
+              <h3 className="headline text-xl text-ink">Empfohlen: Lust auf Moosburg</h3>
               <PersonalizedBadge reason="Empfehlung" tone="tipp" />
             </div>
             <ul className="grid gap-3 lg:grid-cols-2">
@@ -296,11 +296,11 @@ export function NeuInMoosburg() {
         {hiddenProfileSteps.length > 0 && signedIn && (
           <div className="mt-16 rounded-md border border-dashed border-ink-line bg-white/60 p-7">
             <div className="flex items-start gap-3">
-              <IconSparkles className="mt-0.5 h-5 w-5 shrink-0 text-turquoise-accent" stroke={1.75} />
+              <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-turquoise-accent" stroke={1.75} />
               <div className="flex-1">
                 <h3 className="card-title text-base text-ink">Trifft auch das auf Sie zu?</h3>
                 <p className="mt-1 text-sm text-ink-soft">
-                  Markieren Sie weitere Faktoren in Ihrem Profil — wir blenden dann passende Schritte ein.
+                  Markieren Sie weitere Faktoren in Ihrem Profil, wir blenden dann passende Schritte ein.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {Array.from(new Set(hiddenProfileSteps.map((s) => s.factor).filter(Boolean) as (keyof Profile)[])).map((f) => (
@@ -323,13 +323,13 @@ export function NeuInMoosburg() {
       {/* Stadtführung CTA */}
       <section className="border-y border-ink-line/60 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr),minmax(0,1fr)]">
+          <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div>
               <div className="eyebrow text-red-700">Lernen Sie Moosburg kennen</div>
               <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Stadtführung für Neubürger:innen</h2>
               <p className="mt-3 text-sm text-ink-soft max-w-md">
                 Kostenlose 90-Minuten-Führung durch die Altstadt, das Kastulus-Münster und das
-                Heimatmuseum — speziell für Menschen, die neu in Moosburg sind.
+                Heimatmuseum, speziell für Menschen, die neu in Moosburg sind.
               </p>
               <div className="mt-5 flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-1.5">
@@ -350,7 +350,7 @@ export function NeuInMoosburg() {
             {/* Bürgermeister quote */}
             <figure className="rounded-md border border-ink-line bg-white p-6 shadow-soft">
               <blockquote className="text-sm italic text-ink-soft leading-relaxed">
-                „Schön, dass Sie da sind. Moosburg lebt vom Engagement seiner Bürger:innen — kommen
+                „Schön, dass Sie da sind. Moosburg lebt vom Engagement seiner Bürger:innen. Kommen
                 Sie auf eine der Stadtführungen oder schreiben Sie mir direkt. Wir freuen uns auf Sie."
               </blockquote>
               <figcaption className="mt-4 flex items-center gap-3">
@@ -443,7 +443,7 @@ function PersonalizationBanner() {
       <section className="border-b border-ink-line/60 bg-cream">
         <div className="mx-auto max-w-7xl px-4 py-5 lg:px-8">
           <div className="flex flex-wrap items-start gap-3 rounded-md border border-gold-500/30 bg-gold-100/40 p-4 text-sm">
-            <IconSparkles className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+            <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
             <div className="flex-1">
               <strong className="text-ink">Markieren Sie „Neu in Moosburg" in Ihrem Profil,</strong>{" "}
               <span className="text-ink-soft">
@@ -469,7 +469,7 @@ function PersonalizationBanner() {
           <PersonalizedBadge reason="Personalisiert für Sie" tone="profile" />
           <span className="text-ink-soft">
             <strong className="text-ink">Willkommen, {profile.name || "Neubürger:in"}!</strong>{" "}
-            Diese Checkliste ist auf Ihre Profil-Angaben zugeschnitten — Pflicht-Schritte plus alles,
+            Diese Checkliste ist auf Ihre Profil-Angaben zugeschnitten: Pflicht-Schritte plus alles,
             was wegen Auto, Kindern, Hund usw. zusätzlich zutrifft.
           </span>
           <Link to="/konto" className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-turquoise-accent hover:underline">

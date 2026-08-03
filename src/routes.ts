@@ -1,42 +1,54 @@
 import type { Icon } from "@tabler/icons-react";
 import {
-  IconBuildingCommunity,
-  IconMapPin,
-  IconUsersGroup,
-  IconScale,
-  IconCalendarEvent,
-  IconShoppingBag,
-  IconHeartbeat,
-  IconSchool,
-  IconBallpen,
-  IconBike,
-  IconTree,
-  IconHome2,
-  IconBuildingSkyscraper,
-  IconCertificate,
-  IconCar,
-  IconFileDescription,
-  IconRecycle,
-  IconBriefcase,
-  IconGavel,
   IconAlertTriangle,
-  IconPhone,
+  IconArmchair,
+  IconBabyCarriage,
+  IconBallpen,
+  IconBed,
+  IconBike,
+  IconBook2,
+  IconBriefcase,
+  IconBuildingChurch,
+  IconBuildingCommunity,
+  IconBuildingStore,
+  IconBus,
+  IconBusinessplan,
+  IconCalendarEvent,
+  IconCalendarHeart,
+  IconCalendarPlus,
+  IconCalendarWeek,
+  IconCandle,
+  IconCar,
+  IconCertificate,
   IconChartPie,
   IconCheckbox,
-  IconMessageDots,
-  IconMap2,
-  IconBuildingChurch,
-  IconBook2,
   IconCoffee,
-  IconBed,
-  IconBabyCarriage,
+  IconCrane,
+  IconFileDescription,
+  IconFriends,
+  IconGavel,
   IconHeartHandshake,
-  IconHandStop,
-  IconHanger,
-  IconBusinessplan,
-  IconFlower,
-  IconSparkles,
-  IconCalendarHeart,
+  IconHeartbeat,
+  IconHome2,
+  IconLuggage,
+  IconMap2,
+  IconMessages,
+  IconMapPin,
+  IconMapPinExclamation,
+  IconMessageDots,
+  IconMoodKid,
+  IconPhone,
+  IconRecycle,
+  IconRings,
+  IconRoute,
+  IconScale,
+  IconSchool,
+  IconShoppingBag,
+  IconTools,
+  IconTree,
+  IconTruckDelivery,
+  IconUsersGroup,
+  IconWalk,
 } from "@tabler/icons-react";
 
 export type Hub = "rathaus" | "mein-moosburg" | "zu-besuch" | "mitgestalten";
@@ -56,14 +68,14 @@ export const hubs: Record<Hub, { title: string; tagline: string; intro: string; 
     title: "Rathaus",
     tagline: "Ämter, Termine, Dienste",
     intro:
-      "Alle Dienstleistungen der Stadtverwaltung, Ansprechpersonen und Formulare. Von der Anmeldung über Bauanträge bis zum Führungszeugnis — hier erledigen Sie Ihr Anliegen.",
+      "Alle Dienstleistungen der Stadtverwaltung, Ansprechpersonen und Formulare. Von der Anmeldung bis zum Führungszeugnis erledigen Sie Ihr Anliegen hier.",
     icon: IconBuildingCommunity,
   },
   "mein-moosburg": {
     title: "Mein Moosburg",
     tagline: "Leben in der Stadt",
     intro:
-      "Veranstaltungen, Vereine, Einkaufen, Gesundheit, Bildung, Mobilität — alles, was den Alltag in Moosburg ausmacht, auf einen Blick.",
+      "Veranstaltungen, Vereine, Einkaufen, Gesundheit, Bildung, Mobilität. Alles, was den Alltag in Moosburg ausmacht.",
     icon: IconUsersGroup,
   },
   "zu-besuch": {
@@ -78,7 +90,7 @@ export const hubs: Record<Hub, { title: string; tagline: string; intro: string; 
     tagline: "Stadtrat · Beteiligung · Transparenz",
     intro:
       "Politik in Moosburg findet öffentlich statt. Stadtratssitzungen, laufende Beteiligungsverfahren und die Werkzeuge, mit denen Sie die Stadt mitgestalten.",
-    icon: IconScale,
+    icon: IconMessages,
   },
 };
 
@@ -90,8 +102,8 @@ export const routes: Route[] = [
     title: "Termin buchen",
     eyebrow: "Rathaus",
     intro:
-      "Viele Anliegen im Rathaus sind nur mit Termin möglich — das spart Wartezeit und garantiert Ihnen einen festen Zeitslot. Buchen Sie hier direkt online.",
-    icon: IconCalendarEvent,
+      "Viele Anliegen im Rathaus sind nur mit Termin möglich. Das spart Wartezeit und sichert Ihnen einen festen Zeitslot. Buchen Sie direkt online.",
+    icon: IconCalendarPlus,
     flagship: true,
   },
   {
@@ -128,7 +140,7 @@ export const routes: Route[] = [
     title: "Ver- und Entsorgung",
     eyebrow: "Rathaus",
     intro:
-      "Abfallkalender, Wasserversorgung, Altglas-Standorte, Hundekotbeutel-Stationen und Kehrplan — alles rund um die städtische Ver- und Entsorgung.",
+      "Abfallkalender, Wasserversorgung, Altglas-Standorte, Hundekotbeutel-Stationen und Kehrplan.",
     icon: IconRecycle,
   },
   {
@@ -137,7 +149,7 @@ export const routes: Route[] = [
     title: "Stellenangebote",
     eyebrow: "Rathaus",
     intro:
-      "Offene Stellen bei der Stadt Moosburg, den städtischen Einrichtungen und Kitas — vom Ausbildungsplatz bis zur Fachbereichsleitung.",
+      "Offene Stellen bei der Stadt Moosburg, den städtischen Einrichtungen und Kitas, vom Ausbildungsplatz bis zur Fachbereichsleitung.",
     icon: IconBriefcase,
   },
   {
@@ -146,7 +158,7 @@ export const routes: Route[] = [
     title: "Satzungen & Verordnungen",
     eyebrow: "Rathaus",
     intro:
-      "Das kommunale Regelwerk der Stadt — sortiert nach Themen, mit kurzen Erklärungen in Alltagssprache. Filtern Sie nach Lebenslage, um nur die Regeln zu sehen, die Sie betreffen.",
+      "Das kommunale Regelwerk der Stadt, sortiert nach Themen und mit kurzen Erklärungen in Alltagssprache. Filtern Sie nach Lebenslage, um nur die Regeln zu sehen, die Sie betreffen.",
     icon: IconGavel,
   },
   {
@@ -155,7 +167,7 @@ export const routes: Route[] = [
     title: "Notdienste & Notfallnummern",
     eyebrow: "Rathaus",
     intro:
-      "Wichtige Telefonnummern im Notfall — Feuerwehr, Polizei, ärztlicher Notdienst, Kinder- und Jugendnotruf sowie städtischer Bereitschaftsdienst.",
+      "Wichtige Telefonnummern im Notfall: Feuerwehr, Polizei, ärztlicher Notdienst, Kinder- und Jugendnotruf sowie städtischer Bereitschaftsdienst.",
     icon: IconAlertTriangle,
   },
 
@@ -166,8 +178,8 @@ export const routes: Route[] = [
     title: "Diese Woche in Moosburg",
     eyebrow: "Mein Moosburg",
     intro:
-      "Was steht an, was ist neu, was sollte man wissen? Der wöchentliche Einstieg ins Stadtleben — Events, Neuigkeiten, Saison-Tipps und Live-Daten aus Moosburg.",
-    icon: IconCalendarEvent,
+      "Was steht an, was ist neu, was sollte man wissen? Der wöchentliche Einstieg ins Stadtleben: Events, Neuigkeiten, Saison-Tipps und Live-Daten aus Moosburg.",
+    icon: IconCalendarWeek,
     flagship: true,
   },
   {
@@ -176,17 +188,17 @@ export const routes: Route[] = [
     title: "Stadtplan",
     eyebrow: "Mein Moosburg",
     intro:
-      "Die interaktive Karte von Moosburg — Sehenswürdigkeiten, Spielplätze, Lokale, Apotheken, Haltestellen, Ladesäulen und Baustellen, alle Ebenen frei kombinierbar.",
+      "Die interaktive Karte von Moosburg. Sehenswürdigkeiten, Spielplätze, Lokale, Apotheken, Haltestellen, Ladesäulen und Baustellen lassen sich als Ebenen frei kombinieren.",
     icon: IconMap2,
     flagship: true,
   },
   {
     slug: "mein-moosburg/veranstaltungen",
     hub: "mein-moosburg",
-    title: "Was ist los? — Veranstaltungen",
+    title: "Was ist los? Veranstaltungen",
     eyebrow: "Mein Moosburg",
     intro:
-      "Vom Frühlingsfest bis zur Lesung in der Stadtbibliothek — der zentrale Veranstaltungskalender bündelt alle Termine aus Stadt, Vereinen und Kultur an einem Ort.",
+      "Vom Frühlingsfest bis zur Lesung in der Stadtbibliothek. Der zentrale Kalender bündelt alle Termine aus Stadt, Vereinen und Kultur.",
     icon: IconCalendarEvent,
     flagship: true,
   },
@@ -196,7 +208,7 @@ export const routes: Route[] = [
     title: "Einkaufen & Märkte",
     eyebrow: "Mein Moosburg",
     intro:
-      "Geschäfte in der Innenstadt, Wochenmarkt am Stadtplatz, Moosburg-Card und Fair-Trade-Stadt-Initiativen — lokal einkaufen, regional handeln.",
+      "Geschäfte in der Innenstadt, Wochenmarkt am Stadtplatz, Moosburg-Card und Fair-Trade-Initiativen. Lokal einkaufen, regional handeln.",
     icon: IconShoppingBag,
   },
   {
@@ -205,7 +217,7 @@ export const routes: Route[] = [
     title: "Essen & Trinken",
     eyebrow: "Mein Moosburg",
     intro:
-      "Restaurants, Cafés, Biergärten und Bäckereien in Moosburg — von der traditionellen bayerischen Küche bis zum Wochenend-Brunch.",
+      "Restaurants, Cafés, Biergärten und Bäckereien in Moosburg, von der bayerischen Wirtshausküche bis zum Wochenend-Brunch.",
     icon: IconCoffee,
   },
   {
@@ -223,7 +235,7 @@ export const routes: Route[] = [
     title: "Familie & Bildung",
     eyebrow: "Mein Moosburg",
     intro:
-      "Kinderbetreuung, Schulen, Jugendangebote, Senioren — Moosburg bietet Angebote für jede Lebensphase. Diese Seite bündelt alle wichtigen Einstiegspunkte.",
+      "Kinderbetreuung, Schulen, Jugendangebote, Senioren. Moosburg hat Angebote für jede Lebensphase; hier finden Sie die Einstiegspunkte.",
     icon: IconSchool,
   },
   {
@@ -232,7 +244,7 @@ export const routes: Route[] = [
     title: "Freizeit & Sport",
     eyebrow: "Mein Moosburg",
     intro:
-      "Vereine, Stadtbibliothek, Hallenbad, Eisstadion, Radwege und Naherholung — wer in Moosburg aktiv ist, findet hier den passenden Einstieg.",
+      "Vereine, Stadtbibliothek, Hallenbad, Eisstadion, Radwege und Naherholung. Wer in Moosburg aktiv ist, wird hier fündig.",
     icon: IconBike,
   },
   {
@@ -241,8 +253,8 @@ export const routes: Route[] = [
     title: "Mobilität & Verkehr",
     eyebrow: "Mein Moosburg",
     intro:
-      "Baustellen, Busfahrpläne, Park&Ride, Fahrradrouten und das Mobilitätsportal — alles rund ums Ankommen und Weiterkommen in Moosburg.",
-    icon: IconCar,
+      "Baustellen, Busfahrpläne, Park&Ride, Fahrradrouten und das Mobilitätsportal. Ankommen und weiterkommen in Moosburg.",
+    icon: IconBus,
   },
   {
     slug: "mein-moosburg/umwelt",
@@ -250,7 +262,7 @@ export const routes: Route[] = [
     title: "Umwelt & Klima",
     eyebrow: "Mein Moosburg",
     intro:
-      "Klimaschutzkonzept, Nahwärme, Balkonkraftwerk-Förderung und die Moosburger Solar- und Umwelttage — die Stadt auf dem Weg zur Klimaneutralität.",
+      "Klimaschutzkonzept, Nahwärme, Balkonkraftwerk-Förderung und die Moosburger Solar- und Umwelttage. Die Stadt auf dem Weg zur Klimaneutralität.",
     icon: IconTree,
   },
   {
@@ -259,7 +271,7 @@ export const routes: Route[] = [
     title: "Wohnen",
     eyebrow: "Mein Moosburg",
     intro:
-      "Mietmarkt, Wohngeld, städtische Bauplatz-Listen und Informationen für Neubürgerinnen und Neubürger — wie Wohnen in Moosburg gelingt.",
+      "Mietmarkt, Wohngeld, städtische Bauplatz-Listen und Informationen für Neubürgerinnen und Neubürger.",
     icon: IconHome2,
   },
   {
@@ -268,8 +280,8 @@ export const routes: Route[] = [
     title: "Firmenverzeichnis",
     eyebrow: "Mein Moosburg",
     intro:
-      "Das zentrale Verzeichnis der Moosburger Wirtschaft — Handel, Handwerk, Dienstleister, Industrie und Immobilien. Gepflegt in Zusammenarbeit mit Moosburg Marketing eG.",
-    icon: IconBuildingSkyscraper,
+      "Das zentrale Verzeichnis der Moosburger Wirtschaft: Handel, Handwerk, Dienstleister, Industrie und Immobilien. Gepflegt in Zusammenarbeit mit Moosburg Marketing eG.",
+    icon: IconBuildingStore,
   },
 
   // ─────────────────────────────────────── Zu Besuch
@@ -279,7 +291,7 @@ export const routes: Route[] = [
     title: "Moosburg entdecken",
     eyebrow: "Zu Besuch",
     intro:
-      "Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme — Moosburg vereint über tausend Jahre Stadtgeschichte auf engem Raum.",
+      "Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme. Über tausend Jahre Stadtgeschichte auf engem Raum.",
     icon: IconBuildingChurch,
   },
   {
@@ -288,7 +300,7 @@ export const routes: Route[] = [
     title: "Geschichte & Erinnerung",
     eyebrow: "Zu Besuch",
     intro:
-      "Von der ersten Erwähnung 1171 bis zum Mahnmal Stalag VII A — Moosburgs Geschichte ist vielschichtig, und sie wird an vielen Orten in der Stadt erzählt.",
+      "Von der ersten Erwähnung 1171 bis zum Mahnmal Stalag VII A. Moosburgs Geschichte ist vielschichtig, und sie wird an vielen Orten in der Stadt erzählt.",
     icon: IconBook2,
   },
   {
@@ -297,8 +309,8 @@ export const routes: Route[] = [
     title: "Stadtführungen & Rundgänge",
     eyebrow: "Zu Besuch",
     intro:
-      "Öffentliche und private Stadtführungen, thematische Rundgänge und digitale Audioguides — Moosburg auf vielen Wegen kennenlernen.",
-    icon: IconMap2,
+      "Öffentliche und private Stadtführungen, thematische Rundgänge und digitale Audioguides.",
+    icon: IconWalk,
   },
   {
     slug: "zu-besuch/essen-uebernachten",
@@ -306,7 +318,7 @@ export const routes: Route[] = [
     title: "Essen & Übernachten",
     eyebrow: "Zu Besuch",
     intro:
-      "Hotels, Pensionen, Ferienwohnungen und die bayerische Wirtshauskultur Moosburgs — kuratiert für Ihren Aufenthalt in der Drei-Rosen-Stadt.",
+      "Hotels, Pensionen, Ferienwohnungen und die bayerische Wirtshauskultur Moosburgs, kuratiert für Ihren Aufenthalt.",
     icon: IconBed,
   },
   {
@@ -315,7 +327,7 @@ export const routes: Route[] = [
     title: "Veranstaltungs-Highlights",
     eyebrow: "Zu Besuch",
     intro:
-      "Das Moosburger Frühlingsfest, der Altstadt-Christkindlmarkt, die Solar- und Umwelttage — die großen Momente im Moosburger Jahreskalender.",
+      "Das Moosburger Frühlingsfest, der Altstadt-Christkindlmarkt, die Solar- und Umwelttage. Die großen Momente im Jahreskalender.",
     icon: IconCalendarHeart,
   },
   {
@@ -324,8 +336,8 @@ export const routes: Route[] = [
     title: "Anreise & Parken",
     eyebrow: "Zu Besuch",
     intro:
-      "Mit dem Auto, der Bahn oder dem Rad nach Moosburg — Anfahrtsbeschreibungen, Parkflächen in der Innenstadt und Park&Ride-Angebote auf einen Blick.",
-    icon: IconCar,
+      "Mit dem Auto, der Bahn oder dem Rad nach Moosburg. Anfahrt, Parkflächen in der Innenstadt und Park&Ride-Angebote.",
+    icon: IconRoute,
   },
 
   // ─────────────────────────────────────── Mitgestalten
@@ -345,7 +357,7 @@ export const routes: Route[] = [
     title: "Bürgerbeteiligung",
     eyebrow: "Mitgestalten",
     intro:
-      "Laufende Beteiligungsverfahren, Bürgerversammlungen und das Meldesystem „Unser Moosburg-Plan“ — Ihre Stimme in der Stadtentwicklung.",
+      "Laufende Beteiligungsverfahren, Bürgerversammlungen und das Meldesystem „Unser Moosburg-Plan“. Ihre Stimme in der Stadtentwicklung.",
     icon: IconMessageDots,
   },
   {
@@ -354,8 +366,8 @@ export const routes: Route[] = [
     title: "Mängel melden",
     eyebrow: "Mitgestalten",
     intro:
-      "Schlagloch, defekte Straßenlaterne, überfüllter Mülleimer? Melden Sie Probleme im öffentlichen Raum — direkt mit Foto und Standort, wir kümmern uns.",
-    icon: IconAlertTriangle,
+      "Schlagloch, defekte Straßenlaterne, überfüllter Mülleimer? Melden Sie Probleme im öffentlichen Raum, direkt mit Foto und Standort. Wir kümmern uns.",
+    icon: IconMapPinExclamation,
     flagship: true,
   },
   {
@@ -364,8 +376,8 @@ export const routes: Route[] = [
     title: "Stadtentwicklung & Projekte",
     eyebrow: "Mitgestalten",
     intro:
-      "Aktuelle Bebauungspläne, Bauleitplanverfahren und große Stadtentwicklungsprojekte — mit Einsichtsfristen, Dokumenten und Stand der Umsetzung.",
-    icon: IconBuildingSkyscraper,
+      "Aktuelle Bebauungspläne, Bauleitplanverfahren und große Stadtentwicklungsprojekte, mit Einsichtsfristen, Dokumenten und Stand der Umsetzung.",
+    icon: IconCrane,
   },
   {
     slug: "mitgestalten/haushalt",
@@ -373,7 +385,7 @@ export const routes: Route[] = [
     title: "Stadtfinanzen",
     eyebrow: "Mitgestalten",
     intro:
-      "Haushaltssatzung, Jahresrechnung und Investitionsplan — wie sich Moosburg finanziert und wohin die Mittel fließen, verständlich aufbereitet.",
+      "Haushaltssatzung, Jahresrechnung und Investitionsplan. Wie sich Moosburg finanziert und wohin die Mittel fließen.",
     icon: IconChartPie,
   },
   {
@@ -395,26 +407,26 @@ export type Lebenslage = {
 };
 
 export const lebenslagen: Lebenslage[] = [
-  { slug: "lebenslage/neu-in-moosburg", title: "Neu in Moosburg", icon: IconSparkles, intro: "Sie sind frisch zugezogen oder überlegen, nach Moosburg zu ziehen? Hier bündeln wir alles Wichtige für den Start." },
-  { slug: "lebenslage/familie-kind", title: "Familie & Kind", icon: IconBabyCarriage, intro: "Von der Geburt über die Kita bis zum Schulabschluss — alle städtischen Angebote für Familien auf einen Blick." },
-  { slug: "lebenslage/heiraten", title: "Heiraten", icon: IconHeartHandshake, intro: "Trauungen im historischen Rathaus Moosburg — Termine, Formalitäten und Ansprechpersonen im Standesamt." },
-  { slug: "lebenslage/bauen-wohnen", title: "Bauen & Wohnen", icon: IconHome2, intro: "Grundstück, Bauantrag, Sanierung, Mietrecht — der rote Faden durch alle Themen rund ums Wohnen in Moosburg." },
-  { slug: "lebenslage/umziehen", title: "Umziehen", icon: IconHanger, intro: "Anmelden, ummelden, abmelden — und was bei einem Umzug innerhalb Moosburgs oder nach auswärts zu beachten ist." },
+  { slug: "lebenslage/neu-in-moosburg", title: "Neu in Moosburg", icon: IconLuggage, intro: "Sie sind frisch zugezogen oder überlegen, nach Moosburg zu ziehen? Hier bündeln wir alles Wichtige für den Start." },
+  { slug: "lebenslage/familie-kind", title: "Familie & Kind", icon: IconBabyCarriage, intro: "Von der Geburt über die Kita bis zum Schulabschluss. Alle städtischen Angebote für Familien." },
+  { slug: "lebenslage/heiraten", title: "Heiraten", icon: IconRings, intro: "Trauungen im historischen Rathaus Moosburg: Termine, Formalitäten und Ansprechpersonen im Standesamt." },
+  { slug: "lebenslage/bauen-wohnen", title: "Bauen & Wohnen", icon: IconTools, intro: "Grundstück, Bauantrag, Sanierung, Mietrecht. Der Weg durch alle Themen rund ums Wohnen." },
+  { slug: "lebenslage/umziehen", title: "Umziehen", icon: IconTruckDelivery, intro: "Anmelden, ummelden, abmelden. Und was bei einem Umzug innerhalb Moosburgs oder nach auswärts zu beachten ist." },
   { slug: "lebenslage/auto-verkehr", title: "Auto & Verkehr", icon: IconCar, intro: "KFZ-Zulassung, Führerschein, Parken, Blaue Zone und alle weiteren Themen rund um das Auto in Moosburg." },
-  { slug: "lebenslage/pflege-alter", title: "Pflege & Alter", icon: IconHandStop, intro: "Pflegeberatung, Senioreneinrichtungen, Hilfe im Alltag — Moosburg unterstützt Sie und Ihre Angehörigen." },
-  { slug: "lebenslage/trauerfall", title: "Im Trauerfall", icon: IconFlower, intro: "Was im Trauerfall zu tun ist — Sterbefallanzeige, Bestattung, städtische Friedhöfe und Ansprechpersonen." },
+  { slug: "lebenslage/pflege-alter", title: "Pflege & Alter", icon: IconArmchair, intro: "Pflegeberatung, Senioreneinrichtungen, Hilfe im Alltag. Moosburg unterstützt Sie und Ihre Angehörigen." },
+  { slug: "lebenslage/trauerfall", title: "Im Trauerfall", icon: IconCandle, intro: "Was im Trauerfall zu tun ist: Sterbefallanzeige, Bestattung, städtische Friedhöfe und Ansprechpersonen." },
   { slug: "lebenslage/arbeit-ausbildung", title: "Arbeit & Ausbildung", icon: IconCertificate, intro: "Arbeitgeberinnen in Moosburg, Ausbildungsplätze, Stellenangebote der Stadt und Unterstützung bei der Jobsuche." },
-  { slug: "lebenslage/vereinsleben", title: "Vereinsleben", icon: IconUsersGroup, intro: "Über 120 Vereine prägen Moosburg — von Sport über Musik bis Brauchtum. So finden Sie Ihren Einstieg." },
+  { slug: "lebenslage/vereinsleben", title: "Vereinsleben", icon: IconFriends, intro: "Über 120 Vereine prägen Moosburg, von Sport über Musik bis Brauchtum. So finden Sie Ihren Einstieg." },
   { slug: "lebenslage/ehrenamt", title: "Ehrenamt", icon: IconHeartHandshake, intro: "Moosburg lebt vom Engagement seiner Bürgerinnen und Bürger. Wer sich einbringen will, findet hier passende Wege." },
-  { slug: "lebenslage/unternehmen", title: "Unternehmen & Gewerbe", icon: IconBusinessplan, intro: "Gewerbeanmeldung, Gewerbeflächen, Wirtschaftsförderung und Firmenverzeichnis — Moosburg als Unternehmensstandort." },
+  { slug: "lebenslage/unternehmen", title: "Unternehmen & Gewerbe", icon: IconBusinessplan, intro: "Gewerbeanmeldung, Gewerbeflächen, Wirtschaftsförderung und Firmenverzeichnis. Moosburg als Unternehmensstandort." },
 ];
 
 export const topTiles: { title: string; description: string; icon: Icon; slug: string; accent?: boolean }[] = [
-  { title: "Termin buchen", description: "Standesamt, KFZ, Pass", icon: IconCalendarEvent, slug: "rathaus/termin-buchen" },
+  { title: "Termin buchen", description: "Standesamt, KFZ, Pass", icon: IconCalendarPlus, slug: "rathaus/termin-buchen" },
   { title: "Online-Dienste A–Z", description: "Alle digitalen Services", icon: IconFileDescription, slug: "rathaus/online-dienste" },
   { title: "Bauen", description: "Antrag, Bebauungsplan, Beratung", icon: IconBallpen, slug: "rathaus/bauantrag" },
-  { title: "Familie & Kita", description: "Betreuung, Schulen", icon: IconBabyCarriage, slug: "mein-moosburg/familie" },
-  { title: "Mängel melden", description: "Schlaglöcher, Laternen, Müll", icon: IconAlertTriangle, slug: "mitgestalten/maengel-melden", accent: true },
+  { title: "Familie & Kita", description: "Betreuung, Schulen", icon: IconMoodKid, slug: "mein-moosburg/familie" },
+  { title: "Mängel melden", description: "Schlaglöcher, Laternen, Müll", icon: IconMapPinExclamation, slug: "mitgestalten/maengel-melden", accent: true },
   { title: "Stadtratssitzung", description: "Termine & Protokolle", icon: IconScale, slug: "mitgestalten/stadtrat" },
 ];
 
@@ -431,9 +443,9 @@ export const searchChips: SearchChip[] = [
 export type ThemenSeite = { title: string; slug: string; intro: string };
 
 export const themenSeiten: ThemenSeite[] = [
-  { slug: "thema/strassennamen", title: "Straßennamen & Stadtviertel", intro: "Wie Moosburgs Straßen zu ihren Namen kommen und warum ganze Viertel einem Thema folgen — vom Vogelviertel bis zur verlorenen Heimat der Vertriebenen." },
+  { slug: "thema/strassennamen", title: "Straßennamen & Stadtviertel", intro: "Wie Moosburgs Straßen zu ihren Namen kommen und warum ganze Viertel einem Thema folgen, vom Vogelviertel bis zur verlorenen Heimat der Vertriebenen." },
   { slug: "thema/partnerstaedte", title: "Partnerstädte", intro: "Moosburgs Städtepartnerschaften mit Bry-sur-Marne, Rochester, Moosburg in Kärnten und Sawbridgeworth." },
-  { slug: "thema/fair-trade", title: "Fair-Trade-Stadt Moosburg", intro: "Moosburg als Fairtrade-Stadt — Geschäfte, Gastronomie und Einrichtungen, die fair gehandelte Produkte anbieten." },
+  { slug: "thema/fair-trade", title: "Fair-Trade-Stadt Moosburg", intro: "Moosburg als Fairtrade-Stadt: Geschäfte, Gastronomie und Einrichtungen, die fair gehandelte Produkte anbieten." },
 ];
 
 export type SearchEntry = { title: string; slug: string; context: string; keywords: string };
@@ -476,9 +488,9 @@ export type EventItem = {
 };
 
 export const upcomingEvents: EventItem[] = [
-  { date: "2026-04-30", day: "30", month: "Apr", title: "57. Moosburger Frühlingsfest — Anstich", location: "Festgelände, Am Stadtpark", category: "Volksfest" },
+  { date: "2026-04-30", day: "30", month: "Apr", title: "57. Moosburger Frühlingsfest: Anstich", location: "Festgelände, Am Stadtpark", category: "Volksfest" },
   { date: "2026-05-01", day: "01", month: "Mai", title: "Maibaumaufstellen am Plan", location: "Plan Moosburg", category: "Brauchtum" },
-  { date: "2026-04-29", day: "29", month: "Apr", title: "Stadtratssitzung — öffentlich", location: "Rathaus, Sitzungssaal", category: "Stadtrat" },
+  { date: "2026-04-29", day: "29", month: "Apr", title: "Stadtratssitzung (öffentlich)", location: "Rathaus, Sitzungssaal", category: "Stadtrat" },
   { date: "2026-05-04", day: "04", month: "Mai", title: "Auftakt Solar- und Umwelttage 2026", location: "Stadtbibliothek Moosburg", category: "Umwelt" },
 ];
 

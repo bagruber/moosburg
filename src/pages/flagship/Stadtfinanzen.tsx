@@ -58,7 +58,7 @@ export function Stadtfinanzen() {
         <p className="mt-4 flex items-start gap-2 text-xs text-ink-muted">
           <IconInfoCircle className="mt-0.5 h-4 w-4 shrink-0" stroke={1.75} />
           Ansatz {haushaltJahr}, Brutto-Werte inkl. innerer Verrechnungen. Berechnet aus den Rohdaten
-          des Projekts „haushaltvis" — im Zweifel ist der offizielle Haushaltsplan verbindlich.
+          des Projekts „haushaltvis". Im Zweifel ist der offizielle Haushaltsplan verbindlich.
         </p>
       </section>
 
@@ -78,7 +78,7 @@ export function Stadtfinanzen() {
                 const pct = (b.betrag / gesamtAusgaben) * 100;
                 const width = (b.betrag / maxBereich) * 100;
                 return (
-                  <li key={b.ep} className="grid grid-cols-[minmax(0,11rem),1fr,auto] items-center gap-3" title={`${b.name}: ${euro(b.betrag)}`}>
+                  <li key={b.ep} className="grid grid-cols-[minmax(0,11rem)_1fr_auto] items-center gap-3" title={`${b.name}: ${euro(b.betrag)}`}>
                     <span className="truncate text-sm text-ink">{b.name}</span>
                     <span className="h-5 rounded-r-sm bg-red-500" style={{ width: `${Math.max(width, 2)}%` }} />
                     <span className="whitespace-nowrap text-right text-sm tabular-nums text-ink-soft">
@@ -98,13 +98,13 @@ export function Stadtfinanzen() {
 
       {/* ── Handoff haushaltvis ───────────────────────────────────── */}
       <SpotlightSection tone="ink">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Der ganze Haushalt, interaktiv</div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">Tiefer eintauchen im Haushalts-Tool</h2>
             <p className="mt-3 max-w-2xl text-cream/85">
               Einnahmen und Ausgaben als Flussdiagramm, elf bürgernahe Themen, Investitionen,
-              Zeitverlauf 2018–2024 und der Rechner „Wofür zahle ich?" — der komplette Haushalt
+              Zeitverlauf 2018–2024 und der Rechner „Wofür zahle ich?", der komplette Haushalt
               der Stadt Moosburg, verständlich aufbereitet.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
@@ -130,7 +130,7 @@ export function Stadtfinanzen() {
           </div>
           <div className="rounded-2xl border border-cream/20 bg-cream/5 p-6 text-sm text-cream/80">
             <p>
-              „haushaltvis" ist eine private Eigenentwicklung zur Haushaltstransparenz — Daten aus dem
+              „haushaltvis" ist eine private Eigenentwicklung zur Haushaltstransparenz: Daten aus dem
               offiziellen Haushaltsplan, KI-gestützt thematisch aufbereitet.
             </p>
             <Link

@@ -30,7 +30,7 @@ const BEDARFE: Bedarf[] = [
     id: "beratung",
     icon: IconMessageHeart,
     frage: "Ich suche Beratung",
-    intro: "Der erste Schritt ist oft ein Gespräch. Die Beratung ist kostenlos — auch, wenn noch kein Pflegegrad besteht.",
+    intro: "Der erste Schritt ist oft ein Gespräch. Die Beratung ist kostenlos, auch wenn noch kein Pflegegrad besteht.",
     links: [
       { title: "Pflegeberatung & Pflegestützpunkt", to: "/mein-moosburg/gesundheit" },
       { title: "Seniorenberatung der Stadt", to: "/rathaus/kontakt?topic=senioren" },
@@ -40,7 +40,7 @@ const BEDARFE: Bedarf[] = [
     id: "zuhause",
     icon: IconHome2,
     frage: "Pflege zu Hause organisieren",
-    intro: "Möglichst lange in den eigenen vier Wänden bleiben — mit der richtigen Unterstützung geht das.",
+    intro: "Möglichst lange in den eigenen vier Wänden bleiben, mit der richtigen Unterstützung geht das.",
     links: [
       { title: "Ambulante Pflegedienste", to: "/mein-moosburg/gesundheit" },
       { title: "Hausnotruf & Essen auf Rädern", to: "/mein-moosburg/firmen" },
@@ -51,7 +51,7 @@ const BEDARFE: Bedarf[] = [
     id: "heim",
     icon: IconBuildingHospital,
     frage: "Einen Platz im Heim finden",
-    intro: "Wenn es zu Hause nicht mehr geht, unterstützen die Einrichtungen vor Ort — dauerhaft oder zur Entlastung.",
+    intro: "Wenn es zu Hause nicht mehr geht, unterstützen die Einrichtungen vor Ort, dauerhaft oder zur Entlastung.",
     links: [
       { title: "Senioren- & Pflegeeinrichtungen", to: "/mein-moosburg/gesundheit" },
       { title: "Kurzzeit- & Verhinderungspflege", to: "/mein-moosburg/gesundheit" },
@@ -61,7 +61,7 @@ const BEDARFE: Bedarf[] = [
     id: "finanzen",
     icon: IconCoin,
     frage: "Finanzielle Unterstützung",
-    intro: "Pflege kostet — es gibt jedoch zahlreiche Leistungen, die Sie beantragen können.",
+    intro: "Pflege kostet, es gibt jedoch zahlreiche Leistungen, die Sie beantragen können.",
     links: [
       { title: "Pflegegrad beantragen", to: "/rathaus/online-dienste" },
       { title: "Wohngeld & Sozialleistungen", to: "/rathaus/online-dienste" },
@@ -86,7 +86,7 @@ export function PflegeAlter() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Pflege & Alter"
-        intro="Ob für sich selbst oder für Angehörige: Diese Seite hilft, den passenden Weg zu finden — von der ersten Beratung über Pflege zu Hause bis zu Angeboten für ein aktives Leben im Alter."
+        intro="Ob für sich selbst oder für Angehörige: Diese Seite hilft, den passenden Weg zu finden, von der ersten Beratung über Pflege zu Hause bis zu Angeboten für ein aktives Leben im Alter."
         crumbs={[{ label: "Lebenslagen" }, { label: "Pflege & Alter" }]}
         variant="cream"
         script="füreinander da"

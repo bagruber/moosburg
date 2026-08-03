@@ -21,7 +21,7 @@ import { strassen, strassenThemen, type ThemeId } from "@/data/strassennamen";
 
 /* Naming-process steps for the spotlight band. */
 const SCHRITTE = [
-  { icon: IconBulb, title: "Bedarf", text: "Ein neues Baugebiet entsteht — die frischen Straßen brauchen Namen." },
+  { icon: IconBulb, title: "Bedarf", text: "Ein neues Baugebiet entsteht, die frischen Straßen brauchen Namen." },
   { icon: IconSignRight, title: "Vorschlag", text: "Verwaltung, Stadtrat oder Bürgerinnen schlagen Namen vor, meist passend zum Thema des Viertels." },
   { icon: IconClipboardCheck, title: "Prüfung", text: "Der Ausschuss prüft: Gibt es den Namen schon? Passt er ins Viertel? Ist eine geehrte Person bereits verstorben?" },
   { icon: IconBuildingCommunity, title: "Beschluss", text: "Der Stadtrat entscheidet öffentlich über den endgültigen Namen." },
@@ -77,7 +77,7 @@ export function Strassennamen() {
       <PageHeader
         eyebrow="Themenseite"
         title="Straßennamen & Stadtviertel"
-        intro="Über 230 Straßen, Gassen und Plätze tragen in Moosburg einen Namen — und fast jeder erzählt etwas. Wie eine Straße zu ihrem Namen kommt und warum ganze Viertel einem Thema folgen."
+        intro="Über 230 Straßen, Gassen und Plätze tragen in Moosburg einen Namen, und fast jeder erzählt etwas davon. Wie eine Straße zu ihrem Namen kommt und warum ganze Viertel einem Thema folgen."
         crumbs={[{ label: "Themen" }, { label: "Straßennamen" }]}
         variant="photo"
         image="images/plan.jpg"
@@ -133,7 +133,7 @@ export function Strassennamen() {
           <SectionHeader eyebrow="Auf der Karte" heading="Motivgruppen räumlich entdecken" script="wo genau?" />
         </Reveal>
         <p className="-mt-4 mb-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Wählen Sie eine Motivgruppe — jede Untergruppe erscheint in eigener Farbe, sodass sichtbar
+          Wählen Sie eine Motivgruppe, jede Untergruppe erscheint in eigener Farbe, sodass sichtbar
           wird, welche sich räumlich ballen und welche verstreut liegen. Öffnen Sie eine Untergruppe für
           Details; einzelne Straßen lassen sich auf der Karte oder in der Liste anwählen.
         </p>
@@ -143,12 +143,12 @@ export function Strassennamen() {
       {/* ── Such-Einstieg ─────────────────────────────────────────── */}
       <section className="border-b border-ink-line/70 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr),minmax(0,1fr)] lg:items-center">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-center">
             <p className="max-w-2xl text-base leading-relaxed text-ink-soft">
               Viele Moosburger Straßen sind in <strong className="font-semibold text-ink">Themenvierteln</strong>{" "}
               zusammengefasst: Wer im Vogelviertel wohnt, hat Nachbarn in der Amsel- und der Drosselstraße;
               ein ganzer Straßenzug erinnert an die verlorene Heimat der Vertriebenen. Stöbern Sie durch die
-              Viertel — oder suchen Sie gezielt nach Ihrer Straße.
+              Viertel oder suchen Sie gezielt nach Ihrer Straße.
             </p>
             <label className="group flex items-center gap-3 rounded-xl border border-ink-line bg-cream px-4 py-3 focus-within:border-red-500">
               <IconSearch className="h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
@@ -229,7 +229,7 @@ export function Strassennamen() {
 
       {/* ── Mitmachen ─────────────────────────────────────────────── */}
       <SpotlightSection tone="ink">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Mitmachen</div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">
@@ -237,7 +237,7 @@ export function Strassennamen() {
             </h2>
             <p className="mt-3 max-w-2xl text-cream/80">
               Viele Erläuterungen tragen wir nach und nach zusammen. Wenn Sie wissen, nach wem oder was eine
-              Straße benannt ist, freuen wir uns über Ihren Hinweis — er hilft, die Stadtgeschichte lebendig
+              Straße benannt ist, freuen wir uns über Ihren Hinweis, er hilft, die Stadtgeschichte lebendig
               zu halten.
             </p>
           </div>

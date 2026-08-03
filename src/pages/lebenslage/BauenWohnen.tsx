@@ -26,13 +26,13 @@ type Ressource = { title: string; desc: string; to: string; tags: IntentId[] };
 
 const RESSOURCEN: Ressource[] = [
   { title: "Bauantrag & Genehmigung", desc: "Was Sie bauen dürfen und wie der digitale Bauantrag beim Landratsamt läuft.", to: "/rathaus/bauantrag", tags: ["bauen"] },
-  { title: "Bebauungspläne einsehen", desc: "Welche Regeln auf einem Grundstück gelten — mit Einsichtsfristen und Dokumenten.", to: "/mitgestalten/stadtentwicklung", tags: ["bauen", "kaufen"] },
+  { title: "Bebauungspläne einsehen", desc: "Welche Regeln auf einem Grundstück gelten, mit Einsichtsfristen und Dokumenten.", to: "/mitgestalten/stadtentwicklung", tags: ["bauen", "kaufen"] },
   { title: "Bauplätze & Flächennutzung", desc: "Städtische Bauplatz-Listen und der Flächennutzungsplan im Überblick.", to: "/mein-moosburg/wohnen", tags: ["bauen", "kaufen"] },
-  { title: "Energetisch sanieren", desc: "Modernisieren, dämmen, heizen — Wege zu einem effizienteren Zuhause.", to: "/mein-moosburg/umwelt", tags: ["sanieren"] },
-  { title: "Balkonkraftwerk & PV-Förderung", desc: "Solarstrom vom eigenen Dach oder Balkon — inkl. städtischer Förderung.", to: "/mein-moosburg/umwelt", tags: ["sanieren"] },
+  { title: "Energetisch sanieren", desc: "Modernisieren, dämmen, heizen: Wege zu einem effizienteren Zuhause.", to: "/mein-moosburg/umwelt", tags: ["sanieren"] },
+  { title: "Balkonkraftwerk & PV-Förderung", desc: "Solarstrom vom eigenen Dach oder Balkon, inkl. städtischer Förderung.", to: "/mein-moosburg/umwelt", tags: ["sanieren"] },
   { title: "Glasfaser-Anschluss", desc: "Verfügbarkeit prüfen und den Anschluss fürs neue oder sanierte Haus beauftragen.", to: "/rathaus/bauantrag", tags: ["bauen", "sanieren"] },
   { title: "Mietwohnung finden", desc: "Hinweise zum Moosburger Mietmarkt und zur Wohnungssuche.", to: "/mein-moosburg/wohnen", tags: ["mieten"] },
-  { title: "Wohngeld beantragen", desc: "Zuschuss zur Miete oder zu den Wohnkosten — Voraussetzungen und Antrag.", to: "/rathaus/online-dienste", tags: ["hilfe", "mieten"] },
+  { title: "Wohngeld beantragen", desc: "Zuschuss zur Miete oder zu den Wohnkosten: Voraussetzungen und Antrag.", to: "/rathaus/online-dienste", tags: ["hilfe", "mieten"] },
   { title: "Nahwärme im Stadtgebiet", desc: "Anschlussmöglichkeiten an das Moosburger Nahwärmenetz.", to: "/mein-moosburg/umwelt", tags: ["sanieren", "bauen"] },
 ];
 
@@ -45,7 +45,7 @@ export function BauenWohnen() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Bauen & Wohnen"
-        intro="Grundstück, Bauantrag, Sanierung, Miete oder Wohngeld — der rote Faden durch alle Themen rund ums Wohnen in Moosburg. Wählen Sie Ihr Vorhaben und sehen Sie die passenden Wege."
+        intro="Grundstück, Bauantrag, Sanierung, Miete oder Wohngeld, der rote Faden durch alle Themen rund ums Wohnen in Moosburg. Wählen Sie Ihr Vorhaben und sehen Sie die passenden Wege."
         crumbs={[{ label: "Lebenslagen" }, { label: "Bauen & Wohnen" }]}
         variant="cream"
         script="Zuhause"
@@ -99,7 +99,7 @@ export function BauenWohnen() {
 
       {/* ── Baugenehmigung-Hinweis ────────────────────────────────── */}
       <SpotlightSection tone="ink">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">
               <IconHelpCircle className="h-6 w-6 text-gold-200" stroke={1.75} />
@@ -107,7 +107,7 @@ export function BauenWohnen() {
             </div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">Brauche ich eine Baugenehmigung?</h2>
             <p className="mt-3 max-w-2xl text-cream/85">
-              Nicht jedes Vorhaben ist genehmigungspflichtig — Gartenhäuser, kleinere Anbauten oder
+              Nicht jedes Vorhaben ist genehmigungspflichtig: Gartenhäuser, kleinere Anbauten oder
               Solaranlagen sind es oft nicht. Was in Ihrem Fall gilt, hängt vom Bebauungsplan und der
               Bayerischen Bauordnung ab. Die Bauverwaltung berät Sie, bevor Sie einen Antrag stellen.
             </p>
@@ -124,7 +124,7 @@ export function BauenWohnen() {
 
       {/* ── Ansprechpartner + Verwandtes ──────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <AnsprechpartnerStrip keyword="Bau" heading="Ansprechpartner Bauen & Planen" limit={2} />
           <div className="space-y-3">
             <div className="eyebrow text-red-700">Verwandte Lebenslagen</div>

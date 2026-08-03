@@ -26,7 +26,7 @@ const GRUPPEN: Gruppe[] = [
     label: "Fahrzeug",
     icon: IconCar,
     items: [
-      { title: "KFZ zulassen & ummelden", desc: "Zulassung, Ummeldung und Abmeldung — nötig sind Ausweis, Zulassungsbescheinigung und eVB-Nummer.", to: "/rathaus/termin-buchen" },
+      { title: "KFZ zulassen & ummelden", desc: "Zulassung, Ummeldung und Abmeldung, nötig sind Ausweis, Zulassungsbescheinigung und eVB-Nummer.", to: "/rathaus/termin-buchen" },
       { title: "Wunschkennzeichen reservieren", desc: "Wunschkennzeichen vorab online sichern und zum Termin mitbringen.", to: "/rathaus/online-dienste" },
       { title: "Fahrzeug abmelden", desc: "Außerbetriebsetzung schnell und unkompliziert erledigen.", to: "/rathaus/online-dienste" },
     ],
@@ -45,7 +45,7 @@ const GRUPPEN: Gruppe[] = [
     label: "Parken",
     icon: IconParking,
     items: [
-      { title: "Anwohnerparkausweis", desc: "In den Tarifzonen der Innenstadt beantragen — gilt zwölf Monate.", to: "/rathaus/online-dienste" },
+      { title: "Anwohnerparkausweis", desc: "In den Tarifzonen der Innenstadt beantragen, gilt zwölf Monate.", to: "/rathaus/online-dienste" },
       { title: "Parkplätze & Parkzonen", desc: "Wo Sie mit Parkscheibe parken und wo kostenlose Flächen liegen.", to: "/zu-besuch/anreise" },
       { title: "Parkplätze auf der Karte", desc: "Freie Flächen, P+R und Ladesäulen im interaktiven Stadtplan.", to: "/mein-moosburg/stadtplan" },
     ],
@@ -68,7 +68,7 @@ export function AutoVerkehr() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Auto & Verkehr"
-        intro="Zulassung, Führerschein, Parken und alles rund ums Unterwegssein in Moosburg — sortiert nach Anliegen, damit Sie schnell zum Ziel kommen."
+        intro="Zulassung, Führerschein, Parken und alles rund ums Unterwegssein in Moosburg, sortiert nach Anliegen, damit Sie schnell zum Ziel kommen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Auto & Verkehr" }]}
         variant="cream"
         script="mobil"
@@ -84,7 +84,7 @@ export function AutoVerkehr() {
           />
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <DigitalCard icon={IconDeviceMobile} title="Handy-Parkticket" body="Parkgebühren bequem per App zahlen — kein Kleingeld nötig." to="/mein-moosburg/mobilitaet" />
+          <DigitalCard icon={IconDeviceMobile} title="Handy-Parkticket" body="Parkgebühren bequem per App zahlen, kein Kleingeld nötig." to="/mein-moosburg/mobilitaet" />
           <DigitalCard icon={IconCar} title="Wunschkennzeichen online" body="Kennzeichen reservieren und Termin gleich mitbuchen." to="/rathaus/online-dienste" />
           <DigitalCard icon={IconBolt} title="Ladesäulen finden" body="E-Ladepunkte im Stadtgebiet auf der Karte anzeigen." to="/mein-moosburg/stadtplan" />
         </div>
@@ -131,7 +131,7 @@ export function AutoVerkehr() {
           <IconInfoCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
           <p>
             Zulassung und Führerschein liegen beim <strong className="font-semibold text-ink">Landratsamt Freising</strong>.
-            In Moosburg hilft Ihnen die Außenstelle weiter — Termine buchen Sie bequem online.
+            In Moosburg hilft Ihnen die Außenstelle weiter: Termine buchen Sie bequem online.
           </p>
         </div>
 

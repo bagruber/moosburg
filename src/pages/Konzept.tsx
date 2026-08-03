@@ -10,7 +10,7 @@ import {
   IconRoute,
   IconMap2,
   IconLayoutCards,
-  IconSparkles,
+  IconUserCheck,
   IconPhone,
   IconMail,
   IconCalendarEvent,
@@ -186,7 +186,7 @@ const technik: {
     stufe: "Muss",
   },
   {
-    icon: IconSparkles,
+    icon: IconUserCheck,
     title: "Profil & dynamische Smart Cards",
     jetzt: "State nur in der Session, kein localStorage, kein Tracking.",
     anknuepfung:
@@ -293,7 +293,7 @@ export function Konzept() {
         <Reveal>
           <SectionHeader eyebrow="Worum es geht" heading="Ausgangslage" />
         </Reveal>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.6fr),minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <Reveal>
             <p className="max-w-2xl text-base leading-relaxed text-ink-soft">
               Moosburg betreibt heute zwei parallele Auftritte, die amtliche Seite moosburg.de und das
@@ -781,7 +781,7 @@ export function Konzept() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-5 grid gap-3 sm:grid-cols-[1.3fr,1fr]">
+                    <div className="mt-5 grid gap-3 sm:grid-cols-[1.3fr_1fr]">
                       <div className="relative min-h-[120px] overflow-hidden rounded-xl border border-ink-line/70 bg-gradient-to-br from-cream-dark to-gold-100">
                         <span className="absolute left-3 top-3 h-3 w-3 rounded-full bg-red-500 ring-4 ring-red-500/20" />
                         <span className="absolute bottom-2.5 left-3 rounded-md border border-ink-line bg-cream px-2 py-0.5 text-[0.7rem] font-medium text-ink-soft">
@@ -845,7 +845,7 @@ export function Konzept() {
             desc="Eine interaktive Map, begrenzt auf das Stadtgebiet, mit frei kombinierbaren Layern (Baustellen, Spielplätze, Trinkbrunnen, Haltestellen, Mängel). Dazu die Meldefunktion: Modus aktivieren, Punkt auf der Map setzen, melden."
             tech="Leaflet oder MapLibre plus OpenStreetMap (kein Google Maps). Layer sind umschaltbar, Fachdaten kommen als WMS/WFS aus dem Geoportal. Eine echte Meldung braucht ein Backend mit Routing ins Anliegenmanagement. Hier als Demo, kein Versand."
           >
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
               <MoosburgMap
                 className="h-[380px] overflow-hidden rounded-xl border border-ink-line shadow-soft"
                 pins={mockPins}
@@ -1007,7 +1007,7 @@ export function Konzept() {
               {/* Dynamic */}
               <div className="overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
                 <div className="flex items-center gap-2 bg-red-500/10 px-4 py-2 text-[0.66rem] font-bold uppercase tracking-wider text-red-700">
-                  <IconSparkles className="h-3.5 w-3.5" stroke={2.25} /> Dynamische Smart Card, über Profil
+                  <IconUserCheck className="h-3.5 w-3.5" stroke={2.25} /> Dynamische Smart Card, über Profil
                 </div>
                 <div className="p-5">
                   {!profil ? (

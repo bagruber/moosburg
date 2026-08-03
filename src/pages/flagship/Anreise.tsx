@@ -98,7 +98,7 @@ export function Anreise() {
           <SectionHeader eyebrow="So kommen Sie her" heading="Ihre Anreise" />
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr),minmax(0,2fr)]">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
           {/* Modus-Auswahl */}
           <div className="flex flex-row flex-wrap gap-2 lg:flex-col">
             {MODI.map((m) => {

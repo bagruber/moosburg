@@ -72,7 +72,7 @@ export function Vereinsleben() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Vereinsleben"
-        intro="Über 120 Vereine prägen Moosburg — von Sport über Musik bis Brauchtum. Finden Sie Ihren Einstieg ins Vereinsleben oder gründen Sie selbst eine neue Gemeinschaft."
+        intro="Über 120 Vereine prägen Moosburg, von Sport über Musik bis Brauchtum. Finden Sie Ihren Einstieg ins Vereinsleben oder gründen Sie selbst eine neue Gemeinschaft."
         crumbs={[{ label: "Lebenslagen" }, { label: "Vereinsleben" }]}
         variant="cream"
         script="mittendrin"
@@ -162,7 +162,7 @@ export function Vereinsleben() {
         <Reveal delay={1}>
           <p className="mt-6 max-w-3xl text-cream/90">
             Eine neue Idee, ein bestehender Verein ohne Eintrag? Die Stadt unterstützt beim Start, bei
-            Raumfragen und Förderungen — und nimmt Ihren Verein ins Verzeichnis auf.
+            Raumfragen und Förderungen; außerdem nimmt sie Ihren Verein ins Verzeichnis auf.
           </p>
         </Reveal>
         <Reveal delay={2}>

@@ -73,7 +73,7 @@ export function Wahlen() {
             {/* Vote-share bars with labels (identity never color-alone) */}
             <ul className="mt-8 space-y-3">
               {parteien.map((p) => (
-                <li key={p.name} className="grid grid-cols-[minmax(0,11rem),1fr,auto] items-center gap-3">
+                <li key={p.name} className="grid grid-cols-[minmax(0,11rem)_1fr_auto] items-center gap-3">
                   <span className="flex items-center gap-2 truncate text-sm text-ink">
                     <span className={cn("h-3 w-3 shrink-0 rounded-sm", p.bg)} />
                     <span className="truncate">{p.name}</span>
@@ -98,7 +98,7 @@ export function Wahlen() {
                 <div className="mb-3 text-sm font-semibold text-ink">1. Wahlgang</div>
                 <CandidateBars list={buergermeisterWahlgang1} />
                 <p className="mt-3 text-xs text-ink-muted">
-                  Keine absolute Mehrheit im ersten Wahlgang — Entscheidung in der Stichwahl.
+                  Keine absolute Mehrheit im ersten Wahlgang: Entscheidung in der Stichwahl.
                 </p>
               </div>
               <div>
@@ -122,13 +122,13 @@ export function Wahlen() {
       {/* ── council-Handoff ───────────────────────────────────────── */}
       <section className="border-y border-ink-line/70 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
             <div>
               <div className="eyebrow text-red-700">Nach der Wahl</div>
               <h2 className="headline mt-1 text-2xl text-ink sm:text-3xl">Was aus den Sitzen wird</h2>
               <p className="mt-3 max-w-2xl text-ink-soft">
                 Wie die gewählten Fraktionen tatsächlich abstimmen, macht die Stadtratstransparenz-App
-                nachvollziehbar — Sitzungen, Anträge und Voten Person für Person.
+                nachvollziehbar: Sitzungen, Anträge und Voten Person für Person.
               </p>
             </div>
             <a
@@ -167,7 +167,7 @@ export function Wahlen() {
               <SectionHeader eyebrow="Rund ums Wählen" heading="Wahllokal & Briefwahl" />
             </Reveal>
             <div className="space-y-3">
-              <InfoRow icon={IconMapPin} title="Ihr Wahllokal" body="Das zuständige Wahllokal richtet sich nach Ihrer Adresse — im Konto adressbasiert abrufbar." to="/konto" />
+              <InfoRow icon={IconMapPin} title="Ihr Wahllokal" body="Das zuständige Wahllokal richtet sich nach Ihrer Adresse, im Konto adressbasiert abrufbar." to="/konto" />
               <InfoRow icon={IconMail} title="Briefwahl beantragen" body="Briefwahlunterlagen bequem online anfordern." to="/rathaus/online-dienste" />
             </div>
           </div>

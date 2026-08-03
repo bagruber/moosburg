@@ -100,7 +100,7 @@ const categories: ServiceCategory[] = [
   {
     id: "bauamt",
     icon: IconBuilding,
-    title: "Stadtbauamt — Beratung",
+    title: "Stadtbauamt: Beratung",
     location: "Rathaus · Stadtbauamt",
     hours: ["Termin nach Vereinbarung"],
     note: "Bauanträge gehen seit März 2024 direkt ans Landratsamt Freising. Die Stadt berät vorab und gibt im Verfahren ihre Stellungnahme ab.",
@@ -308,8 +308,8 @@ export function TerminBuchen() {
             </button>
           </div>
 
-          {/* Office card — address + hours + note */}
-          <div className="mt-6 grid gap-4 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr),minmax(0,1fr)]">
+          {/* Office card, address + hours + note */}
+          <div className="mt-6 grid gap-4 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div>
               <div className="eyebrow text-ink-muted">Standort</div>
               <p className="mt-1 text-sm text-ink">{cat.location}</p>
@@ -396,7 +396,7 @@ export function TerminBuchen() {
             </button>
           </div>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr),minmax(0,2fr)]">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
             <div className="rounded-md border border-ink-line bg-white p-5">
               <div className="flex items-center justify-between">
                 <div className="eyebrow text-ink-muted">Tag wählen</div>
@@ -520,7 +520,7 @@ export function TerminBuchen() {
             </button>
           </div>
 
-          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr),320px]">
+          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_320px]">
             <form
               onSubmit={(e) => { e.preventDefault(); if (consent && name && email) goNext(); }}
               className="space-y-5"

@@ -18,7 +18,7 @@ import {
   IconCar,
   IconShield,
   IconBook2,
-  IconSparkles,
+  IconUserCheck,
   IconTrafficCone,
   IconReceipt,
   IconCash,
@@ -68,21 +68,21 @@ const OPERATIVE_NAMES = new Set([
 
 const ABTEILUNGEN: AbteilungDef[] = [
   {
-    label: "Abteilung I — Allgemeine Verwaltung",
+    label: "Abteilung I: Allgemeine Verwaltung",
     lead: "Bürger­service, Standes­amt, Ordnung, IT, Stadt­marketing.",
     icon: IconBuildingCommunity,
     accentVar: "rb-6",   // cyan
     match: (n) => /^SG\s+1\d/i.test(n),
   },
   {
-    label: "Abteilung II — Stadtbauamt",
+    label: "Abteilung II: Stadtbauamt",
     lead: "Bauen, Planung, Tiefbau, Straßen­verkehr, Gebühren.",
     icon: IconBuildingSkyscraper,
     accentVar: "rb-3",   // orange
     match: (n) => /^SG\s+2\d/i.test(n),
   },
   {
-    label: "Abteilung III — Finanzwesen, Liegenschaften, Bildung",
+    label: "Abteilung III: Finanzwesen, Liegenschaften, Bildung",
     lead: "Kämmerei, Stadtkasse, Bildungs- und Erziehungs­wesen.",
     icon: IconBuildingBank,
     accentVar: "rb-5",   // green
@@ -104,7 +104,7 @@ function abteilungFor(sgName: string): number | null {
 
 /** Per-Sachgebiet icon, keyed by exact name. */
 const SG_ICONS: Record<string, Icon> = {
-  "SG 10 Geschäftsleitung, Organisation, Stadtmarketing, Kultur, Informations- und Kommunikationstechnik, Volksfeste": IconSparkles,
+  "SG 10 Geschäftsleitung, Organisation, Stadtmarketing, Kultur, Informations- und Kommunikationstechnik, Volksfeste": IconUserCheck,
   "SG 11 Gewerbe-, Ordnungs-, Sozial-und Fundamt": IconShield,
   "SG 12 Einwohnermelde- und Passamt": IconId,
   "SG 12 Standesamt": IconHeart,
@@ -162,7 +162,7 @@ export function Kontakt() {
       />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* Main column */}
           <div className="space-y-14">
             {/* ── Section 1: Organigramm ─────────────────────────── */}

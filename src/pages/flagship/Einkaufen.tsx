@@ -73,7 +73,7 @@ export function Einkaufen() {
       <HeuteBanner />
 
       {/* ─────────────────────────────────────────────────────────────────
-         HERO 1 — Wochenmarkt (ink, ruhig-erdig)
+         HERO 1: Wochenmarkt (ink, ruhig-erdig)
       ────────────────────────────────────────────────────────────────── */}
       <SpotlightSection tone="ink">
         <Reveal>
@@ -84,9 +84,9 @@ export function Einkaufen() {
           />
         </Reveal>
         <Reveal delay={1}>
-          <div className="mt-6 grid gap-5 sm:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+          <div className="mt-6 grid gap-5 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <p className="max-w-2xl text-base text-cream/85">
-              Beste Waren aus der Region — frisches Obst und Gemüse, Fleisch, Fisch, Brot,
+              Beste Waren aus der Region, frisches Obst und Gemüse, Fleisch, Fisch, Brot,
               Käse, Honig. Im Herzen der Altstadt, mit Park­plätzen in der Nähe. Mittwochs
               gibt es eine kleine Auswahl des grünen Marktes.
             </p>
@@ -121,7 +121,7 @@ export function Einkaufen() {
       </SpotlightSection>
 
       <article className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Geschäfte ─────────────────────────────────────── */}
@@ -133,7 +133,7 @@ export function Einkaufen() {
             </Reveal>
 
             <p className="-mt-6 max-w-3xl text-base text-ink-soft">
-              {GESCHAEFTE_KATS.length} Branchen, von Mode über Garten bis Hörgeräte — eine
+              {GESCHAEFTE_KATS.length} Branchen, von Mode über Garten bis Hörgeräte, eine
               Auswahl unten, die vollständige Liste finden Sie im{" "}
               <Link to="/mein-moosburg/firmen" className="text-red-700 hover:underline">
                 Firmen­verzeichnis
@@ -267,14 +267,14 @@ export function Einkaufen() {
               <TipCard
                 icon={IconPackage}
                 title="Müllreduziert einkaufen"
-                body="„Einmal ohne, bitte“-Initiative — Geschäfte, die ohne Verpackung verkaufen. In Vorbereitung."
+                body="„Einmal ohne, bitte“-Initiative: Geschäfte, die ohne Verpackung verkaufen. In Vorbereitung."
                 to="/mein-moosburg/umwelt"
                 accent="rb-5"
               />
               <TipCard
                 icon={IconShoppingBag}
                 title="Moosburg-Souvenirs"
-                body="Stadttaschen mit Schabert-Motiv, Postkarten, Stofftaschen — kleine Mitbringsel."
+                body="Stadttaschen mit Schabert-Motiv, Postkarten, Stofftaschen, kleine Mitbringsel."
                 to="/zu-besuch/entdecken"
                 accent="rb-3"
               />
@@ -310,7 +310,7 @@ export function Einkaufen() {
             <TipCard
               icon={IconLeaf}
               title="Wussten Sie?"
-              body="„Moosburg-Card“-Umsätze bleiben zu 100 % im lokalen Kreislauf — anders als bei Online-Versand­händlern."
+              body="„Moosburg-Card“-Umsätze bleiben zu 100 % im lokalen Kreislauf, anders als bei Online-Versand­händlern."
               to="/mein-moosburg/firmen?moosburgCard=1"
               ctaLabel="Teilnehmer ansehen"
               accent="turquoise-accent"
@@ -329,23 +329,24 @@ export function Einkaufen() {
       </article>
 
       {/* ─────────────────────────────────────────────────────────────────
-         CLOSER  — Moosburg-Card als rote Marketing-Sektion
+         CLOSER: Moosburg-Card als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
       <SpotlightSection tone="red">
         <Reveal>
           <SectionHeader
             eyebrow="Lokale Wirtschaft stärken"
             heading="Moosburg-Card"
+            size="sm"
             script="eine Karte für alles"
             light
           />
         </Reveal>
         <Reveal delay={1}>
-          <div className="mt-6 grid gap-8 sm:grid-cols-[minmax(0,2fr),minmax(0,1fr)] sm:items-center">
+          <div className="mt-6 grid gap-8 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] sm:items-center">
             <div>
               <p className="text-base text-cream/90">
                 <em>Eine Stadt – eine Karte – viele Möglichkeiten.</em> Aufladbar zwischen 5 €
-                und 250 €, bargeld- und kontaktlos bezahlen, beliebig oft nachladbar — Restbeträge
+                und 250 €, bargeld- und kontaktlos bezahlen, beliebig oft nachladbar: Restbeträge
                 bleiben erhalten. Auch als steuerfreie Sachwertkarte für Firmen.
               </p>
               <p className="mt-3 text-sm text-cream/75">

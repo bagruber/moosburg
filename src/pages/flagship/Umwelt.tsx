@@ -34,7 +34,7 @@ const SECTIONS = [
 
 /* ── Chronik der Energiewende in Moosburg (aus Klimaschutz-Seite) ──── */
 const CHRONIK: { date: string; event: string }[] = [
-  { date: "13.12.2007", event: "Energiewende­beschluss im Stadtrat — Ziel: bis 2035 verbrauchte Energie zu 100 % aus erneuerbaren Quellen" },
+  { date: "13.12.2007", event: "Energiewende­beschluss im Stadtrat: Ziel: bis 2035 verbrauchte Energie zu 100 % aus erneuerbaren Quellen" },
   { date: "03.03.2012", event: "Stadtratsbeschluss zur Erstellung des Klimaschutz­konzepts" },
   { date: "18.04.2014", event: "Auftrag an die Fachbüros KlimaKom eG und Green City Energy AG" },
   { date: "30.09.2014", event: "Auftaktveranstaltung für Bürger:innen" },
@@ -61,14 +61,14 @@ export function Umwelt() {
       <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Klimaschutz-Konzept ───────────────────────────── */}
             <Sec id="konzept" icon={IconLeaf} accent="rb-5"
               title="Klimaschutz-Konzept"
-              lead="Moosburg hat sich 2007 die Energiewende ins Stadtrats­buch geschrieben — bis 2035 soll der gesamte hier verbrauchte Energie­bedarf aus erneuerbaren Quellen kommen." />
-            <div className="grid gap-5 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr),minmax(0,1fr)]">
+              lead="Moosburg hat sich 2007 die Energiewende ins Stadtrats­buch geschrieben, bis 2035 soll der gesamte hier verbrauchte Energie­bedarf aus erneuerbaren Quellen kommen." />
+            <div className="grid gap-5 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
               <div>
                 <h3 className="card-title text-lg text-ink">Ziel 2035</h3>
                 <p className="mt-2 text-sm text-ink-soft">
@@ -119,11 +119,11 @@ export function Umwelt() {
               <InfoCard icon={IconCalendar} accent="rb-3" title="Wärmepumpen-Infotag"
                 body="Jährliche Veranstaltung mit Beratung und Hersteller-Ausstellungen."
                 href="https://www.moosburg.de/waermepumpen-infotag" external />
-              <InfoCard icon={IconBuildingFactory} accent="rb-3" title="Nahwärme — Fa. Bader Energie"
+              <InfoCard icon={IconBuildingFactory} accent="rb-3" title="Nahwärme: Fa. Bader Energie"
                 body="Externer Betreiber für die bestehenden Nahwärme­insel in Moosburg (nicht städtisch)."
                 href="https://www.moosburg.de/nahwaerme-fa.-bader-energie-gmbh" external />
               <InfoCard icon={IconFlame} accent="rb-3" title="Wärmebild-Kampagne"
-                body="Kostenlose Wärmebild­aufnahmen Ihres Hauses — zeigt Sanierungs­bedarf."
+                body="Kostenlose Wärmebild­aufnahmen Ihres Hauses, zeigt Sanierungs­bedarf."
                 href="https://www.moosburg.de/waermebild-kampagne" external />
             </div>
 
@@ -135,10 +135,10 @@ export function Umwelt() {
               <InfoCard icon={IconSun} accent="rb-4" title="Solar­potenzial­kataster"
                 body="Online-Kataster zeigt für jedes Moosburger Dach das Ertragspotenzial."
                 href="https://www.moosburg.de/solarpotenzialkataster" external />
-              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 69 — PV-Anlage Kurlandstraße"
+              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 69: PV-Anlage Kurlandstraße"
                 body="SO Freiflächen-PV; Satzungs­beschluss erfolgt."
                 href="https://www.moosburg.de/pv-anlage-kurlandstrasse" external />
-              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 73 — PV-Anlage Preisinger Loh"
+              <InfoCard icon={IconSun} accent="rb-4" title="Bebauungsplan Nr. 73: PV-Anlage Preisinger Loh"
                 body="Zweite Frei­flächen-PV in Moosburg."
                 href="https://www.moosburg.de/BP-bebauungsplan-nr-73-so-freiflaechen-pv-anlage-preisinger-loh" external />
             </div>
@@ -171,13 +171,13 @@ export function Umwelt() {
                 body="Lenkungs­gruppe aus Stadt­räten und engagierten Moosburger:innen. Begleitet die Umsetzung des KSK."
                 href="https://www.moosburg.de/energiebeirat" external />
               <InfoCard icon={IconSchool} accent="rb-7" title="KiGas und Schulen"
-                body="Klimaschutz im Bildungsalltag — Aktionen in Kindergärten und Schulen."
+                body="Klimaschutz im Bildungsalltag: Aktionen in Kindergärten und Schulen."
                 href="https://www.moosburg.de/kigas-und-schulen" external />
               <InfoCard icon={IconLeaf} accent="rb-7" title="Fair-Trade-Stadt"
-                body="Moosburg ist seit 2019 Fairtrade-Stadt — Schoki, Kaffee, Tee, Wein im eigenen Design."
+                body="Moosburg ist seit 2019 Fairtrade-Stadt: Schoki, Kaffee, Tee, Wein im eigenen Design."
                 href="/mein-moosburg/einkaufen" />
               <InfoCard icon={IconBike} accent="rb-7" title="Fuß- und Radverkehrskonzept"
-                body="Bestandteil des Klimaschutz­konzepts — fördert nicht-motorisierten Verkehr."
+                body="Bestandteil des Klimaschutz­konzepts, fördert nicht-motorisierten Verkehr."
                 href="/mein-moosburg/mobilitaet" />
             </div>
           </div>
@@ -230,7 +230,7 @@ export function Umwelt() {
               <p>
                 Das integrierte Klimaschutz­konzept (KSK) umfasst rund 50 Maßnahmen in 5
                 Handlungs­feldern. Die wichtigsten Bausteine finden Sie auf dieser Seite
-                verlinkt — die vollständige Übersicht liegt auf{" "}
+                verlinkt, die vollständige Übersicht liegt auf{" "}
                 <a href="https://www.moosburg.de/klimaschutz" target="_blank" rel="noreferrer" className="text-red-700 hover:underline">moosburg.de</a>.
               </p>
             </section>

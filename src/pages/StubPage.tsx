@@ -46,7 +46,7 @@ export function StubPage() {
       />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-10">
             <section>
               <h2 className="headline text-2xl lg:text-3xl text-ink">Was Sie hier finden</h2>

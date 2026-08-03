@@ -41,7 +41,7 @@ const VERFAHREN: { titel: string; status: Status; phase: string; frist: string; 
     status: "läuft",
     phase: "Ideensammlung auf der Karte",
     frist: "noch bis 15. Juli 2026",
-    desc: "Markieren Sie Lücken und Gefahrenstellen im Radnetz — direkt auf dem Stadtplan.",
+    desc: "Markieren Sie Lücken und Gefahrenstellen im Radnetz, direkt auf dem Stadtplan.",
   },
   {
     titel: "Umgestaltung Spielplatz Amperaue",
@@ -55,7 +55,7 @@ const VERFAHREN: { titel: string; status: Status; phase: string; frist: string; 
     status: "abgeschlossen",
     phase: "Ergebnisse veröffentlicht",
     frist: "abgeschlossen März 2026",
-    desc: "Die Rückmeldungen sind in das beschlossene Konzept eingeflossen — Dokumentation online.",
+    desc: "Die Rückmeldungen sind in das beschlossene Konzept eingeflossen: Dokumentation online.",
   },
 ];
 
@@ -121,7 +121,7 @@ export function Beteiligung() {
                 <h3 className="headline mt-1 text-2xl text-ink">Die gelbe Karte</h3>
                 <p className="mt-3 text-ink-soft">
                   Schlagloch, kaputte Laterne, wilder Müll? Melden Sie Probleme im öffentlichen Raum
-                  direkt mit Foto und Standort — sichtbar auf der Stadtkarte.
+                  direkt mit Foto und Standort, sichtbar auf der Stadtkarte.
                 </p>
               </div>
               <Link
@@ -155,7 +155,7 @@ export function Beteiligung() {
             <a href={DATAHUB} target="_blank" rel="noreferrer" className="text-gold-200 underline hover:text-cream">
               Moosburg Data Hub
             </a>{" "}
-            interaktiv aufbereitet — filterbar statt als PDF-Tabelle.
+            interaktiv aufbereitet, filterbar statt als PDF-Tabelle.
           </p>
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -288,7 +288,7 @@ function FeedbackForm() {
         Absenden
       </button>
       <p className="mt-3 text-xs text-ink-muted">
-        Prototyp — Eingaben bleiben nur in dieser Browser-Sitzung, es werden keine Daten gesendet.
+        Prototyp: Eingaben bleiben nur in dieser Browser-Sitzung, es werden keine Daten gesendet.
       </p>
     </form>
   );

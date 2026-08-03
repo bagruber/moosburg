@@ -13,7 +13,7 @@ import {
   IconCalendarEvent,
   IconBook2,
   IconHeartHandshake,
-  IconSparkles,
+  IconUserCheck,
   IconClock,
 } from "@tabler/icons-react";
 import { PageLayout } from "@/components/PageLayout";
@@ -130,7 +130,7 @@ export function FamilieBildung() {
         script="Familie"
         eyebrow="Mein Moosburg"
         title="Familie & Bildung"
-        intro="Von der Krippe bis zur Volkshochschule, vom Spielplatz bis zum Jugendhaus — alle Familien-Angebote in Moosburg gebündelt an einem Ort."
+        intro="Von der Krippe bis zur Volkshochschule, vom Spielplatz bis zum Jugendhaus, alle Familien-Angebote in Moosburg gebündelt an einem Ort."
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Familie & Bildung" }]}
       />
 
@@ -138,9 +138,9 @@ export function FamilieBildung() {
       {personalized && (
         <section className="border-b border-ink-line/60 bg-turquoise-accent/10">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 lg:px-8">
-            <IconSparkles className="h-4 w-4 text-turquoise-accent" stroke={2} />
+            <IconUserCheck className="h-4 w-4 text-turquoise-accent" stroke={2} />
             <span className="text-sm text-ink">
-              Diese Seite ist auf <strong>Familien mit Kindern</strong> zugeschnitten — basierend auf Ihrem Profil heben wir relevante Angebote hervor.
+              Diese Seite ist auf <strong>Familien mit Kindern</strong> zugeschnitten, basierend auf Ihrem Profil heben wir relevante Angebote hervor.
             </span>
             <Link to="/konto" className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-turquoise-accent hover:underline">
               Profil ansehen <IconArrowRight className="h-3.5 w-3.5" stroke={2} />
@@ -205,7 +205,7 @@ export function FamilieBildung() {
             <div className="mb-8 rounded-md border border-red-700 bg-red-700 p-5 text-cream lg:flex lg:items-center lg:gap-6 lg:p-6">
               <div className="flex-1">
                 <div className="eyebrow text-gold-200">Zentrale Anmeldung</div>
-                <h3 className="headline mt-1 text-2xl">LITTLE BIRD — alle Plätze, eine Anmeldung</h3>
+                <h3 className="headline mt-1 text-2xl">LITTLE BIRD, alle Plätze, eine Anmeldung</h3>
                 <p className="mt-2 text-sm text-cream/90 leading-relaxed">
                   Alle Moosburger Kitas, Krippen und Horte verwalten Anmeldungen über das gemeinsame Portal.
                   Eltern können Wunscheinrichtungen priorisieren und den Status verfolgen.
@@ -322,7 +322,7 @@ export function FamilieBildung() {
               <div className="mb-6 inline-flex">
                 <PersonalizedBadge
                   tone="profile"
-                  reason="Ihr Kind kommt bald in die Schule — Schuleinschreibung im Frühjahr"
+                  reason="Ihr Kind kommt bald in die Schule: Schuleinschreibung im Frühjahr"
                 />
               </div>
             </Reveal>
@@ -389,7 +389,7 @@ export function FamilieBildung() {
               <div className="mt-4 flex-1 lg:mt-0">
                 <h3 className="font-semibold text-ink">Schuleinschreibung Schuljahr 2026/27</h3>
                 <p className="mt-1 text-sm text-ink-soft">
-                  Sprengelzuteilung nach Wohnadresse — bei Fragen zur richtigen Grundschule wenden Sie sich an das Bürgerbüro.
+                  Sprengelzuteilung nach Wohnadresse, bei Fragen zur richtigen Grundschule wenden Sie sich an das Bürgerbüro.
                   Übertrittsberatung an den Grundschulen jeweils im Januar.
                 </p>
                 <div className="mt-3 inline-flex items-center gap-2 text-sm">
@@ -477,7 +477,7 @@ export function FamilieBildung() {
           </Reveal>
           <Reveal>
             <p className="mb-6 max-w-2xl text-sm text-ink-soft leading-relaxed">
-              Vom Sandkasten bis zur Kletterburg — Moosburgs Spielplätze sind über das ganze Stadtgebiet und
+              Vom Sandkasten bis zur Kletterburg. Moosburgs Spielplätze sind über das ganze Stadtgebiet und
               die Ortsteile verteilt. Schäden, kaputte Geräte oder Verschmutzung lassen sich direkt über
               die <Link to="/mitgestalten/maengel-melden" className="text-red-700 underline">Mängel-Karte</Link> melden.
             </p>

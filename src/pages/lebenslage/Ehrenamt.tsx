@@ -35,7 +35,7 @@ type Chance = { title: string; desc: string; tags: Interesse[]; to: string };
 const CHANCEN: Chance[] = [
   { title: "Lesepate:in in der Stadtbücherei", desc: "Kindern vorlesen und die Freude am Lesen wecken.", tags: ["Kultur & Bildung", "Kinder & Jugend"], to: "/mein-moosburg/freizeit" },
   { title: "Nachbarschaftshilfe & Besuchsdienst", desc: "Ältere Menschen im Alltag begleiten und Zeit schenken.", tags: ["Soziales & Senioren"], to: "/lebenslage/pflege-alter" },
-  { title: "Freiwillige Feuerwehr", desc: "Aktiv Leben schützen — mit Ausbildung und starker Gemeinschaft.", tags: ["Rettung & Feuerwehr"], to: "/rathaus/notfall" },
+  { title: "Freiwillige Feuerwehr", desc: "Aktiv Leben schützen, mit Ausbildung und starker Gemeinschaft.", tags: ["Rettung & Feuerwehr"], to: "/rathaus/notfall" },
   { title: "Betreuung im Ferienprogramm", desc: "Kinder durch einen bunten Ferien-Sommer begleiten.", tags: ["Kinder & Jugend"], to: "/lebenslage/familie-kind" },
   { title: "Landschaftspflege & Streuobstwiesen", desc: "Bei Pflegeaktionen die Moosburger Natur erhalten.", tags: ["Umwelt & Natur"], to: "/mein-moosburg/umwelt" },
   { title: "Seniorenbeirat & Begleitung", desc: "Die Interessen älterer Menschen in der Stadt vertreten.", tags: ["Soziales & Senioren", "Stadt & Beteiligung"], to: "/lebenslage/pflege-alter" },
@@ -46,7 +46,7 @@ const CHANCEN: Chance[] = [
 
 const START_SCHRITTE = [
   { title: "Interesse wählen", desc: "Überlegen Sie, wofür Ihr Herz schlägt und wie viel Zeit Sie haben." },
-  { title: "Kontakt aufnehmen", desc: "Melden Sie sich beim Verein, der Einrichtung oder der Stadt — unverbindlich." },
+  { title: "Kontakt aufnehmen", desc: "Melden Sie sich beim Verein, der Einrichtung oder der Stadt, unverbindlich." },
   { title: "Schnuppern & loslegen", desc: "Viele Engagements beginnen mit einem lockeren Reinschnuppern." },
 ];
 
@@ -62,7 +62,7 @@ export function Ehrenamt() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Ehrenamt"
-        intro="Moosburg lebt vom Engagement seiner Bürgerinnen und Bürger. Ob ein paar Stunden oder regelmäßig — hier finden Sie ein Ehrenamt, das zu Ihnen passt."
+        intro="Moosburg lebt vom Engagement seiner Bürgerinnen und Bürger. Ob ein paar Stunden oder regelmäßig, hier finden Sie ein Ehrenamt, das zu Ihnen passt."
         crumbs={[{ label: "Lebenslagen" }, { label: "Ehrenamt" }]}
         variant="cream"
         script="mit Herz dabei"
@@ -118,7 +118,7 @@ export function Ehrenamt() {
 
       {/* ── Bayerische Ehrenamtskarte ─────────────────────────────── */}
       <SpotlightSection tone="ink">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">
               <IconId className="h-6 w-6 text-gold-200" stroke={1.5} />
@@ -126,7 +126,7 @@ export function Ehrenamt() {
             </div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">Die Bayerische Ehrenamtskarte</h2>
             <p className="mt-3 max-w-2xl text-cream/85">
-              Wer sich regelmäßig engagiert, kann die Bayerische Ehrenamtskarte erhalten — mit
+              Wer sich regelmäßig engagiert, kann die Bayerische Ehrenamtskarte erhalten, mit
               Vergünstigungen bei Freizeit, Kultur und vielen Partnern in ganz Bayern. Anspruch besteht
               in der Regel ab etwa fünf Stunden pro Woche oder 250 Stunden im Jahr über mindestens zwei
               Jahre.

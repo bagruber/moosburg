@@ -230,7 +230,7 @@ export function Firmen() {
           <div className="mt-12 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
             <h3 className="card-title text-base text-ink">Themen-Einstiege</h3>
             <p className="mt-1 text-sm text-ink-soft">
-              Statt zu filtern können Sie auch über die thematischen Seiten einsteigen — dort
+              Statt zu filtern können Sie auch über die thematischen Seiten einsteigen, dort
               gibt es zusätzlich städtische Einrichtungen und Hintergrund­infos.
             </p>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">

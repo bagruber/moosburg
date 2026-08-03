@@ -19,7 +19,7 @@ const IMG = (src: string) => `${import.meta.env.BASE_URL}${src}`;
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-cream">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-[minmax(0,1fr),minmax(0,1.15fr)] lg:gap-16 lg:px-8 lg:py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16 lg:px-8 lg:py-24">
         <div className="relative">
           <div className="eyebrow text-red-700">Willkommen in</div>
           <div className="relative mt-3">
@@ -35,7 +35,7 @@ function Hero() {
           </div>
           <p className="mt-8 max-w-lg text-lg leading-relaxed text-ink-soft">
             Was möchten Sie heute erledigen? Finden Sie Dienstleistungen, Veranstaltungen und
-            Ansprechpartner — alles an einem Ort.
+            Ansprechpartner, alles an einem Ort.
           </p>
 
           <div className="mt-8">
@@ -86,7 +86,7 @@ function AktuellesBanner() {
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm lg:px-8">
         <span className="badge rounded-full bg-red-500 px-2.5 py-1 text-cream">Aktuell</span>
         <span className="text-ink">
-          <strong>57. Moosburger Frühlingsfest</strong> — 30. April bis 5. Mai 2026, Festgelände am Stadtpark.
+          <strong>57. Moosburger Frühlingsfest</strong>, 30. April bis 5. Mai 2026, Festgelände am Stadtpark.
         </span>
         <Link
           to="/mein-moosburg/veranstaltungen"
@@ -177,7 +177,7 @@ function News() {
         <SectionHeader eyebrow="Neuigkeiten" heading="Aktuelles" />
       </Reveal>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)]">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
         <Reveal className="divide-y divide-ink-line/70">
           {newsItems.map((n) => (
             <a
@@ -211,7 +211,7 @@ function News() {
               1.250 Jahre Moosburg
             </h3>
             <p className="mt-2 text-sm text-ink-soft leading-relaxed">
-              Vom Klosterdorf zur modernen Stadt — die Jubiläums-Chronik erzählt auf 400 Seiten
+              Vom Klosterdorf zur modernen Stadt, die Jubiläums-Chronik erzählt auf 400 Seiten
               die bewegte Geschichte unserer Drei-Rosen-Stadt.
             </p>
             <Link
@@ -235,7 +235,7 @@ function Lebenslagen() {
         <Reveal>
           <SectionHeader eyebrow="Lebenslagen" heading="Was steht bei Ihnen an?" />
           <p className="-mt-6 mb-8 max-w-2xl text-base text-ink-soft">
-            Egal, ob Sie neu in Moosburg sind, heiraten, bauen oder ein Unternehmen gründen — alle
+            Egal, ob Sie neu in Moosburg sind, heiraten, bauen oder ein Unternehmen gründen. Alle
             passenden Services, Ansprechpersonen und Angebote an einem Ort.
           </p>
         </Reveal>
@@ -345,7 +345,7 @@ function MayorQuote() {
           <div className="min-w-0">
             <blockquote className="text-base italic text-ink-soft leading-relaxed sm:text-lg">
               „Die Stadt Moosburg freut sich darauf, mit Ihnen gemeinsam Stadtgeschichte zu
-              schreiben. Diese Website soll Ihnen das einfacher machen — kommen Sie mit uns
+              schreiben. Diese Website soll Ihnen das einfacher machen, kommen Sie mit uns
               ins Gespräch."
             </blockquote>
             <figcaption className="mt-4 text-sm font-semibold text-ink">
@@ -364,7 +364,8 @@ function HubsGrid() {
     <section className="border-t border-ink-line/60 bg-cream-dark">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <Reveal>
-          <SectionHeader eyebrow="Vier Wege durch die Stadt" heading="Hauptbereiche" />
+          <SectionHeader eyebrow="Vier Wege durch die Stadt" heading="Hauptbereiche"
+            size="sm" />
         </Reveal>
         <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {Object.entries(hubs).map(([slug, h]) => {

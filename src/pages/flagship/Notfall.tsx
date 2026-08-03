@@ -68,7 +68,7 @@ const SECTIONS: Section[] = [
       { name: "Ärztlicher Bereitschaftsdienst Bayern",  number: "116 117", hint: "rund um die Uhr, täglich", href: "https://www.116117.de/", external: true },
       { name: "Giftnotruf München",                     number: "089 19240", hint: "Klinikum rechts der Isar", external: true,
         href: "https://www.toxinfo.med.tum.de/" },
-      { name: "Apotheken-Notdienst",                    hint: "wechselnde Bereitschaft — über die Suche der Bayerischen Apothekerkammer",
+      { name: "Apotheken-Notdienst",                    hint: "wechselnde Bereitschaft, über die Suche der Bayerischen Apothekerkammer",
         href: "https://www.aponet.de/apotheke/notdienstsuche", external: true },
       { name: "Krisendienst Psychiatrie",               number: "0180 655 3000",
         hint: "365 Tage, 0–24 Uhr · 0,20 €/Anruf aus Festnetz",
@@ -82,12 +82,12 @@ const SECTIONS: Section[] = [
     icon: IconFlame,
     accent: "rb-3",
     title: "Feuer & Sicherheit",
-    lead: "Im Brand- oder Gefahrenfall sofort die 112 wählen — die Leitstelle alarmiert die Feuerwehr und ggf. weitere Dienste.",
+    lead: "Im Brand- oder Gefahrenfall sofort die 112 wählen, die Leitstelle alarmiert die Feuerwehr und ggf. weitere Dienste.",
     items: [
       { name: "Polizeiinspektion Moosburg", number: "08761 3018-0",
         address: "Poststraße 6 · 85368 Moosburg", external: true,
         href: "https://www.polizei.bayern.de/" },
-      { name: "Freiwillige Feuerwehr Moosburg",   hint: "Stadtgebiet — Alarmierung über 112" },
+      { name: "Freiwillige Feuerwehr Moosburg",   hint: "Stadtgebiet: Alarmierung über 112" },
       { name: "Freiwillige Feuerwehr Thonstetten", hint: "Ortsteil Thonstetten" },
       { name: "Freiwillige Feuerwehr Pfrombach-Aich", hint: "Ortsteile Pfrombach / Aich" },
     ],
@@ -97,7 +97,7 @@ const SECTIONS: Section[] = [
     icon: IconCloudStorm,
     accent: "rb-6",
     title: "Wetter, Hochwasser & Katastrophen",
-    lead: "Pegelstände, Unwetterwarnungen und Katastrophen-Apps — vor allem für Anwohner an Isar und Amper.",
+    lead: "Pegelstände, Unwetterwarnungen und Katastrophen-Apps, vor allem für Anwohner an Isar und Amper.",
     items: [
       { name: "Hochwassernachrichtendienst Bayern",
         hint: "Pegelstände, Vorhersagen",
@@ -124,7 +124,7 @@ const SECTIONS: Section[] = [
     icon: IconHeartHandshake,
     accent: "rb-7",
     title: "Beratung & Alltagsnotlagen",
-    lead: "Vertraulich, oft kostenlos, häufig rund um die Uhr — bei seelischer Belastung, Gewalt, Sucht oder familiärer Überforderung.",
+    lead: "Vertraulich, oft kostenlos, häufig rund um die Uhr, bei seelischer Belastung, Gewalt, Sucht oder familiärer Überforderung.",
     items: [
       { name: "Telefonseelsorge",       number: "0800 111 0 111", alt: ["0800 111 0 222", "116 123"], hint: "kostenlos · auch Mail & Chat",
         href: "https://online.telefonseelsorge.de/", external: true },
@@ -192,7 +192,7 @@ function Anlaufkachel({ item, accent }: { item: Anlaufstelle; accent: string }) 
             rel="noreferrer"
             className="shrink-0 rounded-full p-1.5"
             style={{ color: accentVar, backgroundColor: `${accentVar}14` }}
-            aria-label={`${item.name} — Website öffnen`}
+            aria-label={`${item.name}: Website öffnen`}
             title="Website öffnen"
           >
             <IconExternalLink className="h-3.5 w-3.5" stroke={2} />
@@ -245,7 +245,7 @@ export function Notfall() {
       <PageHeader
         eyebrow={route.eyebrow}
         title={route.title}
-        intro="Die wichtigsten Nummern auf einen Blick — gegliedert nach Situation. Im akuten Notfall: oben 112 oder 110 tippen."
+        intro="Die wichtigsten Nummern auf einen Blick, gegliedert nach Situation. Im akuten Notfall: oben 112 oder 110 tippen."
         icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Notdienste & Notfallnummern" }]}
       />

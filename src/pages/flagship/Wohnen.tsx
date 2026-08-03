@@ -8,7 +8,7 @@ import {
   IconChevronRight,
   IconArrowRight,
   IconExternalLink,
-  IconSparkles,
+  IconUserCheck,
   IconHanger,
   IconMap2,
 } from "@tabler/icons-react";
@@ -23,7 +23,7 @@ import { NavTab, type NavItem } from "@/components/SectionNav";
 const route = findRoute("mein-moosburg/wohnen")!;
 
 const SECTIONS = [
-  { id: "neu",       label: "Neu in Moosburg",      icon: IconSparkles, accent: "rb-6" },
+  { id: "neu",       label: "Neu in Moosburg",      icon: IconUserCheck, accent: "rb-6" },
   { id: "geld",      label: "Wohngeld & Hilfen",    icon: IconShield,   accent: "rb-5" },
   { id: "mieten",    label: "Wohnen mieten",        icon: IconKey,      accent: "rb-7" },
   { id: "bauen",     label: "Bauen & Eigentum",     icon: IconBuildingSkyscraper, accent: "rb-3" },
@@ -53,26 +53,26 @@ export function Wohnen() {
       <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Neu in Moosburg ──────────────────────────────── */}
-            <Sec id="neu" icon={IconSparkles} accent="rb-6"
+            <Sec id="neu" icon={IconUserCheck} accent="rb-6"
               title="Frisch zugezogen?"
-              lead="An- und Ummeldung, Müll-Anschluss, Wahllokal, Hundesteuer — der erste Behördengang nach dem Umzug." />
+              lead="An- und Ummeldung, Müll-Anschluss, Wahllokal, Hundesteuer, der erste Behördengang nach dem Umzug." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <BigLink to="/lebenslage/neu-in-moosburg" icon={IconSparkles} accent="rb-6"
+              <BigLink to="/lebenslage/neu-in-moosburg" icon={IconUserCheck} accent="rb-6"
                 title="Lebenslage: Neu in Moosburg"
-                body="Checkliste mit allem, was nach dem Umzug zu erledigen ist — personalisiert nach Ihrem Profil." />
+                body="Checkliste mit allem, was nach dem Umzug zu erledigen ist, personalisiert nach Ihrem Profil." />
               <BigLink to="/lebenslage/umziehen" icon={IconHanger} accent="rb-6"
                 title="Lebenslage: Umziehen"
-                body="Anmelden, ummelden, abmelden — innerhalb Moosburgs oder nach außerhalb." />
+                body="Anmelden, ummelden, abmelden, innerhalb Moosburgs oder nach außerhalb." />
             </div>
 
             {/* ── Wohngeld & soziale Hilfen ────────────────────── */}
             <Sec id="geld" icon={IconShield} accent="rb-5"
               title="Wohngeld & soziale Hilfen"
-              lead="Wer aufgrund seines Einkommens beim Wohnen Unterstützung braucht — vom Landratsamt Freising verwaltet, die Stadt informiert und vermittelt." />
+              lead="Wer aufgrund seines Einkommens beim Wohnen Unterstützung braucht, vom Landratsamt Freising verwaltet, die Stadt informiert und vermittelt." />
             <div className="grid gap-3 sm:grid-cols-2">
               <InfoLink to="/rathaus/online-dienste" icon={IconShield} accent="rb-5"
                 title="Wohngeldantrag"
@@ -82,16 +82,16 @@ export function Wohnen() {
                 body="Voraussetzung für eine geförderte Wohnung. Antrag im Rathaus oder über das Landratsamt." />
               <InfoLink to="/lebenslage/pflege-alter" icon={IconShield} accent="rb-5"
                 title="Wohnen im Alter"
-                body="Senioren­einrichtungen, betreutes Wohnen, ambulante Pflege — Übersicht in der Lebens­lage Pflege & Alter." />
+                body="Senioren­einrichtungen, betreutes Wohnen, ambulante Pflege: Übersicht in der Lebens­lage Pflege & Alter." />
               <InfoLink to="/rathaus/kontakt" icon={IconShield} accent="rb-5"
                 title="Soziale Beratung im Rathaus"
-                body="SG 11 Sozial- und Fundamt — unbürokratische Erstauskunft zu Hilfen und Zuschüssen." />
+                body="SG 11 Sozial- und Fundamt, unbürokratische Erstauskunft zu Hilfen und Zuschüssen." />
             </div>
 
             {/* ── Wohnen mieten ─────────────────────────────────── */}
             <Sec id="mieten" icon={IconKey} accent="rb-7"
               title="Wohnen mieten"
-              lead="Moosburg hat keinen eigenen Mietspiegel — das Landratsamt Freising und qualifizierte Immobilien­makler kennen das aktuelle Marktniveau." />
+              lead="Moosburg hat keinen eigenen Mietspiegel, das Landratsamt Freising und qualifizierte Immobilien­makler kennen das aktuelle Marktniveau." />
             <div className="grid gap-3 sm:grid-cols-2">
               <a href="https://www.kreis-freising.de" target="_blank" rel="noreferrer"
                 className="group flex items-start gap-3 rounded-xl border border-ink-line/50 bg-white p-4 transition hover:border-red-500">
@@ -116,7 +116,7 @@ export function Wohnen() {
                 <div className="min-w-0 flex-1">
                   <h3 className="card-title text-base text-ink">Satzungen rund ums Wohnen</h3>
                   <p className="mt-1 text-xs text-ink-soft">
-                    Wasserversorgung, Abwasser, Hauslärm — alle wohn­relevanten Satzungen gefiltert.
+                    Wasserversorgung, Abwasser, Hauslärm, alle wohn­relevanten Satzungen gefiltert.
                   </p>
                 </div>
               </Link>
@@ -166,7 +166,7 @@ export function Wohnen() {
                 </li>
                 <li>
                   <Link to="/rathaus/termin-buchen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
-                    <span>An-/Ummeldung — Termin buchen</span>
+                    <span>An-/Ummeldung: Termin buchen</span>
                     <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
                   </Link>
                 </li>
@@ -189,18 +189,18 @@ export function Wohnen() {
         </div>
 
         {/* ── Bauen & Eigentum ──────────────────────────────────────── */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-6">
             <Sec id="bauen" icon={IconBuildingSkyscraper} accent="rb-3"
               title="Bauen & Eigentum"
-              lead="Vom ersten Bauplatz-Gedanken bis zum Notartermin — und die Bau­firmen, die Sie unterwegs unterstützen." />
+              lead="Vom ersten Bauplatz-Gedanken bis zum Notartermin, samt der Bau­firmen, die Sie unterwegs unterstützen." />
             <div className="grid gap-3 sm:grid-cols-2">
               <BigLink to="/rathaus/bauantrag" icon={IconBuildingSkyscraper} accent="rb-3"
                 title="Bauantrag & Bauberatung"
-                body="Drei Wege ins Bauen — Bebauungsplan checken, Antrag stellen oder verfahrensfrei loslegen." />
+                body="Drei Wege ins Bauen: Bebauungsplan checken, Antrag stellen oder verfahrensfrei loslegen." />
               <BigLink to="/mitgestalten/stadtentwicklung" icon={IconMap2} accent="rb-3"
                 title="Bebauungs- & Flächen­nutzungspläne"
-                body="Welche Bebauung wo erlaubt ist — alle aktuellen Pläne der Stadt." />
+                body="Welche Bebauung wo erlaubt ist, alle aktuellen Pläne der Stadt." />
             </div>
 
             {/* Legende vor der Firmenliste */}
@@ -230,7 +230,7 @@ export function Wohnen() {
             {/* ── Wohnen & Einrichten ──────────────────────────── */}
             <Sec id="einrichten" icon={IconArmchair} accent="rb-4"
               title="Wohnen & Einrichten"
-              lead="Möbel, Deko, Heimtextilien — die Moosburger Geschäfte rund ums Einrichten." />
+              lead="Möbel, Deko, Heimtextilien, die Moosburger Geschäfte rund ums Einrichten." />
             <ul className="grid gap-3 sm:grid-cols-2">
               {WOHNEN_DEKO
                 .slice()

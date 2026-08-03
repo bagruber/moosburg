@@ -4,7 +4,7 @@ import {
   IconSun,
   IconCalendarEvent,
   IconAlertTriangle,
-  IconSparkles,
+  IconBulb,
   IconArrowRight,
 } from "@tabler/icons-react";
 import { upcomingEvents } from "@/routes";
@@ -107,7 +107,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
       accent: "var(--color-rb-3)",
     },
     ...(hideSeason ? [] : [{
-      icon: IconSparkles,
+      icon: IconBulb,
       eyebrow: "Tipp der Saison",
       body: season.label,
       to: season.to,

@@ -25,7 +25,7 @@ const ZEITSTRAHL: Meilenstein[] = [
   {
     jahr: "769",
     titel: "Gründung des Klosters",
-    text: "Mit einem *Benediktinerkloster* tritt Moosburg ins Licht der Geschichte — der Ursprung der Stadt.",
+    text: "Mit einem *Benediktinerkloster* tritt Moosburg ins Licht der Geschichte, der Ursprung der Stadt.",
   },
   {
     jahr: "um 800",
@@ -36,12 +36,12 @@ const ZEITSTRAHL: Meilenstein[] = [
   {
     jahr: "um 1475",
     titel: "Das Chorgestühl",
-    text: "Im Kastulus-Münster entsteht das kunstvolle *Chorgestühl* — neben dem Freisinger Dom das bedeutendste im unteren Isartal.",
+    text: "Im Kastulus-Münster entsteht das kunstvolle *Chorgestühl*, neben dem Freisinger Dom das bedeutendste im unteren Isartal.",
   },
   {
     jahr: "um 1511",
     titel: "Der Leinberger-Altar",
-    text: "Hans Leinberger schafft den *Hochaltar* des Münsters — ein Meisterwerk am Übergang von Spätgotik zur Renaissance.",
+    text: "Hans Leinberger schafft den *Hochaltar* des Münsters, ein Meisterwerk am Übergang von Spätgotik zur Renaissance.",
     link: { label: "Mehr im Münster", to: "/zu-besuch/entdecken" },
   },
   {
@@ -52,12 +52,12 @@ const ZEITSTRAHL: Meilenstein[] = [
   {
     jahr: "29. April 1945",
     titel: "Die Befreiung",
-    text: "Amerikanische Truppen befreien das Lager und die Stadt — das Kriegsende für zehntausende Gefangene.",
+    text: "Amerikanische Truppen befreien das Lager und die Stadt, das Kriegsende für zehntausende Gefangene.",
   },
   {
     jahr: "1963",
     titel: "Gedenkbrunnen",
-    text: "Die Stadt errichtet einen *Gedenkbrunnen* — eine der ersten Erinnerungen an das Lager.",
+    text: "Die Stadt errichtet einen *Gedenkbrunnen*, eine der ersten Erinnerungen an das Lager.",
   },
   {
     jahr: "1982",
@@ -67,7 +67,7 @@ const ZEITSTRAHL: Meilenstein[] = [
   {
     jahr: "2025",
     titel: "80 Jahre Befreiung",
-    text: "Zum Jahrestag erinnert die Stadt mit der Initiative *Stalag VII A — 80 Jahre Befreiung* an die Geschichte des Ortes.",
+    text: "Zum Jahrestag erinnert die Stadt mit der Initiative *Stalag VII A, 80 Jahre Befreiung* an die Geschichte des Ortes.",
   },
 ];
 
@@ -76,7 +76,7 @@ type ErinnerungsLink = { label: string; beschreibung: string; href: string };
 const ERINNERUNG: ErinnerungsLink[] = [
   {
     label: "stalag7a.de",
-    beschreibung: "Die Microsite der Stadt zum Gedenkort — Geschichte, Karten und das Jubiläum „80 Jahre Befreiung“.",
+    beschreibung: "Die Microsite der Stadt zum Gedenkort: Geschichte, Karten und das Jubiläum „80 Jahre Befreiung“.",
     href: "https://www.stalag7a.de",
   },
   {
@@ -146,7 +146,7 @@ export function Geschichte() {
           />
         </Reveal>
         <Reveal delay={1}>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <div className="space-y-4 text-base leading-relaxed text-cream/85">
               <p>
                 Im Herbst 1939 errichtete das nationalsozialistische Deutschland nördlich von Moosburg,

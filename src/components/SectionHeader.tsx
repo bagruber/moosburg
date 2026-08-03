@@ -7,6 +7,7 @@ export function SectionHeader({
   script,
   light = false,
   align = "left",
+  size = "lg",
   className,
 }: {
   eyebrow?: string;
@@ -14,14 +15,21 @@ export function SectionHeader({
   script?: string;
   light?: boolean;
   align?: "left" | "center";
+  /**
+   * "lg" eröffnet ein Kapitel, "sm" führt es fort oder schließt es ab.
+   * Ohne diese zweite Stufe wiegt ein Navigations-Abbinder genauso schwer
+   * wie der Hauptabschnitt darüber — die Rose bleibt dem Kapitelanfang.
+   */
+  size?: "lg" | "sm";
   className?: string;
 }) {
+  const small = size === "sm";
   return (
     <div
       className={cn(
         "relative",
         align === "center" && "text-center",
-        script ? "pt-10 mb-10" : "mb-8",
+        script ? "pt-10 mb-10" : small ? "mb-5" : "mb-8",
         className,
       )}
     >
@@ -45,13 +53,14 @@ export function SectionHeader({
             light ? "text-gold-200" : "text-red-700",
           )}
         >
-          <Rose className="h-3 w-3" />
+          {!small && <Rose className="h-3 w-3" />}
           {eyebrow}
         </div>
       )}
       <h2
         className={cn(
-          "headline relative mt-1 text-3xl sm:text-4xl",
+          "headline relative mt-1",
+          small ? "text-xl sm:text-2xl" : "text-3xl sm:text-4xl",
           light ? "text-cream" : "text-ink",
         )}
       >

@@ -179,7 +179,7 @@ export function StrassenExplorer() {
   /* ── Desktop: Panel + sticky Karte ──────────────────────────────── */
   if (isDesktop) {
     return (
-      <div className="grid grid-cols-[minmax(0,1fr),minmax(0,1.3fr)] items-start gap-8">
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-start gap-8">
         <div>{panel}</div>
         <div className="sticky top-24">
           <StrassenKarte

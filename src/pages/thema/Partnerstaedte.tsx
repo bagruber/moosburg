@@ -65,7 +65,7 @@ function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
   return (
     <section id={stadt.id} className="scroll-mt-32">
       <FarbBalken farben={stadt.farben} />
-      <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr),minmax(0,1.9fr)]">
+      <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)]">
         {/* Steckbrief */}
         <aside className="space-y-5">
           <div>
@@ -158,7 +158,7 @@ export function Partnerstaedte() {
       <PageHeader
         eyebrow="Themenseite"
         title="Partnerstädte"
-        intro="Vier Städte in vier Ländern, auf zwei Kontinenten — verbunden mit Moosburg durch Freundschaften, die teils seit über fünfzig Jahren bestehen. Begegnung statt Grenzen, gelebt von Vereinen, Schulen und Bürgerinnen und Bürgern."
+        intro="Vier Städte in vier Ländern, auf zwei Kontinenten, verbunden mit Moosburg durch Freundschaften, die teils seit über fünfzig Jahren bestehen. Begegnung statt Grenzen, gelebt von Vereinen, Schulen und Bürgerinnen und Bürgern."
         crumbs={[{ label: "Themen" }, { label: "Partnerstädte" }]}
         variant="photo"
         image="images/brücke.jpg"
@@ -257,14 +257,14 @@ export function Partnerstaedte() {
 
       {/* ── Mitmachen ─────────────────────────────────────────────── */}
       <SpotlightSection tone="red">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Mitmachen</div>
             <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">
               Werden Sie Teil der Städtepartnerschaft
             </h2>
             <p className="mt-3 max-w-2xl text-cream/85">
-              Ob Jugendaustausch, Vereinsreise oder Gastfamilie zur nächsten Begegnung — der Partnerschafts­verein
+              Ob Jugendaustausch, Vereinsreise oder Gastfamilie zur nächsten Begegnung, der Partnerschafts­verein
               freut sich über alle, die Lust auf europäische Freundschaft haben.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">

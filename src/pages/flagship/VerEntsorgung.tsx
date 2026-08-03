@@ -62,14 +62,14 @@ const ALTGLAS_STANDORTE = [
 ];
 
 const HUNDEKOT_STANDORTE = [
-  "Amperwehrstraße — Bewegungsparcour",
-  "Amperüberleitungskanal — bei Schleuse Unterreit",
-  "Auf der Kippe — an der Schleuse",
-  "Kanalstraße — bei der Brücke zur Pflugstraße",
-  "Leipziger Straße — Wiese am Mühlbach",
-  "Nelkenstraße — am Kulturgraben",
-  "Neustadtstraße — vor der Kläranlage",
-  "Neustadtstraße — beim Containerplatz",
+  "Amperwehrstraße: Bewegungsparcour",
+  "Amperüberleitungskanal, bei Schleuse Unterreit",
+  "Auf der Kippe, an der Schleuse",
+  "Kanalstraße, bei der Brücke zur Pflugstraße",
+  "Leipziger Straße: Wiese am Mühlbach",
+  "Nelkenstraße, am Kulturgraben",
+  "Neustadtstraße, vor der Kläranlage",
+  "Neustadtstraße, beim Containerplatz",
 ];
 
 /* ── Wasser/Abwasser: gebühren from /Wasser-und-Abwasser scrape ───────── */
@@ -175,7 +175,7 @@ export function VerEntsorgung() {
       </nav>
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* ── Main column ─────────────────────────────────────────── */}
           <div className="space-y-16">
 
@@ -218,7 +218,7 @@ export function VerEntsorgung() {
                   <h3 className="card-title text-xl text-ink">Wertstoffhof</h3>
                   <span className="text-sm text-ink-muted">— Sperrmüll, Elektro, Grünschnitt, Bauschutt</span>
                 </div>
-                <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr),minmax(0,1fr)]">
+                <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                   <div className="rounded-2xl border border-ink-line/50 bg-white p-5">
                     <dl className="space-y-2 text-sm">
                       <div className="flex items-start gap-2">
@@ -323,7 +323,7 @@ export function VerEntsorgung() {
                   ))}
                 </ul>
                 <p className="mt-2 text-xs text-ink-muted">
-                  Grundgebühren je Dauerdurchfluss zusätzlich — Details direkt beim Wasserwerk.
+                  Grundgebühren je Dauerdurchfluss zusätzlich: Details direkt beim Wasserwerk.
                 </p>
               </div>
 
@@ -409,7 +409,7 @@ export function VerEntsorgung() {
               <div className="mt-10">
                 <h3 className="card-title text-xl text-ink">Hundekotbeutel-Stationen</h3>
                 <p className="mt-1 text-sm text-ink-soft">
-                  Eine Auswahl der aktuellen Standorte — fehlt eine? <Link to="/mitgestalten/maengel-melden" className="text-red-700 hover:underline">Melden Sie es uns</Link>.
+                  Eine Auswahl der aktuellen Standorte, fehlt eine? <Link to="/mitgestalten/maengel-melden" className="text-red-700 hover:underline">Melden Sie es uns</Link>.
                 </p>
                 <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                   {HUNDEKOT_STANDORTE.map((s) => (
@@ -473,7 +473,7 @@ export function VerEntsorgung() {
               <div className="flex items-start gap-3">
                 <IconRecycle className="mt-0.5 h-5 w-5 shrink-0 text-ink-muted" stroke={1.75} />
                 <p className="text-xs text-ink-soft">
-                  Müll vermeiden, Wertstoffe trennen, Hundebesitzer-Etikette — Moosburg ist sauber,
+                  Müll vermeiden, Wertstoffe trennen, Hundebesitzer-Etikette. Moosburg ist sauber,
                   wenn alle mitmachen. Vielen Dank!
                 </p>
               </div>

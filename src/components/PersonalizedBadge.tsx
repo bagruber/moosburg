@@ -1,4 +1,4 @@
-import { IconSparkles, IconAlertTriangle, IconStar } from "@tabler/icons-react";
+import { IconUserCheck, IconAlertTriangle, IconStar } from "@tabler/icons-react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -26,7 +26,7 @@ export function PersonalizedBadge({
     tipp:    "bg-gold-100 text-gold-700 border-gold-500/30",
   } as const;
 
-  const Icon = tone === "pflicht" ? IconAlertTriangle : tone === "tipp" ? IconStar : IconSparkles;
+  const Icon = tone === "pflicht" ? IconAlertTriangle : tone === "tipp" ? IconStar : IconUserCheck;
 
   return (
     <span

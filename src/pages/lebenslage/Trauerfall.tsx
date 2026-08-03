@@ -36,7 +36,7 @@ const PHASEN: Phase[] = [
     zeit: "In den ersten Tagen",
     titel: "Formalitäten regeln",
     schritte: [
-      { title: "Sterbeurkunde beim Standesamt", desc: "Der Sterbefall wird beim Standesamt beurkundet — meist übernimmt das Bestattungsinstitut die Anzeige. Die Sterbeurkunde brauchen Sie für viele weitere Schritte." },
+      { title: "Sterbeurkunde beim Standesamt", desc: "Der Sterbefall wird beim Standesamt beurkundet, meist übernimmt das Bestattungsinstitut die Anzeige. Die Sterbeurkunde brauchen Sie für viele weitere Schritte." },
       { title: "Bestattung organisieren", desc: "Art und Ort der Bestattung mit dem Institut und der Friedhofsverwaltung der Stadt klären." },
       { title: "Versicherungen & Rente informieren", desc: "Kranken- und Rentenversicherung, Arbeitgeber sowie Lebens- und weitere Versicherungen benachrichtigen." },
     ],
@@ -48,7 +48,7 @@ const PHASEN: Phase[] = [
     schritte: [
       { title: "Konten & Verträge klären", desc: "Laufende Verträge (Miete, Strom, Abos) kündigen oder übertragen, Bankangelegenheiten regeln." },
       { title: "Nachlass & Erbschein", desc: "Beim Nachlassgericht klären, ob ein Erbschein nötig ist. Ein Testament ist beim Gericht abzugeben." },
-      { title: "Hilfe annehmen", desc: "Trauer braucht Zeit. Seelsorge und Trauerbegleitung sind für Sie da — Sie müssen diesen Weg nicht allein gehen." },
+      { title: "Hilfe annehmen", desc: "Trauer braucht Zeit. Seelsorge und Trauerbegleitung sind für Sie da. Sie müssen diesen Weg nicht allein gehen." },
     ],
   },
 ];
@@ -56,7 +56,7 @@ const PHASEN: Phase[] = [
 const STERBEURKUNDE_UNTERLAGEN = [
   "Totenschein (ärztliche Todesbescheinigung)",
   "Personalausweis der verstorbenen Person",
-  "Geburtsurkunde oder — bei Verheirateten — Eheurkunde",
+  "Geburtsurkunde oder, bei Verheirateten: Eheurkunde",
   "Bei Geschiedenen: Scheidungsurteil · bei Verwitweten: Sterbeurkunde des Ehegatten",
 ];
 
@@ -66,7 +66,7 @@ export function Trauerfall() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Im Trauerfall"
-        intro="Der Verlust eines nahen Menschen ist schwer. Diese Seite gibt Ihnen einen ruhigen Überblick, was in welcher Reihenfolge zu tun ist — Schritt für Schritt, ohne Druck."
+        intro="Der Verlust eines nahen Menschen ist schwer. Diese Seite gibt Ihnen einen ruhigen Überblick, was in welcher Reihenfolge zu tun ist: Schritt für Schritt, ohne Druck."
         crumbs={[{ label: "Lebenslagen" }, { label: "Im Trauerfall" }]}
         icon={IconFlower}
         variant="cream"
@@ -76,7 +76,7 @@ export function Trauerfall() {
       <section className="border-b border-ink-line/60 bg-cream">
         <div className="mx-auto max-w-3xl px-4 py-8 lg:px-8">
           <p className="text-lg leading-relaxed text-ink-soft">
-            Vieles hat Zeit. In den ersten Stunden sind nur wenige Dinge wirklich dringend — den Rest
+            Vieles hat Zeit. In den ersten Stunden sind nur wenige Dinge wirklich dringend, den Rest
             können Sie in Ruhe angehen, oft mit Unterstützung des Bestattungsinstituts.
           </p>
         </div>
@@ -117,7 +117,7 @@ export function Trauerfall() {
           </Reveal>
           <p className="-mt-4 mb-6 text-ink-soft">
             Die Sterbeurkunde ist die Grundlage für fast alle weiteren Schritte. In der Regel meldet das
-            Bestattungsinstitut den Sterbefall an — diese Unterlagen werden dafür benötigt:
+            Bestattungsinstitut den Sterbefall an, diese Unterlagen werden dafür benötigt:
           </p>
           <ul className="space-y-2.5">
             {STERBEURKUNDE_UNTERLAGEN.map((u) => (
@@ -141,7 +141,7 @@ export function Trauerfall() {
             <div>
               <h2 className="headline text-xl text-ink">Sie müssen das nicht allein tragen</h2>
               <p className="mt-2 text-ink-soft">
-                Seelsorge und Trauerbegleitung stehen Ihnen zur Seite — unabhängig von Konfession und
+                Seelsorge und Trauerbegleitung stehen Ihnen zur Seite, unabhängig von Konfession und
                 kostenfrei. Bei akuter seelischer Not ist die Telefonseelsorge rund um die Uhr erreichbar.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">

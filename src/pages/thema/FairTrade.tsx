@@ -57,7 +57,7 @@ export function FairTrade() {
       <PageHeader
         eyebrow="Themenseite"
         title="Fair-Trade-Stadt Moosburg"
-        intro="Seit Mai 2019 ist Moosburg offiziell Fairtrade-Stadt — gemeinsam mit Geschäften, Gastronomie, Schulen, Vereinen und Kirchen, die fair gehandelte Produkte sichtbar machen."
+        intro="Seit Mai 2019 ist Moosburg offiziell Fairtrade-Stadt, gemeinsam mit Geschäften, Gastronomie, Schulen, Vereinen und Kirchen, die fair gehandelte Produkte sichtbar machen."
         crumbs={[{ label: "Themen" }, { label: "Fair-Trade-Stadt" }]}
         variant="photo"
         image="images/altstadt.jpg"
@@ -92,7 +92,7 @@ export function FairTrade() {
       </SpotlightSection>
 
       <article className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Eigene Produkte ──────────────────────────────── */}
@@ -158,6 +158,7 @@ export function FairTrade() {
                 <SectionHeader
                   eyebrow="Auch dabei"
                   heading="Weitere Partner ohne Verzeichnis­eintrag"
+            size="sm"
                 />
                 <ul className="-mt-6 grid gap-2 sm:grid-cols-2">
                   {PARTNER_OHNE_EINTRAG.map((p) => (

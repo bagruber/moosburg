@@ -54,7 +54,7 @@ const BAUSTELLEN: Baustelle[] = [
     zeitraum: "12.05.26 – 07.08.26",
     detailUrl: "https://www.moosburg.de/sperrung-der-stadtwaldstrasse" },
   { strasse: "Thalbacher Straße",
-    abschnitt: "Einmündungsbereich Rhenobotstraße bis Leinbergerstraße — beidseitig in Bauabschnitten",
+    abschnitt: "Einmündungsbereich Rhenobotstraße bis Leinbergerstraße, beidseitig in Bauabschnitten",
     zeitraum: "bis ca. 26.06.2026",
     detailUrl: "https://www.moosburg.de/sperrung-thalbacher-str-vom-einmuendungsbereich-der-rhen" },
   { strasse: "Am Mühlbachbogen", abschnitt: "gesamt",
@@ -101,7 +101,7 @@ const MAP_PINS: MapPin[] = [
   { id: "l2", lat: 48.4665, lng: 11.9405, layer: "ladestation", title: "Ladesäule Stadtplatz-Nord", meta: "22 kW AC" },
   { id: "l3", lat: 48.4630, lng: 11.9450, layer: "ladestation", title: "Ladesäule Lidl-Parkplatz", meta: "50 kW DC" },
   // Rad-Abstellanlagen
-  { id: "r1", lat: 48.4640, lng: 11.9398, layer: "fahrradstation", title: "Bahnhof — überdacht",     meta: "ca. 80 Plätze" },
+  { id: "r1", lat: 48.4640, lng: 11.9398, layer: "fahrradstation", title: "Bahnhof, überdacht",     meta: "ca. 80 Plätze" },
   { id: "r2", lat: 48.4675, lng: 11.9362, layer: "fahrradstation", title: "Stadtplatz / Rathaus",     meta: "ca. 40 Plätze" },
   { id: "r3", lat: 48.4710, lng: 11.9405, layer: "fahrradstation", title: "Stadtbücherei / Zehentstadel", meta: "ca. 25 Plätze" },
   // ÖPNV
@@ -146,13 +146,13 @@ export function Mobilitaet() {
       <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Karte ─────────────────────────────────────────── */}
             <SectionHeader id="karte" icon={IconMapPin} accent="rb-2"
               title="Mobilität auf einen Blick"
-              lead="Baustellen, Parkmöglichkeiten, E-Ladesäulen, Rad-Abstellanlagen und ÖPNV-Halte­stellen — die Ebenen lassen sich einzeln ein- und ausblenden." />
+              lead="Baustellen, Parkmöglichkeiten, E-Ladesäulen, Rad-Abstellanlagen und ÖPNV-Halte­stellen, die Ebenen lassen sich einzeln ein- und ausblenden." />
             <div className="mt-4 flex flex-wrap gap-2">
               {MOBILITY_LAYERS.map((k) => {
                 const c = layerConfig[k];
@@ -257,10 +257,10 @@ export function Mobilitaet() {
                 body="Strategie der Stadt für sicheren Rad- und Fußverkehr im gesamten Stadtgebiet."
                 href="https://www.moosburg.de/fahrradkonzept" external />
               <InfoCard icon={IconBike} accent="rb-5" title="Freies Lastenfahrrad"
-                body="Kostenlos ausleihbares Lasten-E-Bike der Stadt — für Großeinkäufe oder den Umzug."
+                body="Kostenlos ausleihbares Lasten-E-Bike der Stadt, für Großeinkäufe oder den Umzug."
                 href="https://www.moosburg.de/freies-lastenfahrrad" external />
               <InfoCard icon={IconCalendar} accent="rb-5" title="Fahrradbörse im Zehentstadel"
-                body="Markt für gebrauchte Fahrräder — einmal jährlich, organisiert vom ADFC."
+                body="Markt für gebrauchte Fahrräder, einmal jährlich, organisiert vom ADFC."
                 href="https://www.moosburg.de/fahrradboerse" external />
               <InfoCard icon={IconMapPin} accent="rb-5" title="Radabstellanlagen"
                 body="Überdachte Stellplätze am Bahnhof und an wichtigen Knotenpunkten."
@@ -272,17 +272,17 @@ export function Mobilitaet() {
               title="ÖPNV & Bahn"
               lead="Moosburg liegt an der Bahnlinie München – Landshut. Bus-Verbindungen ins Umland und in die Ortsteile." />
             <div className="grid gap-3 sm:grid-cols-2">
-              <InfoCard icon={IconTrain} accent="rb-6" title="DB — Fahrplan & Tickets"
+              <InfoCard icon={IconTrain} accent="rb-6" title="DB: Fahrplan & Tickets"
                 body="Moosburg an der KBS 940 München–Landshut. Tickets, Verspätungen, Reservierungen."
                 href="https://www.bahn.de" external />
-              <InfoCard icon={IconBus} accent="rb-6" title="MVV — Verbund München"
+              <InfoCard icon={IconBus} accent="rb-6" title="MVV: Verbund München"
                 body="Tarif­zone M-3. Verbindungs­auskunft, Tickets, MVV-App für Bus und S-Bahn."
                 href="https://www.mvv-muenchen.de" external />
               <InfoCard icon={IconBus} accent="rb-6" title="Schulbusplan"
                 body="Pläne für die städtischen Schulen und Anbindung an die Ortsteile."
                 href="https://www.moosburg.de/schulbusplaene" external />
               <InfoCard icon={IconBus} accent="rb-6" title="Mobilitätsportal der Stadt"
-                body="Alle Mobilitäts­optionen im Überblick — Fußgänger, Rad, ÖPNV, E-Mobilität, Straßenverkehr."
+                body="Alle Mobilitäts­optionen im Überblick: Fußgänger, Rad, ÖPNV, E-Mobilität, Straßenverkehr."
                 href="https://www.moosburg.de/angebote-fuer-buerger-mobilitaetsportal" external />
             </div>
 
@@ -314,7 +314,7 @@ export function Mobilitaet() {
             <SectionHeader id="werkstaetten" icon={IconBuildingFactory} accent="rb-8"
               title="Werkstätten & Autohäuser"
               lead="Reparatur, Inspektion und Fahrzeug­kauf vor Ort." />
-            <FirmaList firmen={werkstaetten} emptyLabel="Aktuell kein Eintrag — siehe Firmen­verzeichnis." />
+            <FirmaList firmen={werkstaetten} emptyLabel="Aktuell kein Eintrag, siehe Firmen­verzeichnis." />
 
             {/* ── Taxi & Beförderung ─────────────────────────────── */}
             <SectionHeader id="taxi" icon={IconCar} accent="rb-1"
@@ -372,7 +372,7 @@ export function Mobilitaet() {
             <section className="rounded-xl border border-ink-line/40 bg-cream-dark/30 p-4 text-xs text-ink-soft">
               <p>
                 Die Stadt bietet jährlich den <strong>Mobilitätstag</strong> mit Vorträgen,
-                Test­fahrten und Beratung zu klimafreundlicher Mobilität — siehe{" "}
+                Test­fahrten und Beratung zu klimafreundlicher Mobilität, siehe{" "}
                 <Link to="/mein-moosburg/veranstaltungen" className="text-red-700 hover:underline">Veranstaltungen</Link>.
               </p>
             </section>

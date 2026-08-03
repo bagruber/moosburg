@@ -87,7 +87,7 @@ export function Stellenangebote() {
         <section className="border-b border-ink-line/60">
           <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
             <Reveal>
-              <div className="grid gap-8 rounded-md border border-red-500/20 bg-gradient-to-br from-red-50 to-cream p-7 shadow-soft md:grid-cols-[minmax(0,1fr),320px] lg:p-10">
+              <div className="grid gap-8 rounded-md border border-red-500/20 bg-gradient-to-br from-red-50 to-cream p-7 shadow-soft md:grid-cols-[minmax(0,1fr)_320px] lg:p-10">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-cream">
@@ -181,7 +181,7 @@ export function Stellenangebote() {
 
           {/* Filters */}
           <div className="rounded-md border border-ink-line bg-white p-4 shadow-soft">
-            <div className="grid gap-3 md:grid-cols-[minmax(0,1fr),200px,180px] lg:grid-cols-[minmax(0,1fr),220px,200px]">
+            <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_200px_180px] lg:grid-cols-[minmax(0,1fr)_220px_200px]">
               <label className="block">
                 <span className="eyebrow text-ink-muted">Suche</span>
                 <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-cream focus-within:border-red-500 focus-within:bg-white">
@@ -348,7 +348,7 @@ export function Stellenangebote() {
             </h2>
             <p className="mt-3 text-sm text-ink-soft">
               Als Arbeitgeberin kombiniert die Stadt Moosburg die Sicherheit des öffentlichen
-              Dienstes mit der Nähe einer 21.000-Einwohner-Stadt. Was Sie konkret erwartet:
+              Dienstes mit der Nähe einer Stadt von rund 19.300 Einwohnern. Was Sie konkret erwartet:
             </p>
           </div>
 
@@ -393,7 +393,7 @@ export function Stellenangebote() {
           </span>
           <h3 className="headline mt-4 text-xl text-ink">Job-Alert abonnieren</h3>
           <p className="mt-2 text-sm text-ink-soft mx-auto max-w-md">
-            Lassen Sie sich neue Stellen direkt per E-Mail zusenden — passend zu Ihrem Wunsch-Bereich.
+            Lassen Sie sich neue Stellen direkt per E-Mail zusenden, passend zu Ihrem Wunsch-Bereich.
           </p>
           <form className="mt-5 mx-auto flex max-w-md flex-col gap-2 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
             <input type="email" placeholder="ihre.adresse@beispiel.de" className="flex-1 rounded-md border border-ink-line bg-white px-3 py-2.5 text-sm outline-none focus:border-red-500" />

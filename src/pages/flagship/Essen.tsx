@@ -76,7 +76,7 @@ const SECTIONS: Section[] = [
     label: "Cafés & Eisdielen",
     icon: IconCoffee,
     accent: "rb-8",
-    lead: "Frühstücken, Kaffeepause, Kuchen — und im Sommer das Eis am Plan.",
+    lead: "Frühstücken, Kaffeepause, Kuchen und im Sommer das Eis am Plan.",
   },
   {
     id: "imbiss",
@@ -84,7 +84,7 @@ const SECTIONS: Section[] = [
     label: "Imbiss & Schnelle Küche",
     icon: IconFlame,
     accent: "rb-1",
-    lead: "Döner, Pizza, Asian Food — fürs schnelle Mittagessen oder den Hunger zwischendurch.",
+    lead: "Döner, Pizza, Asian Food, fürs schnelle Mittagessen oder den Hunger zwischendurch.",
   },
   {
     id: "bars",
@@ -127,7 +127,7 @@ export function Essen() {
       <NavTab items={SECTIONS.map((s): NavItem => ({ id: s.id, label: s.label }))} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
             {/* Legend up top, in context */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
@@ -223,7 +223,7 @@ export function Essen() {
             <section>
               <div className="eyebrow text-ink-muted">Ihre Empfehlung fehlt?</div>
               <p className="mt-2 text-xs text-ink-soft">
-                Das Firmen­verzeichnis wird von der Moosburg Marketing eG gepflegt — neue
+                Das Firmen­verzeichnis wird von der Moosburg Marketing eG gepflegt, neue
                 Einträge können dort hinzugefügt werden.
               </p>
               <a
@@ -256,7 +256,7 @@ export function Essen() {
       </article>
 
       {/* ─────────────────────────────────────────────────────────────────
-         CLOSER  — Fair-Trade-Gastronomie als rote Marketing-Sektion
+         CLOSER: Fair-Trade-Gastronomie als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
       <SpotlightSection tone="red">
         <Reveal>

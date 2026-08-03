@@ -29,7 +29,7 @@ export function Highlights() {
           />
         </Reveal>
         <p className="-mt-4 mb-10 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Diese Höhepunkte kehren jedes Jahr wieder — von Frühlingsfest bis Christkindlmarkt. Der
+          Diese Höhepunkte kehren jedes Jahr wieder, von Frühlingsfest bis Christkindlmarkt. Der
           vollständige, tagesaktuelle Kalender mit allen Terminen lebt unter{" "}
           <Link to="/mein-moosburg/veranstaltungen" className="text-red-700 hover:underline">
             Was ist los?

@@ -31,12 +31,12 @@ const ABLAUF: { id: string; title: string; desc: string; cta?: { label: string; 
   {
     id: "heiraten-unterlagen",
     title: "Unterlagen zusammenstellen",
-    desc: "Welche Dokumente Sie brauchen, hängt von Ihrer Situation ab — nutzen Sie den Unterlagen-Check weiter unten.",
+    desc: "Welche Dokumente Sie brauchen, hängt von Ihrer Situation ab. Nutzen Sie den Unterlagen-Check weiter unten.",
   },
   {
     id: "heiraten-termin",
     title: "Trautermin & Trauort wählen",
-    desc: "Standesamtlich im Trausaal des historischen Rathauses oder an einem besonderen Ort — beliebte Termine sind früh ausgebucht.",
+    desc: "Standesamtlich im Trausaal des historischen Rathauses oder an einem besonderen Ort, beliebte Termine sind früh ausgebucht.",
   },
   {
     id: "heiraten-tag",
@@ -76,7 +76,7 @@ const ZUSATZ_UNTERLAGEN: Record<SituationId, string[]> = {
 
 const TRAUORTE: { icon: Icon; name: string; desc: string }[] = [
   { icon: IconBuildingCommunity, name: "Trausaal im historischen Rathaus", desc: "Der klassische standesamtliche Trauort im Herzen der Altstadt." },
-  { icon: IconConfetti, name: "Besondere Trauorte", desc: "Zu ausgewählten Anlässen sind auch Trauungen an besonderen Orten möglich — fragen Sie beim Standesamt nach." },
+  { icon: IconConfetti, name: "Besondere Trauorte", desc: "Zu ausgewählten Anlässen sind auch Trauungen an besonderen Orten möglich. Fragen Sie beim Standesamt nach." },
   { icon: IconBuildingChurch, name: "Kirchliche Trauung", desc: "Die kirchliche Trauung, etwa im Kastulus-Münster, vereinbaren Sie direkt mit der Pfarrei." },
 ];
 
@@ -101,7 +101,7 @@ export function Heiraten() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Heiraten"
-        intro="Sie möchten in Moosburg heiraten? Von der Anmeldung beim Standesamt bis zur Trauung im historischen Rathaus — hier finden Sie den roten Faden und die passende Unterlagen-Liste."
+        intro="Sie möchten in Moosburg heiraten? Von der Anmeldung beim Standesamt bis zur Trauung im historischen Rathaus, hier finden Sie den roten Faden und die passende Unterlagen-Liste."
         crumbs={[{ label: "Lebenslagen" }, { label: "Heiraten" }]}
         variant="cream"
         script="Ja, ich will"
@@ -162,7 +162,7 @@ export function Heiraten() {
         </Reveal>
         <Reveal delay={1}>
           <p className="max-w-3xl text-cream/85">
-            Kreuzen Sie an, was auf Sie zutrifft — die Liste passt sich an. Im Zweifel prüft das
+            Kreuzen Sie an, was auf Sie zutrifft, die Liste passt sich an. Im Zweifel prüft das
             Standesamt Ihren Fall persönlich.
           </p>
         </Reveal>
@@ -236,7 +236,7 @@ export function Heiraten() {
           })}
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <AnsprechpartnerStrip keyword="Eheschließung" heading="Ihr Standesamt" limit={2} />
           <div className="flex items-center">
             <Link

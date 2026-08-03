@@ -270,7 +270,7 @@ export function OnlineDienste() {
       <PageHeader
         eyebrow={route.eyebrow}
         title={route.title}
-        intro="Über 130 Verwaltungsleistungen — von Anmeldung bis Wohngeld. Klicken Sie eine Leistung an, um den Antrag, das Online-Formular oder den richtigen Weg zu sehen."
+        intro="Über 130 Verwaltungsleistungen, von Anmeldung bis Wohngeld. Klicken Sie eine Leistung an, um den Antrag, das Online-Formular oder den richtigen Weg zu sehen."
         icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Online-Dienste A–Z" }]}
       />

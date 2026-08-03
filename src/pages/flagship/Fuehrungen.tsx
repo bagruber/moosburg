@@ -103,7 +103,7 @@ export function Fuehrungen() {
         </Reveal>
         <Reveal delay={1}>
           <p className="max-w-3xl text-base leading-relaxed text-cream/85">
-            Fünf Stationen, rund eine Stunde, jederzeit begehbar — folgen Sie der Route durch die
+            Fünf Stationen, rund eine Stunde, jederzeit begehbar, folgen Sie der Route durch die
             Altstadt. Mit dem digitalen Audioguide gibt es an jeder Station die Geschichte aufs Ohr.
           </p>
         </Reveal>

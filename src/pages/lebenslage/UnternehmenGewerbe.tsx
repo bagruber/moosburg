@@ -37,7 +37,7 @@ const PHASEN: Phase[] = [
     id: "gruenden",
     label: "Gründen",
     icon: IconRocket,
-    lead: "Von der Idee zum eigenen Betrieb — mit Beratung und Förderung gut vorbereitet starten.",
+    lead: "Von der Idee zum eigenen Betrieb, mit Beratung und Förderung gut vorbereitet starten.",
     eintraege: [
       { title: "Gründungsberatung", desc: "Erste Orientierung, Businessplan und die richtigen Ansprechpartner.", to: "/rathaus/kontakt?topic=wirtschaft" },
       { title: "IHK & Handwerkskammer", desc: "Branchenberatung, Pflichten und Qualifikationen für Ihre Gründung.", to: "https://www.muenchen.ihk.de", external: true },
@@ -48,7 +48,7 @@ const PHASEN: Phase[] = [
     id: "anmelden",
     label: "Anmelden & Genehmigen",
     icon: IconLicense,
-    lead: "Die formalen Schritte — vieles davon erledigen Sie online oder mit einem Termin.",
+    lead: "Die formalen Schritte, vieles davon erledigen Sie online oder mit einem Termin.",
     eintraege: [
       { title: "Gewerbe anmelden", desc: "Gewerbeanmeldung, -ummeldung und -abmeldung bei der Stadt.", to: "/rathaus/online-dienste" },
       { title: "Genehmigungen & Konzessionen", desc: "Etwa Gaststättenerlaubnis oder besondere branchenspezifische Genehmigungen.", to: "/rathaus/online-dienste" },
@@ -88,7 +88,7 @@ export function UnternehmenGewerbe() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Unternehmen & Gewerbe"
-        intro="Von der Gründung über die Gewerbeanmeldung bis zum Netzwerk vor Ort — Moosburg als Unternehmensstandort. Wählen Sie die Phase, in der Sie gerade stehen."
+        intro="Von der Gründung über die Gewerbeanmeldung bis zum Netzwerk vor Ort: Moosburg als Unternehmensstandort. Wählen Sie die Phase, in der Sie gerade stehen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Unternehmen & Gewerbe" }]}
         variant="cream"
         script="unternehmen"
@@ -193,7 +193,7 @@ export function UnternehmenGewerbe() {
               <div className="eyebrow text-gold-700">Schnell erledigt</div>
               <h2 className="headline mt-1 text-xl text-ink sm:text-2xl">Gewerbe online anmelden</h2>
               <p className="mt-2 max-w-xl text-sm text-ink-soft">
-                Die Gewerbeanmeldung erledigen Sie bequem digital — ideal für den unkomplizierten Start.
+                Die Gewerbeanmeldung erledigen Sie bequem digital, ideal für den unkomplizierten Start.
               </p>
             </div>
             <Link

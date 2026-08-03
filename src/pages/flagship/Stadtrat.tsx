@@ -51,7 +51,7 @@ export function Stadtrat() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <div>
             <div className="eyebrow text-red-700">Zusammensetzung</div>
             <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Sitzverteilung nach Kommunalwahl 2026</h2>
@@ -93,7 +93,7 @@ export function Stadtrat() {
               </div>
             </div>
             <p className="mt-5 text-sm text-cream/90 italic">
-              {"„Moosburg ist eine lebendige, zukunftsorientierte Stadt — und das wird sie nur bleiben, wenn wir gemeinsam gestalten. Kommen Sie zu den Sitzungen, schreiben Sie, rufen Sie an.“"}
+              {"„Moosburg ist eine lebendige, zukunftsorientierte Stadt, und das wird sie nur bleiben, wenn wir gemeinsam gestalten. Kommen Sie zu den Sitzungen, schreiben Sie, rufen Sie an.“"}
             </p>
             <div className="mt-5 inline-flex items-center gap-1 text-xs text-gold-200">
               <IconMapPin className="h-3.5 w-3.5" stroke={2} />
@@ -181,7 +181,7 @@ export function Stadtrat() {
         <div className="grid gap-4 sm:grid-cols-3">
           {[
             { title: "Alle 24 Mitglieder", desc: "Ratsmitglieder nach Fraktion, mit Ausschüssen und Erreichbarkeiten." },
-            { title: "Ausschüsse", desc: "Haupt-, Bau- und Finanzausschuss — Zuständigkeiten und Termine." },
+            { title: "Ausschüsse", desc: "Haupt-, Bau- und Finanzausschuss: Zuständigkeiten und Termine." },
             { title: "Anträge & Beschlüsse", desc: "Durchsuchbares Archiv aller Beschlüsse seit 2020." },
           ].map((t) => (
             <a

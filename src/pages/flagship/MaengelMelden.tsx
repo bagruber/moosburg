@@ -92,7 +92,7 @@ export function MaengelMelden() {
           </p>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <MoosburgMap
             className="h-[460px] overflow-hidden rounded-md border border-ink-line shadow-soft"
             pins={mockPins}
@@ -156,7 +156,7 @@ export function MaengelMelden() {
                 ) : address ? (
                   <div className="font-semibold">{address}</div>
                 ) : (
-                  <div className="text-ink-muted">Noch kein Ort gewählt — bitte auf die Karte klicken</div>
+                  <div className="text-ink-muted">Noch kein Ort gewählt, bitte auf die Karte klicken</div>
                 )}
               </div>
             </div>
@@ -181,7 +181,7 @@ export function MaengelMelden() {
           <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Details zum Problem</h2>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-6">
             <label className="block">
               <span className="eyebrow text-ink-muted">
@@ -265,7 +265,7 @@ export function MaengelMelden() {
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               Wenn Sie eine Rückmeldung zu Ihrer Meldung erhalten möchten, können Sie hier Ihre
-              Kontaktdaten angeben. Alle Felder sind optional — außer der Datenschutz-Zustimmung.
+              Kontaktdaten angeben. Alle Felder sind optional, außer der Datenschutz-Zustimmung.
             </p>
           </div>
 

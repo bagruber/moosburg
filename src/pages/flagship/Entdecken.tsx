@@ -91,17 +91,19 @@ export function Entdecken() {
           <p className="max-w-3xl text-base leading-relaxed text-cream/85">
             Aus einem Benediktinerkloster des 8. Jahrhunderts gewachsen, blickt Moosburg auf über
             1.250 Jahre Geschichte zurück. Drei Rosen im Wappen, ein gotisches Münster im Zentrum und
-            die weiten Auen von Amper und Isar ringsum — eine Stadt, die sich in einem halben Tag
+            die weiten Auen von Amper und Isar ringsum, eine Stadt, die sich in einem halben Tag
             erlaufen lässt und doch viel zu erzählen hat.
           </p>
         </Reveal>
         <Reveal delay={2}>
-          <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <Stat number="769" label="Klostergründung" />
-            <Stat number="1.250+" label="Jahre Geschichte" />
-            <Stat number="≈ 21.000" label="Einwohner" />
-            <Stat number="3" label="Rosen im Wappen" />
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <Stat number="769" label="Gründung des Klosters" />
+            <Stat number="um 1511" label="Leinberger-Hochaltar im Münster" />
+            <Stat number="19.309" label="Einwohner, Ende 2021" />
           </div>
+          <p className="mt-4 text-xs text-cream/55">
+            Einwohnerzahl: Bayerisches Landesamt für Statistik, Statistik kommunal 2022.
+          </p>
         </Reveal>
       </SpotlightSection>
 
@@ -126,7 +128,8 @@ export function Entdecken() {
       <section className="border-t border-ink-line/70 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
           <Reveal>
-            <SectionHeader eyebrow="Lohnt auch einen Besuch" heading="Auch sehenswert" />
+            <SectionHeader eyebrow="Lohnt auch einen Besuch" heading="Auch sehenswert"
+            size="sm" />
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {weitereStationen.map((s) => (
@@ -185,6 +188,7 @@ export function Entdecken() {
           <SectionHeader
             eyebrow="Tiefer eintauchen"
             heading="Moosburg auf Ihre Weise"
+            size="sm"
             script="weiter geht's"
             light
           />

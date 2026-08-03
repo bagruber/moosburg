@@ -10,7 +10,7 @@ import {
   IconBallFootball,
   IconMusic,
   IconUsersGroup,
-  IconSparkles,
+  IconUserCheck,
   IconExternalLink,
   IconChevronRight,
   IconMapPin,
@@ -52,22 +52,22 @@ const STADT_EINRICHTUNGEN: Einrichtung[] = [
     accent: "rb-6",
     link: "https://meinmoosburg.de/freizeit-kultur/stadtbuecherei/" },
   { id: "eisstadion", name: "Eisstadion Clariant Arena", icon: IconSnowflake,
-    hint: "Eislauf, Eishockey, Familien-Sonntag — von Oktober bis März.",
+    hint: "Eislauf, Eishockey, Familien-Sonntag, von Oktober bis März.",
     address: "Bonau",
     accent: "rb-6",
     link: "https://meinmoosburg.de/freizeit-kultur/eisstadion/" },
   { id: "freibad", name: "Städtisches Freibad", icon: IconSwimming,
-    hint: "Drei Becken, große Liegewiese — Mai bis September.",
+    hint: "Drei Becken, große Liegewiese: Mai bis September.",
     address: "Stadtbadstraße",
     accent: "rb-5",
     link: "https://meinmoosburg.de/freizeit-kultur/freibad/" },
   { id: "hallenbad", name: "Städtisches Hallenbad", icon: IconSwimming,
-    hint: "Schwimmen das ganze Jahr — Frühschwimmer, Schulschwimmen, Vereins­zeiten.",
+    hint: "Schwimmen das ganze Jahr: Frühschwimmer, Schulschwimmen, Vereins­zeiten.",
     address: "Stadtbadstraße",
     accent: "rb-7",
     link: "https://meinmoosburg.de/freizeit-kultur/freibad-2/" },
   { id: "stadthalle", name: "Stadthalle", icon: IconBuildingCommunity,
-    hint: "Konzerte, Bälle, Versammlungen — Moosburgs Saal für die großen Anlässe.",
+    hint: "Konzerte, Bälle, Versammlungen: Moosburgs Saal für die großen Anlässe.",
     address: "Thalbacher Straße",
     accent: "rb-3",
     link: "https://www.moosburg.de/Stadthalle" },
@@ -122,7 +122,7 @@ const SECTIONS: Section[] = [
     label: "Vereine & Gemeinschaft",
     icon: IconUsersGroup,
     accent: "rb-7",
-    lead: "Über 100 eingetragene Vereine prägen das gesellschaftliche Leben in Moosburg — vom Trachten- bis zum Sport­verein, von der Wasserwacht bis zum Fasching.",
+    lead: "Über 100 eingetragene Vereine prägen das gesellschaftliche Leben in Moosburg, vom Trachten- bis zum Sport­verein, von der Wasserwacht bis zum Fasching.",
     match: (f) =>
       f.primary_kategorie === "Vereine & Kulturelles" ||
       f.primary_kategorie === "Gesellschaft" ||
@@ -132,7 +132,7 @@ const SECTIONS: Section[] = [
   {
     id: "kinder-jugend",
     label: "Kinder, Jugend & Familie",
-    icon: IconSparkles,
+    icon: IconUserCheck,
     accent: "rb-1",
     lead: "Jugend­zentrum, Familien­zentren, Pfadfinder, Zeltlager und mehr für die jungen Moosburger:innen.",
     match: (f) =>
@@ -164,7 +164,7 @@ export function Freizeit() {
       ]} />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
 
             {/* ── Städtische Einrichtungen ─────────────────────────── */}
@@ -283,7 +283,7 @@ export function Freizeit() {
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
                   <Link to="/mein-moosburg/veranstaltungen" className="group flex items-center justify-between gap-2 text-ink hover:text-red-700">
-                    <span>Was ist los? — Veranstaltungen</span>
+                    <span>Was ist los?: Veranstaltungen</span>
                     <IconChevronRight className="h-3.5 w-3.5 shrink-0" stroke={2} />
                   </Link>
                 </li>
@@ -345,20 +345,21 @@ export function Freizeit() {
       </article>
 
       {/* ─────────────────────────────────────────────────────────────────
-         CLOSER  — Volksfeste & Stadtkultur als rote Marketing-Sektion
+         CLOSER: Volksfeste & Stadtkultur als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
       <SpotlightSection tone="red">
         <Reveal>
           <SectionHeader
             eyebrow="Was Moosburg feiert"
             heading="Volksfeste & Stadtkultur"
+            size="sm"
             script="das ganze Jahr"
             light
           />
         </Reveal>
         <Reveal delay={1}>
           <p className="mt-6 max-w-3xl text-base text-cream/90">
-            Vom Frühlingsfest Ende April bis zum Christkindl­markt im Dezember — Moosburg
+            Vom Frühlingsfest Ende April bis zum Christkindl­markt im Dezember: Moosburg
             hat seine festen Termine im Jahres­kreis. Vereine, Pfarreien und die Stadt
             tragen die Tradition gemeinsam.
           </p>

@@ -58,10 +58,10 @@ const JOURNEYS: Journey[] = [
     accent: "rb-3",
     question: "Ich möchte einen Bauantrag stellen",
     lead:
-      "Seit 01.03.2024 läuft der Bauantrag im Landkreis Freising digital — und wird direkt beim Landratsamt eingereicht, nicht mehr bei der Stadt Moosburg.",
+      "Seit 01.03.2024 läuft der Bauantrag im Landkreis Freising digital und wird direkt beim Landratsamt eingereicht, nicht mehr bei der Stadt Moosburg.",
     steps: [
       { label: "Vorab: Bauberatung im Stadtbauamt", hint: "klärt, ob das Vorhaben mit dem Bebauungsplan vereinbar ist" },
-      { label: "Antrag digital stellen", hint: "Landratsamt Freising — Online-Portal" },
+      { label: "Antrag digital stellen", hint: "Landratsamt Freising: Online-Portal" },
       { label: "Alternative: Papierantrag", hint: "ebenfalls beim Landratsamt, nicht mehr im Rathaus" },
       { label: "Stadt wird im Verfahren angehört", hint: "die Stellungnahme der Stadt fließt ein, ohne dass Sie sie separat einholen müssen" },
     ],
@@ -70,7 +70,7 @@ const JOURNEYS: Journey[] = [
       href: "https://www.kreis-freising.de/buergerservice/abteilungen-und-sachgebiete/bauamt/faq-haeufig-gestellte-fragen-zum-digitalen-bauantrag.html",
       external: true,
     },
-    note: "Ausnahmen: vereinzelt sind weiterhin Anträge bei der Stadt möglich — fragen Sie im Zweifel bei der Bauberatung nach.",
+    note: "Ausnahmen: vereinzelt sind weiterhin Anträge bei der Stadt möglich. Fragen Sie im Zweifel bei der Bauberatung nach.",
   },
   {
     id: "verfahrensfrei",
@@ -78,7 +78,7 @@ const JOURNEYS: Journey[] = [
     accent: "rb-5",
     question: "Brauche ich überhaupt einen Bauantrag?",
     lead:
-      "Viele kleinere Vorhaben sind nach der Bayerischen Bauordnung (BayBO) verfahrensfrei — d. h. ohne Antrag möglich, sofern die Festsetzungen des Bebauungsplans eingehalten werden.",
+      "Viele kleinere Vorhaben sind nach der Bayerischen Bauordnung (BayBO) verfahrensfrei, d. h. ohne Antrag möglich, sofern die Festsetzungen des Bebauungsplans eingehalten werden.",
     items: [
       { label: "Gartenhäuser bis 75 m³ umbauter Raum", hint: "Außenbereich: deutlich strenger" },
       { label: "Carports / Garagen bis 50 m² Grundfläche", hint: "im Innenbereich, je nach B-Plan" },
@@ -208,7 +208,7 @@ export function Bauen() {
       />
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* ── Main column ─────────────────────────────────────────── */}
           <div className="space-y-12">
 
@@ -251,16 +251,16 @@ export function Bauen() {
               </div>
               <p className="mt-3 text-base text-ink-soft">
                 Bei Neubau oder Sanierung ist jetzt der Moment, einen Glasfaser­anschluss
-                gleich mitzuplanen — sobald die Wände stehen, wird's teuer.
+                gleich mitzuplanen. Sobald die Wände stehen, wird's teuer.
               </p>
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm">
                   <IconCheck className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} stroke={2.25} />
-                  <span><strong>Glasfaserausbau 2023</strong> — wie weit ist die Stadt?</span>
+                  <span><strong>Glasfaserausbau 2023</strong>: wie weit ist die Stadt?</span>
                 </li>
                 <li className="flex items-start gap-2 rounded-lg border border-ink-line/40 bg-white px-3 py-2.5 text-sm">
                   <IconCheck className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--color-rb-7)" }} stroke={2.25} />
-                  <span><strong>Alternative DSL-Anbieter</strong> — wenn Glasfaser nicht verfügbar</span>
+                  <span><strong>Alternative DSL-Anbieter</strong>, wenn Glasfaser nicht verfügbar ist</span>
                 </li>
               </ul>
             </section>
@@ -337,7 +337,7 @@ export function Bauen() {
             <section className="rounded-xl border border-ink-line/40 bg-cream-dark/40 p-4 text-xs text-ink-soft">
               <p>
                 Diese Seite ersetzt keine baurechtliche Auskunft. Im Zweifel immer Rücksprache
-                mit der Bauberatung halten — sie ist kostenlos.
+                mit der Bauberatung halten. Sie ist kostenlos.
               </p>
             </section>
           </aside>

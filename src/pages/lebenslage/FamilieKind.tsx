@@ -45,9 +45,9 @@ const STAGES: Stage[] = [
     label: "Schwangerschaft & Baby",
     sub: "0–3 Jahre",
     icon: IconBabyCarriage,
-    intro: "Von der Geburtsurkunde bis zum ersten Krabbeltreff — die wichtigsten Wege für den Start ins Familienleben.",
+    intro: "Von der Geburtsurkunde bis zum ersten Krabbeltreff, die wichtigsten Wege für den Start ins Familienleben.",
     behoerdlich: [
-      { title: "Geburt beurkunden", desc: "Die Geburtsurkunde stellt das Standesamt aus — Grundlage für Kindergeld, Krankenversicherung und mehr.", to: "/rathaus/kontakt?topic=standesamt" },
+      { title: "Geburt beurkunden", desc: "Die Geburtsurkunde stellt das Standesamt aus: Grundlage für Kindergeld, Krankenversicherung und mehr.", to: "/rathaus/kontakt?topic=standesamt" },
       { title: "Kindergeld & Elterngeld", desc: "Kindergeld bei der Familienkasse, Elterngeld bei der zuständigen Stelle beantragen.", to: "/rathaus/online-dienste" },
       { title: "Kita-Platz vormerken", desc: "Frühzeitig über die Plattform LITTLE BIRD einen Krippenplatz vormerken.", to: "/mein-moosburg/familie" },
     ],
@@ -56,7 +56,7 @@ const STAGES: Stage[] = [
       { title: "Krabbel- & Eltern-Kind-Gruppen", desc: "Treffs zum Austausch und Kennenlernen anderer Familien.", to: "/mein-moosburg/freizeit" },
       { title: "Spielplätze in Ihrer Nähe", desc: "Über den Stadtplan die nächstgelegenen Spielplätze finden.", to: "/mein-moosburg/stadtplan" },
     ],
-    tipp: { title: "Begrüßung für Neugeborene", body: "Die Stadt begrüßt junge Familien — Infos und kleine Willkommensgeste inklusive.", to: "/lebenslage/neu-in-moosburg" },
+    tipp: { title: "Begrüßung für Neugeborene", body: "Die Stadt begrüßt junge Familien: Infos und kleine Willkommensgeste inklusive.", to: "/lebenslage/neu-in-moosburg" },
   },
   {
     id: "kita",
@@ -82,7 +82,7 @@ const STAGES: Stage[] = [
     icon: IconSchool,
     intro: "Einschulung, Mittagsbetreuung und ein aktives Nachmittagsprogramm.",
     behoerdlich: [
-      { title: "Schuleinschreibung", desc: "Die Zuordnung erfolgt nach Schulsprengel und Adresse — Termine gibt die Grundschule bekannt.", to: "/mein-moosburg/familie/schulen" },
+      { title: "Schuleinschreibung", desc: "Die Zuordnung erfolgt nach Schulsprengel und Adresse. Termine gibt die Grundschule bekannt.", to: "/mein-moosburg/familie/schulen" },
       { title: "Ganztag & Mittagsbetreuung", desc: "OGTS oder Mittagsbetreuung rechtzeitig anmelden.", to: "/mein-moosburg/familie/schulen" },
     ],
     angebote: [
@@ -107,7 +107,7 @@ const STAGES: Stage[] = [
       { title: "Jugendtreff & Jugendarbeit", desc: "Offene Treffs, Projekte und Beteiligung für Jugendliche.", to: "/mein-moosburg/freizeit" },
       { title: "Ausbildung & Berufsorientierung", desc: "Erste Schritte Richtung Ausbildung und Beruf in der Region.", to: "/rathaus/stellenangebote" },
     ],
-    tipp: { title: "Mitreden & mitgestalten", body: "Jugendliche können sich in Moosburg einbringen — von Beteiligung bis Ehrenamt.", to: "/mitgestalten/beteiligung" },
+    tipp: { title: "Mitreden & mitgestalten", body: "Jugendliche können sich in Moosburg einbringen, von Beteiligung bis Ehrenamt.", to: "/mitgestalten/beteiligung" },
   },
 ];
 
@@ -130,7 +130,7 @@ export function FamilieKind() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Familie & Kind"
-        intro="Von der Geburt bis zum Schulabschluss: Diese Seite bündelt alle städtischen Angebote für Familien — wählen Sie das Alter Ihres Kindes und sehen Sie, was gerade wichtig ist."
+        intro="Von der Geburt bis zum Schulabschluss: Diese Seite bündelt alle städtischen Angebote für Familien, wählen Sie das Alter Ihres Kindes und sehen Sie, was gerade wichtig ist."
         crumbs={[{ label: "Lebenslagen" }, { label: "Familie & Kind" }]}
         variant="cream"
         script="miteinander"
@@ -179,7 +179,7 @@ export function FamilieKind() {
         <div className="mt-10">
           <Reveal key={stage.id}>
             <p className="max-w-3xl text-lg font-medium text-ink">{stage.intro}</p>
-            <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+            <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
               <div className="space-y-10">
                 <StageGroup
                   icon={IconFileDescription}
@@ -228,7 +228,7 @@ export function FamilieKind() {
           <AlwaysCard
             icon={IconHeartHandshake}
             title="Familien- & Erziehungsberatung"
-            body="Vertrauliche Beratung in allen Lebenslagen — kostenlos und auf Wunsch anonym."
+            body="Vertrauliche Beratung in allen Lebenslagen, kostenlos und auf Wunsch anonym."
             to="/mein-moosburg/gesundheit"
           />
           <AlwaysCard

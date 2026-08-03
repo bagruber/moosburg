@@ -12,7 +12,7 @@ import {
   IconBookmark,
   IconFileDescription,
   IconLogout,
-  IconSparkles,
+  IconUserCheck,
   IconCircleCheck,
   IconCalendarEvent,
   IconClock,
@@ -81,7 +81,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
           <div className="eyebrow text-red-700">Mein Moosburg-Konto</div>
           <h2 className="headline mt-1 text-2xl text-ink">Ohne Passwort anmelden</h2>
           <p className="mt-3 text-sm text-ink-soft">
-            Geben Sie Ihre E-Mail-Adresse ein — wir senden Ihnen einen Anmeldelink. Kein Passwort,
+            Geben Sie Ihre E-Mail-Adresse ein, wir senden Ihnen einen Anmeldelink. Kein Passwort,
             keine separate Registrierung.
           </p>
 
@@ -112,7 +112,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
           <div className="eyebrow text-gold-700">Verifizierter Zugang</div>
           <h2 className="headline mt-1 text-2xl text-ink">Mit BundID oder Elster</h2>
           <p className="mt-3 text-sm text-ink-soft">
-            Für offizielle Anträge mit rechtsverbindlicher Unterschrift — Antragsformulare werden
+            Für offizielle Anträge mit rechtsverbindlicher Unterschrift: Antragsformulare werden
             automatisch mit Ihren Daten vorausgefüllt, Dokumente digital signiert.
           </p>
           <div className="mt-6 grid gap-2">
@@ -199,7 +199,7 @@ function ProfileFactors() {
         <h2 className="headline mt-1 text-2xl text-ink">Was trifft auf Sie zu?</h2>
         <p className="mt-2 text-sm text-ink-soft">
           Alle Angaben sind freiwillig. Je mehr Sie ausfüllen, desto besser können wir Sie durch
-          die Verwaltung lotsen — z. B. mit passenden Förderungen, Beratungsangeboten und Fristen.
+          die Verwaltung lotsen, z. B. mit passenden Förderungen, Beratungsangeboten und Fristen.
         </p>
       </div>
 
@@ -388,7 +388,7 @@ function Recommendations() {
           <h2 className="headline mt-1 text-2xl text-ink">Könnte Sie interessieren</h2>
         </div>
         <div className="rounded-md border border-dashed border-ink-line bg-white/60 p-8 text-center">
-          <IconSparkles className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
+          <IconUserCheck className="mx-auto h-8 w-8 text-ink-muted" stroke={1.5} />
           <p className="mt-3 text-sm text-ink-soft max-w-md mx-auto">
             Sobald Sie oben Profil-Angaben machen, schlagen wir hier passende Dienstleistungen,
             Beratungsangebote und Förderungen vor.
@@ -650,7 +650,7 @@ function SignedIn({ onSignOut }: { onSignOut: () => void }) {
           </div>
 
           <div className="mt-6 flex items-start gap-3 rounded-md border border-gold-500/30 bg-gold-100/40 p-4 text-sm">
-            <IconSparkles className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
+            <IconUserCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" stroke={1.75} />
             <div className="flex-1">
               <strong className="block text-ink">Ihr Konto ist aktiv (E-Mail-Basis).</strong>
               <span className="text-ink-soft">
@@ -779,7 +779,7 @@ export function KontoPage() {
         title={stage === "signed-in" ? "Mein Konto" : "Anmelden"}
         intro={
           stage === "signed-in"
-            ? "Ihr persönlicher Bereich — Termine, Anträge, adressbasierte Infos und Empfehlungen."
+            ? "Ihr persönlicher Bereich: Termine, Anträge, adressbasierte Infos und Empfehlungen."
             : "Mit dem Mein-Moosburg-Konto speichern Sie Termine, verfolgen Anträge und erhalten Benachrichtigungen zu Themen, die Sie interessieren."
         }
         crumbs={[{ label: "Mein Konto" }]}

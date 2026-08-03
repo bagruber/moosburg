@@ -33,7 +33,7 @@ const AUDIENCES: Audience[] = [
     id: "jobsuche",
     label: "Ich suche Arbeit",
     icon: IconBriefcase,
-    lead: "Ob Neustart oder Wechsel — die wichtigsten Anlaufstellen für Ihre Jobsuche in und um Moosburg.",
+    lead: "Ob Neustart oder Wechsel, die wichtigsten Anlaufstellen für Ihre Jobsuche in und um Moosburg.",
     eintraege: [
       { title: "Stellen bei der Stadt Moosburg", desc: "Offene Stellen der Stadtverwaltung und städtischer Einrichtungen.", to: "/rathaus/stellenangebote" },
       { title: "Arbeitgeber vor Ort", desc: "Das Firmenverzeichnis zeigt Handwerk, Handel, Dienstleister und Industrie in Moosburg.", to: "/mein-moosburg/firmen" },
@@ -45,11 +45,11 @@ const AUDIENCES: Audience[] = [
     id: "ausbildung",
     label: "Ausbildung & Schule",
     icon: IconSchool,
-    lead: "Vom Übertritt bis zur dualen Ausbildung — Wege in den Beruf für junge Menschen in Moosburg.",
+    lead: "Vom Übertritt bis zur dualen Ausbildung: Wege in den Beruf für junge Menschen in Moosburg.",
     eintraege: [
       { title: "Ausbildung bei der Stadt", desc: "Ausbildungsplätze und duale Studiengänge bei der Stadtverwaltung.", to: "/rathaus/stellenangebote" },
       { title: "Weiterführende Schulen & Übertritt", desc: "Mittelschule, Realschule und der Weg dorthin.", to: "/mein-moosburg/familie/schulen" },
-      { title: "Ausbildungsbetriebe in Moosburg", desc: "Lokale Betriebe, die ausbilden — im Firmenverzeichnis.", to: "/mein-moosburg/firmen" },
+      { title: "Ausbildungsbetriebe in Moosburg", desc: "Lokale Betriebe, die ausbilden, im Firmenverzeichnis.", to: "/mein-moosburg/firmen" },
     ],
     cta: { label: "Jugend & Familie", to: "/lebenslage/familie-kind" },
   },
@@ -76,7 +76,7 @@ export function ArbeitAusbildung() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Arbeit & Ausbildung"
-        intro="Arbeitssuchende, junge Menschen auf dem Weg in den Beruf und Arbeitgeber:innen finden hier den passenden Einstieg — wählen Sie Ihre Perspektive."
+        intro="Arbeitssuchende, junge Menschen auf dem Weg in den Beruf und Arbeitgeber:innen finden hier den passenden Einstieg, wählen Sie Ihre Perspektive."
         crumbs={[{ label: "Lebenslagen" }, { label: "Arbeit & Ausbildung" }]}
         variant="cream"
         script="durchstarten"

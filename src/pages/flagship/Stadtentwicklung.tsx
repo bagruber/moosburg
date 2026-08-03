@@ -30,11 +30,11 @@ type Projekt = {
 };
 
 const PROJEKTE: Projekt[] = [
-  { titel: "Bebauungsplan „Am Amperwerk“", typ: "Bebauungsplan", stage: 1, frist: "Auslegung bis 30. Juni 2026", desc: "Neues gemischtes Quartier am früheren Amperwerk-Areal — Wohnen, Gewerbe und Grünflächen.", beteiligung: true },
+  { titel: "Bebauungsplan „Am Amperwerk“", typ: "Bebauungsplan", stage: 1, frist: "Auslegung bis 30. Juni 2026", desc: "Neues gemischtes Quartier am früheren Amperwerk-Areal: Wohnen, Gewerbe und Grünflächen.", beteiligung: true },
   { titel: "Neubaugebiet Westerberg", typ: "Bebauungsplan", stage: 0, desc: "Vorbereitende Untersuchungen für ein neues Wohngebiet im Nordwesten der Stadt.", },
-  { titel: "Neubau Kita Pfettracher Straße", typ: "Hochbau", stage: 2, desc: "Viergruppige Kindertagesstätte in Holzbauweise — schafft dringend benötigte Betreuungsplätze.", },
+  { titel: "Neubau Kita Pfettracher Straße", typ: "Hochbau", stage: 2, desc: "Viergruppige Kindertagesstätte in Holzbauweise, schafft dringend benötigte Betreuungsplätze.", },
   { titel: "Sanierung Kastulus-Realschule", typ: "Sanierung", stage: 2, desc: "Energetische Sanierung und Modernisierung der Fachräume bei laufendem Betrieb.", },
-  { titel: "Radwegekonzept", typ: "Verkehr", stage: 1, frist: "Ideensammlung bis 15. Juli 2026", desc: "Lückenschluss im Radnetz und sichere Schulwege — mit Beteiligung auf der Stadtkarte.", beteiligung: true },
+  { titel: "Radwegekonzept", typ: "Verkehr", stage: 1, frist: "Ideensammlung bis 15. Juli 2026", desc: "Lückenschluss im Radnetz und sichere Schulwege, mit Beteiligung auf der Stadtkarte.", beteiligung: true },
   { titel: "Innenstadtkonzept 2035", typ: "Verkehr", stage: 1, frist: "Online-Beteiligung bis 30. Juni 2026", desc: "Aufenthaltsqualität, Handel und Verkehr in der Altstadt neu denken.", beteiligung: true },
   { titel: "Ausbau Nahwärmenetz", typ: "Infrastruktur", stage: 2, desc: "Schrittweise Erweiterung des Nahwärmenetzes für klimafreundliches Heizen im Stadtgebiet.", },
   { titel: "Hochwasserschutz Isar", typ: "Infrastruktur", stage: 0, desc: "Untersuchung zusätzlicher Schutzmaßnahmen entlang von Isar und Amper.", },
@@ -120,13 +120,13 @@ export function Stadtentwicklung() {
       {/* ── Beschlüsse / council ──────────────────────────────────── */}
       <section className="border-t border-ink-line/70 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] lg:items-center">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
             <div>
               <div className="eyebrow text-red-700">Wie entschieden wurde</div>
               <h2 className="headline mt-1 text-2xl text-ink sm:text-3xl">Beschlüsse nachvollziehen</h2>
               <p className="mt-3 max-w-2xl text-ink-soft">
                 Jedes größere Projekt durchläuft den Stadtrat. Wer wann wie abgestimmt hat, macht die
-                Stadtratstransparenz-App nachvollziehbar — verzahnt mit Sitzungen, Anträgen und Profilen.
+                Stadtratstransparenz-App nachvollziehbar, verzahnt mit Sitzungen, Anträgen und Profilen.
               </p>
             </div>
             <div className="flex flex-col gap-3">

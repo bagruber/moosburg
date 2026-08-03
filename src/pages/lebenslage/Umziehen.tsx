@@ -37,12 +37,12 @@ const SCENARIOS: Scenario[] = [
     label: "Neu nach Moosburg",
     sub: "Zuzug von auswärts",
     icon: IconTruck,
-    intro: "Willkommen! Als Neubürger:in gibt es ein paar Pflichten — und danach viel zu entdecken.",
+    intro: "Willkommen! Als Neubürger:in gibt es ein paar Pflichten und danach viel zu entdecken.",
     schritte: [
       { id: "umz-zu-anmelden", title: "Wohnsitz anmelden", desc: "Persönlich im Bürgerbüro mit Ausweis und Wohnungsgeberbestätigung.", frist: "innerhalb 14 Tagen", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
       { id: "umz-zu-muell", title: "Müll-Abo aktivieren", desc: "Rest-, Bio- und Papiertonne für Ihre neue Adresse anmelden.", cta: { label: "Online-Dienste", to: "/rathaus/online-dienste" } },
       { id: "umz-zu-kfz", title: "KFZ ummelden", desc: "Falls Sie ein Auto haben: Ummeldung mit Ausweis, Zulassungsbescheinigung und eVB-Nummer.", frist: "zeitnah", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
-      { id: "umz-zu-rundfunk", title: "Rundfunkbeitrag ummelden", desc: "Ihre Adresse beim Beitragsservice aktualisieren — ein Beitrag pro Wohnung." },
+      { id: "umz-zu-rundfunk", title: "Rundfunkbeitrag ummelden", desc: "Ihre Adresse beim Beitragsservice aktualisieren, ein Beitrag pro Wohnung." },
       { id: "umz-zu-internet", title: "Internet & Glasfaser prüfen", desc: "Verfügbarkeit an der neuen Adresse prüfen und Anschluss beauftragen.", cta: { label: "Bauen & Glasfaser", to: "/rathaus/bauantrag" } },
     ],
   },
@@ -51,10 +51,10 @@ const SCENARIOS: Scenario[] = [
     label: "Umzug in Moosburg",
     sub: "innerhalb der Stadt",
     icon: IconHome2,
-    intro: "Nur die Straße wechselt, die Stadt bleibt — das meiste erledigen Sie mit einer Ummeldung.",
+    intro: "Nur die Straße wechselt, die Stadt bleibt, das meiste erledigen Sie mit einer Ummeldung.",
     schritte: [
-      { id: "umz-in-ummelden", title: "Adresse ummelden", desc: "Neue Anschrift beim Einwohnermeldeamt melden — Ausweis und Wohnungsgeberbestätigung mitbringen.", frist: "innerhalb 14 Tagen", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
-      { id: "umz-in-muell", title: "Ver- & Entsorgung anpassen", desc: "Abfuhr an die neue Adresse übertragen — der Abfuhrtag kann sich ändern.", cta: { label: "Ver- & Entsorgung", to: "/rathaus/ver-entsorgung" } },
+      { id: "umz-in-ummelden", title: "Adresse ummelden", desc: "Neue Anschrift beim Einwohnermeldeamt melden: Ausweis und Wohnungsgeberbestätigung mitbringen.", frist: "innerhalb 14 Tagen", cta: { label: "Termin buchen", to: "/rathaus/termin-buchen" } },
+      { id: "umz-in-muell", title: "Ver- & Entsorgung anpassen", desc: "Abfuhr an die neue Adresse übertragen, der Abfuhrtag kann sich ändern.", cta: { label: "Ver- & Entsorgung", to: "/rathaus/ver-entsorgung" } },
       { id: "umz-in-kfz", title: "Fahrzeugschein aktualisieren", desc: "Neue Adresse in der Zulassungsbescheinigung eintragen lassen." },
       { id: "umz-in-post", title: "Nachsendeauftrag einrichten", desc: "Damit Post aus der alten Wohnung sicher ankommt." },
       { id: "umz-in-parken", title: "Anwohnerparkausweis prüfen", desc: "In Tarifzonen der Innenstadt lohnt sich ein neuer Ausweis für die neue Adresse.", cta: { label: "Online beantragen", to: "/rathaus/online-dienste" } },
@@ -88,7 +88,7 @@ export function Umziehen() {
       <PageHeader
         eyebrow="Lebenslage"
         title="Umziehen"
-        intro="Ob Zuzug, Umzug innerhalb der Stadt oder Wegzug — wählen Sie Ihre Situation und arbeiten Sie die passende Checkliste ab. Fristen im Blick, nichts vergessen."
+        intro="Ob Zuzug, Umzug innerhalb der Stadt oder Wegzug, wählen Sie Ihre Situation und arbeiten Sie die passende Checkliste ab. Fristen im Blick, nichts vergessen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Umziehen" }]}
         variant="cream"
         script="gut angekommen"
@@ -126,7 +126,7 @@ export function Umziehen() {
         </div>
 
         {/* Checkliste */}
-        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div>
             <Reveal key={scenario.id}>
               <p className="max-w-2xl text-lg font-medium text-ink">{scenario.intro}</p>

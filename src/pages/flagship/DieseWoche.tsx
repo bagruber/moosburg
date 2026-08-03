@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Icon } from "@tabler/icons-react";
 import {
-  IconSparkles,
+  IconUserCheck,
   IconArrowRight,
   IconClock,
   IconMapPin,
@@ -54,7 +54,7 @@ const NEWS: News[] = [
   {
     id: "n2",
     category: "Verkehr",
-    title: "Vollsperrung Stadtwaldstraße — bis 7. August",
+    title: "Vollsperrung Stadtwaldstraße, bis 7. August",
     body: "Umleitung über Industriestraße ist ausgeschildert. Buslinie 5070 wird umgeleitet.",
     date: "2026-05-12",
     to: "/mein-moosburg/mobilitaet#baustellen",
@@ -79,7 +79,7 @@ const NEWS: News[] = [
     id: "n5",
     category: "Kultur",
     title: "Sommer-Konzertreihe im Burghof startet",
-    body: "Drei Konzerte im Juni und Juli — Jazz, Klassik, Liedermacher. Karten gibt's in der Stadtbücherei.",
+    body: "Drei Konzerte im Juni und Juli. Jazz, Klassik, Liedermacher. Karten gibt's in der Stadtbücherei.",
     date: "2026-05-16",
     to: "/mein-moosburg/freizeit",
   },
@@ -114,7 +114,7 @@ const SAISON: Saison[] = [
     cta: "Zum Veranstaltungs­kalender", to: "/mein-moosburg/veranstaltungen",
     from: [4, 25], to_: [5, 10] },
   { label: "Wochenmarkt jeden Samstag",
-    body: "Regional, frisch, freundlich. 7 – 12 Uhr auf dem Plan — schon ein Moosburger Ritual.",
+    body: "Regional, frisch, freundlich. 7 – 12 Uhr auf dem Plan, schon ein Moosburger Ritual.",
     image: "images/plan.jpg",
     cta: "Mehr zum Markt", to: "/mein-moosburg/einkaufen#wochenmarkt",
     from: [1, 1], to_: [12, 31] },
@@ -211,7 +211,7 @@ export function DieseWoche() {
   const personalSection = (
     <section>
       <div className="flex items-center gap-2 text-xs font-display uppercase tracking-wider text-turquoise-accent">
-        <IconSparkles className="h-3.5 w-3.5" stroke={2} />
+        <IconUserCheck className="h-3.5 w-3.5" stroke={2} />
         Für Sie diese Woche
       </div>
       <ul className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -435,7 +435,7 @@ export function DieseWoche() {
           />
         </Reveal>
         <Reveal delay={1}>
-          <div className="mt-6 grid gap-6 sm:grid-cols-[minmax(0,2fr),minmax(0,1fr)] sm:items-start">
+          <div className="mt-6 grid gap-6 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] sm:items-start">
             <p className="text-base text-cream/90">
               Direkt von Höfen aus der Region: Käse, Brot, Honig, Fisch, Obst und Gemüse.
               Mittwochs eine kleine Auswahl des grünen Marktes. Treffpunkt für Nachbarschaft,
@@ -465,6 +465,7 @@ export function DieseWoche() {
           <SectionHeader
             eyebrow="Mehr aus Mein Moosburg"
             heading="Themen-Einstiege"
+            size="sm"
             script="weiterstöbern"
           />
         </Reveal>

@@ -59,7 +59,7 @@ const SECTIONS: Section[] = [
     label: "Apotheken",
     icon: IconPill,
     accent: "rb-5",
-    lead: "Drei Apotheken in der Innenstadt. Notdienst rotiert mit den Apotheken im Landkreis — die Suche der Bayerischen Apothekerkammer zeigt die heute geöffnete.",
+    lead: "Drei Apotheken in der Innenstadt. Notdienst rotiert mit den Apotheken im Landkreis. Die Suche der Bayerischen Apothekerkammer zeigt die heute geöffnete.",
     match: (f) => inAny(f, ["Apotheke"]),
   },
   {
@@ -170,7 +170,7 @@ export function Gesundheit() {
       </section>
 
       <article className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-16">
             {/* Legend at the top */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
@@ -201,7 +201,7 @@ export function Gesundheit() {
               <TipCard
                 icon={IconHomeHeart}
                 title="Hausärzt:innen mit Hausbesuchen"
-                body="Mehrere Moosburger Praxen bieten Hausbesuche für ältere Patient:innen an — siehe Hinweis in der Praxis-Detailansicht."
+                body="Mehrere Moosburger Praxen bieten Hausbesuche für ältere Patient:innen an, siehe Hinweis in der Praxis-Detailansicht."
                 personalReason="Sie beziehen Rente"
                 to="/lebenslage/pflege-alter"
                 accent="rb-6"
@@ -273,7 +273,7 @@ export function Gesundheit() {
               <div className="eyebrow text-ink-muted">Apotheken-Notdienst</div>
               <p className="mt-2 text-xs text-ink-soft">
                 Welche Apotheke heute Bereitschaft hat, zeigt die Suche der Bayerischen
-                Apothekerkammer — taggenau für Ihre Postleitzahl.
+                Apothekerkammer, taggenau für Ihre Postleitzahl.
               </p>
               <a
                 href="https://www.aponet.de/apotheke/notdienstsuche"
@@ -319,7 +319,7 @@ export function Gesundheit() {
       </article>
 
       {/* ─────────────────────────────────────────────────────────────────
-         CLOSER  — Pflege & Alter als ink-Spotlight (gesellschaftliches Thema)
+         CLOSER: Pflege & Alter als ink-Spotlight (gesellschaftliches Thema)
       ────────────────────────────────────────────────────────────────── */}
       <SpotlightSection tone="ink">
         <Reveal>
@@ -334,7 +334,7 @@ export function Gesundheit() {
           <div className="mt-6 grid gap-6 sm:grid-cols-3">
             <Pill icon={IconHandStop}
               title="Pflegeberatung"
-              body="Erstauskunft, Pflegegrad, ambulant vs. stationär — neutrale Beratung im Landkreis Freising." />
+              body="Erstauskunft, Pflegegrad, ambulant vs. stationär, neutrale Beratung im Landkreis Freising." />
             <Pill icon={IconHomeHeart}
               title="Senioren­einrichtungen"
               body="AWO Seniorenpark, Caritas-Pflegedienste, ambulante Krankenpflege David, Pflegedienst Mann." />
