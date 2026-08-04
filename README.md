@@ -6,6 +6,9 @@ Ein **konzeptioneller HiFi-Prototyp** dafür, wie die Stadtwebsite von Moosburg 
 
 ---
 
+> **Hosting und Design-Kanon:** [PLATTFORM.md](PLATTFORM.md) — die Tokens
+> dieses Repos sind die Referenz für alle Moosburg-Projekte.
+
 ## Was das hier ist
 
 - Eine **Fallstudie / ein Designentwurf** im Rahmen eines Relaunch-Konzepts.
