@@ -49,6 +49,7 @@ export function BauenWohnen() {
         crumbs={[{ label: "Lebenslagen" }, { label: "Bauen & Wohnen" }]}
         variant="cream"
         script="Zuhause"
+        sketch="sketches/hirschenA.svg"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">

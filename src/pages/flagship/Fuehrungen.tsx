@@ -92,7 +92,7 @@ export function Fuehrungen() {
       </section>
 
       {/* ── Selbstgeführter Rundgang ──────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="ink" sketch="sketches/pubE.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Lieber auf eigene Faust?"

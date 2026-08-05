@@ -17,9 +17,36 @@ export function StubPage() {
           title="Seite nicht gefunden"
           intro="Die gewünschte Seite konnte nicht gefunden werden. Möglicherweise wurde sie verschoben oder umbenannt."
           crumbs={[{ label: "Fehler" }]}
+          sketch="sketches/muensterB.svg"
         />
-        <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-red-700 hover:underline">
+        {/* Eine Sackgasse braucht Ausgänge, nicht nur einen Rückweg. */}
+        <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+          <div className="eyebrow text-red-700">Vielleicht suchen Sie hier</div>
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {(Object.keys(hubs) as (keyof typeof hubs)[]).map((h) => {
+              const Icon = hubs[h].icon;
+              return (
+                <li key={h}>
+                  <Link
+                    to={`/${h}`}
+                    className="group flex items-center gap-4 rounded-md border border-ink-line bg-white px-5 py-4 transition hover:border-red-500 hover:shadow-soft"
+                  >
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
+                      <Icon className="h-4 w-4" weight="regular" />
+                    </span>
+                    <span className="card-title min-w-0 flex-1 text-[15px] text-ink">
+                      {hubs[h].title}
+                    </span>
+                    <ArrowRight
+                      className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700"
+                      weight="regular"
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <Link to="/" className="mt-8 inline-flex items-center gap-2 text-red-700 hover:underline">
             Zur Startseite
             <ArrowRight className="h-4 w-4" weight="regular" />
           </Link>

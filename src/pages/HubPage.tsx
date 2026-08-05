@@ -43,6 +43,7 @@ export function HubPage() {
           title="Bereich nicht gefunden"
           intro="Der gewünschte Bereich existiert nicht."
           crumbs={[{ label: "Fehler" }]}
+          sketch="sketches/muensterB.svg"
         />
       </PageLayout>
     );

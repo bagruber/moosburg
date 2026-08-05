@@ -155,6 +155,58 @@ gesucht hat (0.39). Der Befund: Das Vokabular war unauffällig — keine Werbe-A
 - Mindestens einmal pro Seite ein menschliches Gesicht (Identity-Flächen)
 - Nie als generisches Stock-Wallpaper hinter Text — Bild ist Inhalt, nicht Dekoration
 
+### Federzeichnungen (ab 0.42)
+
+Handgezeichnete Moosburger Gebäude als ruhiger Grund auf einfarbigen Flächen. Quellen in
+`design-handoff/.../assets/sketch_svg/`, optimierte Fassungen in `public/sketches/`
+(SVGO mit `floatPrecision: 0`, spart 67–70 %). Eingebunden über `SketchGround`, nicht als
+`<img>`: `mask-image` hält die Datei extern und lässt sie trotzdem eine Token-Farbe annehmen.
+
+**Sie ergänzen Fotos, sie ersetzen sie nicht.** Der Foto-Hero bleibt unangetastet — eine
+Strichzeichnung kann etwas, das ein Foto nicht kann: hinter Text stehen, ohne um
+Aufmerksamkeit zu kämpfen. Sie hat keine tonale Masse, nur Linien.
+
+Deckkraft je Grund (am gebauten Stand ermittelt, nicht gerechnet — dieselbe Zahl wirkt auf
+Creme deutlich leiser als auf Ink):
+
+| Grund | Farbe | Deckkraft |
+|---|---|---|
+| Creme / Creme-Dark | Ink | 11 % |
+| Ink | Creme | 13 % |
+| Gold-500 | Creme | 22 % |
+| Rot-900 / Rot-600 | Creme | 16 % |
+
+Regeln:
+
+- **Ein Motiv je Seite**, angeschnitten unten rechts. Ab `sm` sichtbar, darunter verschmiert die Feder.
+- **Kein zweites Motiv desselben Gebäudes im selben Hub.** `muensterA` steht in Zu Besuch,
+  `muensterB` deshalb nur auf der Fehlerseite.
+- **Keine Gebäude mit Beschriftung.** `pubB` trägt den Schriftzug „THE PUB"; ein einzelner
+  Betriebsname gehört nicht ins Seitendesign. Darum `pubD`/`pubE`.
+- **Nicht auf jede dunkle Fläche.** Rund 24 Ink-/Rot-Flächen tragen bewusst keine — flächendeckend
+  wird die Zeichnung zur Tapete, genau die Abnutzung, die die Rose auf 64 Eyebrows hatte.
+- **Nicht bei schwerem Thema.** Geschichte & Erinnerung hat einen roten Kopf und bleibt leer,
+  weil die zweite Seitenhälfte das Stalag VII A behandelt.
+
+Belegte Motive (Stand 0.44), damit nicht jedes Mal alles neu gesichtet wird:
+
+| Motiv | Seite | Fläche |
+|---|---|---|
+| `rathausB` | Rathaus (Hub) | Creme-Kopf |
+| `rathausC` | Stadtrat · Stadtfinanzen | Rot-Kopf · Gold-Kopf |
+| `buechereiA` | Familie & Bildung | Rot-Kopf |
+| `muensterA` | Moosburg entdecken | Ink-Spotlight |
+| `muensterB` | Fehlerseite | Creme-Kopf |
+| `griesA` | Neu in Moosburg | Creme-Kopf |
+| `griesB` | Veranstaltungs-Highlights | Gold-Kopf |
+| `hirschenA` | Bauen & Wohnen | Creme-Kopf |
+| `hirschenB` | Einkaufen & Märkte | Ink-Spotlight |
+| `kaufhausWeinerA` | Unternehmen & Gewerbe | Creme-Kopf |
+| `pubD` | Essen & Trinken | Rot-Spotlight |
+| `pubE` | Stadtführungen | Ink-Spotlight |
+
+Ungenutzt und verfügbar: `rathausA`, `buechereiB`–`E`, `pubA`, `pubC`.
+
 ---
 
 ## Komponenten-Konventionen
@@ -177,12 +229,21 @@ nicht dasselbe Gewicht haben.
 
 ### Übersichtsseiten brauchen eine Rangfolge
 
-`HubPage` zeigt **zwei hervorgehobene Einstiege**, alles Weitere als geführte Liste ohne
-Icon-Kacheln. Die Zuordnung steht in `hubFeatured` (`src/pages/HubPage.tsx`).
+`HubPage` zeigt **zwei hervorgehobene Einstiege** mit Einleitungstext, alles Weitere als
+kompakte Karten mit **Icon, Titel und Pfeil — ohne Fließtext**. Die Zuordnung steht in
+`hubFeatured` (`src/pages/HubPage.tsx`).
+
+Der fehlende Text ist Absicht, nicht Sparsamkeit: Ein Absatz in Kachelgröße gepresst bricht
+mitten im Wort ab. Statt die Abschneidung zu reparieren, entfällt der Anlass. Die
+Zwischenstufe zwischen „alle Kacheln gleich" (keine Rangfolge) und „alles als Liste"
+(kein Wiedererkennen) — 0.43 nach Rückmeldung zu 0.39.
 
 Notrufnummern laufen **nicht** in dieser Rangfolge mit, sondern stehen als eigene Leiste
 darüber (`URGENT_SLUG`). Eine Kachelmatrix, in der „Notdienste" so schwer wiegt wie
 „Stellenangebote", ist keine Übersicht, sondern eine Aufzählung.
+
+Dasselbe Kartenmuster trägt die Fehlerseite (`StubPage`): eine Sackgasse braucht Ausgänge,
+nicht nur einen Rückweg.
 
 ### Tailwind: Grid-Tracklisten mit Unterstrich
 

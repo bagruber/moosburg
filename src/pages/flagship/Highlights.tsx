@@ -19,6 +19,7 @@ export function Highlights() {
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Veranstaltungs-Highlights" }]}
         variant="gold"
         script="das ganze Jahr"
+        sketch="sketches/griesB.svg"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
