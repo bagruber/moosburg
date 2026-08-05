@@ -1,6 +1,7 @@
 import type { Icon } from "@phosphor-icons/react";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 import { RainbowStripe } from "./RainbowStripe";
+import { SketchGround } from "./SketchGround";
 import { cn } from "@/lib/cn";
 
 export function PageHeader({
@@ -12,6 +13,7 @@ export function PageHeader({
   image,
   imageCredit,
   script,
+  sketch,
   variant = "cream",
 }: {
   eyebrow?: string;
@@ -23,6 +25,12 @@ export function PageHeader({
   /** Optional dezenter Foto-Credit unten rechts im Photo-Hero. */
   imageCredit?: { label?: string; author: string; href?: string };
   script?: string;
+  /**
+   * Federzeichnung eines Moosburger Gebäudes als ruhiger Grund, z. B.
+   * "sketches/rathausB.svg". Nur in der cream-Variante, wo sonst kein Bild
+   * steht — sie ergänzt Fotos, ersetzt sie nicht.
+   */
+  sketch?: string;
   variant?: "cream" | "photo" | "gold" | "red";
 }) {
   if (variant === "photo" && image) {
@@ -156,8 +164,9 @@ export function PageHeader({
 
   // Default: cream
   return (
-    <section className={cn("bg-cream-dark border-b border-ink-line/70")}>
-      <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-14">
+    <section className={cn("relative overflow-hidden bg-cream-dark border-b border-ink-line/70")}>
+      {sketch && <SketchGround src={sketch} />}
+      <div className="relative mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-14">
         <Breadcrumbs items={crumbs} />
         <div className="mt-6 flex items-start gap-5">
           {Icon && (

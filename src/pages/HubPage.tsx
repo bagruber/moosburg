@@ -8,8 +8,9 @@ const hubHeaderConfig: Record<Hub, {
   variant: "cream" | "photo" | "gold" | "red";
   image?: string;
   script?: string;
+  sketch?: string;
 }> = {
-  rathaus: { variant: "cream" },
+  rathaus: { variant: "cream", sketch: "sketches/rathausB.svg" },
   "mein-moosburg": { variant: "photo", image: "images/plan.jpg", script: "daheim" },
   "zu-besuch": { variant: "photo", image: "images/münster.jpg", script: "servus" },
   mitgestalten: { variant: "gold", script: "gemeinsam" },
@@ -68,6 +69,7 @@ export function HubPage() {
         variant={cfg.variant}
         image={cfg.image}
         script={cfg.script}
+        sketch={cfg.sketch}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8">

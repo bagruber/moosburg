@@ -79,7 +79,7 @@ export function Entdecken() {
       />
 
       {/* ── Identität ─────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="ink" sketch="sketches/muensterA.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Über tausend Jahre an der Isar"

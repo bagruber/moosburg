@@ -1,4 +1,5 @@
 import { RainbowStripe } from "./RainbowStripe";
+import { SketchGround } from "./SketchGround";
 import { cn } from "@/lib/cn";
 
 /**
@@ -16,18 +17,26 @@ import { cn } from "@/lib/cn";
 export function SpotlightSection({
   tone = "ink",
   rainbow = true,
+  sketch,
   className,
   children,
 }: {
   tone?: "ink" | "red";
   rainbow?: boolean;
+  /**
+   * Optionale Federzeichnung als heller Grund, z. B. "sketches/muensterA.svg".
+   * Auf einer Seite mit Foto-Kopf zeigt sie dasselbe Bauwerk im zweiten
+   * Register — Fotografie oben, Zeichnung unten.
+   */
+  sketch?: string;
   className?: string;
   children: React.ReactNode;
 }) {
   const bg = tone === "ink" ? "bg-ink" : "bg-red-600";
   return (
     <section className={cn("relative overflow-hidden text-cream", bg, className)}>
-      <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
+      {sketch && <SketchGround src={sketch} tone="cream" />}
+      <div className="relative mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         {children}
       </div>
       {rainbow && <RainbowStripe />}
