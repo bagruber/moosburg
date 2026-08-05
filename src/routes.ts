@@ -504,8 +504,9 @@ export function routesForHub(hub: Hub): Route[] {
 export type PartnerLink = { label: string; href: string; description: string };
 
 export const partnerLinks: PartnerLink[] = [
-  { label: "moosburg.org", href: "https://www.moosburg.org", description: "Bürgernetz, Forum, Historische Bilder" },
-  { label: "dermoosburger.de", href: "https://www.dermoosburger.de", description: "Webcams, Archiv, Lokales" },
+  { label: "moosburg.org", href: "https://www.moosburg.org", description: "Bürgernetz, Forum, historische Bilder" },
+  { label: "alt-moosburg.de", href: "https://www.alt-moosburg.de", description: "Stadtgeschichte und Archivbestände" },
+  { label: "meinmoosburg.de", href: "https://meinmoosburg.de", description: "Stadtportal der Moosburg Marketing eG" },
   { label: "stalag7a.de", href: "https://www.stalag7a.de", description: "Gedenkort Stalag VII A" },
-  { label: "Heimatmuseum", href: "#", description: "Stadtgeschichte erleben" },
+  { label: "Moosburg bei Wikipedia", href: "https://de.wikipedia.org/wiki/Moosburg_an_der_Isar", description: "Geschichte, Zahlen, Einordnung" },
 ];

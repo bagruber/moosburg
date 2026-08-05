@@ -41,7 +41,7 @@ Dann stehen beide.
 | Zusammenführung beider Sites | 2.272 kanonische URLs | 25.05.2026 | `scrape-out/consolidated` |
 | `haushaltvis` — Haushalt der Stadt | Ansatz 2024, brutto | Haushaltsjahr 2024 | `src/data/haushalt.ts` |
 | `datahub` — Bürgerumfragen | vier Erhebungen 2023–2025 | verlinkt, nicht eingebettet | `Beteiligung.tsx` |
-| `council` — Stadtratsdaten | 54 Mandate, Ämter mit Zeiträumen | Wahlperiode ab 05/2026 | **nicht verdrahtet** |
+| `council` — Stadtratsdaten | 54 Mandate, Ämter mit Zeiträumen; 11 angekündigte Sitzungen | abgeglichen 05.08.2026 | `src/data/stadtrat.ts` (Kopie) |
 | OpenStreetMap (Overpass) | Straßengeometrien im Gemeindegebiet | 20.–21.07.2026 | `public/data/strassen-geo.json` |
 | Kommunalwahl Moosburg | Stimmen, Stichwahl, Beteiligung | März 2026 | `src/data/wahlen.ts` |
 
@@ -104,7 +104,7 @@ Monate alt** — für Satzungstitel und Ansprechpartner unkritisch, für Baustel
 |---|---|---|---|
 | [Wahlen](../src/data/wahlen.ts) | A + B | Kommunalwahl 2026: Stimmenanteile, Bürgermeisterwahl, Stichwahl, Wahlbeteiligung real | die Sitzverteilung ist aus den Anteilen **gerechnet** (Hare-Niemeyer), nicht amtlich übernommen |
 | [Haushalt](../src/data/haushalt.ts) | A | Ansatz 2024 brutto, gerechnet aus `haushaltvis` | Fortschreibung auf 2026; Pro-Kopf-Wert hängt an der Einwohnerzahl (s. u.) |
-| [Stadtrat](../src/pages/flagship/Stadtrat.tsx) | B + C | Sitzverteilung aus dem realen Ergebnis; vier Sitzungen erfunden | **Bürgermeister-Riege ist falsch** — s. Widerspruch 3 |
+| [Stadtrat](../src/data/stadtrat.ts) | A | Ämter und elf angekündigte Sitzungen aus `council`; Sitzverteilung aus `wahlen.ts`; Porträts aus `council/img/members` | Termine ab Januar 2027; Fraktionsvorsitzende führt `council` nicht |
 | [Bürgerbeteiligung](../src/pages/flagship/Beteiligung.tsx) | C + A | vier laufende Verfahren erfunden; die vier verlinkten Umfragen sind reale Erhebungen | Verfahren ersetzen; Linkziele prüfen (s. Widerspruch 5) |
 | [Stadtentwicklung](../src/pages/flagship/Stadtentwicklung.tsx) | C | acht Projekte — **keines** ist im Crawl belegt | reale Verfahren aus dem Bauamt |
 | [Mängel melden](../src/pages/flagship/MaengelMelden.tsx) | D | Formular ohne Empfänger, vier Beispielmeldungen, Mock-Pins | Zielsystem und Bearbeitungsweg |
@@ -162,20 +162,19 @@ der Pro-Kopf-Wert im Haushalt auf derselben Basis stehen.
 beiden Zahlen ist falsch, und es ist die Befragung, auf der die Feature-Priorisierung
 dieses Projekts beruht.
 
-**3. Die Bürgermeister-Riege auf der Stadtratsseite stimmt nicht.**
-Alle vier genannten Personen sind real, drei tragen das falsche Amt. Nach den Daten in
-`council` (Ämter mit Zeiträumen, Wahlperiode ab 01.05.2026):
+**3. Die Bürgermeister-Riege auf der Stadtratsseite stimmt nicht.** — *behoben am 05.08.2026*
+Drei der vier genannten Personen trugen ein Amt, das sie nicht haben: Zweiter
+Bürgermeister ist Reinhard Lauterbach (FW), nicht Nathalie von Pressentin; Dritter ist
+Dr. Michael Stanglmaier (Grüne), nicht Erwin Weber, dessen Mandat am 30.04.2026 endete;
+Philipp Fincke ist FDP, nicht parteilos. Die Seite zeigt jetzt die drei Bürgermeister
+nach `council`, mit deren Porträts. Fraktionsvorsitze behauptet sie nicht mehr —
+`council` führt sie nicht.
 
-| Im Prototyp | Tatsächlich |
-|---|---|
-| Maximilian Mader, Erster Bürgermeister, CSU | korrekt |
-| Nathalie von Pressentin, 2. Bürgermeisterin | Zweiter Bürgermeister ist Reinhard Lauterbach (FW); von Pressentin ist Stadträtin |
-| Erwin Weber, 3. Bürgermeister | Dritter Bürgermeister ist Dr. Michael Stanglmaier (Grüne); Webers Mandat endete am 30.04.2026 |
-| Philipp Fincke, parteilos | Fincke ist FDP |
-
-Reale Namen mit falschen Ämtern sind der heikelste Fund im ganzen Register — das ist
-nicht Platzhalter, das ist eine Falschaussage über benannte Personen. `council` liefert
-die korrekten Daten samt Zeiträumen und ist bisher nicht verdrahtet.
+Im selben Zug zwei Funde derselben Art auf derselben Seite entfernt: der Erste
+Bürgermeister war mit einem **Stockfoto** abgebildet und trug ein **erfundenes Zitat** in
+Anführungszeichen. Beides jetzt ersetzt — echtes Porträt aus `council`, statt des Zitats
+das Wahlergebnis und die Vorzimmer-Nummer aus `ansprechpartner.ts`. Die Zimmerangabe
+„1. OG, Zimmer 14" war ebenfalls erfunden und ist raus.
 
 **4. Die Baustellenliste ist abgelaufen.**
 Sechs echte Sperrungen aus dem Crawl, letzter Zeitraum bis 07.08.2026, die übrigen
@@ -222,9 +221,10 @@ ist fast vollständig Stufe E; sie hält kaum eigenen Inhalt, und das ist richti
 `/mein-moosburg/gesundheit` ergänzt aponet.de und blaek.de für Notdienst- und
 Arztsuche.
 
-**Kuratierte Ehrenamts-Seiten** (Prinzip P4) — moosburg.org, dermoosburger.de,
-stalag7a.de, dazu stalag-moosburg.de auf der Geschichtsseite. Der vierte Footer-Partner
-„Heimatmuseum" trägt `href="#"` und führt nirgendwohin.
+**Kuratierte Partner im Footer** (Prinzip P4) — seit 05.08.2026 fünf Ziele: moosburg.org,
+alt-moosburg.de, meinmoosburg.de, stalag7a.de und der Wikipedia-Artikel. Der tote
+`href="#"` beim Heimatmuseum ist damit weg, dermoosburger.de ist aus der Liste
+genommen. Auf der Geschichtsseite steht zusätzlich stalag-moosburg.de.
 
 **Geschwister-Projekte** — bagruber.github.io/council (Stadtrat, Stadtentwicklung,
 Wahlen) und bagruber.github.io/datahub (Beteiligung). Nach dem Umzug auf moosburg.eu

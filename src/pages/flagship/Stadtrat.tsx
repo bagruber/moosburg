@@ -1,40 +1,29 @@
 import {
   CalendarDots,
-  FileText,
-  Play,
   ArrowRight,
-  MapPin,
+  Phone,
 } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
+import { parteien, stichwahl } from "@/data/wahlen";
+import { buergermeister, sitzungstermine, formatTermin } from "@/data/stadtrat";
 
 const route = findRoute("mitgestalten/stadtrat")!;
 const IMG = (src: string) => `${import.meta.env.BASE_URL}${src}`;
+const COUNCIL = "https://bagruber.github.io/council";
 
-const boardMembers = [
-  { name: "Maximilian Mader", role: "Erster Bürgermeister", fraction: "CSU", image: "images/person-portrait-1.jpg" },
-  { name: "Nathalie von Pressentin", role: "2. Bürgermeisterin", fraction: "Grüne", image: "images/person-portrait-2.jpg" },
-  { name: "Erwin Weber", role: "3. Bürgermeister", fraction: "CSU", image: "images/person-portrait-3.jpg" },
-  { name: "Philipp Fincke", role: "Fraktionsvorsitzender", fraction: "parteilos", image: "images/person-portrait-4.jpg" },
-];
+/**
+ * Sitze kommen aus dem Wahlergebnis, die Reihenfolge nicht: `parteien` ist nach
+ * Größe sortiert, ein Sitzbalken liest sich aber nur als Spektrum von links
+ * nach rechts. Unbekannte Namen landen hinten statt zu verschwinden.
+ */
+const SPEKTRUM = ["Die Linke", "Bündnis 90/Die Grünen", "fresh", "SPD", "Freie Wähler", "CSU", "AfD"];
+const rang = (name: string) => (SPEKTRUM.includes(name) ? SPEKTRUM.indexOf(name) : SPEKTRUM.length);
 
-const fractions = [
-  { name: "Linke", seats: 1, color: "bg-rb-1" },
-  { name: "Bündnis 90/Die Grünen", seats: 5, color: "bg-rb-5" },
-  { name: "fresh", seats: 2, color: "bg-turquoise-accent" },
-  { name: "SPD", seats: 2, color: "bg-red-500" },
-  { name: "Freie Wähler", seats: 4, color: "bg-gold-500" },
-  { name: "CSU", seats: 8, color: "bg-ink" },
-  { name: "AfD", seats: 2, color: "bg-rb-6" },
-];
-
-const sessions = [
-  { date: "29. Apr 2026", time: "19:00", title: "Haushaltsplan 2026 · Bebauungsplan „Am Amperwerk“", hasProtocol: false, live: true },
-  { date: "08. Apr 2026", time: "19:00", title: "Sanierung Kastulus-Realschule · Radwegekonzept", hasProtocol: true, live: false },
-  { date: "18. Mär 2026", time: "19:00", title: "Wirtschaftsplan Stadtwerke · Kulturförderung 2026", hasProtocol: true, live: false },
-  { date: "25. Feb 2026", time: "19:00", title: "Klimaschutzbericht · Neubau Kita Pfettracher Straße", hasProtocol: true, live: false },
-];
+const fractions = [...parteien]
+  .sort((a, b) => rang(a.name) - rang(b.name))
+  .map((p) => ({ name: p.name, seats: p.seats, color: p.bg }));
 
 export function Stadtrat() {
   const total = fractions.reduce((a, f) => a + f.seats, 0);
@@ -83,22 +72,24 @@ export function Stadtrat() {
           <div className="rounded-md bg-gradient-to-br from-red-700 to-red-900 p-6 text-cream shadow-lift">
             <div className="flex items-center gap-4">
               <img
-                src={IMG("images/person-portrait-1.jpg")}
+                src={IMG("images/stadtrat/mader.webp")}
+                srcSet={`${IMG("images/stadtrat/mader.webp")} 1x, ${IMG("images/stadtrat/mader@2x.webp")} 2x`}
                 alt="Erster Bürgermeister Maximilian Mader"
                 className="h-20 w-20 rounded-md border-4 border-gold-200 object-cover"
               />
               <div>
                 <div className="eyebrow text-gold-200">Erster Bürgermeister</div>
                 <div className="mt-1 card-title text-xl leading-tight">Maximilian Mader</div>
-                <div className="text-xs text-cream/70">seit 2026, CSU</div>
+                <div className="text-xs text-cream/70">seit Mai 2026, CSU</div>
               </div>
             </div>
-            <p className="mt-5 text-sm text-cream/90 italic">
-              {"„Moosburg ist eine lebendige, zukunftsorientierte Stadt, und das wird sie nur bleiben, wenn wir gemeinsam gestalten. Kommen Sie zu den Sitzungen, schreiben Sie, rufen Sie an.“"}
+            <p className="mt-5 text-sm text-cream/90">
+              In der Stichwahl mit {stichwahl[0].anteil.toLocaleString("de-DE")} % gewählt. Er
+              führt den Vorsitz im Stadtrat und in allen Ausschüssen.
             </p>
             <div className="mt-5 inline-flex items-center gap-1 text-xs text-gold-200">
-              <MapPin className="h-3.5 w-3.5" weight="regular" />
-              Rathaus, 1. OG, Zimmer 14
+              <Phone className="h-3.5 w-3.5" weight="regular" />
+              08761 684-12 (Vorzimmer)
             </div>
           </div>
         </div>
@@ -109,71 +100,74 @@ export function Stadtrat() {
           <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <div>
               <div className="eyebrow text-red-700">Sitzungen</div>
-              <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Termine & Protokolle</h2>
+              <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Die nächsten Termine</h2>
             </div>
-            <a href="#" className="text-sm font-semibold text-red-700 hover:underline">Zum Bürgerinfo-Portal →</a>
+            <a
+              href={COUNCIL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-semibold text-red-700 hover:underline"
+            >
+              Gehaltene Sitzungen & Beschlüsse →
+            </a>
           </div>
 
           <div className="overflow-hidden rounded-md border border-ink-line bg-white">
-            {sessions.map((s, i) => (
+            {sitzungstermine.map((s, i) => (
               <div
-                key={s.date}
-                className={`flex flex-wrap items-center gap-4 p-5 ${i !== sessions.length - 1 ? "border-b border-ink-line" : ""}`}
+                key={s.id}
+                className={`flex flex-wrap items-center gap-4 p-5 ${i !== sitzungstermine.length - 1 ? "border-b border-ink-line" : ""}`}
               >
                 <div className="flex items-center gap-3">
                   <CalendarDots className="h-5 w-5 text-red-700" weight="regular" />
                   <div>
-                    <div className="card-title text-sm">{s.date}</div>
-                    <div className="text-xs text-ink-muted">{s.time} Uhr · Sitzungssaal</div>
+                    <div className="card-title text-sm">{formatTermin(s.datum)}</div>
+                    <div className="text-xs text-ink-muted">{s.zeit} Uhr</div>
                   </div>
                 </div>
-                <div className="min-w-[220px] flex-1 text-sm text-ink-soft">{s.title}</div>
-                <div className="flex gap-2">
-                  {s.live && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cream">
-                      <Play className="h-3 w-3" /> Live
-                    </span>
-                  )}
-                  {s.hasProtocol && (
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-1 rounded-full border border-ink-line bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink hover:border-red-500 hover:text-red-700"
-                    >
-                      <FileText className="h-3 w-3" weight="regular" /> Protokoll
-                    </a>
-                  )}
+                <div className="min-w-[220px] flex-1">
+                  <div className="text-sm text-ink">{s.titel}</div>
+                  <div className="mt-0.5 text-xs text-ink-muted">{s.ort}</div>
                 </div>
+                <span className="text-xs uppercase tracking-wider text-ink-muted">
+                  {s.typ === "stadtrat" ? "Plenum" : "Ausschuss"}
+                </span>
               </div>
             ))}
           </div>
+
+          <p className="mt-4 text-xs text-ink-muted">
+            Sitzungen sind öffentlich, soweit die Tagesordnung nichts anderes vorsieht. Die
+            Tagesordnung erscheint jeweils rund eine Woche vorher.
+          </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="mb-8">
           <div className="eyebrow text-red-700">Vorstand</div>
-          <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Bürgermeister & Fraktionsspitzen</h2>
+          <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Die drei Bürgermeister</h2>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {boardMembers.map((p) => (
-            <a
+        <div className="grid gap-4 sm:grid-cols-3">
+          {buergermeister.map((p) => (
+            <div
               key={p.name}
-              href="#"
-              className="group overflow-hidden rounded-md bg-white shadow-soft transition hover:shadow-lift"
+              className="overflow-hidden rounded-md bg-white shadow-soft"
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src={IMG(p.image)}
+                  src={IMG(`${p.bild}.webp`)}
+                  srcSet={`${IMG(`${p.bild}.webp`)} 1x, ${IMG(`${p.bild}@2x.webp`)} 2x`}
                   alt={p.name}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div className="p-4">
-                <div className="eyebrow text-red-700">{p.fraction}</div>
+                <div className="eyebrow text-red-700">{p.fraktion}</div>
                 <div className="mt-1.5 card-title text-base text-ink">{p.name}</div>
-                <div className="mt-0.5 text-xs text-ink-muted">{p.role}</div>
+                <div className="mt-0.5 text-xs text-ink-muted">{p.amt}</div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -181,13 +175,15 @@ export function Stadtrat() {
       <section className="mx-auto max-w-7xl px-4 pb-16 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-3">
           {[
-            { title: "Alle 24 Mitglieder", desc: "Ratsmitglieder nach Fraktion, mit Ausschüssen und Erreichbarkeiten." },
-            { title: "Ausschüsse", desc: "Haupt-, Bau- und Finanzausschuss: Zuständigkeiten und Termine." },
-            { title: "Anträge & Beschlüsse", desc: "Durchsuchbares Archiv aller Beschlüsse seit 2020." },
+            { title: "Alle 24 Mitglieder", desc: "Ratsmitglieder nach Fraktion, mit Sitzordnung und Ausschusszugehörigkeit.", href: `${COUNCIL}/#/feld` },
+            { title: "Beschlüsse & Themen", desc: "Wer wie abgestimmt hat — Einzelstimmen zu jedem Beschluss.", href: COUNCIL },
+            { title: "Zahlen zum Gremium", desc: "Sitzungsdauer, Anwesenheit, Abstimmungsverhalten über die Wahlperioden.", href: `${COUNCIL}/#/statistik` },
           ].map((t) => (
             <a
               key={t.title}
-              href="#"
+              href={t.href}
+              target="_blank"
+              rel="noreferrer"
               className="group rounded-md border border-ink-line bg-white p-6 transition hover:border-red-500 hover:shadow-soft"
             >
               <h3 className="card-title text-base">{t.title}</h3>
