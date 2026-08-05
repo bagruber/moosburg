@@ -98,6 +98,7 @@ export function PageHeader({
     return (
       <>
         <section className="relative overflow-hidden bg-gold-500 text-cream">
+          {sketch && <SketchGround src={sketch} tone="gold" />}
           <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
             <div className="[&_a]:text-cream/80 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
               <Breadcrumbs items={crumbs} />
@@ -132,6 +133,7 @@ export function PageHeader({
     return (
       <>
         <section className="relative overflow-hidden bg-red-900 text-cream">
+          {sketch && <SketchGround src={sketch} tone="red" />}
           <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
             <div className="[&_a]:text-cream/80 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
               <Breadcrumbs items={crumbs} />

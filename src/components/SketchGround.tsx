@@ -11,6 +11,18 @@ import { cn } from "@/lib/cn";
  * um Aufmerksamkeit zu kämpfen: Sie hat keine tonale Masse, nur Linien.
  * Deshalb ergänzt sie Fotos, statt sie zu ersetzen.
  */
+/**
+ * Deckkraft je Grund. Ermittelt am gebauten Stand, nicht gerechnet: Dieselbe
+ * Zahl wirkt auf Creme deutlich leiser als auf Ink, weil der Kontrastumfang
+ * nach unten kleiner ist.
+ */
+const TONE = {
+  ink: "bg-ink opacity-[0.11]", // heller Grund
+  cream: "bg-cream opacity-[0.13]", // Ink-Grund
+  gold: "bg-cream opacity-[0.22]", // Gold-500 schluckt viel
+  red: "bg-cream opacity-[0.16]", // Rot-900
+} as const;
+
 export function SketchGround({
   src,
   tone = "ink",
@@ -18,8 +30,8 @@ export function SketchGround({
 }: {
   /** Pfad unter public/, z. B. "sketches/rathausB.svg". */
   src: string;
-  /** `ink` auf hellem Grund, `cream` auf dunklem. */
-  tone?: "ink" | "cream";
+  /** Der Grund, auf dem die Zeichnung liegt — bestimmt Farbe und Deckkraft. */
+  tone?: keyof typeof TONE;
   className?: string;
 }) {
   const url = `${import.meta.env.BASE_URL}${src}`;
@@ -30,7 +42,7 @@ export function SketchGround({
         "pointer-events-none absolute select-none",
         // Unter ~200px verschmiert die Federzeichnung, darum erst ab sm sichtbar
         "hidden sm:block",
-        tone === "ink" ? "bg-ink opacity-[0.07]" : "bg-cream opacity-[0.13]",
+        TONE[tone],
         // Anschnitt rechts unten: verankert die Zeichnung an der Kante,
         // statt sie als freischwebendes Dekor in die Fläche zu setzen
         "-bottom-10 -right-12 h-[130%] w-[46rem] lg:-right-4 lg:w-[54rem]",

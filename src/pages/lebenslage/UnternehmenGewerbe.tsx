@@ -91,6 +91,7 @@ export function UnternehmenGewerbe() {
         intro="Von der Gründung über die Gewerbeanmeldung bis zum Netzwerk vor Ort: Moosburg als Unternehmensstandort. Wählen Sie die Phase, in der Sie gerade stehen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Unternehmen & Gewerbe" }]}
         variant="cream"
+        sketch="sketches/kaufhausWeinerA.svg"
         script="unternehmen"
       />
 

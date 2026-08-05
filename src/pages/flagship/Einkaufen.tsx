@@ -75,7 +75,7 @@ export function Einkaufen() {
       {/* ─────────────────────────────────────────────────────────────────
          HERO 1: Wochenmarkt (ink, ruhig-erdig)
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="ink" sketch="sketches/hirschenB.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Jeden Samstag"

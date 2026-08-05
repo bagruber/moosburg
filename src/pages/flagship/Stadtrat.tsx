@@ -47,6 +47,7 @@ export function Stadtrat() {
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Stadtrat" }]}
         variant="red"
+        sketch="sketches/rathausC.svg"
         script="gemeinsam"
       />
 

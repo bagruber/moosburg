@@ -258,7 +258,7 @@ export function Essen() {
       {/* ─────────────────────────────────────────────────────────────────
          CLOSER: Fair-Trade-Gastronomie als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="red" sketch="sketches/pubD.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Fair genießen"

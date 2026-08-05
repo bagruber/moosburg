@@ -226,6 +226,7 @@ export function NeuInMoosburg() {
         intro="Frisch zugezogen oder Sie überlegen, nach Moosburg zu ziehen? Diese Seite bündelt alles Wichtige für die ersten Wochen, sortiert nach Pflicht, Ihrer Situation und Empfehlungen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Neu in Moosburg" }]}
         variant="cream"
+        sketch="sketches/griesA.svg"
         script="willkommen"
       />
 

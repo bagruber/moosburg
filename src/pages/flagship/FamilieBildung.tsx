@@ -127,6 +127,7 @@ export function FamilieBildung() {
     <PageLayout>
       <PageHeader
         variant="red"
+        sketch="sketches/buechereiA.svg"
         script="Familie"
         eyebrow="Mein Moosburg"
         title="Familie & Bildung"

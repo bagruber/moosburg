@@ -120,24 +120,29 @@ export function HubPage() {
         )}
 
         {rest.length > 0 && (
-          <ul className="mt-12 border-t border-ink-line/70">
-            {rest.map((r) => (
-              <li key={r.slug} className="border-b border-ink-line/70">
-                <Link
-                  to={`/${r.slug}`}
-                  className="group flex items-baseline gap-x-6 gap-y-1 py-4 transition hover:text-red-700 sm:py-5"
-                >
-                  <span className="card-title min-w-0 shrink-0 text-base text-ink transition group-hover:text-red-700 sm:w-64">
-                    {r.title}
-                  </span>
-                  <span className="hidden flex-1 text-sm text-ink-soft sm:block">{r.intro}</span>
-                  <ArrowRight
-                    className="h-4 w-4 shrink-0 self-center text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700"
-                    weight="regular"
-                  />
-                </Link>
-              </li>
-            ))}
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {rest.map((r) => {
+              const Icon = r.icon;
+              return (
+                <li key={r.slug}>
+                  <Link
+                    to={`/${r.slug}`}
+                    className="group flex h-full items-center gap-4 rounded-md border border-ink-line bg-white px-5 py-4 transition hover:border-red-500 hover:shadow-soft"
+                  >
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
+                      <Icon className="h-4 w-4" weight="regular" />
+                    </span>
+                    <span className="card-title min-w-0 flex-1 text-[15px] text-ink">
+                      {r.title}
+                    </span>
+                    <ArrowRight
+                      className="h-4 w-4 shrink-0 text-ink-muted transition group-hover:translate-x-0.5 group-hover:text-red-700"
+                      weight="regular"
+                    />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         )}
       </section>

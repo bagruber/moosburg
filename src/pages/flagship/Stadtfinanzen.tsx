@@ -38,6 +38,7 @@ export function Stadtfinanzen() {
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Stadtfinanzen" }]}
         variant="gold"
+        sketch="sketches/rathausC.svg"
         script="wohin fließt das Geld"
       />
 
