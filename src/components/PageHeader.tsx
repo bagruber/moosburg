@@ -97,10 +97,13 @@ export function PageHeader({
   if (variant === "gold") {
     return (
       <>
-        <section className="relative overflow-hidden bg-gold-500 text-cream">
+        {/* gold-700 statt gold-500: Cream-Text erreichte auf gold-500 nur
+            2,6:1. Kleintext (Eyebrow, Breadcrumbs) braucht /90 statt /80,
+            sonst rutscht er auch auf gold-700 unter 4,5:1. */}
+        <section className="relative overflow-hidden bg-gold-700 text-cream">
           {sketch && <SketchGround src={sketch} tone="gold" />}
           <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-            <div className="[&_a]:text-cream/80 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
+            <div className="[&_a]:text-cream/90 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
               <Breadcrumbs items={crumbs} />
             </div>
             <div className="relative mt-6 pt-10">
@@ -112,7 +115,7 @@ export function PageHeader({
                   {script}
                 </span>
               )}
-              {eyebrow && <div className="eyebrow relative text-cream/80">{eyebrow}</div>}
+              {eyebrow && <div className="eyebrow relative text-cream/90">{eyebrow}</div>}
               <h1 className="headline relative mt-2 text-4xl sm:text-5xl lg:text-6xl text-cream">
                 {title}
               </h1>

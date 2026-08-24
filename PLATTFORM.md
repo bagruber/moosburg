@@ -18,15 +18,14 @@ ist. Der übergreifende Kontext steht im Repo `bagruber/moosburg-eu` in
 Anders als `council`, `council-voting-tool` und `datahub` läuft dieser Prototyp
 noch **nicht** auf moosburg.eu.
 
-## Dieses Repo ist der Design-Kanon
+## Der Design-Kanon liegt im Repo moosburg-design
 
-Die Farb- und Schrift-Tokens in `src/index.css` sind die Quelle für alle
-Moosburg-Projekte. Wer sie hier ändert, ändert die Referenz — die anderen Repos
-tragen abgeleitete Kopien:
-
-- `council/DESIGN.md`, `council-voting-tool/DESIGN.md` — Token-Referenzen
-- `datahub/src/index.css` — eigene Kopie mit einigen abweichenden Werten
-- `moosburg-eu/public/assets/style.css` — Portalseite, reines CSS ohne Build
+Bis August 2026 war `src/index.css` dieses Repos die Quelle der Tokens; die
+anderen Projekte trugen Kopien. Seitdem kommen die Tokens für alle Projekte
+aus [bagruber/moosburg-design](https://github.com/bagruber/moosburg-design),
+hier per `@import "moosburg-design/css/theme.css"`. Wer am Design etwas
+ändern will, ändert es dort. In `src/index.css` bleiben nur das `@font-face`
+für Madelon Script und die Muster-Klassen.
 
 Der Rainbow-Stripe, die Drei-Rosen-Marke und die Playfair-Versalien sind die
 wiedererkennbaren Elemente. Der Stripe hat neun feste Segmente, 4 px, und wird
@@ -48,9 +47,11 @@ Kantenakzent.
 
 ### Kontrast
 
-WCAG 2.1 AA ist Minimum. Ein Wert, der schon gekippt ist: `gold-500`
-(#b8964e) mit weißer Schrift erreicht nur **2,8:1** — für farbige Badges
-`gold-700` (#6e5a30, 6,6:1) nehmen.
+WCAG 2.1 AA ist Minimum. Die freigegebenen Farbpaare samt Messwerten stehen
+im Repo `moosburg-design` (`npm run kontrast`). Kurzfassung: `gold-500`
+trägt keinen Text, weder als Grund noch als Schriftfarbe; Text in Gold nimmt
+`gold-700`. `ink-muted` ist seit August 2026 auf #6f6b63 abgedunkelt und
+besteht damit auch für Fließtext auf Creme.
 
 ## Wenn dieser Prototyp nach moosburg.eu umzieht
 

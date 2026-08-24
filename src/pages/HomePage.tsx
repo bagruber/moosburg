@@ -125,7 +125,7 @@ function TopTiles() {
                 className={cn(
                   "grid h-11 w-11 place-items-center rounded-md transition",
                   tile.accent
-                    ? "bg-gold-500 text-cream"
+                    ? "bg-gold-700 text-cream"
                     : "bg-red-50 text-red-700 group-hover:bg-red-500 group-hover:text-cream",
                 )}
               >
@@ -216,7 +216,7 @@ function News() {
             </p>
             <Link
               to="/zu-besuch/geschichte"
-              className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-gold-500 px-4 py-2 text-sm font-semibold text-cream transition hover:bg-gold-600"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-gold-700 px-4 py-2 text-sm font-semibold text-cream transition hover:-translate-y-0.5 hover:shadow-soft"
             >
               Mehr erfahren
               <ArrowRight className="h-4 w-4" weight="regular" />

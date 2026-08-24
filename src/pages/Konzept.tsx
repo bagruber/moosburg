@@ -515,12 +515,12 @@ export function Konzept() {
             caption="Aktion: red-600 · Text cream · Eyebrow gold-200"
           />
           <ComboTile
-            ground="bg-gold-500"
-            eyebrow="text-cream/80"
+            ground="bg-gold-700"
+            eyebrow="text-cream/90"
             heading="text-cream"
             body="text-cream/90"
             btn="light"
-            caption="Gold: gold-500 · Text cream"
+            caption="Gold: gold-700 · Text cream (gold-500 trägt keinen Text: 2,6:1)"
           />
           <ComboTile
             ground="bg-red-900"

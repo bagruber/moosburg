@@ -108,7 +108,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
         </Reveal>
 
         <Reveal delay={1} className="relative overflow-hidden rounded-md border-2 border-dashed border-ink-line bg-cream-dark p-8">
-          <div className="absolute right-5 top-5 rounded-full bg-gold-500 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream">Bald verfügbar</div>
+          <div className="absolute right-5 top-5 rounded-full bg-gold-700 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream">Bald verfügbar</div>
           <div className="eyebrow text-gold-700">Verifizierter Zugang</div>
           <h2 className="headline mt-1 text-2xl text-ink">Mit BundID oder Elster</h2>
           <p className="mt-3 text-sm text-ink-soft">
@@ -371,7 +371,7 @@ function DistrictInfo() {
  * ────────────────────────────────────────────────────────────────── */
 const recCategoryStyles: Record<RecCategory, { chip: string; badge: string; label: string }> = {
   service:    { chip: "bg-red-500 text-cream",       badge: "border-red-500 text-red-700",          label: "Dienstleistung" },
-  foerderung: { chip: "bg-gold-500 text-cream",      badge: "border-gold-500 text-gold-700",        label: "Förderung" },
+  foerderung: { chip: "bg-gold-700 text-cream",      badge: "border-gold-500 text-gold-700",        label: "Förderung" },
   info:       { chip: "bg-rb-5 text-cream",          badge: "border-rb-5 text-rb-5",                label: "Info" },
   community:  { chip: "bg-purple-accent text-cream", badge: "border-purple-accent text-purple-accent", label: "Community" },
 };
