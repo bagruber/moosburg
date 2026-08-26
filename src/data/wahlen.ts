@@ -1,22 +1,17 @@
 /**
  * Wahldaten Moosburg a. d. Isar — Kommunalwahl 2026 (Endergebnisse).
- * Stimmenanteile, Gewinn/Verlust, Bürgermeisterwahl und Wahlbeteiligung sind
- * reale Ergebnisse. Die Sitzverteilung (24 Sitze) ergibt sich aus den
- * Stimmenanteilen (Sitzzuteilung nach Hare-Niemeyer).
+ *
+ * Das Stadtratsergebnis (Sitze und Stimmenanteile) liegt in `wahlen.gen.ts`,
+ * erzeugt von `scripts/abgleich-wahlen.mjs` aus dem Geschwister-Projekt
+ * `elections`; bei Abweichungen gilt `elections`. Bürgermeisterwahl,
+ * Stichwahl und Wahlbeteiligung führt `elections` nicht — sie stehen hier,
+ * nach den amtlichen Ergebnisseiten der Stadt.
  */
 
-export type Partei = { name: string; seats: number; stimmen: number; delta: number; bg: string };
+export { parteien } from "./wahlen.gen";
+import { parteien } from "./wahlen.gen";
 
-/** Stadtratswahl 2026 — 24 Sitze, sortiert nach Sitzen und Stimmen. */
-export const parteien: Partei[] = [
-  { name: "CSU", seats: 8, stimmen: 32.9, delta: 7.2, bg: "bg-ink" },
-  { name: "Bündnis 90/Die Grünen", seats: 5, stimmen: 19.8, delta: -3.9, bg: "bg-rb-5" },
-  { name: "Freie Wähler", seats: 4, stimmen: 18.0, delta: -1.3, bg: "bg-gold-500" },
-  { name: "fresh", seats: 2, stimmen: 10.2, delta: 3.3, bg: "bg-turquoise-accent" },
-  { name: "AfD", seats: 2, stimmen: 9.0, delta: 3.3, bg: "bg-rb-6" },
-  { name: "SPD", seats: 2, stimmen: 6.2, delta: -3.7, bg: "bg-red-500" },
-  { name: "Die Linke", seats: 1, stimmen: 4.0, delta: 1.2, bg: "bg-rb-1" },
-];
+export type Partei = { name: string; seats: number; stimmen: number; delta: number; bg: string };
 
 export const sitzeGesamt = parteien.reduce((a, p) => a + p.seats, 0);
 
