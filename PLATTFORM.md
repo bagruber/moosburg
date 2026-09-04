@@ -12,7 +12,7 @@ ist. Der übergreifende Kontext steht im Repo `bagruber/moosburg-eu` in
 
 | | Adresse | Quelle |
 |---|---|---|
-| GitHub Pages | `bagruber.github.io/moosburg/` | Branch `main` über `.github/workflows/deploy.yml` |
+| GitHub Pages | `bagruber.github.io/moosburg/` | Branch `main` über `.github/workflows/pages.yml` |
 | moosburg.eu | `moosburg.eu/stadt/` — **geplant, noch nicht eingerichtet** | |
 
 Anders als `council`, `council-voting-tool` und `datahub` läuft dieser Prototyp
@@ -76,7 +76,7 @@ lassen.
 Pfade. Ohne Rewrite liefert der Server bei jedem Deeplink einen 404. Die Regel
 braucht zwingend einen Endungs-Guard, sonst beantwortet sie fehlende Dateien
 mit der SPA-Shell und HTTP 200 statt mit 404 — Muster siehe
-`datahub/.github/workflows/hostinger.yml`.
+`datahub/.github/workflows/moosburg-eu.yml`.
 
 **4. Schriften.** Die Fonts liegen als npm-Pakete und werden mitgebaut, das
 funktioniert unverändert. Die Madelon-Script-Datei wird über einen absoluten
@@ -93,3 +93,21 @@ als Case Study. Beides ist Absicht: Es ist kein amtlicher Auftritt der Stadt.
 Bei einem Umzug auf eine öffentlich erreichbare Adresse muss diese Einordnung
 sichtbar bleiben — auf moosburg.eu trägt die Startseite den entsprechenden
 Haftungshinweis.
+
+## Offen: Zählung einbinden
+
+Die Zeile fehlt noch vor `</body>` in `index.html`, mit absolutem Pfad:
+
+```html
+<script src="/assets/zaehler.js" defer></script>
+```
+
+Dazu beim Routenwechsel `window.zaehl?.(window.location.pathname)`, mit dem
+Pfad aus `window.location` und nicht dem des Routers. Nicht dringend: diese
+App wird derzeit nicht auf moosburg.eu ausgeliefert, spätestens unter
+`/stadt/` gehört beides dazu.
+
+Warum die Zählung ohne Einwilligungsbanner auskommt, warum deshalb hier
+niemals eine Sitzungs-ID in `sessionStorage` oder `localStorage` nachgerüstet
+werden darf und warum der Aufruf auf GitHub Pages absichtlich ins Leere läuft,
+steht in `bagruber/moosburg-eu`, `README.md`, Abschnitt „Zählen".

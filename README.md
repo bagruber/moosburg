@@ -56,7 +56,7 @@ npm run preview    # Lokale Vorschau des Builds
 
 ### Deployment
 
-Push auf `main` → GitHub Actions baut und deployed automatisch auf GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
+Push auf `main` → GitHub Actions baut und deployed automatisch auf GitHub Pages ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
 ---
 
