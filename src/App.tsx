@@ -42,6 +42,7 @@ import { Firmen } from "@/pages/flagship/Firmen";
 import { FairTrade } from "@/pages/thema/FairTrade";
 import { Strassennamen } from "@/pages/thema/Strassennamen";
 import { Partnerstaedte } from "@/pages/thema/Partnerstaedte";
+import { Johannisturm } from "@/pages/thema/Johannisturm";
 import { Entdecken } from "@/pages/flagship/Entdecken";
 import { Geschichte } from "@/pages/flagship/Geschichte";
 import { Fuehrungen } from "@/pages/flagship/Fuehrungen";
@@ -77,6 +78,7 @@ export default function App() {
       <Route path="/thema/fair-trade" element={<FairTrade />} />
       <Route path="/thema/strassennamen" element={<Strassennamen />} />
       <Route path="/thema/partnerstaedte" element={<Partnerstaedte />} />
+      <Route path="/thema/johannisturm" element={<Johannisturm />} />
       <Route path="/mein-moosburg/diese-woche" element={<DieseWoche />} />
       <Route path="/mein-moosburg/stadtplan" element={<StadtKarte />} />
       <Route path="/mein-moosburg/veranstaltungen" element={<Veranstaltungen />} />

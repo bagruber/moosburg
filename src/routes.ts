@@ -444,6 +444,7 @@ export type ThemenSeite = { title: string; slug: string; intro: string };
 export const themenSeiten: ThemenSeite[] = [
   { slug: "thema/strassennamen", title: "Straßennamen & Stadtviertel", intro: "Wie Moosburgs Straßen zu ihren Namen kommen und warum ganze Viertel einem Thema folgen, vom Vogelviertel bis zur verlorenen Heimat der Vertriebenen." },
   { slug: "thema/partnerstaedte", title: "Partnerstädte", intro: "Moosburgs Städtepartnerschaften mit Bry-sur-Marne, Rochester, Moosburg in Kärnten und Sawbridgeworth." },
+  { slug: "thema/johannisturm", title: "Der Johannisturm", intro: "Wie der Turm von St. Johannes gebaut wurde und warum er noch steht: Blitze, Säkularisation, 63 Gulden und 168 Stufen bis ins Turmzimmer." },
   { slug: "thema/fair-trade", title: "Fair-Trade-Stadt Moosburg", intro: "Moosburg als Fairtrade-Stadt: Geschäfte, Gastronomie und Einrichtungen, die fair gehandelte Produkte anbieten." },
 ];
 

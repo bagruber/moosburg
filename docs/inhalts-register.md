@@ -133,6 +133,7 @@ sind damit das am wenigsten prüfungsbedürftige Material der Site. Zwei Ausnahm
 |---|---|---|
 | [Straßennamen](../src/data/motivgruppen.ts) | A + B | Straßennamen und Geometrien aus OSM (21.07.2026); die Motivgruppen sind eine Lesehilfe, keine amtliche Zuordnung — im Datenkopf ausdrücklich vermerkt |
 | [Partnerstädte](../src/data/partnerstaedte.ts) | A + B | Unterzeichnungsdaten, Einwohnerzahlen, Lage real; die erzählenden Texte geschrieben |
+| [Johannisturm](../src/data/johannisturm.ts) | A + B + C | Chronik, Glocken und Unterhaltskosten nach Michael Kerscher (Heimatmuseum), Stand 09.02.2026; Texte verdichtet, Unsicherheiten der Quelle als eigenes Feld übernommen. **C:** Höhen von Turmzimmer, Glockenstube und Fassadenmitte aus Fotos geschätzt, Bauhöhen je Jahr erzählt, nicht gemessen; Zeichnung ist Platzhalter. Jahressumme der Unterhaltskosten gerechnet. Besteigung: Termine, Anmeldung, Treffpunkt fehlen |
 | [Fair-Trade-Stadt](../src/pages/thema/FairTrade.tsx) | B + E | Kriterien und Kampagnenkontext von fairtrade-towns.de; Moosburger Bezug redaktionell |
 
 ---

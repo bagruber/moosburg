@@ -38,6 +38,7 @@ const columns = [
     links: [
       { label: "Straßennamen & Viertel", to: "/thema/strassennamen" },
       { label: "Partnerstädte", to: "/thema/partnerstaedte" },
+      { label: "Johannisturm", to: "/thema/johannisturm" },
       { label: "Fair-Trade-Stadt", to: "/thema/fair-trade" },
     ],
   },
