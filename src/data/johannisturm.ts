@@ -25,10 +25,25 @@ export const orte: Record<Ort, { label: string; hoehe: number }> = {
   spitze: { label: "Turmspitze", hoehe: 51 },
 };
 
-/** Zustand der Zeichnung, jeweils 0 bis 1. */
-export type Stand = { schiff: number; turm: number; geruest: number };
+/**
+ * Zustand der Zeichnung. Jeder Wert läuft von 0 bis 1 und bleibt stehen, bis
+ * ein späterer Eintrag ihn ändert: Die Chronik beschreibt Änderungen, keine
+ * Vollbilder.
+ *
+ * `glocken` zählt nur die vier Glocken, die heute hängen. Die 1520
+ * verschwundenen und die 1877 eingeschmolzene Achterin zeichnen wir nicht,
+ * sonst behauptet das Bild eine Genauigkeit, die die Quelle nicht hergibt.
+ */
+export type Bild = {
+  schiff: number;
+  turm: number;
+  geruest: number;
+  glocken: number;
+  helm: number;
+  magazin: number;
+};
 
-export const VOLLENDET: Stand = { schiff: 1, turm: 1, geruest: 0 };
+export const LEER: Bild = { schiff: 0, turm: 0, geruest: 0, glocken: 0, helm: 0, magazin: 0 };
 
 export type Eintrag = {
   jahr: string;
@@ -38,13 +53,15 @@ export type Eintrag = {
   unsicher?: string;
   /** Wo am Bau das Ereignis stattfindet. Ohne Ort zeigt die Skala die Bauhöhe. */
   ort?: Ort;
-  /** Nur während des Baus gesetzt, danach gilt VOLLENDET. */
-  stand?: Stand;
+  /** Was sich an der Zeichnung ändert. Alles Übrige bleibt wie zuvor. */
+  setzt?: Partial<Bild>;
+  /** Blitzschlag: leuchtet an der Spitze auf, während der Eintrag gelesen wird. */
+  blitz?: boolean;
 };
 
 /**
- * Wie hoch der Turm in welchem Jahr stand, ist nicht überliefert. Die Werte in
- * `stand` erzählen zwei Bauphasen, sie messen nichts.
+ * Wie hoch der Turm in welchem Jahr stand, ist nicht überliefert. Die Werte für
+ * `turm` erzählen zwei Bauphasen, sie messen nichts.
  */
 export const bau: Eintrag[] = [
   {
@@ -52,48 +69,46 @@ export const bau: Eintrag[] = [
     titel: "Eine Johanneskirche wird erwähnt",
     text: "Unter Graf Timo von Thulbach taucht eine Kirche auf, die Johannes dem Täufer geweiht ist.",
     unsicher: "Ob die Moosburger Kirche gemeint ist, ist strittig.",
-    stand: { schiff: 0, turm: 0, geruest: 0 },
   },
   {
     jahr: "um 1175–1275",
     titel: "Das Mittelschiff entsteht",
     text: "Rund hundert Jahre dauert der Bau des Langhauses, das bis heute den Kern der Kirche bildet.",
     ort: "schiff",
-    stand: { schiff: 1, turm: 0, geruest: 0 },
+    setzt: { schiff: 1 },
   },
   {
     jahr: "1353",
     titel: "Pfarrkirche der Stadt",
     text: "St. Johannes wird zur Pfarrkirche ernannt. Wie lange sie das bleibt, darüber gehen die Quellen auseinander.",
     unsicher: "Ende als Pfarrkirche: 1599 oder erst am 7. Oktober 1805.",
-    stand: { schiff: 1, turm: 0.18, geruest: 1 },
+    setzt: { turm: 0.18, geruest: 1 },
   },
   {
     jahr: "1444",
     titel: "Die älteste Glocke",
     text: "Der Turm wächst vermutlich in zwei Abschnitten. Aus dieser Zeit stammt die Meßglocke, 270 Kilogramm schwer. Sie hängt bis heute im Turm.",
     unsicher: "Die Bauabschnitte sind nicht datiert.",
-    stand: { schiff: 1, turm: 0.5, geruest: 1 },
+    setzt: { turm: 0.5, glocken: 1 },
   },
   {
     jahr: "1475–1515",
     titel: "Seitenschiffe kommen hinzu",
     text: "Links und rechts des Mittelschiffs wird angebaut. 1517 bekommt die Kirche einen Leinberger-Altar, der 1683 wieder entfernt wird.",
     ort: "schiff",
-    stand: { schiff: 1, turm: 0.5, geruest: 1 },
   },
   {
     jahr: "1519–1530",
     titel: "Glocken, die kommen und gehen",
     text: "1520 werden zwei Glocken mit 712 und 585 Kilogramm aufgehängt; 1738 sind sie nicht mehr da. Geblieben ist die Marienglocke von 1530 mit 360 Kilogramm.",
-    stand: { schiff: 1, turm: 0.82, geruest: 1 },
+    setzt: { turm: 0.82, glocken: 2 },
   },
   {
     jahr: "1533",
     titel: "Der Turm ist fertig",
-    text: "Seitdem ist er 53,99 Meter hoch.",
+    text: "Seitdem ist er 53,99 Meter hoch, gedeckt mit rotem Ziegel.",
     unsicher: "Das Jahr ist überliefert, aber nicht belegt.",
-    stand: VOLLENDET,
+    setzt: { turm: 1, geruest: 0, helm: 1 },
   },
 ];
 
@@ -112,10 +127,19 @@ export const erhalt: Eintrag[] = [
     ort: "schiff",
   },
   {
+    jahr: "1693/1694",
+    titel: "Eine Glocke für die Sterbenden",
+    text: "Die Zügenglocke kommt in den Turm, 135 Kilogramm. Ab 1797 wird sie dank einer Stiftung kostenlos geläutet.",
+    ort: "glockenstube",
+    setzt: { glocken: 3 },
+  },
+  {
     jahr: "1715",
     titel: "Der Blitz schlägt ein",
     text: "Am 9. September setzt ein Blitz den Turm in Brand und beschädigt ihn schwer. Noch 1729 fallen Trümmer herab, man muss ein Gerüst aufstellen.",
     ort: "spitze",
+    blitz: true,
+    setzt: { helm: 0.5 },
   },
   {
     jahr: "1800 oder 1802",
@@ -126,12 +150,14 @@ export const erhalt: Eintrag[] = [
       herkunft: "Chronik, zitiert bei Kerscher",
     },
     ort: "spitze",
+    blitz: true,
   },
   {
     jahr: "1803",
     titel: "Heu statt Gottesdienst",
     text: "Mit der Säkularisation gilt die Kirche als überflüssig. Sie wird Lager für Heu, Stroh und Hafer, der Friedhof um sie herum aufgelassen. Ab 1805 sind hier auch österreichische Kriegsgefangene untergebracht.",
     ort: "schiff",
+    setzt: { magazin: 1 },
   },
   {
     jahr: "1811/1812",
@@ -155,15 +181,23 @@ export const erhalt: Eintrag[] = [
     ort: "glockenstube",
   },
   {
+    jahr: "1827",
+    titel: "Das Heu kommt heraus",
+    text: "Zur tausendjährigen Feier der Kastulus-Reliquien beginnen die ersten Renovierungsarbeiten, die Kirche bekommt wieder Inventar. Stiftungen Moosburger Bürgerinnen und Bürger sind ab 1820 im Stadtarchiv belegt.",
+    ort: "schiff",
+    setzt: { magazin: 0 },
+  },
+  {
     jahr: "1851–1924",
     titel: "Feuerwache im Turmzimmer",
     text: "Nach Stadtbränden 1848 und 1851 wird der Turm samt Treppe gründlich repariert und das verfallene Turmzimmer für rund 2.000 Gulden neu hergerichtet. Dann zieht eine ständige Feuerwache ein. Sie bleibt 73 Jahre.",
     ort: "turmzimmer",
+    setzt: { helm: 0.85 },
   },
   {
     jahr: "1877",
     titel: "Eine Glocke wandert ins Münster",
-    text: "Die schadhafte mittlere Glocke, die „Achterin“, wird abgenommen. Aus ihrem Metall entsteht eine neue Glocke für das Kastulusmünster.",
+    text: "Die schadhafte mittlere Glocke, die Achterin, wird abgenommen. Aus ihrem Metall entsteht eine neue Glocke für das Kastulusmünster.",
     ort: "glockenstube",
   },
   {
@@ -187,6 +221,7 @@ export const erhalt: Eintrag[] = [
     titel: "Neuer Helm, vierte Glocke",
     text: "Die Firma Fritz Kohn restauriert den Turmhelm. Ein Jahr später kommt die Johannesglocke mit 300 Kilogramm dazu, seitdem hängen wieder vier Glocken im Turm.",
     ort: "spitze",
+    setzt: { helm: 1, glocken: 4 },
   },
   {
     jahr: "1970",
@@ -208,6 +243,7 @@ export const erhalt: Eintrag[] = [
   },
 ];
 
+/** In der Reihenfolge ihres Gusses, so hängen sie auch in der Zeichnung. */
 export const glocken = [
   { name: "Meßglocke", jahr: 1444, kg: 270 },
   { name: "Marienglocke", jahr: 1530, kg: 360 },

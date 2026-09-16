@@ -1,12 +1,16 @@
-import { TURM_HOEHE, STUFEN, orte, type Stand } from "@/data/johannisturm";
+import { TURM_HOEHE, STUFEN, orte, glocken, type Bild } from "@/data/johannisturm";
 
 /**
  * PLATZHALTER bis zur endgültigen Federzeichnung.
  *
  * Wichtig ist das Koordinatensystem, nicht die Linien: Boden bei y = 1000,
- * Kreuzspitze bei y = 40. Skala, Markierung und Gerüst rechnen darin, die
- * echte Zeichnung wird später als <image> in genau diesen Rahmen gelegt, und
- * alles andere bleibt, wie es ist.
+ * Kreuzspitze bei y = 40. Skala, Markierung, Gerüst und die farbigen Teile
+ * rechnen darin, die echte Zeichnung wird später in genau diesen Rahmen gelegt,
+ * und alles andere bleibt, wie es ist.
+ *
+ * Farbe tragen nur Teile, die etwas erzählen: der rote Ziegelhelm ab 1533, die
+ * Glocken in der Reihenfolge ihres Gusses, das Stroh der Magazinjahre und die
+ * zwei Blitzschläge. Der Rest bleibt Federstrich.
  */
 const BODEN = 1000;
 const SPITZE = 40;
@@ -39,10 +43,26 @@ const ZAHNKANTE = (() => {
   return `${d}V0H400V1200Z`;
 })();
 
-function Turm() {
+/** Glockenkörper, an einem Balken hängend. */
+function glockenPfad(x: number, y: number, h: number) {
+  const w = h * 0.78;
+  return `M${x - w / 2} ${y + h}Q${x - w / 2} ${y + h * 0.3} ${x} ${y}Q${x + w / 2} ${y + h * 0.3} ${x + w / 2} ${y + h}Z`;
+}
+
+function Turm({ helm }: { helm: number }) {
   const helmKante = [0.25, 0.45, 0.65, 0.82];
   return (
     <g fill="none" stroke="currentColor" strokeWidth={1.2} vectorEffect="non-scaling-stroke">
+      {/* Ziegeldeckung des Helms, erst ab der Vollendung */}
+      {helm > 0.01 && (
+        <g stroke="none" opacity={helm}>
+          <path d="M54 264L92 92L118 264Z" fill="var(--color-red-600)" />
+          <path d="M92 92L118 264L156 258Z" fill="var(--color-red-700)" />
+          <path d="M34 250L44 214L54 250Z" fill="var(--color-red-600)" />
+          <path d="M116 250L126 214L136 250Z" fill="var(--color-red-600)" />
+          <path d="M153 244L162 210L171 244Z" fill="var(--color-red-700)" />
+        </g>
+      )}
       {/* Schaft, Vorder- und Seitenfläche */}
       <path d="M40 1000V280H130V1000M130 280L165 274V1000" vectorEffect="non-scaling-stroke" />
       {Array.from({ length: 7 }, (_, i) => (
@@ -92,9 +112,13 @@ function Turm() {
   );
 }
 
-function Schiff() {
+function Schiff({ magazin }: { magazin: number }) {
   return (
     <g fill="none" stroke="currentColor" strokeWidth={1.2}>
+      {/* Heu, Stroh und Hafer: 1803 bis 1827 */}
+      {magazin > 0.01 && (
+        <path d="M165 630H240V1000H165Z" fill="var(--color-gold-200)" stroke="none" opacity={magazin * 0.85} />
+      )}
       <path d="M165 630H240M165 800H240M165 1000V630" vectorEffect="non-scaling-stroke" />
       {[665, 700, 735, 770].map((y) => (
         <path key={y} d={`M165 ${y}H240`} strokeWidth={0.6} opacity={0.6} vectorEffect="non-scaling-stroke" />
@@ -128,24 +152,89 @@ function Geruest() {
   );
 }
 
+/**
+ * Was im Turm hängt, als Anmerkung neben der Glockenstube. Im Aufriss selbst
+ * wären die Glocken vier Millimeter groß und damit nichts als ein Fleck.
+ */
+function Glocken({ anzahl }: { anzahl: number }) {
+  const groesste = Math.max(...glocken.map((g) => g.kg));
+  return (
+    <g>
+      <path
+        d="M102 400L192 430M192 430H296"
+        fill="none"
+        stroke="currentColor"
+        className="text-ink"
+        strokeWidth={0.8}
+        opacity={Math.min(1, anzahl)}
+        vectorEffect="non-scaling-stroke"
+      />
+      {glocken.map((g, i) => {
+        const o = Math.min(1, Math.max(0, anzahl - i));
+        if (o < 0.01) return null;
+        const h = 26 * Math.cbrt(g.kg / groesste);
+        const x = 206 + i * 24;
+        return (
+          <g key={g.name} opacity={o}>
+            <path d={`M${x} 430V${434}`} stroke="var(--color-gold-700)" strokeWidth={0.8} vectorEffect="non-scaling-stroke" />
+            <path
+              d={glockenPfad(x, 434, h)}
+              fill="var(--color-gold-200)"
+              stroke="var(--color-gold-700)"
+              strokeWidth={1}
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+function Blitz({ staerke }: { staerke: number }) {
+  return (
+    <g opacity={staerke}>
+      <circle cx={92} cy={96} r={26} fill="var(--color-red-500)" opacity={0.16} />
+      <path
+        d="M158 8L120 62H140L104 112"
+        fill="none"
+        stroke="var(--color-red-600)"
+        strokeWidth={2.5}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </g>
+  );
+}
+
 export function JohannisturmZeichnung({
-  stand,
+  bild,
   hoehe,
   markeX,
   marke,
+  blitz,
+  leise = false,
   className,
 }: {
-  stand: Stand;
+  bild: Bild;
   /** Höhe in Metern, auf die Linie und Markierung zeigen. */
   hoehe: number;
   markeX: number;
   /** Deckkraft der Markierung, 0 bis 1. */
   marke: number;
+  /** Stärke des Blitz-Aufleuchtens, 0 bis 1. */
+  blitz: number;
+  /** Mobil steht die Zeichnung hinter dem Text und muss zurücktreten. */
+  leise?: boolean;
   className?: string;
 }) {
-  const kanteTurm = BODEN + 12 - stand.turm * (BODEN + 12 - SPITZE);
-  const kanteSchiff = BODEN + 12 - stand.schiff * (BODEN + 12 - 620);
+  const kanteTurm = BODEN + 12 - bild.turm * (BODEN + 12 - SPITZE);
+  const kanteSchiff = BODEN + 12 - bild.schiff * (BODEN + 12 - 620);
   const y = yVon(hoehe);
+  // Im leisen Modus tritt die ganze Zeichnung zurück; nur Markierung und
+  // Höhenlinie bleiben voll, weil sie die Mechanik tragen.
+  const striche = leise ? 0.22 : 1;
 
   return (
     <svg viewBox="0 0 240 1010" overflow="visible" aria-hidden="true" className={className}>
@@ -159,27 +248,41 @@ export function JohannisturmZeichnung({
       </defs>
 
       {/* Umriss des fertigen Turms als Maßstab, bevor etwas gebaut ist */}
-      <g className="text-ink" opacity={0.1}>
-        <Turm />
-        <Schiff />
+      <g className="text-ink" opacity={leise ? 0.05 : 0.1}>
+        <Turm helm={0} />
+        <Schiff magazin={0} />
       </g>
 
-      <g className="text-ink">
+      <g className="text-ink" opacity={striche}>
         <g clipPath="url(#jt-schiff)">
-          <Schiff />
+          <Schiff magazin={bild.magazin} />
         </g>
         <g clipPath="url(#jt-turm)">
-          <Turm />
+          <Turm helm={bild.helm} />
         </g>
       </g>
 
-      {stand.geruest > 0.01 && (
-        <g className="text-gold-700" opacity={stand.geruest} transform={`translate(0 ${kanteTurm - 120})`}>
+      {/* Die Anmerkung steht neben dem Turm und liefe mobil aus dem Bild,
+          wo die Zeichnung ohnehin nur Grund ist. */}
+      {bild.glocken > 0.01 && !leise && <Glocken anzahl={bild.glocken} />}
+
+      {bild.geruest > 0.01 && (
+        <g className="text-gold-700" opacity={bild.geruest * striche} transform={`translate(0 ${kanteTurm - 120})`}>
           <Geruest />
         </g>
       )}
 
-      <path d="M-40 1000H250" fill="none" stroke="currentColor" className="text-ink" strokeWidth={1.2} vectorEffect="non-scaling-stroke" />
+      {blitz > 0.01 && <Blitz staerke={blitz * (leise ? 0.7 : 1)} />}
+
+      <path
+        d="M-40 1000H250"
+        fill="none"
+        stroke="currentColor"
+        className="text-ink"
+        strokeWidth={1.2}
+        opacity={striche}
+        vectorEffect="non-scaling-stroke"
+      />
 
       {/* Skala: Meter und die 168 Stufen bis ins Turmzimmer. Nur ab sm, darunter wird die Schrift zu klein. */}
       <g className="hidden sm:inline" fontSize={22} fontFamily="var(--font-sans)">
