@@ -152,7 +152,7 @@ export function Heiraten() {
       </section>
 
       {/* ── Unterlagen-Check ──────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="aubergine">
         <Reveal>
           <SectionHeader
             eyebrow="Was brauche ich?"
@@ -198,7 +198,7 @@ export function Heiraten() {
 
           {/* Ergebnis-Liste */}
           <Reveal delay={2}>
-            <div className="rounded-2xl border border-cream/20 bg-cream/5 p-6">
+            <div className="rounded-xl border border-cream/20 bg-cream/5 p-6">
               <div className="eyebrow text-gold-200">Diese Unterlagen brauchen Sie</div>
               <ul className="mt-4 space-y-2.5 text-sm text-cream/90">
                 {[...BASIS_UNTERLAGEN, ...zusatz].map((u) => (
@@ -227,7 +227,7 @@ export function Heiraten() {
           {TRAUORTE.map((t) => {
             const Icon = t.icon;
             return (
-              <div key={t.name} className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+              <div key={t.name} className="rounded-xl border border-ink-line/70 bg-cream p-6">
                 <Icon className="h-7 w-7 text-red-700" weight="light" />
                 <h3 className="mt-3 card-title text-lg text-ink">{t.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t.desc}</p>

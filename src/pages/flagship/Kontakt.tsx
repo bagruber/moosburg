@@ -153,10 +153,8 @@ export function Kontakt() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Kontakt & Organigramm" }]}
       />
 
@@ -184,7 +182,7 @@ export function Kontakt() {
                   return (
                     <div
                       key={abt.label}
-                      className="rounded-2xl border border-ink-line/50 bg-white p-5"
+                      className="rounded-xl border border-ink-line/50 bg-white p-5"
                     >
                       <div className="flex items-center gap-3">
                         <span
@@ -318,7 +316,7 @@ export function Kontakt() {
               </section>
             )}
 
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/50 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/50 p-5">
               <h3 className="card-title text-base text-ink">Rathaus Moosburg</h3>
               <dl className="mt-3 space-y-2.5 text-sm">
                 <div className="flex items-start gap-2">

@@ -99,7 +99,7 @@ export function Ehrenamt() {
             <Reveal key={c.title}>
               <Link
                 to={c.to}
-                className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
               >
                 <h3 className="card-title text-lg text-ink">{c.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{c.desc}</p>
@@ -117,7 +117,7 @@ export function Ehrenamt() {
       </section>
 
       {/* ── Bayerische Ehrenamtskarte ─────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="aubergine">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">
@@ -149,7 +149,7 @@ export function Ehrenamt() {
         </Reveal>
         <ol className="grid gap-5 sm:grid-cols-3">
           {START_SCHRITTE.map((s, i) => (
-            <li key={s.title} className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+            <li key={s.title} className="rounded-xl border border-ink-line/70 bg-cream p-6">
               <span className="grid h-10 w-10 place-items-center rounded-full bg-red-500 font-display text-cream">
                 {i + 1}
               </span>

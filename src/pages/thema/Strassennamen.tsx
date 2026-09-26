@@ -79,13 +79,12 @@ export function Strassennamen() {
         title="Straßennamen & Stadtviertel"
         intro="Über 230 Straßen, Gassen und Plätze tragen in Moosburg einen Namen, und fast jeder erzählt etwas davon. Wie eine Straße zu ihrem Namen kommt und warum ganze Viertel einem Thema folgen."
         crumbs={[{ label: "Themen" }, { label: "Straßennamen" }]}
-        variant="photo"
         image="images/plan.jpg"
         script="woher die Namen kommen"
       />
 
       {/* ── Wie eine Straße zu ihrem Namen kommt ──────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="nachtblau">
         <Reveal>
           <SectionHeader
             eyebrow="Wie eine Straße zu ihrem Namen kommt"
@@ -228,7 +227,7 @@ export function Strassennamen() {
       )}
 
       {/* ── Mitmachen ─────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="gold">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Mitmachen</div>

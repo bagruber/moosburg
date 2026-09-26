@@ -119,11 +119,10 @@ export function Gesundheit() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Gesundheit" }]}
-        variant="photo"
+        variant="foto-daneben"
         image="images/brücke.jpg"
         script="gut versorgt"
       />
@@ -135,7 +134,7 @@ export function Gesundheit() {
       {/* Notfall-Hero — direkter Querverweis */}
       <section className="border-b border-ink-line/50 bg-cream-dark/40">
         <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border-2 border-red-500/80 bg-red-50 p-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border-2 border-red-500/80 bg-red-50 p-4">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-red-500 text-cream">
                 <Ambulance className="h-5 w-5" weight="regular" />
@@ -174,7 +173,7 @@ export function Gesundheit() {
           <div className="space-y-16">
             {/* Legend at the top */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
@@ -245,7 +244,7 @@ export function Gesundheit() {
 
           {/* Sidebar */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Quick-Links</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
@@ -321,7 +320,7 @@ export function Gesundheit() {
       {/* ─────────────────────────────────────────────────────────────────
          CLOSER: Pflege & Alter als ink-Spotlight (gesellschaftliches Thema)
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Wenn Angehörige Hilfe brauchen"

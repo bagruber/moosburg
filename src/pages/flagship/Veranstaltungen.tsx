@@ -31,10 +31,10 @@ type Ev = {
 };
 
 const events: Ev[] = [
-  { date: "2026-04-25", day: "25", month: "Apr", weekday: "Samstag", time: "10:00 – 14:00", title: "Modebasar Moosburg", description: "Mode- und Accessoires-Flohmarkt der Moosburger Schulen.", location: "Turnhalle Anton-Vitzthum-Grundschule", category: "Markt" },
-  { date: "2026-04-28", day: "28", month: "Apr", weekday: "Dienstag", time: "19:30 – 21:00", title: "Lesung: Isar, Land und Leute", description: "Autorin Katharina Maier liest aus ihrem neuen Roman.", location: "Stadtbibliothek Moosburg", category: "Kultur" },
-  { date: "2026-04-29", day: "29", month: "Apr", weekday: "Mittwoch", time: "19:00 – offen", title: "Stadtratssitzung (öffentlich)", description: "Tagesordnung: Haushaltsplan 2026, Bebauungsplan „Am Amperwerk“.", location: "Rathaus, Großer Sitzungssaal", category: "Stadtrat" },
-  { date: "2026-04-30", day: "30", month: "Apr", weekday: "Donnerstag", time: "17:00", title: "57. Moosburger Frühlingsfest: Anstich", description: "Feierlicher Fassanstich durch den Ersten Bürgermeister.", location: "Festgelände am Stadtpark", category: "Volksfest" },
+  { date: "2026-04-25", day: "25", month: "April", weekday: "Samstag", time: "10:00 – 14:00", title: "Modebasar Moosburg", description: "Mode- und Accessoires-Flohmarkt der Moosburger Schulen.", location: "Turnhalle Anton-Vitzthum-Grundschule", category: "Markt" },
+  { date: "2026-04-28", day: "28", month: "April", weekday: "Dienstag", time: "19:30 – 21:00", title: "Lesung: Isar, Land und Leute", description: "Autorin Katharina Maier liest aus ihrem neuen Roman.", location: "Stadtbibliothek Moosburg", category: "Kultur" },
+  { date: "2026-04-29", day: "29", month: "April", weekday: "Mittwoch", time: "19:00 – offen", title: "Stadtratssitzung (öffentlich)", description: "Tagesordnung: Haushaltsplan 2026, Bebauungsplan „Am Amperwerk“.", location: "Rathaus, Großer Sitzungssaal", category: "Stadtrat" },
+  { date: "2026-04-30", day: "30", month: "April", weekday: "Donnerstag", time: "17:00", title: "57. Moosburger Frühlingsfest: Anstich", description: "Feierlicher Fassanstich durch den Ersten Bürgermeister.", location: "Festgelände am Stadtpark", category: "Volksfest" },
   { date: "2026-05-01", day: "01", month: "Mai", weekday: "Freitag", time: "10:00", title: "Maibaumaufstellen", description: "Traditionelles Aufstellen des Maibaums mit Musikkapelle.", location: "Plan", category: "Brauchtum" },
   { date: "2026-05-02", day: "02", month: "Mai", weekday: "Samstag", time: "14:00 – 22:00", title: "Frühlingsfest: Familiennachmittag", description: "Ermäßigte Fahrgeschäfte, Kinderprogramm, Fass-Bier-Angebote.", location: "Festgelände am Stadtpark", category: "Volksfest" },
   { date: "2026-05-04", day: "04", month: "Mai", weekday: "Montag", time: "18:00 – 20:00", title: "Auftakt Solar- und Umwelttage 2026", description: "Auftaktveranstaltung mit Vorträgen zur kommunalen Energiewende.", location: "Stadtbibliothek Moosburg", category: "Umwelt" },
@@ -114,11 +114,12 @@ export function Veranstaltungen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Veranstaltungen" }]}
+        variant="band"
+        farbe="tiefrot"
+        bicolor="sketches/hirschenC"
       />
 
       {/* Filter + view toggle */}
@@ -131,7 +132,7 @@ export function Veranstaltungen() {
                 onClick={() => setActive(c)}
                 className={
                   c === active
-                    ? "rounded-full bg-red-500 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider text-cream"
+                    ? "rounded-full bg-red-500 px-4 py-1.5 text-sm font-semibold   text-cream"
                     : "rounded-full border border-ink-line bg-white px-4 py-1.5 text-sm text-ink transition hover:border-red-500 hover:text-red-700"
                 }
               >
@@ -144,7 +145,7 @@ export function Veranstaltungen() {
             <button
               onClick={() => setView("liste")}
               className={cn(
-                "inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider transition",
+                "inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold   transition",
                 view === "liste" ? "bg-ink text-cream" : "text-ink hover:bg-cream-dark",
               )}
             >
@@ -153,7 +154,7 @@ export function Veranstaltungen() {
             <button
               onClick={() => setView("monat")}
               className={cn(
-                "inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold uppercase tracking-wider transition",
+                "inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold   transition",
                 view === "monat" ? "bg-ink text-cream" : "text-ink hover:bg-cream-dark",
               )}
             >
@@ -180,7 +181,7 @@ export function Veranstaltungen() {
               </button>
               <button
                 onClick={() => { setMonthIdx(3); setYear(2026); setSelectedDay(null); }}
-                className="border-x border-ink-line px-3 text-xs font-semibold uppercase tracking-wider text-ink hover:bg-cream-dark"
+                className="border-x border-ink-line px-3 text-xs font-semibold text-ink hover:bg-cream-dark"
               >
                 Heute
               </button>
@@ -197,7 +198,7 @@ export function Veranstaltungen() {
           <div className="overflow-hidden rounded-md border border-ink-line bg-white">
             <div className="grid grid-cols-7 border-b border-ink-line bg-cream-dark text-xs">
               {WEEKDAYS_DE.map((d) => (
-                <div key={d} className="px-3 py-2 text-center font-semibold uppercase tracking-wider text-ink-soft">
+                <div key={d} className="px-3 py-2 text-center font-semibold text-ink-soft">
                   {d}
                 </div>
               ))}
@@ -273,14 +274,16 @@ export function Veranstaltungen() {
               key={e.date + e.title}
               className="group flex gap-5 rounded-md border border-ink-line bg-white p-6 transition hover:border-red-500 hover:shadow-lift"
             >
-              <div className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
-                <div className="eyebrow text-cream/90">{e.month}</div>
+              {/* Datumskachel: ausgeschriebener Monat, deshalb breiter als
+                  hoch und eine Stufe kleiner als die Kategoriezeile sonst. */}
+              <div className="flex h-20 w-24 shrink-0 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
+                <div className="text-[11px] font-semibold text-cream/90">{e.month}</div>
                 <div className="font-display text-3xl leading-none">{e.day}</div>
-                <div className="mt-0.5 text-[10px] uppercase tracking-wider text-cream/70">{e.weekday.slice(0, 2)}</div>
+                <div className="mt-0.5 text-[10px] text-cream/70">{e.weekday.slice(0, 2)}</div>
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${categoryStyles[e.category].chip}`}>
+                  <span className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${categoryStyles[e.category].chip}`}>
                     {e.category}
                   </span>
                   <span className="text-xs text-ink-muted">{e.weekday}</span>

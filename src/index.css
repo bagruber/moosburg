@@ -1,10 +1,8 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource/playfair-display/400.css";
-@import "@fontsource/playfair-display/600.css";
-@import "@fontsource/playfair-display/700.css";
-@import "@fontsource/playfair-display/900.css";
-@import "@fontsource/playfair-display/700-italic.css";
+/* Source Serif 4 kommt ueber /opsz.css, sonst fehlt die Achse der optischen
+   Groessen, und die grossen Titel bekaemen die Zeichnung der Lesegroesse. */
+@import "@fontsource-variable/source-serif-4/opsz.css";
+@import "@fontsource-variable/atkinson-hyperlegible-next";
 
 /* Die Farb- und Schrift-Tokens kommen aus dem gemeinsamen Kanon.
    Wer am Design etwas ändern will, ändert es dort:
@@ -28,7 +26,9 @@ body {
   color: var(--color-ink);
   background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv11";
+  /* Kennzahlen, Uhrzeiten und Telefonnummern stehen auf einer Linie und in
+     gleicher Breite, damit Spalten untereinander stimmen. */
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* Display helpers — used via utility classes or directly */
@@ -41,13 +41,20 @@ body {
   line-height: 0.9;
 }
 
-/* ALL CAPS display headlines, Playfair — per brand brief */
+/* Display-Ueberschriften in Source Serif 4, Satzschreibung. Versalien sind
+   seit dem 26.09.2026 nicht mehr der Kanon; einzige Ausnahme ist die H1 der
+   Startseite, siehe .headline--versal. */
 .headline {
   font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
   font-weight: 700;
   line-height: 1.05;
+}
+
+/* Ausnahme 1 A: „Moosburg an der Isar“ auf der Startseite. Ein Ortsname als
+   Signatur, einmal im ganzen Auftritt. */
+.headline--versal {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
 }
 
 /* Script accent, used large + sparingly (one per layout) */
@@ -57,13 +64,14 @@ body {
   line-height: 0.85;
 }
 
-/* Small caps labels, Inter, tight tracking */
+/* Kategoriezeile: steht ueber einer Ueberschrift nur dort, wo sie etwas
+   anderes sagt als die Ueberschrift. Satzschreibung, Farbe aus dem
+   Farbregister, meist mit einem Icon von 16 px davor. */
 .eyebrow {
   font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.3;
 }
 
 /* Status-Marker (Sperrung, Wahltermin, Krisenmeldung) — bewusst NICHT die
@@ -71,14 +79,12 @@ body {
    ein Badge meldet. Beide gleich zu setzen macht beide unsichtbar. */
 .badge {
   font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   font-weight: 700;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1.2;
 }
 
-/* Card/tile titles — Inter, uppercase-light, not Playfair */
+/* Kachel- und Karten-Titel: Textschrift, nicht Display. */
 .card-title {
   font-family: var(--font-sans);
   font-weight: 600;
@@ -86,12 +92,10 @@ body {
   line-height: 1.25;
 }
 
-/* UI label title — slightly smaller, for nav/chips/buttons */
+/* Beschriftung von Navigation, Chips und Knoepfen. */
 .ui-title {
   font-family: var(--font-sans);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   line-height: 1.2;
 }
 

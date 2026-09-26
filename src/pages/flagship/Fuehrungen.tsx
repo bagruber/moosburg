@@ -26,13 +26,14 @@ export function Fuehrungen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Stadtführungen" }]}
-        variant="photo"
-        image="images/altstadt.jpg"
+        variant="foto-band"
+        image="images/stadt/fassade-rundfenster-blumen-8902-1200.webp"
         script="zu Fuß entdecken"
+        farbe="aubergine"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
@@ -61,10 +62,10 @@ export function Fuehrungen() {
         <div className="grid gap-5 sm:grid-cols-2">
           {liste.map((f) => (
             <Reveal key={f.id}>
-              <article className="flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6">
+              <article className="flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="card-title text-lg text-ink">{f.titel}</h3>
-                  <span className="shrink-0 rounded-full bg-gold-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-gold-700">
+                  <span className="shrink-0 rounded-full bg-gold-100 px-2.5 py-0.5 text-[11px] font-semibold text-gold-700">
                     {f.art}
                   </span>
                 </div>
@@ -92,7 +93,7 @@ export function Fuehrungen() {
       </section>
 
       {/* ── Selbstgeführter Rundgang ──────────────────────────────── */}
-      <SpotlightSection tone="ink" sketch="sketches/pubE.svg">
+      <SpotlightSection tone="tinte" sketch="sketches/pubE.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Lieber auf eigene Faust?"

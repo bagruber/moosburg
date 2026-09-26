@@ -105,7 +105,7 @@ function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
           <p className="leading-relaxed text-ink-soft">{stadt.intro}</p>
 
           {stadt.stats && (
-            <div className="grid grid-cols-2 gap-4 rounded-2xl bg-cream-dark p-6 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 rounded-xl bg-cream-dark p-6 sm:grid-cols-4">
               {stadt.stats.map((st) => (
                 <div key={st.label}>
                   <div className="font-display text-2xl text-red-700 lg:text-3xl">{st.value}</div>
@@ -116,7 +116,7 @@ function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
           )}
 
           {stadt.feature && (
-            <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-6">
+            <div className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-6">
               <div className="eyebrow text-gold-700">{stadt.feature.eyebrow}</div>
               <h4 className="mt-1 font-display text-xl text-ink">{stadt.feature.title}</h4>
               <p className="mt-2 leading-relaxed text-ink-soft">
@@ -160,22 +160,20 @@ export function Partnerstaedte() {
         title="Partnerstädte"
         intro="Vier Städte in vier Ländern, auf zwei Kontinenten, verbunden mit Moosburg durch Freundschaften, die teils seit über fünfzig Jahren bestehen. Begegnung statt Grenzen, gelebt von Vereinen, Schulen und Bürgerinnen und Bürgern."
         crumbs={[{ label: "Themen" }, { label: "Partnerstädte" }]}
-        variant="photo"
         image="images/brücke.jpg"
         script="über Grenzen hinweg"
       />
 
       {/* ── Warum Partnerschaften ─────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="creme">
         <Reveal>
           <SectionHeader
             eyebrow="Eine Idee von Europa"
             heading="Freundschaft, die man pflegen muss"
-            light
           />
         </Reveal>
         <Reveal delay={1}>
-          <p className="max-w-3xl text-base leading-relaxed text-cream/85">
+          <p className="max-w-3xl text-base leading-relaxed text-ink-soft">
             Städtepartnerschaften entstanden nach dem Krieg aus einem einfachen Gedanken: Wer einander
             besucht, kennt und feiert, führt keine Kriege mehr gegeneinander. Moosburgs älteste Partnerschaft
             mit dem französischen Bry-sur-Marne reicht bis 1973 zurück; 2018 schloss sich das englische
@@ -202,7 +200,7 @@ export function Partnerstaedte() {
             <a
               key={s.id}
               href={`#${s.id}`}
-              className="group flex flex-col rounded-2xl border border-ink-line/70 bg-cream p-5 transition hover:border-red-500/40 hover:shadow-soft"
+              className="group flex flex-col rounded-xl border border-ink-line/70 bg-cream p-5 transition hover:border-red-500/40 hover:shadow-soft"
             >
               <FarbBalken farben={s.farben} />
               <div className="mt-4 card-title text-lg text-ink">
@@ -256,7 +254,7 @@ export function Partnerstaedte() {
       </div>
 
       {/* ── Mitmachen ─────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="aubergine">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Mitmachen</div>

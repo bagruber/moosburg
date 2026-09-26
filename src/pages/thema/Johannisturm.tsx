@@ -241,7 +241,7 @@ export function Johannisturm() {
       </section>
 
       {/* ── Besteigung ────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-end">
           <div>
             <SectionHeader heading="Hinauf ins Turmzimmer" script="ganz nach oben" light />

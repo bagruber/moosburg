@@ -106,7 +106,7 @@ const KLAERANLAGE: Einrichtung = {
 function EinrichtungCard({ data, accent = "rb-6" }: { data: Einrichtung; accent?: string }) {
   const color = `var(--color-${accent})`;
   return (
-    <article className="rounded-2xl border border-ink-line/50 bg-white p-5">
+    <article className="rounded-xl border border-ink-line/50 bg-white p-5">
       <h3 className="card-title text-lg text-ink">{data.name}</h3>
       <dl className="mt-3 space-y-2 text-sm">
         <div className="flex items-start gap-2">
@@ -158,10 +158,8 @@ export function VerEntsorgung() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro="Müllabfuhr, Wasser, Wertstoffhof, Container und alles, was die Stadt für Ihr Grundstück bereitstellt."
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Ver- und Entsorgung" }]}
       />
 
@@ -192,7 +190,7 @@ export function VerEntsorgung() {
               </div>
 
               {/* Müllkalender Quick-Link */}
-              <div className="mt-6 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+              <div className="mt-6 rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
                 <div className="flex items-start gap-3">
                   <Newspaper className="mt-0.5 h-5 w-5 text-gold-700 shrink-0" weight="regular" />
                   <div className="flex-1">
@@ -219,7 +217,7 @@ export function VerEntsorgung() {
                   <span className="text-sm text-ink-muted">— Sperrmüll, Elektro, Grünschnitt, Bauschutt</span>
                 </div>
                 <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                  <div className="rounded-2xl border border-ink-line/50 bg-white p-5">
+                  <div className="rounded-xl border border-ink-line/50 bg-white p-5">
                     <dl className="space-y-2 text-sm">
                       <div className="flex items-start gap-2">
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" weight="regular" />
@@ -233,7 +231,7 @@ export function VerEntsorgung() {
                       </div>
                     </dl>
                     <div className="mt-4 border-t border-ink-line/30 pt-3">
-                      <div className="mb-2 flex items-center gap-1.5 text-xs font-display uppercase tracking-wider text-ink-muted">
+                      <div className="mb-2 flex items-center gap-1.5 text-xs font-display text-ink-muted">
                         <Clock className="h-3.5 w-3.5" weight="regular" />
                         Öffnungszeiten
                       </div>
@@ -262,7 +260,7 @@ export function VerEntsorgung() {
                 </p>
                 <div className="mt-4 overflow-hidden rounded-xl border border-ink-line/50">
                   <table className="w-full text-sm">
-                    <thead className="bg-cream-dark/60 text-left text-xs font-display uppercase tracking-wider text-ink-muted">
+                    <thead className="bg-cream-dark/60 text-left text-xs font-display text-ink-muted">
                       <tr>
                         <th className="px-4 py-3">Restmülltonne</th>
                         <th className="px-4 py-3 text-right">monatlich</th>
@@ -368,7 +366,7 @@ export function VerEntsorgung() {
 
                 {/* Legend */}
                 <div className="mt-4 flex items-center gap-2 text-xs text-ink-muted">
-                  <span className="font-display uppercase tracking-wider">Legende:</span>
+                  <span className="font-display">Legende:</span>
                   <span
                     className="inline-flex h-6 w-6 items-center justify-center rounded-md"
                     style={{ backgroundColor: "var(--color-rb-5)1A", color: "var(--color-rb-5)" }}
@@ -428,7 +426,7 @@ export function VerEntsorgung() {
 
           {/* ── Sidebar ───────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Schnellzugriff</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>

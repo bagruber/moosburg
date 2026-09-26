@@ -84,7 +84,7 @@ export function BauenWohnen() {
             <Reveal key={r.title}>
               <Link
                 to={r.to}
-                className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
               >
                 <h3 className="card-title text-lg text-ink">{r.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{r.desc}</p>
@@ -99,7 +99,7 @@ export function BauenWohnen() {
       </section>
 
       {/* ── Baugenehmigung-Hinweis ────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="erdbraun">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="flex items-center gap-2">

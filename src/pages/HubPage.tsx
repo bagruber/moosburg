@@ -3,17 +3,32 @@ import { ArrowRight } from "@phosphor-icons/react";
 import { hubs, routesForHub, type Hub } from "@/routes";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { Klecks } from "@/components/Klecks";
+import type { Themenfarbe } from "@/lib/farbregister";
 
+/* Kopf je Bereich. Rathaus bleibt ruhig — Service-Seiten tragen keine Fläche.
+   Mein Moosburg nimmt C1, Zu Besuch C2, Mitgestalten das Band in Gold-700,
+   der Farbe des Mitmachens (Farbregister). */
 const hubHeaderConfig: Record<Hub, {
-  variant: "cream" | "photo" | "gold" | "red";
+  variant: "cream" | "band" | "foto-daneben" | "foto-band";
+  farbe?: Themenfarbe;
   image?: string;
   script?: string;
   sketch?: string;
 }> = {
   rathaus: { variant: "cream", sketch: "sketches/rathausB.svg" },
-  "mein-moosburg": { variant: "photo", image: "images/plan.jpg", script: "daheim" },
-  "zu-besuch": { variant: "photo", image: "images/münster.jpg", script: "servus" },
-  mitgestalten: { variant: "gold", script: "gemeinsam" },
+  "mein-moosburg": {
+    variant: "foto-daneben",
+    image: "images/stadt/stadtplatz-geranien-8991-1200.webp",
+    script: "daheim",
+  },
+  "zu-besuch": {
+    variant: "foto-band",
+    farbe: "aubergine",
+    image: "images/stadt/gasse-muenster-9064-1200.webp",
+    script: "servus",
+  },
+  mitgestalten: { variant: "band", farbe: "gold", script: "gemeinsam" },
 };
 
 /**
@@ -65,19 +80,23 @@ export function HubPage() {
         eyebrow={meta.tagline}
         title={meta.title}
         intro={meta.intro}
-        icon={cfg.variant === "cream" ? meta.icon : undefined}
         crumbs={[{ label: meta.title }]}
         variant={cfg.variant}
+        farbe={cfg.farbe}
         image={cfg.image}
         script={cfg.script}
         sketch={cfg.sketch}
+        imageCredit={cfg.image?.startsWith("images/stadt/") ? { author: "Ben Arya Gruber" } : undefined}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
         {urgent && (
           <Link
             to={`/${urgent.slug}`}
-            className="group mb-10 flex items-center gap-4 rounded-md border-l-4 border-red-500 bg-red-50/60 px-5 py-4 transition hover:bg-red-50"
+            /* Rahmen rundum statt Balken an einer Kante: der einseitige
+               Kantenakzent ist im Kanon verboten, er dekoriert eine
+               Unterscheidung, die Grund und Rot schon tragen. */
+            className="group mb-10 flex items-center gap-4 rounded-md border border-red-100 bg-red-50 px-5 py-4 transition hover:border-red-500"
           >
             <urgent.icon className="h-5 w-5 shrink-0 text-red-700" weight="regular" />
             <span className="flex-1">
@@ -103,9 +122,7 @@ export function HubPage() {
                   to={`/${r.slug}`}
                   className="group flex flex-col gap-4 rounded-md border border-ink-line bg-white p-7 shadow-soft transition hover:border-red-500 hover:shadow-lift lg:p-8"
                 >
-                  <span className="grid h-11 w-11 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                    <Icon className="h-5 w-5" weight="regular" />
-                  </span>
+                  <Klecks icon={Icon} />
                   <div>
                     <h2 className="font-display text-xl text-ink lg:text-2xl">{r.title}</h2>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{r.intro}</p>
@@ -130,9 +147,7 @@ export function HubPage() {
                     to={`/${r.slug}`}
                     className="group flex h-full items-center gap-4 rounded-md border border-ink-line bg-white px-5 py-4 transition hover:border-red-500 hover:shadow-soft"
                   >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                      <Icon className="h-4 w-4" weight="regular" />
-                    </span>
+                    <Klecks icon={Icon} dicht />
                     <span className="card-title min-w-0 flex-1 text-[15px] text-ink">
                       {r.title}
                     </span>

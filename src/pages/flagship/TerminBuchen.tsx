@@ -24,6 +24,7 @@ import { findRoute } from "@/routes";
 import { useAppState } from "@/state/AppState";
 import { cn } from "@/lib/cn";
 import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
+import { Klecks } from "@/components/Klecks";
 
 const route = findRoute("rathaus/termin-buchen")!;
 
@@ -211,14 +212,12 @@ export function TerminBuchen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={step === "success" ? "Termin gebucht" : route.title}
         intro={
           step === "success"
             ? "Ihre Buchung wurde gespeichert. Eine Bestätigung haben wir an Ihre E-Mail-Adresse gesendet."
             : route.intro
         }
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Termin buchen" }]}
       />
 
@@ -243,7 +242,7 @@ export function TerminBuchen() {
                     >
                       {done ? <Check className="h-3 w-3" weight="bold" /> : n}
                     </span>
-                    <span className={cn("uppercase tracking-wider font-semibold", active ? "text-ink" : "text-ink-muted")}>
+                    <span className={cn("  font-semibold", active ? "text-ink" : "text-ink-muted")}>
                       {label}
                     </span>
                     {i < 3 && <span className="hidden text-ink-line sm:inline">›</span>}
@@ -276,9 +275,7 @@ export function TerminBuchen() {
                     selected ? "border-red-500 shadow-soft" : "border-ink-line hover:border-red-500 hover:shadow-soft",
                   )}
                 >
-                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                    <Icon className="h-5 w-5" weight="regular" />
-                  </span>
+                  <Klecks icon={Icon} />
                   <h3 className="mt-5 card-title text-base text-ink">{c.title}</h3>
                   <p className="mt-1 text-xs text-ink-muted">
                     {c.items.length} Dienstleistungen · {c.duration} Min Slot
@@ -309,7 +306,7 @@ export function TerminBuchen() {
           </div>
 
           {/* Office card, address + hours + note */}
-          <div className="mt-6 grid gap-4 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="mt-6 grid gap-4 rounded-xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div>
               <div className="eyebrow text-ink-muted">Standort</div>
               <p className="mt-1 text-sm text-ink">{cat.location}</p>
@@ -480,7 +477,7 @@ export function TerminBuchen() {
                 <button
                   disabled={!slot}
                   onClick={goNext}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-cream transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
                 >
                   Weiter
                   <ArrowRight className="h-4 w-4" weight="bold" />
@@ -557,7 +554,7 @@ export function TerminBuchen() {
                 <button
                   type="submit"
                   disabled={!consent || !name || !email}
-                  className="inline-flex items-center gap-2 rounded-full bg-red-500 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream shadow-soft transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
+                  className="inline-flex items-center gap-2 rounded-full bg-red-500 px-7 py-3 text-sm font-semibold text-cream shadow-soft transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
                 >
                   Termin verbindlich buchen
                   <ArrowRight className="h-4 w-4" weight="bold" />
@@ -569,20 +566,20 @@ export function TerminBuchen() {
               <div className="eyebrow text-red-700">Ihre Buchung</div>
               <dl className="mt-4 space-y-3">
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-ink-muted">Anliegen</dt>
+                  <dt className="text-xs text-ink-muted">Anliegen</dt>
                   <dd className="mt-0.5 card-title text-sm text-ink">{service.title}</dd>
                   <dd className="text-xs text-ink-muted">{cat.title}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-ink-muted">Datum</dt>
+                  <dt className="text-xs text-ink-muted">Datum</dt>
                   <dd className="mt-0.5 card-title text-sm text-ink">{formatDate(date)}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-ink-muted">Uhrzeit</dt>
+                  <dt className="text-xs text-ink-muted">Uhrzeit</dt>
                   <dd className="mt-0.5 card-title text-sm text-ink">{slot} Uhr · {service.durationOverride ?? cat.duration} Min</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-ink-muted">Ort</dt>
+                  <dt className="text-xs text-ink-muted">Ort</dt>
                   <dd className="mt-0.5 text-sm text-ink">{cat.location}</dd>
                 </div>
               </dl>
@@ -618,7 +615,7 @@ export function TerminBuchen() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={() => navigate("/konto")}
-                className="inline-flex items-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700"
+                className="inline-flex items-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-cream hover:bg-red-700"
               >
                 <CalendarDots className="h-4 w-4" weight="regular" />
                 Im Konto ansehen ({bookings.length + (confirmed ? 0 : 1)})
@@ -628,7 +625,7 @@ export function TerminBuchen() {
                   setStep(1);
                   setCatId(null); setServiceId(null); setSlot(null); setConsent(false); setConfirmed(null);
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-ink hover:border-red-500"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-red-500"
               >
                 Weiteren Termin buchen
               </button>

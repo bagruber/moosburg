@@ -1,196 +1,239 @@
-import type { Icon } from "@phosphor-icons/react";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
-import { RainbowStripe } from "./RainbowStripe";
 import { SketchGround } from "./SketchGround";
+import { ZweifarbigeZeichnung } from "./ZweifarbigeZeichnung";
+import { FLAECHE, type Themenfarbe } from "@/lib/farbregister";
 import { cn } from "@/lib/cn";
 
+/**
+ * Seitenkopf in vier Formen.
+ *
+ *   cream          ruhiger Grund, für alle Service-Seiten
+ *   band           Fläche in der Themenfarbe der Seite (Farbregister)
+ *   foto-daneben   C1: Foto neben dem Titel, bis zum Rand
+ *   foto-band      C2: Titel im Band, Foto ragt hinein
+ *
+ * Zwei Regeln, die den Unterschied zu vorher ausmachen:
+ *
+ * **Kein Text auf dem Foto** (K7). Früher lag der Titel über einem
+ * abgedunkelten Bild mit Verlauf darüber. Das kostet das Bild und macht den
+ * Text trotzdem nicht sicher lesbar — je nach Motiv landet eine helle Stelle
+ * unter einem Buchstaben. Jetzt stehen Titel und Foto nebeneinander, das Foto
+ * bleibt unangetastet, und der Nachweis steht klein darunter.
+ *
+ * **Der Stripe steht nur im Seitenkopf der Website**, also in `Header`. Steht
+ * der Regenbogen dort, schließt er hier keine Zwischenebene mehr ab.
+ */
 export function PageHeader({
   eyebrow,
   title,
   intro,
-  icon: Icon,
   crumbs,
   image,
   imageCredit,
   script,
   sketch,
+  bicolor,
+  farbe = "tiefrot",
   variant = "cream",
 }: {
+  /**
+   * Kategoriezeile. Nur setzen, wo sie etwas anderes sagt als der Titel —
+   * der Bereichsname steht schon in den Breadcrumbs.
+   */
   eyebrow?: string;
   title: string;
   intro?: string;
-  icon?: Icon;
   crumbs: Crumb[];
+  /** Pfad unter public/, z. B. "images/stadt/petunien-9058-1200.webp". */
   image?: string;
-  /** Optional dezenter Foto-Credit unten rechts im Photo-Hero. */
   imageCredit?: { label?: string; author: string; href?: string };
   script?: string;
-  /**
-   * Federzeichnung eines Moosburger Gebäudes als ruhiger Grund, z. B.
-   * "sketches/rathausB.svg". Nur in der cream-Variante, wo sonst kein Bild
-   * steht — sie ergänzt Fotos, ersetzt sie nicht.
-   */
+  /** Einfarbige Federzeichnung als Wasserzeichen, z. B. "sketches/rathausB.svg". */
   sketch?: string;
-  variant?: "cream" | "photo" | "gold" | "red";
+  /** Zweifarbiges Blatt ohne Endung, z. B. "sketches/rathausD". */
+  bicolor?: string;
+  /** Themenfarbe für `band` und `foto-band`, aus dem Farbregister. */
+  farbe?: Themenfarbe;
+  variant?: "cream" | "band" | "foto-daneben" | "foto-band";
 }) {
-  if (variant === "photo" && image) {
-    return (
-      <>
-        <section className="relative h-[340px] sm:h-[420px] overflow-hidden bg-ink">
-          <img
-            src={`${import.meta.env.BASE_URL}${image}`}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/20" />
-          {imageCredit && (
-            <div className="absolute bottom-2 right-3 z-10 text-right text-[10px] leading-tight text-cream/55">
-              {imageCredit.label && (
-                <span className="block font-display uppercase tracking-wider text-cream/70">
-                  {imageCredit.label}
-                </span>
-              )}
-              <span>
-                Foto:{" "}
-                {imageCredit.href ? (
-                  <a href={imageCredit.href} target="_blank" rel="noreferrer" className="underline hover:text-cream">
-                    {imageCredit.author}
-                  </a>
-                ) : (
-                  imageCredit.author
-                )}
-              </span>
-            </div>
+  /* Heller Grund: Creme-Kopf und C1, wo das Foto daneben steht. Dunkel sind
+     nur die Bänder — bei C2 liegt der Titel im Band. */
+  const hell = variant === "cream" || variant === "foto-daneben";
+  const ton = FLAECHE[farbe];
+
+  /* Die Handschrift misst sich in em an der Überschrift und sitzt deshalb in
+     ihr. Abgeschnitten werden darf nur die Zeichnung, nie der Schwung der
+     Handschrift — deshalb trägt der Kopf selbst kein overflow-hidden. */
+  const Titel = (
+    <h1
+      className={cn(
+        "headline relative",
+        script ? "mt-[0.85em]" : "mt-2",
+        hell
+          ? "text-3xl text-ink sm:text-4xl lg:text-5xl"
+          : "text-4xl text-cream sm:text-5xl lg:text-6xl",
+      )}
+    >
+      {script && (
+        <span
+          aria-hidden="true"
+          className={cn(
+            "script-accent pointer-events-none absolute -left-[0.05em] -top-[0.42em]",
+            "origin-bottom-left -rotate-6 select-none whitespace-nowrap",
+            "text-[1.45em] leading-none",
+            hell ? "text-gold-500/55" : "text-gold-200/70",
           )}
-          <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 lg:px-8 lg:pb-14">
-            <div className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream/90 [&_svg]:text-cream/50">
-              <Breadcrumbs items={crumbs} />
-            </div>
-            <div className="relative mt-5 pt-10">
-              {script && (
-                <span
-                  aria-hidden="true"
-                  className="script-accent pointer-events-none absolute -top-1 left-0 text-[5rem] leading-none text-cream/40 select-none sm:text-[6rem]"
-                >
-                  {script}
-                </span>
-              )}
-              {eyebrow && (
-                <div className="eyebrow relative text-gold-200">{eyebrow}</div>
-              )}
-              <h1 className="headline relative mt-2 text-4xl text-cream sm:text-5xl lg:text-6xl">
-                {title}
-              </h1>
-              {intro && (
-                <p className="mt-5 max-w-2xl text-base lg:text-lg text-cream/90 leading-relaxed">
-                  {intro}
-                </p>
-              )}
-            </div>
-          </div>
-        </section>
-        <RainbowStripe />
-      </>
-    );
-  }
+        >
+          {script}
+        </span>
+      )}
+      <span className="relative">{title}</span>
+    </h1>
+  );
 
-  if (variant === "gold") {
-    return (
-      <>
-        {/* gold-700 statt gold-500: Cream-Text erreichte auf gold-500 nur
-            2,6:1. Kleintext (Eyebrow, Breadcrumbs) braucht /90 statt /80,
-            sonst rutscht er auch auf gold-700 unter 4,5:1. */}
-        <section className="relative overflow-hidden bg-gold-700 text-cream">
-          {sketch && <SketchGround src={sketch} tone="gold" />}
-          <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-            <div className="[&_a]:text-cream/90 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
-              <Breadcrumbs items={crumbs} />
-            </div>
-            <div className="relative mt-6 pt-10">
-              {script && (
-                <span
-                  aria-hidden="true"
-                  className="script-accent pointer-events-none absolute -top-2 left-0 text-[6rem] leading-none text-cream/25 select-none"
-                >
-                  {script}
-                </span>
-              )}
-              {eyebrow && <div className="eyebrow relative text-cream/90">{eyebrow}</div>}
-              <h1 className="headline relative mt-2 text-4xl sm:text-5xl lg:text-6xl text-cream">
-                {title}
-              </h1>
-              {intro && (
-                <p className="mt-5 max-w-2xl text-base lg:text-lg text-cream/95 leading-relaxed">
-                  {intro}
-                </p>
-              )}
-            </div>
-          </div>
-        </section>
-        <RainbowStripe />
-      </>
-    );
-  }
-
-  if (variant === "red") {
-    return (
-      <>
-        <section className="relative overflow-hidden bg-red-900 text-cream">
-          {sketch && <SketchGround src={sketch} tone="red" />}
-          <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-            <div className="[&_a]:text-cream/80 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60">
-              <Breadcrumbs items={crumbs} />
-            </div>
-            <div className="relative mt-6 pt-10">
-              {script && (
-                <span
-                  aria-hidden="true"
-                  className="script-accent pointer-events-none absolute -top-2 left-0 text-[6rem] leading-none text-gold-200/60 select-none"
-                >
-                  {script}
-                </span>
-              )}
-              {eyebrow && <div className="eyebrow relative text-gold-200">{eyebrow}</div>}
-              <h1 className="headline relative mt-2 text-4xl sm:text-5xl lg:text-6xl text-cream">
-                {title}
-              </h1>
-              {intro && (
-                <p className="mt-5 max-w-2xl text-base lg:text-lg text-cream/95 leading-relaxed">
-                  {intro}
-                </p>
-              )}
-            </div>
-          </div>
-        </section>
-        <RainbowStripe />
-      </>
-    );
-  }
-
-  // Default: cream
-  return (
-    <section className={cn("relative overflow-hidden bg-cream-dark border-b border-ink-line/70")}>
-      {sketch && <SketchGround src={sketch} />}
-      <div className="relative mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-14">
+  const Kopftext = (
+    <>
+      <div
+        className={
+          hell
+            ? undefined
+            : "[&_a]:text-cream/80 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/60"
+        }
+      >
         <Breadcrumbs items={crumbs} />
-        <div className="mt-6 flex items-start gap-5">
-          {Icon && (
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-md bg-red-500 text-cream">
-              <Icon className="h-7 w-7" weight="light" />
-            </span>
-          )}
-          <div className="min-w-0">
-            {eyebrow && <div className="eyebrow text-red-700">{eyebrow}</div>}
-            <h1 className="headline mt-1 text-3xl sm:text-4xl lg:text-5xl text-ink">
-              {title}
-            </h1>
-            {intro && (
-              <p className="mt-4 max-w-3xl text-base lg:text-lg text-ink-soft leading-relaxed">
-                {intro}
-              </p>
+      </div>
+      {/* Mit Handschrift mehr Luft nach oben: der Schwung reicht über die
+          Überschrift hinaus und darf die Breadcrumbs nicht kreuzen. */}
+      <div className={cn("relative", script ? "mt-10" : "mt-6")}>
+        {eyebrow && (
+          <div className={cn("eyebrow relative", hell ? "text-red-700" : "text-gold-200")}>
+            {eyebrow}
+          </div>
+        )}
+        {Titel}
+        {intro && (
+          <p
+            className={cn(
+              "mt-5 max-w-2xl text-base leading-relaxed lg:text-lg",
+              hell ? "text-ink-soft" : "text-cream/95",
             )}
+          >
+            {intro}
+          </p>
+        )}
+      </div>
+    </>
+  );
+
+  /* Die Stadtserie liegt in 1200 und 2400 px. Endet der Pfad auf -1200.webp,
+     wird die doppelte Auflösung automatisch als zweite Quelle angeboten —
+     ein eigener Prop dafür wäre eine Angabe, die sich aus dem Namen ergibt. */
+  const bildQuelle = image && `${import.meta.env.BASE_URL}${image}`;
+  const bildSrcSet =
+    image?.endsWith("-1200.webp")
+      ? `${bildQuelle} 1200w, ${import.meta.env.BASE_URL}${image.replace("-1200.webp", "-2400.webp")} 2400w`
+      : undefined;
+
+  /** Nachweis unter dem Bild, nie darauf (K7). */
+  const Nachweis = imageCredit && (
+    <p className="mt-2 text-xs text-ink-muted">
+      {imageCredit.label && <span className="text-ink-soft">{imageCredit.label}. </span>}
+      Foto:{" "}
+      {imageCredit.href ? (
+        <a href={imageCredit.href} target="_blank" rel="noreferrer" className="underline hover:text-ink">
+          {imageCredit.author}
+        </a>
+      ) : (
+        imageCredit.author
+      )}
+    </p>
+  );
+
+  /** Zeichnung im Anschnitt. Nur sie wird beschnitten, nichts sonst. */
+  const Grund = (
+    <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      {sketch && <SketchGround src={sketch} tone={hell ? "ink" : "cream"} />}
+      {bicolor && (
+        <ZweifarbigeZeichnung
+          basis={bicolor}
+          linie={hell ? "bg-ink" : "bg-gold-200"}
+          flaeche={hell ? "bg-red-500" : ton.zeichnung}
+          className="-bottom-6 -right-10 h-[125%] w-[38rem] lg:-right-2 lg:w-[46rem]"
+        />
+      )}
+    </div>
+  );
+
+  if (variant === "foto-daneben" && image) {
+    /* C1: Titel links, Foto rechts bis an den Rand. Am Handy steht der Titel
+       oben links und das Foto darunter — so bleibt die Überschrift das
+       Erste, was gelesen wird. */
+    return (
+      <section className="relative border-b border-ink-line/70 bg-cream-dark">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 lg:grid-cols-[1fr_minmax(0,42%)] lg:items-center lg:gap-12 lg:px-8 lg:py-14">
+          <div className="relative">{Kopftext}</div>
+          <figure className="m-0">
+            <img
+              src={bildQuelle}
+              srcSet={bildSrcSet}
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              alt=""
+              className="aspect-[4/3] w-full rounded-md object-cover"
+            />
+            {Nachweis}
+          </figure>
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "foto-band" && image) {
+    /* C2: Der Titel steht im Band, das Foto ragt von unten hinein und über
+       das Band hinaus. Die Überlappung bindet Bild und Kopf zusammen, ohne
+       dass Text auf dem Bild landen müsste. */
+    return (
+      <section className="relative">
+        <div className={cn("relative", ton.grund)}>
+          {Grund}
+          <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-10 lg:px-8 lg:pb-28 lg:pt-14">
+            {Kopftext}
           </div>
         </div>
+        <div className="mx-auto -mt-16 max-w-7xl px-4 lg:-mt-20 lg:px-8">
+          <figure className="relative m-0">
+            <img
+              src={bildQuelle}
+              srcSet={bildSrcSet}
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              alt=""
+              className="aspect-[16/7] w-full rounded-md object-cover shadow-lift"
+            />
+            {Nachweis}
+          </figure>
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "band") {
+    return (
+      <section className={cn("relative text-cream", ton.grund)}>
+        {Grund}
+        <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
+          {Kopftext}
+        </div>
+      </section>
+    );
+  }
+
+  // Creme: der ruhige Kopf der Service-Seiten. Ohne rotes Icon-Quadrat —
+  // ein Icon im getönten Kasten ist die Standardausgabe gängiger Vorlagen
+  // und sagt nichts, was der Titel nicht schon sagt.
+  return (
+    <section className="relative border-b border-ink-line/70 bg-cream-dark">
+      {Grund}
+      <div className="relative mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-14">
+        {Kopftext}
       </div>
     </section>
   );

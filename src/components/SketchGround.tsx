@@ -21,6 +21,9 @@ const TONE = {
   cream: "bg-cream opacity-[0.13]", // Ink-Grund
   gold: "bg-cream opacity-[0.22]", // Gold-Grund schluckt viel
   red: "bg-cream opacity-[0.16]", // Rot-900
+  /* Gold-200 statt Creme auf einer Themenflaeche: waermer und naeher am Band,
+     so wie die Linienebene der zweifarbigen Blaetter. */
+  gold200: "bg-gold-200 opacity-[0.18]",
 } as const;
 
 export function SketchGround({

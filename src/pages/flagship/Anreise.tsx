@@ -85,11 +85,12 @@ export function Anreise() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Anreise & Parken" }]}
+        variant="band"
+        farbe="isarpetrol"
+        bicolor="sketches/bahnhofA"
       />
 
       {/* ── Anreise nach Verkehrsmittel ───────────────────────────── */}
@@ -123,7 +124,7 @@ export function Anreise() {
           </div>
 
           {/* Inhalt */}
-          <div className="rounded-2xl border border-ink-line/70 bg-cream p-6 lg:p-8">
+          <div className="rounded-xl border border-ink-line/70 bg-cream p-6 lg:p-8">
             <p className="text-lg font-medium text-ink">{aktiv.lead}</p>
             <ul className="mt-5 space-y-3">
               {aktiv.punkte.map((p) => (
@@ -158,7 +159,7 @@ export function Anreise() {
           <Reveal>
             <SectionHeader eyebrow="Vor Ort" heading="Parken in Moosburg" />
           </Reveal>
-          <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
+          <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-xl border border-ink-line/70 bg-cream">
             {PARKEN.map((p) => (
               <li key={p.name} className="flex items-center gap-4 px-5 py-4">
                 <CarProfile className="h-5 w-5 shrink-0 text-ink-muted" weight="regular" />

@@ -111,7 +111,7 @@ export function Umziehen() {
                 key={s.id}
                 onClick={() => setActive(s.id)}
                 className={cn(
-                  "flex items-start gap-3 rounded-2xl border p-5 text-left transition",
+                  "flex items-start gap-3 rounded-xl border p-5 text-left transition",
                   on ? "border-red-500 bg-red-500 text-cream shadow-lift" : "border-ink-line bg-cream text-ink hover:border-red-500/40",
                 )}
               >
@@ -182,7 +182,7 @@ export function Umziehen() {
             {active === "zuzug" && (
               <Link
                 to="/lebenslage/neu-in-moosburg"
-                className="group flex items-center gap-3 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5 transition hover:border-gold-500/60"
+                className="group flex items-center gap-3 rounded-xl border border-gold-500/30 bg-gold-100/40 p-5 transition hover:border-gold-500/60"
               >
                 <MapPin className="h-6 w-6 shrink-0 text-gold-700" weight="light" />
                 <div className="flex-1">

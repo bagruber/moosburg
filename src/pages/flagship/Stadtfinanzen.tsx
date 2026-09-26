@@ -33,13 +33,12 @@ export function Stadtfinanzen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Stadtfinanzen" }]}
-        variant="gold"
-        sketch="sketches/rathausC.svg"
+        variant="band"
         script="wohin fließt das Geld"
+        farbe="nachtblau"
       />
 
       {/* ── Kennzahlen ────────────────────────────────────────────── */}
@@ -73,7 +72,7 @@ export function Stadtfinanzen() {
               script={mio(gesamtAusgaben) + " gesamt"}
             />
           </Reveal>
-          <figure className="rounded-2xl border border-ink-line/60 bg-cream p-6 lg:p-8">
+          <figure className="rounded-xl border border-ink-line/60 bg-cream p-6 lg:p-8">
             <ul className="space-y-3.5">
               {ausgabenNachBereich.map((b) => {
                 const pct = (b.betrag / gesamtAusgaben) * 100;
@@ -98,7 +97,7 @@ export function Stadtfinanzen() {
       </section>
 
       {/* ── Handoff haushaltvis ───────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
           <div>
             <div className="eyebrow text-gold-200">Der ganze Haushalt, interaktiv</div>
@@ -129,7 +128,7 @@ export function Stadtfinanzen() {
               </a>
             </div>
           </div>
-          <div className="rounded-2xl border border-cream/20 bg-cream/5 p-6 text-sm text-cream/80">
+          <div className="rounded-xl border border-cream/20 bg-cream/5 p-6 text-sm text-cream/80">
             <p>
               „haushaltvis" ist eine private Eigenentwicklung zur Haushaltstransparenz: Daten aus dem
               offiziellen Haushaltsplan, KI-gestützt thematisch aufbereitet.
@@ -150,7 +149,7 @@ export function Stadtfinanzen() {
 
 function StatTile({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+    <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
       <div className="font-display text-3xl text-red-700 lg:text-4xl">{value}</div>
       <div className="mt-2 text-sm text-ink-soft">{label}</div>
     </div>

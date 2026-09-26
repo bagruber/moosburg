@@ -187,7 +187,7 @@ export function StrassenExplorer() {
             emphasis={street}
             fitKey={fitKey}
             onSelectStreet={selectStreet}
-            className="h-[72vh] overflow-hidden rounded-2xl border border-ink-line/70"
+            className="h-[72vh] overflow-hidden rounded-xl border border-ink-line/70"
           />
           {attribution}
         </div>

@@ -25,13 +25,14 @@ export function EssenUebernachten() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Essen & Übernachten" }]}
-        variant="photo"
-        image="images/münster.jpg"
+        variant="foto-band"
+        image="images/stadt/freisitz-strasse-quer-9050-1200.webp"
         script="gut bewirtet"
+        farbe="aubergine"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
@@ -56,7 +57,7 @@ export function EssenUebernachten() {
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {gastgeber.map((g) => (
                 <Reveal key={g.id}>
-                  <article className="flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6">
+                  <article className="flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="eyebrow text-red-700">{g.art}</div>

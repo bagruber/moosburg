@@ -16,6 +16,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
 import { Reveal } from "@/components/Reveal";
 import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
+import { Klecks } from "@/components/Klecks";
 
 type Eintrag = { title: string; desc: string; to: string };
 type Gruppe = { id: string; label: string; icon: Icon; items: Eintrag[] };
@@ -75,7 +76,7 @@ export function AutoVerkehr() {
       />
 
       {/* ── Digital-Highlight (für die Eiligen) ───────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="isarpetrol">
         <Reveal>
           <SectionHeader
             eyebrow="Am schnellsten geht's digital"
@@ -99,9 +100,7 @@ export function AutoVerkehr() {
               <Reveal key={g.id}>
                 <section>
                   <div className="mb-5 flex items-center gap-2.5">
-                    <span className="grid h-10 w-10 place-items-center rounded-lg bg-red-50 text-red-700">
-                      <Icon className="h-5 w-5" weight="regular" />
-                    </span>
+                    <Klecks icon={Icon} />
                     <h2 className="headline text-xl text-ink sm:text-2xl">{g.label}</h2>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -109,7 +108,7 @@ export function AutoVerkehr() {
                       <Link
                         key={e.title}
                         to={e.to}
-                        className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-5 transition hover:border-red-500/40 hover:shadow-soft"
+                        className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-5 transition hover:border-red-500/40 hover:shadow-soft"
                       >
                         <h3 className="card-title text-ink">{e.title}</h3>
                         <p className="mt-1.5 flex-1 text-sm text-ink-soft">{e.desc}</p>
@@ -147,7 +146,7 @@ function DigitalCard({ icon: Icon, title, body, to }: { icon: Icon; title: strin
   return (
     <Link
       to={to}
-      className="group flex flex-col rounded-2xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
+      className="group flex flex-col rounded-xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
     >
       <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>

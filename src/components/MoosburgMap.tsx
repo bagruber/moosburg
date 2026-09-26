@@ -181,7 +181,7 @@ export function MoosburgMap({
                   className="h-2.5 w-2.5 shrink-0 rounded-full"
                   style={{ backgroundColor: layerConfig[selected.layer].color }}
                 />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-muted">
+                <span className="text-[10px] font-semibold text-ink-muted">
                   {layerConfig[selected.layer].label}
                 </span>
               </div>

@@ -97,13 +97,13 @@ export function Firmen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Firmenverzeichnis" }]}
-        variant="photo"
-        image="images/plan.jpg"
+        variant="foto-daneben"
+        image="images/stadt/sitzbank-blumen-8964-1200.webp"
         script="Moosburg lokal"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       {/* Sticky search + toggle row */}
@@ -158,7 +158,7 @@ export function Firmen() {
 
       <article className="mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-12">
         {/* Branchen-Chips — wrap-Layout, kein extra Sidebar */}
-        <div className="mb-4 text-xs font-display uppercase tracking-wider text-ink-muted">
+        <div className="mb-4 text-xs font-display text-ink-muted">
           Branchen
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -193,7 +193,7 @@ export function Firmen() {
 
         {/* Legend */}
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-          <span className="font-display uppercase tracking-wider">Legende:</span>
+          <span className="font-display">Legende:</span>
           <span className="inline-flex items-center gap-1.5">
             <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
           </span>
@@ -227,7 +227,7 @@ export function Firmen() {
 
         {/* Helpful sub-page cross-links when not filtered */}
         {!anyFilter && (
-          <div className="mt-12 rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+          <div className="mt-12 rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
             <h3 className="card-title text-base text-ink">Themen-Einstiege</h3>
             <p className="mt-1 text-sm text-ink-soft">
               Statt zu filtern können Sie auch über die thematischen Seiten einsteigen, dort

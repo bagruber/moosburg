@@ -16,16 +16,20 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/cn";
+import { Rose } from "@/components/BrandMark";
 import { findRoute } from "@/routes";
 
 const route = findRoute("mitgestalten/beteiligung")!;
 
 type Status = "läuft" | "bald" | "abgeschlossen";
 
+/* Status als Rose plus Wort, nicht als gefüllte Pille: die Rose ist das
+   Hauszeichen und trägt hier die Zustandsfarbe. Das Wort steht immer dabei —
+   eine Farbe allein ist für niemanden ein Status. */
 const STATUS_STYLE: Record<Status, string> = {
-  läuft: "bg-rb-5/15 text-rb-5",
-  bald: "bg-gold-100 text-gold-700",
-  abgeschlossen: "bg-ink-line/60 text-ink-muted",
+  läuft: "text-red-500",
+  bald: "text-gold-600",
+  abgeschlossen: "text-ink-muted opacity-45",
 };
 
 const VERFAHREN: { titel: string; status: Status; phase: string; frist: string; desc: string }[] = [
@@ -72,12 +76,12 @@ export function Beteiligung() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Bürgerbeteiligung" }]}
-        variant="gold"
+        variant="band"
         script="Ihre Stimme zählt"
+        farbe="gold"
       />
 
       {/* ── Laufende Verfahren ────────────────────────────────────── */}
@@ -88,10 +92,11 @@ export function Beteiligung() {
         <div className="grid gap-4 lg:grid-cols-2">
           {VERFAHREN.map((v) => (
             <Reveal key={v.titel}>
-              <article className="flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6">
+              <article className="flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="card-title text-lg text-ink">{v.titel}</h3>
-                  <span className={cn("shrink-0 rounded-full px-3 py-1 text-xs font-semibold", STATUS_STYLE[v.status])}>
+                  <span className={cn("inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold", STATUS_STYLE[v.status])}>
+                    <Rose className="h-3 w-3" />
                     {v.status}
                   </span>
                 </div>
@@ -115,7 +120,7 @@ export function Beteiligung() {
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Unser Moosburg-Plan */}
-            <div className="flex flex-col justify-between rounded-2xl border border-red-500/20 bg-red-50 p-7">
+            <div className="flex flex-col justify-between rounded-xl border border-red-500/20 bg-red-50 p-7">
               <div>
                 <div className="eyebrow text-red-700">Unser Moosburg-Plan</div>
                 <h3 className="headline mt-1 text-2xl text-ink">Die gelbe Karte</h3>
@@ -140,7 +145,7 @@ export function Beteiligung() {
       </section>
 
       {/* ── Bürgerumfragen (datahub) ──────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Was Moosburg denkt"
@@ -166,7 +171,7 @@ export function Beteiligung() {
               target="_blank"
               rel="noreferrer"
               className={cn(
-                "group flex flex-col rounded-2xl border p-5 transition",
+                "group flex flex-col rounded-xl border p-5 transition",
                 u.meta ? "border-gold-200/50 bg-gold-200/10" : "border-cream/20 bg-cream/5 hover:bg-cream/10",
               )}
             >
@@ -200,7 +205,7 @@ export function Beteiligung() {
 
       {/* ── Bürgerversammlung ─────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="rounded-2xl border border-ink-line/70 bg-cream p-7">
+        <div className="rounded-xl border border-ink-line/70 bg-cream p-7">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="eyebrow text-red-700">Einmal im Jahr</div>
@@ -233,7 +238,7 @@ function FeedbackForm() {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-start justify-center rounded-2xl border border-rb-5/30 bg-rb-5/5 p-7">
+      <div className="flex flex-col items-start justify-center rounded-xl border border-rb-5/30 bg-rb-5/5 p-7">
         <span className="grid h-12 w-12 place-items-center rounded-full bg-rb-5 text-cream">
           <Check className="h-6 w-6" weight="bold" />
         </span>
@@ -255,7 +260,7 @@ function FeedbackForm() {
   return (
     <form
       onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-      className="rounded-2xl border border-ink-line/70 bg-cream p-7"
+      className="rounded-xl border border-ink-line/70 bg-cream p-7"
     >
       <div className="eyebrow text-red-700">Sagen Sie Ihre Meinung</div>
       <h3 className="headline mt-1 text-2xl text-ink">Idee oder Feedback einreichen</h3>

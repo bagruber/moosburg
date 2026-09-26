@@ -97,7 +97,7 @@ function JourneyCard({ j }: { j: Journey }) {
   const accent = `var(--color-${j.accent})`;
   const Icon = j.icon;
   return (
-    <article className="overflow-hidden rounded-2xl border border-ink-line/50 bg-white">
+    <article className="overflow-hidden rounded-xl border border-ink-line/50 bg-white">
       <header className="flex items-start gap-4 border-b border-ink-line/40 p-5">
         <span
           className="grid h-12 w-12 shrink-0 place-items-center rounded-xl"
@@ -200,10 +200,8 @@ export function Bauen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Bauen" }]}
       />
 
@@ -213,7 +211,7 @@ export function Bauen() {
           <div className="space-y-12">
 
             {/* Lead orientation */}
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <p className="text-base text-ink">
                 <span className="font-display text-lg">Wer macht was?</span><br />
                 <span className="text-sm text-ink-soft">
@@ -316,7 +314,7 @@ export function Bauen() {
               </ul>
             </section>
 
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Landratsamt Freising</div>
               <h3 className="mt-2 card-title text-base text-ink">Bauamt Landkreis</h3>
               <p className="mt-2 text-sm text-ink-soft">

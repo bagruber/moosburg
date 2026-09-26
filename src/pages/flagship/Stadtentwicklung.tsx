@@ -49,11 +49,11 @@ export function Stadtentwicklung() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Stadtentwicklung & Projekte" }]}
+        variant="band"
+        farbe="erdbraun"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
@@ -80,10 +80,10 @@ export function Stadtentwicklung() {
         <div className="grid gap-5 lg:grid-cols-2">
           {liste.map((p) => (
             <Reveal key={p.titel}>
-              <article className="flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6">
+              <article className="flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="card-title text-lg text-ink">{p.titel}</h3>
-                  <span className="shrink-0 rounded-full bg-cream-dark px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
+                  <span className="shrink-0 rounded-full bg-cream-dark px-2.5 py-0.5 text-[11px] font-semibold text-ink-soft">
                     {p.typ}
                   </span>
                 </div>

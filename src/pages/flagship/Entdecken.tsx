@@ -26,7 +26,7 @@ function WahrzeichenBlock({ s, flip }: { s: Sehenswuerdigkeit; flip: boolean }) 
   return (
     <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
       <div className={flip ? "lg:order-2" : ""}>
-        <div className="overflow-hidden rounded-2xl shadow-soft">
+        <div className="overflow-hidden rounded-xl shadow-soft">
           <img
             src={`${BASE}${s.image}`}
             alt={s.name}
@@ -69,26 +69,26 @@ export function Entdecken() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Moosburg entdecken" }]}
-        variant="photo"
-        image="images/münster.jpg"
+        variant="foto-band"
+        image="images/stadt/muenster-laterne-8937-1200.webp"
         script="die Drei-Rosen-Stadt"
+        farbe="aubergine"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       {/* ── Identität ─────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink" sketch="sketches/muensterA.svg">
+      <SpotlightSection tone="creme" sketch="sketches/muensterA.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Über tausend Jahre an der Isar"
             heading="Die Drei-Rosen-Stadt"
-            light
           />
         </Reveal>
         <Reveal delay={1}>
-          <p className="max-w-3xl text-base leading-relaxed text-cream/85">
+          <p className="max-w-3xl text-base leading-relaxed text-ink-soft">
             Aus einem Benediktinerkloster des 8. Jahrhunderts gewachsen, blickt Moosburg auf über
             1.250 Jahre Geschichte zurück. Drei Rosen im Wappen, ein gotisches Münster im Zentrum und
             die weiten Auen von Amper und Isar ringsum, eine Stadt, die sich in einem halben Tag
@@ -99,10 +99,10 @@ export function Entdecken() {
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <Stat number="769" label="Gründung des Klosters" />
             <Stat number="um 1511" label="Leinberger-Hochaltar im Münster" />
-            <Stat number="19.309" label="Einwohner, Ende 2021" />
+            <Stat number="20.107" label="Einwohner, Ende 2025" />
           </div>
-          <p className="mt-4 text-xs text-cream/55">
-            Einwohnerzahl: Bayerisches Landesamt für Statistik, Statistik kommunal 2022.
+          <p className="mt-4 text-xs text-ink-muted">
+            Einwohnerzahl: Bayerisches Landesamt für Statistik, GENESIS-Online, Stand 31. Dezember 2025.
           </p>
         </Reveal>
       </SpotlightSection>
@@ -135,7 +135,7 @@ export function Entdecken() {
             {weitereStationen.map((s) => (
               <div
                 key={s.id}
-                className="flex flex-col rounded-2xl border border-ink-line/70 bg-cream p-6"
+                className="flex flex-col rounded-xl border border-ink-line/70 bg-cream p-6"
               >
                 <div className="eyebrow text-red-700">{s.kategorie}</div>
                 <h3 className="mt-1 card-title text-lg text-ink">{s.name}</h3>
@@ -183,14 +183,13 @@ export function Entdecken() {
       </section>
 
       {/* ── Weiter ────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="creme">
         <Reveal>
           <SectionHeader
             eyebrow="Tiefer eintauchen"
             heading="Moosburg auf Ihre Weise"
             size="sm"
             script="weiter geht's"
-            light
           />
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -221,8 +220,8 @@ export function Entdecken() {
 function Stat({ number, label }: { number: string; label: string }) {
   return (
     <div>
-      <div className="font-display text-3xl text-cream lg:text-4xl">{number}</div>
-      <div className="mt-1 text-sm text-cream/75">{label}</div>
+      <div className="font-display text-3xl text-ink lg:text-4xl">{number}</div>
+      <div className="mt-1 text-sm text-ink-soft">{label}</div>
     </div>
   );
 }
@@ -241,12 +240,12 @@ function WeiterCard({
   return (
     <Link
       to={to}
-      className="group flex flex-col rounded-2xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
+      className="group flex flex-col rounded-xl border border-ink-line bg-white p-5 transition hover:border-red-500 hover:shadow-soft"
     >
-      <Icon className="h-6 w-6 text-gold-200" weight="light" />
-      <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>
-      <p className="mt-1 text-sm text-cream/75">{body}</p>
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold-200">
+      <Icon className="h-6 w-6 text-gold-700" weight="light" />
+      <h3 className="mt-3 card-title text-lg text-ink">{title}</h3>
+      <p className="mt-1 text-sm text-ink-soft">{body}</p>
+      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-red-700">
         Mehr
         <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
       </span>

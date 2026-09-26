@@ -147,13 +147,13 @@ export function Freizeit() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Freizeit & Sport" }]}
-        variant="photo"
-        image="images/bücherei.jpg"
+        variant="foto-daneben"
+        image="images/stadt/stadtbuecherei-schild-8953-1200.webp"
         script="raus aus dem Alltag"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -220,7 +220,7 @@ export function Freizeit() {
 
             {/* Legend just before the firma sections */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
@@ -278,7 +278,7 @@ export function Freizeit() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Quick-Links</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
@@ -308,7 +308,7 @@ export function Freizeit() {
               </ul>
             </section>
 
-            <section className="rounded-2xl border border-ink-line/50 bg-white p-5">
+            <section className="rounded-xl border border-ink-line/50 bg-white p-5">
               <div className="flex items-start gap-3">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-100 text-gold-700">
                   <MusicNotes className="h-4 w-4" weight="regular" />
@@ -347,7 +347,7 @@ export function Freizeit() {
       {/* ─────────────────────────────────────────────────────────────────
          CLOSER: Volksfeste & Stadtkultur als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="hinweis">
         <Reveal>
           <SectionHeader
             eyebrow="Was Moosburg feiert"

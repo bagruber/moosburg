@@ -61,13 +61,13 @@ export function Einkaufen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Einkaufen & Märkte" }]}
-        variant="photo"
-        image="images/plan.jpg"
+        variant="foto-daneben"
+        image="images/stadt/sitzbank-schaufenster-8968-1200.webp"
         script="auf dem Plan"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -75,7 +75,7 @@ export function Einkaufen() {
       {/* ─────────────────────────────────────────────────────────────────
          HERO 1: Wochenmarkt (ink, ruhig-erdig)
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="ink" sketch="sketches/hirschenB.svg">
+      <SpotlightSection tone="tinte" sketch="sketches/kaufhausWeinerA.svg">
         <Reveal>
           <SectionHeader
             eyebrow="Jeden Samstag"
@@ -174,7 +174,7 @@ export function Einkaufen() {
 
             {/* Legend */}
             <div className="-mt-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
@@ -227,7 +227,7 @@ export function Einkaufen() {
             <Reveal>
               <Link
                 to="/thema/fair-trade"
-                className="group block rounded-2xl border border-rb-5/30 p-5 transition hover:border-solid hover:shadow-soft"
+                className="group block rounded-xl border border-rb-5/30 p-5 transition hover:border-solid hover:shadow-soft"
                 style={{
                   borderColor: "color-mix(in srgb, var(--color-rb-5) 30%, transparent)",
                   backgroundColor: "color-mix(in srgb, var(--color-rb-5) 6%, transparent)",
@@ -283,7 +283,7 @@ export function Einkaufen() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Quick-Links</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
@@ -331,7 +331,7 @@ export function Einkaufen() {
       {/* ─────────────────────────────────────────────────────────────────
          CLOSER: Moosburg-Card als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Lokale Wirtschaft stärken"

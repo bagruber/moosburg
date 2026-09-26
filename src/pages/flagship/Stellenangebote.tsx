@@ -19,6 +19,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
+import { Klecks } from "@/components/Klecks";
 import { useAppState } from "@/state/AppState";
 import { jobs, allBereiche, allUmfang, type Bereich, type Umfang } from "@/data/jobs";
 import { findRoute } from "@/routes";
@@ -59,10 +60,8 @@ export function Stellenangebote() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Stellenangebote" }]}
       />
 
@@ -87,19 +86,19 @@ export function Stellenangebote() {
         <section className="border-b border-ink-line/60">
           <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
             <Reveal>
-              <div className="grid gap-8 rounded-md border border-red-500/20 bg-gradient-to-br from-red-50 to-cream p-7 shadow-soft md:grid-cols-[minmax(0,1fr)_320px] lg:p-10">
+              <div className="grid gap-8 rounded-md border border-red-500/20 bg-red-50 p-7 shadow-soft md:grid-cols-[minmax(0,1fr)_320px] lg:p-10">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-cream">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1 text-[10px] font-semibold text-cream">
                       Spotlight · neu ausgeschrieben
                     </span>
                     {spotlight.familyFriendly && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-rb-5/30 bg-rb-5/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-rb-5">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-rb-5/30 bg-rb-5/10 px-2.5 py-0.5 text-[10px] font-semibold text-rb-5">
                         Familienfreundlich
                       </span>
                     )}
                     {spotlight.homeoffice && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-ink-line bg-white px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink-soft">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-ink-line bg-white px-2.5 py-0.5 text-[10px] font-semibold text-ink-soft">
                         Mobiles Arbeiten
                       </span>
                     )}
@@ -117,14 +116,14 @@ export function Stellenangebote() {
                   </ul>
 
                   <div className="mt-7 flex flex-wrap items-center gap-3">
-                    <button className="inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
+                    <button className="inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
                       Jetzt bewerben
                       <ArrowRight className="h-4 w-4" weight="bold" />
                     </button>
                     <button
                       onClick={() => toggleWatchedJob(spotlight.id)}
                       className={cn(
-                        "inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold uppercase tracking-wider transition",
+                        "inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold   transition",
                         watchedJobs.includes(spotlight.id)
                           ? "border-turquoise-accent bg-turquoise-accent/15 text-turquoise-accent"
                           : "border-ink-line bg-white text-ink hover:border-red-500",
@@ -140,24 +139,24 @@ export function Stellenangebote() {
                   <div className="eyebrow text-red-700">Eckdaten</div>
                   <dl className="mt-4 space-y-3">
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-ink-muted">Bereich</dt>
+                      <dt className="text-xs text-ink-muted">Bereich</dt>
                       <dd className="card-title text-sm text-ink">{spotlight.bereich}</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-ink-muted">Eingruppierung</dt>
+                      <dt className="text-xs text-ink-muted">Eingruppierung</dt>
                       <dd className="card-title text-sm text-ink">{spotlight.eingruppierung}</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-ink-muted">Umfang</dt>
+                      <dt className="text-xs text-ink-muted">Umfang</dt>
                       <dd className="card-title text-sm text-ink">{spotlight.umfang.join(" / ")}</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-ink-muted">Bewerbungsfrist</dt>
+                      <dt className="text-xs text-ink-muted">Bewerbungsfrist</dt>
                       <dd className="card-title text-sm text-ink">{formatDeadline(spotlight.deadline)}</dd>
                       <dd className="text-xs text-red-700">noch {daysUntil(spotlight.deadline)} Tage</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-ink-muted">Ansprechpartnerin</dt>
+                      <dt className="text-xs text-ink-muted">Ansprechpartnerin</dt>
                       <dd className="card-title text-sm text-ink">{spotlight.contact.name}</dd>
                       <dd className="text-xs text-ink-muted">{spotlight.contact.phone}</dd>
                     </div>
@@ -259,20 +258,20 @@ export function Stellenangebote() {
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="card-title text-base text-ink group-hover:text-red-700">{j.title}</h3>
                         {j.newPosting && (
-                          <span className="rounded-full bg-rb-5 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-cream">Neu</span>
+                          <span className="rounded-full bg-rb-5 px-2 py-0.5 text-[9px] font-semibold text-cream">Neu</span>
                         )}
                         {j.closingSoon && (
-                          <span className="rounded-full bg-gold-500 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-cream">
+                          <span className="rounded-full bg-gold-500 px-2 py-0.5 text-[9px] font-semibold text-cream">
                             Bald endend
                           </span>
                         )}
                         {j.external && (
-                          <span className="rounded-full border border-purple-accent/40 bg-purple-accent/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-purple-accent">
+                          <span className="rounded-full border border-purple-accent/40 bg-purple-accent/10 px-2 py-0.5 text-[9px] font-semibold text-purple-accent">
                             Externer Träger
                           </span>
                         )}
                         {j.vacancies && j.vacancies > 1 && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-ink-muted">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-ink-muted">
                             <Users className="h-3 w-3" weight="regular" />
                             {j.vacancies} Stellen
                           </span>
@@ -312,7 +311,7 @@ export function Stellenangebote() {
                       >
                         {watched ? <Bookmark className="h-4 w-4" /> : <BookmarkSimple className="h-4 w-4" weight="regular" />}
                       </button>
-                      <button className="inline-flex items-center gap-1.5 rounded-md bg-red-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700">
+                      <button className="inline-flex items-center gap-1.5 rounded-md bg-red-500 px-4 py-2 text-xs font-semibold text-cream transition hover:bg-red-700">
                         Bewerben
                         <ArrowRight className="h-3.5 w-3.5" weight="bold" />
                       </button>
@@ -373,9 +372,7 @@ export function Stellenangebote() {
               const Icon = c.icon;
               return (
                 <div key={c.title} className="rounded-md border border-ink-line bg-white p-6 shadow-soft">
-                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700">
-                    <Icon className="h-5 w-5" weight="regular" />
-                  </span>
+                  <Klecks icon={Icon} />
                   <h3 className="mt-4 card-title text-base text-ink">{c.title}</h3>
                   <p className="mt-2 text-sm text-ink-soft">{c.desc}</p>
                 </div>
@@ -397,7 +394,7 @@ export function Stellenangebote() {
           </p>
           <form className="mt-5 mx-auto flex max-w-md flex-col gap-2 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
             <input type="email" placeholder="ihre.adresse@beispiel.de" className="flex-1 rounded-md border border-ink-line bg-white px-3 py-2.5 text-sm outline-none focus:border-red-500" />
-            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-red-500 px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
+            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-red-500 px-4 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
               <CalendarDots className="h-4 w-4" weight="regular" />
               Abonnieren
             </button>

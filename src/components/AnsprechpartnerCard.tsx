@@ -109,7 +109,7 @@ export function AnsprechpartnerCard({
   }
 
   return (
-    <article className={cn("flex gap-4 rounded-2xl border border-ink-line/50 bg-white p-4 shadow-sm", className)}>
+    <article className={cn("flex gap-4 rounded-xl border border-ink-line/50 bg-white p-4 shadow-sm", className)}>
       <AvatarStub name={person.name} />
       <div className="min-w-0 flex-1">
         <h3 className="font-display text-lg text-ink">{disp}</h3>
@@ -140,7 +140,7 @@ export function AnsprechpartnerCard({
         </dl>
         {person.aufgaben.length > 0 && (
           <div className="mt-3 border-t border-ink-line/30 pt-3">
-            <div className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-ink-muted">
+            <div className="mb-1.5 text-[11px] font-semibold text-ink-muted">
               Zuständig für
             </div>
             <ul className="flex flex-wrap gap-1">
@@ -209,8 +209,8 @@ export function AnsprechpartnerStrip({
   if (resolved.length === 0) return null;
 
   return (
-    <section className={cn("rounded-2xl border border-ink-line/40 bg-cream/60 p-4", className)}>
-      <h4 className="mb-3 text-xs font-display uppercase tracking-wider text-ink-muted">{heading}</h4>
+    <section className={cn("rounded-xl border border-ink-line/40 bg-cream/60 p-4", className)}>
+      <h4 className="mb-3 text-xs font-display text-ink-muted">{heading}</h4>
       <div className={cn(
         "grid gap-3",
         variant === "compact" ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 md:grid-cols-2 xl:grid-cols-3",

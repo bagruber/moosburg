@@ -28,6 +28,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
+import { Klecks } from "@/components/Klecks";
 import { useAppState, type Profile } from "@/state/AppState";
 import { districtFor } from "@/data/moosburgStreets";
 import { cn } from "@/lib/cn";
@@ -226,8 +227,8 @@ export function NeuInMoosburg() {
         intro="Frisch zugezogen oder Sie überlegen, nach Moosburg zu ziehen? Diese Seite bündelt alles Wichtige für die ersten Wochen, sortiert nach Pflicht, Ihrer Situation und Empfehlungen."
         crumbs={[{ label: "Lebenslagen" }, { label: "Neu in Moosburg" }]}
         variant="cream"
-        sketch="sketches/griesA.svg"
         script="willkommen"
+        bicolor="sketches/bahnhofA"
       />
 
       {/* Personalization banner */}
@@ -342,7 +343,7 @@ export function NeuInMoosburg() {
                   <span className="text-ink">Treffpunkt Stadtplatz</span>
                 </div>
               </div>
-              <Link to="/mein-moosburg/veranstaltungen" className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
+              <Link to="/mein-moosburg/veranstaltungen" className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
                 Nächsten Termin sehen
                 <ArrowRight className="h-4 w-4" weight="bold" />
               </Link>
@@ -385,9 +386,7 @@ export function NeuInMoosburg() {
                 to={c.to}
                 className="group flex flex-col rounded-md border border-ink-line bg-white p-6 transition hover:border-red-500 hover:shadow-soft"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                  <Icon className="h-5 w-5" weight="regular" />
-                </span>
+                <Klecks icon={Icon} />
                 <h3 className="mt-5 card-title text-base text-ink">{c.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-ink-soft">{c.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-red-700">
@@ -453,7 +452,7 @@ function PersonalizationBanner() {
             </div>
             <button
               onClick={() => updateProfile({ newInTown: true })}
-              className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-cream hover:bg-red-700"
+              className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-semibold text-cream hover:bg-red-700"
             >
               Aktivieren
             </button>

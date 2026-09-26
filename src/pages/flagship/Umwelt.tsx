@@ -47,13 +47,13 @@ export function Umwelt() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Umwelt & Klima" }]}
-        variant="photo"
-        image="images/altstadt.jpg"
+        variant="foto-daneben"
+        image="images/stadt/efeuwand-9054-1200.webp"
         script="bis 2035 erneuerbar"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />
@@ -68,7 +68,7 @@ export function Umwelt() {
             <Sec id="konzept" icon={Leaf} accent="rb-5"
               title="Klimaschutz-Konzept"
               lead="Moosburg hat sich 2007 die Energiewende ins Stadtrats­buch geschrieben, bis 2035 soll der gesamte hier verbrauchte Energie­bedarf aus erneuerbaren Quellen kommen." />
-            <div className="grid gap-5 rounded-2xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div className="grid gap-5 rounded-xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
               <div>
                 <h3 className="card-title text-lg text-ink">Ziel 2035</h3>
                 <p className="mt-2 text-sm text-ink-soft">
@@ -184,7 +184,7 @@ export function Umwelt() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-rb-5/40 bg-rb-5/5 p-5"
+            <section className="rounded-xl border border-rb-5/40 bg-rb-5/5 p-5"
               style={{ borderColor: "color-mix(in srgb, var(--color-rb-5) 40%, transparent)",
                        backgroundColor: "color-mix(in srgb, var(--color-rb-5) 5%, transparent)" }}>
               <div className="eyebrow" style={{ color: "var(--color-rb-5)" }}>Ziel 2035</div>

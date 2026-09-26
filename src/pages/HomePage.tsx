@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarDots, MapPin, Clock } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
-import { RainbowStripe } from "@/components/RainbowStripe";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SearchField } from "@/components/SearchField";
 import { Reveal } from "@/components/Reveal";
+import { Klecks } from "@/components/Klecks";
 import {
   searchChips,
   topTiles,
@@ -22,17 +22,21 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16 lg:px-8 lg:py-24">
         <div className="relative">
           <div className="eyebrow text-red-700">Willkommen in</div>
-          <div className="relative mt-3">
+          {/* Ausnahme 1 A: die einzigen Versalien im ganzen Auftritt. Der
+              Ortsname steht hier als Signatur, nicht als Überschrift.
+              Die Handschrift misst sich in em an der H1 und sitzt deshalb
+              in ihr; overflow-hidden am Kopf schneidet nur den Schwung ab. */}
+          <h1 className="headline headline--versal relative mt-[0.85em] text-[3.5rem] leading-[0.95] text-ink sm:text-[4.5rem] lg:text-[5.5rem]">
             <span
               aria-hidden="true"
-              className="script-accent pointer-events-none absolute -top-6 left-0 select-none text-[5rem] leading-none text-gold-500/55 rotate-[-6deg] lg:-top-10 lg:text-[7rem]"
+              /* Eine Spur höher als die Kanon-Lage: die Versalien der H1 haben
+                 keine Unterlängen, der Schwung säße sonst mitten im Wort. */
+              className="script-accent pointer-events-none absolute -left-[0.05em] -top-[0.54em] origin-bottom-left -rotate-6 select-none whitespace-nowrap text-[1.45em] leading-none text-gold-500/55"
             >
               servus
             </span>
-            <h1 className="headline relative text-[3.5rem] leading-[0.95] text-ink sm:text-[4.5rem] lg:text-[5.5rem]">
-              Moosburg<br />an der Isar
-            </h1>
-          </div>
+            <span className="relative">Moosburg<br />an der Isar</span>
+          </h1>
           <p className="mt-8 max-w-lg text-lg leading-relaxed text-ink-soft">
             Was möchten Sie heute erledigen? Finden Sie Dienstleistungen, Veranstaltungen und
             Ansprechpartner, alles an einem Ort.
@@ -65,14 +69,12 @@ function Hero() {
               alt="Menschen spazieren durch die Moosburger Altstadt"
               className="aspect-[4/3] w-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/50 to-transparent" />
-            <RainbowStripe className="absolute bottom-0 left-0 right-0" />
-            <div className="absolute bottom-4 left-5 max-w-xs text-cream">
-              <div className="eyebrow text-gold-200">Drei-Rosen-Stadt</div>
-              <div className="mt-1 card-title text-base leading-tight text-cream">
-                1.250 Jahre Stadtgeschichte
-              </div>
-            </div>
+          </div>
+          {/* Unter dem Bild, nicht darauf: ein Verlauf über dem Foto kostet
+              das Bild und macht den Text trotzdem nicht sicher lesbar. */}
+          <div className="mt-3">
+            <div className="eyebrow text-gold-700">Drei-Rosen-Stadt</div>
+            <p className="mt-1 text-sm text-ink-soft">1.250 Jahre Stadtgeschichte</p>
           </div>
         </div>
       </div>
@@ -108,7 +110,7 @@ function TopTiles() {
       </Reveal>
 
       <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        {topTiles.map((tile) => {
+        {topTiles.map((tile, i) => {
           const Icon = tile.icon;
           return (
             <Link
@@ -121,16 +123,7 @@ function TopTiles() {
                   : "border-ink-line bg-white hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft",
               )}
             >
-              <span
-                className={cn(
-                  "grid h-11 w-11 place-items-center rounded-md transition",
-                  tile.accent
-                    ? "bg-gold-700 text-cream"
-                    : "bg-red-50 text-red-700 group-hover:bg-red-500 group-hover:text-cream",
-                )}
-              >
-                <Icon className="h-5 w-5" weight="regular" />
-              </span>
+              <Klecks icon={Icon} farbe={tile.accent ? "gold" : "rot"} lage={i} />
               <div>
                 <div className="card-title text-sm text-ink">{tile.title}</div>
                 <div className="mt-0.5 text-xs text-ink-muted">{tile.description}</div>
@@ -197,30 +190,34 @@ function News() {
           ))}
         </Reveal>
 
+        {/* Die einzige Hinweis-Fläche der Startseite. Rot-600 ist keine
+            Themenfarbe, sondern der Ausnahmeton für Jubiläen und besondere
+            Feste, höchstens einmal pro Seite. */}
         <Reveal delay={2} className="overflow-hidden rounded-md shadow-soft">
-          <div className="relative h-44 overflow-hidden">
-            <img
-              src={IMG("images/münster.jpg")}
-              alt="Kastulus-Münster"
-              className="h-full w-full object-cover transition duration-700 hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
-          </div>
-          <div className="relative bg-gold-200 px-6 py-6">
-            <h3 className="headline relative text-xl text-ink">
+          <img
+            src={IMG("images/stadt/muenster-rosen-8927-1200.webp")}
+            srcSet={`${IMG("images/stadt/muenster-rosen-8927-1200.webp")} 1200w, ${IMG("images/stadt/muenster-rosen-8927-2400.webp")} 2400w`}
+            sizes="(min-width: 1024px) 30vw, 100vw"
+            alt=""
+            className="h-44 w-full object-cover"
+          />
+          <div className="relative bg-red-600 px-6 py-6 text-cream">
+            <div className="eyebrow text-gold-200">Jubiläum</div>
+            <h3 className="headline relative mt-1 text-xl text-cream">
               1.250 Jahre Moosburg
             </h3>
-            <p className="mt-2 text-sm text-ink-soft leading-relaxed">
+            <p className="mt-2 text-sm leading-relaxed text-cream/90">
               Vom Klosterdorf zur modernen Stadt, die Jubiläums-Chronik erzählt auf 400 Seiten
               die bewegte Geschichte unserer Drei-Rosen-Stadt.
             </p>
             <Link
               to="/zu-besuch/geschichte"
-              className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-gold-700 px-4 py-2 text-sm font-semibold text-cream transition hover:-translate-y-0.5 hover:shadow-soft"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-cream px-4 py-2 text-sm font-semibold text-red-700 transition hover:-translate-y-0.5 hover:shadow-soft"
             >
               Mehr erfahren
               <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
+            <p className="mt-4 text-xs text-cream/70">Foto: Ben Arya Gruber</p>
           </div>
         </Reveal>
       </div>
@@ -286,7 +283,7 @@ function Events() {
                 <div className="font-display text-2xl leading-none">{e.day}</div>
               </div>
               <div>
-                <div className="mb-1 inline-block rounded-full border border-cream/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream/70">
+                <div className="mb-1 inline-block rounded-full border border-cream/20 px-2 py-0.5 text-[10px] font-semibold text-cream/70">
                   {e.category}
                 </div>
                 <h3 className="mt-1 card-title text-base text-cream line-clamp-2 group-hover:text-gold-200">
@@ -305,14 +302,13 @@ function Events() {
         <div className="mt-10">
           <Link
             to="/mein-moosburg/veranstaltungen"
-            className="inline-flex items-center gap-1.5 rounded-md border border-cream/25 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream transition hover:border-cream/60 hover:bg-cream/5"
+            className="inline-flex items-center gap-1.5 rounded-md border border-cream/25 bg-transparent px-5 py-2.5 text-sm font-semibold text-cream transition hover:border-cream/60 hover:bg-cream/5"
           >
             <CalendarDots className="h-4 w-4" weight="regular" />
             Alle Veranstaltungen
           </Link>
         </div>
       </div>
-      <RainbowStripe />
     </section>
   );
 }

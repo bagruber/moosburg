@@ -35,12 +35,12 @@ export function Wahlen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Wahlen" }]}
-        variant="red"
+        variant="band"
         script="Ihre Wahl"
+        farbe="nachtblau"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
@@ -151,7 +151,7 @@ export function Wahlen() {
             <Reveal>
               <SectionHeader eyebrow="Was als Nächstes ansteht" heading="Kommende Wahlen" />
             </Reveal>
-            <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
+            <ul className="divide-y divide-ink-line/60 overflow-hidden rounded-xl border border-ink-line/70 bg-cream">
               {kommendeWahlen.map((w) => (
                 <li key={w.wahl} className="flex items-center gap-3 px-5 py-4">
                   <CalendarDots className="h-5 w-5 shrink-0 text-red-700" weight="regular" />
@@ -227,7 +227,7 @@ function ToggleBtn({ active, onClick, children }: { active: boolean; onClick: ()
 
 function StatTile({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+    <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
       <div className="font-display text-3xl text-red-700 lg:text-4xl">{value}</div>
       <div className="mt-2 text-sm text-ink-soft">{label}</div>
     </div>

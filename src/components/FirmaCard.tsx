@@ -61,7 +61,7 @@ export function MoosburgCardBadge({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-md border border-turquoise-accent/40 bg-turquoise-accent/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-turquoise-accent",
+        "inline-flex items-center gap-1 rounded-md border border-turquoise-accent/40 bg-turquoise-accent/15 px-1.5 py-0.5 text-[10px] font-semibold   text-turquoise-accent",
         className,
       )}
       title="Akzeptiert die Moosburg-Card"
@@ -79,7 +79,7 @@ export function FairTradeBadge({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-md border border-rb-5/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider",
+        "inline-flex items-center gap-1 rounded-md border border-rb-5/40 px-1.5 py-0.5 text-[10px] font-semibold  ",
         className,
       )}
       style={{
@@ -102,7 +102,7 @@ export function MomaBadge({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-md border border-gold-500/40 bg-gold-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold-700",
+        "inline-flex items-center gap-1 rounded-md border border-gold-500/40 bg-gold-100 px-1.5 py-0.5 text-[10px] font-semibold   text-gold-700",
         className,
       )}
       title="Mitglied der Moosburg Marketing eG"
@@ -171,7 +171,7 @@ export function FirmaCard({
 
   // ── default ──────────────────────────────────────────────────────────
   return (
-    <article className={cn("rounded-2xl border border-ink-line/50 bg-white p-5", className)}>
+    <article className={cn("rounded-xl border border-ink-line/50 bg-white p-5", className)}>
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="card-title text-lg text-ink">{firma.name}</h3>
@@ -234,7 +234,7 @@ export function FirmaCard({
         <div className="mt-4 border-t border-ink-line/30 pt-3">
           <div className="mb-1.5 flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5 text-ink-muted" weight="regular" />
-            <span className="text-xs font-display uppercase tracking-wider text-ink-muted">
+            <span className="text-xs font-display text-ink-muted">
               Öffnungszeiten
             </span>
           </div>

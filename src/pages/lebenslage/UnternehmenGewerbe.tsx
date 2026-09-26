@@ -113,7 +113,7 @@ export function UnternehmenGewerbe() {
                 key={p.id}
                 onClick={() => setActive(p.id)}
                 className={cn(
-                  "flex flex-col items-start gap-2 rounded-2xl border p-4 text-left transition",
+                  "flex flex-col items-start gap-2 rounded-xl border p-4 text-left transition",
                   on ? "border-red-500 bg-red-500 text-cream shadow-lift" : "border-ink-line bg-cream text-ink hover:border-red-500/40",
                 )}
               >
@@ -140,7 +140,7 @@ export function UnternehmenGewerbe() {
                     href={e.to}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                    className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
                   >
                     <h3 className="card-title text-lg text-ink">{e.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
@@ -153,7 +153,7 @@ export function UnternehmenGewerbe() {
                   <Link
                     key={e.title}
                     to={e.to}
-                    className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                    className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
                   >
                     <h3 className="card-title text-lg text-ink">{e.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
@@ -170,7 +170,7 @@ export function UnternehmenGewerbe() {
       </section>
 
       {/* ── Standortvorteile ──────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Warum Moosburg"
@@ -188,7 +188,7 @@ export function UnternehmenGewerbe() {
 
       {/* ── CTA + Verwandtes ──────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-7">
+        <div className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-7">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="eyebrow text-gold-700">Schnell erledigt</div>
@@ -222,7 +222,7 @@ export function UnternehmenGewerbe() {
 
 function VorteilCard({ icon: Icon, title, body }: { icon: Icon; title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-cream/20 bg-cream/5 p-5">
+    <div className="rounded-xl border border-cream/20 bg-cream/5 p-5">
       <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>
       <p className="mt-1 text-sm text-cream/75">{body}</p>

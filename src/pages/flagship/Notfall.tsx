@@ -153,7 +153,7 @@ function AkutButton({ item }: { item: AkutItem }) {
     <a
       href={`tel:${dial}`}
       className={cn(
-        "group flex items-center gap-4 rounded-2xl border-2 p-5 transition-shadow hover:shadow-soft",
+        "group flex items-center gap-4 rounded-xl border-2 p-5 transition-shadow hover:shadow-soft",
         isRed
           ? "border-red-500 bg-red-500 text-cream hover:bg-red-600"
           : "border-ink bg-cream text-ink hover:bg-cream-dark",
@@ -161,7 +161,7 @@ function AkutButton({ item }: { item: AkutItem }) {
     >
       <Icon className="h-9 w-9 shrink-0" weight="regular" />
       <div className="min-w-0">
-        <div className={cn("text-xs font-display uppercase tracking-wider",
+        <div className={cn("text-xs font-display  ",
           isRed ? "text-cream/80" : "text-ink-muted")}>
           {item.label}
         </div>
@@ -243,10 +243,8 @@ export function Notfall() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro="Die wichtigsten Nummern auf einen Blick, gegliedert nach Situation. Im akuten Notfall: oben 112 oder 110 tippen."
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Notdienste & Notfallnummern" }]}
       />
 

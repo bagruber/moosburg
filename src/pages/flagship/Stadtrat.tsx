@@ -31,13 +31,13 @@ export function Stadtrat() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Stadtrat" }]}
-        variant="red"
-        sketch="sketches/rathausC.svg"
+        variant="band"
         script="gemeinsam"
+        farbe="tiefrot"
+        bicolor="sketches/rathausD"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
@@ -69,7 +69,7 @@ export function Stadtrat() {
             </p>
           </div>
 
-          <div className="rounded-md bg-gradient-to-br from-red-700 to-red-900 p-6 text-cream shadow-lift">
+          <div className="rounded-md bg-thema-tiefrot p-6 text-cream shadow-lift">
             <div className="flex items-center gap-4">
               <img
                 src={IMG("images/stadtrat/mader.webp")}
@@ -129,7 +129,7 @@ export function Stadtrat() {
                   <div className="text-sm text-ink">{s.titel}</div>
                   <div className="mt-0.5 text-xs text-ink-muted">{s.ort}</div>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-ink-muted">
+                <span className="text-xs text-ink-muted">
                   {s.typ === "stadtrat" ? "Plenum" : "Ausschuss"}
                 </span>
               </div>

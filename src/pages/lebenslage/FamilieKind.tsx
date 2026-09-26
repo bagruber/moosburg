@@ -156,7 +156,7 @@ export function FamilieKind() {
                 key={s.id}
                 onClick={() => setActive(s.id)}
                 className={cn(
-                  "group flex flex-col items-start gap-2 rounded-2xl border p-4 text-left transition",
+                  "group flex flex-col items-start gap-2 rounded-xl border p-4 text-left transition",
                   isActive
                     ? "border-red-500 bg-red-500 text-cream shadow-lift"
                     : "border-ink-line bg-cream text-ink hover:border-red-500/40",
@@ -215,7 +215,7 @@ export function FamilieKind() {
       </section>
 
       {/* ── Immer da ──────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="aubergine">
         <Reveal>
           <SectionHeader
             eyebrow="Unabhängig vom Alter"
@@ -303,7 +303,7 @@ function AlwaysCard({ icon: Icon, title, body, to }: { icon: Icon; title: string
   return (
     <Link
       to={to}
-      className="group flex flex-col rounded-2xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
+      className="group flex flex-col rounded-xl border border-cream/20 bg-cream/5 p-5 transition hover:bg-cream/10"
     >
       <Icon className="h-6 w-6 text-gold-200" weight="light" />
       <h3 className="mt-3 card-title text-lg text-cream">{title}</h3>

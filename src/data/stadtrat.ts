@@ -38,8 +38,9 @@ export const gremien: Record<SitzungsTyp, string> = {
   hvfa: "Hauptverwaltungs- und Finanzausschuss",
 };
 
-const WOCHENTAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
-const MONATE = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+const WOCHENTAGE = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+// Monate ausgeschrieben: „7. September 2026“, nicht „7. Sep 2026“.
+const MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
 /** "Mo, 7. Sep 2026" — ohne Locale-Abhängigkeit, damit der Build reproduzierbar bleibt. */
 export function formatTermin(iso: string): string {

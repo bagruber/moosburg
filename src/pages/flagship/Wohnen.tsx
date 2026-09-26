@@ -39,13 +39,13 @@ export function Wohnen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Wohnen" }]}
-        variant="photo"
-        image="images/altstadt.jpg"
+        variant="foto-daneben"
+        image="images/stadt/haus-geranien-9072-1200.webp"
         script="zuhause in Moosburg"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />
@@ -125,7 +125,7 @@ export function Wohnen() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Lebenslagen</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
@@ -205,7 +205,7 @@ export function Wohnen() {
 
             {/* Legende vor der Firmenliste */}
             <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
               </span>
@@ -279,7 +279,7 @@ function BigLink({ to, icon: Icon, accent, title, body }: {
   const color = `var(--color-${accent})`;
   return (
     <Link to={to}
-      className="group flex items-start gap-3 rounded-2xl border border-ink-line/50 bg-white p-5 transition hover:border-red-500">
+      className="group flex items-start gap-3 rounded-xl border border-ink-line/50 bg-white p-5 transition hover:border-red-500">
       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
         style={{ backgroundColor: `${color}1A`, color }} aria-hidden="true">
         <Icon className="h-5 w-5" weight="regular" />

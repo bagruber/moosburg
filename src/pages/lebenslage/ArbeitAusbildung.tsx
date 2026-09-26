@@ -114,7 +114,7 @@ export function ArbeitAusbildung() {
                   href={e.to}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                  className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
                 >
                   <h3 className="card-title text-lg text-ink">{e.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
@@ -127,7 +127,7 @@ export function ArbeitAusbildung() {
                 <Link
                   key={e.title}
                   to={e.to}
-                  className="group flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+                  className="group flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
                 >
                   <h3 className="card-title text-lg text-ink">{e.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{e.desc}</p>

@@ -113,13 +113,13 @@ export function Essen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Essen & Trinken" }]}
-        variant="photo"
-        image="images/münster.jpg"
+        variant="foto-daneben"
+        image="images/stadt/eiscafe-markisen-quer-9018-1200.webp"
         script="genießen in Moosburg"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -131,7 +131,7 @@ export function Essen() {
           <div className="space-y-16">
             {/* Legend up top, in context */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Moosburg Marketing eG</span>
               </span>
@@ -190,7 +190,7 @@ export function Essen() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Quick-Links</div>
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
@@ -258,7 +258,7 @@ export function Essen() {
       {/* ─────────────────────────────────────────────────────────────────
          CLOSER: Fair-Trade-Gastronomie als rote Marketing-Sektion
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red" sketch="sketches/pubD.svg">
+      <SpotlightSection tone="tannengruen" sketch="sketches/pubD.svg" sketchTone="gold200">
         <Reveal>
           <SectionHeader
             eyebrow="Fair genießen"

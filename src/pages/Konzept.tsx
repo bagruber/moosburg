@@ -27,6 +27,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { Rose, RoseSpinner } from "@/components/BrandMark";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
+import { Klecks } from "@/components/Klecks";
 import {
   MoosburgMap,
   layerConfig,
@@ -262,7 +263,6 @@ export function Konzept() {
         title="Konzept, Design und Technik"
         intro="Diese Seite fasst zusammen, worauf der Prototyp beruht, wie das Designsystem funktioniert und welche Funktionen ihn tragen. Sie richtet sich an alle, die am Projekt mitarbeiten: Entwicklung, Gestaltung, Text und die Stadt. Alle Services hier sind Demonstrationen ohne echtes Backend."
         crumbs={[{ label: "Konzept & Design" }]}
-        variant="photo"
         image="images/münster.jpg"
         script="hinter den Kulissen"
       />
@@ -304,7 +304,7 @@ export function Konzept() {
             </p>
           </Reveal>
           <Reveal delay={1}>
-            <div className="grid grid-cols-3 gap-4 rounded-2xl border border-ink-line/70 bg-cream-dark p-6">
+            <div className="grid grid-cols-3 gap-4 rounded-xl border border-ink-line/70 bg-cream-dark p-6">
               {[
                 ["2", "Websites werden zu einer"],
                 ["4", "Haupt-Einstiege"],
@@ -333,7 +333,7 @@ export function Konzept() {
           <div className="grid gap-5 sm:grid-cols-2">
             {personas.map((p, i) => (
               <Reveal key={p.name} delay={(i % 2) as 0 | 1}>
-                <article className="h-full rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:shadow-soft">
+                <article className="h-full rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:shadow-soft">
                   <div className="flex items-center gap-4">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-red-500 text-cream">
                       <p.icon className="h-6 w-6" weight="light" />
@@ -404,7 +404,7 @@ export function Konzept() {
         {/* Farben + Rainbow + Rose */}
         <div className="grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+            <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
               <div className="eyebrow mb-4 flex items-center gap-2 text-ink-muted">
                 <Rose className="h-3 w-3 text-red-600" /> Farb-Tokens
               </div>
@@ -443,7 +443,7 @@ export function Konzept() {
 
           {/* Typografie */}
           <Reveal delay={1}>
-            <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+            <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
               <div className="eyebrow mb-4 flex items-center gap-2 text-ink-muted">
                 <Rose className="h-3 w-3 text-red-600" /> Typografie
               </div>
@@ -535,10 +535,10 @@ export function Konzept() {
         {/* Buttons + Ikonografie */}
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+            <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
               <div className="eyebrow mb-4 text-ink-muted">Buttons</div>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream">
+                <span className="inline-flex items-center gap-2 rounded-lg bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream">
                   Primär
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-lg border border-red-500 px-5 py-2.5 text-sm font-semibold text-red-700">
@@ -562,7 +562,7 @@ export function Konzept() {
             </div>
           </Reveal>
           <Reveal delay={1}>
-            <div className="rounded-2xl border border-ink-line/70 bg-cream p-6">
+            <div className="rounded-xl border border-ink-line/70 bg-cream p-6">
               <div className="eyebrow mb-4 text-ink-muted">Ikonografie (Tabler, stroke 1.75)</div>
               <div className="flex flex-wrap items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-md bg-red-500 text-cream">
@@ -577,9 +577,7 @@ export function Konzept() {
                 >
                   <Robot className="h-4.5 w-4.5" weight="regular" />
                 </span>
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-red-50 text-red-700">
-                  <Path className="h-4.5 w-4.5" weight="regular" />
-                </span>
+                <Klecks icon={Path} dicht />
               </div>
               <p className="mt-4 text-xs text-ink-muted">
                 Drei Badge-Stile: rotes Quadrat für Service-Tiles, goldener Kreis für Illustration, getönte
@@ -630,7 +628,7 @@ export function Konzept() {
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {lebenslagen[ll].steps.map(([src, ti, de], i) => (
                 <div key={i} className="rounded-xl border border-ink-line/70 bg-cream-dark p-4">
-                  <div className="flex items-center gap-1.5 text-[0.66rem] font-bold uppercase tracking-wider text-gold-700">
+                  <div className="flex items-center gap-1.5 text-[0.66rem] font-bold text-gold-700">
                     {src}
                   </div>
                   <div className="mt-1.5 flex items-center gap-2 font-semibold text-ink">
@@ -657,7 +655,7 @@ export function Konzept() {
             <div className="flex items-center gap-2 rounded-full border border-ink-line bg-cream px-4 py-2.5">
               <MagnifyingGlass className="h-5 w-5 text-ink-muted" weight="regular" />
               <span className="flex-1 text-sm text-ink">{queryLabel[query]}</span>
-              <span className="rounded-full bg-red-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cream">
+              <span className="rounded-full bg-red-500 px-4 py-1.5 text-xs font-semibold text-cream">
                 Fragen
               </span>
             </div>
@@ -680,8 +678,8 @@ export function Konzept() {
             </div>
 
             {/* Generierter Container */}
-            <div className="mt-5 overflow-hidden rounded-2xl border border-dashed border-gold-500/60 bg-cream">
-              <div className="flex items-center justify-between border-b border-gold-500/40 bg-gold-100/50 px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-wider text-ink-soft">
+            <div className="mt-5 overflow-hidden rounded-xl border border-dashed border-gold-500/60 bg-cream">
+              <div className="flex items-center justify-between border-b border-gold-500/40 bg-gold-100/50 px-5 py-2.5 text-[0.7rem] font-bold text-ink-soft">
                 <span>Generierte Seite, Beispiel</span>
                 <span className="text-ink-muted">im Designsystem gerendert</span>
               </div>
@@ -895,7 +893,7 @@ export function Konzept() {
                     }
                   }}
                   className={
-                    "rounded-lg border px-4 py-2.5 text-sm font-semibold uppercase tracking-wider transition " +
+                    "rounded-lg border px-4 py-2.5 text-sm font-semibold   transition " +
                     (reportMode
                       ? "border-red-500 bg-red-500 text-cream"
                       : "border-red-500 text-red-700 hover:bg-red-500/5")
@@ -910,7 +908,7 @@ export function Konzept() {
 
                 {reportMode && pin && (
                   <div className="rounded-xl border border-ink-line bg-cream-dark p-4">
-                    <div className="text-[0.66rem] font-bold uppercase tracking-wider text-red-700">Schritt 2, Details</div>
+                    <div className="text-[0.66rem] font-bold text-red-700">Schritt 2, Details</div>
                     <div className="relative mt-2">
                       <select className="w-full appearance-none rounded-md border border-ink-line bg-cream py-2 pl-3 pr-9 text-sm text-ink">
                         <option>Straßenschaden (Schlagloch)</option>
@@ -976,8 +974,8 @@ export function Konzept() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               {/* Static */}
-              <div className="overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
-                <div className="flex items-center gap-2 bg-cream-dark px-4 py-2 text-[0.66rem] font-bold uppercase tracking-wider text-gold-700">
+              <div className="overflow-hidden rounded-xl border border-ink-line/70 bg-cream">
+                <div className="flex items-center gap-2 bg-cream-dark px-4 py-2 text-[0.66rem] font-bold text-gold-700">
                   <Rose className="h-3 w-3" /> Statische Smart Card, redaktionell
                 </div>
                 <div className="p-5">
@@ -1005,8 +1003,8 @@ export function Konzept() {
               </div>
 
               {/* Dynamic */}
-              <div className="overflow-hidden rounded-2xl border border-ink-line/70 bg-cream">
-                <div className="flex items-center gap-2 bg-red-500/10 px-4 py-2 text-[0.66rem] font-bold uppercase tracking-wider text-red-700">
+              <div className="overflow-hidden rounded-xl border border-ink-line/70 bg-cream">
+                <div className="flex items-center gap-2 bg-red-500/10 px-4 py-2 text-[0.66rem] font-bold text-red-700">
                   <UserCheck className="h-3.5 w-3.5" weight="bold" /> Dynamische Smart Card, über Profil
                 </div>
                 <div className="p-5">
@@ -1064,17 +1062,15 @@ export function Konzept() {
         <div className="grid gap-4 lg:grid-cols-2">
           {technik.map((t, i) => (
             <Reveal key={t.title} delay={(i % 2) as 0 | 1}>
-              <div className="h-full rounded-2xl border border-ink-line/70 bg-cream p-6">
+              <div className="h-full rounded-xl border border-ink-line/70 bg-cream p-6">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-red-50 text-red-700">
-                      <t.icon className="h-5 w-5" weight="regular" />
-                    </span>
+                    <Klecks icon={t.icon} />
                     <h3 className="card-title text-base text-ink">{t.title}</h3>
                   </div>
                   <span
                     className={
-                      "shrink-0 rounded-full border px-2.5 py-0.5 text-[0.66rem] font-bold uppercase tracking-wider " +
+                      "shrink-0 rounded-full border px-2.5 py-0.5 text-[0.66rem] font-bold   " +
                       stufeStyle[t.stufe]
                     }
                   >
@@ -1134,12 +1130,12 @@ function FeatureBlock({
         <h3 className="headline mt-3 text-2xl text-ink sm:text-3xl">{title}</h3>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-soft">{desc}</p>
 
-        <div className="mt-7 rounded-2xl border border-ink-line/70 bg-cream p-5 shadow-soft sm:p-6">
+        <div className="mt-7 rounded-xl border border-ink-line/70 bg-cream p-5 shadow-soft sm:p-6">
           {children}
         </div>
 
         <div className="mt-4 flex gap-3 rounded-xl border border-gold-500/30 bg-gold-100/40 p-4 text-sm text-ink-soft">
-          <span className="shrink-0 pt-0.5 text-[0.66rem] font-bold uppercase tracking-wider text-gold-700">
+          <span className="shrink-0 pt-0.5 text-[0.66rem] font-bold text-gold-700">
             Technik
           </span>
           <span>{tech}</span>
@@ -1152,7 +1148,7 @@ function FeatureBlock({
 function QSources({ text }: { text: string }) {
   return (
     <div className="mt-5 border-t border-ink-line/70 pt-3 text-xs text-ink-muted">
-      <span className="font-semibold uppercase tracking-wider text-ink-soft">Quellen</span>
+      <span className="font-semibold text-ink-soft">Quellen</span>
       <br />
       {text}
     </div>
@@ -1178,7 +1174,7 @@ function ComboTile({
 }) {
   return (
     <div>
-      <div className={`rounded-2xl p-6 ${ground} ${border ? "border border-ink-line/70" : ""}`}>
+      <div className={`rounded-xl p-6 ${ground} ${border ? "border border-ink-line/70" : ""}`}>
         <div className={`eyebrow flex items-center gap-2 ${eyebrow}`}>
           <Rose className="h-3 w-3" /> Eyebrow
         </div>
@@ -1236,10 +1232,10 @@ function ThemeCover({
   return (
     <Link
       to={to}
-      className={`group relative flex min-h-[220px] flex-col justify-end overflow-hidden rounded-2xl p-5 text-cream shadow-soft ${bg}`}
+      className={`group relative flex min-h-[220px] flex-col justify-end overflow-hidden rounded-xl p-5 text-cream shadow-soft ${bg}`}
     >
       <span className="pointer-events-none absolute inset-0 opacity-60" style={motifStyle} aria-hidden="true" />
-      <span className="relative text-[0.66rem] font-bold uppercase tracking-[0.14em] text-cream/85">{kicker}</span>
+      <span className="relative text-[0.66rem] font-bold tracking-[0.14em] text-cream/85">{kicker}</span>
       <span className="headline relative mt-2 text-xl leading-tight">{title}</span>
       <span className="relative mt-2 max-w-[26ch] text-sm text-cream/90">{text}</span>
       <span className="relative mt-3 inline-flex items-center gap-1 text-sm font-medium">

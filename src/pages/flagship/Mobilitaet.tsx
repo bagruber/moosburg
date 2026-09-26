@@ -25,6 +25,7 @@ import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
+import { Klecks } from "@/components/Klecks";
 import {
   MoosburgMap,
   layerConfig,
@@ -132,13 +133,13 @@ export function Mobilitaet() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Mobilität & Verkehr" }]}
-        variant="photo"
-        image="images/brücke.jpg"
+        variant="foto-daneben"
+        image="images/stadt/eiscafe-haltestelle-9025-1200.webp"
         script="bewegt durch die Stadt"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />
@@ -187,7 +188,7 @@ export function Mobilitaet() {
             <MoosburgMap
               pins={MAP_PINS}
               visibleLayers={visibleLayers}
-              className="mt-4 h-[420px] overflow-hidden rounded-2xl border border-ink-line/50"
+              className="mt-4 h-[420px] overflow-hidden rounded-xl border border-ink-line/50"
             />
 
             {/* ── Baustellen ─────────────────────────────────────── */}
@@ -203,9 +204,7 @@ export function Mobilitaet() {
                     rel="noreferrer"
                     className="group flex items-start gap-4 rounded-xl border border-ink-line/50 bg-white p-4 transition hover:border-red-500"
                   >
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-red-50 text-red-700">
-                      <Warning className="h-5 w-5" weight="regular" />
-                    </span>
+                    <Klecks icon={Warning} />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="card-title text-base text-ink">{b.strasse}</h3>
@@ -301,7 +300,7 @@ export function Mobilitaet() {
 
             {/* ── Legende oben, vor den Anbieter-Sektionen ─────────── */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-              <span className="font-display uppercase tracking-wider">Legende:</span>
+              <span className="font-display">Legende:</span>
               <span className="inline-flex items-center gap-1.5">
                 <MomaBadge /> <span>Mitglied der Moosburg Marketing eG</span>
               </span>
@@ -331,7 +330,7 @@ export function Mobilitaet() {
 
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Mängel melden</div>
               <p className="mt-2 text-sm text-ink-soft">
                 Schlagloch, defekte Straßen­laterne, gefährliche Stelle?

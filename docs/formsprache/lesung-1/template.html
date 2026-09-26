@@ -1,0 +1,907 @@
+<title>Website-Konzept, erste Lesung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Eine helle Welt mit Absicht: Die Seite zeigt Farbwerte des Kanons, und der
+   Dunkelmodus ist dort noch nicht entschieden. Alle Farben sind explizit gesetzt. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-700:#a50d24;--rot-900:#6d0818;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-600:#967a40;--gold-700:#6e5a30;
+  --tiefrot:#6d0818;--tannengruen:#1f3b2d;--petrol:#123b4a;--erdbraun:#4a2a17;--nachtblau:#26295e;--aubergine:#3f2248;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --bahnhof-t:url({{IMG:../moosburg-design/assets/bahnhofA-tinte.webp}});
+  --bahnhof-f:url({{IMG:../moosburg-design/assets/bahnhofA-farbe.webp}});
+  --hirschen-t:url({{IMG:public/sketches/hirschenC-tinte.webp}});
+  --hirschen-f:url({{IMG:public/sketches/hirschenC-farbe.webp}});
+  --rose:url({{IMG:public/rose.svg}});
+  --rathaus:url({{IMG:public/sketches/rathausC.svg}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-inline:20px;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.3rem}
+h4{font-size:1.05rem}
+p{margin:0}
+a{color:var(--rot-700)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.stack>*+*{margin-top:1rem}
+.klein{font-size:.9rem;color:var(--tinte-weich)}
+code{font-size:.88em;background:var(--creme-dunkel);padding:.05em .35em;border-radius:4px}
+.zahl{font-variant-numeric:lining-nums tabular-nums}
+
+/* Kopf der Seite */
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.kat{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.kat svg{width:16px;height:16px;fill:currentColor}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-weight:400;font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>h1,.ueber>h2,.ueber>h3,.ueber>div{position:relative}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.anker{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:40px}
+.anker h3{font-size:1.1rem}
+.anker p{font-size:.95rem;color:var(--tinte-weich);margin-top:.4rem}
+.inhalt{margin-top:36px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt a:hover{color:var(--rot-700)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:3.2em}
+
+/* Punkte */
+.punkt{padding-block:64px 24px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.4rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.beruehrt{font-size:.9rem;color:var(--tinte-weich);margin-top:.6rem}
+.beruehrt b{color:var(--tinte)}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;margin-block:24px}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;margin-block:24px}
+figure{margin:0}
+figcaption{font-size:.88rem;color:var(--tinte-weich);margin-top:.55rem}
+figcaption b{color:var(--tinte)}
+.rahmen{border:1px solid var(--linie);border-radius:8px;overflow:hidden;background:var(--creme);position:relative}
+.rahmen img{display:block;width:100%}
+.schild{position:absolute;top:10px;left:10px;z-index:3;font-size:.78rem;font-weight:600;background:var(--weiss);color:var(--tinte);border:1px solid var(--linie);border-radius:999px;padding:.1rem .6rem}
+.schild.neu{background:var(--tinte);color:var(--creme);border-color:var(--tinte)}
+.variante{display:inline-flex;align-items:baseline;gap:.5rem;font-weight:600}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem}
+.geparkt{font-size:.78rem;font-weight:600;color:var(--tinte-matt);border:1px solid var(--linie);border-radius:999px;padding:.05rem .55rem}
+.regeln{padding-left:1.1rem;margin:0}
+.regeln li{margin-block:.35rem}
+.frage{margin-top:22px;padding:14px 18px;border:1px solid var(--gold-200);background:var(--gold-100);border-radius:8px;font-size:.95rem}
+.frage b{color:var(--gold-700)}
+.tabelle{overflow-x:auto;margin-block:20px}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:640px}
+th,td{text-align:left;vertical-align:top;padding:.55rem .7rem;border-bottom:1px solid var(--linie)}
+th{font-weight:600;color:var(--tinte-weich);font-size:.84rem}
+.swatch{display:inline-block;width:1.4rem;height:1.4rem;border-radius:4px;vertical-align:-.35rem;margin-right:.45rem}
+
+/* Klecks */
+.klecks{position:relative;display:inline-grid;place-items:center;width:46px;height:46px;flex:none}
+.klecks.dicht{width:38px;height:38px}
+.klecks>svg.form{position:absolute;inset:0;width:100%;height:100%}
+.klecks>svg.ic{position:relative;width:48%;height:48%}
+
+/* Attrappen: Kacheln */
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:18px;background:var(--creme)}
+.kachel{background:var(--weiss);border:1px solid var(--linie);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.kachel b{font-weight:600;font-size:.95rem;display:block;line-height:1.25}
+.kachel span{font-size:.8rem;color:var(--tinte-matt);display:block;line-height:1.35}
+.kachel.gelb{background:var(--gold-100);border-color:var(--gold-500)}
+.register{background:var(--creme);padding:4px 16px}
+.zeile{display:flex;align-items:center;gap:12px;padding-block:11px;border-bottom:1px solid var(--linie)}
+.zeile:last-child{border-bottom:0}
+.zeile .t{flex:1;min-width:0}
+.zeile b{display:block;font-weight:600;font-size:.95rem;line-height:1.25}
+.zeile span{display:block;font-size:.8rem;color:var(--tinte-matt)}
+svg.pfeil{width:16px;height:16px;flex:none;fill:var(--tinte-matt)}
+.zeile.gelb{background:var(--gold-100);margin-inline:-16px;padding-inline:16px}
+
+/* Attrappen: Kategoriezeile */
+.news{background:var(--creme);padding:6px 20px}
+.news article{padding-block:14px;border-bottom:1px solid var(--linie)}
+.news article:last-child{border:0}
+.news .kz{display:flex;align-items:center;gap:.4rem;font-size:.84rem;font-weight:600}
+.news .kz svg{width:16px;height:16px;fill:currentColor}
+.news .kz time{margin-left:auto;font-weight:400;color:var(--tinte-matt)}
+.news h4{font-family:var(--sans);font-weight:600;font-size:1rem;margin-top:.3rem}
+.heute-news{font-family:Inter,system-ui,sans-serif}
+.heute-news .eb{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rot-700);display:flex}
+.heute-news .eb time{margin-left:auto;letter-spacing:0;text-transform:none;color:#888;font-weight:400}
+.heute-news h4{font-family:Inter,system-ui,sans-serif}
+
+/* Attrappen: Band */
+.band{padding:26px 24px 96px;color:var(--creme);position:relative;overflow:hidden}
+.band .brot{font-size:.78rem;opacity:.85}
+.band h3{font-size:1.7rem;color:var(--creme);margin-top:.9rem}
+.band .ueber>.handschrift{color:rgb(232 213 163/.6)}
+.band p{font-size:.92rem;max-width:44ch;margin-top:.6rem;color:rgb(250 247 242/.92)}
+.ragen{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:-72px 18px 18px;position:relative;z-index:2}
+.ragen .kachel{box-shadow:0 2px 12px rgb(0 0 0/.07)}
+.wz{position:absolute;right:-30px;bottom:-20px;width:62%;height:120%;background:var(--gold-200);opacity:.3;-webkit-mask:var(--rathaus) no-repeat right bottom/contain;mask:var(--rathaus) no-repeat right bottom/contain;pointer-events:none}
+
+/* Zeichnung aus zwei Schablonen */
+.zeichnung{position:relative;aspect-ratio:1200/738}
+.zeichnung.hirschen{aspect-ratio:1200/748}
+.zeichnung>i{position:absolute;inset:0;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.bahnhof>.f{-webkit-mask-image:var(--bahnhof-f);mask-image:var(--bahnhof-f)}
+.bahnhof>.t{-webkit-mask-image:var(--bahnhof-t);mask-image:var(--bahnhof-t)}
+.hirschen>.f{-webkit-mask-image:var(--hirschen-f);mask-image:var(--hirschen-f)}
+.hirschen>.t{-webkit-mask-image:var(--hirschen-t);mask-image:var(--hirschen-t)}
+.voll>.f{filter:url(#voll)}
+.kopfzeichnung{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:end;gap:10px;padding:24px 0 0 24px}
+.kopfzeichnung .titel{padding-bottom:28px}
+.kopfzeichnung h3{font-size:1.6rem}
+.kopfzeichnung p{font-size:.9rem;margin-top:.5rem}
+.brot{font-size:.78rem;color:var(--tinte-matt)}
+
+/* Attrappen: Seitenköpfe mit Foto */
+.fotokopf-c1{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);min-height:300px;background:var(--creme)}
+.fotokopf-c1 .titel{padding:26px 22px;align-self:center}
+.fotokopf-c1 img{height:100%;object-fit:cover}
+.fotokopf-c2 .band{padding-bottom:150px}
+.fotokopf-c2 .foto{margin:-130px 18px 0;position:relative;z-index:2;border-radius:8px;overflow:hidden}
+.fotokopf-c2 .foto img{aspect-ratio:16/7;object-fit:cover}
+.fotokopf-c2 .nach{padding:16px 22px 22px;font-size:.88rem;color:var(--tinte-weich)}
+.credit{font-size:.72rem;color:var(--tinte-matt);padding:6px 22px 0}
+
+/* Flächenfolge */
+.folgen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:26px;margin-block:24px}
+.folge{display:flex;flex-direction:column;border:1px solid var(--linie);border-radius:8px;overflow:hidden;background:var(--weiss)}
+.folge>div{display:flex;align-items:center;padding:0 12px;font-size:.8rem;min-height:30px}
+.folge .st{min-height:4px;padding:0;background:linear-gradient(90deg,#e91e8c 0 11.11%,#e5202e 0 22.22%,#f4830a 0 33.33%,#f5d400 0 44.44%,#0a9e4c 0 55.55%,#009ac7 0 66.66%,#3b3f9a 0 77.77%,#8b4a2a 0 88.88%,#1a1a1a 0)}
+.folge .d{color:var(--creme)}
+.folge .h{color:var(--tinte)}
+.folge .warn{outline:2px dashed var(--rot-500);outline-offset:-2px}
+.folge h4{font-family:var(--sans);font-weight:600;font-size:.9rem;padding:10px 12px;border-bottom:1px solid var(--linie);background:var(--creme)}
+
+/* Notiz */
+.notizfeld{background:var(--creme);padding:26px 22px 22px;position:relative}
+.alter{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:14px}
+.alter div{border:1px solid var(--linie);background:var(--weiss);border-radius:8px;padding:10px 12px;font-size:.85rem}
+.alter div b{display:block;font-size:.92rem}
+.alter div:first-child{border-color:var(--rot-500);background:var(--rot-50)}
+.notiz{position:absolute;font-family:var(--script);color:var(--gold-700);font-size:1.9rem;line-height:1;transform:rotate(-4deg);white-space:nowrap}
+.notiz svg{position:absolute;overflow:visible}
+
+/* Telefon */
+.telefon{width:300px;max-width:100%;margin-inline:auto;border:1px solid var(--linie);border-radius:26px;overflow:hidden;background:var(--creme);display:flex;flex-direction:column;height:560px;box-shadow:0 4px 24px rgb(0 0 0/.10)}
+.telefon .kopf{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--linie);background:var(--creme)}
+.telefon .kopf .marke{font-family:var(--serif);font-weight:700;font-size:.95rem;flex:1}
+.telefon .kopf svg{width:20px;height:20px;fill:var(--tinte)}
+.telefon .such{margin:12px 14px 0;border:1px solid var(--linie);border-radius:8px;background:var(--weiss);padding:8px 10px;font-size:.8rem;color:var(--tinte-matt);display:flex;gap:6px;align-items:center}
+.telefon .such svg{width:15px;height:15px;fill:var(--tinte-matt)}
+.telefon .inhaltm{flex:1;overflow:hidden;padding:14px 14px 0}
+.telefon .inhaltm h4{font-size:1.25rem}
+.telefon .tabs{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--linie);background:var(--weiss);padding:6px 2px 10px}
+.telefon .tabs div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.62rem;line-height:1.15;text-align:center;color:var(--tinte-weich)}
+.telefon .tabs svg{width:20px;height:20px;fill:currentColor}
+.telefon .tabs .ic{display:grid;place-items:center;width:46px;height:26px;border-radius:999px}
+.telefon .tabs .an{color:var(--rot-700);font-weight:600}
+.telefon .tabs .an .ic{background:var(--rot-50)}
+.stripe4{height:4px;background:linear-gradient(90deg,#e91e8c 0 11.11%,#e5202e 0 22.22%,#f4830a 0 33.33%,#f5d400 0 44.44%,#0a9e4c 0 55.55%,#009ac7 0 66.66%,#3b3f9a 0 77.77%,#8b4a2a 0 88.88%,#1a1a1a 0)}
+
+/* Status mit Rose */
+.status{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem;font-weight:600;margin-right:1.2rem}
+.status i{width:16px;height:16px;-webkit-mask:var(--rose) center/contain no-repeat;mask:var(--rose) center/contain no-repeat}
+
+/* Themenseiten */
+.gast{border:1px solid var(--linie);border-radius:8px;background:var(--weiss);overflow:hidden;display:flex;flex-direction:column}
+.gast .buehne{min-height:170px;display:grid;place-items:center;padding:20px}
+.gast .erkl{padding:14px 16px 16px;border-top:1px solid var(--linie);font-size:.9rem}
+.gast .erkl h4{margin-bottom:.3rem}
+.strassenschild{background:#26295e;color:#fff;border:3px solid #fff;outline:1px solid #26295e;border-radius:4px;padding:.25rem 1.1rem;font-family:var(--sans);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
+.marke-post{position:relative;width:150px;height:118px;background:#fff;padding:9px;box-shadow:0 1px 3px rgb(0 0 0/.15)}
+.marke-post:before{content:"";position:absolute;inset:-4px;border:6px dotted var(--creme);pointer-events:none}
+.marke-post>div{height:100%;background:var(--aubergine);color:var(--creme);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between}
+.marke-post b{font-family:var(--serif);font-size:1.05rem;line-height:1.1}
+.marke-post span{font-size:.72rem;opacity:.9}
+.etikett{position:relative;background:var(--gold-100);border:1px solid var(--gold-500);border-radius:6px 22px 22px 6px;padding:.6rem 2.2rem .6rem 1rem;font-size:.9rem;color:var(--tannengruen)}
+.etikett:after{content:"";position:absolute;right:12px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--creme);border:1px solid var(--gold-500)}
+.etikett b{display:block;font-family:var(--serif);font-size:1.05rem}
+.turmzahl{font-family:var(--serif);font-weight:600;font-size:3.4rem;line-height:1}
+.turmzahl small{font-size:1.2rem;margin-left:.15rem}
+
+/* Kanon-Ergänzungen, Fragen */
+.kanon{display:grid;gap:0;margin-top:20px}
+.kanon article{display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:4px 16px;padding-block:18px;border-bottom:1px solid var(--linie)}
+.kanon .k{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--gold-700)}
+.kanon h3{font-size:1.15rem}
+.kanon p{grid-column:2;font-size:.95rem;color:var(--tinte-weich)}
+.bildreg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:20px}
+.bildreg figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block}
+.bildreg figcaption{font-size:.78rem;line-height:1.35}
+.bildreg figcaption b{display:block;font-size:.8rem}
+.fuss{padding-block:48px 64px;font-size:.9rem;color:var(--tinte-weich)}
+
+@media (max-width:640px){
+  body{font-size:16px;padding-inline:16px}
+  .kopfzeichnung,.fotokopf-c1{grid-template-columns:1fr}
+  .kopfzeichnung{padding:20px}
+  .fotokopf-c1 img{aspect-ratio:4/3}
+  .notiz{position:static;display:block;margin-bottom:.6rem}
+  .notiz svg{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="voll"><feComponentTransfer><feFuncA type="linear" slope="1.8"/></feComponentTransfer></filter>
+</svg>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Formsprache · Stadt-Prototyp · 26. September 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">neu gesetzt</span>
+    <h1 style="font-size:1em">Website-Konzept, erste Lesung</h1>
+  </div>
+  <p class="lead text">Wie die Formsprache aus den Proben in Haushalt, Portal, Stadtrat und Data Hub auf den Stadt-Prototyp kommt. Alles hier ist Vorschlag, gebaut ist nichts. Antworten bitte nach Punkt und Variante, etwa „4 A, 5 C2, 12 ja bis auf Partnerstädte“.</p>
+
+  <div class="anker">
+    <div>
+      <h3>Die Logik bleibt</h3>
+      <p>Vier Einstiege plus Lebenslagen als zweite Dimension, Suche mit „Häufig gesucht“ auf jeder Seite, höchstens zwei Klicks zu den Top-Anliegen, die Zwei-Dichten-Regel (Identity laut, Service ruhig), eine Quelle pro Inhaltstyp.</p>
+    </div>
+    <div>
+      <h3>Die Vielfalt bleibt</h3>
+      <p>Foto-Kopf, farbiger Kopf und Creme-Kopf, Spotlight-Flächen, Filterlisten, Altersauswahl, Karte, Chronik mit mitwachsender Zeichnung. Neu ist das Material, aus dem diese Strukturen gebaut sind, nicht ihre Zahl.</p>
+    </div>
+    <div>
+      <h3>Die Lenkung bleibt</h3>
+      <p>Rangfolge auf den Bereichsseiten (zwei hervorgehoben, der Rest kompakt), Notruf-Leiste über der Rangfolge, die gelbe Karte „Mängel melden“, die Reihenfolge der Startseite, Ausgänge am Seitenende und auf der Fehlerseite.</p>
+    </div>
+  </div>
+
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Schriften und Versalien</a></li>
+    <li><a href="#p2"><span>2</span>Etiketten werden Kategoriezeilen</a></li>
+    <li><a href="#p3"><span>3</span>Klecks statt Icon-Quadrat</a></li>
+    <li><a href="#p4"><span>4</span>Farbflächen: Farbe nach Gegenstand</a></li>
+    <li><a href="#p5"><span>5</span>Seitenköpfe, vor allem mit Foto</a></li>
+    <li><a href="#p6"><span>6</span>Zweifarbige Zeichnungen</a></li>
+    <li><a href="#p7"><span>7</span>Die neuen Fotos</a></li>
+    <li><a href="#p8"><span>8</span>Stripe und Flächenfolge</a></li>
+    <li><a href="#p9"><span>9</span>Handschrift als Wegweiser</a></li>
+    <li><a href="#p10"><span>10</span>Tab-Leiste am Handy</a></li>
+    <li><a href="#p11"><span>11</span>Kleinteile</a></li>
+    <li><a href="#p12"><span>12</span>Themenseiten mit eigenem Charakter</a></li>
+    <li><a href="#p13"><span>13</span>Die Seite „Konzept &amp; Design“</a></li>
+    <li><a href="#kanon"><span>K</span>Ergänzungen zum Kanon</a></li>
+    <li><a href="#bilder"><span>B</span>Bildregister</a></li>
+    <li><a href="#fragen"><span>?</span>Offene Fragen und Reihenfolge</a></li>
+  </ul>
+</header>
+
+<!-- ───────────────────────────── 1 -->
+<section class="punkt" id="p1">
+  <header>
+    <div class="nr">Punkt 1</div>
+    <h2>Schriften und Versalien</h2>
+  </header>
+  <div class="text stack">
+    <p>Source Serif 4 für Titel, Atkinson Hyperlegible Next für alles andere, Madelon Script bleibt. Die Klasse <code>.headline</code> setzt heute 102-mal Playfair in Versalien, dazu kommen Versalien in Etiketten, Badges, Navigation und Knöpfen. Nach der Formsprache stehen Titel in Satzschreibung, Versalien höchstens ausnahmsweise im Seitentitel, nie in einer h2.</p>
+  </div>
+  <div class="duo">
+    <figure>
+      <div class="rahmen" style="padding:40px 26px 30px">
+        <span class="schild">Heute</span>
+        <div style="font-family:Inter,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.14em;color:#a50d24;margin-top:10px">ZU BESUCH</div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:2rem;line-height:1.05;letter-spacing:.01em;margin-top:.3rem">MOOSBURG ENTDECKEN</div>
+        <p style="font-family:Inter,sans-serif;font-size:.9rem;color:#555;margin-top:.9rem">Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme. Über tausend Jahre Stadtgeschichte auf engem Raum.</p>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.6rem;margin-top:1rem;font-feature-settings:'onum'">769 · um 1511 · 19.309</div>
+      </div>
+      <figcaption>Playfair-Versalien, Etikett in Versalien-Sperrsatz, Mediävalziffern in den Kennzahlen.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="padding:40px 26px 30px">
+        <span class="schild neu">Vorschlag</span>
+        <div class="ueber" style="font-size:2.1rem;margin-top:1.2rem">
+          <span class="handschrift" aria-hidden="true">die Drei-Rosen-Stadt</span>
+          <h3 style="font-size:1em">Moosburg entdecken</h3>
+        </div>
+        <p style="font-size:.95rem;color:var(--tinte-weich);margin-top:.9rem">Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme. Über tausend Jahre Stadtgeschichte auf engem Raum.</p>
+        <div class="zahl" style="font-family:var(--serif);font-weight:600;font-size:1.6rem;margin-top:1rem">769 · um 1511 · 19.309</div>
+      </div>
+      <figcaption>Kein Etikett (die Brotkrumen nennen den Bereich), Handschrift nach Kanon-Werten, Versalziffern.</figcaption>
+    </figure>
+  </div>
+  <p class="variante">1 A <span class="empf">empfohlen</span></p>
+  <p class="text">Eine einzige Ausnahme: die H1 der Startseite, „MOOSBURG AN DER ISAR“, bleibt in Versalien, gesetzt in Source Serif. Der Ortsname als Schild, so wie er auf dem Bahnhof in der Zeichnung steht (Punkt 6). Alles andere in Satzschreibung.</p>
+  <p class="variante" style="margin-top:1rem">1 B</p>
+  <p class="text">Keine Ausnahme, auch die Startseite in Satzschreibung.</p>
+  <p class="beruehrt"><b>Berührt:</b> nichts an Logik oder Lenkung. <b>Voraussetzung:</b> Der Kanon zieht die Schriften zuerst in <code>theme.css</code>, nach dem Taggen und Pinnen aus <code>moosburg-design/OFFENE-PUNKTE.md</code>. Die Schriftpakete kommen gleichzeitig in alle Repos und in <code>hausbasis/baseline.json</code>, der Stadt-Prototyp zieht nicht allein vor.</p>
+</section>
+
+<!-- ───────────────────────────── 2 -->
+<section class="punkt" id="p2">
+  <header>
+    <div class="nr">Punkt 2</div>
+    <h2>Etiketten werden Kategoriezeilen, wo sie etwas sagen</h2>
+  </header>
+  <div class="text stack">
+    <p>Die Klasse <code>eyebrow</code> steht 401-mal im Code. Nach der Rückmeldung vom 14.09. fallen Etiketten nicht generell weg, nur dort, wo sie wiederholen. Wo sie eine wiederkehrende Kategorie tragen, werden sie Kategoriezeile: Icon 16 px, Text 14 px, 600, Satzschreibung, in der Farbe der Kategorie aus Punkt 4.</p>
+  </div>
+  <div class="duo">
+    <figure>
+      <div class="rahmen news heute-news">
+        <span class="schild">Heute</span>
+        <article style="padding-top:44px"><div class="eb">Stadtrat <time>15. Apr 2026</time></div><h4>Kommunalwahl 2026: Endgültige Ergebnisse</h4></article>
+        <article><div class="eb">Versorgung <time>12. Apr 2026</time></div><h4>Umrüstung Straßenbeleuchtung auf LED</h4></article>
+        <article><div class="eb">Verkehr <time>10. Apr 2026</time></div><h4>Versorgungsausfälle in der Fischerstraße</h4></article>
+      </div>
+    </figure>
+    <figure>
+      <div class="rahmen news">
+        <span class="schild neu">Vorschlag</span>
+        <article style="padding-top:44px"><div class="kz" style="color:var(--tiefrot)">{{ICON:Gavel}} Stadtrat <time>15. April 2026</time></div><h4>Kommunalwahl 2026: Endgültige Ergebnisse</h4></article>
+        <article><div class="kz" style="color:var(--petrol)">{{ICON:House}} Versorgung <time>12. April 2026</time></div><h4>Umrüstung Straßenbeleuchtung auf LED</h4></article>
+        <article><div class="kz" style="color:var(--petrol)">{{ICON:MapPin}} Verkehr <time>10. April 2026</time></div><h4>Versorgungsausfälle in der Fischerstraße</h4></article>
+      </div>
+    </figure>
+  </div>
+  <div class="tabelle">
+    <table>
+      <thead><tr><th>Heute</th><th>Vorschlag</th><th>Warum</th></tr></thead>
+      <tbody>
+        <tr><td>„ZU BESUCH“ über „Moosburg entdecken“, ebenso in allen Seitenköpfen</td><td>entfällt</td><td>Die Brotkrumen nennen den Bereich schon, direkt darüber.</td></tr>
+        <tr><td>„OFT GESUCHT“ über „In zwei Klicks zum Ziel“</td><td>Kategoriezeile „Oft gesucht“ mit Lupe</td><td>Sagt etwas anderes als die Überschrift: woher die Auswahl kommt.</td></tr>
+        <tr><td>„LEBENSLAGEN“ über „Was steht bei Ihnen an?“</td><td>Kategoriezeile bleibt</td><td>Sie benennt die zweite Zugangsdimension. Wer das Wort einmal gelernt hat, findet sie überall wieder. Das ist Lenkung.</td></tr>
+        <tr><td>„KOMMENDE TERMINE“ über „Veranstaltungen“</td><td>entfällt</td><td>Wiederholung.</td></tr>
+        <tr><td>Rose vor jedem Kapitel-Etikett</td><td>entfällt</td><td>Die Rose ist im Kanon jetzt Status (Punkt 11). Zwei Bedeutungen für ein Zeichen verträgt sie nicht.</td></tr>
+        <tr><td>„AKTUELL“ als Badge im Banner</td><td>„Aktuell“ in Satzschreibung</td><td>Versalien nur noch im Stempel-Fall, und der ist nicht gewählt.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="beruehrt"><b>Berührt:</b> Lenkung, aber stärkend. Die Kategoriezeilen, die bleiben, tragen Farbe und Icon und werden damit zu Wegmarken statt Deko.</p>
+</section>
+
+<!-- ───────────────────────────── 3 -->
+<section class="punkt" id="p3">
+  <header>
+    <div class="nr">Punkt 3</div>
+    <h2>Klecks statt Icon im getönten Quadrat</h2>
+  </header>
+  <div class="text stack">
+    <p><code>bg-red-50</code> steht 133-mal, fast immer als Quadrat hinter einem Icon. Der Kanon ersetzt das durch den Klecks. Am Desktop bleiben Kacheln, schmale Screens bekommen die Register-Variante, beides am 14.09. entschieden. Die gelbe Karte behält ihr Gold und bleibt damit die eine Kachel, die anders aussieht.</p>
+  </div>
+  <figure style="margin-top:24px">
+    <div class="rahmen"><span class="schild">Heute</span><img src="{{IMG:docs/formsprache/lesung-1/crops/crop-kacheln.jpg}}" alt="Startseite heute: Kachelreihe In zwei Klicks zum Ziel mit Icons in getönten Quadraten" loading="lazy"></div>
+  </figure>
+  <div class="duo" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+    <figure style="grid-column:1/-1">
+      <div class="rahmen">
+        <span class="schild neu">Vorschlag, Desktop</span>
+        <div style="padding:46px 18px 0">
+          <div class="kat" style="color:var(--tinte-weich)">{{ICON:MagnifyingGlass}} Oft gesucht</div>
+          <h3 style="margin-top:.3rem">In zwei Klicks zum Ziel</h3>
+        </div>
+        <div class="kacheln">
+          <div class="kachel"><i class="klecks" data-i="CalendarPlus" data-f="#fbe5e9" data-c="#a50d24"></i><div><b>Termin buchen</b><span>Standesamt, Kfz, Pass</span></div></div>
+          <div class="kachel"><i class="klecks" data-i="FileText" data-f="#fbe5e9" data-c="#a50d24" data-r="70"></i><div><b>Online-Dienste A–Z</b><span>Alle digitalen Dienste</span></div></div>
+          <div class="kachel"><i class="klecks" data-i="Crane" data-f="#ecdccf" data-c="#4a2a17" data-r="150"></i><div><b>Bauen</b><span>Antrag, Bebauungsplan</span></div></div>
+          <div class="kachel"><i class="klecks" data-i="Baby" data-f="#e6dcea" data-c="#3f2248"></i><div><b>Familie &amp; Kita</b><span>Betreuung, Schulen</span></div></div>
+          <div class="kachel gelb"><i class="klecks" data-i="Warning" data-f="#e8d5a3" data-c="#6e5a30" data-r="70"></i><div><b>Mängel melden</b><span>Schlaglöcher, Laternen, Müll</span></div></div>
+          <div class="kachel"><i class="klecks" data-i="Gavel" data-f="#fbe5e9" data-c="#6d0818" data-r="150"></i><div><b>Stadtratssitzung</b><span>Termine, Protokolle</span></div></div>
+        </div>
+      </div>
+      <figcaption>Klecks in der hellen Tönung der Kategoriefarbe, Icon in der dunklen. Drei Drehungen, damit nebeneinander keine zwei gleich liegen. <b>Gelbe Karte</b> mit Grund Gold-100 und Rahmen Gold-500 wie heute.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen register">
+        <span class="schild neu">Vorschlag, Handy</span>
+        <div style="height:40px"></div>
+        <div class="zeile"><i class="klecks dicht" data-i="CalendarPlus" data-f="#fbe5e9" data-c="#a50d24"></i><div class="t"><b>Termin buchen</b><span>Standesamt, Kfz, Pass</span></div>{{ICON:CaretRight:pfeil}}</div>
+        <div class="zeile"><i class="klecks dicht" data-i="FileText" data-f="#fbe5e9" data-c="#a50d24" data-r="70"></i><div class="t"><b>Online-Dienste A–Z</b><span>Alle digitalen Dienste</span></div>{{ICON:CaretRight:pfeil}}</div>
+        <div class="zeile gelb"><i class="klecks dicht" data-i="Warning" data-f="#e8d5a3" data-c="#6e5a30" data-r="150"></i><div class="t"><b>Mängel melden</b><span>Schlaglöcher, Laternen, Müll</span></div>{{ICON:CaretRight:pfeil}}</div>
+        <div class="zeile"><i class="klecks dicht" data-i="Gavel" data-f="#fbe5e9" data-c="#6d0818"></i><div class="t"><b>Stadtratssitzung</b><span>Termine, Protokolle</span></div>{{ICON:CaretRight:pfeil}}</div>
+      </div>
+      <figcaption>Register ohne Rahmen, Haarlinien, Klecks 38 px. Die gelbe Karte bleibt als ganze Zeile in Gold-100 erkennbar.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="padding:44px 18px 18px">
+        <span class="schild neu">Vorschlag, Notruf-Leiste</span>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--rot-50);border:1px solid var(--rot-100);border-radius:8px;padding:12px 14px">
+          <i class="klecks dicht" data-i="Warning" data-f="#fbe5e9" data-c="#a50d24"></i>
+          <div style="flex:1;font-size:.9rem"><b style="display:block">Notdienste &amp; Notfallnummern</b><span class="zahl" style="color:var(--tinte-weich)">112 · 110 · ärztlicher Bereitschaftsdienst 116 117</span></div>
+          {{ICON:CaretRight:pfeil}}
+        </div>
+      </div>
+      <figcaption>Die Leiste über der Rangfolge in <code>HubPage</code> trägt heute <code>border-l-4</code>, einen einseitigen Kantenakzent. Vorschlag: Grund und Rahmen rundum in Rot-50/Rot-100. Die Dringlichkeit bleibt, die Kante geht.</figcaption>
+    </figure>
+  </div>
+  <p class="beruehrt"><b>Berührt:</b> Lenkung. Rangfolge, gelbe Karte und Notruf-Leiste bleiben unterscheidbar, nur mit anderem Mittel.</p>
+</section>
+
+<!-- ───────────────────────────── 4 -->
+<section class="punkt" id="p4">
+  <header>
+    <div class="nr">Punkt 4</div>
+    <h2>Farbflächen: mehr als Rot, und die Farbe bedeutet etwas</h2>
+  </header>
+  <div class="text stack">
+    <p>Heute tragen farbige Flächen Rot-900, Rot-600, Gold-700 oder Tinte, ohne dass die Wahl etwas über den Inhalt sagt. Die Formsprache hat sechs Themenfarben, und in zwei Proben hat sich gezeigt, dass sie am besten tragen, wenn sie etwas zuordnen: im Stadtrat das Gremium, im Data Hub den Datensatz.</p>
+  </div>
+  <p class="variante" style="margin-top:22px">4 A: Farbe nach Gegenstand <span class="empf">empfohlen</span></p>
+  <p class="text">Derselbe Gegenstand hat in allen Moosburg-Projekten dieselbe Farbe. Wer im Stadtrat-Tool den Bau-, Planungs- und Umweltausschuss in Erdbraun gesehen hat, findet „Bauen“ auf der Stadtseite in Erdbraun wieder.</p>
+  <div class="tabelle">
+    <table>
+      <thead><tr><th>Farbe</th><th>Gegenstand</th><th>Seiten im Konzept</th><th>Schon so in</th></tr></thead>
+      <tbody>
+        <tr><td><span class="swatch" style="background:#6d0818"></span>Tiefrot <span class="klein">#6d0818</span></td><td>Rat, Feste</td><td>Stadtrat, Veranstaltungen, Highlights, Diese Woche</td><td>Stadtrat (Gremium Stadtrat), Data Hub (Volksfest)</td></tr>
+        <tr><td><span class="swatch" style="background:#4a2a17"></span>Erdbraun <span class="klein">#4a2a17</span></td><td>Bauen, Boden, Geschichte</td><td>Bauen, Stadtentwicklung, Wohnen, Geschichte &amp; Erinnerung</td><td>Stadtrat (BPU)</td></tr>
+        <tr><td><span class="swatch" style="background:#26295e"></span>Nachtblau <span class="klein">#26295e</span></td><td>Geld, Wahlen, Recht</td><td>Stadtfinanzen, Wahlen, Satzungen</td><td>Stadtrat (HVFA), Data Hub (Wahlseite, vorläufig)</td></tr>
+        <tr><td><span class="swatch" style="background:#123b4a"></span>Isar-Petrol <span class="klein">#123b4a</span></td><td>Wege, Wasser, Ankommen</td><td>Mobilität, Anreise, Ver- und Entsorgung, Umziehen</td><td>Data Hub (Bahnhofumfrage)</td></tr>
+        <tr><td><span class="swatch" style="background:#1f3b2d"></span>Tannengrün <span class="klein">#1f3b2d</span></td><td>Natur, draußen</td><td>Umwelt &amp; Klima, Freizeit &amp; Sport, Fair Trade</td><td>noch nirgends</td></tr>
+        <tr><td><span class="swatch" style="background:#3f2248"></span>Aubergine <span class="klein">#3f2248</span></td><td>Bildung, Kultur, Begegnung</td><td>Familie &amp; Bildung, Vereinsleben, Ehrenamt, Partnerstädte</td><td>noch nirgends</td></tr>
+        <tr><td><span class="swatch" style="background:#6e5a30"></span>Gold-700 <span class="klein">#6e5a30</span></td><td>Mitmachen</td><td>Bürgerbeteiligung, Mängel melden</td><td>Data Hub (amtliche Statistik): Doppelbelegung, siehe Frage 6</td></tr>
+        <tr><td><span class="swatch" style="background:#1c1c1c"></span>Tinte <span class="klein">#1c1c1c</span></td><td>Übersicht, Verzeichnis</td><td>Veranstaltungen auf der Startseite, Verzeichnis-Spotlights</td><td>Portal (Fuß)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="regeln text">
+    <li><b>Rot-600 als Fläche geht in Rente.</b> <code>SpotlightSection tone="red"</code> steht auf acht Seiten. Rot bleibt Farbe der Bedienung: Knöpfe, Links, Fokus, aktiver Zustand.</li>
+    <li><b>Service-Seiten bleiben ohne Fläche</b> (Termin buchen, Online-Dienste, Kontakt, Stellen, Notdienste). Das ist die Zwei-Dichten-Regel, unverändert.</li>
+    <li><b>Lebenslagen behalten den Creme-Kopf</b> und dürfen weiter unten eine Fläche in der Farbe ihres Hauptgegenstands haben (Bauen &amp; Wohnen: Erdbraun).</li>
+    <li>Über die ganze Breite oder gar nicht, höchstens eine pro Bildschirm, zwei dunkle nie direkt aneinander. Kacheln dürfen 72 px in die Fläche ragen.</li>
+  </ul>
+  <figure style="margin-top:26px">
+    <div class="rahmen">
+      <span class="schild neu">Vorschlag</span>
+      <div class="band" style="background:var(--erdbraun)">
+        <div class="wz" aria-hidden="true"></div>
+        <div class="brot" style="margin-top:22px">Start › Mitgestalten › Stadtentwicklung</div>
+        <div class="ueber" style="font-size:1.7rem"><span class="handschrift" aria-hidden="true">was entsteht</span><h3 style="font-size:1em">Stadtentwicklung &amp; Projekte</h3></div>
+        <p>Laufende Bebauungspläne, große Bauprojekte und wie die Stadt plant.</p>
+      </div>
+      <div class="ragen">
+        <div class="kachel"><span class="kat" style="color:var(--erdbraun)">{{ICON:Crane}} Bebauungsplan</span><b>Am Gries, 3. Änderung</b><span>Auslegung bis 30. Oktober</span></div>
+        <div class="kachel"><span class="kat" style="color:var(--erdbraun)">{{ICON:Buildings}} Bauprojekt</span><b>Neubau Kita Amperauen</b><span>Rohbau, Fertigstellung 2027</span></div>
+        <div class="kachel"><span class="kat" style="color:var(--erdbraun)">{{ICON:MapPin}} Planung</span><b>Innenstadtkonzept 2035</b><span>Beteiligung läuft</span></div>
+      </div>
+    </div>
+    <figcaption>Band in Erdbraun, Federzeichnung in Gold-200 als Wasserzeichen, die Projektkarten ragen hinein. Kein Stripe am Band. Die Inhalte sind Attrappen.</figcaption>
+  </figure>
+  <p class="variante" style="margin-top:26px">4 B: Farbe nach Bereich <span class="geparkt">nicht empfohlen</span></p>
+  <p class="text">Rathaus, Mein Moosburg, Zu Besuch und Mitgestalten bekommen je eine Farbe, wie Linien im Nahverkehr. Das hilft der Orientierung, aber der Bereich steht schon in der Navigation (aktiver Unterstrich) und in den Brotkrumen. Und Bauen und Stadtfinanzen säßen in derselben Farbe, obwohl der Stadtrat sie unterscheidet.</p>
+  <p class="beruehrt"><b>Berührt:</b> Vielfalt, erweiternd. Aus zwei Farbköpfen (Rot, Gold) werden acht Töne mit Bedeutung. <b>Kontrast:</b> Creme auf allen Themenfarben 11,2 bis 12,8:1, Gold-200 8,3 bis 9,4:1 (Formsprache Abschnitt 6).</p>
+</section>
+
+<!-- ───────────────────────────── 5 -->
+<section class="punkt" id="p5">
+  <header>
+    <div class="nr">Punkt 5</div>
+    <h2>Seitenköpfe, vor allem die mit Foto</h2>
+  </header>
+  <div class="text stack">
+    <p>Vier Kopfarten gibt es heute: Foto, Gold, Rot, Creme. Die Zahl bleibt, das Material ändert sich. Creme bleibt Creme (ohne das rote Icon-Quadrat), Gold und Rot werden ein Band in der Themenfarbe aus Punkt 4. Das eigentliche Thema ist der Foto-Kopf.</p>
+    <p>Er setzt den Titel auf ein zu 80 % abgedunkeltes Foto. Das widerspricht der eigenen Regel des Prototyps, „Bild ist Inhalt, nicht Wallpaper“, und mit den neuen Fotos wäre es ein Verlust: Sie leben von Farbe und Licht.</p>
+  </div>
+  <figure style="margin-top:24px">
+    <div class="rahmen"><span class="schild">Heute</span><img src="{{IMG:docs/formsprache/lesung-1/crops/crop-entdecken.jpg}}" alt="Moosburg entdecken heute: Titel auf abgedunkeltem Foto, darunter direkt eine dunkle Fläche" loading="lazy"></div>
+    <figcaption>Foto-Kopf und dunkle Spotlight-Fläche stoßen direkt aneinander, jede mit eigenem Stripe.</figcaption>
+  </figure>
+  <div class="duo">
+    <figure>
+      <div class="rahmen">
+        <span class="schild neu">C1: Foto daneben</span>
+        <div class="fotokopf-c1">
+          <div class="titel">
+            <div class="brot" style="margin-top:26px">Start › Mein Moosburg › Essen &amp; Trinken</div>
+            <div class="ueber" style="font-size:1.6rem;margin-top:1.1rem"><span class="handschrift" aria-hidden="true">genießen</span><h3 style="font-size:1em">Essen &amp; Trinken</h3></div>
+            <p style="font-size:.88rem;color:var(--tinte-weich);margin-top:.6rem">Restaurants, Cafés, Biergärten und Bäckereien in Moosburg.</p>
+          </div>
+          <img src="{{IMG:public/images/stadt/eiscafe-markisen-quer-9018-1200.webp}}" alt="Markisen eines Eiscafés an der Moosburger Innenstadt" loading="lazy">
+        </div>
+      </div>
+      <figcaption>Titel auf Creme, Foto ungedeckt bis an den rechten Rand, wie die Zeichnung auf der Aktionsseite Pop-up Bahnhof. Mobil: Titel oben links, Foto darunter.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen fotokopf-c2">
+        <span class="schild neu">C2: Foto ragt ins Band</span>
+        <div class="band" style="background:var(--aubergine)">
+          <div class="brot" style="margin-top:22px">Start › Zu Besuch › Moosburg entdecken</div>
+          <div class="ueber" style="font-size:1.6rem"><span class="handschrift" aria-hidden="true">die Drei-Rosen-Stadt</span><h3 style="font-size:1em">Moosburg entdecken</h3></div>
+          <p>Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme.</p>
+        </div>
+        <div class="foto"><img src="{{IMG:public/images/stadt/muenster-laterne-8937-1200.webp}}" alt="Turm des Kastulus-Münsters hinter einer Laterne und Bäumen" loading="lazy"></div>
+        <div class="credit">Foto: Ben Arya Gruber</div>
+        <div class="nach">Darunter geht es auf Creme weiter, die nächste dunkle Fläche frühestens einen Bildschirm später.</div>
+      </div>
+      <figcaption>Titel im Band der Themenfarbe, das Foto ragt mit derselben Technik hinein wie die Karten in Punkt 4. Das verbindet Farbe und Bild, ohne das Bild abzudunkeln.</figcaption>
+    </figure>
+  </div>
+  <p class="variante">5 C1 für Mein Moosburg, 5 C2 für Zu Besuch <span class="empf">empfohlen</span></p>
+  <p class="text">Beide Varianten nebeneinander halten die Vielfalt: C1 ist ruhiger und passt zu Alltagsseiten, C2 hat Auftritt und passt zu den Seiten, die für die Stadt werben. Der heutige Foto-Kopf mit Text auf dem Bild wird geparkt (<span class="geparkt">C3</span>).</p>
+  <p class="beruehrt"><b>Berührt:</b> Vielfalt. Es bleiben vier Kopfarten (Creme, Band, Foto daneben, Foto im Band). <b>Löst nebenbei</b> die aneinanderstoßenden dunklen Flächen auf „Moosburg entdecken“ und „Straßennamen“, weil der Foto-Kopf nicht mehr dunkel ist.</p>
+</section>
+
+<!-- ───────────────────────────── 6 -->
+<section class="punkt" id="p6">
+  <header>
+    <div class="nr">Punkt 6</div>
+    <h2>Zweifarbige Zeichnungen</h2>
+  </header>
+  <div class="text stack">
+    <p>Der Kanon kennt seit dem 19.09. ein Blatt aus zwei Schablonen: Tuschelinien und Farbflächen, jede nimmt ihre Farbe aus einem Token. In voller Deckung steht eine Zeichnung bisher nur, wo eine Seite wirbt. Im Website-Konzept heißt das: auf Identity-Flächen, nie auf Service-Seiten. Heute stehen dort einfarbige Federzeichnungen als Wasserzeichen.</p>
+    <p>Die Hirschen-Zeichnung ist dafür zerlegt: <code>public/sketches/hirschenC-tinte.webp</code> (161 KB) und <code>hirschenC-farbe.webp</code> (15 KB). Der Bahnhof liegt schon in <code>moosburg-design/assets/</code>.</p>
+  </div>
+  <figure style="margin-top:24px">
+    <div class="rahmen">
+      <span class="schild neu">Vorschlag: Neu in Moosburg</span>
+      <div class="kopfzeichnung">
+        <div class="titel">
+          <div class="brot" style="margin-top:26px">Start › Lebenslagen › Neu in Moosburg</div>
+          <div class="ueber" style="font-size:1.7rem;margin-top:1.1rem"><span class="handschrift" aria-hidden="true">willkommen</span><h3 style="font-size:1em">Neu in Moosburg</h3></div>
+          <p style="color:var(--tinte-weich)">Anmelden, Müllabfuhr, Kita, Vereine. Was in den ersten Wochen ansteht, der Reihe nach.</p>
+        </div>
+        <div class="zeichnung bahnhof" role="img" aria-label="Zeichnung: Bahnhof Moosburg mit einfahrendem Zug"><i class="f" style="background:var(--rot-500)"></i><i class="t" style="background:var(--tinte)"></i></div>
+      </div>
+    </div>
+    <figcaption>Heller Grund nach Kanon: Linien Tinte, Flächen Rot-500. Der Bahnhof mit dem Schild „MOOSBURG“ ist das Bild fürs Ankommen. Er ersetzt hier <code>griesA</code>.</figcaption>
+  </figure>
+  <div class="duo">
+    <figure>
+      <div class="rahmen" style="background:var(--petrol);padding:30px 20px 20px">
+        <span class="schild">Kanon heute auf Petrol</span>
+        <div class="zeichnung bahnhof"><i class="f" style="background:var(--rot-500)"></i><i class="t" style="background:var(--gold-200)"></i></div>
+      </div>
+      <figcaption>Die Regel „Flächen Rot-500“ ist für Tiefrot gemacht, dort ist sie Ton in Ton (2,1:1). Auf Petrol wird daraus ein lauter Komplementärkontrast.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="background:var(--petrol);padding:30px 20px 20px">
+        <span class="schild neu">Ton in Ton auf Petrol</span>
+        <div class="zeichnung bahnhof"><i class="f" style="background:#117393"></i><i class="t" style="background:var(--gold-200)"></i></div>
+      </div>
+      <figcaption>Fläche <code>#117393</code>, gerechnet auf 2,2:1 gegen das Band, also dieselbe Ruhe wie Rot auf Tiefrot. Für „Anreise &amp; Parken“. Werte für alle Themenfarben in K2.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="background:var(--tiefrot);padding:30px 20px 20px">
+        <span class="schild">Kanon: Tiefrot</span>
+        <div class="zeichnung hirschen"><i class="f" style="background:var(--rot-500)"></i><i class="t" style="background:var(--gold-200)"></i></div>
+      </div>
+      <figcaption>Hirschen auf Tiefrot, wie im Kanon vorgesehen. Welches Haus das ist, entscheidet über die Seite (Frage 1).</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="background:var(--erdbraun);padding:30px 20px 20px">
+        <span class="schild neu">Ton in Ton auf Erdbraun</span>
+        <div class="zeichnung hirschen"><i class="f" style="background:#9b5309"></i><i class="t" style="background:var(--gold-200)"></i></div>
+      </div>
+      <figcaption>Dasselbe Blatt für Wohnen oder Bauen &amp; Wohnen. Fläche <code>#9b5309</code>, 2,2:1.</figcaption>
+    </figure>
+  </div>
+  <div class="duo">
+    <figure>
+      <div class="rahmen" style="padding:30px 20px 20px">
+        <span class="schild">Deckung wie getrennt</span>
+        <div class="zeichnung bahnhof"><i class="f" style="background:var(--rot-500)"></i><i class="t" style="background:var(--tinte)"></i></div>
+      </div>
+      <figcaption>Die Farbebene deckt beim Bahnhof im Mittel nur 56 %, beim Hirschen 66 %. Auf Creme wird Rot-500 dadurch rosa.</figcaption>
+    </figure>
+    <figure>
+      <div class="rahmen" style="padding:30px 20px 20px">
+        <span class="schild neu">Deckung normiert</span>
+        <div class="zeichnung bahnhof voll"><i class="f" style="background:var(--rot-500)"></i><i class="t" style="background:var(--tinte)"></i></div>
+      </div>
+      <figcaption>Hier im Browser um den Faktor 1,8 angehoben. Sauberer wäre, die Schablone schon beim Trennen auf volle Deckung zu normieren (K4).</figcaption>
+    </figure>
+  </div>
+  <ul class="regeln text">
+    <li><b>Wo:</b> Identity-Köpfe (Neu in Moosburg, Zu Besuch, Highlights, Startseite im Identitätsblock) und Themenseiten. Service-Seiten nie.</li>
+    <li><b>Was die Farbe zeigt:</b> Die Farbfläche liegt auf dem Gegenstand der Seite. Beim Bahnhof sind es Gebäude und Zug, beim Hirschen das Haus. Eine Zeichnung, deren Farbfläche auf etwas Nebensächlichem liegt, passt nicht auf die Seite (K5).</li>
+    <li><b>Wasserzeichen</b> bleiben einfarbig. Der Prototyp setzt sie heute mit 11 bis 22 % Deckkraft, der Kanon nennt 6 bis 9 % (K12).</li>
+  </ul>
+  <p class="beruehrt"><b>Berührt:</b> Vielfalt, erweiternd. Ein drittes Bildregister neben Foto und Wasserzeichen.</p>
+</section>
+
+<!-- ───────────────────────────── 7 -->
+<section class="punkt" id="p7">
+  <header>
+    <div class="nr">Punkt 7</div>
+    <h2>Die neuen Fotos</h2>
+  </header>
+  <div class="text stack">
+    <p>16 Foto-Köpfe teilen sich heute fünf Bilder, <code>münster.jpg</code> und <code>altstadt.jpg</code> je viermal. Die 32 neuen Aufnahmen vom 21.09. lösen das. Sie liegen jetzt als WebP in 1200 und 2400 px unter <code>public/images/stadt/</code>, mit Motiv und DSC-Nummer im Namen (12,8 MB statt 34 MB). Die Originale sind im Papierkorb.</p>
+    <p>Die Serie hat eine eigene Handschrift: Blüten scharf oder unscharf im Vordergrund, die Stadt dahinter, warmes Abendlicht. Das ist ein Bildstil, den man festschreiben kann (K8).</p>
+  </div>
+  <ul class="regeln text">
+    <li><b>Kein Text auf dem Foto</b>, kein Verlauf darüber (Punkt 5).</li>
+    <li><b>Nachweis unter dem Bild</b>, klein: „Foto: Ben Arya Gruber“ (Name aus den EXIF-Daten).</li>
+    <li><b>Ausgeliefert mit <code>srcset</code></b>, 1200 für Handy und normale Bildschirme, 2400 für breite Köpfe.</li>
+    <li><b>Ein Motiv nur einmal je Bereich</b>, wie bei den Federzeichnungen.</li>
+    <li><b>Gesichter:</b> Keines der 32 Bilder zeigt Menschen von vorn. Die Regel „auf Identity-Flächen mindestens ein Gesicht“ lässt sich damit nicht halten (Frage 4).</li>
+  </ul>
+  <p class="text" style="margin-top:1rem">Die Zuordnung zu Seiten steht im <a href="#bilder">Bildregister</a> am Ende.</p>
+  <p class="beruehrt"><b>Berührt:</b> Vielfalt. Jede Seite mit Foto-Kopf bekommt ein eigenes Bild.</p>
+</section>
+
+<!-- ───────────────────────────── 8 -->
+<section class="punkt" id="p8">
+  <header>
+    <div class="nr">Punkt 8</div>
+    <h2>Stripe und Flächenfolge</h2>
+  </header>
+  <div class="text stack">
+    <p>Der Stripe steht heute im Kopf, unter jedem Foto- und Farbkopf, unter jeder Spotlight-Fläche, im Hero-Bild der Startseite und über dem Fuß. Auf „Moosburg entdecken“ sind das fünf. Seit der Stadtrat-Probe gilt: Steht er im Kopf, schließt er keine Zwischenebene mehr ab.</p>
+  </div>
+  <div class="folgen">
+    <div class="folge">
+      <h4>Moosburg entdecken, heute</h4>
+      <div class="st"></div><div class="h" style="background:#faf7f2">Kopf</div>
+      <div class="d warn" style="background:#2b2622;min-height:48px">Foto-Kopf, abgedunkelt</div><div class="st"></div>
+      <div class="d warn" style="background:#1c1c1c;min-height:48px">Spotlight Tinte</div><div class="st"></div>
+      <div class="h" style="background:#faf7f2;min-height:60px">Sehenswürdigkeiten</div>
+      <div class="d" style="background:#b00e28;min-height:40px">Spotlight Rot-600</div><div class="st"></div>
+      <div class="st"></div><div class="d" style="background:#6d0818;min-height:36px">Fuß</div>
+    </div>
+    <div class="folge">
+      <h4>Moosburg entdecken, Vorschlag</h4>
+      <div class="st"></div><div class="h" style="background:#faf7f2">Kopf</div>
+      <div class="d" style="background:#3f2248;min-height:48px">Band Aubergine, Foto ragt hinein (5 C2)</div>
+      <div class="h" style="background:#faf7f2;min-height:48px">Die Drei-Rosen-Stadt, Kennzahlen</div>
+      <div class="h" style="background:#f1ece1;min-height:60px">Sehenswürdigkeiten</div>
+      <div class="h" style="background:#faf7f2;min-height:40px">Weiter geht's (Notiz, Punkt 9)</div>
+      <div class="d" style="background:#6d0818;min-height:36px">Fuß mit Wappen</div>
+    </div>
+    <div class="folge">
+      <h4>Startseite, Vorschlag</h4>
+      <div class="st"></div><div class="h" style="background:#faf7f2">Kopf</div>
+      <div class="h" style="background:#faf7f2;min-height:48px">Hero, Suche, Chips</div>
+      <div class="h" style="background:#f6ecd5">Aktuell</div>
+      <div class="h" style="background:#faf7f2;min-height:40px">In zwei Klicks zum Ziel</div>
+      <div class="h" style="background:#f1ece1;min-height:40px">Lebenslagen</div>
+      <div class="d" style="background:#1c1c1c;min-height:44px">Veranstaltungen</div>
+      <div class="h" style="background:#faf7f2;min-height:36px">Ein Wort</div>
+      <div class="h" style="background:#f1ece1">Hauptbereiche</div>
+      <div class="d" style="background:#6d0818;min-height:36px">Fuß mit Wappen</div>
+    </div>
+  </div>
+  <p class="variante">8 A: Stripe nur im Kopf <span class="empf">empfohlen</span></p>
+  <p class="text">Auch nicht über dem Fuß: Der Fuß ist Tiefrot mit Wappen, darüber steht Creme, die Naht ist deutlich. Die Startseite behält die Reihenfolge, die im Kanon schon als Vorbild für mehrere Flächen gilt, nur ohne Stripe unter den Veranstaltungen und im Hero-Bild.</p>
+  <p class="variante" style="margin-top:1rem">8 B</p>
+  <p class="text">Kopf und Fuß, als Klammer um die Seite.</p>
+  <p class="beruehrt"><b>Berührt:</b> nichts an Logik oder Lenkung. Die gestrichelten Felder links sind die heutigen Verstöße gegen „zwei dunkle Flächen nie direkt aneinander“.</p>
+</section>
+
+<!-- ───────────────────────────── 9 -->
+<section class="punkt" id="p9">
+  <header>
+    <div class="nr">Punkt 9</div>
+    <h2>Handschrift als Wegweiser</h2>
+  </header>
+  <div class="text stack">
+    <p>53 Handschrift-Stellen, auf rund 15 Seiten zwei statt einer: eine im Kopf, eine über einer späteren Fläche („weiter geht's“, „weiterstöbern“, „einfach starten“). Die im Kopf bleibt, als Überlappung nach Kanon. Die zweite wird eine Notiz, die auf etwas zeigt, oder fällt weg.</p>
+    <p>Damit bekommt die Handschrift eine Aufgabe in der Lenkung: Sie zeigt auf den ersten Schritt. Kanon-Regel für Notizen: Gold-700, Pfeil Gold-500, höchstens eine pro Bildschirm, zeigt auf eine konkrete Stelle.</p>
+  </div>
+  <figure style="margin-top:24px">
+    <div class="rahmen notizfeld">
+      <span class="schild neu">Vorschlag: Familie &amp; Kind</span>
+      <div class="kat" style="color:var(--tinte-weich);margin-top:30px">In welcher Phase ist Ihr Kind?</div>
+      <h3 style="margin-top:.25rem">Wählen Sie das Alter</h3>
+      <span class="notiz" style="left:330px;top:40px">hier anfangen
+        <svg width="90" height="70" viewBox="0 0 90 70" style="left:-70px;top:30px" aria-hidden="true"><path d="M86 4C64 20 40 34 12 56" fill="none" stroke="#b8964e" stroke-width="2" stroke-linecap="round"/><path d="M12 56l12-2M12 56l3-12" fill="none" stroke="#b8964e" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <div class="alter">
+        <div><b>Schwangerschaft &amp; Baby</b>0 bis 3 Jahre</div>
+        <div><b>Kindergarten</b>3 bis 6 Jahre</div>
+        <div><b>Grundschule</b>6 bis 10 Jahre</div>
+        <div><b>Weiterführend &amp; Jugend</b>10 bis 18 Jahre</div>
+      </div>
+    </div>
+    <figcaption>Auf Lebenslagen und Identity-Seiten. Nie auf Service-Seiten, dort bleibt es bei der Zwei-Dichten-Regel: keine Handschrift, Peter Praktisch wird nicht abgelenkt.</figcaption>
+  </figure>
+  <p class="beruehrt"><b>Berührt:</b> Lenkung, verstärkend. Die Seiten mit Schrittfolge bekommen einen sichtbaren Einstieg.</p>
+</section>
+
+<!-- ───────────────────────────── 10 -->
+<section class="punkt" id="p10">
+  <header>
+    <div class="nr">Punkt 10</div>
+    <h2>Tab-Leiste am Handy</h2>
+  </header>
+  <div class="text stack">
+    <p>Für den Stadt-Prototyp am 14.09. schon entschieden: Tab-Leiste unten mit Beschriftung und Pillen-Markierung, ab 1024 px Navigation im Kopf. Offen ist, was darin steht. Das Konzept bleibt dabei die Ausnahme von der Familien-Navigation, es hat seinen eigenen Kopf.</p>
+  </div>
+  <div class="duo" style="align-items:start">
+    <figure>
+      <div class="telefon">
+        <div class="stripe4"></div>
+        <div class="kopf"><span class="marke">Moosburg</span>{{ICON:Bell}}{{ICON:UserCircle}}</div>
+        <div class="such">{{ICON:MagnifyingGlass}} Ich suche …</div>
+        <div class="inhaltm">
+          <div class="brot">Start › Rathaus</div>
+          <h4 style="margin-top:.3rem">Rathaus</h4>
+          <div class="register" style="padding:0;margin-top:8px">
+            <div class="zeile"><i class="klecks dicht" data-i="CalendarPlus" data-f="#fbe5e9" data-c="#a50d24"></i><div class="t"><b>Termin buchen</b><span>Standesamt, Kfz, Pass</span></div></div>
+            <div class="zeile"><i class="klecks dicht" data-i="FileText" data-f="#fbe5e9" data-c="#a50d24" data-r="70"></i><div class="t"><b>Online-Dienste A–Z</b><span>Alle digitalen Dienste</span></div></div>
+            <div class="zeile"><i class="klecks dicht" data-i="Crane" data-f="#ecdccf" data-c="#4a2a17" data-r="150"></i><div class="t"><b>Bauen</b><span>Antrag, Bebauungsplan</span></div></div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">{{ICON:House}}</span>Start</div>
+          <div class="an"><span class="ic">{{ICON:Buildings}}</span>Rathaus</div>
+          <div><span class="ic">{{ICON:UsersThree}}</span>Mein Moosburg</div>
+          <div><span class="ic">{{ICON:MapPin}}</span>Zu Besuch</div>
+          <div><span class="ic">{{ICON:ChatsCircle}}</span>Mitgestalten</div>
+        </div>
+      </div>
+      <figcaption style="text-align:center"><span class="variante">10 A: Start und die vier Bereiche <span class="empf">empfohlen</span></span><br>Dieselben Einträge wie am Desktop. Suche bleibt oben als Feld, Glocke und Konto im Kopf.</figcaption>
+    </figure>
+    <figure>
+      <div class="telefon">
+        <div class="stripe4"></div>
+        <div class="kopf"><span class="marke">Moosburg</span>{{ICON:Bell}}</div>
+        <div class="inhaltm">
+          <div class="brot">Start</div>
+          <h4 style="margin-top:.3rem">Lebenslagen</h4>
+          <p style="font-size:.8rem;color:var(--tinte-weich);margin-top:.2rem">Was steht bei Ihnen an?</p>
+          <div class="register" style="padding:0;margin-top:8px">
+            <div class="zeile"><div class="t"><b>Neu in Moosburg</b></div></div>
+            <div class="zeile"><div class="t"><b>Familie &amp; Kind</b></div></div>
+            <div class="zeile"><div class="t"><b>Heiraten</b></div></div>
+            <div class="zeile"><div class="t"><b>Bauen &amp; Wohnen</b></div></div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">{{ICON:House}}</span>Start</div>
+          <div><span class="ic">{{ICON:MagnifyingGlass}}</span>Suchen</div>
+          <div><span class="ic">{{ICON:Buildings}}</span>Bereiche</div>
+          <div class="an"><span class="ic">{{ICON:Heart}}</span>Lebenslagen</div>
+          <div><span class="ic">{{ICON:UserCircle}}</span>Konto</div>
+        </div>
+      </div>
+      <figcaption style="text-align:center"><span class="variante">10 B: beide Dimensionen als Tabs</span><br>Lebenslagen bekommen einen festen Platz. Das würde aber die offene Testfrage „Lebenslagen oder Zielgruppen“ vorwegnehmen.</figcaption>
+    </figure>
+  </div>
+  <p class="beruehrt"><b>Berührt:</b> Logik und Lenkung. 10 A ändert nichts an der Struktur, 10 B würde die Gewichte verschieben und gehört deshalb eher in den Prototyp-Test als in die Formsprache.</p>
+</section>
+
+<!-- ───────────────────────────── 11 -->
+<section class="punkt" id="p11">
+  <header>
+    <div class="nr">Punkt 11</div>
+    <h2>Kleinteile</h2>
+  </header>
+  <ul class="regeln text">
+    <li><b>Ecken:</b> <code>rounded-2xl</code> (14 px) steht 92-mal, vor allem auf Themenseiten. Nach Kanon 8 px für Kacheln, Knöpfe, Suche und Flächen, 4 px für Kleinteile, Pille nur für Chips und Tab-Markierung.</li>
+    <li><b>Suche:</b> im Kopf heute Pille, im Hero 4 px. Beide 8 px. Der rote Suchknopf verliert Versalien und Sperrung.</li>
+    <li><b>Knöpfe:</b> drei Stufen, primär (Rot), tonal (Rot-50 mit Rot-700), Text-Link. Heute gibt es mehr Mischformen, etwa den umrandeten Versalien-Knopf „Alle Veranstaltungen“.</li>
+    <li><b>Status mit Rose</b> auf Bürgerbeteiligung, heute farbige Pillen:
+      <div style="margin-top:.5rem"><span class="status" style="color:var(--rot-700)"><i style="background:var(--rot-500)"></i>läuft</span><span class="status" style="color:var(--gold-700)"><i style="background:var(--gold-600)"></i>geplant</span><span class="status" style="color:var(--tinte-matt)"><i style="background:var(--tinte-matt);opacity:.45"></i>abgeschlossen</span></div>
+    </li>
+    <li><b>Ziffern:</b> überall <code>lining-nums tabular-nums</code> für Kennzahlen, Uhrzeiten, Telefonnummern.</li>
+    <li><b>Datum:</b> „15. Apr 2026“ ohne Punkt nach der Abkürzung wird „15. April 2026“ oder „15.04.2026“.</li>
+    <li><b>Texte:</b> keine Gedankenstriche in neuem Text, Bestand nicht massenhaft umschreiben (Kanon, Abschnitt 8).</li>
+  </ul>
+</section>
+
+<!-- ───────────────────────────── 12 -->
+<section class="punkt" id="p12">
+  <header>
+    <div class="nr">Punkt 12</div>
+    <h2>Themenseiten mit eigenem Charakter</h2>
+  </header>
+  <div class="text stack">
+    <p>Vorschlag für eine Regel: Eine Themenseite darf ein Gastelement tragen, das nirgends sonst im Haus vorkommt. Kopf, Navigation, Fuß, Schriften und die Farben der Bedienung bleiben Kanon. So darf jede Themenseite anders aussehen, ohne fremd zu wirken. Der Johannisturm zeigt, wie das gehen kann: Die mitwachsende Zeichnung ist sein Gastelement.</p>
+  </div>
+  <div class="trio">
+    <div class="gast">
+      <div class="buehne" style="background:var(--creme)"><div><div class="turmzahl zahl">53,99<small>m</small></div><div class="klein" style="margin-top:.3rem">bis zur Turmspitze, 168 Stufen ins Turmzimmer</div></div></div>
+      <div class="erkl"><h4>Der Johannisturm</h4><p><b>Gast:</b> die mitwachsende Zeichnung. Vorschlag: Wenn die endgültige Federzeichnung kommt, als zwei Schablonen anlegen, die Farbzustände (Ziegelhelm, Glocken, Stroh) werden die Farbebene. Kein Band, keine Handschrift im Kopf, die Höhe in großen Versalziffern ist der Blickfang.</p></div>
+    </div>
+    <div class="gast">
+      <div class="buehne" style="background:var(--creme-dunkel)"><div style="display:grid;gap:10px;justify-items:center"><span class="strassenschild">Bahnhofstraße</span><span class="strassenschild" style="font-size:1rem">Am Gries</span></div></div>
+      <div class="erkl"><h4>Straßennamen &amp; Stadtviertel</h4><p><b>Gast:</b> das Straßenschild. Jeder Straßenname erscheint als Schild, Farbe und Schrift nach den echten Moosburger Schildern (vor Ort abnehmen, hier Nachtblau als Platzhalter). Die Karte ist die Bühne, Motivgruppen in der Daten-Palette „Unterscheiden“.</p></div>
+    </div>
+    <div class="gast">
+      <div class="buehne" style="background:var(--creme)"><div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center"><div class="marke-post"><div><b>Bry-sur-Marne</b><span>Frankreich · 690 km · seit 1973</span></div></div><div class="marke-post" style="transform:rotate(3deg)"><div style="background:var(--tannengruen)"><b>Moosburg</b><span>Österreich · 260 km · seit 1991</span></div></div></div></div>
+      <div class="erkl"><h4>Partnerstädte</h4><p><b>Gast:</b> die Briefmarke. Jede Partnerstadt eine Marke mit Zähnung, darauf Entfernung und Jahr der Partnerschaft wie ein Poststempel. Grundton Aubergine (Begegnung), je Stadt ein anderer Thementon.</p></div>
+    </div>
+    <div class="gast">
+      <div class="buehne" style="background:var(--creme)"><div style="display:grid;gap:10px"><div class="etikett"><b>Eine-Welt-Laden</b>Kaffee, Tee, Schokolade</div><div class="etikett" style="margin-left:24px"><b>Wochenmarkt</b>Samstag, Stadtplatz</div></div></div>
+      <div class="erkl"><h4>Fair-Trade-Stadt</h4><p><b>Gast:</b> der Warenanhänger. Die Verkaufsstellen als Etiketten auf Pergament, Schrift Tannengrün. Nichts Grünes darüber hinaus, damit es kein Öko-Klischee wird.</p></div>
+    </div>
+    <div class="gast">
+      <div class="buehne" style="background:var(--erdbraun);color:var(--creme)"><div style="max-width:30ch"><h4 style="color:var(--creme);font-size:1.3rem">Geschichte &amp; Erinnerung</h4><p style="font-size:.85rem;margin-top:.4rem;opacity:.92">Kein Gastelement, keine Zeichnung, keine Handschrift im Teil über das Stalag VII A.</p></div></div>
+      <div class="erkl"><h4>Geschichte &amp; Erinnerung</h4><p>Keine Themenseite im engeren Sinn, aber mit schwerem Thema. Vorschlag: Band in Erdbraun statt Rot, sonst so zurückhaltend wie heute. Die Regel „nicht bei schwerem Thema“ bleibt.</p></div>
+    </div>
+  </div>
+  <p class="beruehrt"><b>Berührt:</b> Vielfalt, ausdrücklich gewollt. Logik und Lenkung bleiben, weil Kopf, Suche und Fuß Kanon bleiben.</p>
+</section>
+
+<!-- ───────────────────────────── 13 -->
+<section class="punkt" id="p13">
+  <header>
+    <div class="nr">Punkt 13</div>
+    <h2>Die Seite „Konzept &amp; Design“</h2>
+  </header>
+  <div class="text stack">
+    <p><code>/konzept</code> beschreibt fürs Projektteam das Designsystem, mit Farben, Schriften und Regeln, und zeigt heute noch Playfair und Inter. Vorschlag: Sie zeigt nach der Umstellung, wie das Konzept den Kanon anwendet (Zwei-Dichten, Kopfarten, Farbregister), und verweist für Tokens und Kontrastpaare auf das Showcase von <code>moosburg-design</code>. Eine Quelle pro Inhaltstyp, auch für den Kanon selbst.</p>
+    <p>Dasselbe gilt für <code>docs/design-system.md</code> und <code>docs/umsetzung/05-designsprache-und-logiken.md</code>: Beide beschreiben noch Playfair-Versalien, Tabler-Icons und <code>ink-muted #888</code>.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────── Kanon -->
+<section class="punkt" id="kanon">
+  <header>
+    <div class="nr">Für die nächste Kanon-Runde</div>
+    <h2>Ergänzungen zum Kanon</h2>
+  </header>
+  <p class="text">Was beim Anwenden auffiel und über den Stadt-Prototyp hinaus gilt. Jede Ergänzung einzeln annehmbar.</p>
+  <div class="kanon">
+    <article><span class="k">K1</span><h3>Farbregister nach Gegenstand</h3><p>Eine Tabelle im Kanon, welcher Gegenstand welche Themenfarbe trägt, familienweit (Punkt 4). Heute steht die Zuordnung verstreut in drei Proben.</p></article>
+    <article><span class="k">K2</span><h3>Ton in Ton für alle Themenfarben</h3><p>Flächenton der zweifarbigen Zeichnung je Band, gerechnet auf 2,2:1 gegen das Band: Tiefrot <code>#c8102e</code> (2,1:1, wie heute), Tannengrün <code>#157840</code>, Isar-Petrol <code>#117393</code>, Erdbraun <code>#9b5309</code>, Nachtblau <code>#5159b6</code>, Aubergine <code>#7f4e8f</code>. Gold-200-Linien darauf 3,7 bis 4,3:1. Mit den hellen Mitteltönen der Daten-Palette lägen die Flächen bei 3,3 bis 3,5:1 und die Linien darauf bei 2,4:1.</p></article>
+    <article><span class="k">K3</span><h3>Trennformel mit Chroma statt Sättigung</h3><p>Beim Hirschen landeten mit der Sättigung nach HSV die fast schwarzen Tuschelinien in der Farbebene: Bei dunklen Pixeln springt die Sättigung schon durch JPEG-Rauschen hoch. Mit Chroma (größter minus kleinster Kanal) ist die Trennung sauber. Die Formel im Kanon sollte das so nennen.</p></article>
+    <article><span class="k">K4</span><h3>Farbebene auf volle Deckung normieren</h3><p>Die Farbebene deckt im Mittel 56 % (Bahnhof) und 66 % (Hirschen), weil die Deckung aus der Helligkeit des Rots kommt. Normiert wirkt Rot-500 auf Creme wie Rot-500. Alternative: die Transparenz als Aquarell-Anmutung ausdrücklich wollen.</p></article>
+    <article><span class="k">K5</span><h3>Die Farbfläche zeigt auf den Gegenstand</h3><p>Die zweite Farbe einer Zeichnung liegt auf dem, worum es auf der Seite geht. Der Johannisturm macht es schon so: Farbe nur mit Bedeutung.</p></article>
+    <article><span class="k">K6</span><h3>Identity-Flächen gelten als werbend</h3><p>Der Kanon erlaubt volle Deckung „wo eine Seite wirbt statt zu informieren“. Im Website-Konzept deckt sich das mit der Zwei-Dichten-Regel: Identity-Flächen werben, Service-Flächen informieren.</p></article>
+    <article><span class="k">K7</span><h3>Kein Text auf abgedunkeltem Foto</h3><p>Fotos stehen ungedeckt, Titel daneben oder darüber auf einer Fläche. Nachweis klein unter dem Bild, nie darauf.</p></article>
+    <article><span class="k">K8</span><h3>Bildstil „Blick durch die Blumen“</h3><p>Vordergrund aus Blüten oder Grün, Stadt dahinter, warmes Licht, keine starke Sättigung. Dazu das Format: WebP in 1200 und 2400 px, Motiv und Aufnahmenummer im Namen.</p></article>
+    <article><span class="k">K9</span><h3>Gastelement auf Themenseiten</h3><p>Ein Element pro Themenseite darf aus dem Kanon fallen. Kopf, Navigation, Fuß, Schriften und Bedienfarben nicht (Punkt 12).</p></article>
+    <article><span class="k">K10</span><h3>Zweite Handschrift wird Notiz</h3><p>Pro Seite eine Überlappung im Kopf. Jede weitere Handschrift zeigt als Notiz auf eine Stelle oder entfällt (Punkt 9).</p></article>
+    <article><span class="k">K11</span><h3>Beschriftung in Zeichnungen</h3><p>Die Designregel des Prototyps schließt Gebäude mit Beschriftung aus, gemeint war ein Betriebsname („THE PUB“). Präziser: Ortsnamen ja, Betriebsnamen nein. Sonst fiele der Bahnhof heraus.</p></article>
+    <article><span class="k">K12</span><h3>Deckkraft der Wasserzeichen je Grund</h3><p>Der Kanon nennt 6 bis 9 %. Der Prototyp hat am gebauten Stand 11 % auf Creme, 13 % auf Tinte, 16 % auf Rot-900 und 22 % auf Gold gemessen, weil dieselbe Zahl je Grund verschieden laut wirkt. Vorschlag: eine Tabelle je Grund im Kanon, die Werte am Stadt-Prototyp neu prüfen.</p></article>
+  </div>
+</section>
+
+<!-- ───────────────────────────── Bilder -->
+<section class="punkt" id="bilder">
+  <header>
+    <div class="nr">Anhang</div>
+    <h2>Bildregister</h2>
+  </header>
+  <p class="text">Alle 32 Aufnahmen mit Dateinamen (ohne Größenzusatz) und vorgeschlagener Seite. „frei“ heißt: gutes Bild, noch ohne feste Seite.</p>
+  <div class="bildreg">{{BILDREGISTER}}</div>
+</section>
+
+<!-- ───────────────────────────── Fragen -->
+<section class="punkt" id="fragen">
+  <header>
+    <div class="nr">Zum Schluss</div>
+    <h2>Offene Fragen und Reihenfolge</h2>
+  </header>
+  <ol class="regeln text">
+    <li><b>Hirschen:</b> Welches Haus ist das? Davon hängt ab, auf welche Seite die Zeichnung kommt.</li>
+    <li><b>Türme:</b> Ist der weiße Turm mit Wimpeln (8977) der Johannisturm? Dann gehört das Bild auf dessen Themenseite.</li>
+    <li><b>Fotos:</b> Stimmt der Nachweis „Ben Arya Gruber“, und dürfen die Bilder in den öffentlichen Prototyp?</li>
+    <li><b>Gesichter:</b> Regel behalten und Personenfotos nachliefern (Markt, Volksfest, Verein), oder für Kopfbilder lockern?</li>
+    <li><b>Madelon Script:</b> Die Lizenz ist weiter offen (Formsprache, Abschnitt 4). Ersatz mit gleichem Charakter wäre Ms Madi.</li>
+    <li><b>Gold-700:</b> Im Data Hub steht es für amtliche Statistik, hier für Mitmachen. Doppelt belegen, oder Mitmachen eine eigene Farbe?</li>
+  </ol>
+  <h3 style="margin-top:2.2rem">Vorgeschlagene Reihenfolge, wenn es losgeht</h3>
+  <ol class="regeln text">
+    <li>Kanon taggen und pinnen, Schriften in <code>theme.css</code>, alle Repos gleichzeitig. Prüfen: <code>npm run kontrast</code>, <code>node hausbasis/check.mjs --kurz</code>.</li>
+    <li>Schriften, Versalien, Etiketten (1, 2) im Konzept. Prüfen: Screenshot-Paare der acht Seiten oben.</li>
+    <li>Stripe und Flächenfolge (8), dann Köpfe (5) und Farbregister (4). Prüfen: keine zwei dunklen Flächen aneinander, Kontrast je Band.</li>
+    <li>Klecks, Register, Notruf-Leiste (3), Kleinteile (11).</li>
+    <li>Fotos (7), Zeichnungen (6), Notizen (9).</li>
+    <li>Tab-Leiste (10), dann jede Themenseite einzeln (12), zuletzt die Seite „Konzept &amp; Design“ (13).</li>
+  </ol>
+</section>
+
+<footer class="fuss">
+  Protokoll zu dieser Lesung: <code>moosburg/docs/formsprache/konzept-erste-lesung.md</code>. Quelle der Seite: <code>moosburg/docs/formsprache/lesung-1/</code>. Kanon und Verlauf: <code>moosburg-design/docs/formsprache/ENTSCHEIDUNGEN.md</code>.
+</footer>
+
+</div>
+
+<script>
+const ICONS={{ICONS}};
+const KLECKS="M25 3.5c8.6.3 17.8 5.2 19.2 14.6 1.5 9.8-4 21.5-14.4 24.9C19.7 46.3 6.6 41.5 4.3 30.7 2 19.6 12.2 3 25 3.5z";
+document.querySelectorAll(".klecks").forEach(el=>{
+  const r=+(el.dataset.r||0), spiegeln=r===150?" scale(-1,1) translate(-48,0)":"";
+  const p=(ICONS[el.dataset.i]||[]).map(d=>`<path d="${d}"/>`).join("");
+  el.innerHTML=`<svg class="form" viewBox="0 0 48 48" aria-hidden="true"><path d="${KLECKS}" fill="${el.dataset.f}" transform="rotate(${r} 24 24)${spiegeln}"/></svg><svg class="ic" viewBox="0 0 256 256" fill="${el.dataset.c}" aria-hidden="true">${p}</svg>`;
+});
+</script>

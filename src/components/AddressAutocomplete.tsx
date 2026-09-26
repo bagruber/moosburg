@@ -106,7 +106,7 @@ export function AddressAutocomplete({
                 <span className="flex-1">
                   {highlight(s, streetPart)}
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-ink-muted">85368</span>
+                <span className="text-[10px] text-ink-muted">85368</span>
               </button>
             </li>
           ))}

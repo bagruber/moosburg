@@ -3,6 +3,7 @@ import { ArrowRight, Envelope, Phone } from "@phosphor-icons/react";
 import { findRoute, hubs, routesForHub } from "@/routes";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { Klecks } from "@/components/Klecks";
 import { lorem } from "@/lib/lorem";
 
 export function StubPage() {
@@ -31,9 +32,7 @@ export function StubPage() {
                     to={`/${h}`}
                     className="group flex items-center gap-4 rounded-md border border-ink-line bg-white px-5 py-4 transition hover:border-red-500 hover:shadow-soft"
                   >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-red-500 group-hover:text-cream">
-                      <Icon className="h-4 w-4" weight="regular" />
-                    </span>
+                    <Klecks icon={Icon} dicht />
                     <span className="card-title min-w-0 flex-1 text-[15px] text-ink">
                       {hubs[h].title}
                     </span>
@@ -62,10 +61,8 @@ export function StubPage() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[
           { label: hub.title, to: `/${route.hub}` },
           { label: route.title },

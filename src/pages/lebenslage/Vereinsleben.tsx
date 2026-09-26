@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
+import { Klecks } from "@/components/Klecks";
 import { cn } from "@/lib/cn";
 
 type Kategorie =
@@ -126,9 +127,7 @@ export function Vereinsleben() {
                 key={v.name}
                 className="flex items-center gap-3 rounded-xl border border-ink-line/70 bg-cream px-4 py-3"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-50 text-red-700">
-                  <UsersThree className="h-4.5 w-4.5" weight="regular" />
-                </span>
+                <Klecks icon={UsersThree} dicht />
                 <div className="min-w-0">
                   <div className="card-title text-sm text-ink">{v.name}</div>
                   <div className="text-xs text-ink-muted">{v.kat}</div>
@@ -150,7 +149,7 @@ export function Vereinsleben() {
       </section>
 
       {/* ── Verein gründen / mitmachen ────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="aubergine">
         <Reveal>
           <SectionHeader
             eyebrow="Selbst aktiv werden"

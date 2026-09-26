@@ -210,7 +210,7 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
       className="rounded-lg border border-ink-line/60 bg-cream-dark/30 p-3"
     >
       <label className="block">
-        <span className="text-xs font-display uppercase tracking-wider text-ink-muted">
+        <span className="text-xs font-display text-ink-muted">
           {mode.formTitle}
         </span>
         <textarea
@@ -268,10 +268,8 @@ export function OnlineDienste() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro="Über 130 Verwaltungsleistungen, von Anmeldung bis Wohngeld. Klicken Sie eine Leistung an, um den Antrag, das Online-Formular oder den richtigen Weg zu sehen."
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Online-Dienste A–Z" }]}
       />
 
@@ -383,7 +381,7 @@ export function OnlineDienste() {
                         <span className="min-w-0 flex-1 text-sm text-ink">{aufgabe}</span>
                         {meta && (
                           <span
-                            className="inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+                            className="inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-semibold"
                             style={{
                               backgroundColor: `var(--color-${meta.accent})1A`,
                               color: `var(--color-${meta.accent})`,
@@ -403,7 +401,7 @@ export function OnlineDienste() {
                         {/* Ansprechpartner — secondary info */}
                         {persons.length > 0 && (
                           <div>
-                            <div className="mb-2 text-[11px] font-display uppercase tracking-wider text-ink-muted">
+                            <div className="mb-2 text-[11px] font-display text-ink-muted">
                               {persons.length === 1 ? "Ansprechperson" : "Ansprechpersonen"}
                               {mode && <span className="ml-2 normal-case font-sans tracking-normal opacity-70">— bei Rückfragen</span>}
                             </div>

@@ -210,7 +210,7 @@ export function DieseWoche() {
 
   const personalSection = (
     <section>
-      <div className="flex items-center gap-2 text-xs font-display uppercase tracking-wider text-turquoise-accent">
+      <div className="flex items-center gap-2 text-xs font-display text-turquoise-accent">
         <UserCheck className="h-3.5 w-3.5" weight="regular" />
         Für Sie diese Woche
       </div>
@@ -258,11 +258,10 @@ export function DieseWoche() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Diese Woche" }]}
-        variant="photo"
+        variant="foto-daneben"
         image={saison.image}
         script={`KW ${ks}`}
         imageCredit={{ label: "Foto der Woche", author: "Klaus Leitner", href: "https://www.moosburg.org" }}
@@ -276,7 +275,7 @@ export function DieseWoche() {
           <div className="flex items-center gap-3">
             <span className="font-display text-ink">{weekdayDate}</span>
             {heutFeiertag && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream">
+              <span className="inline-flex items-center gap-1 rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-semibold text-cream">
                 <Confetti className="h-3 w-3" weight="regular" />
                 Feiertag · {heutFeiertag}
               </span>
@@ -312,14 +311,14 @@ export function DieseWoche() {
             <li key={e.date + e.title}>
               <Link
                 to="/mein-moosburg/veranstaltungen"
-                className="group flex h-full flex-col gap-3 rounded-2xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
+                className="group flex h-full flex-col gap-3 rounded-xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
               >
                 <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
                   <div className="badge text-cream/80">{e.month}</div>
                   <div className="font-display text-2xl leading-none">{e.day}</div>
                 </div>
                 <div>
-                  <span className="mb-1 inline-block rounded-full border border-ink-line px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink-soft">
+                  <span className="mb-1 inline-block rounded-full border border-ink-line px-2 py-0.5 text-[10px] font-semibold text-ink-soft">
                     {e.category}
                   </span>
                   <h3 className="mt-1 card-title text-base text-ink line-clamp-2 group-hover:text-red-700">
@@ -393,13 +392,13 @@ export function DieseWoche() {
           {NEWS.map((n) => {
             const color = CATEGORY_COLOR[n.category];
             const dateStr = new Date(n.date + "T00:00:00").toLocaleDateString("de-DE", {
-              day: "2-digit", month: "short",
+              day: "2-digit", month: "long",
             });
             const inner = (
-              <article className="group flex h-full flex-col gap-3 rounded-2xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft">
+              <article className="group flex h-full flex-col gap-3 rounded-xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft">
                 <div className="flex items-center justify-between gap-2">
                   <span
-                    className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+                    className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold"
                     style={{ color, backgroundColor: `color-mix(in srgb, ${color} 12%, transparent)` }}
                   >
                     {n.category}
@@ -426,7 +425,7 @@ export function DieseWoche() {
       {/* ─────────────────────────────────────────────────────────────────
          WOCHENMARKT-CLOSER — rote SpotlightSection als Samstags-Reminder
       ────────────────────────────────────────────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Samstag, 7 – 12 Uhr"

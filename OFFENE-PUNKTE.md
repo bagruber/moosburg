@@ -4,6 +4,12 @@
 nicht abhaken — die Datei soll kurz bleiben.*
 
 
+## Formsprache umsetzen
+
+Die neue Formsprache ist fuer dieses Repo vorgeschlagen, beantwortet und noch nicht
+gebaut. Die Anweisung steht in `docs/formsprache/briefing-umsetzung.md`, der
+Hintergrund in `docs/formsprache/konzept-erste-lesung.md` (Stand 26.09.2026).
+
 ## Toolchain-Stand
 
 Dieses Repo laeuft seit dem 26.08.2026 auf **pnpm** (nicht npm) und auf der

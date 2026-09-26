@@ -103,7 +103,6 @@ export function StadtKarte() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Stadtplan" }]}
@@ -115,7 +114,7 @@ export function StadtKarte() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {pointGroups.map(({ g, layers }) => (
               <div key={g} className="flex flex-wrap items-center gap-1.5">
-                <span className="mr-1 text-[10px] font-display uppercase tracking-wider text-ink-muted">
+                <span className="mr-1 text-[10px] font-display text-ink-muted">
                   {GROUP_LABEL[g]}
                 </span>
                 {layers.map((l) => (
@@ -127,7 +126,7 @@ export function StadtKarte() {
             ))}
             {/* Gebiete (Flächen) */}
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="mr-1 text-[10px] font-display uppercase tracking-wider text-ink-muted">
+              <span className="mr-1 text-[10px] font-display text-ink-muted">
                 Gebiete
               </span>
               {ALL_FLAECHEN.map((l) => (
@@ -203,7 +202,7 @@ export function StadtKarte() {
                 <div className="p-1">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: LAYER_META[selected.layer].color }} />
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-muted">
+                    <span className="text-[10px] font-semibold text-ink-muted">
                       {LAYER_META[selected.layer].label}
                     </span>
                   </div>
@@ -228,7 +227,7 @@ export function StadtKarte() {
                 <div className="p-1">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ backgroundColor: selectedArea.color }} />
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-ink-muted">Gebiet</span>
+                    <span className="text-[10px] font-semibold text-ink-muted">Gebiet</span>
                   </div>
                   <h3 className="mt-1 font-display text-base text-ink">{selectedArea.title}</h3>
                   {selectedArea.meta && <p className="mt-0.5 text-xs text-ink-soft">{selectedArea.meta}</p>}
@@ -410,7 +409,7 @@ function MobileLayerSheet({
         <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-6">
           {pointGroups.map(({ g, layers }) => (
             <div key={g} className="mb-4">
-              <div className="mb-2 text-[10px] font-display uppercase tracking-wider text-ink-muted">{GROUP_LABEL[g]}</div>
+              <div className="mb-2 text-[10px] font-display text-ink-muted">{GROUP_LABEL[g]}</div>
               <div className="flex flex-wrap gap-1.5">
                 {layers.map((l) => (
                   <Chip key={l} label={LAYER_META[l].label} color={LAYER_META[l].color}
@@ -421,7 +420,7 @@ function MobileLayerSheet({
             </div>
           ))}
           <div className="mb-2">
-            <div className="mb-2 text-[10px] font-display uppercase tracking-wider text-ink-muted">Gebiete</div>
+            <div className="mb-2 text-[10px] font-display text-ink-muted">Gebiete</div>
             <div className="flex flex-wrap gap-1.5">
               {ALL_FLAECHEN.map((l) => (
                 <Chip key={l} label={FLAECHE_META[l].label} color={FLAECHE_META[l].color}

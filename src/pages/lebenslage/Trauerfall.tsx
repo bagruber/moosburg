@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import {
-  Flower,
   Phone,
   FileText,
   Handshake,
@@ -68,7 +67,6 @@ export function Trauerfall() {
         title="Im Trauerfall"
         intro="Der Verlust eines nahen Menschen ist schwer. Diese Seite gibt Ihnen einen ruhigen Überblick, was in welcher Reihenfolge zu tun ist: Schritt für Schritt, ohne Druck."
         crumbs={[{ label: "Lebenslagen" }, { label: "Im Trauerfall" }]}
-        icon={Flower}
         variant="cream"
       />
 
@@ -135,7 +133,7 @@ export function Trauerfall() {
 
       {/* ── Unterstützung ─────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
-        <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-7">
+        <div className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-7">
           <div className="flex items-start gap-4">
             <Handshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" weight="light" />
             <div>

@@ -72,11 +72,10 @@ export function MaengelMelden() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro="Ist Ihnen ein Problem im Stadtgebiet aufgefallen? Melden Sie Schäden oder Störungen direkt online. Ihre Meldung wird automatisch an die zuständige Stelle in der Stadtverwaltung Moosburg weitergeleitet und bearbeitet."
         crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Mängel melden" }]}
-        variant="photo"
+        variant="foto-daneben"
         image="images/altstadt.jpg"
         script="gemeinsam"
       />
@@ -299,7 +298,7 @@ export function MaengelMelden() {
               <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
               Ihre Meldung wird verschlüsselt übertragen und nach 12 Monaten gelöscht.
             </div>
-            <button className="inline-flex items-center gap-2 rounded-md bg-red-500 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-cream shadow-soft hover:bg-red-700">
+            <button className="inline-flex items-center gap-2 rounded-md bg-red-500 px-7 py-3 text-sm font-semibold text-cream shadow-soft hover:bg-red-700">
               Meldung absenden
             </button>
           </div>
@@ -329,7 +328,7 @@ export function MaengelMelden() {
                 <div className="card-title text-sm text-ink">{r.title}</div>
                 <div className="text-xs text-ink-muted">{r.location} · {r.time}</div>
               </div>
-              <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${statusStyle[r.status]}`}>
+              <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${statusStyle[r.status]}`}>
                 {r.status === "behoben" && <Check className="mr-0.5 inline h-3 w-3" weight="bold" />}
                 {r.status}
               </span>

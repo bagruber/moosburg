@@ -106,7 +106,7 @@ export function PflegeAlter() {
             return (
               <details
                 key={b.id}
-                className="group overflow-hidden rounded-2xl border border-ink-line/70 bg-cream open:shadow-soft"
+                className="group overflow-hidden rounded-xl border border-ink-line/70 bg-cream open:shadow-soft"
               >
                 <summary className="flex cursor-pointer list-none items-center gap-4 p-5 marker:content-none">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-100 text-gold-700">
@@ -140,7 +140,7 @@ export function PflegeAlter() {
       {/* ── Unterstützung & Kontakt ───────────────────────────────── */}
       <section className="border-y border-ink-line/70 bg-cream-dark">
         <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
-          <div className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-7">
+          <div className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-7">
             <div className="flex items-start gap-4">
               <Handshake className="mt-0.5 h-8 w-8 shrink-0 text-gold-700" weight="light" />
               <div>

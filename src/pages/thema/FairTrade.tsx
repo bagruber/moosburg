@@ -59,13 +59,12 @@ export function FairTrade() {
         title="Fair-Trade-Stadt Moosburg"
         intro="Seit Mai 2019 ist Moosburg offiziell Fairtrade-Stadt, gemeinsam mit Geschäften, Gastronomie, Schulen, Vereinen und Kirchen, die fair gehandelte Produkte sichtbar machen."
         crumbs={[{ label: "Themen" }, { label: "Fair-Trade-Stadt" }]}
-        variant="photo"
         image="images/altstadt.jpg"
         script="bewusst genießen"
       />
 
       {/* ── Spotlight: warum überhaupt? ───────────────────────────── */}
-      <SpotlightSection tone="red">
+      <SpotlightSection tone="tannengruen">
         <Reveal>
           <SectionHeader
             eyebrow="Warum Fair-Trade in Moosburg?"
@@ -174,7 +173,7 @@ export function FairTrade() {
 
           {/* ── Sidebar ───────────────────────────────────────── */}
           <aside className="space-y-6">
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="eyebrow text-gold-700">Mitmachen</div>
               <p className="mt-2 text-sm text-ink-soft">
                 Möchte Ihr Geschäft oder Verein auch Fair-Trade-Partner werden? Die Steuerungs­gruppe

@@ -13,13 +13,14 @@ export function Highlights() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Veranstaltungs-Highlights" }]}
-        variant="gold"
+        variant="foto-band"
         script="das ganze Jahr"
-        sketch="sketches/griesB.svg"
+        farbe="tiefrot"
+        image="images/stadt/stadtplatz-wimpel-muenster-9043-1200.webp"
+        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
@@ -54,13 +55,13 @@ export function Highlights() {
                     {items.map((h) => (
                       <article
                         key={h.id}
-                        className="flex h-full flex-col rounded-2xl border border-ink-line/70 bg-cream p-6"
+                        className="flex h-full flex-col rounded-xl border border-ink-line/70 bg-cream p-6"
                         style={{ borderTop: `3px solid ${accent}` }}
                       >
                         <div className="flex items-start justify-between gap-2">
                           <h4 className="card-title text-lg text-ink">{h.name}</h4>
                           <span
-                            className="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider"
+                            className="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
                             style={{ backgroundColor: `color-mix(in srgb, ${accent} 14%, transparent)`, color: accent }}
                           >
                             {h.kategorie}

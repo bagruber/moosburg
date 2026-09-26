@@ -95,12 +95,12 @@ export function Geschichte() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Geschichte & Erinnerung" }]}
-        variant="red"
+        variant="band"
         script="Erinnerung"
+        farbe="erdbraun"
       />
 
       {/* ── Zeitstrahl ────────────────────────────────────────────── */}
@@ -115,7 +115,7 @@ export function Geschichte() {
           {ZEITSTRAHL.map((m) => (
             <Reveal key={m.jahr} as="li" className="relative pb-9 pl-8 last:pb-0">
               <span className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-red-500 bg-cream" />
-              <div className="font-display text-sm font-semibold uppercase tracking-wider text-red-700">
+              <div className="font-display text-sm font-semibold text-red-700">
                 {m.jahr}
               </div>
               <h3 className="mt-1 card-title text-lg text-ink">{m.titel}</h3>
@@ -137,7 +137,7 @@ export function Geschichte() {
       </section>
 
       {/* ── Stalag VII A ──────────────────────────────────────────── */}
-      <SpotlightSection tone="ink">
+      <SpotlightSection tone="tinte">
         <Reveal>
           <SectionHeader
             eyebrow="Erinnerungskultur"
@@ -161,7 +161,7 @@ export function Geschichte() {
                 heute getragen von Stadt, Verein und Ehrenamt.
               </p>
             </div>
-            <div className="rounded-2xl border border-cream/20 bg-cream/5 p-6">
+            <div className="rounded-xl border border-cream/20 bg-cream/5 p-6">
               <div className="eyebrow text-gold-200">Gedenkort besuchen</div>
               <p className="mt-2 text-sm text-cream/80">
                 Die Microsite der Stadt bündelt Geschichte, Karten und das Programm zum 80. Jahrestag
@@ -197,7 +197,7 @@ export function Geschichte() {
               href={e.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex flex-col rounded-2xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
+              className="group flex flex-col rounded-xl border border-ink-line/70 bg-cream p-6 transition hover:border-red-500/40 hover:shadow-soft"
             >
               <div className="flex items-center justify-between">
                 <h3 className="card-title text-lg text-ink">{e.label}</h3>

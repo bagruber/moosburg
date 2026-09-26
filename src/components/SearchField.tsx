@@ -101,8 +101,8 @@ export function SearchField({
         className={cn(
           "group flex items-center bg-white transition-colors",
           isHero
-            ? "rounded-md border-2 border-ink-line px-5 shadow-soft focus-within:border-red-500"
-            : "rounded-full border border-ink-line bg-cream px-4 focus-within:border-red-500 focus-within:bg-white",
+            ? "rounded-xl border-2 border-ink-line px-5 shadow-soft focus-within:border-red-500"
+            : "rounded-xl border border-ink-line bg-cream px-4 focus-within:border-red-500 focus-within:bg-white",
         )}
       >
         <MagnifyingGlass className={cn("text-ink-muted", isHero ? "h-5 w-5" : "h-4 w-4")} weight="regular" />
@@ -139,7 +139,7 @@ export function SearchField({
         {isHero && (
           <button
             onClick={() => results[0] && goTo(results[0].slug)}
-            className="my-1.5 rounded-md bg-red-500 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700"
+            className="my-1.5 rounded-xl bg-red-500 px-6 py-2.5 text-sm font-semibold text-cream transition hover:bg-red-700"
           >
             Suchen
           </button>
@@ -170,7 +170,7 @@ export function SearchField({
             </div>
           ) : (
             <>
-              <div className="flex items-center justify-between border-b border-ink-line/60 bg-cream-dark px-4 py-2 text-[11px] uppercase tracking-wider text-ink-muted">
+              <div className="flex items-center justify-between border-b border-ink-line/60 bg-cream-dark px-4 py-2 text-[11px] text-ink-muted">
                 <span>{results.length} {results.length === 1 ? "Treffer" : "Treffer"}</span>
                 <span className="flex items-center gap-1">
                   <ArrowElbowDownLeft className="h-3 w-3" weight="regular" />

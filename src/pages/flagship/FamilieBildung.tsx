@@ -126,13 +126,14 @@ export function FamilieBildung() {
   return (
     <PageLayout>
       <PageHeader
-        variant="red"
+        variant="band"
         sketch="sketches/buechereiA.svg"
         script="Familie"
         eyebrow="Mein Moosburg"
         title="Familie & Bildung"
         intro="Von der Krippe bis zur Volkshochschule, vom Spielplatz bis zum Jugendhaus, alle Familien-Angebote in Moosburg gebündelt an einem Ort."
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Familie & Bildung" }]}
+        farbe="aubergine"
       />
 
       {/* Personalization banner */}
@@ -267,7 +268,7 @@ export function FamilieBildung() {
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-cream-dark text-red-700">
                       <BabyCarriage className="h-5 w-5" weight="light" />
                     </div>
-                    <span className="rounded-full bg-cream-dark px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ink-soft">
+                    <span className="rounded-full bg-cream-dark px-2 py-0.5 text-[11px] font-semibold tracking-wide text-ink-soft">
                       {k.traegerLabel}
                     </span>
                   </div>
@@ -487,7 +488,7 @@ export function FamilieBildung() {
             {spielplaetze.map((s) => (
               <div key={s.name} className="flex items-center justify-between gap-3 rounded-md border border-ink-line bg-cream px-4 py-3 hover:border-red-700">
                   <span className="text-sm text-ink">{s.name}</span>
-                  <span className="rounded-full bg-cream-dark px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ink-soft">
+                  <span className="rounded-full bg-cream-dark px-2 py-0.5 text-[11px] font-semibold tracking-wide text-ink-soft">
                     {s.area}
                   </span>
                 </div>

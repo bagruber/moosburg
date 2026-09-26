@@ -42,6 +42,7 @@ import { recommendationsFor, type RecCategory } from "@/data/recommendations";
 import { districtFor, districts } from "@/data/moosburgStreets";
 import { jobs } from "@/data/jobs";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
+import { Klecks } from "@/components/Klecks";
 import { cn } from "@/lib/cn";
 import { Bookmark } from "@phosphor-icons/react";
 
@@ -94,7 +95,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
                   className="w-full bg-transparent py-3 pl-2.5 pr-3 text-sm outline-none" />
               </div>
             </label>
-            <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-red-700">
+            <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold text-cream transition hover:bg-red-700">
               Anmeldelink senden
               <ArrowRight className="h-4 w-4" weight="bold" />
             </button>
@@ -108,7 +109,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
         </Reveal>
 
         <Reveal delay={1} className="relative overflow-hidden rounded-md border-2 border-dashed border-ink-line bg-cream-dark p-8">
-          <div className="absolute right-5 top-5 rounded-full bg-gold-700 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cream">Bald verfügbar</div>
+          <div className="absolute right-5 top-5 rounded-full bg-gold-700 px-2.5 py-0.5 text-[10px] font-semibold text-cream">Bald verfügbar</div>
           <div className="eyebrow text-gold-700">Verifizierter Zugang</div>
           <h2 className="headline mt-1 text-2xl text-ink">Mit BundID oder Elster</h2>
           <p className="mt-3 text-sm text-ink-soft">
@@ -122,7 +123,7 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
               { name: "BayernID",desc: "Landeskonto Bayern",             badge: "BayernID" },
             ].map((p) => (
               <div key={p.name} className="flex items-center gap-3 rounded-md border border-ink-line/70 bg-white/60 p-3 opacity-70">
-                <div className="grid h-10 w-16 place-items-center rounded-sm bg-ink font-display text-xs uppercase tracking-wider text-cream">{p.badge}</div>
+                <div className="grid h-10 w-16 place-items-center rounded-sm bg-ink font-display text-xs text-cream">{p.badge}</div>
                 <div className="flex-1">
                   <div className="card-title text-sm text-ink">{p.name}</div>
                   <div className="text-xs text-ink-muted">{p.desc}</div>
@@ -159,7 +160,7 @@ function AwaitingLink({ email, onContinue }: { email: string; onContinue: () => 
         <div className="mt-6 rounded-md bg-gold-100/50 p-4 text-xs text-ink-soft">
           <strong>Prototyp-Hinweis:</strong> Diese Demo versendet keine echten E-Mails. Klicken Sie unten, um die Anmeldung zu simulieren.
         </div>
-        <button onClick={onContinue} className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
+        <button onClick={onContinue} className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-3 text-sm font-semibold text-cream hover:bg-red-700">
           Anmeldung simulieren
           <ArrowRight className="h-4 w-4" weight="bold" />
         </button>
@@ -417,10 +418,10 @@ function Recommendations() {
               className="group flex h-full flex-col rounded-md border border-ink-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-lift"
             >
               <div className="flex items-start justify-between gap-2">
-                <span className={cn("rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider", s.chip)}>
+                <span className={cn("rounded-full px-2.5 py-0.5 text-[10px] font-semibold  ", s.chip)}>
                   {s.label}
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-ink-muted text-right max-w-[55%]">{r.reason}</span>
+                <span className="text-[10px] text-ink-muted text-right max-w-[55%]">{r.reason}</span>
               </div>
               <h3 className="mt-3 card-title text-base text-ink group-hover:text-red-700">{r.title}</h3>
               <p className="mt-2 flex-1 text-sm text-ink-soft">{r.desc}</p>
@@ -454,7 +455,7 @@ function MyBookings() {
         <div className="rounded-md border border-dashed border-ink-line bg-white/60 p-8 text-center">
           <CalendarDots className="mx-auto h-8 w-8 text-ink-muted" weight="light" />
           <p className="mt-3 text-sm text-ink-soft">Sie haben noch keine Termine gebucht.</p>
-          <Link to="/rathaus/termin-buchen" className="mt-4 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-cream hover:bg-red-700">
+          <Link to="/rathaus/termin-buchen" className="mt-4 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
             Termin buchen
             <ArrowRight className="h-4 w-4" weight="bold" />
           </Link>
@@ -480,10 +481,12 @@ function MyBookings() {
           const d = new Date(b.date);
           return (
             <article key={b.id} className="group flex gap-5 rounded-md border border-ink-line bg-white p-5 transition hover:border-red-500 hover:shadow-soft">
-              <div className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
-                <div className="eyebrow text-cream/90">{d.toLocaleDateString("de-DE", { month: "short" })}</div>
+              <div className="flex h-20 w-24 shrink-0 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
+                {/* Ausgeschriebener Monat, deshalb etwas breiter als hoch und
+                    eine Stufe kleiner als die Kategoriezeile sonst. */}
+                <div className="text-[11px] font-semibold text-cream/90">{d.toLocaleDateString("de-DE", { month: "long" })}</div>
                 <div className="font-display text-3xl leading-none">{d.getDate()}</div>
-                <div className="mt-0.5 text-[10px] uppercase tracking-wider text-cream/70">
+                <div className="mt-0.5 text-[10px] text-cream/70">
                   {d.toLocaleDateString("de-DE", { weekday: "short" }).slice(0, 2)}
                 </div>
               </div>
@@ -538,9 +541,7 @@ function WatchedJobs() {
         {watched.map((j) => (
           <li key={j.id}>
             <article className="flex items-start gap-4 rounded-md border border-ink-line bg-white p-4">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-red-50 text-red-700">
-                <Briefcase className="h-5 w-5" weight="regular" />
-              </span>
+              <Klecks icon={Briefcase} />
               <div className="min-w-0 flex-1">
                 <h3 className="card-title text-sm text-ink">{j.title}</h3>
                 <div className="text-xs text-ink-muted">{j.bereich} · {j.eingruppierung} · bis {new Date(j.deadline).toLocaleDateString("de-DE")}</div>
@@ -774,6 +775,8 @@ export function KontoPage() {
 
   return (
     <PageLayout>
+      {/* Das Konto ist kein Gegenstand der Stadt, sondern eine Funktion.
+          Eine Themenfarbe würde hier etwas behaupten, was nicht stimmt. */}
       <PageHeader
         eyebrow="Mein Moosburg"
         title={stage === "signed-in" ? "Mein Konto" : "Anmelden"}
@@ -783,7 +786,7 @@ export function KontoPage() {
             : "Mit dem Mein-Moosburg-Konto speichern Sie Termine, verfolgen Anträge und erhalten Benachrichtigungen zu Themen, die Sie interessieren."
         }
         crumbs={[{ label: "Mein Konto" }]}
-        variant={stage === "signed-in" ? "cream" : "gold"}
+        variant="cream"
         script={stage === "signed-in" ? undefined : "willkommen"}
       />
 

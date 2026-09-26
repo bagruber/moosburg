@@ -61,10 +61,8 @@ export function Satzungen() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow={route.eyebrow}
         title={route.title}
         intro={route.intro}
-        icon={route.icon}
         crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Satzungen & Verordnungen" }]}
       />
 
@@ -94,7 +92,7 @@ export function Satzungen() {
 
           {/* Lebenslagen-Filter chips */}
           <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 text-xs font-display uppercase tracking-wider text-ink-muted">
+            <span className="mr-1 text-xs font-display text-ink-muted">
               Wann brauche ich das?
             </span>
             {ALL_LEBENSLAGEN.map((l) => {
@@ -134,7 +132,7 @@ export function Satzungen() {
           <div className="space-y-12">
 
             {/* Disclaimer */}
-            <section className="rounded-2xl border border-gold-500/30 bg-gold-100/40 p-5">
+            <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
               <div className="flex items-start gap-3">
                 <WarningCircle className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" weight="regular" />
                 <div className="text-sm">
@@ -190,7 +188,7 @@ export function Satzungen() {
                               </span>
                             )}
                           </span>
-                          <span className="shrink-0 text-[10px] font-display uppercase tracking-wider text-ink-muted">
+                          <span className="shrink-0 text-[10px] font-display text-ink-muted">
                             {s.typ}
                           </span>
                         </summary>
@@ -218,7 +216,7 @@ export function Satzungen() {
                           </dl>
                           {s.lebenslagen && s.lebenslagen.length > 0 && (
                             <div className="flex flex-wrap items-center gap-1.5">
-                              <span className="text-[10px] font-display uppercase tracking-wider text-ink-muted">
+                              <span className="text-[10px] font-display text-ink-muted">
                                 Relevant bei:
                               </span>
                               {s.lebenslagen.map((l) => (

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Phone, Envelope, Clock, MapPin, ArrowSquareOut } from "@phosphor-icons/react";
-import { RainbowStripe } from "./RainbowStripe";
 import { Logo } from "./Logo";
 import { WappenWatermark, Rose } from "./BrandMark";
 import { partnerLinks } from "@/routes";
@@ -47,7 +46,6 @@ const columns = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-red-900 text-cream">
-      <RainbowStripe />
       <WappenWatermark
         className="absolute -right-12 -top-8 h-[420px] w-[336px] text-cream/[0.06] lg:-right-4 lg:h-[520px] lg:w-[416px]"
       />

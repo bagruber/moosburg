@@ -1,5 +1,4 @@
 import { cn } from "@/lib/cn";
-import { Rose } from "./BrandMark";
 
 export function SectionHeader({
   eyebrow,
@@ -18,7 +17,7 @@ export function SectionHeader({
   /**
    * "lg" eröffnet ein Kapitel, "sm" führt es fort oder schließt es ab.
    * Ohne diese zweite Stufe wiegt ein Navigations-Abbinder genauso schwer
-   * wie der Hauptabschnitt darüber — die Rose bleibt dem Kapitelanfang.
+   * wie der Hauptabschnitt darüber.
    */
   size?: "lg" | "sm";
   className?: string;
@@ -29,22 +28,10 @@ export function SectionHeader({
       className={cn(
         "relative",
         align === "center" && "text-center",
-        script ? "pt-10 mb-10" : small ? "mb-5" : "mb-8",
+        script ? "mb-10" : small ? "mb-5" : "mb-8",
         className,
       )}
     >
-      {script && (
-        <span
-          aria-hidden="true"
-          className={cn(
-            "script-accent pointer-events-none absolute text-[3.5rem] sm:text-[4rem] leading-none select-none",
-            align === "center" ? "left-1/2 -translate-x-1/2 -top-2" : "left-0 top-0",
-            light ? "text-cream/50" : "text-gold-500/40",
-          )}
-        >
-          {script}
-        </span>
-      )}
       {eyebrow && (
         <div
           className={cn(
@@ -53,18 +40,35 @@ export function SectionHeader({
             light ? "text-gold-200" : "text-red-700",
           )}
         >
-          {!small && <Rose className="h-3 w-3" />}
           {eyebrow}
         </div>
       )}
+      {/* Die Handschrift steht in der Überschrift, nicht daneben: ihre Maße
+          sind em-Werte und beziehen sich damit auf den Schriftgrad der
+          Überschrift, in jeder Stufe gleich. Der Abstand darüber hält den
+          Schwung frei von dem, was darüber steht. */}
       <h2
         className={cn(
-          "headline relative mt-1",
+          "headline relative",
+          script ? "mt-[0.85em]" : "mt-1",
           small ? "text-xl sm:text-2xl" : "text-3xl sm:text-4xl",
           light ? "text-cream" : "text-ink",
         )}
       >
-        {heading}
+        {script && (
+          <span
+            aria-hidden="true"
+            className={cn(
+              "script-accent pointer-events-none absolute select-none whitespace-nowrap",
+              "-top-[0.42em] text-[1.45em] leading-none origin-bottom-left -rotate-6",
+              align === "center" ? "left-1/2 -translate-x-1/2" : "-left-[0.05em]",
+              light ? "text-gold-200/70" : "text-gold-500/55",
+            )}
+          >
+            {script}
+          </span>
+        )}
+        <span className="relative">{heading}</span>
       </h2>
     </div>
   );

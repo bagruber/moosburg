@@ -123,7 +123,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
             <span className="font-display text-base text-ink">{weekday}</span>
             <span className="text-ink-muted"> · {dateStr}</span>
           </p>
-          <span className="text-[10px] font-display uppercase tracking-wider text-ink-muted">
+          <span className="text-[10px] font-display text-ink-muted">
             Heute in Moosburg
           </span>
         </div>
@@ -141,7 +141,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
                   <Icon className="h-4.5 w-4.5" weight="regular" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[10px] font-display uppercase tracking-wider text-ink-muted">{t.eyebrow}</div>
+                  <div className="text-[10px] font-display text-ink-muted">{t.eyebrow}</div>
                   <div className="truncate text-sm font-medium text-ink">{t.body}</div>
                   {t.meta && (
                     <div className="truncate text-xs text-ink-muted">{t.meta}</div>
