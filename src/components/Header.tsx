@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Bell, UserCircle, List, X } from "@phosphor-icons/react";
+import { Bell, UserCircle } from "@phosphor-icons/react";
 import { Logo } from "./Logo";
 import { RainbowStripe } from "./RainbowStripe";
 import { SearchField } from "./SearchField";
@@ -14,13 +13,11 @@ const navItems = [
 ];
 
 export function Header() {
-  const [open, setOpen] = useState(false);
-
   return (
     <header className="sticky top-0 z-40 w-full bg-cream/95 backdrop-blur">
       <RainbowStripe />
       <div className="border-b border-ink-line/70">
-        <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-4 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 lg:h-20 lg:px-8">
           <Link to="/" className="shrink-0">
             <Logo />
           </Link>
@@ -52,7 +49,7 @@ export function Header() {
             <Link
               to="/konto"
               aria-label="Benachrichtigungen"
-              className="hidden sm:grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark hover:text-red-700"
+              className="grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark hover:text-red-700"
             >
               <Bell className="h-5 w-5" weight="regular" />
             </Link>
@@ -63,43 +60,15 @@ export function Header() {
             >
               <UserCircle className="h-6 w-6" weight="regular" />
             </Link>
-            <button
-              aria-label={open ? "Menü schließen" : "Menü öffnen"}
-              className="grid h-10 w-10 place-items-center rounded-full text-ink-soft hover:bg-cream-dark lg:hidden"
-              onClick={() => setOpen((v) => !v)}
-            >
-              {open ? <X className="h-5 w-5" /> : <List className="h-5 w-5" />}
-            </button>
           </div>
+        </div>
+        {/* Unter 1024 px tragen die Bereiche die Tab-Leiste am unteren Rand.
+            Die Suche bleibt trotzdem im Kopf: Sie ist auf jeder Seite der
+            schnellste Weg und soll nicht hinter einem Menü liegen. */}
+        <div className="mx-auto max-w-7xl px-4 pb-3 lg:hidden">
+          <SearchField variant="compact" />
         </div>
       </div>
-
-      {open && (
-        <div className="border-b border-ink-line/70 bg-cream lg:hidden">
-          <div className="mx-auto max-w-7xl px-4 py-4">
-            <div className="mb-4">
-              <SearchField variant="compact" onResultSelected={() => setOpen(false)} />
-            </div>
-            <nav className="grid gap-1 text-sm font-semibold text-ink">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    cn(
-                      "rounded-md px-3 py-2 transition",
-                      isActive ? "bg-red-500/10 text-red-700" : "hover:bg-cream-dark",
-                    )
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
     </header>
   );
 }

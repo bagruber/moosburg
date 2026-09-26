@@ -69,7 +69,6 @@ export function Stadtfinanzen() {
             <SectionHeader
               eyebrow="Wofür die Stadt Geld ausgibt"
               heading="Ausgaben nach Aufgabenbereich"
-              script={mio(gesamtAusgaben) + " gesamt"}
             />
           </Reveal>
           <figure className="rounded-xl border border-ink-line/60 bg-cream p-6 lg:p-8">

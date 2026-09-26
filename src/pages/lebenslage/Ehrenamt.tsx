@@ -145,7 +145,7 @@ export function Ehrenamt() {
       {/* ── So fangen Sie an ──────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="In drei Schritten" heading="So fangen Sie an" script="einfach starten" />
+          <SectionHeader eyebrow="In drei Schritten" heading="So fangen Sie an" />
         </Reveal>
         <ol className="grid gap-5 sm:grid-cols-3">
           {START_SCHRITTE.map((s, i) => (

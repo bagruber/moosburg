@@ -187,7 +187,6 @@ export function Geschichte() {
           <SectionHeader
             eyebrow="Weiterführende Quellen"
             heading="Erinnerung bewahren"
-            script="weiterlesen"
           />
         </Reveal>
         <div className="grid gap-5 sm:grid-cols-3">

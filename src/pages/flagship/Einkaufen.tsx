@@ -337,7 +337,6 @@ export function Einkaufen() {
             eyebrow="Lokale Wirtschaft stärken"
             heading="Moosburg-Card"
             size="sm"
-            script="eine Karte für alles"
             light
           />
         </Reveal>

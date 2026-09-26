@@ -263,7 +263,6 @@ export function Essen() {
           <SectionHeader
             eyebrow="Fair genießen"
             heading="Fair-Trade-Gastronomie"
-            script="bewusst auf dem Teller"
             light
           />
         </Reveal>

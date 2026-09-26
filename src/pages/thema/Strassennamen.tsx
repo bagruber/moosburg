@@ -129,7 +129,7 @@ export function Strassennamen() {
       {/* ── Karten-Explorer ───────────────────────────────────────── */}
       <section id="karte" className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="Auf der Karte" heading="Motivgruppen räumlich entdecken" script="wo genau?" />
+          <SectionHeader eyebrow="Auf der Karte" heading="Motivgruppen räumlich entdecken" />
         </Reveal>
         <p className="-mt-4 mb-6 max-w-3xl text-base leading-relaxed text-ink-soft">
           Wählen Sie eine Motivgruppe, jede Untergruppe erscheint in eigener Farbe, sodass sichtbar
@@ -207,7 +207,6 @@ export function Strassennamen() {
                       <SectionHeader
                         eyebrow={`Themenviertel · ${list.length} Straßen`}
                         heading={t.label}
-                        script={t.script}
                       />
                       <p className="-mt-4 mb-6 max-w-3xl text-base leading-relaxed text-ink-soft">
                         {t.reason}

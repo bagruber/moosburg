@@ -175,7 +175,6 @@ export function UnternehmenGewerbe() {
           <SectionHeader
             eyebrow="Warum Moosburg"
             heading="Ein starker Standort"
-            script="beste Lage"
             light
           />
         </Reveal>

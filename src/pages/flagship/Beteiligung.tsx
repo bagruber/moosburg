@@ -150,7 +150,6 @@ export function Beteiligung() {
           <SectionHeader
             eyebrow="Was Moosburg denkt"
             heading="Bürgerumfragen & Daten"
-            script="nachvollziehbar"
             light
           />
         </Reveal>

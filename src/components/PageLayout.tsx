@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { TabLeiste } from "./TabLeiste";
 
 export function PageLayout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
@@ -23,6 +24,9 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
+      {/* Platz unter dem Fuss, damit die Leiste nichts verdeckt. */}
+      <div aria-hidden="true" className="h-16 lg:hidden" />
+      <TabLeiste />
     </div>
   );
 }

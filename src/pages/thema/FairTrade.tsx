@@ -99,7 +99,6 @@ export function FairTrade() {
               <SectionHeader
                 eyebrow="Aus Moosburg, fair gehandelt"
                 heading="Die Moosburg-Fair-Trade-Produkte"
-                script="im Eine-Welt-Laden"
               />
             </Reveal>
             <ul className="-mt-6 grid gap-2 sm:grid-cols-2">

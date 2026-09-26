@@ -465,7 +465,6 @@ export function DieseWoche() {
             eyebrow="Mehr aus Mein Moosburg"
             heading="Themen-Einstiege"
             size="sm"
-            script="weiterstöbern"
           />
         </Reveal>
         <ul className="-mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

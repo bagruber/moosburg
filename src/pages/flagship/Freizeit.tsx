@@ -353,7 +353,6 @@ export function Freizeit() {
             eyebrow="Was Moosburg feiert"
             heading="Volksfeste & Stadtkultur"
             size="sm"
-            script="das ganze Jahr"
             light
           />
         </Reveal>

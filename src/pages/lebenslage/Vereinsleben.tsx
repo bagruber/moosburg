@@ -154,7 +154,6 @@ export function Vereinsleben() {
           <SectionHeader
             eyebrow="Selbst aktiv werden"
             heading="Verein gründen oder eintragen"
-            script="gemeinsam mehr"
             light
           />
         </Reveal>

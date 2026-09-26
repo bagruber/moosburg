@@ -4,11 +4,25 @@
 nicht abhaken — die Datei soll kurz bleiben.*
 
 
-## Formsprache umsetzen
+## Formsprache: was noch offen ist
 
-Die neue Formsprache ist fuer dieses Repo vorgeschlagen, beantwortet und noch nicht
-gebaut. Die Anweisung steht in `docs/formsprache/briefing-umsetzung.md`, der
-Hintergrund in `docs/formsprache/konzept-erste-lesung.md` (Stand 26.09.2026).
+Die Phasen 0 bis 6 aus `docs/formsprache/briefing-umsetzung.md` sind am 26.09.2026
+gebaut. Offen geblieben sind drei Dinge, jeweils mit Absicht:
+
+- **Stalag-Zeichnung.** `public/sketches/stalagA-{tinte,farbe}.webp` liegt zerlegt
+  bereit, ist aber nirgends eingebaut. Das Briefing verlangt, vorher drei Varianten
+  am gebauten Stand zu zeigen (nur Linien in Gold-200 auf Erdbraun; Linien mit
+  Flaeche Ton in Ton `#9b5309`; Rot-500 auf Tiefrot). Die Entscheidung gehoert als
+  Ausnahme nach `docs/design-system.md`, weil die Regel „keine Zeichnung bei
+  schwerem Thema" sonst dagegensteht.
+- **Themenseiten mit Gastelement** (Punkt 12). Benedict will die Idee ueberarbeiten.
+  Das Feld `script` in `src/data/strassennamen.ts` ist seit dem Umbau ungenutzt —
+  die zweite Handschrift je Motivgruppe ist weggefallen. Bewusst nicht geloescht:
+  die Woerter sind redaktionell und koennten im Gastelement wieder gebraucht werden.
+- **Johannisturm** bekommt `turm-wimpel-8977`, aber erst in der Themenseiten-Runde.
+
+Dunkelmodus und die Gesichter-Regel (wartet auf Personenfotos) bleiben ebenfalls
+offen, siehe `moosburg-design/docs/formsprache/ENTSCHEIDUNGEN.md`.
 
 ## Toolchain-Stand
 

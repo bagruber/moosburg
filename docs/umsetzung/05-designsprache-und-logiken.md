@@ -1,5 +1,16 @@
 # 05 — Designsprache & Logiken (Referenz-Sheet)
 
+> **Stand 26.09.2026:** Die Formsprache ist umgebaut. Schriften, Farben, Ecken und
+> Kontrastpaare stehen jetzt allein im Kanon-Repo `moosburg-design` (Showcase und
+> `npm run kontrast`); was dieses Dokument dazu sagt, ist der Stand davor und
+> beschreibt Playfair, Inter und Versalien. Was im Prototyp gilt, steht in
+> `docs/design-system.md`, die Begründungen in `docs/formsprache/`.
+>
+> Kurz, was sich geändert hat: Source Serif 4 und Atkinson Hyperlegible Next statt
+> Playfair und Inter, Satzschreibung statt Versalien, Farbe nach Gegenstand statt
+> nach Bereich, Stripe nur im Seitenkopf, Klecks statt Icon-Quadrat, Foto neben dem
+> Titel statt Text auf dem Bild.
+
 *Kompaktes Nachschlage-Sheet: die visuelle Sprache und die Interaktions-Logiken des
 Prototyps auf einen Blick — für Entwickler:innen und Design-Übergabe. Quelle der
 Wahrheit im Code: [`src/index.css`](../../src/index.css) und

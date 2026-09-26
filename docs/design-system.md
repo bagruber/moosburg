@@ -8,7 +8,7 @@
 
 Eine Marke, zwei Dichten.
 
-- **Identity-Flächen** (Homepage-Hero, Zu Besuch, Mitgestalten, Portraits, Landing-Pages): Das Brand-Briefing voll ausspielen — Rot + Gold großflächig, Playfair-ALL-CAPS-Headlines prominent, Madelon Script als genau ein Akzent pro Seite, Rainbow-Stripe an ikonischen Stellen.
+- **Identity-Flächen** (Homepage-Hero, Zu Besuch, Mitgestalten, Portraits, Landing-Pages): Das Brand-Briefing voll ausspielen — die Themenfarbe der Seite großflächig, große Serifen-Titel in Satzschreibung, Madelon Script als genau ein Akzent pro Seite, Rainbow-Stripe nur im Seitenkopf der Website.
 - **Service-Flächen** (Dienstleistungen A–Z, Rathaus-Details, Tabellen, Formular-Ansichten): Ruhig auf Cream/Weiß, Rot nur für CTAs und Akzente, keine Script-Elemente. Peter Praktisch darf nicht von Typografie abgelenkt werden.
 
 Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** der Brand-Gesten unterscheidet sich.
@@ -17,20 +17,40 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 
 ## Farben
 
-| Token | Hex | Einsatz |
-|---|---|---|
-| `red-500` | `#C8102E` | Primäre Marke, Header-Akzente, Primary-Buttons |
-| `red-700` | `#A50D24` | Hover-States, dunkle Flächen, Footer |
-| `gold-500` | `#B8964E` | Sekundär-Akzent, Rahmen, gold-Blöcke |
-| `gold-200` | `#E8D5A3` | Gold-Flächen (weich), Hintergrund-Akzente |
-| `cream` | `#FAF7F2` | Body-Background (Standard) |
-| `cream-dark` | `#F1ECE1` | Abschnittstrenner, Card-Hintergrund |
-| `ink` | `#1C1C1C` | Primäre Schrift |
-| `ink-soft` | `#555` | Sekundäre Schrift |
-| `ink-muted` | `#888` | Meta-Info (Datum, Kategorie) |
-| `purple-accent` | `#6B3E7A` | Sehr sparsamer Drittakzent |
+**Die Tokens stehen nicht mehr hier.** Quelle ist `moosburg-design/css/theme.css`,
+nachzulesen im Showcase des Repos; die freigegebenen Paare prüft dort
+`npm run kontrast`. Eine zweite Tabelle hier wäre eine zweite Wahrheit, und sie
+war es auch: `ink-muted` stand hier noch auf `#888`, im Kanon seit August 2026
+auf `#6f6b63`.
 
-**Rainbow-Streifen** (`rb-1` bis `rb-9`): **Nie als Gradient, immer als 9-Segment-Reihe** in fester Reihenfolge. Einsatz: als 6-px-Streifen über/unter wichtigen Sektionen (Header-Kante, Footer-Kante, Stadtjubiläums-Gefühl). Maximal einmal pro Scroll-Bereich sichtbar.
+Was für diesen Prototyp gilt, und nur das:
+
+**Farbe nach Gegenstand, nicht nach Bereich.** Die Zuordnung steht als Register in
+`src/lib/farbregister.ts`: Tiefrot für Rat und Feste, Erdbraun für Bauen, Boden und
+Geschichte, Nachtblau für Geld, Wahlen und Recht, Isar-Petrol für Wege, Wasser und
+Ankommen, Tannengrün für Natur, Aubergine für Bildung, Kultur und Begegnung,
+Gold-700 für Mitmachen, Tinte für Übersichten und Verzeichnisse. Dieselben Farben
+tragen dieselben Gegenstände im Stadtrat und im Data Hub.
+
+Nach Bereich zu färben war die Alternative und ist verworfen: dann hätte „Mein
+Moosburg" eine Farbe, und Veranstaltungen, Schulen und Radwege sähen gleich aus,
+obwohl sie nichts gemeinsam haben.
+
+**Service-Seiten tragen keine Fläche.** Rathaus und alles darunter bleibt Creme.
+
+**`red-600` ist keine Themenfarbe**, sondern die Hinweis-Fläche für Stellen mit
+Aufmerksamkeitscharakter: Jubiläen, besondere Feste. Höchstens eine pro Seite. Rot
+bleibt sonst Bedienfarbe, nicht Flächenfarbe.
+
+**Flächenfolge:** über die ganze Breite oder gar nicht, höchstens eine dunkle Fläche
+pro Bildschirm, zwei dunkle nie direkt aneinander. Wo die Zuordnung das verletzen
+würde, wird eine der beiden Creme — so auf „Moosburg entdecken", „Partnerstädte",
+„Geschichte & Erinnerung" und „Stadtfinanzen".
+
+**Rainbow-Streifen** (`rb-1` bis `rb-9`): nie als Gradient, immer als 9-Segment-Reihe
+in fester Reihenfolge, 4 px. **Seit dem 26.09.2026 nur noch im Seitenkopf der
+Website** (`Header`). Steht der Regenbogen dort, schließt er keine Zwischenebene mehr
+ab; vorher standen bis zu fünf Stripes auf einer Seite.
 
 ---
 
@@ -38,9 +58,21 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 
 ### Familien
 
-- **Playfair Display** (serif, variable via @fontsource) — Display/Headlines. Immer ALL CAPS, außer im Body-Fließtext.
-- **Madelon Script** (self-hosted OTF) — Script-Akzent. Nur groß, nur einmal pro Layout, gern überlappend mit Bildern/Playfair-Titel.
-- **Inter Variable** (sans, variable via @fontsource-variable) — Body, UI, Labels, Eyebrows, Buttons. Ersatz für die ursprünglich zwei grotesken Fonts (DM Sans + Montserrat).
+- **Source Serif 4** (serif, variable via `@fontsource-variable`, Import über
+  `/opsz.css`) — Display und Headlines, **in Satzschreibung**. Der `opsz`-Import ist
+  Absicht: ohne die Achse der optischen Größen bekämen die großen Titel die Zeichnung
+  der Lesegröße.
+- **Atkinson Hyperlegible Next** (sans, variable) — Body, UI, Labels, Buttons.
+- **Madelon Script** (self-hosted OTF) — Script-Akzent. Nur groß, nur einmal pro
+  Layout, überlappend mit dem Serifen-Titel.
+
+Playfair und Inter sind seit dem 26.09.2026 aus dem Kanon: Inter war als
+austauschbare Standardschrift aufgefallen, Atkinson ist auf Lesbarkeit hin
+entworfen.
+
+**Versalien gibt es nicht mehr** — eine einzige Ausnahme: die H1 der Startseite
+(`Moosburg an der Isar`, Klasse `.headline--versal`). Ein Ortsname als Signatur,
+einmal im ganzen Auftritt.
 
 ### Skala
 
@@ -52,13 +84,13 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 | `text-xl` - `text-2xl` | 20–24px | H3, Intro-Leads |
 | `text-base` | 16px | Body |
 | `text-sm` | 14px | Meta, Kompakt-Tabellen |
-| `eyebrow` (Custom) | 12px | Kategorie-/Kontext-Labels |
+| `eyebrow` (Custom) | 14px | Kategoriezeile, Satzschreibung |
 
 ### Regel-Sätze
 
-- `.headline` — Playfair, ALL CAPS, tight tracking (0.01em), Line-Height 1.05
+- `.headline` — Source Serif 4, Satzschreibung, Line-Height 1.05
 - `.script-accent` — Madelon, einmal pro Seite, 4–8× so groß wie Body
-- `.eyebrow` — Inter 600, UPPERCASE, tracking 0.14em, 12px
+- `.eyebrow` — Atkinson 600, Satzschreibung, 14px; steht nur dort, wo die Zeile etwas anderes sagt als die Überschrift darunter
 
 ---
 
@@ -86,7 +118,7 @@ Die Design-Tokens sind für beide Flächen identisch — nur die **Frequenz** de
 
 **Phosphor Icons** (`@phosphor-icons/react`, MIT). ~1.500 Icons mit runden Abschlüssen —
 freundlicher als eine rein geometrische Strichfamilie und damit näher an Cremeweiß,
-Playfair und Regenbogenstreifen. Ersetzt Tabler seit 0.40.
+Serifen-Titel und Regenbogenstreifen. Ersetzt Tabler seit 0.40.
 
 - Service-Kacheln: 24px oder 28px, Gold oder Rot je nach Kontext
 - Inline-Icons (Telefon, Adresse): 16px, `ink-muted`
@@ -152,7 +184,15 @@ gesucht hat (0.39). Der Befund: Das Vokabular war unauffällig — keine Werbe-A
 
 - Warm, authentisch, lokale Substanz — Altstadt, Isar, Menschen, Brauchtum
 - Konsistente Farb-Nachbearbeitung — warme Mitten, nicht überzogene Sättigung
-- Mindestens einmal pro Seite ein menschliches Gesicht (Identity-Flächen)
+- **Kein Text auf abgedunkeltem Foto und kein Verlauf darüber.** Der Nachweis steht
+  klein unter dem Bild. Früher lag der Titel über dem Bild; das kostet das Bild und
+  macht den Text trotzdem nicht sicher lesbar.
+- Die Stadtserie vom 21.09.2026 liegt in `public/images/stadt/`, je Motiv in 1200 und
+  2400 px, Nachweis „Ben Arya Gruber". Ein Motiv je Bereich, nicht mehrfach genutzt.
+- **Gesichter-Regel ausgesetzt** (26.09.2026): Die Regel „mindestens einmal pro Seite
+  ein menschliches Gesicht" gilt vorerst nicht, weil keine der 32 Aufnahmen Menschen
+  von vorn zeigt. Personenfotos werden nachgeliefert, dann wird die Regel neu
+  bewertet.
 - Nie als generisches Stock-Wallpaper hinter Text — Bild ist Inhalt, nicht Dekoration
 
 ### Federzeichnungen (ab 0.42)
@@ -220,7 +260,9 @@ Ungenutzt und verfügbar: `rathausA`, `buechereiB`–`E`, `pubA`, `pubC`.
 
 `SectionHeader` kennt `size="lg"` (Vorgabe) und `size="sm"`.
 
-- **`lg`** eröffnet ein Kapitel: große Playfair-Zeile, Eyebrow **mit Rose**.
+- **`lg`** eröffnet ein Kapitel: große Serifen-Zeile. Die Rose vor dem Eyebrow ist
+  seit dem 26.09.2026 weg — sie stand vor fast jeder Überschrift und markierte damit
+  nichts mehr.
 - **`sm`** führt fort oder bindet ab: kleinere Zeile, engerer Abstand, Eyebrow **ohne Rose**.
 
 Die Rose ist ein Markenzeichen, kein Aufzählungspunkt. Vor 0.39 trug sie alle 64 Eyebrows

@@ -325,7 +325,6 @@ export function Gesundheit() {
           <SectionHeader
             eyebrow="Wenn Angehörige Hilfe brauchen"
             heading="Pflege & Alter"
-            script="da füreinander"
             light
           />
         </Reveal>

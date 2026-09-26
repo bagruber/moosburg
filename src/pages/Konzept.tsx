@@ -263,9 +263,60 @@ export function Konzept() {
         title="Konzept, Design und Technik"
         intro="Diese Seite fasst zusammen, worauf der Prototyp beruht, wie das Designsystem funktioniert und welche Funktionen ihn tragen. Sie richtet sich an alle, die am Projekt mitarbeiten: Entwicklung, Gestaltung, Text und die Stadt. Alle Services hier sind Demonstrationen ohne echtes Backend."
         crumbs={[{ label: "Konzept & Design" }]}
-        image="images/münster.jpg"
+        variant="foto-daneben"
+        image="images/stadt/stadtplatz-pflanzkuebel-8951-1200.webp"
+        imageCredit={{ author: "Ben Arya Gruber" }}
         script="hinter den Kulissen"
       />
+
+      {/* Einordnung zuerst: Auf diese Seite führt der schwebende Hinweis, und
+          wer ihn anklickt, will wissen, was das hier ist, bevor er etwas über
+          Personas liest. */}
+      <section className="border-b border-ink-line/70 bg-cream">
+        <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="eyebrow text-red-700">Einordnung</div>
+            <h2 className="headline mt-1 text-2xl text-ink lg:text-3xl">
+              Ein Vorschlag, kein Auftritt der Stadt
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-ink-soft lg:text-lg">
+              Diese Seite zeigt, wie ein Auftritt der Stadt Moosburg aussehen und aufgebaut
+              sein könnte. Sie ist eine Studie zu Gestaltung und Struktur, entstanden aus
+              einem Forschungsprojekt der LMU München und einer Benchmark-Analyse. Sie wird
+              von der Stadt Moosburg a. d. Isar weder betrieben noch beauftragt noch
+              verantwortet.
+            </p>
+            <p className="mt-3 text-base leading-relaxed text-ink-soft lg:text-lg">
+              Alle Inhalte sind Attrappen: Termine, Formulare, Meldungen und das Nutzerkonto
+              reagieren, speichern aber nichts und lösen nichts aus. Wer ein Anliegen an die
+              Stadt hat, ist auf{" "}
+              <a
+                href="https://www.moosburg.de"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-red-700 underline underline-offset-2"
+              >
+                moosburg.de
+              </a>{" "}
+              richtig.
+            </p>
+            <p className="mt-6 text-sm leading-relaxed text-ink-muted">
+              Der Prototyp gehört zu den privaten Digitalprojekten rund um Moosburg, die
+              unter{" "}
+              <a
+                href="https://moosburg.eu"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2 hover:text-ink"
+              >
+                moosburg.eu
+              </a>{" "}
+              gesammelt sind. Dort stehen auch Trägerschaft, Kontakt, Impressum und
+              Datenschutz.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* In-page Navigation */}
       <div className="border-b border-ink-line/70 bg-cream-dark/60">
@@ -392,7 +443,6 @@ export function Konzept() {
           <SectionHeader
             eyebrow="Designsystem"
             heading="Eine Marke, zwei Dichten"
-            script="Rot, Creme, Gold"
           />
           <p className="-mt-2 mb-10 max-w-2xl text-base leading-relaxed text-ink-soft">
             Dieselben Tokens, aber unterschiedliche Frequenz der Marken-Gesten. Identity-Flächen dürfen laut

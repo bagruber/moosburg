@@ -1,0 +1,74 @@
+name: Deploy auf moosburg.eu/stadt/
+
+# Laeuft neben dem GitHub-Pages-Workflow in pages.yml auf demselben Branch.
+# Die beiden stoeren sich nicht: Pages nutzt kein FTP.
+#
+# Unterschiedliche base-Pfade, deshalb ein eigener Build-Befehl: Pages liegt
+# unter /moosburg/ (Repo-Name), Hostinger unter /stadt/. Die Config anzufassen
+# wuerde immer eine der beiden Varianten brechen.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-stadt
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # generate-sitemap.mjs liest lastmod aus dem letzten Commit je
+          # Seiten-Datei. Mit dem flachen Standard-Checkout traegt jede Seite
+          # dasselbe Datum.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build:hostinger
+        env:
+          SITE_URL: https://moosburg.eu/stadt
+
+      # Das Repo nutzt BrowserRouter, also echte Pfade. Ohne diese Regel
+      # liefert der Server bei /stadt/rathaus/notfall einen 404, weil die
+      # Datei nicht existiert. Der 404.html-Trick im Repo loest das nur fuer
+      # GitHub Pages; auf Apache/LiteSpeed macht es ein Rewrite.
+      # Bewusst hier erzeugt statt in public/: der Pfad /stadt/ ist eine
+      # Eigenheit dieses Hosts, das Repo bleibt davon frei.
+      - name: SPA-Fallback fuer Apache erzeugen
+        run: |
+          cat > dist/.htaccess <<'HTACCESS'
+          RewriteEngine On
+          RewriteBase /stadt/
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          # Anfragen mit Dateiendung nicht umschreiben. Sonst beantwortet der
+          # Server eine fehlende .webp mit der SPA-Shell und HTTP 200 — ein
+          # fehlendes Bild saehe dann aus, als gaebe es die Datei.
+          RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$
+          RewriteRule . /stadt/index.html [L]
+          HTACCESS
+          cat dist/.htaccess
+
+      - name: Nach stadt/ spiegeln
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: stadt/
+
+          # Alle Projekte teilen sich ein FTP-Konto. Kurz nach einer anderen
+          # Uebertragung nimmt Hostinger die Verbindung verzoegert an, und die
+          # 30 s Standard-Timeout der Action reichen dann nicht.
+          timeout: 120000

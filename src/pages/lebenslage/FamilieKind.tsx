@@ -21,6 +21,7 @@ import { Reveal } from "@/components/Reveal";
 import { TipCard } from "@/components/TipCard";
 import { AnsprechpartnerStrip } from "@/components/AnsprechpartnerCard";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
+import { Notiz } from "@/components/Notiz";
 import { cn } from "@/lib/cn";
 import { useAppState, type ChildAge } from "@/state/AppState";
 
@@ -139,9 +140,12 @@ export function FamilieKind() {
       {/* ── Alters-Explorer ───────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <Reveal>
-          <div className="mb-6">
-            <div className="eyebrow text-red-700">In welcher Phase ist Ihr Kind?</div>
-            <h2 className="headline mt-1 text-2xl text-ink lg:text-3xl">Wählen Sie das Alter</h2>
+          <div className="mb-6 flex items-end gap-6">
+            <div>
+              <div className="eyebrow text-red-700">In welcher Phase ist Ihr Kind?</div>
+              <h2 className="headline mt-1 text-2xl text-ink lg:text-3xl">Wählen Sie das Alter</h2>
+            </div>
+            <Notiz richtung="unten-links" className="mb-1">hier anfangen</Notiz>
           </div>
         </Reveal>
 
@@ -220,7 +224,6 @@ export function FamilieKind() {
           <SectionHeader
             eyebrow="Unabhängig vom Alter"
             heading="Immer für Ihre Familie da"
-            script="an Ihrer Seite"
             light
           />
         </Reveal>

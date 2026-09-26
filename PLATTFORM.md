@@ -8,15 +8,23 @@ ist. Der übergreifende Kontext steht im Repo `bagruber/moosburg-eu` in
 
 ---
 
-## Aktuell nur GitHub Pages
+## Zwei Adressen
 
 | | Adresse | Quelle |
 |---|---|---|
 | GitHub Pages | `bagruber.github.io/moosburg/` | Branch `main` über `.github/workflows/pages.yml` |
-| moosburg.eu | `moosburg.eu/stadt/` — **geplant, noch nicht eingerichtet** | |
+| moosburg.eu | `moosburg.eu/stadt/` | Branch `main` über `.github/workflows/moosburg-eu.yml` |
 
-Anders als `council`, `council-voting-tool` und `datahub` läuft dieser Prototyp
-noch **nicht** auf moosburg.eu.
+Seit dem 26.09.2026 läuft der Prototyp auf beiden. Die zwei Workflows stören
+sich nicht: Pages nutzt kein FTP.
+
+**Der Auftritt trägt keine Familien-Navigation.** Die Leiste von moosburg.eu
+steht auf allen Projekten außer dem Sitzungstool und diesem hier: Das Konzept
+soll zeigen, wie ein Stadtauftritt wirkt, und eine fremde Leiste darüber nimmt
+ihm genau das. Stattdessen steht unten links ein schwebender Hinweis
+(`src/components/KonzeptHinweis.tsx`), der die Seite als Vorschlag ausweist und
+auf `/konzept` verlinkt; von dort geht es weiter auf moosburg.eu. Wer den
+Hinweis entfernt, nimmt der Seite ihre einzige Einordnung.
 
 ## Der Design-Kanon liegt im Repo moosburg-design
 
@@ -59,13 +67,16 @@ Vier Dinge sind dann zu tun. `datahub` hat den Weg schon hinter sich und dient
 als Vorlage:
 
 **1. Zweiter Build statt Änderung an `vite.config.ts`.** Pages braucht
-`base: "/moosburg/"`, moosburg.eu bräuchte `/stadt/`. Eine Änderung an der
-Config bricht immer eine der beiden Varianten. Stattdessen ein eigener
-Script-Eintrag nach dem Muster von `datahub`:
+`base: "/moosburg/"`, moosburg.eu `/stadt/`. Eine Änderung an der Config
+bricht immer eine der beiden Varianten. Stattdessen ein eigener Script-Eintrag
+nach dem Muster von `datahub`, erledigt:
 
 ```json
-"build:hostinger": "tsc -b && vite build --base=/stadt/"
+"build:hostinger": "tsc -b && vite build --base=/stadt/ && node scripts/generate-sitemap.mjs"
 ```
+
+Die Sitemap nimmt ihren Host aus `SITE_URL`; der Workflow setzt
+`https://moosburg.eu/stadt`.
 
 **2. Der `basename` ist bereits richtig.** `src/main.tsx` nutzt
 `basename={import.meta.env.BASE_URL}` — nicht fest verdrahtet. Damit entfällt
@@ -78,13 +89,16 @@ braucht zwingend einen Endungs-Guard, sonst beantwortet sie fehlende Dateien
 mit der SPA-Shell und HTTP 200 statt mit 404 — Muster siehe
 `datahub/.github/workflows/moosburg-eu.yml`.
 
-**4. Schriften.** Die Fonts liegen als npm-Pakete und werden mitgebaut, das
-funktioniert unverändert. Die Madelon-Script-Datei wird über einen absoluten
-Pfad geladen (`/moosburg/fonts/…` in `src/index.css`) — der müsste mitziehen.
+**4. Schriften.** Die Fonts liegen als npm-Pakete und werden mitgebaut. Die
+Madelon-Script-Datei stand früher unter dem festen Pfad `/moosburg/fonts/…` in
+`src/index.css` und wäre unter `/stadt/` ins Leere gelaufen. Sie steht jetzt als
+`/fonts/MadelonScript.otf` dort: Vite setzt beim Bauen die konfigurierte `base`
+davor, damit stimmt der Pfad in beiden Varianten. **Nicht wieder auf einen
+festen Basispfad ändern.**
 
-Dazu: Workflow anlegen, die drei FTP-Secrets im Repo hinterlegen, und den
-Ordner in die `exclude`-Liste des `moosburg-eu`-Workflows eintragen. Details in
-`moosburg-eu/BRIEFING.md`.
+Erledigt sind außerdem: Workflow angelegt, `stadt/**` steht in der
+`exclude`-Liste des `moosburg-eu`-Workflows, die drei FTP-Secrets liegen im
+Repo. Details in `moosburg-eu/BRIEFING.md`.
 
 ## Nicht vergessen
 
@@ -94,20 +108,23 @@ Bei einem Umzug auf eine öffentlich erreichbare Adresse muss diese Einordnung
 sichtbar bleiben — auf moosburg.eu trägt die Startseite den entsprechenden
 Haftungshinweis.
 
-## Offen: Zählung einbinden
+## Zählung
 
-Die Zeile fehlt noch vor `</body>` in `index.html`, mit absolutem Pfad:
+Eingebunden seit dem 26.09.2026. In `index.html` steht vor `</body>`:
 
 ```html
 <script src="/assets/zaehler.js" defer></script>
 ```
 
-Dazu beim Routenwechsel `window.zaehl?.(window.location.pathname)`, mit dem
-Pfad aus `window.location` und nicht dem des Routers. Nicht dringend: diese
-App wird derzeit nicht auf moosburg.eu ausgeliefert, spätestens unter
-`/stadt/` gehört beides dazu.
+Der Pfad ist absichtlich absolut und **nicht** an die `base` gebunden: Die
+Datei gehört dem Portal und liegt in der Domain-Wurzel, nicht unter `/stadt/`.
+Auf GitHub Pages läuft der Aufruf ins Leere, das ist so gewollt.
+
+Den Routenwechsel meldet `src/components/Zaehlung.tsx` mit
+`window.zaehl?.(window.location.pathname)` — mit dem Pfad aus `window.location`
+und nicht dem des Routers, der nur den Teil hinter der `base` kennt.
 
 Warum die Zählung ohne Einwilligungsbanner auskommt, warum deshalb hier
 niemals eine Sitzungs-ID in `sessionStorage` oder `localStorage` nachgerüstet
-werden darf und warum der Aufruf auf GitHub Pages absichtlich ins Leere läuft,
-steht in `bagruber/moosburg-eu`, `README.md`, Abschnitt „Zählen".
+werden darf und warum der Aufruf auf GitHub Pages ins Leere läuft, steht in
+`bagruber/moosburg-eu`, `README.md`, Abschnitt „Zählen".

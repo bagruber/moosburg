@@ -221,7 +221,7 @@ export function Heiraten() {
       {/* ── Trauorte ──────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="Wo Sie sich das Ja-Wort geben" heading="Trauorte in Moosburg" script="feierlich" />
+          <SectionHeader eyebrow="Wo Sie sich das Ja-Wort geben" heading="Trauorte in Moosburg" />
         </Reveal>
         <div className="grid gap-5 sm:grid-cols-3">
           {TRAUORTE.map((t) => {

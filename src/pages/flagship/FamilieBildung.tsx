@@ -474,7 +474,6 @@ export function FamilieBildung() {
             <SectionHeader
               eyebrow="Spielplätze"
               heading="27 Orte zum Toben"
-              script="Spielen"
             />
           </Reveal>
           <Reveal>

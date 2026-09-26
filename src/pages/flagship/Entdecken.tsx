@@ -12,6 +12,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
 import { Reveal } from "@/components/Reveal";
 import { Highlight } from "@/components/Highlight";
+import { Notiz } from "@/components/Notiz";
 import { findRoute } from "@/routes";
 import {
   wahrzeichen,
@@ -185,12 +186,15 @@ export function Entdecken() {
       {/* ── Weiter ────────────────────────────────────────────────── */}
       <SpotlightSection tone="creme">
         <Reveal>
-          <SectionHeader
-            eyebrow="Tiefer eintauchen"
-            heading="Moosburg auf Ihre Weise"
-            size="sm"
-            script="weiter geht's"
-          />
+          <div className="flex items-end gap-6">
+            <SectionHeader
+              eyebrow="Tiefer eintauchen"
+              heading="Moosburg auf Ihre Weise"
+              size="sm"
+              className="mb-0"
+            />
+            <Notiz richtung="unten-rechts" className="mb-1">drei Wege, ein Ort</Notiz>
+          </div>
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <WeiterCard

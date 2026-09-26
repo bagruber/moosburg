@@ -32,5 +32,13 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Zaehlung von moosburg.eu. Der Pfad ist absichtlich absolut und nicht
+         an die base gebunden: die Datei gehoert dem Portal und liegt in der
+         Domain-Wurzel. Auf GitHub Pages laeuft der Aufruf ins Leere, das ist
+         so gewollt. Warum die Zaehlung ohne Einwilligungsbanner auskommt und
+         warum hier niemals eine Sitzungs-ID in sessionStorage oder
+         localStorage nachgeruestet werden darf, steht in bagruber/moosburg-eu,
+         README.md, Abschnitt "Zaehlen". -->
+    <script src="/assets/zaehler.js" defer></script>
   </body>
 </html>

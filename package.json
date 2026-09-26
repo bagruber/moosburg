@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/generate-sitemap.mjs",
+    "build:hostinger": "tsc -b && vite build --base=/stadt/ && node scripts/generate-sitemap.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit"
   },

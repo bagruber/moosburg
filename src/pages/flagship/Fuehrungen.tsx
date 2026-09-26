@@ -98,7 +98,6 @@ export function Fuehrungen() {
           <SectionHeader
             eyebrow="Lieber auf eigene Faust?"
             heading="Der Altstadt-Rundgang"
-            script="einfach loslaufen"
             light
           />
         </Reveal>
