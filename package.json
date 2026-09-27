@@ -16,7 +16,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "clsx": "^2.1.1",
     "maplibre-gl": "^5.24.0",
-    "moosburg-design": "github:bagruber/moosburg-design",
+    "moosburg-design": "github:bagruber/moosburg-design#v0.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-map-gl": "^8.1.1",

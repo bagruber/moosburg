@@ -24,8 +24,8 @@ importers:
         specifier: ^5.24.0
         version: 5.24.0
       moosburg-design:
-        specifier: github:bagruber/moosburg-design
-        version: https://codeload.github.com/bagruber/moosburg-design/tar.gz/1b5c29e2efc4852291e41ea9ec520080cf160e00
+        specifier: github:bagruber/moosburg-design#v0.3.0
+        version: https://codeload.github.com/bagruber/moosburg-design/tar.gz/7dad64fa1e70d4022635f3c3a6661d69f09ea801
       react:
         specifier: ^19.0.0
         version: 19.2.8
@@ -811,9 +811,9 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  moosburg-design@https://codeload.github.com/bagruber/moosburg-design/tar.gz/1b5c29e2efc4852291e41ea9ec520080cf160e00:
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/bagruber/moosburg-design/tar.gz/1b5c29e2efc4852291e41ea9ec520080cf160e00}
-    version: 0.1.0
+  moosburg-design@https://codeload.github.com/bagruber/moosburg-design/tar.gz/7dad64fa1e70d4022635f3c3a6661d69f09ea801:
+    resolution: {gitHosted: true, integrity: sha512-mhGSgNSYJ8/xXZ/53hgWMcQbhP/eKXxzAg7Be171C4jA0aAQQW6VA0ulJylXNJZVanD4fX4FGI/fIN5ckuveJg==, tarball: https://codeload.github.com/bagruber/moosburg-design/tar.gz/7dad64fa1e70d4022635f3c3a6661d69f09ea801}
+    version: 0.3.0
 
   murmurhash-js@1.0.0:
     resolution: {integrity: sha512-TvmkNhkv8yct0SVBSy+o8wYzXjE4Zz3PCesbfs8HiCXXdcTuocApFv11UWlNFWKYsP2okqrhb7JNlSm9InBhIw==}
@@ -1558,7 +1558,7 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  moosburg-design@https://codeload.github.com/bagruber/moosburg-design/tar.gz/1b5c29e2efc4852291e41ea9ec520080cf160e00: {}
+  moosburg-design@https://codeload.github.com/bagruber/moosburg-design/tar.gz/7dad64fa1e70d4022635f3c3a6661d69f09ea801: {}
 
   murmurhash-js@1.0.0: {}
 
