@@ -59,10 +59,10 @@ export function Diptychon({
             className="aspect-[3/2] w-full rounded-md object-cover"
           />
           <GoldRahmen seed={seedAus(quer)} richtung="rechts" />
-          {notiz && <BildNotiz ziel={notiz.ziel}>{notiz.text}</BildNotiz>}
         </span>
       </div>
-      <Bildunterschrift bild={quer} notiz={notiz?.text} className="mt-6" />
+      {notiz && <BildNotiz ziel={notiz.ziel}>{notiz.text}</BildNotiz>}
+      <Bildunterschrift bild={quer} notiz={notiz?.text} className="mt-4" />
     </figure>
   );
 }

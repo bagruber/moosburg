@@ -74,47 +74,37 @@ export function Bildunterschrift({
  */
 export function BildNotiz({
   children,
-  /** Ziel im Bild, als Anteile 0 bis 1 von links oben. */
+  /** Ziel im Bild, als Anteile 0 bis 1 von links oben. Genutzt wird x. */
   ziel,
 }: {
   children: React.ReactNode;
   ziel: [number, number];
 }) {
-  const [zx, zy] = ziel;
+  const [zx] = ziel;
   return (
-    <>
-      {/* Am Handy: eigene Zeile über dem Bild, ohne Pfeil. */}
-      <span
-        aria-hidden="true"
-        className="script-accent mb-2 block text-2xl leading-none text-gold-700 lg:hidden"
-      >
+    /* Unter dem Bild, nicht daneben. Daneben wäre schöner, aber die meisten
+       Bilder stehen in einer Spalte mit einem Nachbarn rechts, und die Notiz
+       landete dann in dessen Kasten. Unten hat sie in jeder Spaltenbreite
+       Platz, und der Pfeil zeigt nach oben ins Bild. Auf dem Foto steht sie
+       nie (K7). */
+    <span
+      aria-hidden="true"
+      className="pointer-events-none mt-1 flex select-none items-start gap-1"
+      style={{ paddingLeft: `clamp(0px, calc(${zx * 100}% - 3.5rem), calc(100% - 9rem))` }}
+    >
+      <svg viewBox="0 0 34 30" className="mt-0.5 h-6 w-7 shrink-0 text-gold-500" fill="none">
+        {/* Ein gezogener Bogen nach oben, zurück ins Bild. */}
+        <path
+          d="M30 28C24 18 16 10 4 4M4 4l9 1M4 4l1 9"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <span className="script-accent whitespace-nowrap text-2xl leading-none text-gold-700">
         {children}
       </span>
-
-      {/* Ab lg: rechts neben dem Bild, mit einem Pfeil auf den Punkt. */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 hidden translate-x-[calc(100%+18px)] select-none lg:block"
-        style={{ top: `calc(${zy * 100}% - 2.2rem)` }}
-      >
-        <span className="script-accent block whitespace-nowrap text-2xl leading-none text-gold-700">
-          {children}
-        </span>
-        <svg viewBox="0 0 60 30" className="mt-1 h-7 w-16 text-gold-500" fill="none" aria-hidden="true">
-          {/* Ein gezogener Bogen zurück ins Bild, nach links unten. */}
-          <path
-            d="M56 4C40 6 22 12 6 22M6 22l10-1M6 22l4 8"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-      {/* Der Punkt selbst bleibt unmarkiert: ein Ring auf dem Foto wäre
-          wieder etwas auf dem Bild. Die Position steuert nur die Höhe der
-          Notiz, damit der Pfeil in die richtige Gegend zeigt. */}
-      <span className="sr-only" data-ziel={`${zx},${zy}`} />
-    </>
+    </span>
   );
 }
