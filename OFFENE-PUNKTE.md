@@ -24,13 +24,35 @@ gebaut. Offen geblieben sind drei Dinge, jeweils mit Absicht:
 Dunkelmodus und die Gesichter-Regel (wartet auf Personenfotos) bleiben ebenfalls
 offen, siehe `moosburg-design/docs/formsprache/ENTSCHEIDUNGEN.md`.
 
-## Bilder: Plan liegt bereit, nicht gebaut
+## Bilder: gebaut auf `probe/bilder`, drei Entscheidungen offen
 
 Bildregister, Goldrahmen, Bildunterschrift mit Kartenlink, Stadtfenster, Diptychon und
-Scroll-Effekt sind entschieden (29.09.2026). Die Anweisung steht in
-`docs/formsprache/briefing-bilder.md`, der Hintergrund in
-`docs/formsprache/bilder-erste-lesung.md`. Von Benedict stehen noch aus: handgezeichnete
-Rahmen und die Aufnahmeorte der Fotos.
+beide Scroll-Effekte sind gebaut (29.09.2026), auf dem Branch `probe/bilder`, nicht
+gemergt. Stand und Einsatzorte: `docs/formsprache/bilder-erste-lesung.md`.
+
+**Von Benedict am gebauten Stand zu entscheiden**, alle drei ueber die Adresse
+umschaltbar (`src/lib/probe.ts`), damit kein Umschalter in der Seite steht:
+
+- Format der Wahrzeichen: 3:2 (Vorgabe) oder `?wz=16x9`
+- Rahmen: versetzt (Vorgabe) oder `?rahmen=ecken`
+- Scroll-Effekt: Scharfstellen oder Zoom, `?fx=zoom8` bis `?fx=zoom16`
+
+Nach der Wahl fallen Parameter und die nicht gewaehlte Variante weg.
+
+**Von Benedict zu liefern:**
+
+- **Handgezeichnete Rahmen.** Lieferformat in `docs/formsprache/briefing-bilder.md`,
+  Abschnitt „Lieferformat der Rahmen": sechs bis acht waagrechte Linien von je etwa
+  1600 px, als Strich mit `stroke`, nicht in Umrisse gewandelt. `GoldRahmen.tsx` baut
+  den Rahmen schon heute aus vier einzelnen Kanten; es wechselt nur die Quelle.
+- **Aufnahmeorte der Fotos.** Bis dahin steht eine Ortszeile nur bei den sieben
+  Aufnahmen, die Muenster, Stadtbuecherei oder Johannisturm eindeutig zeigen.
+- **Fotos fuer Heimatmuseum und Gedenkstaette Stalag VII A**, sonst bleiben zwei der
+  drei Karten „Auch sehenswert" ohne Bild.
+
+**Verschoben, nicht verworfen:** Punkt 5 (Abzug, gehoert zur Themenseiten-Runde),
+Punkt 10 (Zeichnung wird Foto, Benedict hat eine Idee fuer die Gegenrichtung),
+Punkt 11 (Moosburg im Jahr).
 
 ## Toolchain-Stand
 

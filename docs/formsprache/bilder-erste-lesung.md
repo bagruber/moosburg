@@ -34,6 +34,58 @@ den Ort eindeutig zeigt.
 
 Der Plan für die Umsetzung steht in `briefing-bilder.md`.
 
+## Stand der Umsetzung, 29.09.2026
+
+Gebaut auf Branch `probe/bilder`, noch nicht gemergt und nicht gepusht.
+
+**Fertig:** Bildregister mit allen 32 Titeln (Phase 1), Goldrahmen versetzt und
+als Ecken (2), Bildunterschrift samt Kartenlink und Option C (3), Stadtfenster
+(4), Diptychon und querere Wahrzeichen (5), beide Scroll-Effekte (6). Dazu die
+doppelte Kategoriezeile, die auf Essen & Trinken, Freizeit & Sport und
+Gesundheit über den Abschnittsköpfen stand.
+
+**Zu entscheiden am gebauten Stand.** Drei Varianten laufen über die Adresse,
+damit kein Umschalter in der Seite steht:
+
+| Frage | Vorgabe | Vergleich |
+|---|---|---|
+| Format der Wahrzeichen | 3:2 | `?wz=16x9`, `?wz=4x3` |
+| Rahmen | versetzt | `?rahmen=ecken` |
+| Scroll-Effekt | Scharfstellen, Stadtfenster Zoom 12 % | `?fx=schaerfe`, `?fx=zoom8`, `?fx=zoom12`, `?fx=zoom16`, `?fx=aus` |
+
+Nach der Wahl fallen Parameter und nicht gewählte Variante weg.
+
+**Wo die neuen Stücke stehen:**
+
+- Stadtfenster: Moosburg entdecken (zwischen Identität und Wahrzeichen, Zoom)
+  und Startseite (zwischen „Ein Wort“ und „Hauptbereiche“,
+  `petunien-strasse-9057`, vorher auf keiner Seite).
+- Diptychon: Essen & Trinken (Cafés & Eisdielen) und Einkaufen & Märkte.
+- Notiz (Option C): einmal, auf dem Diptychon von Einkaufen & Märkte, auf die
+  Holzkrone gerichtet.
+- Hover-Rahmen: die Karten „Auch sehenswert“ auf Moosburg entdecken.
+- Scharfstellen: Freizeit & Sport, Abschnitt Städtische Einrichtungen.
+
+**Zwei Entscheidungen, die das Briefing offengelassen hat:**
+
+1. **Kopf von Essen & Trinken getauscht.** `eiscafe-markisen-quer-9018` war
+   Kopf *und* Hälfte des vorgesehenen Paares. Der Kopf trägt jetzt
+   `freisitz-blumen-9046` (vorher frei), das Paar bleibt wie vorgeschlagen.
+   Andersherum ginge auch; dann bräuchte das Diptychon ein anderes Paar.
+2. **Die Karten „Auch sehenswert“ haben nur zum Teil ein Bild.** Die Vorlage
+   zeigte Punkt 8 an drei erfundenen Karten (Münster, Stadtbücherei,
+   Stadtplatz). Die Seite führt Heimatmuseum, Stadtbücherei und Gedenkstätte
+   Stalag VII A, und nur für die Stadtbücherei gibt es ein Foto, das sie
+   wirklich zeigt. Ein beliebiges Foto daraufzusetzen wäre eine falsche
+   Bildunterschrift, deshalb trägt nur diese Karte ein Bild und damit den
+   Hover-Rahmen. Für die anderen beiden fehlen Aufnahmen.
+
+**Aufgefallen:** Auf „Moosburg entdecken“ ragte schon vor dieser Runde etwas
+9 bis 13 px über die Fensterbreite hinaus (die Handschrift im Kopf, jetzt auch
+der Rahmen). Seitwärts scrollen lässt sich die Seite nicht, `overflow-x: clip`
+am Body fängt es ab; sichtbar abgeschnitten wird nur leerer Raum.
+
+
 ## Die Punkte
 
 | Nr. | Idee | Ort in der Vorlage | Empfehlung |

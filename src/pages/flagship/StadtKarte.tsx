@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Map, Marker, Popup, NavigationControl, Source, Layer, type MapLayerMouseEvent } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -40,9 +41,24 @@ const DEFAULT_FLAECHEN: FlaecheLayer[] = ["naturschutz"];
 type SelectedArea = { lng: number; lat: number; title: string; meta: string; to: string; color: string };
 
 export function StadtKarte() {
-  const [active, setActive] = useState<Set<KartenLayer>>(() => new Set(DEFAULT_ON));
+  /* Eine Bildunterschrift kann hierher verlinken: /…/stadtplan?pin=sw-muenster.
+     Der Punkt bestimmt dann den Ausschnitt, schaltet seine Ebene ein und öffnet
+     sein Popup. Ist die id unbekannt, steht die Karte wie immer da; eine
+     Fehlermeldung wäre hier nichts wert, der Stadtplan ist auch ohne Ziel
+     brauchbar. Nur beim ersten Rendern ausgewertet, damit ein späteres
+     Verschieben der Karte nicht wieder zurückspringt. */
+  const [params] = useSearchParams();
+  const zielPunkt = useMemo(
+    () => KARTEN_PUNKTE.find((p) => p.id === params.get("pin")) ?? null,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  const [active, setActive] = useState<Set<KartenLayer>>(
+    () => new Set(zielPunkt ? [...DEFAULT_ON, zielPunkt.layer] : DEFAULT_ON),
+  );
   const [activeFl, setActiveFl] = useState<Set<FlaecheLayer>>(() => new Set(DEFAULT_FLAECHEN));
-  const [selected, setSelected] = useState<KartenPunkt | null>(null);
+  const [selected, setSelected] = useState<KartenPunkt | null>(zielPunkt);
   const [selectedArea, setSelectedArea] = useState<SelectedArea | null>(null);
 
   const visible = useMemo(() => KARTEN_PUNKTE.filter((p) => active.has(p.layer)), [active]);
@@ -144,9 +160,9 @@ export function StadtKarte() {
         <div className="relative h-[68vh] min-h-[480px] w-full overflow-hidden border-b border-ink-line/50">
           <Map
             initialViewState={{
-              longitude: MOOSBURG_CENTER[0],
-              latitude: MOOSBURG_CENTER[1],
-              zoom: 14.2,
+              longitude: zielPunkt?.lng ?? MOOSBURG_CENTER[0],
+              latitude: zielPunkt?.lat ?? MOOSBURG_CENTER[1],
+              zoom: zielPunkt ? 16.5 : 14.2,
             }}
             mapStyle={STYLE_URL}
             maxBounds={MOOSBURG_BOUNDS}

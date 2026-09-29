@@ -24,6 +24,7 @@ import { useAppState } from "@/state/AppState";
 import { findRoute } from "@/routes";
 import { firmen } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
+import { Diptychon } from "@/components/Diptychon";
 import { cn } from "@/lib/cn";
 
 const route = findRoute("mein-moosburg/einkaufen")!;
@@ -65,9 +66,8 @@ export function Einkaufen() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Einkaufen & Märkte" }]}
         variant="foto-daneben"
-        image="images/stadt/sitzbank-schaufenster-8968-1200.webp"
+        bild="sitzbank-schaufenster-8968"
         script="auf dem Plan"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -139,6 +139,18 @@ export function Einkaufen() {
                 Firmen­verzeichnis
               </Link>.
             </p>
+
+            <Reveal delay={1}>
+              {/* Option C, einmal zum Vorführen: die Notiz steht neben dem
+                  Bild und zeigt auf ein Einzelelement darin, nicht auf das
+                  Bild als Ganzes. Text auf dem Foto bleibt ausgeschlossen. */}
+              <Diptychon
+                hoch="sitzbank-hochformat-8971"
+                quer="sitzbank-blumen-2-8975"
+                notiz={{ text: "die Holzkrone", ziel: [0.42, 0.3] }}
+                className="mt-8"
+              />
+            </Reveal>
 
             <Reveal delay={1}>
               <div className="flex flex-wrap gap-1.5">

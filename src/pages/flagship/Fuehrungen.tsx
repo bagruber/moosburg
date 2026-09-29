@@ -30,10 +30,9 @@ export function Fuehrungen() {
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Stadtführungen" }]}
         variant="foto-band"
-        image="images/stadt/fassade-rundfenster-blumen-8902-1200.webp"
+        bild="fassade-rundfenster-blumen-8902"
         script="zu Fuß entdecken"
         farbe="aubergine"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">

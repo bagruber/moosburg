@@ -14,6 +14,12 @@ import { Reveal } from "@/components/Reveal";
 import { Highlight } from "@/components/Highlight";
 import { Notiz } from "@/components/Notiz";
 import { findRoute } from "@/routes";
+import { cn } from "@/lib/cn";
+import { probe } from "@/lib/probe";
+import { BILDER, bildQuellen } from "@/data/bilder";
+import { GoldRahmen, seedAus } from "@/components/GoldRahmen";
+import { Stadtfenster } from "@/components/Stadtfenster";
+import { BildEffekt } from "@/components/BildEffekt";
 import {
   wahrzeichen,
   weitereStationen,
@@ -23,17 +29,48 @@ import {
 const route = findRoute("zu-besuch/entdecken")!;
 const BASE = import.meta.env.BASE_URL;
 
-function WahrzeichenBlock({ s, flip }: { s: Sehenswuerdigkeit; flip: boolean }) {
+/* Punkt 3 B: die Bilder bleiben in der Spalte, dürfen aber querer werden als
+   4:3. Beide Vorschläge stehen bereit, 3:2 ist die Vorgabe; mit `?wz=16x9`
+   zeigt die Seite das flachere Format zum Vergleich. */
+function BildEffektWenn({ an, children }: { an?: boolean; children: React.ReactNode }) {
+  return an ? <BildEffekt art="schaerfe">{children}</BildEffekt> : <>{children}</>;
+}
+
+const WZ_FORMAT: Record<string, string> = {
+  "3x2": "aspect-[3/2]",
+  "16x9": "aspect-[16/9]",
+  "4x3": "aspect-[4/3]",
+};
+
+function WahrzeichenBlock({ s, flip, rahmen, effekt }: { s: Sehenswuerdigkeit; flip: boolean; rahmen: boolean; effekt?: boolean }) {
+  const format = WZ_FORMAT[probe("wz", "3x2")] ?? WZ_FORMAT["3x2"];
+  const eintrag = s.bild ? BILDER[s.bild] : undefined;
   return (
     <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-      <div className={flip ? "lg:order-2" : ""}>
-        <div className="overflow-hidden rounded-xl shadow-soft">
+      {/* Der Versatz zeigt immer vom Text weg: liegt das Bild links, geht er
+          nach links, liegt es rechts, nach rechts. */}
+      <div className={cn(flip ? "lg:order-2 lg:pr-3" : "lg:pl-3")}>
+        <span className="relative block overflow-visible rounded-xl shadow-soft">
+          {/* Das Scharfstellen liegt an einem anderen Block als der Rahmen:
+              ein Bild trägt höchstens eines von beidem. */}
+          <BildEffektWenn an={effekt}>
           <img
-            src={`${BASE}${s.image}`}
+            src={s.bild ? bildQuellen(s.bild).src : `${BASE}${s.image}`}
+            srcSet={s.bild ? bildQuellen(s.bild).srcSet : undefined}
+            sizes="(min-width: 1024px) 46vw, 100vw"
             alt={s.name}
-            className="aspect-[4/3] h-full w-full object-cover"
+            style={eintrag?.fokus ? { objectPosition: eintrag.fokus } : undefined}
+            className={cn(format, "h-full w-full rounded-xl object-cover")}
           />
-        </div>
+          </BildEffektWenn>
+          {rahmen && (
+            <GoldRahmen
+              seed={seedAus(s.id ?? s.name)}
+              richtung={flip ? "rechts" : "links"}
+              art={probe("rahmen", "versatz") === "ecken" ? "ecken" : "versatz"}
+            />
+          )}
+        </span>
       </div>
       <div className={flip ? "lg:order-1" : ""}>
         <div className="eyebrow text-red-700">{s.kategorie}</div>
@@ -74,10 +111,9 @@ export function Entdecken() {
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Moosburg entdecken" }]}
         variant="foto-band"
-        image="images/stadt/muenster-laterne-8937-1200.webp"
+        bild="muenster-laterne-8937"
         script="die Drei-Rosen-Stadt"
         farbe="aubergine"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       {/* ── Identität ─────────────────────────────────────────────── */}
@@ -108,6 +144,11 @@ export function Entdecken() {
         </Reveal>
       </SpotlightSection>
 
+      {/* ── Stadtfenster ──────────────────────────────────────────── */}
+      {/* Steht zwischen zwei hellen Abschnitten: der Streifen wiegt wie eine
+          dunkle Fläche und darf keine zweite neben sich haben. */}
+      <Stadtfenster bild="stadtplatz-pflanzkuebel-8951" effekt="zoom" className="mt-4" />
+
       {/* ── Wahrzeichen ───────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-20">
         <Reveal>
@@ -119,7 +160,7 @@ export function Entdecken() {
         <div className="space-y-16">
           {wahrzeichen.map((s, i) => (
             <Reveal key={s.id}>
-              <WahrzeichenBlock s={s} flip={i % 2 === 1} />
+              <WahrzeichenBlock s={s} flip={i % 2 === 1} rahmen={i === 0} effekt={i === 1} />
             </Reveal>
           ))}
         </div>
@@ -134,10 +175,28 @@ export function Entdecken() {
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {weitereStationen.map((s) => (
+              /* Punkt 8 B: Der Rahmen steht im Ruhezustand nicht da und
+                 zeichnet sich beim Überfahren. Eine Kachelreihe soll ruhig
+                 sein; ein Hover-Rahmen zählt deshalb nicht gegen die Regel
+                 „höchstens ein ruhender Rahmen pro Bildschirm“.
+                 Ein Bild steht nur dort, wo eines den Ort wirklich zeigt —
+                 fürs Heimatmuseum und die Gedenkstätte gibt es keines. */
               <div
                 key={s.id}
-                className="flex flex-col rounded-xl border border-ink-line/70 bg-cream p-6"
+                className="rahmen-karte flex flex-col rounded-xl border border-ink-line/70 bg-cream p-6"
               >
+                {s.bild && (
+                  <span className="relative mb-4 block">
+                    <img
+                      {...bildQuellen(s.bild)}
+                      sizes="(min-width: 1024px) 30vw, 100vw"
+                      alt=""
+                      style={{ objectPosition: BILDER[s.bild]?.fokus }}
+                      className="aspect-[3/2] w-full rounded-md object-cover"
+                    />
+                    <GoldRahmen seed={seedAus(s.id)} richtung="rechts" zeigen="hover" />
+                  </span>
+                )}
                 <div className="eyebrow text-red-700">{s.kategorie}</div>
                 <h3 className="mt-1 card-title text-lg text-ink">{s.name}</h3>
                 <p className="mt-2 text-sm font-medium text-ink">{s.lead}</p>

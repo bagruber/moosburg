@@ -30,6 +30,9 @@ import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge, FairTradeBadge } from "@/components/FirmaCard";
+import { BildEffekt } from "@/components/BildEffekt";
+import { Bildunterschrift } from "@/components/Bildunterschrift";
+import { BILDER, bildQuellen } from "@/data/bilder";
 import { useAppState } from "@/state/AppState";
 
 const route = findRoute("mein-moosburg/freizeit")!;
@@ -151,9 +154,8 @@ export function Freizeit() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Freizeit & Sport" }]}
         variant="foto-daneben"
-        image="images/stadt/stadtbuecherei-schild-8953-1200.webp"
+        bild="stadtbuecherei-schild-8953"
         script="raus aus dem Alltag"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -178,6 +180,22 @@ export function Freizeit() {
                 Die Häuser, Bäder und Sportstätten der Stadt. Öffnungszeiten und Sommer/Winter­saisons
                 auf den jeweiligen Detailseiten.
               </p>
+
+              {/* Das Scharfstellen zum Vergleich. Unterhalb des ersten
+                  Bildschirms und weit weg vom Kopf, dort ist Bewegung
+                  ausgeschlossen. */}
+              <figure className="m-0 mt-8 sm:float-right sm:ml-8 sm:w-[46%] sm:max-w-sm">
+                <BildEffekt art="schaerfe">
+                  <img
+                    {...bildQuellen("stadtplatz-feuerwehr-8986")}
+                    sizes="(min-width: 640px) 46vw, 100vw"
+                    alt=""
+                    style={{ objectPosition: BILDER["stadtplatz-feuerwehr-8986"].fokus }}
+                    className="aspect-[3/4] w-full rounded-md object-cover"
+                  />
+                </BildEffekt>
+                <Bildunterschrift bild="stadtplatz-feuerwehr-8986" />
+              </figure>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {STADT_EINRICHTUNGEN.map((e) => {
                   const Icon = e.icon;
@@ -252,10 +270,9 @@ export function Freizeit() {
               return (
                 <Reveal key={s.id}>
                   <section id={s.id} className="scroll-mt-40">
-                    <SectionHeader
-                      eyebrow={s.label}
-                      heading={s.label}
-                    />
+                    {/* Ohne Kategoriezeile: sie trug woertlich dasselbe wie
+                        die Ueberschrift darunter. */}
+                    <SectionHeader heading={s.label} />
                     <p className="-mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
                     {matches.length === 0 ? (
                       <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">

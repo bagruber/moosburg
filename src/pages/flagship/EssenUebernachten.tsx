@@ -29,10 +29,9 @@ export function EssenUebernachten() {
         intro={route.intro}
         crumbs={[{ label: "Zu Besuch", to: "/zu-besuch" }, { label: "Essen & Übernachten" }]}
         variant="foto-band"
-        image="images/stadt/freisitz-strasse-quer-9050-1200.webp"
+        bild="freisitz-strasse-quer-9050"
         script="gut bewirtet"
         farbe="aubergine"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">

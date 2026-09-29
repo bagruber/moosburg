@@ -195,6 +195,104 @@ gesucht hat (0.39). Der Befund: Das Vokabular war unauffällig — keine Werbe-A
   bewertet.
 - Nie als generisches Stock-Wallpaper hinter Text — Bild ist Inhalt, nicht Dekoration
 
+### Bildregister (ab 0.46)
+
+Alle Fotos der Stadtserie stehen in `src/data/bilder.ts`, Schlüssel ist der
+Dateiname ohne Größe. Dort und nur dort stehen Titel, Format, Fokuspunkt, Ort
+und Nachweis. Die Seiten nennen nur `bild="muenster-laterne-8937"`.
+
+Vorher standen die Pfade in fünfzehn Aufrufen und der Nachweis daneben. Jede
+weitere Angabe hätte man fünfzehnmal wiederholen müssen, und eine Korrektur am
+Nachweis wäre an vierzehn Stellen liegen geblieben.
+
+**Ein Ort steht nur dort, wo das Motiv ihn eindeutig zeigt.** Die Aufnahmeorte
+der übrigen Fotos liegen nicht vor; geraten wird nicht, auch nicht „Altstadt“.
+Lieber keine Ortszeile als eine falsche.
+
+**Der Fokus ist Pflicht bei jedem Bild, das flacher zugeschnitten wird** als das
+Original, also in Stadtfenster, C2-Köpfen und der Jubiläumskarte. Er wird am
+gebauten Stand bei 390 px geprüft, nicht gerechnet.
+
+### Bildunterschrift (ab 0.46)
+
+`Bildunterschrift.tsx`, liest aus dem Register: Titel in der Titelschrift
+kursiv, darunter Ort, Monat und Jahr, Nachweis.
+
+**Der Ort ist ein Weg, kein Schmuck.** Hat das Foto einen Kartenpunkt, führt er
+als Link auf `/mein-moosburg/stadtplan?pin=<id>`; der Stadtplan springt dorthin,
+schaltet die Ebene ein und öffnet das Popup. Ohne Punkt steht der Ort als Text,
+ohne Ort keine Stecknadel.
+
+**Option C, die Handschrift-Notiz** (`BildNotiz`), zeigt auf ein Einzelelement
+im Bild und steht dabei außerhalb des Bildes; nur die Pfeilspitze reicht heran.
+Höchstens eine pro Bildschirm, nie in einem Seitenkopf, dort steht schon die
+Überlappung. Der Text steht zusätzlich als `sr-only` in der Unterschrift, damit
+nichts nur in der Handschrift steht. Am Handy als Zeile über dem Bild, ohne
+Pfeil. Einmal im Einsatz (Einkaufen & Märkte), bis entschieden ist, ob C bleibt.
+
+### Goldrahmen (ab 0.46)
+
+`GoldRahmen.tsx` legt vier Linien über ein Bild, ohne dessen Layout zu ändern.
+Gerechnet ist er ein Stellvertreter; die Handzeichnung kommt nach.
+
+**Warum vier Linien und kein Rechteck.** Jede Kante liegt in einem eigenen
+Koordinatensystem von (0,0) nach (länge,0) und wird an ihren Platz gedreht. So
+streckt sich beim Formatwechsel nur die Länge, und das Zittern bleibt gleich
+stark, ob das Bild 2:3 oder 16:7 ist. Ein gezeichneter Gesamtrahmen würde platt
+gedrückt. Wenn Benedicts Datei kommt, wechselt nur die Quelle der vier Linien.
+
+**Warum ein Strich und keine Fläche.** Nur eine Mittellinie mit `stroke` hält
+die Strichstärke beim Strecken (`vector-effect: non-scaling-stroke`), und nur
+ein Strich lässt sich beim Überfahren nachzeichnen.
+
+| Platzierung | Rahmen |
+|---|---|
+| Kopf C1 und C2 | versetzt, nach rechts |
+| Bild in der Spalte (Wahrzeichen) | versetzt, vom Text weg; nur der erste Block |
+| Diptychon | einer, nur um das Querformat |
+| Karten | `zeigen="hover"`, im Ruhezustand ohne Rahmen |
+| Stadtfenster, Fläche Rot-600, Bilder unter 200 px, Service-Seiten | keiner |
+
+**Höchstens ein ruhender Rahmen pro Bildschirm**; Hover-Rahmen zählen nicht. Auf
+der Seite des Versatzes 12 px mehr Abstand, damit die Linie nichts kreuzt. Über
+die volle Breite gibt es keinen Rahmen: dort fehlen die Seiten, und eine
+einzelne Linie oben oder unten wäre der verbotene Kantenakzent.
+
+Die Ecken-Variante (`art="ecken"`) ist gebaut, aber nirgends gesetzt; sie lässt
+sich mit `?rahmen=ecken` vorführen.
+
+### Stadtfenster (ab 0.46)
+
+Flacher Bildstreifen über die ganze Breite, `clamp(220px, 33vw, 480px)`, mit der
+Unterschrift in der Inhaltsspalte. Kein Text darauf, kein Rahmen.
+
+**Er zählt wie eine dunkle Fläche:** nie direkt an einem Band, einer
+Tinte-Fläche oder dem Fuß, höchstens einer pro Bildschirm. Nur auf Zu Besuch und
+der Startseite, nie auf Service-Seiten — dort soll ein Bild danebenstehen und
+nicht den Weg unterbrechen.
+
+### Diptychon (ab 0.46)
+
+Hochformat schmal links (0,62 zu 1), Querformat rechts und 36 px tiefer, eine
+gemeinsame Unterschrift. Gleiche Oberkanten ließen die beiden als zwei Einträge
+lesen statt als ein Bild in zwei Teilen. Nur ein Rahmen, am Querformat. Am Handy
+bleiben beide nebeneinander, solange jedes etwa 150 px behält.
+
+### Scroll-Effekte (ab 0.46)
+
+`useScrollFortschritt` schreibt `--p` von 0 auf 1 ans Element, `BildEffekt`
+macht daraus Scharfstellen oder Zoom. Kein `animation-timeline`: Firefox kann es
+nur hinter einem Schalter, und ein Effekt, der in einem Browser fehlt, ist
+schlechter als einer, der überall gleich läuft.
+
+Nie zwei Effekte an einem Bild, nie mehr als einer pro Bildschirm, nie im
+Seitenkopf. Bei „Bewegung reduzieren“ steht `--p` auf 1 und es wird kein
+Listener angemeldet; die Seite ist dann vollständig und in Ruhe.
+
+**Noch nicht entschieden:** A Scharfstellen oder C Zoom. Beide sind gebaut,
+umschaltbar über `?fx=schaerfe`, `?fx=zoom8`, `?fx=zoom12`, `?fx=zoom16`,
+`?fx=aus`. Nach der Wahl fällt der andere weg.
+
 ### Federzeichnungen (ab 0.42)
 
 Handgezeichnete Moosburger Gebäude als ruhiger Grund auf einfarbigen Flächen. Quellen in

@@ -51,9 +51,8 @@ export function Umwelt() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Umwelt & Klima" }]}
         variant="foto-daneben"
-        image="images/stadt/efeuwand-9054-1200.webp"
+        bild="efeuwand-9054"
         script="bis 2035 erneuerbar"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />

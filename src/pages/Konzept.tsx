@@ -264,8 +264,7 @@ export function Konzept() {
         intro="Diese Seite fasst zusammen, worauf der Prototyp beruht, wie das Designsystem funktioniert und welche Funktionen ihn tragen. Sie richtet sich an alle, die am Projekt mitarbeiten: Entwicklung, Gestaltung, Text und die Stadt. Alle Services hier sind Demonstrationen ohne echtes Backend."
         crumbs={[{ label: "Konzept & Design" }]}
         variant="foto-daneben"
-        image="images/stadt/stadtplatz-pflanzkuebel-8951-1200.webp"
-        imageCredit={{ author: "Ben Arya Gruber" }}
+        bild="pflanztrog-wappen-8948"
         script="hinter den Kulissen"
       />
 

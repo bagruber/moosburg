@@ -12,20 +12,20 @@ import type { Themenfarbe } from "@/lib/farbregister";
 const hubHeaderConfig: Record<Hub, {
   variant: "cream" | "band" | "foto-daneben" | "foto-band";
   farbe?: Themenfarbe;
-  image?: string;
+  bild?: string;
   script?: string;
   sketch?: string;
 }> = {
   rathaus: { variant: "cream", sketch: "sketches/rathausB.svg" },
   "mein-moosburg": {
     variant: "foto-daneben",
-    image: "images/stadt/stadtplatz-geranien-8991-1200.webp",
+    bild: "stadtplatz-geranien-8991",
     script: "daheim",
   },
   "zu-besuch": {
     variant: "foto-band",
     farbe: "aubergine",
-    image: "images/stadt/gasse-muenster-9064-1200.webp",
+    bild: "gasse-muenster-9064",
     script: "servus",
   },
   mitgestalten: { variant: "band", farbe: "gold", script: "gemeinsam" },
@@ -83,10 +83,9 @@ export function HubPage() {
         crumbs={[{ label: meta.title }]}
         variant={cfg.variant}
         farbe={cfg.farbe}
-        image={cfg.image}
+        bild={cfg.bild}
         script={cfg.script}
         sketch={cfg.sketch}
-        imageCredit={cfg.image?.startsWith("images/stadt/") ? { author: "Ben Arya Gruber" } : undefined}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8">

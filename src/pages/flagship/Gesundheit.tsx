@@ -215,10 +215,9 @@ export function Gesundheit() {
               return (
                 <Reveal key={s.id}>
                   <section id={s.id} className="scroll-mt-40">
-                    <SectionHeader
-                      eyebrow={s.label}
-                      heading={s.label}
-                    />
+                    {/* Ohne Kategoriezeile: sie trug woertlich dasselbe wie
+                        die Ueberschrift darunter. */}
+                    <SectionHeader heading={s.label} />
                     <p
                       className="-mt-3 max-w-3xl text-base text-ink-soft"
                       dangerouslySetInnerHTML={{ __html: s.lead }}

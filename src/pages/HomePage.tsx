@@ -5,6 +5,8 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SearchField } from "@/components/SearchField";
 import { Reveal } from "@/components/Reveal";
 import { Klecks } from "@/components/Klecks";
+import { Stadtfenster } from "@/components/Stadtfenster";
+import { BILDER, bildQuellen } from "@/data/bilder";
 import {
   searchChips,
   topTiles,
@@ -195,10 +197,10 @@ function News() {
             Feste, höchstens einmal pro Seite. */}
         <Reveal delay={2} className="overflow-hidden rounded-md shadow-soft">
           <img
-            src={IMG("images/stadt/muenster-rosen-8927-1200.webp")}
-            srcSet={`${IMG("images/stadt/muenster-rosen-8927-1200.webp")} 1200w, ${IMG("images/stadt/muenster-rosen-8927-2400.webp")} 2400w`}
+            {...bildQuellen("muenster-rosen-8927")}
             sizes="(min-width: 1024px) 30vw, 100vw"
             alt=""
+            style={{ objectPosition: BILDER["muenster-rosen-8927"].fokus }}
             className="h-44 w-full object-cover"
           />
           <div className="relative bg-red-600 px-6 py-6 text-cream">
@@ -217,7 +219,9 @@ function News() {
               Mehr erfahren
               <ArrowRight className="h-4 w-4" weight="regular" />
             </Link>
-            <p className="mt-4 text-xs text-cream/70">Foto: Ben Arya Gruber</p>
+            <p className="mt-4 text-xs text-cream/70">
+              Foto: {BILDER["muenster-rosen-8927"].nachweis}
+            </p>
           </div>
         </Reveal>
       </div>
@@ -399,6 +403,10 @@ export function HomePage() {
       <Lebenslagen />
       <Events />
       <MayorQuote />
+      {/* Zwischen zwei hellen Abschnitten. Nicht direkt hinter die
+          Veranstaltungen: die stehen auf Tinte, und zwei dunkle Flächen
+          nebeneinander sind im Kanon ausgeschlossen. */}
+      <Stadtfenster bild="petunien-strasse-9057" />
       <HubsGrid />
     </PageLayout>
   );

@@ -43,9 +43,8 @@ export function Wohnen() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Wohnen" }]}
         variant="foto-daneben"
-        image="images/stadt/haus-geranien-9072-1200.webp"
+        bild="haus-geranien-9072"
         script="zuhause in Moosburg"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />

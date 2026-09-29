@@ -126,6 +126,63 @@ body {
 .rainbow-stripe > span:nth-child(8) { background: var(--color-rb-8); }
 .rainbow-stripe > span:nth-child(9) { background: var(--color-rb-9); }
 
+/* Goldrahmen: die Linien tragen die Farbe aus dem Kanon, die Staerke bleibt
+   beim Strecken konstant. Zwei Staerken uebereinander geben die Feder. */
+.goldrahmen path {
+  fill: none;
+  stroke: var(--color-gold-500);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.goldrahmen-haupt { stroke-width: 1.7; }
+.goldrahmen-zweit { stroke-width: 0.8; opacity: 0.55; }
+
+/* Punkt 8 B: der Rahmen zeichnet sich beim Ueberfahren. Im Ruhezustand ist er
+   nicht da, damit eine Kachelreihe ruhig bleibt. `focus-within` deckt die
+   Tastatur ab, wenn der Link in der Karte sitzt statt die Karte selbst zu sein. */
+.goldrahmen--hover path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.8s ease;
+}
+.rahmen-karte:hover .goldrahmen--hover path,
+.rahmen-karte:focus-visible .goldrahmen--hover path,
+.rahmen-karte:focus-within .goldrahmen--hover path {
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Kein Nachzeichnen, der Rahmen ist beim Ueberfahren einfach da. */
+  .goldrahmen--hover path { transition: none; }
+}
+
+/* Bild-Effekte beim Scrollen. --p kommt aus useScrollFortschritt und steht
+   ohne Bewegung auf 1, also im Endzustand. Der Wert wird hier ausgewertet,
+   nicht im JavaScript: so laeuft die Bewegung im Compositor und nicht im
+   Hauptthread. */
+.bildeffekt { --p: 1; }
+
+/* A Scharfstellen: fertig bei etwa 45 % des Weges (p * 2.2 erreicht dort 1).
+   Das leichte Hochskalieren verdeckt den weichen Rand, den blur() sonst am
+   Bildrand stehen laesst. */
+.bildeffekt--schaerfe img {
+  filter: blur(calc((1 - clamp(0, var(--p) * 2.2, 1)) * 8px));
+  transform: scale(1.03);
+}
+
+/* C Zoom: von 1 + Zoom auf 1 ueber die ganze Strecke. Der Rahmen schneidet,
+   damit das Bild beim Heranholen nicht ueber seine Kante waechst. */
+.bildeffekt--zoom { overflow: hidden; border-radius: var(--radius-md); }
+.bildeffekt--zoom img {
+  transform: scale(calc(1 + var(--zoom, 0.12) - var(--p) * var(--zoom, 0.12)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Alle Bilder scharf und in Ruhe. Der Hook meldet sich gar nicht erst an,
+     das hier faengt den Fall ab, dass die Variable noch vom Server steht. */
+  .bildeffekt img { filter: none !important; transform: none !important; }
+}
+
 /* Focus ring — buttons/links/select/textarea get ring; inputs rely on the
    focus-within border of their wrapper. Prevents the triple-outline effect
    on composed inputs (icon + input + submit button). */

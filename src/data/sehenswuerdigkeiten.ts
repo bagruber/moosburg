@@ -8,7 +8,10 @@ export type Sehenswuerdigkeit = {
   id: string;
   name: string;
   kategorie: string;
+  /** Fremdes Bild unter public/, z. B. "images/münster.jpg". */
   image?: string;
+  /** Schlüssel aus dem Bildregister; hat Vorrang vor `image`. */
+  bild?: string;
   lead: string;
   text: string;
   fakten?: { label: string; value: string }[];
@@ -72,6 +75,7 @@ export const weitereStationen: Sehenswuerdigkeit[] = [
     id: "stadtbuecherei",
     name: "Stadtbücherei",
     kategorie: "Kultur",
+    bild: "stadtbuecherei-eingang-8957",
     lead: "Lesen, lernen, verweilen.",
     text: "Die Stadtbücherei ist nicht nur Ausleihort, sondern auch Veranstaltungsraum für Lesungen und kulturelle Begegnungen.",
     link: { label: "Freizeit & Kultur", to: "/mein-moosburg/freizeit" },

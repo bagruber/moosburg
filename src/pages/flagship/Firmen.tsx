@@ -101,9 +101,8 @@ export function Firmen() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Firmenverzeichnis" }]}
         variant="foto-daneben"
-        image="images/stadt/sitzbank-blumen-8964-1200.webp"
+        bild="sitzbank-blumen-8964"
         script="Moosburg lokal"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       {/* Sticky search + toggle row */}

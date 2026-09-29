@@ -137,9 +137,8 @@ export function Mobilitaet() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Mobilität & Verkehr" }]}
         variant="foto-daneben"
-        image="images/stadt/eiscafe-haltestelle-9025-1200.webp"
+        bild="eiscafe-haltestelle-9025"
         script="bewegt durch die Stadt"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner hideSeason />

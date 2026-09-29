@@ -19,8 +19,7 @@ export function Highlights() {
         variant="foto-band"
         script="das ganze Jahr"
         farbe="tiefrot"
-        image="images/stadt/stadtplatz-wimpel-muenster-9043-1200.webp"
-        imageCredit={{ author: "Ben Arya Gruber" }}
+        bild="stadtplatz-wimpel-muenster-9043"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">

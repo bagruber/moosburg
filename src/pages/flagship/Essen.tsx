@@ -24,6 +24,7 @@ import { NavTab, type NavItem } from "@/components/SectionNav";
 import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge, FairTradeBadge } from "@/components/FirmaCard";
+import { Diptychon } from "@/components/Diptychon";
 import { useAppState } from "@/state/AppState";
 
 const route = findRoute("mein-moosburg/essen")!;
@@ -117,9 +118,8 @@ export function Essen() {
         intro={route.intro}
         crumbs={[{ label: "Mein Moosburg", to: "/mein-moosburg" }, { label: "Essen & Trinken" }]}
         variant="foto-daneben"
-        image="images/stadt/eiscafe-markisen-quer-9018-1200.webp"
+        bild="freisitz-blumen-9046"
         script="genießen in Moosburg"
-        imageCredit={{ author: "Ben Arya Gruber" }}
       />
 
       <HeuteBanner />
@@ -163,11 +163,18 @@ export function Essen() {
               return (
                 <Reveal key={s.id}>
                   <section id={s.id} className="scroll-mt-40">
-                    <SectionHeader
-                      eyebrow={s.label}
-                      heading={s.label}
-                    />
+                    {/* Ohne Kategoriezeile: sie trug woertlich dasselbe wie
+                        die Ueberschrift darunter. Ein Etikett steht nur da,
+                        wo es etwas anderes sagt. */}
+                    <SectionHeader heading={s.label} />
                     <p className="-mt-3 max-w-3xl text-base text-ink-soft">{s.lead}</p>
+                    {s.kategorie === "Cafés & Eisdielen" && (
+                      <Diptychon
+                        hoch="eiscafe-markisen-9017"
+                        quer="eiscafe-markisen-quer-9018"
+                        className="mt-8"
+                      />
+                    )}
                     {matches.length === 0 ? (
                       <p className="mt-6 rounded-xl border border-ink-line/40 bg-cream-dark/30 px-4 py-3 text-sm text-ink-muted">
                         Aktuell kein Eintrag in dieser Kategorie. Mehr unter{" "}

@@ -2,6 +2,9 @@ import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 import { SketchGround } from "./SketchGround";
 import { ZweifarbigeZeichnung } from "./ZweifarbigeZeichnung";
 import { FLAECHE, type Themenfarbe } from "@/lib/farbregister";
+import { BILDER, bildQuellen } from "@/data/bilder";
+import { GoldRahmen, seedAus } from "./GoldRahmen";
+import { Bildunterschrift } from "./Bildunterschrift";
 import { cn } from "@/lib/cn";
 
 /**
@@ -28,6 +31,7 @@ export function PageHeader({
   title,
   intro,
   crumbs,
+  bild,
   image,
   imageCredit,
   script,
@@ -44,7 +48,15 @@ export function PageHeader({
   title: string;
   intro?: string;
   crumbs: Crumb[];
-  /** Pfad unter public/, z. B. "images/stadt/petunien-9058-1200.webp". */
+  /**
+   * Schlüssel aus dem Bildregister, z. B. "petunien-9058". Titel, Nachweis,
+   * Fokus und Ort kommen von dort.
+   */
+  bild?: string;
+  /**
+   * Fremdes Bild, das nicht zur Stadtserie gehört (`altstadt.jpg` und
+   * Geschwister). Pfad unter public/. Für Fotos der Serie `bild` nehmen.
+   */
   image?: string;
   imageCredit?: { label?: string; author: string; href?: string };
   script?: string;
@@ -125,29 +137,35 @@ export function PageHeader({
     </>
   );
 
-  /* Die Stadtserie liegt in 1200 und 2400 px. Endet der Pfad auf -1200.webp,
-     wird die doppelte Auflösung automatisch als zweite Quelle angeboten —
-     ein eigener Prop dafür wäre eine Angabe, die sich aus dem Namen ergibt. */
-  const bildQuelle = image && `${import.meta.env.BASE_URL}${image}`;
-  const bildSrcSet =
-    image?.endsWith("-1200.webp")
-      ? `${bildQuelle} 1200w, ${import.meta.env.BASE_URL}${image.replace("-1200.webp", "-2400.webp")} 2400w`
-      : undefined;
+  /* Ein Foto der Serie bringt seine Quellen und seinen Fokus aus dem Register
+     mit; ein fremdes Bild läuft weiter über `image`. */
+  const eintrag = bild ? BILDER[bild] : undefined;
+  const quellen = bild ? bildQuellen(bild) : undefined;
+  const bildQuelle = quellen?.src ?? (image && `${import.meta.env.BASE_URL}${image}`);
+  const bildSrcSet = quellen?.srcSet;
+  const hatBild = Boolean(bildQuelle);
+  const fokus = eintrag?.fokus ?? "50% 50%";
 
-  /** Nachweis unter dem Bild, nie darauf (K7). */
-  const Nachweis = imageCredit && (
-    <p className="mt-2 text-xs text-ink-muted">
-      {imageCredit.label && <span className="text-ink-soft">{imageCredit.label}. </span>}
+  /* Unter dem Bild, nie darauf (K7). Ein Foto der Serie bringt Titel, Ort und
+     Nachweis aus dem Register mit; ein fremdes Bild hat nur seinen Nachweis. */
+  const nachweis = imageCredit;
+  const Nachweis = bild ? (
+    <Bildunterschrift bild={bild} />
+  ) : nachweis ? (
+    /* mt-4 statt mt-2: der Rahmen laeuft 9 px unter das Bild, die
+       Unterschrift darf ihn nicht kreuzen. */
+    <p className="mt-4 text-xs text-ink-muted">
+      {nachweis.label && <span className="text-ink-soft">{nachweis.label}. </span>}
       Foto:{" "}
-      {imageCredit.href ? (
-        <a href={imageCredit.href} target="_blank" rel="noreferrer" className="underline hover:text-ink">
-          {imageCredit.author}
+      {nachweis.href ? (
+        <a href={nachweis.href} target="_blank" rel="noreferrer" className="underline hover:text-ink">
+          {nachweis.author}
         </a>
       ) : (
-        imageCredit.author
+        nachweis.author
       )}
     </p>
-  );
+  ) : null;
 
   /** Zeichnung im Anschnitt. Nur sie wird beschnitten, nichts sonst. */
   const Grund = (
@@ -164,7 +182,7 @@ export function PageHeader({
     </div>
   );
 
-  if (variant === "foto-daneben" && image) {
+  if (variant === "foto-daneben" && hatBild) {
     /* C1: Titel links, Foto rechts bis an den Rand. Am Handy steht der Titel
        oben links und das Foto darunter — so bleibt die Überschrift das
        Erste, was gelesen wird. */
@@ -172,14 +190,21 @@ export function PageHeader({
       <section className="relative border-b border-ink-line/70 bg-cream-dark">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 lg:grid-cols-[1fr_minmax(0,42%)] lg:items-center lg:gap-12 lg:px-8 lg:py-14">
           <div className="relative">{Kopftext}</div>
-          <figure className="m-0">
-            <img
-              src={bildQuelle}
-              srcSet={bildSrcSet}
-              sizes="(min-width: 1024px) 42vw, 100vw"
-              alt=""
-              className="aspect-[4/3] w-full rounded-md object-cover"
-            />
+          <figure className="m-0 lg:mr-3">
+            {/* Eigene Hülle nur um das Bild: der Rahmen misst sein
+                Elternelement, und die Unterschrift darf dabei nicht
+                mitzählen. */}
+            <span className="relative block">
+              <img
+                src={bildQuelle}
+                srcSet={bildSrcSet}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                alt=""
+                style={{ objectPosition: fokus }}
+                className="aspect-[4/3] w-full rounded-md object-cover"
+              />
+              {bild && <GoldRahmen seed={seedAus(bild)} richtung="rechts" />}
+            </span>
             {Nachweis}
           </figure>
         </div>
@@ -187,7 +212,7 @@ export function PageHeader({
     );
   }
 
-  if (variant === "foto-band" && image) {
+  if (variant === "foto-band" && hatBild) {
     /* C2: Der Titel steht im Band, das Foto ragt von unten hinein und über
        das Band hinaus. Die Überlappung bindet Bild und Kopf zusammen, ohne
        dass Text auf dem Bild landen müsste. */
@@ -200,14 +225,18 @@ export function PageHeader({
           </div>
         </div>
         <div className="mx-auto -mt-16 max-w-7xl px-4 lg:-mt-20 lg:px-8">
-          <figure className="relative m-0">
-            <img
-              src={bildQuelle}
-              srcSet={bildSrcSet}
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              alt=""
-              className="aspect-[16/7] w-full rounded-md object-cover shadow-lift"
-            />
+          <figure className="m-0">
+            <span className="relative block">
+              <img
+                src={bildQuelle}
+                srcSet={bildSrcSet}
+                sizes="(min-width: 1280px) 1280px, 100vw"
+                alt=""
+                style={{ objectPosition: fokus }}
+                className="aspect-[16/7] w-full rounded-md object-cover shadow-lift"
+              />
+              {bild && <GoldRahmen seed={seedAus(bild)} richtung="rechts" />}
+            </span>
             {Nachweis}
           </figure>
         </div>
