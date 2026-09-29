@@ -1,0 +1,726 @@
+<title>Bilder im Konzept, erste Lesung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Helle Welt mit Absicht, wie die erste Lesung: Die Attrappen zeigen den
+   gebauten Stand, und der hat noch keinen Dunkelmodus. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-600:#b00e28;--rot-700:#a50d24;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-700:#6e5a30;
+  --tiefrot:#6d0818;--aubergine:#3f2248;--erdbraun:#4a2a17;--petrol:#123b4a;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --klecks:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M25 3.5c8.6.3 17.8 5.2 19.2 14.6 1.5 9.8-4 21.5-14.4 24.9C19.7 46.3 6.6 41.5 4.3 30.7 2 19.6 12.2 3 25 3.5z'/%3E%3C/svg%3E");
+  --rose:url({{IMG:public/rose.svg}});
+  --muensterA:url({{IMG:public/sketches/muensterA.svg}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-inline:20px;overflow-x:clip;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--rot-700)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.stack>*+*{margin-top:1rem}
+code{font-size:.88em;background:var(--creme-dunkel);padding:.05em .35em;border-radius:4px}
+.kat{display:flex;align-items:center;gap:.45rem;font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.kat svg{width:16px;height:16px;fill:currentColor}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>*:not(.handschrift){position:relative}
+.band .ueber>.handschrift{color:rgb(232 213 163/.6)}
+
+/* Lesungs-Gerüst */
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.inhalt{margin-top:32px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:2.4em}
+.punkt{padding-block:64px 28px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ort{font-size:.85rem;color:var(--tinte-matt);margin:26px 0 10px;display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between}
+.ort b{color:var(--tinte-weich);font-weight:600}
+.urteil{margin-top:18px;font-size:.95rem;color:var(--tinte-weich)}
+.urteil b{color:var(--tinte)}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem;white-space:nowrap}
+.frage{margin-top:18px;padding:14px 18px;border:1px solid var(--gold-200);background:var(--gold-100);border-radius:8px;font-size:.95rem}
+.frage b{color:var(--gold-700)}
+
+/* Umschalter */
+.schalter{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--linie);border-radius:999px;background:var(--weiss)}
+.schalter button{border:0;background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+.schalter button[aria-pressed="true"]{background:var(--rot-50);color:var(--rot-700)}
+.klein-knopf{border:1px solid var(--linie);background:var(--weiss);border-radius:8px;padding:.25rem .7rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+
+/* Kontext: ein Stück echte Seite, über die volle Fensterbreite */
+.kontext{margin-inline:calc(50% - 50vw);background:var(--creme);border-block:1px solid var(--linie);position:relative}
+.kontext.dunkel{background:var(--tinte);color:var(--creme);border-color:var(--tinte)}
+.innen{max-width:1180px;margin-inline:auto;padding:44px 24px}
+.brot{font-size:.78rem;color:var(--tinte-matt)}
+.band{color:var(--creme)}
+.band .brot{color:rgb(250 247 242/.8)}
+
+/* 1 Stadtfenster */
+.fenster{height:clamp(220px,33vw,480px);overflow:hidden;position:relative}
+.fenster img{width:100%;height:100%;object-fit:cover;display:block;object-position:var(--fokus,50% 50%)}
+.fenster-bu{max-width:1180px;margin-inline:auto;padding:8px 24px 0;font-size:.8rem;color:var(--tinte-matt)}
+.handy{width:300px;max-width:100%;border:1px solid var(--linie);border-radius:22px;overflow:hidden;background:var(--creme)}
+.handy .fenster{height:auto;aspect-ratio:4/3}
+.handy-reihe{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:18px}
+.handy-reihe p{flex:1;min-width:240px;font-size:.92rem;color:var(--tinte-weich)}
+
+/* 2 Diptychon */
+.dipty{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:12px;align-items:end}
+.dipty img{width:100%;display:block;border-radius:6px;object-fit:cover}
+.dipty .hoch{aspect-ratio:2/3}
+.dipty .quer{aspect-ratio:3/2}
+.dipty[data-variante="gleich"] .hoch{aspect-ratio:auto;height:100%}
+.dipty[data-variante="gleich"]{align-items:stretch}
+.dipty[data-variante="versetzt"] .quer{margin-bottom:-36px}
+.dipty[data-variante="versetzt"]{margin-bottom:36px}
+.zwei-spalten{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;align-items:center}
+
+/* 3 Anschnitt */
+.wz-block{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-block:36px}
+.wz-block .bild{position:relative}
+.wz-block .bild img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.anschnitt .wz-block:nth-child(odd) .bild{margin-left:calc(-1 * max(24px, (100vw - 1180px) / 2 + 24px))}
+.anschnitt .wz-block:nth-child(even) .bild{margin-right:calc(-1 * max(24px, (100vw - 1180px) / 2 + 24px));order:2}
+.anschnitt .wz-block .bild img{border-radius:0;aspect-ratio:3/2}
+.anschnitt .wz-block:nth-child(odd) .bild img{border-radius:0 6px 6px 0}
+.anschnitt .wz-block:nth-child(even) .bild img{border-radius:6px 0 0 6px}
+.heute .wz-block:nth-child(even) .bild{order:2}
+.wz-block .kat{color:var(--rot-700)}
+.wz-block h3{font-size:1.6rem;margin-top:.3rem}
+.wz-block .lead2{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--tinte-weich);margin-top:.5rem}
+.wz-block p.t{margin-top:.7rem;font-size:.95rem;color:var(--tinte-weich)}
+
+/* 4 Goldrahmen */
+.gerahmt{position:relative;display:block}
+.gerahmt img{display:block;width:100%}
+.gerahmt>svg.rahmen{position:absolute;left:-16px;top:-16px;overflow:visible;pointer-events:none}
+.rahmen path{fill:none;stroke:var(--gold-500);stroke-linecap:round;stroke-linejoin:round}
+.rahmen path.zweit{stroke-width:.8;opacity:.55}
+.rahmen path.haupt{stroke-width:1.7}
+.rahmen-buehne{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.rahmen-buehne .gerahmt img{aspect-ratio:2/3;object-fit:cover;border-radius:2px}
+
+/* 5 Abzug */
+.abzug{background:#fffdf8;padding:14px 14px 54px;box-shadow:0 2px 12px rgb(0 0 0/.10);transform:rotate(-1.6deg);max-width:340px;position:relative}
+.abzug img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
+.abzug .hs{position:absolute;left:18px;bottom:12px;font-family:var(--script);font-size:1.7rem;line-height:1;color:var(--gold-700)}
+.eckdaten{border-top:1px solid var(--linie);margin-top:18px}
+.eckdaten div{display:flex;justify-content:space-between;gap:12px;padding:.55rem 0;border-bottom:1px solid var(--linie);font-size:.95rem}
+.eckdaten dd{margin:0;font-family:var(--serif);font-weight:600;font-variant-numeric:lining-nums tabular-nums}
+.eckdaten dt{color:var(--tinte-weich)}
+
+/* 6 Klecks-Maske */
+.termine{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
+.termin{border:1px solid rgb(250 247 242/.12);background:rgb(250 247 242/.05);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.termin .kopf{display:flex;align-items:center;gap:14px}
+.kbild{width:86px;height:86px;flex:none;position:relative}
+.kbild img{width:100%;height:100%;object-fit:cover;-webkit-mask:var(--klecks) center/contain no-repeat;mask:var(--klecks) center/contain no-repeat}
+.kbild.icon{display:grid;place-items:center}
+.kbild.icon::before{content:"";position:absolute;inset:0;background:var(--rot-100);-webkit-mask:var(--klecks) center/contain no-repeat;mask:var(--klecks) center/contain no-repeat;transform:rotate(150deg)}
+.kbild.icon svg{position:relative;width:34px;height:34px;fill:var(--tiefrot)}
+.datum{display:flex;flex-direction:column;line-height:1.05}
+.datum b{font-family:var(--serif);font-size:1.9rem;font-weight:600;font-variant-numeric:lining-nums}
+.datum span{font-size:.82rem;color:rgb(250 247 242/.75)}
+.datum-block{width:64px;height:64px;border-radius:4px;background:var(--rot-500);display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.datum-block b{font-family:var(--serif);font-size:1.6rem;line-height:1}
+.datum-block span{font-size:.7rem}
+.termin .kz{font-size:.8rem;font-weight:600;color:var(--gold-200)}
+.termin h4{font-family:var(--sans);font-weight:600;font-size:1rem;line-height:1.3}
+.termin .wo{font-size:.8rem;color:rgb(250 247 242/.7)}
+.termine[data-variante="heute"] .kbild{display:none}
+.termine[data-variante="klecks"] .datum-block{display:none}
+.termine[data-variante="heute"] .datum{display:none}
+
+/* 7 Bildunterschrift */
+.c2-kopf .band{background:var(--aubergine);padding:40px 0 120px}
+.c2-kopf .foto{max-width:1180px;margin:-96px auto 0;padding:0 24px;position:relative}
+.c2-kopf .foto .bildrahmen{position:relative}
+.c2-kopf .foto img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:6px;box-shadow:0 4px 24px rgb(0 0 0/.10)}
+.bu{margin-top:10px;display:none}
+.bu-a,.bu-b{display:none}
+[data-variante="a"] .bu-a,[data-variante="b"] .bu-b,[data-variante="c"] .bu-c,[data-variante="d"] .bu-d,[data-variante="heute"] .bu-heute{display:block}
+.bu-heute{font-size:.72rem;color:var(--tinte-matt)}
+.bu .titel{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--tinte)}
+.bu .zeile{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .9rem;font-size:.84rem;color:var(--tinte-matt);margin-top:.15rem}
+.bu .zeile svg{width:15px;height:15px;fill:currentColor;vertical-align:-2px}
+.ortlink{background:none;border:0;padding:0;color:var(--rot-700);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:.3rem;align-items:center}
+.karte-pop{margin-top:12px;border:1px solid var(--linie);border-radius:8px;background:var(--weiss);padding:12px;max-width:420px}
+.karte-svg{width:100%;height:auto;display:block;background:var(--creme)}
+.karte-svg .s0{stroke:#d9d2c3;stroke-width:2.2}
+.karte-svg .s1{stroke:#b9ad96;stroke-width:4}
+.karte-svg .lbl{font:600 12px var(--sans);fill:var(--tinte-matt);text-anchor:middle}
+.karte-svg .pin-halo{fill:rgb(200 16 46/.18)}
+.karte-svg .pin-kern{fill:var(--rot-500);stroke:#fff;stroke-width:2}
+.karte-pop p{font-size:.84rem;color:var(--tinte-weich);margin-top:8px}
+.notiz-bu{position:absolute;right:5%;top:calc(100% + 2px);font-family:var(--script);color:var(--gold-700);font-size:2rem;line-height:1;transform:rotate(-4deg);white-space:nowrap}
+.notiz-bu svg{position:absolute;left:-62px;top:-46px;overflow:visible}
+.bu-c{display:none}
+[data-variante="c"] .bu-c{display:block}
+.senkrecht{position:absolute;top:0;left:calc(100% + 8px);writing-mode:vertical-rl;transform:rotate(180deg);font-size:.76rem;color:var(--tinte-matt);white-space:nowrap;height:100%;text-align:right}
+.senkrecht i{font-family:var(--serif);font-size:.9rem;color:var(--tinte)}
+.bu-d{display:none}
+[data-variante="d"] .bu-d{display:block}
+
+/* 8 Hover */
+.karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px 28px;margin-top:20px}
+.karte{display:block;text-decoration:none;color:var(--tinte)}
+.karte .gerahmt{overflow:visible}
+.karte .bildbox{overflow:hidden;border-radius:4px}
+.karte img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
+.karte h4{font-family:var(--serif);font-size:1.2rem;margin-top:.8rem}
+.karte p{font-size:.9rem;color:var(--tinte-weich);margin-top:.2rem}
+.karte .ortzeile{font-size:.82rem;color:var(--tinte-matt);display:flex;gap:.35rem;align-items:center;max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease}
+.karte .ortzeile svg{width:14px;height:14px;fill:currentColor}
+.karten[data-variante="zoom"] .karte:hover img{transform:scale(1.05)}
+.karten[data-variante="zoom"] svg.rahmen,.karten[data-variante="ort"] svg.rahmen{display:none}
+.karten[data-variante="ort"] .karte:hover .ortzeile,.karten[data-variante="ort"] .karte:focus-visible .ortzeile{max-height:2em;opacity:1;margin-top:.5rem}
+.karten[data-variante="zeichnen"] .rahmen path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s ease}
+.karten[data-variante="zeichnen"] .karte:hover .rahmen path,.karten[data-variante="zeichnen"] .karte:focus-visible .rahmen path{stroke-dashoffset:0}
+
+/* 9 Scroll */
+.scrolldemo{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:10px}
+.scrolldemo figure{margin:0}
+.scrolldemo figcaption{font-size:.88rem;color:var(--tinte-weich);margin-top:.6rem;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.fx{--p:1;overflow:hidden;border-radius:6px;position:relative}
+.fx img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.fx.schaerfe img{filter:blur(calc((1 - clamp(0, var(--p) * 2.2, 1)) * 9px));transform:scale(1.03)}
+.fx.oeffnen{border-radius:0;overflow:visible}
+.fx.oeffnen img{-webkit-mask:var(--klecks) center/calc(55% + clamp(0, (var(--p) - .12) * 2.4, 1) * 330%) no-repeat;mask:var(--klecks) center/calc(55% + clamp(0, (var(--p) - .12) * 2.4, 1) * 330%) no-repeat;border-radius:6px}
+.fx.zoom img{transform:scale(calc(1.04 - var(--p) * .04))}
+.ruhig .fx{--p:1!important}
+
+/* 10 Zeichnung wird Foto */
+.wandel{position:relative;max-width:440px;--x:0}
+.wandel img{display:block;width:100%;aspect-ratio:801/1200;object-fit:cover;border-radius:4px}
+.wandel .foto{position:absolute;inset:0;opacity:clamp(0, (var(--x) - .25) / .5, 1)}
+.wandel .linien{background:var(--creme)}
+.wandel .linien i{position:absolute;inset:0;background:var(--tinte);-webkit-mask:{{CSSURL:docs/formsprache/lesung-2/assets/muenster-turm-8887-linien.webp}} center/cover no-repeat;mask:{{CSSURL:docs/formsprache/lesung-2/assets/muenster-turm-8887-linien.webp}} center/cover no-repeat}
+.wandel-reihe{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:40px;align-items:center}
+input[type=range]{width:100%;accent-color:var(--rot-500)}
+
+/* 11 Jahresband */
+.jahr-kopf{display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between}
+.monate{display:flex;gap:6px;flex-wrap:wrap}
+.monate button{border:1px solid var(--linie);background:var(--weiss);border-radius:999px;padding:.2rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich)}
+.monate button[aria-pressed="true"]{background:var(--rot-50);border-color:var(--rot-100);color:var(--rot-700)}
+.monate button:disabled{color:#b3aca0;background:transparent;cursor:not-allowed}
+.streifen{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 24px 10px;margin-inline:-24px;scrollbar-width:thin}
+.streifen figure{margin:0;flex:none;scroll-snap-align:start}
+.streifen img{display:block;height:300px;width:auto;border-radius:4px}
+.streifen figcaption{font-size:.8rem;color:var(--tinte-matt);margin-top:.4rem}
+.streifen figcaption b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.95rem;color:var(--tinte);display:block}
+
+.fuss{padding-block:48px 64px;font-size:.9rem;color:var(--tinte-weich)}
+.ruhig-schalter{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;box-shadow:0 2px 12px rgb(0 0 0/.08)}
+
+@media (max-width:760px){
+  body{font-size:16px;padding-inline:16px}
+  .innen{padding:32px 16px}
+  .zwei-spalten,.rahmen-buehne,.wandel-reihe,.wz-block{grid-template-columns:1fr;gap:24px}
+  .anschnitt .wz-block .bild{margin-inline:-16px!important;order:0!important}
+  .anschnitt .wz-block .bild img{border-radius:0!important}
+  .heute .wz-block .bild{order:0!important}
+  .senkrecht{display:none}
+  .streifen img{height:220px}
+  .notiz-bu{position:static;display:block;margin-bottom:8px;font-size:1.6rem}
+  .notiz-bu svg{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx{--p:1!important}
+  .karte img,.rahmen path,.karte .ortzeile{transition:none!important}
+}
+</style>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Formsprache · Stadt-Prototyp · 29. September 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">im Kontext</span>
+    <h1 style="font-size:1em">Bilder im Konzept, erste Lesung</h1>
+  </div>
+  <p class="lead text">Wie echte Fotos auf der Stadtseite stehen, gerahmt, beschriftet und bewegt werden können. Jede Idee steht in einem Ausschnitt der Seite, auf die sie gehört, mit den Fotos vom 21. September. Varianten lassen sich oben rechts an jedem Ausschnitt umschalten, die Effekte laufen echt: Bitte langsam scrollen und mit der Maus über die Bilder fahren. Gebaut ist nichts.</p>
+  <p class="text" style="margin-top:.8rem;color:var(--tinte-weich)">Antworten wie beim letzten Mal, etwa „1 ja, 4 A mit handgezeichneten Rahmen, 6 nein“.</p>
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Stadtfenster über die ganze Breite</a></li>
+    <li><a href="#p2"><span>2</span>Diptychon</a></li>
+    <li><a href="#p3"><span>3</span>Anschnitt im Wechsel</a></li>
+    <li><a href="#p4"><span>4</span>Der goldene Rahmen</a></li>
+    <li><a href="#p5"><span>5</span>Abzug mit Passepartout</a></li>
+    <li><a href="#p6"><span>6</span>Klecks als Bildmaske</a></li>
+    <li><a href="#p7"><span>7</span>Bildunterschrift</a></li>
+    <li><a href="#p8"><span>8</span>Hover</a></li>
+    <li><a href="#p9"><span>9</span>Scroll-Effekte</a></li>
+    <li><a href="#p10"><span>10</span>Zeichnung wird Foto</a></li>
+    <li><a href="#p11"><span>11</span>Moosburg im Jahr</a></li>
+    <li><a href="#fragen"><span>?</span>Fragen und Regeln</a></li>
+  </ul>
+</header>
+
+<!-- ───────────── 1 Stadtfenster -->
+<section class="punkt" id="p1">
+  <header><div class="nr">Punkt 1</div><h2>Stadtfenster über die ganze Breite</h2></header>
+  <p class="text">Ein flacher Streifen ohne Text, als Atempause zwischen zwei Abschnitten. Er zählt wie eine dunkle Fläche: höchstens einer pro Bildschirm, nie direkt neben einem Band.</p>
+  <div class="ort"><span><b>Moosburg entdecken</b>, zwischen „Die Drei-Rosen-Stadt“ und den Wahrzeichen</span></div>
+  <div class="kontext">
+    <div class="innen" style="padding-bottom:36px">
+      <div class="kat" style="color:var(--rot-700)">Über tausend Jahre an der Isar</div>
+      <h3 style="font-size:1.9rem;margin-top:.3rem">Die Drei-Rosen-Stadt</h3>
+      <p style="max-width:62ch;margin-top:.7rem;color:var(--tinte-weich)">Aus einem Benediktinerkloster des 8. Jahrhunderts gewachsen, blickt Moosburg auf über 1.250 Jahre Geschichte zurück. Drei Rosen im Wappen, ein gotisches Münster im Zentrum und die weiten Auen von Amper und Isar ringsum.</p>
+    </div>
+    <div class="fenster" id="fenster1" style="--fokus:50% 62%"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtplatz-pflanzkuebel-8951-1800.webp}}" alt="Stadtplatz mit Pflanzkübeln, roten und weißen Blüten im Vordergrund"></div>
+    <div class="fenster-bu">Der Stadtplatz im September · Foto: Ben Arya Gruber</div>
+    <div class="innen" style="padding-top:36px">
+      <div class="kat" style="color:var(--rot-700)">Wahrzeichen</div>
+      <h3 style="font-size:1.6rem;margin-top:.3rem">Kastulus-Münster</h3>
+      <p style="max-width:62ch;margin-top:.5rem;color:var(--tinte-weich)">Moosburgs gotisches Wahrzeichen, und Heimat eines Meisterwerks.</p>
+    </div>
+  </div>
+  <div class="handy-reihe">
+    <div class="handy"><div class="fenster" id="fenster-handy" style="--fokus:50% 62%"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtplatz-pflanzkuebel-8951-1000.webp}}" alt=""></div></div>
+    <div>
+      <p>Am Handy wird das Fenster 4:3. Welcher Ausschnitt dann bleibt, entscheidet ein <b>Bildfokus je Foto</b>, den wir im Bildregister pflegen würden.</p>
+      <div class="schalter" style="margin-top:12px" role="group" aria-label="Bildfokus am Handy">
+        <button type="button" aria-pressed="false" data-fokus="50% 50%">Mitte</button>
+        <button type="button" aria-pressed="true" data-fokus="50% 62%">Fokus auf die Blüten</button>
+        <button type="button" aria-pressed="false" data-fokus="50% 20%">Fokus auf den Platz</button>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja, auf Zu-Besuch-Seiten und auf der Startseite. Nie auf Service-Seiten, dort stört es beim Finden. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 2 Diptychon -->
+<section class="punkt" id="p2">
+  <header><div class="nr">Punkt 2</div><h2>Diptychon</h2></header>
+  <p class="text">Die Serie hat viele Paare aus Hoch- und Querformat. Ein Detail und die Übersicht nebeneinander erzählen mehr als ein großes Bild.</p>
+  <div class="ort"><span><b>Essen &amp; Trinken</b>, Abschnitt „Cafés &amp; Eisdielen“</span>
+    <div class="schalter" role="group" aria-label="Variante Diptychon" data-ziel="dipty1">
+      <button type="button" aria-pressed="true" data-v="gleich">A gleiche Höhe</button>
+      <button type="button" aria-pressed="false" data-v="versetzt">B versetzt</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen zwei-spalten">
+      <div>
+        <div class="kat" style="color:var(--rot-700)">Cafés &amp; Eisdielen</div>
+        <h3 style="font-size:1.8rem;margin-top:.3rem">Draußen sitzen, solange es geht</h3>
+        <p style="margin-top:.7rem;color:var(--tinte-weich)">Von der Eisdiele unter der Markise bis zum Café mit Blick aufs Münster. Die Liste darunter nennt alle mit Adresse und Öffnungszeiten.</p>
+      </div>
+      <figure style="margin:0">
+        <div class="dipty" id="dipty1" data-variante="gleich">
+          <img class="hoch" src="{{IMG:docs/formsprache/lesung-2/assets/web/eiscafe-markisen-9017-1000.webp}}" alt="Markisen eines Eiscafés, Hochformat">
+          <img class="quer" src="{{IMG:docs/formsprache/lesung-2/assets/web/eiscafe-markisen-quer-9018-1000.webp}}" alt="Dieselben Markisen von der Seite">
+        </div>
+        <figcaption style="font-size:.8rem;color:var(--tinte-matt);margin-top:.6rem">Markisen in der Altstadt · Fotos: Ben Arya Gruber</figcaption>
+      </figure>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja, als Werkzeug für Inhaltsabschnitte. A ist ruhiger und fügt sich in Listen, B hat mehr Spannung und passt zu Zu-Besuch-Seiten. Weitere Paare: Stadtbücherei (8957 und 8953), Freisitze (9049 und 9050).</p>
+</section>
+
+<!-- ───────────── 3 Anschnitt -->
+<section class="punkt" id="p3">
+  <header><div class="nr">Punkt 3</div><h2>Anschnitt im Wechsel</h2></header>
+  <p class="text">Was C1 im Kopf macht, auch im Inhalt: Bilder laufen abwechselnd links und rechts bis an den Bildschirmrand, der Text bleibt in der Spalte. Die Wahrzeichen stehen heute schon im Wechsel, nur innerhalb der Spalte.</p>
+  <div class="ort"><span><b>Moosburg entdecken</b>, Wahrzeichen (Texte aus <code>sehenswuerdigkeiten.ts</code>)</span>
+    <div class="schalter" role="group" aria-label="Variante Anschnitt" data-ziel="wz">
+      <button type="button" aria-pressed="true" data-v="anschnitt">A Anschnitt</button>
+      <button type="button" aria-pressed="false" data-v="heute">B heute</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen anschnitt" id="wz" data-klasse>
+      <div class="wz-block">
+        <div class="bild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-laterne-8937-1000.webp}}" alt="Turm des Kastulus-Münsters hinter Bäumen und einer Laterne"></div>
+        <div><div class="kat">Wahrzeichen</div><h3>Kastulus-Münster</h3><p class="lead2">Moosburgs gotisches Wahrzeichen, und Heimat eines Meisterwerks.</p><p class="t">Das romanische Hauptportal stammt aus dem frühen 13. Jahrhundert, das Chorgestühl von etwa 1475. Den Innenraum krönt der Leinberger-Altar, um 1511.</p></div>
+      </div>
+      <div class="wz-block">
+        <div class="bild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/freisitz-strasse-quer-9050-1000.webp}}" alt="Freisitz mit Blumen an einer Altstadtstraße"></div>
+        <div><div class="kat">Historische Altstadt</div><h3>Stadtplatz &amp; Altstadt</h3><p class="lead2">Das lebendige Herz der Stadt zwischen farbigen Bürgerhäusern.</p><p class="t">Marktplatz, Festbühne und Treffpunkt in den Cafés zugleich. Wer Moosburg kennenlernen will, beginnt hier und lässt sich durch die Gassen rund um das Münster treiben.</p></div>
+      </div>
+      <div class="wz-block">
+        <div class="bild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/plan-1000.webp}}" alt="Der Platz Auf dem Plan"></div>
+        <div><div class="kat">Platz &amp; Markt</div><h3>Auf dem Plan</h3><p class="lead2">Maibaum, Markt und Sommerstimmung auf dem zweiten großen Platz.</p><p class="t">Wenige Schritte vom Münster. Im Frühjahr wird hier der Maibaum aufgestellt, samstags ergänzt der Wochenmarkt das Bild.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja für die Wahrzeichen und für lange Zu-Besuch-Seiten. Am Handy laufen alle Bilder ohnehin randlos. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 4 Goldrahmen -->
+<section class="punkt" id="p4">
+  <header><div class="nr">Punkt 4</div><h2>Der goldene Rahmen</h2></header>
+  <p class="text">Eine handgezogene Linie in Gold-500 um freistehende Bilder. Hier ist sie aus Zufallswerten gerechnet, mit festem Startwert je Bild, damit nichts zittert. Echt wäre sie besser von deiner Hand: drei oder vier gezeichnete Rahmen, die die Seite abwechselt.</p>
+  <div class="ort"><span><b>Stadtführungen &amp; Rundgänge</b>, Abschnitt über den Altstadtrundgang</span>
+    <div class="schalter" role="group" aria-label="Variante Rahmen" data-rahmen-ziel="r1">
+      <button type="button" aria-pressed="true" data-v="versatz">A versetzt</button>
+      <button type="button" aria-pressed="false" data-v="ecken">B Ecken</button>
+      <button type="button" aria-pressed="false" data-v="voll">C voll</button>
+      <button type="button" aria-pressed="false" data-v="ohne">ohne</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen rahmen-buehne">
+      <div>
+        <div class="kat" style="color:var(--rot-700)">Rundgang</div>
+        <h3 style="font-size:1.8rem;margin-top:.3rem">Einfach loslaufen: die Altstadt in einer Stunde</h3>
+        <p style="margin-top:.7rem;color:var(--tinte-weich)">Vom Stadtplatz durch die Gassen zum Münster, weiter zum Plan und zurück. Der Rundgang braucht keine Führung, die Stationen sind vor Ort beschildert.</p>
+        <button type="button" class="klein-knopf" style="margin-top:16px" data-neu-zeichnen="r1">Rahmen neu zeichnen</button>
+      </div>
+      <div style="max-width:360px;justify-self:center;width:100%">
+        <div class="gerahmt" id="r1" data-rahmen="versatz" data-seed="7"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/gasse-muenster-9064-1000.webp}}" alt="Gasse mit Blick auf das Münster" style="aspect-ratio:2/3;object-fit:cover"></div>
+        <div style="font-size:.8rem;color:var(--tinte-matt);margin-top:14px">Gasse zum Münster · Foto: Ben Arya Gruber</div>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A. Der versetzte Rahmen liest sich wie ein verrutschter Druck und passt zu den Federzeichnungen, ohne das Bild einzusperren. B ist die leise Alternative. C wirkt schnell wie ein Filter. Nur für freistehende Bilder, nie bei voller Breite und nie mehr als ein gerahmtes Bild pro Bildschirm. <span class="empf">empfohlen: A</span></p>
+</section>
+
+<!-- ───────────── 5 Abzug -->
+<section class="punkt" id="p5">
+  <header><div class="nr">Punkt 5</div><h2>Abzug mit Passepartout</h2></header>
+  <p class="text">Ein Foto wie ein eingelegter Abzug, leicht gedreht, die Unterschrift von Hand auf dem Rand. Das ist ein Kandidat für das Gastelement einer Themenseite und gehört deshalb in die Themenseiten-Runde, nicht in den Kanon.</p>
+  <div class="ort"><span><b>Der Johannisturm</b>, neben den Eckdaten</span></div>
+  <div class="kontext">
+    <div class="innen zwei-spalten" style="align-items:start">
+      <div>
+        <h3 style="font-size:1.5rem">Eckdaten</h3>
+        <dl class="eckdaten">
+          <div><dt>Höhe</dt><dd>53,99 m</dd></div>
+          <div><dt>Stufen bis ins Turmzimmer</dt><dd>168</dd></div>
+          <div><dt>Turm vollendet</dt><dd>1533, überliefert</dd></div>
+          <div><dt>Turm und Grund</dt><dd>Stadt Moosburg</dd></div>
+        </dl>
+      </div>
+      <div style="justify-self:center;padding:10px 10px 20px">
+        <div class="abzug"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/turm-wimpel-8977-1000.webp}}" alt="Der Johannisturm mit Wimpeln"><span class="hs" aria-hidden="true">Johannisturm, September</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> gut auf genau einer Seite, als Wiederholung sofort Kitsch. Deshalb Themenseite, nicht Muster.</p>
+</section>
+
+<!-- ───────────── 6 Klecks-Maske -->
+<section class="punkt" id="p6">
+  <header><div class="nr">Punkt 6</div><h2>Klecks als Bildmaske</h2></header>
+  <p class="text">Für kleine Bilder unsere eigene Form statt Kreis oder Quadrat. Ein Termin ohne Foto nimmt den Klecks mit Icon in der Farbe seines Gegenstands.</p>
+  <div class="ort"><span><b>Startseite</b>, Veranstaltungen</span>
+    <div class="schalter" role="group" aria-label="Variante Termine" data-ziel="termine1">
+      <button type="button" aria-pressed="true" data-v="klecks">A Klecks mit Foto</button>
+      <button type="button" aria-pressed="false" data-v="heute">B heute</button>
+    </div>
+  </div>
+  <div class="kontext dunkel">
+    <div class="innen">
+      <h3 style="font-size:1.8rem;color:var(--creme)">Veranstaltungen</h3>
+      <div class="termine" id="termine1" data-variante="klecks">
+        <div class="termin"><div class="kopf"><div class="kbild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtplatz-wimpel-muenster-9043-1000.webp}}" alt=""></div><div class="datum-block"><b>30</b><span>Apr</span></div><div class="datum"><b>30.</b><span>April</span></div></div><div><div class="kz">Volksfest</div><h4>57. Moosburger Frühlingsfest: Anstich</h4><div class="wo">Festgelände, Am Stadtpark</div></div></div>
+        <div class="termin"><div class="kopf"><div class="kbild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/plan-1000.webp}}" alt=""></div><div class="datum-block"><b>01</b><span>Mai</span></div><div class="datum"><b>1.</b><span>Mai</span></div></div><div><div class="kz">Brauchtum</div><h4>Maibaumaufstellen am Plan</h4><div class="wo">Plan Moosburg</div></div></div>
+        <div class="termin"><div class="kopf"><div class="kbild icon">{{ICON:Gavel}}</div><div class="datum-block"><b>29</b><span>Apr</span></div><div class="datum"><b>29.</b><span>April</span></div></div><div><div class="kz">Stadtrat</div><h4>Stadtratssitzung (öffentlich)</h4><div class="wo">Rathaus, Sitzungssaal</div></div></div>
+        <div class="termin"><div class="kopf"><div class="kbild"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/efeuwand-9054-1000.webp}}" alt=""></div><div class="datum-block"><b>04</b><span>Mai</span></div><div class="datum"><b>4.</b><span>Mai</span></div></div><div><div class="kz">Umwelt</div><h4>Auftakt Solar- und Umwelttage 2026</h4><div class="wo">Stadtbibliothek Moosburg</div></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja für Termine und Ansprechpersonen, also klein und wiederkehrend. Groß nicht: Ein Klecks-Foto über 150 px sieht aus wie eine Vorlage aus einem Baukasten.</p>
+</section>
+
+<!-- ───────────── 7 Bildunterschrift -->
+<section class="punkt" id="p7">
+  <header><div class="nr">Punkt 7</div><h2>Bildunterschrift</h2></header>
+  <p class="text">Heute steht unter jedem Foto nur „Foto: Ben Arya Gruber“. Vier Wege, die Unterschrift in unsere Gestaltung zu holen. Der Nachweis bleibt in allen.</p>
+  <div class="ort"><span><b>Moosburg entdecken</b>, Kopf (wie gebaut, C2)</span>
+    <div class="schalter" role="group" aria-label="Variante Bildunterschrift" data-ziel="bu1">
+      <button type="button" aria-pressed="false" data-v="heute">heute</button>
+      <button type="button" aria-pressed="true" data-v="a">A Serif und Ortszeile</button>
+      <button type="button" aria-pressed="false" data-v="b">B mit Kartenlink</button>
+      <button type="button" aria-pressed="false" data-v="c">C Notiz</button>
+      <button type="button" aria-pressed="false" data-v="d">D senkrecht</button>
+    </div>
+  </div>
+  <div class="kontext c2-kopf" id="bu1" data-variante="a">
+    <div class="band">
+      <div style="max-width:1180px;margin-inline:auto;padding-inline:24px">
+        <div class="brot">Start › Zu Besuch › Moosburg entdecken</div>
+        <div class="ueber" style="font-size:clamp(1.9rem,4vw,2.8rem)"><span class="handschrift" aria-hidden="true">die Drei-Rosen-Stadt</span><h3 style="font-size:1em;color:var(--creme)">Moosburg entdecken</h3></div>
+        <p style="max-width:60ch;margin-top:.7rem;color:rgb(250 247 242/.92)">Das Kastulus-Münster, der historische Stadtplatz, die drei Stadttürme. Über tausend Jahre Stadtgeschichte auf engem Raum.</p>
+      </div>
+    </div>
+    <div class="foto">
+      <div class="bildrahmen">
+        <span class="notiz-bu bu-c" aria-hidden="true">der Münsterturm
+          <svg width="70" height="60" viewBox="0 0 70 60"><path d="M62 54C46 42 26 26 10 8" fill="none" stroke="#b8964e" stroke-width="2" stroke-linecap="round"/><path d="M10 8l2 12M10 8l12 2" fill="none" stroke="#b8964e" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <img src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-laterne-8937-1000.webp}}" alt="Turm des Kastulus-Münsters hinter Bäumen und einer Laterne">
+        <div class="senkrecht bu-d"><i>Der Turm des Kastulus-Münsters</i> · September 2026 · Foto: Ben Arya Gruber</div>
+      </div>
+      <div class="bu bu-heute">Foto: Ben Arya Gruber</div>
+      <div class="bu bu-a"><div class="titel">Der Turm des Kastulus-Münsters</div><div class="zeile"><span>{{ICON:MapPin}} Kastulus-Münster</span><span>September 2026</span><span>Foto: Ben Arya Gruber</span></div></div>
+      <div class="bu bu-b"><div class="titel">Der Turm des Kastulus-Münsters</div><div class="zeile"><button type="button" class="ortlink" aria-expanded="false" aria-controls="karte1">{{ICON:MapPin}} Kastulus-Münster auf dem Stadtplan</button><span>September 2026</span><span>Foto: Ben Arya Gruber</span></div>
+        <div class="karte-pop" id="karte1" hidden>{{TEXT:docs/formsprache/lesung-2/assets/altstadt-karte.svg}}<p>Im Prototyp öffnet der Link den Stadtplan an dieser Stelle. Punkt nach den Straßendaten am Kastulusplatz gesetzt; wo genau die Aufnahme entstand, ist nicht erfasst.</p></div>
+      </div>
+      <div class="bu bu-c"><div class="zeile" style="padding-top:2.4rem">Foto: Ben Arya Gruber</div></div>
+    </div>
+    <div style="height:36px"></div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A als Normalfall, B dort, wo ein Ort im Bild steht, der auf der Karte zu finden ist. Dann wird das Bild zu einem Einstieg und hilft bei der Lenkung. C höchstens einmal pro Bildschirm und nicht im Seitenkopf, sonst stehen dort zwei Handschriften. D nur bei Fotos, die an den Rand laufen (C1, Punkt 3), und nur am Desktop. <span class="empf">empfohlen: A und B</span></p>
+</section>
+
+<!-- ───────────── 8 Hover -->
+<section class="punkt" id="p8">
+  <header><div class="nr">Punkt 8</div><h2>Hover</h2></header>
+  <p class="text">Heute vergrößern sich Bilder beim Überfahren. Das macht fast jede Seite so. Mit der Maus über die Karten fahren, oder mit der Tabulatortaste hindurch. Am Handy gibt es kein Hover, deshalb darf keiner der Effekte eine Information tragen, die sonst fehlt.</p>
+  <div class="ort"><span><b>Moosburg entdecken</b>, weitere Stationen als Karten</span>
+    <div class="schalter" role="group" aria-label="Variante Hover" data-ziel="karten1">
+      <button type="button" aria-pressed="false" data-v="zoom">A heute: Zoom</button>
+      <button type="button" aria-pressed="true" data-v="zeichnen">B Rahmen zeichnet sich</button>
+      <button type="button" aria-pressed="false" data-v="wackeln">C Rahmen wackelt</button>
+      <button type="button" aria-pressed="false" data-v="ort">D Ortszeile erscheint</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen">
+      <div class="karten" id="karten1" data-variante="zeichnen">
+        <a class="karte" href="#p8"><div class="gerahmt" data-rahmen="versatz" data-seed="11"><div class="bildbox"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-rosen-8927-1000.webp}}" alt=""></div></div><h4>Kastulus-Münster</h4><p>Gotisches Wahrzeichen mit dem Leinberger-Altar.</p><div class="ortzeile">{{ICON:MapPin}} Kastulusplatz</div></a>
+        <a class="karte" href="#p8"><div class="gerahmt" data-rahmen="versatz" data-seed="23"><div class="bildbox"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtbuecherei-schild-8953-1000.webp}}" alt=""></div></div><h4>Stadtbücherei</h4><p>Lesen, lernen, verweilen.</p><div class="ortzeile">{{ICON:MapPin}} in der Altstadt</div></a>
+        <a class="karte" href="#p8"><div class="gerahmt" data-rahmen="versatz" data-seed="31"><div class="bildbox"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtplatz-geranien-8991-1000.webp}}" alt=""></div></div><h4>Stadtplatz</h4><p>Das Herz der Altstadt.</p><div class="ortzeile">{{ICON:MapPin}} Stadtplatz</div></a>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> B. Der Rahmen zieht sich in etwa einer Sekunde nach, wie mit der Feder. Das gibt es so nur hier. C ist verspielter und passt eher zu Themenseiten. D ist brauchbar, aber am Handy unsichtbar, also nur als Zugabe zur festen Ortszeile aus Punkt 7. <span class="empf">empfohlen: B</span></p>
+</section>
+
+<!-- ───────────── 9 Scroll -->
+<section class="punkt" id="p9">
+  <header><div class="nr">Punkt 9</div><h2>Scroll-Effekte</h2></header>
+  <p class="text">Drei Effekte, die an der Scrollposition hängen. Langsam an den Bildern vorbeiscrollen. Wer im System „Bewegung reduzieren“ eingestellt hat, sieht sie nicht; der Knopf unten rechts zeigt, wie das aussieht. Ohne Effekt ist die Seite vollständig.</p>
+  <div class="ort"><span><b>Freizeit &amp; Sport</b> und <b>Umwelt &amp; Klima</b>, Bilder in Inhaltsabschnitten</span></div>
+  <div class="kontext">
+    <div class="innen">
+      <div class="scrolldemo">
+        <figure><div class="fx schaerfe" data-scroll><img src="{{IMG:docs/formsprache/lesung-2/assets/web/sitzbank-nah-8973-1000.webp}}" alt="Holzbank hinter Buntnesseln und Blüten"></div><figcaption><span><b>A Scharfstellen.</b> Kommt unscharf herein und wird scharf, wie ein Objektiv. Passt zu den Blüten im Vordergrund.</span><button type="button" class="klein-knopf" data-nochmal>nochmal</button></figcaption></figure>
+        <figure><div class="fx oeffnen" data-scroll><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtbuecherei-eingang-8957-1000.webp}}" alt="Eingang der Stadtbücherei mit Geranien"></div><figcaption><span><b>B Klecks öffnet sich.</b> Wächst aus der Klecks-Form auf volle Größe. Einmal pro Seite.</span><button type="button" class="klein-knopf" data-nochmal>nochmal</button></figcaption></figure>
+        <figure><div class="fx zoom" data-scroll><img src="{{IMG:docs/formsprache/lesung-2/assets/web/efeuwand-9054-1000.webp}}" alt="Mit Efeu bewachsene Hauswand"></div><figcaption><span><b>C Langsamer Zoom.</b> 4 % über die ganze Strecke, kaum bewusst wahrnehmbar.</span><button type="button" class="klein-knopf" data-nochmal>nochmal</button></figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A für Bilder unterhalb des ersten Bildschirms, nie im Kopf. B als einzelner Moment auf Identity-Seiten, zum Beispiel beim ersten Bild auf „Neu in Moosburg“. C nur beim Stadtfenster aus Punkt 1. Nie alle drei auf einer Seite. <span class="empf">empfohlen: A</span></p>
+</section>
+
+<!-- ───────────── 10 Zeichnung wird Foto -->
+<section class="punkt" id="p10">
+  <header><div class="nr">Punkt 10</div><h2>Zeichnung wird Foto</h2></header>
+  <p class="text">Beim Scrollen blendet die Zeichnung eines Gebäudes ins Foto über. Das geht nur, wenn die Zeichnung vom Foto abgenommen ist. <b>Die Linien hier sind maschinell aus dem Foto gezogen, als Platzhalter</b>. Eine von Hand abgenommene Zeichnung wäre lockerer und würde weglassen, wo die Maschine alles mitnimmt.</p>
+  <div class="ort"><span><b>Moosburg entdecken</b>, Block „Kastulus-Münster“</span></div>
+  <div class="kontext">
+    <div class="innen wandel-reihe">
+      <div class="wandel" id="wandel1" data-scroll-wandel>
+        <div class="linien"><img src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-turm-8887-1000.webp}}" alt="" style="visibility:hidden"><i></i></div>
+        <img class="foto" src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-turm-8887-1000.webp}}" alt="Der Turm des Kastulus-Münsters über den Dächern">
+      </div>
+      <div>
+        <div class="kat" style="color:var(--rot-700)">Wahrzeichen</div>
+        <h3 style="font-size:1.8rem;margin-top:.3rem">Kastulus-Münster</h3>
+        <p style="margin-top:.7rem;color:var(--tinte-weich)">Das Kastulus-Münster prägt die Silhouette der Stadt. Sein romanisches Hauptportal stammt aus dem frühen 13. Jahrhundert.</p>
+        <label for="wandel-regler" style="display:block;margin-top:20px;font-size:.88rem;color:var(--tinte-weich)">Zum Ausprobieren von Hand: Zeichnung bis Foto</label>
+        <input type="range" id="wandel-regler" min="0" max="1" step="0.01" value="0">
+        <p style="font-size:.84rem;color:var(--tinte-matt);margin-top:.4rem">Beim Scrollen läuft der Übergang von selbst; der Regler übernimmt, sobald man ihn bewegt.</p>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> das eindrucksvollste der Liste und eines, das keine andere Stadtseite hat. Voraussetzung ist eine Zeichnung, die du von einem Foto der Serie abnimmst. Der Münsterturm (8887) eignet sich: klare Kanten vor Himmel, wenig Laub. Einmal auf der ganzen Website, an der Stelle, die für die Stadt wirbt.</p>
+  <div class="frage"><b>Frage:</b> Magst du den Münsterturm aus 8887 abzeichnen, als reine Strichzeichnung, deckungsgleich mit dem Foto?</div>
+</section>
+
+<!-- ───────────── 11 Moosburg im Jahr -->
+<section class="punkt" id="p11">
+  <header><div class="nr">Punkt 11</div><h2>Moosburg im Jahr</h2></header>
+  <p class="text">Die Startseite hat laut <code>CLAUDE.md</code> einen Abschnitt „Moosburg-Identität, Stadt im Jahr“, den es noch nicht gibt. Die Serie als seitlich scrollbarer Streifen, nach Monaten; der Streifen wächst mit jeder Jahreszeit. Hier kämen später auch die Personenfotos hin.</p>
+  <div class="ort"><span><b>Startseite</b>, nach den Veranstaltungen</span></div>
+  <div class="kontext" style="background:var(--creme-dunkel)">
+    <div class="innen">
+      <div class="jahr-kopf">
+        <div class="ueber" style="font-size:clamp(1.8rem,3.6vw,2.4rem)"><span class="handschrift" aria-hidden="true">im September</span><h3 style="font-size:1em">Moosburg im Jahr</h3></div>
+        <div class="monate" role="group" aria-label="Monat">
+          <button type="button" disabled>Juni</button>
+          <button type="button" aria-pressed="true">September</button>
+          <button type="button" disabled>Dezember</button>
+          <button type="button" disabled>März</button>
+        </div>
+      </div>
+      <div class="streifen" tabindex="0" aria-label="Fotos aus dem September, seitlich scrollbar">
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/muenster-rosen-8927-1000.webp}}" alt="Rosen vor dem Münsterturm"><figcaption><b>Rosen am Münster</b>Kastulus-Münster</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/sitzbank-blumen-8964-1000.webp}}" alt="Holzbank zwischen Blumenkästen"><figcaption><b>Die neuen Bänke</b>Altstadt</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/stadtbuecherei-schild-8953-1000.webp}}" alt="Schild der Stadtbücherei mit Geranien"><figcaption><b>Geranien an der Bücherei</b>Stadtbücherei</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/eiscafe-haltestelle-9025-1000.webp}}" alt="Eiscafé an einer Bushaltestelle"><figcaption><b>Eis bis in den Herbst</b>Altstadt</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/pflanztrog-wappen-8948-1000.webp}}" alt="Pflanztrog mit dem Stadtwappen"><figcaption><b>Drei Rosen im Trog</b>Stadtplatz</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/turm-wimpel-8977-1000.webp}}" alt="Johannisturm mit Wimpeln"><figcaption><b>Wimpel am Johannisturm</b>Altstadt</figcaption></figure>
+        <figure><img src="{{IMG:docs/formsprache/lesung-2/assets/web/haus-geranien-9072-1000.webp}}" alt="Haus hinter roten Geranien"><figcaption><b>Rot vor Gelb</b>Altstadt</figcaption></figure>
+      </div>
+      <p style="font-size:.8rem;color:var(--tinte-matt);margin-top:6px">Fotos: Ben Arya Gruber, 21. September 2026</p>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja. Das gibt der Serie einen festen Ort, erfüllt einen Punkt aus dem Konzept, der offen ist, und bleibt lebendig, weil jede Jahreszeit etwas hinzufügt. <span class="empf">empfohlen</span></p>
+  <div class="frage"><b>Frage:</b> Die Ortsangaben unter den Bildern habe ich vorsichtig gehalten („Altstadt“). Für Punkt 7 B und hier bräuchte es je Foto den Aufnahmeort. Kannst du ihn nachtragen, oder soll die Ortszeile nur dort stehen, wo das Motiv ihn eindeutig zeigt?</div>
+</section>
+
+<!-- ───────────── Fragen und Regeln -->
+<section class="punkt" id="fragen">
+  <header><div class="nr">Zum Schluss</div><h2>Fragen und Regeln</h2></header>
+  <ol class="text" style="padding-left:1.1rem">
+    <li><b>Rahmen von Hand?</b> Drei oder vier Rahmen, gezeichnet wie die Gebäude, als SVG geliefert. Die gerechneten hier sind nur Stellvertreter.</li>
+    <li><b>Abzeichnung für Punkt 10</b>, siehe dort.</li>
+    <li><b>Aufnahmeorte</b> der 32 Fotos, siehe Punkt 11.</li>
+  </ol>
+  <h3 style="margin-top:2rem">Regeln, die für alle Punkte gelten würden</h3>
+  <ul class="text" style="padding-left:1.1rem">
+    <li>Kein Text auf dem Foto, der Nachweis steht immer darunter oder daneben.</li>
+    <li>Höchstens ein Effekt und ein gerahmtes Bild pro Bildschirm. Bewegung nie im Seitenkopf, damit der Titel sofort steht.</li>
+    <li>Bei „Bewegung reduzieren“ fällt jede Bewegung weg, die Seite ist ohne sie vollständig.</li>
+    <li>Service-Seiten bleiben bei einem ruhigen Bild ohne Rahmen und ohne Effekt.</li>
+    <li>Jedes Foto bekommt im Bildregister einen Fokuspunkt, einen Titel und, wenn bekannt, einen Ort.</li>
+  </ul>
+</section>
+
+<footer class="fuss">Erste Lesung zu den Bildern, 29.09.2026. Quelle: <code>moosburg/docs/formsprache/lesung-2/</code>. Vorangegangen: „Website-Konzept, erste Lesung“ und die Umsetzung vom 26.09.2026.</footer>
+
+</div>
+
+<button type="button" class="klein-knopf ruhig-schalter" id="ruhig" aria-pressed="false">Bewegung reduzieren</button>
+
+<script>
+(() => {
+  const ruhigSystem = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Umschalter: setzt data-variante am Ziel
+  document.querySelectorAll(".schalter[data-ziel]").forEach((g) => {
+    const ziel = document.getElementById(g.dataset.ziel);
+    g.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      if (g.dataset.ziel === "wz") { ziel.className = "innen " + b.dataset.v; }
+      else ziel.dataset.variante = b.dataset.v;
+      if (g.dataset.ziel === "karten1") alleRahmen();
+    });
+  });
+
+  // Bildfokus am Handy
+  document.querySelectorAll("[data-fokus]").forEach((b) => b.addEventListener("click", () => {
+    b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    document.getElementById("fenster-handy").style.setProperty("--fokus", b.dataset.fokus);
+    document.getElementById("fenster1").style.setProperty("--fokus", b.dataset.fokus);
+  }));
+
+  // Handgezogener Rahmen: Punkte entlang der Kante, je Punkt ein kleiner Versatz.
+  // Fester Startwert je Bild, damit derselbe Rahmen bei jedem Neuzeichnen gleich bleibt.
+  const zufall = (s) => () => { s |= 0; s = (s + 0x6d2b79f5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const linie = (pts, r, amp) => {
+    const p = pts.map(([x, y]) => [x + (r() - .5) * 2 * amp, y + (r() - .5) * 2 * amp]);
+    let d = `M${p[0][0].toFixed(1)} ${p[0][1].toFixed(1)}`;
+    for (let i = 1; i < p.length - 1; i++) {
+      const mx = (p[i][0] + p[i + 1][0]) / 2, my = (p[i][1] + p[i + 1][1]) / 2;
+      d += ` Q${p[i][0].toFixed(1)} ${p[i][1].toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)}`;
+    }
+    const l = p[p.length - 1]; return d + ` L${l[0].toFixed(1)} ${l[1].toFixed(1)}`;
+  };
+  const strecke = (a, b, schritt = 26) => {
+    const n = Math.max(2, Math.round(Math.hypot(b[0] - a[0], b[1] - a[1]) / schritt)), out = [];
+    for (let i = 0; i <= n; i++) out.push([a[0] + (b[0] - a[0]) * i / n, a[1] + (b[1] - a[1]) * i / n]);
+    return out;
+  };
+  const rechteck = (x0, y0, x1, y1, r) => {
+    const u = 5 + r() * 4; // Überstand: Anfang und Ende treffen sich nicht ganz
+    return [...strecke([x0 - u, y0], [x1, y0]), ...strecke([x1, y0], [x1, y1]).slice(1), ...strecke([x1, y1], [x0, y1]).slice(1), ...strecke([x0, y1], [x0, y0 + u * 1.4]).slice(1)];
+  };
+  function zeichne(el) {
+    const art = el.dataset.rahmen, box = el.firstElementChild;
+    el.querySelector("svg.rahmen")?.remove();
+    if (art === "ohne" || !box) return;
+    const w = box.offsetWidth, h = box.offsetHeight, P = 16;
+    const r = zufall(+el.dataset.seed || 1), pfade = [];
+    if (art === "versatz") { pfade.push(linie(rechteck(P + 9, P + 9, P + w + 9, P + h + 9, r), r, 1.4)); }
+    if (art === "voll") { pfade.push(linie(rechteck(P - 7, P - 7, P + w + 7, P + h + 7, r), r, 2.2)); }
+    if (art === "ecken") {
+      const L = Math.min(34, w / 5), o = 6;
+      [[P - o, P - o, 1, 1], [P + w + o, P - o, -1, 1], [P + w + o, P + h + o, -1, -1], [P - o, P + h + o, 1, -1]].forEach(([x, y, sx, sy]) => {
+        pfade.push(linie([...strecke([x + sx * L, y], [x, y], 12), ...strecke([x, y], [x, y + sy * L], 12).slice(1)], r, 1.2));
+      });
+    }
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "rahmen"); svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("width", w + 2 * P); svg.setAttribute("height", h + 2 * P);
+    svg.innerHTML = pfade.map((d) => `<path class="haupt" pathLength="1" d="${d}"/>`).join("") +
+      (art === "ecken" ? "" : pfade.map((d) => `<path class="zweit" pathLength="1" d="${d}" transform="translate(1.2 .8)"/>`).join(""));
+    el.appendChild(svg);
+  }
+  const alleRahmen = () => document.querySelectorAll(".gerahmt").forEach(zeichne);
+  document.querySelectorAll("[data-rahmen-ziel]").forEach((g) => g.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    const el = document.getElementById(g.dataset.rahmenZiel); el.dataset.rahmen = b.dataset.v; zeichne(el);
+  }));
+  document.querySelectorAll("[data-neu-zeichnen]").forEach((b) => b.addEventListener("click", () => {
+    const el = document.getElementById(b.dataset.neuZeichnen); el.dataset.seed = String((+el.dataset.seed || 1) + 1); zeichne(el);
+  }));
+  // Hover C: Rahmen wird beim Überfahren neu gezogen
+  document.querySelectorAll(".karte").forEach((k) => {
+    const neu = () => { if (document.getElementById("karten1").dataset.variante !== "wackeln") return;
+      const el = k.querySelector(".gerahmt"); el.dataset.seed = String((+el.dataset.seed || 1) + 1); zeichne(el); };
+    k.addEventListener("mouseenter", neu); k.addEventListener("focus", neu);
+  });
+  new ResizeObserver(alleRahmen).observe(document.body);
+  document.querySelectorAll(".gerahmt img").forEach((i) => i.complete || i.addEventListener("load", () => zeichne(i.closest(".gerahmt"))));
+  alleRahmen();
+
+  // Karte zur Bildunterschrift
+  document.querySelectorAll(".ortlink").forEach((b) => b.addEventListener("click", () => {
+    const k = document.getElementById(b.getAttribute("aria-controls")); k.hidden = !k.hidden; b.setAttribute("aria-expanded", String(!k.hidden));
+  }));
+
+  // Scroll-Fortschritt: 0, wenn das Bild unten hereinkommt, 1, wenn es oben hinaus ist
+  const ruhig = () => ruhigSystem || document.body.classList.contains("ruhig");
+  const fx = [...document.querySelectorAll("[data-scroll]")];
+  const wandel = document.getElementById("wandel1"), regler = document.getElementById("wandel-regler");
+  let reglerAktiv = false; const laufend = new Map();
+  const fortschritt = (el) => { const r = el.getBoundingClientRect(), h = innerHeight; return Math.min(1, Math.max(0, (h - r.top) / (h + r.height * .6))); };
+  function messen() {
+    fx.forEach((el) => { if (!laufend.has(el)) el.style.setProperty("--p", ruhig() ? 1 : fortschritt(el).toFixed(3)); });
+    if (!reglerAktiv) { const x = ruhig() ? 1 : Math.min(1, Math.max(0, (fortschritt(wandel) - .25) * 2)); wandel.style.setProperty("--x", x.toFixed(3)); regler.value = x; }
+  }
+  let rahmenAnf = 0;
+  addEventListener("scroll", () => { if (!rahmenAnf) rahmenAnf = requestAnimationFrame(() => { rahmenAnf = 0; messen(); }); }, { passive: true });
+  addEventListener("resize", messen);
+  regler.addEventListener("input", () => { reglerAktiv = true; wandel.style.setProperty("--x", regler.value); });
+  document.querySelectorAll("[data-nochmal]").forEach((b) => b.addEventListener("click", () => {
+    const el = b.closest("figure").querySelector("[data-scroll]"); if (ruhig()) return;
+    const ziel = fortschritt(el), start = performance.now(); laufend.set(el, true);
+    const schritt = (t) => { const k = Math.min(1, (t - start) / 1400); el.style.setProperty("--p", (k * Math.max(ziel, .6)).toFixed(3));
+      if (k < 1) requestAnimationFrame(schritt); else { laufend.delete(el); messen(); } };
+    requestAnimationFrame(schritt);
+  }));
+  const knopf = document.getElementById("ruhig");
+  knopf.addEventListener("click", () => { const an = document.body.classList.toggle("ruhig"); knopf.setAttribute("aria-pressed", String(an)); knopf.textContent = an ? "Bewegung wieder zeigen" : "Bewegung reduzieren"; messen(); });
+  if (ruhigSystem) { knopf.hidden = true; }
+  messen();
+})();
+</script>

@@ -24,6 +24,14 @@ gebaut. Offen geblieben sind drei Dinge, jeweils mit Absicht:
 Dunkelmodus und die Gesichter-Regel (wartet auf Personenfotos) bleiben ebenfalls
 offen, siehe `moosburg-design/docs/formsprache/ENTSCHEIDUNGEN.md`.
 
+## Bilder: Plan liegt bereit, nicht gebaut
+
+Bildregister, Goldrahmen, Bildunterschrift mit Kartenlink, Stadtfenster, Diptychon und
+Scroll-Effekt sind entschieden (29.09.2026). Die Anweisung steht in
+`docs/formsprache/briefing-bilder.md`, der Hintergrund in
+`docs/formsprache/bilder-erste-lesung.md`. Von Benedict stehen noch aus: handgezeichnete
+Rahmen und die Aufnahmeorte der Fotos.
+
 ## Toolchain-Stand
 
 Dieses Repo laeuft seit dem 26.08.2026 auf **pnpm** (nicht npm) und auf der
