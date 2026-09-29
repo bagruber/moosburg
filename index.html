@@ -8,7 +8,10 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Moosburg an der Isar – Website-Konzept (Case Study)</title>
     <meta name="description" content="Konzeptioneller Prototyp und Case Study für einen möglichen Relaunch der Stadtwebsite Moosburg an der Isar. Kein offizieller Auftritt der Stadt." />
-    <link rel="icon" type="image/svg+xml" href="/moosburg/moosburg.svg" />
+    <!-- Ohne fuehrenden Basispfad: Vite setzt beim Bauen die konfigurierte
+         base davor. Fest verdrahtet auf /moosburg/ lief das Zeichen unter
+         /stadt/ ins Leere, genau wie vorher die Schriftdatei. -->
+    <link rel="icon" type="image/svg+xml" href="/moosburg.svg" />
     <script>
       // SPA redirect handshake with 404.html — restores the path the user asked for.
       (function () {
