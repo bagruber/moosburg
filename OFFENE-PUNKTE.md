@@ -54,6 +54,45 @@ Nach der Wahl fallen Parameter und die nicht gewaehlte Variante weg.
 Punkt 10 (Zeichnung wird Foto, Benedict hat eine Idee fuer die Gegenrichtung),
 Punkt 11 (Moosburg im Jahr).
 
+## Aus aicms: Befunde beim Datenimport (19.10.2026)
+
+aicms liest `ansprechpartner.ts`, `firmen.ts` und `satzungen.ts` ein
+(`aicms/scripts/import-moosburg/`). Dabei ist aufgefallen, was hier zu klaeren oder
+wenigstens zu besprechen waere:
+
+- **Das Inhalts-Register zaehlt falsch.** Es nennt 96 Ansprechpartner, 554 Firmen und
+  98 Satzungen. Die Dateien enthalten 76, 505 und 52, unveraendert seit Mai. Entweder
+  zaehlt das Register die Rohdaten vor der Bereinigung, oder beim Extrahieren ist etwas
+  verloren gegangen — bei den Satzungen waeren das 46 Titel. Erst klaeren, dann das
+  Register korrigieren.
+- **Die Buergermeister-Ebene steht als Sachgebiet.** „Zweiter Buergermeister",
+  „Dritter Buergermeister", „Leitung der Stadtverwaltung" und „Vorzimmer" sind als
+  `sachgebiet` eingetragen, also wie Aemter. Tatsaechlich sind die Stellvertreter
+  politische Aemter und nur als Vertretung ansprechbar, die Leitung ist fuer alles
+  zustaendig, aber als letzte Instanz, das Vorzimmer nur fuer Termine beim
+  Buergermeister. Fuer die Kontaktseite heisst das: diese Personen nicht zwischen den
+  Fachaemtern listen, und eine Suche nach Zustaendigkeit sollte sie nicht als erste
+  Treffer zeigen.
+- **Zwei Personen ohne Sachgebiet.** Brandlmeier (einzige Aufgabe
+  KFZ-Zulassungswesen, Sudetenlandstr. 14, vermutlich SG 14) und Walther (leitet
+  „Controlling", dafuer gibt es kein Sachgebiet).
+- **Die Firmen-Kategorie „Informationen" ist gemischt.** Stadthalle, Zehentstadel und
+  Schaefflerhalle sind Orte, Mitfahrerbaenke und W-LAN staedtische Angebote,
+  StadtTeilAuto ein Verein. Was gehoert wohin, und gehoert es ueberhaupt ins
+  Firmenverzeichnis?
+- **Welches Amt ist fuer welche Satzung zustaendig?** Das steht nirgends. aicms hat
+  einen Entwurf aus dem Aufgabenkatalog abgeleitet (`SATZUNG_SCOPE_JE_ID` in
+  `aicms/scripts/import-moosburg/mapping.ts`), elf Zuordnungen sind geschaetzt. Soll
+  die Satzungsseite einmal eine Ansprechperson zeigen, ist es dieselbe Tabelle.
+- **Satzungen ohne genaues Datum.** Die vier Infoblaetter zum Wasser haben keines,
+  Muehlbachbogen und Skateboardanlage nur „Dezember 2003". Beim naechsten Crawl
+  pruefen, ob die Quelle genauer ist.
+
+**Wo Daten kuenftig gepflegt werden:** Scrapen und Korrekturen an den Rohdaten
+weiter hier, solange aicms keine laufende Datenbank hat — der Import ist wiederholbar.
+Sobald in aicms jemand von Hand pflegt, dreht sich das: Dann ist aicms die Quelle,
+und Korrekturen gehoeren dorthin, sonst ueberschreibt der naechste Import sie.
+
 ## Toolchain-Stand
 
 Dieses Repo laeuft seit dem 26.08.2026 auf **pnpm** (nicht npm) und auf der
