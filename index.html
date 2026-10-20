@@ -12,25 +12,6 @@
          base davor. Fest verdrahtet auf /moosburg/ lief das Zeichen unter
          /stadt/ ins Leere, genau wie vorher die Schriftdatei. -->
     <link rel="icon" type="image/svg+xml" href="/moosburg.svg" />
-    <script>
-      // SPA redirect handshake with 404.html — restores the path the user asked for.
-      (function () {
-        var q = window.location.search;
-        if (q && q.indexOf("p=") !== -1) {
-          var params = new URLSearchParams(q);
-          var p = params.get("p") || "";
-          var qq = params.get("q") || "";
-          window.history.replaceState(
-            null,
-            "",
-            window.location.pathname.replace(/\/$/, "") +
-              p.replace(/~and~/g, "&") +
-              (qq ? "?" + qq.replace(/~and~/g, "&") : "") +
-              window.location.hash
-          );
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
