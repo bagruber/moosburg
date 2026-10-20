@@ -3,6 +3,7 @@ import { Map as MapGL, Source, Layer, type MapRef, type MapLayerMouseEvent } fro
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MOOSBURG_CENTER, MOOSBURG_BOUNDS } from "@/data/stadtkarte";
 import { loadStrassenGeo, bboxOfNames, type StreetFC } from "@/lib/strassenGeo";
+import { maplibreWorker } from "@/lib/maplibreWorker";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 const EMPHASIS_COLOR = "#c8102e";
@@ -72,6 +73,7 @@ export function StrassenKarte({
   return (
     <div className={className}>
       <MapGL
+        workerUrl={maplibreWorker}
         ref={mapRef}
         initialViewState={{ longitude: MOOSBURG_CENTER[0], latitude: MOOSBURG_CENTER[1], zoom: 13.2 }}
         mapStyle={STYLE_URL}

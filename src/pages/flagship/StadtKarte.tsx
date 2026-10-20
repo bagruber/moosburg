@@ -23,6 +23,7 @@ import {
   type FlaecheLayer,
 } from "@/data/stadtkarte";
 import { cn } from "@/lib/cn";
+import { maplibreWorker } from "@/lib/maplibreWorker";
 
 const route = findRoute("mein-moosburg/stadtplan")!;
 const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
@@ -159,6 +160,7 @@ export function StadtKarte() {
       <section className="relative">
         <div className="relative h-[68vh] min-h-[480px] w-full overflow-hidden border-b border-ink-line/50">
           <Map
+            workerUrl={maplibreWorker}
             initialViewState={{
               longitude: zielPunkt?.lng ?? MOOSBURG_CENTER[0],
               latitude: zielPunkt?.lat ?? MOOSBURG_CENTER[1],

@@ -10,6 +10,7 @@ import {
 } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MOOSBURG_CENTER, MOOSBURG_BOUNDS } from "@/data/stadtkarte";
+import { maplibreWorker } from "@/lib/maplibreWorker";
 
 /**
  * Derselbe Basemap-Style wie Stadtplan und Straßennamen-Karte: „positron" ist
@@ -88,6 +89,7 @@ export function MoosburgMap({
   return (
     <div className={className}>
       <MapGL
+        workerUrl={maplibreWorker}
         ref={mapRef}
         initialViewState={{
           longitude: MOOSBURG_CENTER[0],
