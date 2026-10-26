@@ -82,11 +82,20 @@ wenigstens zu besprechen waere:
   Firmenverzeichnis?
 - **Welches Amt ist fuer welche Satzung zustaendig?** Das steht nirgends. aicms hat
   einen Entwurf aus dem Aufgabenkatalog abgeleitet (`SATZUNG_SCOPE_JE_ID` in
-  `aicms/scripts/import-moosburg/mapping.ts`), elf Zuordnungen sind geschaetzt. Soll
-  die Satzungsseite einmal eine Ansprechperson zeigen, ist es dieselbe Tabelle.
+  `aicms/scripts/import-moosburg/mapping.ts`). Stand 26.10.2026: sechs der elf
+  geschaetzten bestaetigt, offen sind Eisstadion (2) und die drei Benutzungsordnungen
+  fuer Gruen- und Sportanlagen. Soll die Satzungsseite einmal eine Ansprechperson
+  zeigen, ist es dieselbe Tabelle.
 - **Satzungen ohne genaues Datum.** Die vier Infoblaetter zum Wasser haben keines,
   Muehlbachbogen und Skateboardanlage nur „Dezember 2003". Beim naechsten Crawl
   pruefen, ob die Quelle genauer ist.
+- **Die Satzungs-PDFs gibt es, der Crawl hat sie nur uebersprungen** (26.10.2026).
+  Jede Satzung auf `/satzungen-und-verordnungen` verlinkt eine Adresse ohne Endung,
+  die ein PDF ausliefert; der Crawler las nur HTML und fuehrt sie in `errors.json`.
+  35 der 52 Titel in `satzungen.ts` treffen den Linktext genau, 2 haben mehrere Ziele,
+  15 weichen im Wortlaut ab. Haken: Manche Links fuehren auf eine Aenderungssatzung,
+  nicht auf die geltende Fassung (z. B. `eisstadion-benutzungssatzung-1-aenderung-2`).
+  Damit liesse sich Widerspruch 7 im Inhalts-Register aufloesen, aber nicht blind.
 
 **Wo Daten kuenftig gepflegt werden:** Scrapen und Korrekturen an den Rohdaten
 weiter hier, solange aicms keine laufende Datenbank hat — der Import ist wiederholbar.
