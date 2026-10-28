@@ -97,10 +97,20 @@ wenigstens zu besprechen waere:
   nicht auf die geltende Fassung (z. B. `eisstadion-benutzungssatzung-1-aenderung-2`).
   Damit liesse sich Widerspruch 7 im Inhalts-Register aufloesen, aber nicht blind.
 
-**Wo Daten kuenftig gepflegt werden:** Scrapen und Korrekturen an den Rohdaten
-weiter hier, solange aicms keine laufende Datenbank hat — der Import ist wiederholbar.
-Sobald in aicms jemand von Hand pflegt, dreht sich das: Dann ist aicms die Quelle,
-und Korrekturen gehoeren dorthin, sonst ueberschreibt der naechste Import sie.
+**Wo Daten kuenftig gepflegt werden** (ueberholt am 28.10.2026, s. naechster Absatz):
+Scrapen und Korrekturen an den Rohdaten weiter hier, solange aicms keine laufende
+Datenbank hat. Sobald in aicms jemand von Hand pflegt, ist aicms die Quelle.
+
+**Der Prototyp muss aus `moosburg-quellen` aktualisiert werden** (Entscheidung
+Benedict, 28.10.2026). Der neue Lauf in `moosburg-quellen` liest moosburg.de und
+meinmoosburg.de vollstaendig neu ein, schreibt aber **nicht** nach `src/data` oder
+`scrape-out` — der Bestand liegt als JSONL unter
+`K:\Projekte\Moosburg\quellen-archiv\abgeleitet\2026-10-27\` (u. a. 77 Personen, 28
+Sachgebiete, 277 Aufgaben, 511 Firmen, 74 Satzungs-PDFs mit echter Adresse, 87 echte
+Termine, 4 echte Stellen). aicms liest diese JSONL direkt. Fuer diesen Prototyp fehlt
+noch ein Weg von dort nach `src/data/*.ts` — wo der entsteht, ist mit Benedict zu
+klaeren; aicms baut ihn nicht. Damit erledigen sich auch die Mock-Links der Satzungen
+und die erfundenen Termine und Stellen.
 
 ## Toolchain-Stand
 
