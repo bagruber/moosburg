@@ -35,6 +35,15 @@ const EXCLUDE = new Set([
 /** Von `/:hub` bedient, taucht deshalb nicht als expliziter Pfad auf. */
 const HUBS = ["/rathaus", "/mein-moosburg", "/zu-besuch", "/mitgestalten"];
 
+/**
+ * Dasselbe für die Partnerstädte: Sie hängen an `/thema/partnerstaedte/:slug`
+ * und fallen damit durch die Schleife unten, sind aber vier echte Seiten.
+ * Die Slugs stehen in `src/data/partnerstaedte.ts`.
+ */
+const PARTNERSTAEDTE = ["bry-sur-marne", "rochester", "moosburg-kaernten", "sawbridgeworth"].map(
+  (slug) => `/thema/partnerstaedte/${slug}`,
+);
+
 const app = readFileSync(resolve(root, "src/App.tsx"), "utf8");
 
 // Element-Name -> Quelldatei, für lastmod
@@ -51,6 +60,7 @@ for (const m of app.matchAll(/<Route\s+path="([^"]+)"\s+element=\{<(\w+)/g)) {
   routes.push({ path, element });
 }
 for (const path of HUBS) routes.push({ path, element: "HubPage" });
+for (const path of PARTNERSTAEDTE) routes.push({ path, element: "Partnerstadt" });
 
 const lastmodCache = new Map();
 function lastmod(element) {

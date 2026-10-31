@@ -239,3 +239,139 @@ body {
   .reveal[data-delay="3"] { transition-delay: 240ms; }
   .reveal[data-delay="4"] { transition-delay: 320ms; }
 }
+
+/* ─── Partnerstädte ────────────────────────────────────────────────────────
+   Rundblick, Globus, Wege und Chronik sind gezeichnete SVG. Ihre Teile tragen
+   Klassen statt Utilities, weil die Regeln auf Kinder zielen
+   (`.globus .land`) und Stroke-Eigenschaften in Tailwind einzeln gesetzt
+   werden müssten — vier Attribute je Pfad statt einer Klasse. Alle Farben
+   kommen aus dem Kanon; die Lesung hatte sie als Hex, hier stehen Tokens. */
+
+/* Rundblick vom Johannisturm */
+.rund .lineal,
+.rund .tick { stroke: var(--color-ink-muted); stroke-width: 0.8; }
+.rund .himmel { font: 600 12px var(--font-sans); fill: var(--color-ink-muted); }
+.rund .gipfel-t { font: italic 400 11px var(--font-display); fill: var(--color-ink-muted); }
+.rund .gipfel-s { stroke: var(--color-ink-muted); stroke-width: 0.6; stroke-opacity: 0.6; }
+.rund .leit { fill: none; stroke: var(--color-ink-muted); stroke-width: 1; stroke-dasharray: 2 3; }
+.rund .pname { font: 600 16px var(--font-display); fill: var(--color-ink); }
+.rund .pdetail { font: 400 12px var(--font-sans); fill: var(--color-ink-soft); }
+.rund .mast { stroke: var(--color-ink); stroke-width: 1; }
+.rund .fahne { stroke: var(--color-ink); stroke-width: 0.5; }
+/* Geht die Sonne genau über einer Stadt unter, zieht ihr Wimpel an. */
+.rund .wimpel-an .fahne { stroke: var(--color-red-700); stroke-width: 1.4; }
+.rund .kalender { stroke: var(--color-gold-500); stroke-width: 3; stroke-linecap: round; opacity: 0.75; }
+.rund .kalender-t { font: italic 400 11px var(--font-display); fill: var(--color-ink-muted); }
+.rund .tag-s { stroke: var(--color-gold-700); stroke-width: 1.6; }
+.rund .tag-t { font: italic 600 12px var(--font-display); fill: var(--color-gold-700); }
+.rund .bahn { fill: none; stroke: var(--color-gold-500); stroke-width: 1.4; stroke-dasharray: 1 4; stroke-linecap: round; }
+.rund .bahn-gelaufen { fill: none; stroke: var(--color-gold-500); stroke-width: 1.8; stroke-linecap: round; }
+.rund .sonne-kern { fill: var(--color-gold-200); stroke: var(--color-gold-700); stroke-width: 1.2; }
+.rund .sonne-strahl { stroke: var(--color-gold-700); stroke-width: 1.1; stroke-linecap: round; }
+/* Schrift im Gelände bekommt einen Creme-Rand, sonst verschwindet sie im Beige. */
+.rund text,
+.weg text,
+.globus text { paint-order: stroke; stroke: var(--color-cream); stroke-width: 3px; stroke-linejoin: round; }
+
+/* Der Klecks am Fuß des Turms, blass, mit den Richtungen in voller Farbe */
+.pfuetze {
+  fill: var(--color-zeichnung-isarpetrol);
+  fill-opacity: 0.18;
+  stroke: var(--color-zeichnung-isarpetrol);
+  stroke-opacity: 0.4;
+  stroke-width: 0.9;
+}
+.kompass line { stroke: var(--color-zeichnung-isarpetrol); stroke-width: 1.7; stroke-linecap: round; }
+.kompass text { font: 700 14px var(--font-sans); fill: var(--color-zeichnung-isarpetrol); text-anchor: middle; }
+.kompass .nord { font-size: 17px; }
+
+/* Globus */
+.globus .kugel { fill: var(--color-cream); }
+.globus .welle { fill: none; stroke: var(--color-zeichnung-isarpetrol); stroke-linejoin: round; }
+.globus .welle-p { fill: none; stroke: var(--color-cream); stroke-linejoin: round; }
+.globus .netz { fill: none; stroke: var(--color-gold-500); stroke-width: 0.55; opacity: 0.7; }
+.globus .land { fill: var(--color-cream-dark); stroke: var(--color-ink); stroke-width: 1.1; stroke-linejoin: round; }
+.globus .land-s { fill: url(#globus-landschraffur); stroke: none; }
+.globus .nacht { fill: url(#globus-nachtschraffur); stroke: none; }
+.globus .rand { fill: none; stroke: var(--color-ink); stroke-width: 1.8; }
+.globus .rand-innen { fill: none; stroke: var(--color-ink); stroke-width: 0.6; }
+.globus .faden { fill: none; stroke: var(--color-red-700); stroke-width: 1.8; stroke-linecap: round; }
+.globus .bogen { fill: none; stroke: var(--color-gold-700); stroke-width: 1.7; stroke-linecap: round; }
+.globus .bogen-schatten { fill: none; stroke: var(--color-gold-700); stroke-width: 0.9; stroke-dasharray: 1 3; opacity: 0.7; }
+.globus .notiz { font: 400 21px var(--font-script); fill: var(--color-gold-700); }
+.globus .stadt-t { font: 600 13px var(--font-display); fill: var(--color-ink); }
+.globus .heim-t { font: 700 13px var(--font-display); fill: var(--color-ink); }
+.globus .fuehrung { fill: none; stroke: var(--color-ink-muted); stroke-width: 0.6; }
+.globus .stadt-p { fill: var(--color-cream); stroke: var(--color-ink); stroke-width: 1.2; }
+.globus .heim { fill: var(--color-red-500); stroke: var(--color-ink); stroke-width: 1; }
+
+/* Der Weg dorthin, Höhenschnitt */
+.weg .landf { fill: var(--color-cream-dark); }
+.weg .ober { fill: none; stroke: var(--color-ink); stroke-width: 1.2; stroke-linejoin: round; }
+.weg .schleier { fill: var(--color-cream); opacity: 0.55; }
+.weg .ordnung { stroke: var(--color-ink-muted); stroke-width: 0.6; stroke-dasharray: 1 2.5; }
+.weg .ort-p { fill: var(--color-ink); }
+.weg .ort-t { font: 600 11.5px var(--font-sans); fill: var(--color-ink); }
+.weg .ort-m { font-weight: 400; font-size: 10.5px; fill: var(--color-ink-soft); }
+/* Orte hinter dem Ziel treten zurück: der Schnitt läuft weiter, gemeint sind sie nicht. */
+.weg .jenseits .ort-t { fill: var(--color-ink-muted); }
+.weg .ziel-l { stroke: var(--color-gold-700); stroke-width: 1.2; }
+.weg .ziel-p { fill: var(--color-gold-500); stroke: var(--color-ink); stroke-width: 1; }
+.weg .ziel-t { font: 600 14px var(--font-display); fill: var(--color-ink); }
+.weg .achse { stroke: var(--color-ink-muted); stroke-width: 0.8; fill: none; }
+.weg .achse-t { font: 400 10.5px var(--font-sans); fill: var(--color-ink-muted); }
+.weg .land-t { font: 600 11px var(--font-sans); fill: var(--color-ink-soft); }
+.weg .meer-t { font: italic 400 11px var(--font-display); fill: var(--color-zeichnung-isarpetrol); }
+.weg .grenze { stroke: var(--color-red-700); stroke-width: 1.2; }
+.weg .fluss { stroke: var(--color-zeichnung-isarpetrol); stroke-width: 1.6; stroke-linecap: round; }
+.weg .fluss-t { font: italic 400 11px var(--font-display); fill: var(--color-zeichnung-isarpetrol); }
+.weg .zeile-t { font: 600 17px var(--font-display); fill: var(--color-ink); }
+.weg .zeile-m { font: 400 12px var(--font-sans); fill: var(--color-ink-muted); }
+.weg .wie-oben { stroke: var(--color-gold-500); stroke-width: 4; stroke-linecap: round; opacity: 0.6; }
+.weg .wie-oben-t { font: italic 400 11.5px var(--font-display); fill: var(--color-gold-700); }
+.weg .weiter-t { font: italic 400 11.5px var(--font-display); fill: var(--color-ink-muted); }
+.weg .rand-t { font: 400 10px var(--font-sans); fill: var(--color-ink-muted); }
+
+/* Chronik der Patenschaften */
+.chronik .bahn-l { stroke: var(--color-ink-line); stroke-width: 1.2; }
+.chronik .bahn-n { font: 600 14.5px var(--font-display); fill: var(--color-ink); }
+.chronik .bahn-u { font: italic 400 12px var(--font-display); fill: var(--color-ink-muted); }
+.chronik .punkt-e { fill: var(--color-thema-erdbraun); }
+.chronik .spanne { stroke: var(--color-thema-erdbraun); stroke-width: 5; stroke-linecap: round; }
+.chronik .leit { stroke: var(--color-ink-muted); stroke-width: 0.6; }
+.chronik .e1 { font: 600 12px var(--font-sans); fill: var(--color-ink); }
+.chronik .e2 { font: 400 11.5px var(--font-sans); fill: var(--color-ink-soft); }
+.chronik .pate { stroke: var(--color-zeichnung-erdbraun); stroke-width: 1.4; stroke-dasharray: 3 3; }
+.chronik .pate-p { fill: var(--color-zeichnung-erdbraun); stroke: var(--color-cream); stroke-width: 2; }
+/* Flucht, Vertreibung, Ankommen: 1944 bis 1947 liegt als Riss hinter allem. */
+.chronik .riss { fill: var(--color-thema-erdbraun); opacity: 0.07; }
+.chronik .zeit { stroke: var(--color-ink-muted); stroke-width: 0.8; fill: none; }
+.chronik .zeit-t { font: 400 10.5px var(--font-sans); fill: var(--color-ink-muted); }
+.chronik .bruch-t { font: italic 400 10.5px var(--font-display); fill: var(--color-ink-muted); }
+
+/* Der Fries: die Wappen tauchen halb in die Farbfläche ein, die Kante liegt
+   bei 86 px Höhe des Bandes. Als Gradient, nicht als zweites Element — das
+   Wappen muss über der Kante stehen und darunter liegen, und ein Element
+   kann nicht gleichzeitig vor und hinter einem anderen sein. */
+.fries {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: linear-gradient(to bottom, transparent 0 86px, var(--fries-farbe) 86px 228px, transparent 228px);
+}
+.fries-paten {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 2fr);
+  background: linear-gradient(to bottom, transparent 0 86px, var(--fries-farbe) 86px);
+  padding-bottom: 20px;
+}
+@media (max-width: 899px) {
+  /* Unter 900 px trägt jede Spalte ihr eigenes Band: Ein durchgehender
+     Gradient läge in der zweiten Reihe quer durch die Kupferstiche. */
+  .fries { grid-template-columns: repeat(2, minmax(0, 1fr)); background: none; row-gap: 2.5rem; }
+  .fries > .fries-feld {
+    background: linear-gradient(to bottom, transparent 0 86px, var(--fries-farbe) 86px 228px, transparent 228px);
+  }
+  .fries-paten { padding-bottom: 0; }
+}
+@media (max-width: 519px) {
+  .fries { grid-template-columns: minmax(0, 1fr); }
+}

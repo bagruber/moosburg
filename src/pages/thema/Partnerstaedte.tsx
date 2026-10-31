@@ -1,302 +1,237 @@
-import { Link } from "react-router-dom";
-import {
-  ArrowUp,
-  ArrowRight,
-  ArrowSquareOut,
-  Check,
-  Users,
-  Globe,
-  CalendarHeart,
-  Handshake,
-} from "@phosphor-icons/react";
+import { Link, useSearchParams } from "react-router-dom";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeader } from "@/components/SectionHeader";
-import { SpotlightSection } from "@/components/SpotlightSection";
 import { Reveal } from "@/components/Reveal";
-import { Highlight } from "@/components/Highlight";
-import { partnerstaedte, type Partnerstadt } from "@/data/partnerstaedte";
+import { Kupferstich } from "@/components/Kupferstich";
+import { WappenHalb } from "@/components/WappenHalb";
+import { Rundblick } from "@/components/Rundblick";
+import { Globus } from "@/components/Globus";
+import { MitmachenBand } from "@/components/MitmachenBand";
+import { PatenChronik } from "@/components/PatenChronik";
+import { Steckbrief } from "@/components/Steckbrief";
+import { Begegnungen } from "@/components/Begegnungen";
+import { staedte, patenstaedte } from "@/data/partnerstaedte";
 
-/* Dekorativer Nationalfarben-Streifen (keine amtliche Flagge). */
-function FarbBalken({ farben }: { farben: [string, string, string] }) {
-  return (
-    <div className="flex h-1.5 w-full overflow-hidden rounded-full" aria-hidden="true">
-      {farben.map((c, i) => (
-        <span key={i} className="flex-1" style={{ backgroundColor: c }} />
-      ))}
-    </div>
-  );
-}
-
-/* Kompass-Peilung + Luftlinie ab Moosburg. */
-function Kompass({ deg, km, richtung }: { deg: number; km: number; richtung: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full border border-ink-line bg-cream">
-        <span className="absolute top-1 text-[8px] font-semibold text-ink-muted">N</span>
-        <ArrowUp
-          className="h-6 w-6 text-red-600"
-          style={{ transform: `rotate(${deg}deg)` }}
-          weight="regular"
-        />
-      </div>
-      <div className="leading-tight">
-        <div className="font-medium text-ink">≈ {km.toLocaleString("de-DE")} km</div>
-        <div className="text-xs text-ink-muted">Luftlinie · {richtung}</div>
-      </div>
-    </div>
-  );
-}
-
-function HighlightListe({ items }: { items: string[] }) {
-  return (
-    <ul className="space-y-2">
-      {items.map((h) => (
-        <li key={h} className="flex items-start gap-2.5 text-sm text-ink-soft">
-          <Check className="mt-0.5 h-4 w-4 shrink-0 text-rb-5" weight="bold" />
-          <span>{h}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function StadtBlock({ stadt }: { stadt: Partnerstadt }) {
-  return (
-    <section id={stadt.id} className="scroll-mt-32">
-      <FarbBalken farben={stadt.farben} />
-      <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)]">
-        {/* Steckbrief */}
-        <aside className="space-y-5">
-          <div>
-            <div className="eyebrow text-red-700">{stadt.land}</div>
-            <h3 className="headline mt-1 text-2xl text-ink sm:text-3xl">
-              {stadt.name}
-              {stadt.zusatz && (
-                <span className="block text-base font-normal not-italic tracking-normal text-ink-muted normal-case">
-                  {stadt.zusatz}
-                </span>
-              )}
-            </h3>
-          </div>
-          <Kompass deg={stadt.bearingDeg} km={stadt.entfernungKm} richtung={stadt.richtung} />
-          <dl className="divide-y divide-ink-line/50 border-y border-ink-line/50 text-sm">
-            {stadt.steckbrief.map((s) => (
-              <div key={s.label} className="flex justify-between gap-4 py-2">
-                <dt className="text-ink-muted">{s.label}</dt>
-                <dd className="text-right font-medium text-ink">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <a
-            href={stadt.website.href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
-          >
-            {stadt.website.label}
-            <ArrowSquareOut className="h-3.5 w-3.5" weight="regular" />
-          </a>
-        </aside>
-
-        {/* Inhalt — pro Stadt unterschiedliche Bausteine */}
-        <div className="space-y-7">
-          <p className="text-lg font-medium text-ink">{stadt.tagline}</p>
-          <p className="leading-relaxed text-ink-soft">{stadt.intro}</p>
-
-          {stadt.stats && (
-            <div className="grid grid-cols-2 gap-4 rounded-xl bg-cream-dark p-6 sm:grid-cols-4">
-              {stadt.stats.map((st) => (
-                <div key={st.label}>
-                  <div className="font-display text-2xl text-red-700 lg:text-3xl">{st.value}</div>
-                  <div className="mt-1 text-xs leading-snug text-ink-muted">{st.label}</div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {stadt.feature && (
-            <div className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-6">
-              <div className="eyebrow text-gold-700">{stadt.feature.eyebrow}</div>
-              <h4 className="mt-1 font-display text-xl text-ink">{stadt.feature.title}</h4>
-              <p className="mt-2 leading-relaxed text-ink-soft">
-                <Highlight text={stadt.feature.text} />
-              </p>
-            </div>
-          )}
-
-          {stadt.rituale && (
-            <div>
-              <div className="eyebrow mb-3 text-ink-muted">Gelebte Partnerschaft</div>
-              <ul className="space-y-3">
-                {stadt.rituale.map((r) => (
-                  <li key={r.zeit} className="flex gap-4">
-                    <div className="flex w-28 shrink-0 items-center gap-2 text-sm font-medium text-red-700">
-                      <CalendarHeart className="h-4 w-4 shrink-0" weight="regular" />
-                      {r.zeit}
-                    </div>
-                    <p className="text-sm leading-relaxed text-ink-soft">{r.text}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div>
-            <div className="eyebrow mb-3 text-ink-muted">Was uns verbindet</div>
-            <HighlightListe items={stadt.highlights} />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
+/**
+ * Themenseite Partnerstädte.
+ *
+ * Aufbau nach der siebten Lesung: Der Rundblick vom Johannisturm ist das Bild
+ * der Seite, deshalb trägt der Kopf kein Foto. Danach die Idee, dann die vier
+ * Städte, dann das Mitmachen, dann die Patenstädte.
+ *
+ * Der Fries der Wappen ist zugleich das Inhaltsverzeichnis: Jedes Wappen führt
+ * auf seine Einzelseite. Eine zweite Kachelreihe darüber wäre dasselbe zweimal.
+ *
+ * Die Wege (Höhenschnitte) stehen nicht hier, sondern auf den Einzelseiten —
+ * vier davon untereinander waren in der sechsten Lesung die unruhigste Stelle
+ * der ganzen Seite. Auch die handschriftliche Notiz fehlt hier: Der Kanon
+ * erlaubt eine je Bildschirm, und sie steht auf den Einzelseiten.
+ */
 export function Partnerstaedte() {
+  // Die Einzelseiten verlinken hierher mit dem Tag, an dem die Sonne über
+  // ihrer Stadt untergeht: /thema/partnerstaedte?tag=2026-03-30#rundblick
+  const [params] = useSearchParams();
+  const tag = params.get("tag");
+  const gueltig = tag && /^\d{4}-\d{2}-\d{2}$/.test(tag) ? tag : null;
+
   return (
     <PageLayout>
       <PageHeader
         eyebrow="Themenseite"
         title="Partnerstädte"
-        intro="Vier Städte in vier Ländern, auf zwei Kontinenten, verbunden mit Moosburg durch Freundschaften, die teils seit über fünfzig Jahren bestehen. Begegnung statt Grenzen, gelebt von Vereinen, Schulen und Bürgerinnen und Bürgern."
+        intro="Vier Städte in vier Ländern, auf zwei Kontinenten, dazu zwei Patenstädte. Vom Johannisturm aus liegen drei der Partnerstädte im Westen und Nordwesten, wo im Sommerhalbjahr die Sonne untergeht, und eine im Südosten, hinter den Alpen."
         crumbs={[{ label: "Themen" }, { label: "Partnerstädte" }]}
-        image="images/brücke.jpg"
         script="über Grenzen hinweg"
       />
 
-      {/* ── Warum Partnerschaften ─────────────────────────────────── */}
-      <SpotlightSection tone="creme">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Eine Idee von Europa"
-            heading="Freundschaft, die man pflegen muss"
-          />
-        </Reveal>
-        <Reveal delay={1}>
-          <p className="max-w-3xl text-base leading-relaxed text-ink-soft">
-            Städtepartnerschaften entstanden nach dem Krieg aus einem einfachen Gedanken: Wer einander
-            besucht, kennt und feiert, führt keine Kriege mehr gegeneinander. Moosburgs älteste Partnerschaft
-            mit dem französischen Bry-sur-Marne reicht bis 1973 zurück; 2018 schloss sich das englische
-            Sawbridgeworth zu einer Freundschaft zu dritt an.
-          </p>
-        </Reveal>
-        <Reveal delay={2}>
-          <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <Stat number="4" label="Partnerstädte" />
-            <Stat number="4" label="Länder" />
-            <Stat number="seit 1973" label="älteste Partnerschaft" />
-            <Stat number="2" label="Kontinente" />
-          </div>
-        </Reveal>
-      </SpotlightSection>
+      {/* ── Rundblick ─────────────────────────────────────────────── */}
+      <section
+        id="rundblick"
+        className="mx-auto max-w-7xl scroll-mt-28 px-4 pt-10 lg:px-8"
+        aria-label="Rundblick vom Johannisturm"
+      >
+        <Rundblick startTag={gueltig} />
+      </section>
 
-      {/* ── Überblick: vier Karten ────────────────────────────────── */}
+      {/* ── Eine Idee von Europa ──────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-16">
-        <Reveal>
-          <SectionHeader eyebrow="Auf einen Blick" heading="Die vier Partnerstädte" />
-        </Reveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {partnerstaedte.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="group flex flex-col rounded-xl border border-ink-line/70 bg-cream p-5 transition hover:border-red-500/40 hover:shadow-soft"
-            >
-              <FarbBalken farben={s.farben} />
-              <div className="mt-4 card-title text-lg text-ink">
-                {s.name}
-                {s.zusatz && <span className="text-ink-muted"> {s.zusatz}</span>}
-              </div>
-              <div className="text-sm text-ink-muted">{s.land}</div>
-              <div className="mt-4">
-                <Kompass deg={s.bearingDeg} km={s.entfernungKm} richtung={s.richtung} />
-              </div>
-              <div className="mt-4 flex items-center justify-between border-t border-ink-line/50 pt-3 text-sm">
-                <span className="text-ink-soft">{s.einwohner} Einw.</span>
-                <span className="inline-flex items-center gap-1 font-medium text-red-700">
-                  seit {s.seit}
-                  <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" weight="regular" />
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Zeitstrahl ────────────────────────────────────────────── */}
-      <section className="border-y border-ink-line/70 bg-cream-dark">
-        <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
-          <div className="eyebrow mb-6 text-red-700">Im Lauf der Jahre</div>
-          <ol className="grid gap-6 sm:grid-cols-4">
-            {partnerstaedte.map((s) => (
-              <li key={s.id} className="relative border-l-2 border-red-500/40 pl-4 sm:border-l-0 sm:border-t-2 sm:pl-0 sm:pt-4">
-                <div className="font-display text-3xl text-ink">{s.seit}</div>
-                <div className="mt-1 font-medium text-ink">
-                  {s.name}
-                  {s.zusatz && <span className="text-ink-muted"> {s.zusatz}</span>}
-                </div>
-                <div className="text-sm text-ink-muted">{s.seitDatum}</div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ── Detail-Porträts ───────────────────────────────────────── */}
-      <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-20">
-        <div className="space-y-16">
-          {partnerstaedte.map((s) => (
-            <Reveal key={s.id}>
-              <StadtBlock stadt={s} />
+        <div className="grid items-center gap-7 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]">
+          <div>
+            <Reveal>
+              <SectionHeader eyebrow="Eine Idee von Europa" heading="Freundschaft, die man pflegen muss" />
             </Reveal>
+            <Reveal delay={1}>
+              <p className="max-w-[66ch] leading-relaxed text-ink-soft">
+                Städtepartnerschaften entstanden nach dem Krieg aus einem einfachen Gedanken: Wer
+                einander besucht, kennt und feiert, führt keine Kriege mehr gegeneinander.
+              </p>
+              <p className="mt-3 max-w-[66ch] leading-relaxed text-ink-soft">
+                Von Moosburg führt zu jeder Partnerstadt ein Faden, die kürzeste Route über die
+                Kugel. Bry-sur-Marne und Sawbridgeworth sind auch miteinander verbunden: Am
+                29. September 1973 unterschrieben die Bürgermeister aller drei Städte einen
+                gemeinsamen Eid. Gelebt wurde er zuerst über Bry; Sawbridgeworth und Moosburg
+                fanden 2017 zueinander.
+              </p>
+            </Reveal>
+          </div>
+          <Globus />
+        </div>
+      </section>
+
+      {/* ── Die vier Partnerstädte ────────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-4 lg:px-8" id="staedte">
+        <Reveal>
+          <SectionHeader eyebrow="Partnerschaften" heading="Die vier Partnerstädte" />
+        </Reveal>
+      </section>
+      <div className="mx-auto max-w-7xl">
+        <div className="fries" style={{ "--fries-farbe": "var(--color-thema-isarpetrol)" } as React.CSSProperties}>
+          {staedte.map((s) => (
+            <article key={s.id} className="fries-feld px-3.5">
+              {/* Das Wappen taucht in das Band ein und führt auf die Stadt. */}
+              <figure className="m-0 text-center">
+                <Link to={`/thema/partnerstaedte/${s.slug}`} className="text-inherit no-underline">
+                  <div className="relative h-[170px]">
+                    <WappenHalb
+                      wappen={s.wappen}
+                      className="absolute left-1/2 top-[26px] -ml-[52px] h-[120px] w-[104px]"
+                    />
+                  </div>
+                  <figcaption className="font-display mt-0.5 text-[1.02rem] font-semibold leading-tight text-cream">
+                    {s.name}
+                    <span className="mt-0.5 block text-[0.8rem] font-normal text-gold-200">
+                      {s.herkunft}
+                    </span>
+                  </figcaption>
+                </Link>
+              </figure>
+
+              {/* Der Kupferstich sitzt auf der Grundlinie, damit die vier
+                  Gebäude verschiedener Höhe auf einer Linie stehen. */}
+              <div className="mt-[30px] flex items-end" style={{ aspectRatio: "1 / 1.13" }}>
+                <Kupferstich
+                  basis={s.stich}
+                  verhaeltnis={s.verhaeltnis}
+                  farbe={s.stichFarbe}
+                  alt={s.stichAlt}
+                />
+              </div>
+              <p className="font-display mt-2.5 text-[0.98rem] italic leading-snug text-ink">
+                {s.bildunterschrift}
+              </p>
+              <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">{s.lead}</p>
+              <Begegnungen begegnung={s.begegnung} />
+              <Link
+                to={`/thema/partnerstaedte/${s.slug}`}
+                className="ui-title mt-3 inline-block text-[0.92rem] text-red-700 hover:underline"
+              >
+                Mehr über {s.name} →
+              </Link>
+            </article>
           ))}
         </div>
       </div>
 
       {/* ── Mitmachen ─────────────────────────────────────────────── */}
-      <SpotlightSection tone="aubergine">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-center">
-          <div>
-            <div className="eyebrow text-gold-200">Mitmachen</div>
-            <h2 className="headline mt-2 text-2xl text-cream sm:text-3xl">
-              Werden Sie Teil der Städtepartnerschaft
-            </h2>
-            <p className="mt-3 max-w-2xl text-cream/85">
-              Ob Jugendaustausch, Vereinsreise oder Gastfamilie zur nächsten Begegnung, der Partnerschafts­verein
-              freut sich über alle, die Lust auf europäische Freundschaft haben.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                to="/rathaus/kontakt?topic=partnerstaedte"
-                className="inline-flex items-center gap-2 rounded-lg bg-cream px-5 py-3 font-medium text-ink transition hover:bg-gold-100"
-              >
-                Kontakt aufnehmen
-                <ArrowRight className="h-4 w-4" weight="regular" />
-              </Link>
-              <Link
-                to="/mein-moosburg/veranstaltungen"
-                className="inline-flex items-center gap-2 rounded-lg border border-cream/40 px-5 py-3 font-medium text-cream transition hover:bg-cream/10"
-              >
-                Begegnungen im Kalender
-              </Link>
-            </div>
-          </div>
-          <div className="flex justify-center gap-6 text-cream/80">
-            <Handshake className="h-12 w-12" weight="light" />
-            <Users className="h-12 w-12" weight="light" />
-            <Globe className="h-12 w-12" weight="light" />
-          </div>
-        </div>
-      </SpotlightSection>
-    </PageLayout>
-  );
-}
+      <div className="mt-16">
+        <MitmachenBand
+          id="mitmachen"
+          titel="Lust auf Bry, Kärnten, Rochester oder Sawbridgeworth?"
+          text="Wenn Gäste aus einer Partnerstadt nach Moosburg kommen, werden immer wieder Familien gesucht, die sie für ein paar Tage aufnehmen. Und es wird auch wieder Fahrten in die Partnerstädte geben. Wer dabei sein möchte, meldet sich; wir kommen auf Sie zu, sobald etwas ansteht."
+        />
+      </div>
 
-function Stat({ number, label }: { number: string; label: string }) {
-  return (
-    <div>
-      <div className="font-display text-3xl text-cream lg:text-4xl">{number}</div>
-      <div className="mt-1 text-sm text-cream/75">{label}</div>
-    </div>
+      {/* ── Dort und hier: die Patenstädte ────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-4 pt-14 lg:px-8 lg:pt-16">
+        {/* Hier von Hand statt mit SectionHeader: Die Kategoriezeile steht in
+            Erdbraun, der Farbe für Geschichte, und die gemeinsame Komponente
+            kennt nur Rot. Ein Farb-Prop für diesen einen Fall wäre teurer. */}
+        <Reveal>
+          <div className="mb-8">
+            <div className="eyebrow text-zeichnung-erdbraun">Patenschaften</div>
+            <h2 className="headline mt-1 text-3xl text-ink sm:text-4xl">Dort und hier</h2>
+          </div>
+        </Reveal>
+      </section>
+      <div className="mx-auto max-w-7xl">
+        <div
+          className="fries fries-paten"
+          style={{ "--fries-farbe": "var(--color-thema-erdbraun)" } as React.CSSProperties}
+        >
+          {patenstaedte.map((p) => (
+            <figure key={p.name} className="fries-feld m-0 px-3.5 text-center">
+              <div className="relative h-[170px]">
+                <WappenHalb
+                  wappen={p.wappen}
+                  className="absolute left-1/2 top-[26px] -ml-[52px] h-[120px] w-[104px]"
+                />
+              </div>
+              <figcaption className="font-display mt-0.5 text-[1.02rem] font-semibold leading-tight text-cream">
+                {p.name}
+                <span className="mt-0.5 block text-[0.8rem] font-normal text-gold-200">{p.seit}</span>
+              </figcaption>
+            </figure>
+          ))}
+          {/* Der Einleitungstext steht im Band, nicht darüber: Er erklärt,
+              warum zwei fremde Wappen auf einer Moosburger Seite stehen. */}
+          <p className="fries-feld self-start px-3.5 pt-[98px] text-[0.95rem] leading-relaxed text-cream/90 max-lg:col-span-full max-lg:pt-4 max-lg:text-ink-soft">
+            Nach dem Zweiten Weltkrieg fanden viele Flüchtlinge und Vertriebene in Moosburg eine
+            neue Heimat; für sie entstand ab 1948 die Neustadt. Für die früheren deutschen
+            Bewohner zweier Orte hat die Stadt eine Patenschaft übernommen: für Königsberg an der
+            Eger in Böhmen und für Hodschag in der Batschka. Ihre Erinnerung bewahren sie im Haus
+            der Heimat.
+          </p>
+        </div>
+
+        {/* Die Kirchen stehen in denselben Spalten wie ihre Wappen. */}
+        <div className="grid grid-cols-2 lg:grid-cols-[repeat(2,minmax(0,1fr))_minmax(0,2fr)]">
+          {patenstaedte.map((p) => (
+            <figure key={p.name} className="m-0 px-3.5">
+              <div className="mt-[30px] flex items-end" style={{ aspectRatio: "1 / 1.13" }}>
+                <Kupferstich
+                  basis={p.stich}
+                  verhaeltnis={p.verhaeltnis}
+                  farbe="bg-zeichnung-erdbraun"
+                  alt={p.stichAlt}
+                />
+              </div>
+              <figcaption className="font-display mt-2.5 text-[0.98rem] italic leading-snug text-ink">
+                {p.bildunterschrift}
+              </figcaption>
+            </figure>
+          ))}
+          <p className="col-span-full self-end border-t border-ink-line px-3.5 pt-3 text-[0.92rem] leading-relaxed text-ink-soft lg:col-span-1 lg:mt-0">
+            In Moosburg: Haus der Heimat, Hodschager Straße 2, mit der Heimatstube der Hodschager
+            und Donauschwaben (Trachten, Textilien, Gerät aus der Batschka) und der Heimatstube
+            Königsberg an der Eger (Bilder, Schriften, Andenken). Besuch nach Vereinbarung.
+          </p>
+        </div>
+      </div>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 lg:px-8">
+        <PatenChronik />
+        <div className="mt-8 grid gap-9 md:grid-cols-2">
+          {patenstaedte.map((p) => (
+            <Steckbrief
+              key={p.name}
+              titel={p.name}
+              unterzeile={p.heute}
+              angaben={p.steckbrief}
+              geschichte={p.geschichte}
+              mitMoosburg={p.mitMoosburg}
+              ton="erdbraun"
+            />
+          ))}
+        </div>
+
+        <p className="mt-12 max-w-[90ch] border-t border-ink-line pt-3 text-xs leading-relaxed text-ink-muted">
+          Höhen: GEBCO 2020 und SRTM über opentopodata.org. Städte: GeoNames. Gipfel: ©
+          OpenStreetMap-Mitwirkende. Küsten: Natural Earth. Steckbriefe nach Wikipedia, Stand
+          Oktober 2026. Wappen gestochen nach Vorlagen der Städte; Bry-sur-Marne nach Wikimedia
+          Commons, CC BY-SA 3.0. Turm nach dem Modell der Stadtkirche St. Johannes.
+        </p>
+      </section>
+    </PageLayout>
   );
 }

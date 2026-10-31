@@ -1,182 +1,327 @@
 /**
- * Moosburgs Partnerstädte. Reale Eckdaten (Unterzeichnungsdaten, Einwohner,
- * Lage); die erzählenden Texte sind redaktionell formuliert.
+ * Moosburgs vier Partnerstädte und die zwei Patenstädte.
  *
- * Jede Stadt füllt bewusst andere Inhalts-Slots (feature / stats / rituale),
- * um auf der Seite unterschiedliche Darstellungsformen zu zeigen.
+ * Stand der siebten Lesung (`docs/formsprache/briefing-partnerstaedte.md`).
+ * Geordnet nach dem Jahr der Partnerschaft, denn so stehen sie auf der Seite.
  *
- * In Fließtexten markieren *Sternchen* hervorzuhebende Wörter (siehe <Note>).
- * `bearingDeg` = Kompasspeilung ab Moosburg (0° = Norden), `entfernungKm` =
- * gerundete Luftlinie.
+ * Luftlinie und Peilung stehen hier als Zahl, obwohl sie auch in
+ * `public/data/partnerstaedte/rundblick.json` steckten: Sie erscheinen als
+ * Text ("seit 1981 · 7.375 km") und bestimmen, wo eine Stadt im Rundblick
+ * hängt. Beides darf nicht erst nach einem fetch bekannt sein, sonst springt
+ * die Seite. Die Werte kommen aus `strecken` in `daten-7.json`, gerundet.
+ *
+ * Was bewusst fehlt: Die Texte für „Was die Partnerschaft trägt" liegen noch
+ * nicht vor (offener Punkt im Briefing), deshalb steht dort ein Platzhalter.
+ * Unsichere Angaben tragen `unsicher` und erscheinen klein daneben, statt als
+ * Tatsache gesetzt zu werden.
  */
 
-export type Steckbrief = { label: string; value: string };
+/** Eine Zeile im Steckbrief. */
+export type Angabe = { label: string; wert: string; unsicher?: string };
 
-export type Partnerstadt = {
-  id: string;
-  name: string;
-  zusatz?: string;
-  land: string;
-  /** Dekorative Nationalfarben (kein amtliches Flaggen-Rendering). */
-  farben: [string, string, string];
-  seit: string;
-  seitDatum: string;
-  einwohner: string;
-  entfernungKm: number;
-  bearingDeg: number;
-  richtung: string;
-  region: string;
-  tagline: string;
-  intro: string;
-  steckbrief: Steckbrief[];
-  feature?: { eyebrow: string; title: string; text: string };
-  stats?: { value: string; label: string }[];
-  rituale?: { zeit: string; text: string }[];
-  highlights: string[];
-  website: { label: string; href: string };
+/** Die nächste Begegnung, und solange keine geplant ist, auch die letzte. */
+export type Begegnung = {
+  /** Fester Termin, ungefähre Angabe, oder null: noch nicht geplant. */
+  naechste: string | null;
+  /** „Mai 2024, Besuch aus Bry“ — null, wenn es dazu keine Angabe gibt. */
+  zuletzt: string | null;
 };
 
-export const partnerstaedte: Partnerstadt[] = [
+export type Stadt = {
+  /** Schlüssel in den JSON-Daten (`weg-<id>.json`, `strahlen`, `gipfel`). */
+  id: "bry" | "roch" | "kaernten" | "saw";
+  /** Letztes Stück der Adresse unter /thema/partnerstaedte/. */
+  slug: string;
+  /**
+   * Der Name, wie er im Fließtext steht. Kein getrenntes Feld für den Zusatz:
+   * „Moosburg in Kärnten“ liest sich als Name, „Rochester Minnesota“ nicht,
+   * und wo Minnesota hingehört, steht es ohnehin — in `herkunft` und im
+   * Steckbrief.
+   */
+  name: string;
+  /** Wie man die Stadt im Gespräch nennt: „Bry", „Kärnten". */
+  kurz: string;
+  land: string;
+  /** Unter dem Wappen im Fries: „Frankreich · seit 1973“. */
+  herkunft: string;
+  seit: string;
+  seitDatum: string;
+  /** Ein Satz, auf der Übersicht und im Kopf der Einzelseite. */
+  lead: string;
+  /** Basis der zwei Masken unter public/sketches/. */
+  stich: string;
+  /** Seitenverhältnis der Zeichnung, damit der Platz vor dem Laden steht. */
+  verhaeltnis: string;
+  /** Klasse der Farbebene des Kupferstichs. */
+  stichFarbe: string;
+  stichAlt: string;
+  /** Bildunterschrift: Name und Zeit, sonst nichts. */
+  bildunterschrift: string;
+  /** Auf der Einzelseite ohne Jahr, wo die Notiz es trägt. */
+  bildunterschriftEinzel: string;
+  /** Die eine Notiz je Einzelseite, in Madelon Script. */
+  notiz: string;
+  /** Wohin der Pfeil zeigt, in Anteilen der Zeichnung. */
+  notizZiel: { x: number; y: number };
+  /** Maske des Wappens unter public/sketches/. */
+  wappen: string;
+  /** Der Satz, mit dem die Partnerschaft begann; steht im Band. */
+  beginn: string;
+  steckbrief: Angabe[];
+  /** Drei Daten, als Liste im Steckbrief. */
+  geschichte: string[];
+  mitMoosburg: string;
+  begegnung: Begegnung;
+  wussten?: { titel: string; text: string };
+  website: { label: string; href: string };
+  /** Luftlinie ab Moosburg in Kilometern. */
+  km: number;
+  /** Kompasspeilung ab Moosburg, 0° ist Norden. */
+  peilung: number;
+  richtung: string;
+};
+
+export const staedte: Stadt[] = [
   {
-    id: "bry-sur-marne",
+    id: "bry",
+    slug: "bry-sur-marne",
     name: "Bry-sur-Marne",
+    kurz: "Bry",
     land: "Frankreich",
-    farben: ["#0055A4", "#FFFFFF", "#EF4135"],
+    herkunft: "Frankreich · seit 1973",
     seit: "1973",
     seitDatum: "29. September 1973",
-    einwohner: "≈ 18.800",
-    entfernungKm: 690,
-    bearingDeg: 273,
-    richtung: "West",
-    region: "Val-de-Marne, Île-de-France",
-    tagline: "Die älteste Partnerschaft — am Ufer der Marne, zwölf Kilometer östlich von Paris.",
-    intro:
-      "Bry-sur-Marne ist Moosburgs älteste Partnerstadt. Die rund 18.800 Einwohner zählende Vorstadt liegt nur zwölf Kilometer östlich von Paris an einer Schleife der Marne — mit zwei kleinen Flussinseln als grünen Rückzugsorten.",
+    lead: "Die älteste Freundschaft, an einer Schleife der Marne, zwölf Kilometer östlich von Paris.",
+    stich: "bryA",
+    verhaeltnis: "1200 / 1308",
+    stichFarbe: "bg-gold-500",
+    stichAlt: "Federzeichnung des Rathauses von Bry-sur-Marne mit Glockentürmchen, Bäumen und Laterne",
+    bildunterschrift: "Hôtel de Ville, 1877",
+    bildunterschriftEinzel: "Hôtel de Ville",
+    notiz: "1877 eingeweiht",
+    notizZiel: { x: 0.51, y: 0.18 },
+    wappen: "wappen-bry-stich",
+    beginn:
+      "Am 29. September 1973 unterschrieben die Bürgermeister von Bry-sur-Marne, Sawbridgeworth und Moosburg einen gemeinsamen Partnerschaftseid.",
     steckbrief: [
-      { label: "Land", value: "Frankreich" },
-      { label: "Region", value: "Val-de-Marne, Île-de-France" },
-      { label: "Einwohner", value: "≈ 18.800" },
-      { label: "Luftlinie", value: "≈ 690 km" },
-      { label: "Partnerschaft seit", value: "29. September 1973" },
+      { label: "Lage", wert: "Île-de-France, Département Val-de-Marne, an der Marne östlich von Paris" },
+      { label: "Einwohner", wert: "18.503 (2023)" },
+      { label: "Erwähnt", wert: "861, in einer Urkunde Karls des Kahlen" },
+      { label: "Stadtrecht", wert: "keines; französische Gemeinde" },
     ],
-    feature: {
-      eyebrow: "Wussten Sie",
-      title: "Eine Wiege der Fotografie",
-      text: "In Bry-sur-Marne starb 1851 *Louis Daguerre*, Miterfinder der Fotografie. Sein Wohnhaus soll zur internationalen Foto-Schule werden, und die Kirche Saint-Gervais-Saint-Protais bewahrt das *einzige erhaltene Diorama-Gemälde* Daguerres.",
+    geschichte: [
+      "1870 Schlacht bei Champigny, der Ort wird verwüstet",
+      "1977 Anschluss an die RER A",
+      "heute Sitz des INA, des Archivs für Radio und Fernsehen",
+    ],
+    mitMoosburg: "seit 29. September 1973",
+    begegnung: { naechste: null, zuletzt: "Mai 2024, Besuch aus Bry" },
+    wussten: {
+      titel: "Eine Wiege der Fotografie",
+      text: "In Bry-sur-Marne starb 1851 Louis Daguerre, einer der Erfinder der Fotografie. Die Kirche Saint-Gervais-Saint-Protais bewahrt das einzige erhaltene Diorama-Gemälde von ihm.",
     },
-    highlights: [
-      "1973 mit einem gemeinsamen Partnerschaftseid begründet",
-      "Regelmäßiger Schüleraustausch und Vereinsbegegnungen",
-      "Französisch-Kurse an der Moosburger Erwachsenenbildung",
-    ],
-    website: { label: "brysurmarne.fr", href: "https://www.brysurmarne.fr" },
+    website: { label: "bry94.fr", href: "https://www.bry94.fr" },
+    km: 692,
+    peilung: 276.9,
+    richtung: "West",
   },
   {
-    id: "rochester",
+    id: "roch",
+    slug: "rochester",
     name: "Rochester",
-    zusatz: "Minnesota",
+    kurz: "Rochester",
     land: "USA",
-    farben: ["#3C3B6E", "#FFFFFF", "#B22234"],
+    herkunft: "Minnesota, USA · seit 1981",
     seit: "1981",
     seitDatum: "18. Juli 1981",
-    einwohner: "≈ 121.000",
-    entfernungKm: 7400,
-    bearingDeg: 311,
-    richtung: "Nordwesten",
-    region: "Minnesota, USA",
-    tagline: "Moosburgs Brücke über den Atlantik — eine Klinikstadt von Weltrang.",
-    intro:
-      "Rochester im US-Bundesstaat Minnesota ist mit Abstand die größte Partnerstadt — und die einzige außerhalb Europas. Ihren weltweiten Ruf verdankt die Stadt der Mayo Clinic, einem der bekanntesten Krankenhäuser der Welt, das jährlich über eine Million Menschen behandelt.",
+    lead: "Die größte Partnerstadt und die einzige auf einem anderen Kontinent.",
+    stich: "rochesterA",
+    verhaeltnis: "1200 / 1345",
+    stichFarbe: "bg-zeichnung-tannengruen",
+    stichAlt: "Federzeichnung des Wasserturms in Form eines Maiskolbens",
+    bildunterschrift: "Ear of Corn Water Tower, 1931",
+    bildunterschriftEinzel: "Ear of Corn Water Tower",
+    notiz: "1931",
+    notizZiel: { x: 0.54, y: 0.18 },
+    wappen: "wappen-roch-stich",
+    beginn:
+      "Am 18. Juli 1981 besiegelten Moosburg und Rochester ihre Partnerschaft, die einzige über den Atlantik.",
     steckbrief: [
-      { label: "Land", value: "USA" },
-      { label: "Bundesstaat", value: "Minnesota" },
-      { label: "Einwohner", value: "≈ 121.000" },
-      { label: "Luftlinie", value: "≈ 7.400 km" },
-      { label: "Partnerschaft seit", value: "18. Juli 1981" },
+      { label: "Lage", wert: "Minnesota, Olmsted County, am Zumbro River" },
+      { label: "Einwohner", wert: "121.395 (2020)" },
+      { label: "Gegründet", wert: "1854, als Haltestelle der Postkutsche zwischen Dubuque und Saint Paul" },
+      { label: "Stadtrecht", wert: "5. August 1858" },
     ],
-    stats: [
-      { value: "≈ 121.000", label: "Einwohner" },
-      { value: "1864", label: "Gründung der Mayo Clinic" },
-      { value: "≈ 7.400 km", label: "Luftlinie nach Moosburg" },
-      { value: "1981", label: "Partnerschaft seit" },
+    geschichte: [
+      "1883 ein Tornado verwüstet die Stadt",
+      "1889 St. Marys Hospital, aus dem die Mayo Clinic wird",
+      "heute drittgrößte Stadt Minnesotas",
     ],
-    highlights: [
-      "Größte und einzige überseeische Partnerstadt",
-      "Geprägt von deutscher Auswanderer-Geschichte",
-      "Austausch von Delegationen und Fachleuten",
-    ],
+    mitMoosburg: "seit 18. Juli 1981",
+    begegnung: { naechste: null, zuletzt: "September 2026, Besuch aus Rochester" },
+    wussten: {
+      titel: "Eine Stadt um eine Klinik",
+      text: "Die Mayo Clinic behandelt jedes Jahr über eine Million Menschen und ist außerhalb des Staatsdienstes der größte Arbeitgeber Minnesotas. Rochester wuchs mit ihr.",
+    },
     website: { label: "rochestermn.gov", href: "https://www.rochestermn.gov" },
+    km: 7375,
+    peilung: 310.5,
+    richtung: "Nordwest",
   },
   {
-    id: "moosburg-kaernten",
-    name: "Moosburg",
-    zusatz: "in Kärnten",
+    id: "kaernten",
+    slug: "moosburg-kaernten",
+    name: "Moosburg in Kärnten",
+    kurz: "Kärnten",
     land: "Österreich",
-    farben: ["#C8102E", "#FFFFFF", "#C8102E"],
+    herkunft: "Österreich · seit 1991",
     seit: "1991",
     seitDatum: "15. Juli 1991",
-    einwohner: "≈ 4.700",
-    entfernungKm: 260,
-    bearingDeg: 140,
-    richtung: "Südost",
-    region: "Bezirk Klagenfurt-Land, Region Wörthersee",
-    tagline: "Namensfreundschaft mit der zweiten Moosburg — in der Region Wörthersee.",
-    intro:
-      "Zwei Orte, ein Name: Die Marktgemeinde Moosburg in Kärnten teilt mit Moosburg an der Isar nicht nur die Bezeichnung, sondern eine herzliche Namensfreundschaft. Der knapp 4.700 Einwohner zählende Ort liegt malerisch in der österreichischen Region Wörthersee.",
+    lead: "Zwei Orte, ein Name: eine Namensfreundschaft in der Region Wörthersee.",
+    stich: "kaerntenA",
+    verhaeltnis: "1200 / 1106",
+    stichFarbe: "bg-zeichnung-erdbraun",
+    stichAlt: "Federzeichnung von Schloss Moosburg in Kärnten",
+    bildunterschrift: "Schloss Moosburg, 16. Jahrhundert",
+    bildunterschriftEinzel: "Schloss Moosburg",
+    notiz: "16. Jahrhundert",
+    notizZiel: { x: 0.48, y: 0.18 },
+    wappen: "wappen-kaernten-stich",
+    beginn:
+      "Am 15. Juli 1991 schlossen die beiden Moosburgs eine Namensfreundschaft, die seither von Vereinen und Festen getragen wird.",
     steckbrief: [
-      { label: "Land", value: "Österreich" },
-      { label: "Region", value: "Klagenfurt-Land, Wörthersee" },
-      { label: "Einwohner", value: "≈ 4.700" },
-      { label: "Luftlinie", value: "≈ 260 km" },
-      { label: "Partnerschaft seit", value: "15. Juli 1991" },
+      { label: "Lage", wert: "Kärnten, Bezirk Klagenfurt-Land, Region Wörthersee" },
+      { label: "Einwohner", wert: "4.700", unsicher: "gerundet, Quellen weichen ab" },
+      { label: "Erwähnt", wert: "879 als „Mosapurch“" },
+      { label: "Stadtrecht", wert: "keines; Marktgemeinde" },
     ],
-    feature: {
-      eyebrow: "Geteilte Geschichte",
-      title: "Der Geburtsort eines Kaisers",
-      text: "Der Überlieferung nach wuchs *Arnulf von Kärnten* (um 850–899) — späterer ostfränkischer König und römischer Kaiser — auf der *Mosaburch* im Kärntner Moosburg auf. Bis heute feiert der Ort jeden Juli das Kaiser-Arnulfs-Fest.",
+    geschichte: [
+      "um 890 Arnulf von Kärnten urkundet auf einer Pfalz Moosburg",
+      "16. Jahrhundert das Schloss entsteht aus der Burg",
+      "jeden Juli das Kaiser-Arnulfs-Fest",
+    ],
+    mitMoosburg: "seit 15. Juli 1991",
+    begegnung: { naechste: null, zuletzt: null },
+    wussten: {
+      titel: "Der Geburtsort eines Kaisers",
+      text: "Der Überlieferung nach wuchs Arnulf von Kärnten, später ostfränkischer König und römischer Kaiser, auf der Mosaburch auf. Ein Teil der Burgruine heißt bis heute Arnulfsfeste.",
     },
-    rituale: [
-      { zeit: "Jeden September", text: "Begegnung bei der Moosburger Herbstschau am zweiten Septemberwochenende." },
-      { zeit: "Im Dezember", text: "Austausch eines Adventkranzes als jährliches Zeichen der Verbundenheit." },
-    ],
-    highlights: [
-      "Namensfreundschaft seit 1991",
-      "Gegenseitige Besuche bei Festen und Märkten",
-    ],
     website: { label: "moosburg.gv.at", href: "https://www.moosburg.gv.at" },
+    km: 262,
+    peilung: 139.4,
+    richtung: "Südost",
   },
   {
-    id: "sawbridgeworth",
+    id: "saw",
+    slug: "sawbridgeworth",
     name: "Sawbridgeworth",
-    land: "Vereinigtes Königreich",
-    farben: ["#012169", "#FFFFFF", "#C8102E"],
+    kurz: "Sawbridgeworth",
+    land: "England",
+    herkunft: "England · seit 2018",
     seit: "2018",
     seitDatum: "13. März 2018",
-    einwohner: "≈ 8.700",
-    entfernungKm: 920,
-    bearingDeg: 295,
-    richtung: "Westnordwest",
-    region: "East Hertfordshire, England",
-    tagline: "Die jüngste Partnerschaft — und der Beginn einer Freundschaft zu dritt.",
-    intro:
-      "Sawbridgeworth ist Moosburgs jüngste Partnerstadt. Die kleine Marktstadt am Fluss Stort in der englischen Grafschaft Hertfordshire, gut eine halbe Bahnstunde von London entfernt, reicht bis in die angelsächsische Zeit und das Domesday Book zurück.",
+    lead:
+      "Die jüngste Partnerschaft, besiegelt 2018. Den Eid von 1973 hatte Sawbridgeworth schon mit unterschrieben.",
+    stich: "sawbridgeworthA",
+    verhaeltnis: "1200 / 1186",
+    stichFarbe: "bg-gold-200",
+    stichAlt: "Federzeichnung der Kirche Great St Mary's",
+    bildunterschrift: "Great St Mary's, 13. Jahrhundert",
+    bildunterschriftEinzel: "Great St Mary's",
+    notiz: "13. Jahrhundert",
+    notizZiel: { x: 0.49, y: 0.18 },
+    wappen: "wappen-saw-stich",
+    beginn:
+      "Am 13. März 2018 wurde die Partnerschaft in Sawbridgeworth besiegelt; den Eid von 1973 hatte die Stadt schon mit unterschrieben.",
     steckbrief: [
-      { label: "Land", value: "Vereinigtes Königreich" },
-      { label: "Region", value: "East Hertfordshire, England" },
-      { label: "Einwohner", value: "≈ 8.700" },
-      { label: "Luftlinie", value: "≈ 920 km" },
-      { label: "Partnerschaft seit", value: "13. März 2018" },
+      { label: "Lage", wert: "East Hertfordshire, England, am Stort nordöstlich von London" },
+      { label: "Einwohner", wert: "8.742 (2021)" },
+      { label: "Erwähnt", wert: "1086 im Domesday Book als „Sabrixteworde“" },
+      { label: "Stadtrecht", wert: "keines; Gemeinde mit eigenem Town Council" },
     ],
-    feature: {
-      eyebrow: "Besonderheit",
-      title: "Eine Partnerschaft zu dritt",
-      text: "Seit 2018 sind Bry-sur-Marne, Moosburg und Sawbridgeworth in einer *trilateralen Partnerschaft* verbunden — die englische Stadt schloss sich der bereits *1973 begründeten* deutsch-französischen Freundschaft an.",
+    geschichte: [
+      "13. Jahrhundert Chor, Schiff und unterer Turm von Great St Mary’s",
+      "1841 Bahnanschluss an der Northern and Eastern Railway",
+      "19. Jahrhundert die Mälzereien am Stort tragen den Ort",
+    ],
+    mitMoosburg: "seit 13. März 2018",
+    begegnung: { naechste: null, zuletzt: "Oktober 2026, Besuch in Sawbridgeworth" },
+    wussten: {
+      titel: "Eine Partnerschaft zu dritt",
+      text: "Der Eid vom 29. September 1973 trägt schon alle drei Unterschriften. Gelebt wurde er zuerst über Bry-sur-Marne; Sawbridgeworth und Moosburg fanden 2017 zueinander.",
     },
-    highlights: [
-      "Partnerschaftsurkunde 2018 in Sawbridgeworth unterzeichnet",
-      "Erste Begegnungen bereits ab 2017",
-      "Schwerpunkt auf Jugend- und Vereinsaustausch",
-    ],
     website: { label: "sawbridgeworth-tc.gov.uk", href: "https://www.sawbridgeworth-tc.gov.uk" },
+    km: 917,
+    peilung: 298.3,
+    richtung: "Westnordwest",
+  },
+];
+
+export const stadtNachSlug = (slug: string) => staedte.find((s) => s.slug === slug);
+
+/**
+ * Die zwei Patenstädte. Sie stehen nur auf der Übersicht, im Abschnitt
+ * „Dort und hier", und haben bewusst keine eigenen Seiten: Die Patenschaft
+ * gilt den früheren deutschen Bewohnern, nicht den heutigen Gemeinden.
+ */
+export type Patenstadt = {
+  name: string;
+  heute: string;
+  seit: string;
+  wappen: string;
+  stich: string;
+  verhaeltnis: string;
+  stichAlt: string;
+  bildunterschrift: string;
+  steckbrief: Angabe[];
+  geschichte: string[];
+  mitMoosburg: string;
+};
+
+export const patenstaedte: Patenstadt[] = [
+  {
+    name: "Königsberg an der Eger",
+    heute: "Kynšperk nad Ohří, Tschechien",
+    seit: "Patenschaft seit 1968",
+    wappen: "wappen-koenigsberg-stich",
+    stich: "koenigsbergA",
+    verhaeltnis: "1200 / 1264",
+    stichAlt:
+      "Federzeichnung der Kirche Mariä Himmelfahrt in Kynšperk nad Ohří mit zwei Türmen",
+    bildunterschrift: "Mariä Himmelfahrt, 18. Jahrhundert",
+    steckbrief: [
+      { label: "Lage", wert: "Karlsbader Region, Bezirk Sokolov, an der Eger" },
+      { label: "Einwohner", wert: "4.568 (2023)" },
+      { label: "Erwähnt", wert: "1232 als „Cuningberch“, im ersten überlieferten Stadtprivileg Böhmens" },
+      { label: "Stadtrecht", wert: "1364 durch Karl IV." },
+    ],
+    geschichte: [
+      "Ende des 12. Jahrhunderts Burg Kinsberg",
+      "1938 an das Deutsche Reich",
+      "1945 und 1946 Vertreibung der Deutschböhmen",
+    ],
+    mitMoosburg: "Patenschaft seit 8. April 1968",
+  },
+  {
+    name: "Hodschag",
+    heute: "Odžaci, Serbien",
+    seit: "Patenschaft seit 1973",
+    wappen: "wappen-hodschag-stich",
+    stich: "hodschagA",
+    verhaeltnis: "1200 / 1386",
+    stichAlt: "Federzeichnung der Kirche St. Michael in Odžaci",
+    bildunterschrift: "St. Michael, 1821",
+    steckbrief: [
+      { label: "Lage", wert: "Vojvodina, Bezirk Westbatschka" },
+      { label: "Einwohner", wert: "7.556 (2022)" },
+      { label: "Erwähnt", wert: "1522 als „Kéménd“", unsicher: "umstritten, auch 1389 und 1557" },
+      { label: "Stadtrecht", wert: "Marktrecht 1813, heute Stadt" },
+    ],
+    geschichte: [
+      "1755 rund 300 deutsche Familien aus dem Schwarzwald angesiedelt",
+      "1944 Flucht, Massaker von Hodschag, Internierung",
+      "2006 Denkmal für die ermordeten Donauschwaben",
+    ],
+    mitMoosburg: "Patenschaft seit 9. Juli 1973, die 50 Jahre gefeiert 2023",
   },
 ];

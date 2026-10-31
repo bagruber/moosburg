@@ -411,6 +411,12 @@ export type ThemenSeite = { title: string; slug: string; intro: string };
 export const themenSeiten: ThemenSeite[] = [
   { slug: "thema/strassennamen", title: "Straßennamen & Stadtviertel", intro: "Wie Moosburgs Straßen zu ihren Namen kommen und warum ganze Viertel einem Thema folgen, vom Vogelviertel bis zur verlorenen Heimat der Vertriebenen." },
   { slug: "thema/partnerstaedte", title: "Partnerstädte", intro: "Moosburgs Städtepartnerschaften mit Bry-sur-Marne, Rochester, Moosburg in Kärnten und Sawbridgeworth." },
+  // Die vier Einzelseiten stehen hier, damit die Suche sie findet. Wer „Bry"
+  // eingibt, sucht die Stadt und nicht die Übersicht.
+  { slug: "thema/partnerstaedte/bry-sur-marne", title: "Bry-sur-Marne", intro: "Moosburgs älteste Partnerstadt an der Marne östlich von Paris, seit 1973." },
+  { slug: "thema/partnerstaedte/rochester", title: "Rochester, Minnesota", intro: "Die größte Partnerstadt und die einzige außerhalb Europas, seit 1981." },
+  { slug: "thema/partnerstaedte/moosburg-kaernten", title: "Moosburg in Kärnten", intro: "Namensfreundschaft mit der zweiten Moosburg in der Region Wörthersee, seit 1991." },
+  { slug: "thema/partnerstaedte/sawbridgeworth", title: "Sawbridgeworth", intro: "Die jüngste Partnerschaft, in East Hertfordshire am Stort, seit 2018." },
   { slug: "thema/johannisturm", title: "Der Johannisturm", intro: "Wie der Turm von St. Johannes gebaut wurde und warum er noch steht: Blitze, Säkularisation, 63 Gulden und 168 Stufen bis ins Turmzimmer." },
   { slug: "thema/fair-trade", title: "Fair-Trade-Stadt Moosburg", intro: "Moosburg als Fairtrade-Stadt: Geschäfte, Gastronomie und Einrichtungen, die fair gehandelte Produkte anbieten." },
 ];
