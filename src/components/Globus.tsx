@@ -248,7 +248,7 @@ export function Globus() {
         tabIndex={0}
         role="img"
         aria-label="Globus mit den kürzesten Wegen von Moosburg zu den Partnerstädten. Ziehen oder Pfeiltasten drehen ihn."
-        className="globus cursor-grab touch-none select-none active:cursor-grabbing"
+        className="globus cursor-grab touch-pan-y select-none active:cursor-grabbing"
         onPointerDown={(e) => {
           zug.current = [e.clientX, e.clientY, rl, rb];
           e.currentTarget.setPointerCapture(e.pointerId);

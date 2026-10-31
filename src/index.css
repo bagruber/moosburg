@@ -371,7 +371,18 @@ body {
     background: linear-gradient(to bottom, transparent 0 86px, var(--fries-farbe) 86px 228px, transparent 228px);
   }
   .fries-paten { padding-bottom: 0; }
+  /* Die Patenstädte tragen ihr Band bis zum Fuß der Spalte statt auf feste
+     228 px: schmal bricht "Königsberg an der Eger" zweizeilig, und die
+     Jahreszeile fiel sonst unter die Farbfläche. */
+  .fries-paten > .fries-feld {
+    background: linear-gradient(to bottom, transparent 0 86px, var(--fries-farbe) 86px);
+    padding-bottom: 18px;
+  }
 }
 @media (max-width: 519px) {
   .fries { grid-template-columns: minmax(0, 1fr); }
+  /* Die beiden Patenstädte bleiben nebeneinander. Untereinander lesen sich
+     zwei gleich breite Bänder als zwei Abschnitte statt als ein Paar, und die
+     Kirchen darunter stehen ohnehin in zwei Spalten. */
+  .fries-paten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

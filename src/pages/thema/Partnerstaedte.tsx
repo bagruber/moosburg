@@ -167,15 +167,17 @@ export function Partnerstaedte() {
                   className="absolute left-1/2 top-[26px] -ml-[52px] h-[120px] w-[104px]"
                 />
               </div>
-              <figcaption className="font-display mt-0.5 text-[1.02rem] font-semibold leading-tight text-cream">
+              <figcaption className="font-display mt-0.5 text-pretty text-[1.02rem] font-semibold leading-tight text-cream">
                 {p.name}
                 <span className="mt-0.5 block text-[0.8rem] font-normal text-gold-200">{p.seit}</span>
               </figcaption>
             </figure>
           ))}
           {/* Der Einleitungstext steht im Band, nicht darüber: Er erklärt,
-              warum zwei fremde Wappen auf einer Moosburger Seite stehen. */}
-          <p className="fries-feld self-start px-3.5 pt-[98px] text-[0.95rem] leading-relaxed text-cream/90 max-lg:col-span-full max-lg:pt-4 max-lg:text-ink-soft">
+              warum zwei fremde Wappen auf einer Moosburger Seite stehen.
+              Unter 900 px trägt er kein Band — dort endet die Farbfläche unter
+              den Wappen, und der Absatz stand sonst halb darin. */}
+          <p className="self-start px-3.5 pt-[98px] text-[0.95rem] leading-relaxed text-cream/90 max-[899px]:col-span-full max-[899px]:pt-4 max-[899px]:text-ink-soft">
             Nach dem Zweiten Weltkrieg fanden viele Flüchtlinge und Vertriebene in Moosburg eine
             neue Heimat; für sie entstand ab 1948 die Neustadt. Für die früheren deutschen
             Bewohner zweier Orte hat die Stadt eine Patenschaft übernommen: für Königsberg an der

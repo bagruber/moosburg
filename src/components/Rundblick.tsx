@@ -64,11 +64,14 @@ const WIMPEL: Record<string, [string, string]> = {
   roch: ["#3f55b0", "#ffffff"],
 };
 
+/** Die Stadt steht erst ab 640 px im Chip: zu viert passen die vollen
+ *  Beschriftungen auf dem Handy nicht in eine Zeile. Welche Stadt gemeint
+ *  ist, sagt der Satz unter dem Rundblick, sobald der Tag gewählt ist. */
 const TAGE = [
-  { tag: "heute", label: "Heute" },
-  { tag: "2026-03-30", label: "30. März, Bry" },
-  { tag: "2026-05-10", label: "10. Mai, Sawbridgeworth" },
-  { tag: "2026-06-21", label: "21. Juni" },
+  { tag: "heute", datum: "Heute" },
+  { tag: "2026-03-30", datum: "30. März", stadt: "Bry" },
+  { tag: "2026-05-10", datum: "10. Mai", stadt: "Sawbridgeworth" },
+  { tag: "2026-06-21", datum: "21. Juni" },
 ];
 
 /**
@@ -464,9 +467,10 @@ export function Rundblick({ startTag }: { startTag?: string | null }) {
                 type="button"
                 aria-pressed={iso === tag}
                 onClick={() => spiele(iso)}
-                className="ui-title rounded-full px-3 py-1 text-sm text-ink-soft aria-pressed:bg-red-50 aria-pressed:text-red-700"
+                className="ui-title whitespace-nowrap rounded-full px-3 py-1 text-sm text-ink-soft aria-pressed:bg-red-50 aria-pressed:text-red-700"
               >
-                {t.label}
+                {t.datum}
+                {t.stadt && <span className="hidden sm:inline">, {t.stadt}</span>}
               </button>
             );
           })}
