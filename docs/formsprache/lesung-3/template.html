@@ -1,0 +1,721 @@
+<title>Partnerstädte, erste Lesung</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Ausschnitte der Stadtseite, darum eine helle Welt mit Absicht wie in den
+   ersten beiden Lesungen: Der gebaute Stand hat keinen Dunkelmodus. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-700:#a50d24;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-700:#6e5a30;
+  --aubergine:#3f2248;--z-aubergine:#7f4e8f;
+  --z-nachtblau:#5159b6;--z-petrol:#117393;--z-gruen:#157840;--z-braun:#9b5309;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --bry-t:url({{IMG:docs/formsprache/lesung-3/assets/bryA-tinte.webp}});
+  --bry-f:url({{IMG:docs/formsprache/lesung-3/assets/bryA-farbe.webp}});
+  --kaernten-t:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-tinte.webp}});
+  --kaernten-f:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-farbe.webp}});
+  --saw-t:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-tinte.webp}});
+  --saw-f:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-farbe.webp}});
+  --roch-t:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-tinte.webp}});
+  --roch-f:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-farbe.webp}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));overflow-x:clip;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--rot-700)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.stack>*+*{margin-top:1rem}
+code{font-size:.88em;background:var(--creme-dunkel);padding:.05em .35em;border-radius:4px}
+.kat{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>*:not(.handschrift){position:relative}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Lesungs-Gerüst */
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.inhalt{margin-top:32px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:2.4em}
+.punkt{padding-block:64px 28px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ort{font-size:.85rem;color:var(--tinte-matt);margin:26px 0 10px;display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between}
+.ort b{color:var(--tinte-weich);font-weight:600}
+.urteil{margin-top:18px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.urteil b{color:var(--tinte)}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem;white-space:nowrap}
+.frage{margin-top:18px;padding:14px 18px;border:1px solid var(--gold-200);background:var(--gold-100);border-radius:8px;font-size:.95rem}
+.frage b{color:var(--gold-700)}
+.variante-text{margin-top:14px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.variante-text b{color:var(--tinte)}
+
+.schalter{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--linie);border-radius:999px;background:var(--weiss)}
+.schalter button{border:0;background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+.schalter button[aria-pressed="true"]{background:var(--rot-50);color:var(--rot-700)}
+
+.kontext{margin-inline:calc(50% - 50vw);background:var(--creme);border-block:1px solid var(--linie);position:relative}
+.innen{max-width:1180px;margin-inline:auto;padding:44px 24px}
+.brot{font-size:.78rem;color:var(--tinte-matt)}
+
+/* Zeichnung als zwei Schablonen, wie ZweifarbigeZeichnung im Prototyp:
+   Fläche zuerst, Linien darüber, Farben aus Tokens. */
+.zg{display:block;position:relative;width:100%}
+.zg::before,.zg::after{content:"";position:absolute;inset:0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:bottom center;mask-position:bottom center;-webkit-mask-size:contain;mask-size:contain}
+.zg::before{background:var(--zf,var(--rot-500));-webkit-mask-image:var(--f);mask-image:var(--f)}
+.zg::after{background:var(--zl,var(--tinte));-webkit-mask-image:var(--t);mask-image:var(--t)}
+.z-bry{--t:var(--bry-t);--f:var(--bry-f);aspect-ratio:1200/1308}
+.z-kaernten{--t:var(--kaernten-t);--f:var(--kaernten-f);aspect-ratio:1200/1106}
+.z-saw{--t:var(--saw-t);--f:var(--saw-f);aspect-ratio:1200/1186}
+.z-roch{--t:var(--roch-t);--f:var(--roch-f);aspect-ratio:1200/1345}
+
+/* Seitenkopf-Attrappe */
+.kopf .ueber{font-size:clamp(2rem,4.4vw,3rem)}
+.kopf h3{font-size:1em;font-weight:600}
+.kopf .ueber>.handschrift{font-size:.62em;top:-.55em;color:rgb(184 150 78/.7)}
+.kopf p{max-width:62ch;margin-top:1rem;color:var(--tinte-weich)}
+
+/* 1 A Panoramatafel */
+.pano{position:relative;aspect-ratio:1000/430;width:100%}
+.pano-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pano-stadt{position:absolute;display:block;border-radius:6px}
+.pano-stadt .zg{position:absolute;inset:0;aspect-ratio:auto;height:100%;transition:transform .25s ease}
+.pano-stadt:hover .zg,.pano-stadt:focus-visible .zg{transform:translateY(-4px)}
+.pano .lineal{stroke:var(--tinte);stroke-width:1.4}
+.pano .tick{stroke:var(--tinte-matt);stroke-width:1}
+.pano .tick.lang{stroke:var(--tinte);stroke-width:1.4}
+.pano .himmel{font:600 13px var(--sans);fill:var(--tinte-matt)}
+.pano .alpen{fill:var(--creme);stroke:var(--tinte);stroke-width:1.2;stroke-linejoin:round}
+.pano .alpen-schnee{fill:none;stroke:var(--tinte-matt);stroke-width:.8}
+.pano .alpen-t{font:italic 400 14px var(--serif);fill:var(--tinte-matt)}
+.pano .leit{fill:none;stroke:var(--tinte-matt);stroke-width:1;stroke-dasharray:2 3;transition:stroke .2s}
+.pano .leit.an{stroke:var(--rot-700);stroke-width:1.6;stroke-dasharray:none}
+.pano .peil{fill:var(--rot-500)}
+.pano .pname{font:600 17px var(--serif);fill:var(--tinte)}
+.pano .pdetail{font:400 13px var(--sans);fill:var(--tinte-weich)}
+.pano-bu{margin-top:10px;font-size:.85rem;color:var(--tinte-matt);max-width:70ch}
+.handy-reihe{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:22px}
+.handy-reihe>p{flex:1;min-width:240px;font-size:.92rem;color:var(--tinte-weich)}
+.handy{width:300px;max-width:100%;border:1px solid var(--linie);border-radius:22px;overflow:hidden;background:var(--creme);padding-block:18px}
+.handy .pano-scroll{overflow-x:auto;scroll-snap-type:x proximity;padding-inline:12px}
+.handy .pano{width:760px}
+@media (max-width:800px){.pano-scroll-haupt{overflow-x:auto;margin-inline:-24px;padding-inline:24px}.pano-scroll-haupt .pano{width:760px}}
+
+/* 1 B Wegweiser */
+.weg{display:grid;gap:28px;align-items:center;grid-template-columns:minmax(0,1fr)}
+@media (min-width:860px){.weg{grid-template-columns:minmax(0,5fr) minmax(0,4fr)}}
+.weg svg{width:100%;max-width:560px;height:auto;display:block;margin-inline:auto}
+.weg .brett{fill:var(--rot-500);stroke:var(--tinte);stroke-width:1.5;stroke-linejoin:round}
+.weg .brett-name{font:600 19px var(--serif);fill:var(--creme)}
+.weg .brett-km{font:400 12.5px var(--sans);fill:var(--creme)}
+.weg .pfosten{fill:var(--creme);stroke:var(--tinte);stroke-width:1.5}
+.weg .boden{fill:none;stroke:var(--tinte);stroke-width:1.2;stroke-linecap:round}
+.weg-text p+p{margin-top:.8rem}
+.weg-text p{color:var(--tinte-weich)}
+
+/* 2 Porträt mit Notiz */
+.portraet{display:grid;gap:36px;grid-template-columns:minmax(0,1fr);align-items:start}
+@media (min-width:860px){.portraet{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px}}
+.p-figur{margin:0;max-width:470px}
+.p-zeichnung{position:relative}
+.p-notiz{position:absolute;font-family:var(--script);font-size:clamp(1.35rem,3.6vw,1.75rem);line-height:1;color:var(--gold-700);white-space:nowrap;text-shadow:0 0 6px var(--creme),0 0 3px var(--creme),0 0 2px var(--creme);pointer-events:none}
+.p-pfeil{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+@media (max-width:639px){.p-notiz,.p-pfeil{display:none}}
+.p-pfeil path{fill:none;stroke:var(--gold-500);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bu{margin-top:12px;display:flex;flex-direction:column;gap:2px}
+.bu-titel{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:var(--tinte)}
+.bu-ort{font-size:.82rem;color:var(--tinte-matt)}
+.bu-ort a{color:var(--tinte-matt)}
+.p-text .kat{color:var(--rot-700)}
+.p-text h3{font-size:clamp(1.7rem,3vw,2.2rem);margin-top:.3rem}
+.p-text h3 small{display:block;font-family:var(--sans);font-size:1rem;font-weight:400;color:var(--tinte-matt);margin-top:.2rem}
+.p-lead{font-size:1.12rem;font-weight:600;margin-top:1rem}
+.p-intro{color:var(--tinte-weich);margin-top:.7rem}
+.p-eck{margin-top:1.1rem;font-size:.92rem;color:var(--tinte-matt);font-variant-numeric:tabular-nums}
+.p-begegnung{margin-top:1.6rem;border-top:1px solid var(--linie);padding-top:1rem}
+.p-begegnung h4{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--tinte-matt)}
+.p-begegnung ul{list-style:none;padding:0;margin:.5rem 0 0}
+.p-begegnung li{display:flex;gap:1rem;padding-block:.35rem}
+.p-begegnung li b{min-width:9.5em;font-weight:600;color:var(--rot-700)}
+.p-begegnung .leer{font-style:italic;color:var(--tinte-matt);margin-top:.5rem}
+
+/* 3 Farbe */
+.reihe{display:grid;gap:28px 24px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.reihe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.reihe figure{margin:0}
+.reihe .rahmen{aspect-ratio:1/1.13;display:flex;align-items:flex-end}
+.reihe .zg{max-height:100%}
+.reihe figcaption{margin-top:10px;font-family:var(--serif);font-weight:600;font-size:1.05rem}
+#farbreihe{transition:background .3s}
+#farbreihe[data-variante="rot"]{--zf:var(--rot-500);--zl:var(--tinte)}
+#farbreihe[data-variante="aub"]{--zf:var(--z-aubergine);--zl:var(--gold-200);background:var(--aubergine);color:var(--creme);border-color:var(--aubergine)}
+#farbreihe[data-variante="je"]{--zl:var(--tinte)}
+#farbreihe[data-variante="je"] .z-bry{--zf:var(--z-nachtblau)}
+#farbreihe[data-variante="je"] .z-kaernten{--zf:var(--z-gruen)}
+#farbreihe[data-variante="je"] .z-saw{--zf:var(--z-braun)}
+#farbreihe[data-variante="je"] .z-roch{--zf:var(--z-petrol)}
+#farbreihe[data-variante="tinte"]{--zf:transparent;--zl:var(--tinte)}
+#farbreihe .je-label{display:none;font-family:var(--sans);font-weight:400;font-size:.82rem;color:var(--tinte-matt)}
+#farbreihe[data-variante="je"] .je-label{display:block}
+
+/* 4 Wappen */
+.wappen-reihe{display:grid;gap:28px 24px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.wappen-reihe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.wappen-reihe figure{margin:0;text-align:center}
+.wappen-reihe svg{width:100%;max-width:150px;height:auto}
+.wappen-reihe figcaption{margin-top:8px;font-size:.88rem;color:var(--tinte-weich)}
+.wappen-reihe figcaption b{display:block;font-family:var(--serif);font-size:1.02rem;color:var(--tinte)}
+.wp-linie{fill:none;stroke:var(--tinte);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.wp-fein{fill:none;stroke:var(--tinte);stroke-width:1;stroke-linecap:round}
+.wp-rot{fill:var(--rot-500)}
+.wp-hell{fill:none;stroke:var(--creme);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.erzaehlt{display:grid;gap:22px 32px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.erzaehlt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.erzaehlt h4{font-size:1.1rem}
+.erzaehlt p{margin-top:.35rem;color:var(--tinte-weich);font-size:.97rem}
+.erzaehlt .spruch{font-family:var(--serif);font-style:italic;color:var(--tinte)}
+.ohne{color:var(--tinte-matt);font-style:italic}
+
+/* 5 Aufräumen */
+.balken-reihe{display:grid;gap:14px 24px;grid-template-columns:repeat(2,minmax(0,1fr));max-width:640px}
+@media (min-width:640px){.balken-reihe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.balken{display:flex;height:6px;border-radius:999px;overflow:hidden;border:1px solid var(--linie)}
+.balken span{flex:1}
+.balken-reihe div>div:last-child{font-size:.85rem;color:var(--tinte-weich);margin-top:6px}
+.tabelle-wrap{overflow-x:auto;margin-top:22px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.93rem}
+th,td{text-align:left;padding:.55rem .8rem .55rem 0;border-bottom:1px solid var(--linie);vertical-align:top}
+th{font-weight:600;color:var(--tinte-matt);font-size:.84rem}
+td.zahl{font-variant-numeric:tabular-nums;white-space:nowrap}
+.zwei{display:grid;gap:28px 48px;grid-template-columns:minmax(0,1fr);margin-top:30px}
+@media (min-width:760px){.zwei{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.zwei h4{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--tinte-matt);margin-bottom:.4rem}
+.zwei ol{margin:0;padding-left:1.3rem}
+.zwei li{padding-block:.3rem;color:var(--tinte-weich)}
+.zwei li b{color:var(--tinte);font-weight:600}
+.weg-mit{text-decoration:line-through;text-decoration-color:var(--rot-500);color:var(--tinte-matt)}
+
+.nicht{list-style:none;padding:0;margin:0;max-width:80ch}
+.nicht li{padding-block:.9rem;border-bottom:1px solid var(--linie)}
+.nicht li b{display:block;font-family:var(--serif);font-size:1.1rem}
+.nicht li span{color:var(--tinte-weich)}
+.fragen{padding-left:1.3rem;max-width:80ch}
+.fragen li{padding-block:.45rem}
+.quellen{font-size:.85rem;color:var(--tinte-matt);max-width:80ch;margin-top:20px}
+.quellen a{color:var(--tinte-matt)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Themenseite · Stadt-Prototyp · 28. Oktober 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">mit Zeichnungen</span>
+    <h1 style="font-size:1em">Partnerstädte, erste Lesung</h1>
+  </div>
+  <p class="lead text">Wie die Themenseite Partnerstädte eine eigene Handschrift bekommt, ohne den Kanon zu verlassen. Grundlage sind die vier Wahrzeichen-Zeichnungen, je Stadt ein Blatt, zerlegt in Linien und Fläche wie Rathaus und Hirschen. Jede Idee steht in einem Ausschnitt der Seite, Varianten lassen sich am Ausschnitt umschalten. Gebaut ist nichts.</p>
+  <p class="text" style="margin-top:.8rem;color:var(--tinte-weich)">Antworten wie gewohnt, etwa „1 A, 2 ja, 3 A, 4 B, 5 ja“.</p>
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Die Eigenart der Seite</a></li>
+    <li><a href="#p2"><span>2</span>Zeichnung mit Notiz im Porträt</a></li>
+    <li><a href="#p3"><span>3</span>Farbe der Zeichnungen</a></li>
+    <li><a href="#p4"><span>4</span>Die Wappen</a></li>
+    <li><a href="#p5"><span>5</span>Aufräumen</a></li>
+    <li><a href="#nicht"><span>×</span>Bewusst nicht vorgeschlagen</a></li>
+    <li><a href="#fragen"><span>?</span>Fragen</a></li>
+  </ul>
+</header>
+
+<!-- ───────────── 1 Eigenart -->
+<section class="punkt" id="p1">
+  <header><div class="nr">Punkt 1</div><h2>Die Eigenart der Seite</h2></header>
+  <p class="text">Die Seite hat schon heute eine gute Angabe, die keine andere Themenseite hat: Richtung und Luftlinie ab Moosburg. Sie steckt nur in vier kleinen Kompassen. Beide Varianten machen daraus das Element, an dem man die Seite wiedererkennt, und setzen die Zeichnungen hinein.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, direkt unter dem Seitenkopf, anstelle der vier Karten und des Zeitstrahls</span>
+    <div class="schalter" role="group" aria-label="Variante Eigenart" data-ziel="eigenart">
+      <button type="button" aria-pressed="true" data-v="pano">A Panoramatafel</button>
+      <button type="button" aria-pressed="false" data-v="weg">B Wegweiser</button>
+    </div>
+  </div>
+  <div class="kontext" id="eigenart" data-variante="pano">
+    <div class="innen kopf" style="padding-bottom:20px">
+      <div class="brot">Themen › Partnerstädte</div>
+      <div class="ueber" style="margin-top:1.2rem">
+        <span class="handschrift" aria-hidden="true">über Grenzen hinweg</span>
+        <h3>Partnerstädte</h3>
+      </div>
+      <p>Vier Städte in vier Ländern, auf zwei Kontinenten, verbunden mit Moosburg durch Freundschaften, die teils seit über fünfzig Jahren bestehen. Begegnung statt Grenzen, gelebt von Vereinen, Schulen und Bürgerinnen und Bürgern.</p>
+    </div>
+    <div class="innen" style="padding-top:12px" data-zeige="pano">
+      <div class="pano-scroll-haupt"><div class="pano" data-pano></div></div>
+      <p class="pano-bu">Richtung und Luftlinie ab Moosburg, gelesen wie eine Panoramatafel auf dem Aussichtsturm. Drei der vier Freundschaften liegen im Westen, die vierte hinter den Alpen.</p>
+    </div>
+    <div class="innen" style="padding-top:12px" data-zeige="weg" hidden>
+      <div class="weg">
+        <svg viewBox="0 0 600 470" role="img" aria-label="Wegweiser mit vier Armen: Bry-sur-Marne, Rochester und Sawbridgeworth nach links, Moosburg in Kärnten nach rechts">
+          <path class="boden" d="M180 452c40-4 90-2 130-5s90 1 120-2M210 458c30 1 60-2 90 0"/>
+          <path class="pfosten" d="M293 62l7-14 7 14v386h-14z"/>
+          <g transform="rotate(-1.5 300 100)">
+            <path class="brett" d="M296 78H98L64 101l34 23h198z"/>
+            <text class="brett-name" x="110" y="100">Bry-sur-Marne</text>
+            <text class="brett-km" x="110" y="117">690 km · seit 1973</text>
+          </g>
+          <g transform="rotate(1.2 300 162)">
+            <path class="brett" d="M296 140H82L48 163l34 23h214z"/>
+            <text class="brett-name" x="94" y="162">Rochester, Minnesota</text>
+            <text class="brett-km" x="94" y="179">7.400 km · seit 1981</text>
+          </g>
+          <g transform="rotate(-1 300 224)">
+            <path class="brett" d="M304 202h214l34 23-34 23H304z"/>
+            <text class="brett-name" x="318" y="224">Moosburg in Kärnten</text>
+            <text class="brett-km" x="318" y="241">260 km · seit 1991</text>
+          </g>
+          <g transform="rotate(1.8 300 286)">
+            <path class="brett" d="M296 264H104L70 287l34 23h192z"/>
+            <text class="brett-name" x="116" y="286">Sawbridgeworth</text>
+            <text class="brett-km" x="116" y="303">920 km · seit 2018</text>
+          </g>
+        </svg>
+        <div class="weg-text">
+          <p>Der Wegweiser zu den Partnerstädten, wie er in vielen Städten auf dem Marktplatz steht. Jeder Arm führt zu einem Porträt, in der Reihenfolge der Jahre.</p>
+          <p>Er ist das vertrautere Bild, gibt aber nur links und rechts her: Drei Arme zeigen nach Westen, einer nach Osten. Die Zeichnungen stehen dann erst in den Porträts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="handy-reihe" data-zeige-in="eigenart" data-zeige="pano">
+    <div class="handy"><div class="pano-scroll"><div class="pano" data-pano></div></div></div>
+    <p>Am Handy bleibt die Tafel in ihrem Maßstab und wird seitlich gewischt, wie man ein Panorama abliest. Unterhalb von 760 px würde sie sonst so klein, dass die Namen nicht mehr lesbar sind.</p>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A. Sie braucht keine neue Angabe, ersetzt drei Blöcke, die heute dasselbe wiederholen (Karten, Kompass, Zeitstrahl), und erzählt etwas, das nur diese Seite erzählen kann: Bry, Sawbridgeworth und Rochester liegen alle im Westen, innerhalb von knapp 40 Grad. Die Alpen sind eine Andeutung in wenigen Strichen, keine Karte. B lohnt sich vor allem, wenn es in Moosburg einen echten Wegweiser gibt (Frage 3). <span class="empf">A empfohlen</span></p>
+</section>
+
+<!-- ───────────── 2 Porträt -->
+<section class="punkt" id="p2">
+  <header><div class="nr">Punkt 2</div><h2>Zeichnung mit Notiz im Porträt</h2></header>
+  <p class="text">Heute beginnt jedes Porträt mit einem Farbbalken und einem Steckbrief in fünf Zeilen. Stattdessen steht dort die Zeichnung, mit einer Bildunterschrift wie im Bildregister (Titel in Serif, Ortszeile) und genau einer Notiz, die auf ein Detail im Bild zeigt. Das ist die Notiz, die der Kanon schon kennt (höchstens eine pro Bildschirm, am Handy entfällt sie). Hier bekommt sie ihren besten Einsatz: Sie erklärt, was man sieht.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Porträt einer Stadt</span>
+    <div class="schalter" role="group" aria-label="Stadt im Porträt" data-portraet>
+      <button type="button" aria-pressed="false" data-v="bry">Bry</button>
+      <button type="button" aria-pressed="false" data-v="kaernten">Kärnten</button>
+      <button type="button" aria-pressed="false" data-v="saw">Sawbridgeworth</button>
+      <button type="button" aria-pressed="true" data-v="roch">Rochester</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen portraet">
+      <figure class="p-figur">
+        <div class="p-zeichnung" id="p-zeichnung">
+          <span class="zg z-roch" id="p-zg" role="img" aria-label=""></span>
+          <span class="p-notiz" id="p-notiz" aria-hidden="true"></span>
+          <svg class="p-pfeil" id="p-pfeil" aria-hidden="true"><path d=""/></svg>
+        </div>
+        <figcaption class="bu"><span class="bu-titel" id="p-bu-titel"></span><span class="bu-ort" id="p-bu-ort"></span></figcaption>
+      </figure>
+      <div class="p-text">
+        <div class="kat" id="p-kat"></div>
+        <h3 id="p-name"></h3>
+        <p class="p-lead" id="p-lead"></p>
+        <p class="p-intro" id="p-intro"></p>
+        <p class="p-eck" id="p-eck"></p>
+        <div class="p-begegnung">
+          <h4>Nächste Begegnungen</h4>
+          <div id="p-begegnung"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja, unabhängig davon, wie Punkt 1 ausgeht. Die Notizen sagen nur, was belegt ist; Bry und Kärnten brauchen vorher noch eine Bestätigung (Fragen 1 und 5). „Nächste Begegnungen“ ersetzt die Liste „Was uns verbindet“: Wer die Seite besucht, will wissen, wann man mitfahren oder Gäste aufnehmen kann. Heute gibt es Termine nur für Kärnten. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 3 Farbe -->
+<section class="punkt" id="p3">
+  <header><div class="nr">Punkt 3</div><h2>Farbe der Zeichnungen</h2></header>
+  <p class="text">Weil die Fläche eine Schablone ist, entscheidet die Seite, welche Farbe sie trägt, nicht das Blatt. Vier Möglichkeiten, live umgeschaltet.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, die vier Zeichnungen nebeneinander</span>
+    <div class="schalter" role="group" aria-label="Farbe der Zeichnungen" data-ziel="farbreihe farbtext">
+      <button type="button" aria-pressed="true" data-v="rot">A Rot auf Creme</button>
+      <button type="button" aria-pressed="false" data-v="aub">B Ton in Ton auf Aubergine</button>
+      <button type="button" aria-pressed="false" data-v="je">C je Stadt eine Farbe</button>
+      <button type="button" aria-pressed="false" data-v="tinte">D nur Tinte</button>
+    </div>
+  </div>
+  <div class="kontext" id="farbreihe" data-variante="rot">
+    <div class="innen reihe">
+      <figure><div class="rahmen"><span class="zg z-bry"></span></div><figcaption>Bry-sur-Marne<span class="je-label">Nachtblau, also Geld und Recht</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-roch"></span></div><figcaption>Rochester<span class="je-label">Petrol, also Wege und Wasser</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-kaernten"></span></div><figcaption>Moosburg in Kärnten<span class="je-label">Tannengrün, also Natur</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-saw"></span></div><figcaption>Sawbridgeworth<span class="je-label">Erdbraun, also Bauen</span></figcaption></figure>
+    </div>
+  </div>
+  <div id="farbtext" data-variante="rot">
+    <p class="variante-text" data-zeige="rot"><b>A Rot-500 auf Creme.</b> So sind die Blätter gezeichnet, und so stehen Rathaus, Hirschen und Bahnhof. Die vier Städte erscheinen in derselben Farbe wie Moosburgs eigene Häuser: gesehen von hier aus.</p>
+    <p class="variante-text" data-zeige="aub" hidden><b>B Ton in Ton auf Aubergine.</b> Aubergine ist im Farbregister die Farbe für Begegnung, und Partnerstädte steht dort. Als ganze Fläche zu schwer für vier Zeichnungen; gut für eine einzelne im Band „Mitmachen“ am Ende der Seite.</p>
+    <p class="variante-text" data-zeige="je" hidden><b>C je Stadt eine Farbe.</b> Unterscheidet die Städte, bricht aber K1: Jede Themenfarbe trägt auf allen Moosburger Seiten einen Gegenstand. Bry in Nachtblau hieße Geld und Recht. Nationalfarben helfen auch nicht, drei der vier Länder haben Blau, Weiß und Rot.</p>
+    <p class="variante-text" data-zeige="tinte" hidden><b>D nur Tinte.</b> Ruhig und ehrlich, aber dann fehlt genau das, was die Blätter von den einfarbigen Wasserzeichen unterscheidet.</p>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A auf der Seite, B nur für eine einzelne Zeichnung im Mitmachen-Band, falls dort überhaupt eine stehen soll. <span class="empf">A empfohlen</span></p>
+</section>
+
+<!-- ───────────── 4 Wappen -->
+<section class="punkt" id="p4">
+  <header><div class="nr">Punkt 4</div><h2>Die Wappen</h2></header>
+  <p class="text">Die Idee war, die vier Wappen zu modernisieren, damit sie zusammenpassen. Beim Nachschlagen zeigt sich zweierlei. Rochester hat kein Wappen, nur ein Stadtsiegel mit einer Weltkugel; ein Satz aus vier Wappen müsste eines erfinden. Und ein Gemeindewappen gehört der Gemeinde: Es abgewandelt zu zeigen, braucht in der Regel deren Zustimmung, hier also die von drei Rathäusern in drei Ländern.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, eigener Abschnitt nach den Porträts</span>
+    <div class="schalter" role="group" aria-label="Variante Wappen" data-ziel="wappen">
+      <button type="button" aria-pressed="false" data-v="satz">A als Satz neu gezeichnet</button>
+      <button type="button" aria-pressed="true" data-v="erzaehlt">B erzählt statt gezeichnet</button>
+      <button type="button" aria-pressed="false" data-v="ohne">C ohne</button>
+    </div>
+  </div>
+  <div class="kontext" id="wappen" data-variante="erzaehlt">
+    <div class="innen">
+      <div class="kat" style="color:var(--rot-700)">Was in ihren Wappen steht</div>
+      <h3 style="font-size:1.6rem;margin:.3rem 0 1.6rem">Brücke, Ruine, Sägeblatt und eine Weltkugel</h3>
+
+      <div class="wappen-reihe" data-zeige="satz" hidden>
+        <figure>
+          <svg viewBox="0 0 120 140" role="img" aria-label="Skizze: Wappen Bry-sur-Marne">
+            <defs><clipPath id="sch1"><path d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/></clipPath></defs>
+            <g clip-path="url(#sch1)">
+              <rect class="wp-rot" x="60" y="40" width="46" height="92"/>
+              <path class="wp-hell" d="M83 112V86M83 86c-11 1-15-8-10-14-3-8 6-14 12-10 6-5 15 1 12 9 6 6 0 16-14 15"/>
+            </g>
+            <path class="wp-linie" d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/>
+            <path class="wp-fein" d="M60 12V128M60 40H106"/>
+            <path class="wp-fein" d="M72 36V20M72 22l-3-3M72 26l-3-3M72 26l3-3M72 22l3-3M83 36V20M83 22l-3-3M83 26l-3-3M83 26l3-3M83 22l3-3M94 36V20M94 22l-3-3M94 26l-3-3M94 26l3-3M94 22l3-3"/>
+            <circle class="wp-fein" cx="37" cy="50" r="10"/><circle class="wp-fein" cx="37" cy="50" r="2.5"/>
+            <path class="wp-fein" d="M37 40V60M27 50H47M30 43l14 14M44 43 30 57"/>
+            <path class="wp-linie" d="M19 84H57M19 84q9-14 18 0q9-14 18 0"/>
+            <path class="wp-fein" d="M37 84v14M19 102q4-3 8 0t8 0 8 0 8 0 6 0M21 109q4-3 8 0t8 0 8 0 8 0"/>
+          </svg>
+          <figcaption><b>Bry-sur-Marne</b>Brücke und Mühlrad, Ulme auf Rot</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 140" role="img" aria-label="Skizze: Wappen Moosburg in Kärnten">
+            <defs><clipPath id="sch2"><path d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/></clipPath></defs>
+            <g clip-path="url(#sch2)">
+              <path class="wp-fein" d="M10 112Q60 90 110 112"/>
+              <path class="wp-rot" d="M47 104V68l5-4 4 6 6-8 4 5 7-4v41z"/>
+              <path class="wp-hell" d="M56 104v-9q4-6 8 0v9"/>
+            </g>
+            <path class="wp-linie" d="M47 104V68l5-4 4 6 6-8 4 5 7-4v41"/>
+            <path class="wp-linie" d="M62 62V46M62 46c-13 1-17-9-11-15-3-9 7-15 12-10 7-6 17 1 13 10 7 6 0 17-14 15"/>
+            <path class="wp-linie" d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/>
+          </svg>
+          <figcaption><b>Moosburg in Kärnten</b>Turmruine mit Eiche. Rot gibt es im Original nicht</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 140" role="img" aria-label="Skizze: Wappen Sawbridgeworth">
+            <defs><clipPath id="sch3"><path d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/></clipPath></defs>
+            <g clip-path="url(#sch3)">
+              <path class="wp-rot" d="M10 40l13-10 9 10 9-10 9 10 9-10 9 10 9-10 9 10 9-10 11 10v100H10z"/>
+              <path class="wp-hell" d="M60 104V84M60 84 50 62M60 84l-5-24M60 84V59M60 84l5-24M60 84l10-22M52 84h16M60 84l-6 20M60 84l6 20"/>
+              <path class="wp-hell" d="M30 66v34M30 76l8 2-2 22h-6M90 66v34M90 76l-8 2 2 22h6"/>
+            </g>
+            <path class="wp-linie" d="M14 40l9-10 9 10 9-10 9 10 9-10 9 10 9-10 9 10 9-10 6 7"/>
+            <path class="wp-linie" d="M14 12H106V70C106 102 82 122 60 130 38 122 14 102 14 70Z"/>
+          </svg>
+          <figcaption><b>Sawbridgeworth</b>Sägezahn, Garbe, zwei Ruder</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 120 140" role="img" aria-label="Skizze: Stadtsiegel Rochester">
+            <circle class="wp-linie" cx="60" cy="72" r="48"/>
+            <circle class="wp-fein" cx="60" cy="72" r="41"/>
+            <ellipse class="wp-rot" cx="60" cy="76" rx="26" ry="14"/>
+            <path class="wp-hell" d="M34 76h52M60 62v28M47 64q-6 12 0 24M73 64q6 12 0 24"/>
+            <ellipse class="wp-linie" cx="60" cy="76" rx="26" ry="14"/>
+          </svg>
+          <figcaption><b>Rochester</b>kein Wappen, ein Siegel: die flach liegende Weltkugel</figcaption>
+        </figure>
+      </div>
+
+      <div class="erzaehlt" data-zeige="erzaehlt">
+        <div><h4>Bry-sur-Marne</h4><p>Links eine hölzerne Brücke über einen Fluss, darüber ein Mühlrad. Rechts eine Ulme auf Rot unter drei Weizenähren. Wahlspruch: <span class="spruch">„Moult viel que Paris“</span>, viel älter als Paris.</p></div>
+        <div><h4>Moosburg in Kärnten</h4><p>Auf Gold eine schwarze Turmruine auf grünem Hügel, aus der eine Eiche wächst. Die Ruine steht für die Arnulfsfeste, die Eiche für eine neue Generation, die in dieser Geschichte wurzelt.</p></div>
+        <div><h4>Sawbridgeworth</h4><p>Eine goldene Garbe und zwei Steuerruder auf Rot. Die gezackte Kante darüber ist ein Sägeblatt, ein Wortspiel auf den Namen. Wahlspruch: <span class="spruch">„Concordia amicitia conjuncta“</span>, Eintracht, durch Freundschaft verbunden.</p></div>
+        <div><h4>Rochester, Minnesota</h4><p>Kein Wappen. Das Stadtsiegel zeigt seit etwa 1858 eine flach liegende Weltkugel, die Stadtflagge drei Kanadagänse über der Stadt.</p></div>
+      </div>
+
+      <p class="ohne" data-zeige="ohne" hidden>Der Abschnitt entfällt. Die Zeichnungen sind das Bild der Städte, die Wappen kommen nicht vor.</p>
+    </div>
+  </div>
+  <p class="variante-text">Die Skizzen in A sind von mir, grob, und zeigen nur das Prinzip. Schon dabei wird sichtbar, was ein Satz verlangt: Kärnten bekommt ein Rot, das sein Wappen nicht hat, und Rochester steht als Kreis zwischen drei Schilden.</p>
+  <p class="urteil"><b>Mein Urteil:</b> B. Was in den Wappen steht, ist der schönere Inhalt als ihr Bild: ein Sägeblatt als Wortspiel, ein Wahlspruch über Freundschaft, eine Stadt ohne Wappen. Die Einheit, die ein modernisierter Satz herstellen sollte, liefern schon die Zeichnungen. Der Wahlspruch aus Sawbridgeworth könnte außerdem die Überschrift im Mitmachen-Band werden. <span class="empf">B empfohlen</span></p>
+</section>
+
+<!-- ───────────── 5 Aufräumen -->
+<section class="punkt" id="p5">
+  <header><div class="nr">Punkt 5</div><h2>Aufräumen</h2></header>
+  <p class="text">Damit die Eigenart trägt, muss die Seite leiser werden. Heute wiederholt sie dieselben Angaben bis zu viermal und markiert die Städte mit Farbbalken, die einander gleichen.</p>
+  <div class="ort"><span><b>Farbbalken heute</b>, über jeder Karte und jedem Porträt</span></div>
+  <div class="balken-reihe" aria-label="Die vier Farbbalken von heute">
+    <div><div class="balken"><span style="background:#0055A4"></span><span style="background:#fff"></span><span style="background:#EF4135"></span></div><div>Bry-sur-Marne</div></div>
+    <div><div class="balken"><span style="background:#3C3B6E"></span><span style="background:#fff"></span><span style="background:#B22234"></span></div><div>Rochester</div></div>
+    <div><div class="balken"><span style="background:#C8102E"></span><span style="background:#fff"></span><span style="background:#C8102E"></span></div><div>Moosburg in Kärnten</div></div>
+    <div><div class="balken"><span style="background:#012169"></span><span style="background:#fff"></span><span style="background:#C8102E"></span></div><div>Sawbridgeworth</div></div>
+  </div>
+  <p class="variante-text">Drei von vier sind Blau, Weiß, Rot. Dazu sind es Streifen im Inhalt, die der Kanon seit September nur noch im Seitenkopf zulässt.</p>
+  <div class="tabelle-wrap">
+    <table>
+      <thead><tr><th>Angabe</th><th>Wo sie heute steht</th><th>Mal</th></tr></thead>
+      <tbody>
+        <tr><td>Partnerschaft seit</td><td>Karte, Zeitstrahl, Steckbrief; bei Bry auch in den Kennzahlen oben, bei Rochester in den Kennzahlen des Porträts</td><td class="zahl">3 bis 4</td></tr>
+        <tr><td>Luftlinie</td><td>Kompass auf der Karte, Kompass im Porträt, Steckbrief; bei Rochester auch in den Kennzahlen</td><td class="zahl">3 bis 4</td></tr>
+        <tr><td>Land</td><td>Karte, Kategoriezeile des Porträts, Steckbrief</td><td class="zahl">3</td></tr>
+        <tr><td>Einwohner</td><td>Karte, Steckbrief; bei Rochester auch in den Kennzahlen</td><td class="zahl">2 bis 3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="zwei">
+    <div>
+      <h4>Heute</h4>
+      <ol>
+        <li>Foto-Kopf mit der Brücke</li>
+        <li>„Eine Idee von Europa“ mit vier Kennzahlen</li>
+        <li class="weg-mit">Vier Karten mit Farbbalken und Kompass</li>
+        <li class="weg-mit">Zeitstrahl</li>
+        <li>Vier Porträts: Farbbalken, Steckbrief, Kompass, Text, wechselnde Bausteine, „Was uns verbindet“</li>
+        <li>Mitmachen auf Aubergine mit drei Icons</li>
+      </ol>
+    </div>
+    <div>
+      <h4>Vorschlag</h4>
+      <ol>
+        <li>Creme-Kopf, wie beim Johannisturm</li>
+        <li><b>Panoramatafel</b>: Richtung, Luftlinie und Jahr, je Stadt ein Mal</li>
+        <li>„Eine Idee von Europa“, nur Text</li>
+        <li>Vier Porträts: <b>Zeichnung mit Notiz</b>, eine Zeile Eckdaten, Geschichte, nächste Begegnungen</li>
+        <li><b>Was in ihren Wappen steht</b></li>
+        <li>Mitmachen auf Aubergine, ohne die Icons</li>
+      </ol>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja. Die Seite wird kürzer, obwohl sie mehr erzählt, und jede Angabe steht genau einmal dort, wo man sie sucht. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── Bewusst nicht -->
+<section class="punkt" id="nicht">
+  <header><div class="nr">Ausgeschlossen</div><h2>Bewusst nicht vorgeschlagen</h2></header>
+  <ul class="nicht">
+    <li><b>Briefmarke oder Postkarte</b><span>Die Idee aus Punkt 12 der Konzept-Lesung. Sie rahmt die Städte als Reiseziel, als Gruß aus dem Urlaub. Eine Partnerschaft ist eine Beziehung zwischen Menschen; die Panoramatafel zeigt sie von Moosburg aus, die Postkarte vom Kiosk.</span></li>
+    <li><b>Flaggen</b><span>Siehe Punkt 5. Nationalfarben sind auch nicht die Farben der Städte.</span></li>
+    <li><b>Uhrzeit vor Ort</b><span>„In Rochester ist es jetzt …“ ist einmal hübsch. Aber nur Rochester weicht nennenswert ab, für ein Element der Seite ist das zu dünn.</span></li>
+  </ul>
+</section>
+
+<!-- ───────────── Fragen -->
+<section class="punkt" id="fragen" style="border-bottom:0;padding-bottom:80px">
+  <header><div class="nr">Offen</div><h2>Fragen</h2></header>
+  <ol class="fragen">
+    <li><b>Kärnten:</b> Zeigt die Zeichnung Schloss Moosburg? Ich lese sie so (16. Jahrhundert, im 17. erweitert, heute ein Hotel). Die Notiz „heute ein Hotel“ hängt daran.</li>
+    <li><b>Sawbridgeworth:</b> Great St Mary's trägt laut Denkmalliste eine „Hertfordshire Spike“, eine schlanke Nadel auf dem Turm. In der Zeichnung ist die Spitze recht hoch. Mit einem Foto vergleichen?</li>
+    <li><b>Wegweiser:</b> Steht in Moosburg ein echter Partnerstädte-Wegweiser? Dann wäre Variante 1 B kein Bild, sondern ein Ort, und hätte mehr Gewicht.</li>
+    <li><b>Termine:</b> Kennt der Partnerschaftsverein wiederkehrende Begegnungen für Bry, Rochester und Sawbridgeworth? Ohne sie bleibt „Nächste Begegnungen“ bei drei Städten leer.</li>
+    <li><b>Bry:</b> Das Jahr 1877 für das Rathaus steht bisher nur auf einer Tourismusseite. Vor der Notiz eine zweite Quelle.</li>
+  </ol>
+  <p class="quellen">Auswahl der Blätter: je Stadt eines aus der Serie mit gleicher Dichte und gleichem Aufbau (Bry Nr. 3, Kärnten Nr. 6, Sawbridgeworth das einzige, Rochester Nr. 2). Quellen für Wappen und Gebäude, alle aus zweiter Hand und vor einer Veröffentlichung bei den Städten zu prüfen: <a href="https://fr.geneawiki.com/wiki/94015_-_Bry-sur-Marne">Geneawiki (Bry)</a>, <a href="https://cdn.fotw.info/flags/at-k-moo.html">Flags of the World (Kärnten)</a>, <a href="https://www.ngw.nl/wiki/Sawbridgeworth">Heraldry of the World (Sawbridgeworth)</a>, <a href="https://cdn.fotw.info/flags/us-mn-r.html">Flags of the World (Rochester)</a>, <a href="https://historicengland.org.uk/listing/the-list/list-entry/1101668">Historic England (Great St Mary's)</a>, <a href="https://www.startribune.com/rochester-makes-ear-of-corn-tower-an-official-landmark/600333501">Star Tribune (Wasserturm)</a>, <a href="https://austria-forum.org/af/AEIOU/Moosburg">Austria-Forum (Schloss)</a>, <a href="https://www.cirkwi.com/fr/point-interet/4479749-hotel-de-ville-de-bry-sur-marne">Cirkwi (Rathaus Bry)</a>.</p>
+</section>
+
+</div>
+
+<script>
+// Umschalter: setzt data-variante auf die Ziele und blendet [data-zeige] darin um.
+function zeige(ziel, v) {
+  ziel.dataset.variante = v;
+  ziel.querySelectorAll("[data-zeige]").forEach((el) => { el.hidden = el.dataset.zeige !== v; });
+  document.querySelectorAll(`[data-zeige-in="${ziel.id}"]`).forEach((el) => { el.hidden = el.dataset.zeige !== v; });
+}
+document.querySelectorAll(".schalter[data-ziel]").forEach((gruppe) => {
+  gruppe.addEventListener("click", (e) => {
+    const knopf = e.target.closest("button");
+    if (!knopf) return;
+    gruppe.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === knopf)));
+    gruppe.dataset.ziel.split(" ").forEach((id) => zeige(document.getElementById(id), knopf.dataset.v));
+  });
+});
+
+// Panoramatafel: Peilung ab Moosburg (0° = Norden) auf die Skala von 100° bis 340°.
+const STAEDTE = [
+  { id: "kaernten", name: "Moosburg in Kärnten", km: "260", seit: "1991", grad: 140, mitte: 190 },
+  { id: "bry", name: "Bry-sur-Marne", km: "690", seit: "1973", grad: 273, mitte: 455 },
+  { id: "saw", name: "Sawbridgeworth", km: "920", seit: "2018", grad: 295, mitte: 660 },
+  { id: "roch", name: "Rochester", km: "7.400", seit: "1981", grad: 311, mitte: 865 },
+];
+const X = (grad) => 40 + ((grad - 100) / 240) * 920;
+const HIMMEL = { 135: "Südost", 180: "Süd", 225: "Südwest", 270: "West", 315: "Nordwest" };
+
+// Alpen von etwa 128° (Salzburg) bis 228° (Allgäu), von Hand gesetzt.
+const ALPEN = "M147 380L160 372 172 366 181 357 190 362 200 349 212 356 222 343 233 352 246 339 258 348 268 336 281 346 292 340 305 350 318 338 331 347 344 341 357 352 370 343 384 353 398 346 411 356 424 350 438 359 452 354 466 362 480 359 495 367 510 371 531 380";
+const SCHNEE = "M222 343l-5 9M246 339l-6 10M268 336l-5 9M318 338l-6 10M370 343l-5 8";
+
+function panorama(el) {
+  let svg = `<svg class="pano-svg" viewBox="0 0 1000 430" aria-hidden="true">`;
+  svg += `<path class="alpen" d="${ALPEN}"/><path class="alpen-schnee" d="${SCHNEE}"/>`;
+  svg += `<text class="alpen-t" x="330" y="326" text-anchor="middle">Alpen</text>`;
+  svg += `<line class="lineal" x1="40" y1="380" x2="960" y2="380"/>`;
+  for (let g = 100; g <= 340; g += 5) {
+    const lang = g % 45 === 0;
+    svg += `<line class="tick${lang ? " lang" : ""}" x1="${X(g)}" y1="380" x2="${X(g)}" y2="${lang ? 394 : 386}"/>`;
+  }
+  for (const [g, n] of Object.entries(HIMMEL)) {
+    svg += `<text class="himmel" x="${X(+g)}" y="414" text-anchor="middle">${n}</text>`;
+  }
+  for (const s of STAEDTE) {
+    const bx = X(s.grad);
+    svg += `<path class="leit" data-s="${s.id}" d="M${s.mitte} 288C${s.mitte} 330 ${bx} 334 ${bx} 374"/>`;
+    svg += `<circle class="peil" cx="${bx}" cy="380" r="4"/>`;
+    svg += `<text class="pname" x="${s.mitte}" y="254" text-anchor="middle">${s.name}</text>`;
+    svg += `<text class="pdetail" x="${s.mitte}" y="274" text-anchor="middle">${s.km} km · seit ${s.seit} · ${s.grad}°</text>`;
+  }
+  svg += `</svg>`;
+  let staedte = "";
+  for (const s of STAEDTE) {
+    staedte += `<a class="pano-stadt" href="#p2" data-s="${s.id}" style="left:${(s.mitte - 85) / 10}%;top:${20 / 4.3}%;width:17%;height:${210 / 4.3}%"><span class="zg z-${s.id}"></span><span class="sr">${s.name}, ${s.km} km, Partnerschaft seit ${s.seit}</span></a>`;
+  }
+  el.innerHTML = svg + staedte;
+  const markiere = (id, an) => el.querySelectorAll(`.leit[data-s="${id}"]`).forEach((p) => p.classList.toggle("an", an));
+  el.querySelectorAll(".pano-stadt").forEach((a) => {
+    for (const [typ, an] of [["mouseenter", true], ["mouseleave", false], ["focus", true], ["blur", false]]) {
+      a.addEventListener(typ, () => markiere(a.dataset.s, an));
+    }
+    a.addEventListener("click", () => waehlePortraet(a.dataset.s));
+  });
+}
+document.querySelectorAll("[data-pano]").forEach(panorama);
+
+// Porträt mit Notiz. Ziel und Notiz in Prozent der Zeichnung.
+const PORTRAET = {
+  bry: {
+    kat: "Frankreich · Partnerschaft seit 29. September 1973",
+    name: "Bry-sur-Marne",
+    lead: "Die älteste Freundschaft, an einer Schleife der Marne, zwölf Kilometer östlich von Paris.",
+    intro: "Hier starb 1851 Louis Daguerre, einer der Erfinder der Fotografie. Die Kirche Saint-Gervais-Saint-Protais bewahrt das einzige erhaltene Diorama-Gemälde von ihm.",
+    eck: "≈ 18.800 Einwohner · ≈ 690 km Luftlinie",
+    bu: "Hôtel de Ville, Backstein und Haustein",
+    ort: "Bry-sur-Marne, Grande Rue Charles de Gaulle",
+    notiz: "1877 eingeweiht",
+    notizPos: [60, 1],
+    ziel: [51, 18],
+    alt: "Federzeichnung des Rathauses von Bry-sur-Marne mit Glockentürmchen, Bäumen und Laterne",
+  },
+  kaernten: {
+    kat: "Österreich · Partnerschaft seit 15. Juli 1991",
+    name: "Moosburg",
+    zusatz: "in Kärnten",
+    lead: "Zwei Orte, ein Name: eine Namensfreundschaft in der Region Wörthersee.",
+    intro: "Der Überlieferung nach wuchs Arnulf von Kärnten, später König und Kaiser, auf der Mosaburch auf. Jeden Juli feiert der Ort das Kaiser-Arnulfs-Fest.",
+    eck: "≈ 4.700 Einwohner · ≈ 260 km Luftlinie",
+    bu: "Schloss Moosburg, 16. Jahrhundert",
+    ort: "Moosburg in Kärnten",
+    notiz: "heute ein Hotel",
+    notizPos: [60, 0],
+    ziel: [52, 40],
+    termine: [
+      ["Jeden September", "Begegnung bei der Moosburger Herbstschau, zweites Septemberwochenende"],
+      ["Im Dezember", "Austausch eines Adventkranzes"],
+    ],
+    alt: "Federzeichnung von Schloss Moosburg in Kärnten, rote Fassade hinter Bäumen",
+  },
+  saw: {
+    kat: "England · Partnerschaft seit 13. März 2018",
+    name: "Sawbridgeworth",
+    lead: "Die jüngste Partnerschaft und die erste zu dritt, mit Bry-sur-Marne und Moosburg.",
+    intro: "Eine kleine Marktstadt am Fluss Stort in Hertfordshire, eine halbe Bahnstunde von London. Sie steht schon im Domesday Book von 1086.",
+    eck: "≈ 8.700 Einwohner · ≈ 920 km Luftlinie",
+    bu: "Great St Mary's, acht Glocken, die älteste von 1749",
+    ort: "Sawbridgeworth, Hertfordshire",
+    notiz: "Hertfordshire Spike",
+    notizPos: [58, 13],
+    ziel: [49, 10],
+    alt: "Federzeichnung der Kirche Great St Mary's mit Zinnenturm und schlanker Spitze",
+  },
+  roch: {
+    kat: "USA · Partnerschaft seit 18. Juli 1981",
+    name: "Rochester",
+    zusatz: "Minnesota",
+    lead: "Die größte Partnerstadt und die einzige auf einem anderen Kontinent.",
+    intro: "Weltbekannt durch die Mayo Clinic, die jedes Jahr über eine Million Menschen behandelt.",
+    eck: "≈ 121.000 Einwohner · ≈ 7.400 km Luftlinie",
+    bu: "Ear of Corn Water Tower, 1931 für eine Konservenfabrik gebaut, 46 m",
+    ort: "Rochester, Minnesota",
+    notiz: "ein Wasserturm",
+    notizPos: [2, 10],
+    ziel: [50, 22],
+    alt: "Federzeichnung des Wasserturms in Form eines Maiskolbens, die Hüllblätter rot",
+  },
+};
+
+const zeichnung = document.getElementById("p-zeichnung");
+const zg = document.getElementById("p-zg");
+const notiz = document.getElementById("p-notiz");
+const pfeil = document.querySelector("#p-pfeil path");
+let aktuell = "roch";
+
+function pfeilZeichnen() {
+  const p = PORTRAET[aktuell];
+  const box = zeichnung.getBoundingClientRect();
+  const n = notiz.getBoundingClientRect();
+  const tx = (p.ziel[0] / 100) * box.width;
+  const ty = (p.ziel[1] / 100) * box.height;
+  const nl = n.left - box.left, nr = n.right - box.left, nb = n.bottom - box.top, nm = n.top - box.top + n.height * 0.6;
+  let sx, sy;
+  if (tx < nl) { sx = nl - 6; sy = nm; } else if (tx > nr) { sx = nr + 6; sy = nm; } else { sx = (nl + nr) / 2; sy = nb + 4; }
+  // Bogen wie von Hand, Spitze kurz vor dem Ziel, damit sie das Detail nicht verdeckt.
+  const cx = (sx + tx) / 2 + (ty - sy) * 0.25, cy = (sy + ty) / 2 - (tx - sx) * 0.25;
+  const w = Math.atan2(ty - cy, tx - cx);
+  const ex = tx - Math.cos(w) * 7, ey = ty - Math.sin(w) * 7;
+  const kopf = (d) => `M${ex} ${ey}l${-Math.cos(w + d) * 9} ${-Math.sin(w + d) * 9}`;
+  pfeil.setAttribute("d", `M${sx} ${sy}Q${cx} ${cy} ${ex} ${ey}${kopf(0.45)}${kopf(-0.45)}`);
+}
+
+function waehlePortraet(id) {
+  aktuell = id;
+  const p = PORTRAET[id];
+  zg.className = `zg z-${id}`;
+  zg.setAttribute("aria-label", p.alt);
+  notiz.textContent = p.notiz;
+  notiz.style.left = p.notizPos[0] + "%";
+  notiz.style.top = p.notizPos[1] + "%";
+  document.getElementById("p-bu-titel").textContent = p.bu;
+  document.getElementById("p-bu-ort").textContent = p.ort;
+  document.getElementById("p-kat").textContent = p.kat;
+  document.getElementById("p-name").innerHTML = p.name + (p.zusatz ? `<small>${p.zusatz}</small>` : "");
+  document.getElementById("p-lead").textContent = p.lead;
+  document.getElementById("p-intro").textContent = p.intro;
+  document.getElementById("p-eck").textContent = p.eck;
+  document.getElementById("p-begegnung").innerHTML = p.termine
+    ? `<ul>${p.termine.map(([z, t]) => `<li><b>${z}</b><span>${t}</span></li>`).join("")}</ul>`
+    : `<p class="leer">Angaben folgen</p>`;
+  document.querySelectorAll("[data-portraet] button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === id)));
+  requestAnimationFrame(pfeilZeichnen);
+}
+document.querySelector("[data-portraet]").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (b) waehlePortraet(b.dataset.v);
+});
+new ResizeObserver(pfeilZeichnen).observe(zeichnung);
+document.fonts.ready.then(pfeilZeichnen);
+waehlePortraet("roch");
+</script>

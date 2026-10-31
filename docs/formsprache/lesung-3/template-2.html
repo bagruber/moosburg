@@ -1,0 +1,801 @@
+<title>Partnerstädte, zweite Lesung</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Ausschnitte der Stadtseite, darum eine helle Welt mit Absicht wie in den
+   Lesungen davor: Der gebaute Stand hat keinen Dunkelmodus. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-700:#a50d24;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-700:#6e5a30;
+  --aubergine:#3f2248;--z-aubergine:#7f4e8f;
+  --wasser:#117393;--wasser-hell:#dce9eb;
+  /* Materialfarben der Zeichnungen, alle aus dem Kanon */
+  --m-ziegel:#9b5309;--m-wein:#c8102e;--m-stein:#b8964e;--m-huelle:#157840;
+  /* Tinkturen aus Wappen und Flagge, nur für kleine Marken */
+  --t-blau:#3f55b0;--t-rot:#c8102e;--t-gold:#c9a24a;--t-schwarz:#1c1c1c;--t-weiss:#ffffff;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --bry-t:url({{IMG:docs/formsprache/lesung-3/assets/bryA-tinte.webp}});
+  --bry-f:url({{IMG:docs/formsprache/lesung-3/assets/bryA-farbe.webp}});
+  --kaernten-t:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-tinte.webp}});
+  --kaernten-f:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-farbe.webp}});
+  --saw-t:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-tinte.webp}});
+  --saw-f:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-farbe.webp}});
+  --roch-t:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-tinte.webp}});
+  --roch-f:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-farbe.webp}});
+  --rathaus-t:url({{IMG:public/sketches/rathausD-tinte.webp}});
+  --rathaus-f:url({{IMG:public/sketches/rathausD-farbe.webp}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));overflow-x:clip;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--rot-700)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.kat{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>*:not(.handschrift){position:relative}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.antworten{margin-top:1.2rem;padding:0;list-style:none;display:grid;gap:.2rem;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.antworten b{color:var(--tinte)}
+.inhalt{margin-top:32px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:2.4em}
+.punkt{padding-block:64px 28px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ort{font-size:.85rem;color:var(--tinte-matt);margin:26px 0 10px;display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between}
+.ort b{color:var(--tinte-weich);font-weight:600}
+.urteil{margin-top:18px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.urteil b{color:var(--tinte)}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem;white-space:nowrap}
+.variante-text{margin-top:14px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.variante-text b{color:var(--tinte)}
+.befunde{margin:1rem 0 0;padding-left:1.2rem;max-width:80ch;color:var(--tinte-weich)}
+.befunde li{padding-block:.2rem}
+.befunde b{color:var(--tinte)}
+
+.schalter{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--linie);border-radius:999px;background:var(--weiss)}
+.schalter button{border:0;background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+.schalter button[aria-pressed="true"]{background:var(--rot-50);color:var(--rot-700)}
+
+.kontext{margin-inline:calc(50% - 50vw);background:var(--creme);border-block:1px solid var(--linie);position:relative;transition:background .3s}
+.innen{max-width:1180px;margin-inline:auto;padding:44px 24px}
+
+/* Zeichnung als zwei Schablonen, Fläche zuerst, Linien darüber */
+.zg{display:block;position:relative;width:100%}
+.zg::before,.zg::after{content:"";position:absolute;inset:0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:bottom center;mask-position:bottom center;-webkit-mask-size:contain;mask-size:contain}
+.zg::before{background:var(--zf,var(--rot-500));-webkit-mask-image:var(--f);mask-image:var(--f)}
+.zg::after{background:var(--zl,var(--tinte));-webkit-mask-image:var(--t);mask-image:var(--t)}
+.z-bry{--t:var(--bry-t);--f:var(--bry-f);aspect-ratio:1200/1308}
+.z-kaernten{--t:var(--kaernten-t);--f:var(--kaernten-f);aspect-ratio:1200/1106}
+.z-saw{--t:var(--saw-t);--f:var(--saw-f);aspect-ratio:1200/1186}
+.z-roch{--t:var(--roch-t);--f:var(--roch-f);aspect-ratio:1200/1345}
+.z-rathaus{--t:var(--rathaus-t);--f:var(--rathaus-f);aspect-ratio:1200/908}
+
+/* Farbe der Zeichnungen, für die ganze Seite umschaltbar (Punkt 4) */
+body[data-farbe="material"] .z-bry{--zf:var(--m-ziegel)}
+body[data-farbe="material"] .z-kaernten{--zf:var(--m-wein)}
+body[data-farbe="material"] .z-saw{--zf:var(--m-stein)}
+body[data-farbe="material"] .z-roch{--zf:var(--m-huelle)}
+body[data-farbe="ton"] .zg{--zf:var(--gold-200)}
+body[data-farbe="ton"] .ton-flaeche{background:var(--aubergine);border-color:var(--aubergine);color:var(--creme)}
+body[data-farbe="ton"] .ton-flaeche .zg{--zf:var(--z-aubergine);--zl:var(--gold-200)}
+
+/* 1 Panoramatafel */
+.pano{position:relative;aspect-ratio:1000/410;width:100%;
+  --p-linie:var(--tinte);--p-matt:var(--tinte-matt);--p-text:var(--tinte);--p-weich:var(--tinte-weich);--p-halo:var(--creme);
+  --p-k1:#f7f3eb;--p-k2:#f2ece0;--p-k3:#ede5d6;--p-k4:#e8dfcd;--p-sonne:var(--gold-700)}
+body[data-farbe="ton"] .ton-flaeche .pano{--p-linie:var(--gold-200);--p-matt:rgb(232 213 163/.65);--p-text:var(--creme);--p-weich:rgb(250 247 242/.8);--p-halo:var(--aubergine);
+  --p-k1:#4b2b55;--p-k2:#553260;--p-k3:#5f3a6b;--p-k4:#6a4276;--p-sonne:var(--gold-200)}
+.pano>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pano .k{stroke:var(--p-linie);stroke-width:.9;stroke-linejoin:round}
+.pano .k1{fill:var(--p-k1)}.pano .k2{fill:var(--p-k2)}.pano .k3{fill:var(--p-k3)}.pano .k4{fill:var(--p-k4)}
+.pano .flach{stroke:var(--p-linie);stroke-width:1.2;display:none}
+.pano.aus-gelaende .flach{display:inline}
+.pano.aus-gelaende .g-gelaende,.pano.aus-gelaende .g-gipfel{display:none}
+.pano.aus-gipfel .g-gipfel,.pano.aus-sonne .g-sonne,.pano.aus-wimpel .g-wimpel{display:none}
+.pano .gipfel-t{font:italic 400 11px var(--serif);fill:var(--p-weich)}
+.pano .gipfel-m{font:400 9.5px var(--sans);fill:var(--p-matt)}
+.pano .gipfel-s{stroke:var(--p-matt);stroke-width:.7}
+.pano .lineal{stroke:var(--p-linie);stroke-width:1.2}
+.pano .tick{stroke:var(--p-matt);stroke-width:.8}
+.pano .tick.lang{stroke:var(--p-linie);stroke-width:1.2}
+.pano .himmel{font:600 12px var(--sans);fill:var(--p-matt)}
+.pano .untergang{stroke:var(--p-sonne);stroke-width:3;stroke-linecap:round;opacity:.8}
+.pano .untergang-t{font:italic 400 11px var(--serif);fill:var(--p-sonne)}
+.pano .untergang-s{stroke:var(--p-sonne);stroke-width:1}
+.pano .leit{fill:none;stroke:var(--p-matt);stroke-width:1;stroke-dasharray:2 3;transition:stroke .2s}
+.pano .leit.an{stroke:var(--rot-700);stroke-width:1.6;stroke-dasharray:none}
+.pano .pname{font:600 16px var(--serif);fill:var(--p-text)}
+.pano .pdetail{font:400 12px var(--sans);fill:var(--p-weich)}
+.pano .psonne{font:italic 400 11.5px var(--serif);fill:var(--p-sonne)}
+.pano text{paint-order:stroke;stroke:var(--p-halo);stroke-width:3px;stroke-linejoin:round}
+.pano .mast{stroke:var(--p-linie);stroke-width:1}
+.pano .fahne{stroke:var(--p-linie);stroke-width:.5}
+.pano .fuss{fill:var(--p-linie)}
+.pano-stadt{position:absolute;display:block;border-radius:6px}
+.pano-stadt .zg{position:absolute;inset:0;aspect-ratio:auto;height:100%;transition:transform .25s ease}
+.pano-stadt:hover .zg,.pano-stadt:focus-visible .zg{transform:translateY(-4px)}
+.pano-bu{margin-top:10px;font-size:.85rem;color:var(--tinte-matt);max-width:78ch}
+body[data-farbe="ton"] .ton-flaeche .pano-bu{color:rgb(250 247 242/.75)}
+.pano-scroll{overflow-x:auto}
+@media (max-width:800px){.pano-scroll{margin-inline:-24px;padding-inline:24px}.pano-scroll .pano{width:780px}}
+.ebenen{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.ebenen>span{font-size:.82rem;color:var(--tinte-matt)}
+
+/* 2 Peilscheibe */
+.scheibe-reihe{display:grid;gap:28px;grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:900px){.scheibe-reihe{grid-template-columns:minmax(0,3fr) minmax(0,8fr)}}
+.scheibe-text p+p{margin-top:.8rem}
+.scheibe-text p{color:var(--tinte-weich)}
+.scheibe svg{width:100%;height:auto;display:block;overflow:visible}
+.scheibe .meer{fill:var(--wasser-hell)}
+.scheibe .land{fill:var(--creme-dunkel)}
+.scheibe .kueste{fill:none;stroke:var(--tinte);stroke-width:.6;stroke-linejoin:round}
+.scheibe .ring{fill:none;stroke:var(--gold-500);stroke-width:.8;stroke-dasharray:2 4}
+.scheibe .ring-t{font:400 17px var(--sans);fill:var(--gold-700)}
+.scheibe .rand{fill:none;stroke:var(--tinte);stroke-width:1.4}
+.scheibe .rand-tick{stroke:var(--tinte);stroke-width:.8}
+.scheibe .rand-t{font:600 22px var(--sans);fill:var(--tinte)}
+.scheibe .gegend{font:italic 400 21px var(--serif);fill:var(--wasser)}
+.scheibe .gegend.land-t{fill:var(--tinte-matt)}
+.scheibe .strahl{stroke:var(--rot-700);stroke-width:1.8;stroke-linecap:round}
+.scheibe .strahl-meer{stroke:var(--wasser);stroke-width:3.2;stroke-linecap:round}
+.scheibe .ziel{fill:var(--rot-700)}
+.scheibe .ziel-t{font:600 25px var(--serif);fill:var(--tinte)}
+.scheibe .ziel-m{font:400 19px var(--sans);fill:var(--tinte-weich)}
+.scheibe text{paint-order:stroke;stroke:var(--creme);stroke-width:3.5px;stroke-linejoin:round}
+.scheibe .mitte{fill:var(--rot-500)}
+.scheibe .band{fill:var(--creme);stroke:var(--tinte);stroke-width:.9;stroke-linejoin:round}
+.scheibe .schraffur{stroke:var(--tinte);stroke-width:.45;opacity:.55}
+.scheibe .fo-zg{overflow:visible}
+
+/* 3 Höhenschnitt */
+.schnitte{display:grid;gap:30px}
+.schnitt h4{font-size:1.15rem}
+.schnitt h4 small{font-family:var(--sans);font-size:.85rem;font-weight:400;color:var(--tinte-matt);margin-left:.5rem}
+.schnitt-scroll{overflow-x:auto}
+.schnitt svg{width:100%;min-width:620px;height:auto;display:block;margin-top:6px;overflow:visible}
+.schnitt .land{fill:url(#schraffur-land);stroke:none}
+.schnitt .landgrund{fill:var(--creme-dunkel)}
+.schnitt .oberkante{fill:none;stroke:var(--tinte);stroke-width:1.2;stroke-linejoin:round}
+.schnitt .meer{fill:var(--wasser-hell);stroke:none}
+.schnitt .meer-s{fill:url(#schraffur-meer)}
+.schnitt .spiegel{stroke:var(--wasser);stroke-width:1.2}
+.schnitt .fluss{stroke:var(--wasser);stroke-width:1.6;stroke-linecap:round}
+.schnitt .fluss-t{font:italic 400 11.5px var(--serif);fill:var(--wasser)}
+.schnitt .marke-t{font:600 12px var(--sans);fill:var(--tinte)}
+.schnitt .marke-m{font:400 11px var(--sans);fill:var(--tinte-weich)}
+.schnitt .land-band{stroke:var(--tinte-matt);stroke-width:1}
+.schnitt .grenze{stroke:var(--rot-700);stroke-width:1.4}
+.schnitt .land-t{font:600 11.5px var(--sans);fill:var(--tinte-weich)}
+.schnitt .meer-t{font:italic 400 12px var(--serif);fill:var(--wasser)}
+.schnitt .ende-t{font:600 13px var(--serif);fill:var(--tinte)}
+.schnitt .ueberhoeht{font:400 10.5px var(--sans);fill:var(--tinte-matt)}
+.schnitt text{paint-order:stroke;stroke:var(--creme);stroke-width:3px;stroke-linejoin:round}
+
+/* 4 Farbe */
+.reihe{display:grid;gap:28px 24px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.reihe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.reihe figure{margin:0}
+.reihe .rahmen{aspect-ratio:1/1.13;display:flex;align-items:flex-end}
+.reihe figcaption{margin-top:10px;font-family:var(--serif);font-weight:600;font-size:1.05rem}
+.reihe figcaption span{display:block;font-family:var(--sans);font-weight:400;font-size:.84rem;color:var(--tinte-matt);margin-top:.15rem}
+body[data-farbe="ton"] .ton-flaeche .reihe figcaption span{color:rgb(250 247 242/.75)}
+.farb-erkl [data-zeige]{margin-top:14px}
+
+/* 5 Tinkturen */
+.tink-reihe{display:grid;gap:24px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.tink-reihe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tink-reihe figure{margin:0}
+.tink-reihe svg{width:96px;height:auto;display:block}
+.tink-reihe figcaption{margin-top:8px;font-size:.88rem;color:var(--tinte-weich)}
+.tink-reihe figcaption b{display:block;font-family:var(--serif);font-size:1.02rem;color:var(--tinte)}
+.kopf-reihe{display:grid;gap:18px 32px;grid-template-columns:minmax(0,1fr);margin-top:30px}
+@media (min-width:760px){.kopf-reihe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.p-kopf .kat{color:var(--rot-700);display:flex;align-items:center;gap:.45rem}
+.p-kopf .kat svg{width:13px;height:16px;flex:none}
+.p-kopf h4{font-size:1.5rem;margin-top:.2rem}
+
+.fragen{padding-left:1.3rem;max-width:80ch}
+.fragen li{padding-block:.45rem}
+.quellen{font-size:.85rem;color:var(--tinte-matt);max-width:80ch;margin-top:20px}
+.quellen a{color:var(--tinte-matt)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<script type="application/json" id="daten">{{TEXT:docs/formsprache/lesung-3/daten-2.json}}</script>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Themenseite · Stadt-Prototyp · 29. Oktober 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">aus Moosburg weg</span>
+    <h1 style="font-size:1em">Partnerstädte, zweite Lesung</h1>
+  </div>
+  <p class="lead text">Die Antworten aus der ersten Lesung, weitergedacht. Alles Gelände auf dieser Seite ist gemessen und für die Zeichnung verdichtet, wie im europecitybuilder: echte Höhen, überhöht, in Stufen. Gebaut ist nichts.</p>
+  <ul class="antworten">
+    <li><b>1 A</b>, Panoramatafel, aber reichhaltiger und mit etwas Karten- oder Kompassartigem dazu: Punkte 1 bis 3.</li>
+    <li><b>2 und 3</b>, Zeichnungen auf Beige in Materialfarben oder Ton in Ton: Punkt 4.</li>
+    <li><b>4</b>, Wappen vorerst raus, aber ein Farbakzent je Stadt: Punkt 5.</li>
+    <li><b>5</b>, Aufräumen: angenommen.</li>
+  </ul>
+  <p class="text" style="margin-top:.8rem;color:var(--tinte-weich)">Antworten wie gewohnt, etwa „1 alle Ebenen, 2 B, 3 ja, 4 A, 5 A und B“.</p>
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Die Panoramatafel mit echtem Horizont</a></li>
+    <li><a href="#p2"><span>2</span>Die Peilscheibe</a></li>
+    <li><a href="#p3"><span>3</span>Der Weg dorthin, im Porträt</a></li>
+    <li><a href="#p4"><span>4</span>Farbe der Zeichnungen</a></li>
+    <li><a href="#p5"><span>5</span>Ein Akzent aus den Wappen</a></li>
+    <li><a href="#fragen"><span>?</span>Fragen und Befunde</a></li>
+  </ul>
+</header>
+
+<!-- ───────────── 1 Panoramatafel -->
+<section class="punkt" id="p1">
+  <header><div class="nr">Punkt 1</div><h2>Die Panoramatafel mit echtem Horizont</h2></header>
+  <p class="text">Aus der Linie wird der Blick aus dem Turmzimmer des Johannisturms, 38,5 m über dem Platz. Der Horizont ist aus dem Höhenmodell gerechnet, mit Erdkrümmung, in vier Kulissen vom Hügelland bis zu den Hochalpen. Am Fuß zeigt ein goldener Strich, wo die Sonne im Jahreslauf untergeht, an jeder Partnerstadt steht ein Wimpel. Die Ebenen lassen sich einzeln abschalten, um zu sehen, wie viel die Tafel trägt.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, direkt unter dem Seitenkopf</span>
+    <div class="ebenen" role="group" aria-label="Ebenen der Panoramatafel">
+      <div class="schalter" data-ebenen="pano-haupt">
+        <button type="button" aria-pressed="true" data-ebene="gelaende">Gelände</button>
+        <button type="button" aria-pressed="true" data-ebene="gipfel">Gipfel</button>
+        <button type="button" aria-pressed="true" data-ebene="sonne">Sonne</button>
+        <button type="button" aria-pressed="true" data-ebene="wimpel">Wimpel</button>
+      </div>
+    </div>
+  </div>
+  <div class="kontext ton-flaeche">
+    <div class="innen" style="padding-block:36px 28px">
+      <div class="pano-scroll"><div class="pano" id="pano-haupt"></div></div>
+      <p class="pano-bu">Vom Turmzimmer des Johannisturms aus gerechnet, Gelände 25-fach überhöht. Der goldene Strich zeigt, wo die Sonne zwischen 21. Dezember und 21. Juni untergeht.</p>
+    </div>
+  </div>
+  <ul class="befunde" id="befunde-pano"></ul>
+  <p class="urteil"><b>Mein Urteil:</b> alle vier Ebenen. Gelände und Gipfel machen aus der Linie eine echte Panoramatafel, die Sonne gibt Bry und Sawbridgeworth je zwei Tage im Kalender und Rochester einen schönen Satz. Bei 390 px wird die Tafel gewischt, so bleiben alle Beschriftungen lesbar. Falls es zu voll wird, fällt zuerst die Sonne weg und wandert als Satz ins Porträt. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 2 Peilscheibe -->
+<section class="punkt" id="p2">
+  <header><div class="nr">Punkt 2</div><h2>Die Peilscheibe</h2></header>
+  <p class="text">Das Karten- und Kompassartige: eine Karte mit Moosburg in der Mitte. Sie ist mittabstandstreu, darum ist jede Gerade aus der Mitte die kürzeste Route, und die Richtung stimmt überall. Die Entfernung ist logarithmisch gestaucht, sonst läge Kärnten auf Moosburg und Rochester wäre allein auf der Scheibe. Wie bei Steinbergs „View of the World from 9th Avenue“: Die Nähe ist groß, die Welt dahinter rückt zusammen. Nur hier stimmt jeder Strich.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Abschnitt „Eine Idee von Europa“, neben dem Text</span>
+    <div class="schalter" role="group" aria-label="Variante Peilscheibe" data-ziel="scheibe">
+      <button type="button" aria-pressed="false" data-v="flach">A von oben</button>
+      <button type="button" aria-pressed="true" data-v="schraeg">B schräg, mit Gelände</button>
+    </div>
+  </div>
+  <div class="kontext" id="scheibe" data-variante="schraeg">
+    <div class="innen scheibe-reihe">
+      <div class="scheibe-text">
+        <div class="kat" style="color:var(--rot-700)">Eine Idee von Europa</div>
+        <h3 style="font-size:1.7rem;margin:.3rem 0 .9rem">Freundschaft, die man pflegen muss</h3>
+        <p>Städtepartnerschaften entstanden nach dem Krieg aus einem einfachen Gedanken: Wer einander besucht, kennt und feiert, führt keine Kriege mehr gegeneinander. Moosburgs älteste Partnerschaft mit Bry-sur-Marne reicht bis 1973 zurück; 2018 schloss sich Sawbridgeworth zu einer Freundschaft zu dritt an.</p>
+      </div>
+      <div class="scheibe">
+        <div data-zeige="flach" hidden id="scheibe-flach"></div>
+        <div data-zeige="schraeg" id="scheibe-schraeg"></div>
+      </div>
+    </div>
+  </div>
+  <p class="variante-text" data-zeige-in="scheibe" data-zeige="flach" hidden><b>A von oben.</b> Liest sich als Karte und Kompass zugleich. Die Strecken über Wasser sind in Isar-Petrol gezogen, der Farbe, die im Register für Wasser steht.</p>
+  <p class="variante-text" data-zeige-in="scheibe" data-zeige="schraeg"><b>B schräg, mit Gelände.</b> Dieselbe Scheibe, schräg gesehen mit Blick nach Westsüdwest, entlang jeder Route steht das Gelände als Wand in Stufen zu 250 m. Das ist die Übersetzung des europecitybuilder auf Papier: echte Landschaft, verdichtet, überhöht, terrassiert, aber in Feder und Schraffur statt in 3D. Die Zeichnungen stehen am Ende ihrer Route, in der Mitte das Moosburger Rathaus.</p>
+  <p class="urteil"><b>Mein Urteil:</b> B als Ziel, A als sichere Grundlage. Echtes 3D mit WebGL würde ich auf der Stadtseite nicht bauen: Es verlässt die Papierwelt des Kanons, kostet am Handy Akku und Ladezeit und ist schwerer zugänglich. Die schräge Scheibe ist ein einziges SVG, druckt sich wie eine Zeichnung und erzählt trotzdem den Raum: die Tauern vor Kärnten, das flache Belgien, der lange Atlantik. Noch nicht gelöst ist, dass Bry und Sawbridgeworth in diesem Maßstab dicht beieinander enden; das bräuchte eine Runde am gebauten Stand. <span class="empf">B empfohlen, A als Rückfall</span></p>
+</section>
+
+<!-- ───────────── 3 Höhenschnitt -->
+<section class="punkt" id="p3">
+  <header><div class="nr">Punkt 3</div><h2>Der Weg dorthin, im Porträt</h2></header>
+  <p class="text">Jedes Porträt bekommt unter der Zeichnung den Schnitt entlang der kürzesten Route: das Gelände in Stufen und Schraffur, Meere mit ihrer Tiefe, die Flüsse, die man überquert, und die Grenzen. Das passt zum Leitsatz der Seite, „über Grenzen hinweg“, und zählt sie tatsächlich.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, jedes Porträt, unter der Zeichnung</span></div>
+  <div class="kontext">
+    <div class="innen">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+          <pattern id="schraffur-land" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#f1ece1"/><path d="M0 0V4" stroke="#1c1c1c" stroke-width=".5" opacity=".45"/></pattern>
+          <pattern id="schraffur-meer" width="6" height="4" patternUnits="userSpaceOnUse"><rect width="6" height="4" fill="#dce9eb"/><path d="M0 2H6" stroke="#117393" stroke-width=".5" opacity=".6"/></pattern>
+        </defs>
+      </svg>
+      <div class="schnitte" id="schnitte"></div>
+    </div>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> ja. Der Schnitt ist das reichhaltigste Element der Seite und zugleich das ruhigste, eine Linie unter dem Bild. Jede Strecke hat ihren eigenen Maßstab, die Überhöhung steht deshalb an jedem Schnitt. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 4 Farbe -->
+<section class="punkt" id="p4">
+  <header><div class="nr">Punkt 4</div><h2>Farbe der Zeichnungen</h2></header>
+  <p class="text">Die Materialfarben stammen von Fotos der vier Gebäude und sind alle Töne aus dem Kanon. Dabei stellte sich heraus, was das Rot in deinen Blättern eigentlich ist: In Bry ist es Backstein, in Kärnten wilder Wein, der die Fassade von Schloss Moosburg überzieht. Der Umschalter gilt für die ganze Seite, auch für Tafel und Scheibe.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, alle Zeichnungen</span>
+    <div class="schalter" role="group" aria-label="Farbe der Zeichnungen" data-farbschalter>
+      <button type="button" aria-pressed="true" data-v="material">A Materialfarben auf Beige</button>
+      <button type="button" aria-pressed="false" data-v="ton">B Ton in Ton</button>
+      <button type="button" aria-pressed="false" data-v="rot">zum Vergleich: Rot</button>
+    </div>
+  </div>
+  <div class="kontext ton-flaeche">
+    <div class="innen reihe">
+      <figure><div class="rahmen"><span class="zg z-bry"></span></div><figcaption>Bry-sur-Marne<span>Backstein, Erdbraun</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-roch"></span></div><figcaption>Rochester<span>Hüllblätter, Tannengrün</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-kaernten"></span></div><figcaption>Moosburg in Kärnten<span>wilder Wein im Herbst, Rot</span></figcaption></figure>
+      <figure><div class="rahmen"><span class="zg z-saw"></span></div><figcaption>Sawbridgeworth<span>Feuerstein und Haustein, Gold</span></figcaption></figure>
+    </div>
+  </div>
+  <div class="farb-erkl" id="farb-erkl">
+    <p class="variante-text" data-zeige="material"><b>A Materialfarben auf Beige.</b> Vier Töne, die man an den Häusern wiederfindet: Erdbraun für Ziegel, Rot für das Herbstlaub, Gold für den hellen Stein, Tannengrün für die Hüllblätter. Sie unterscheiden die Städte, ohne eine Bedeutung zu behaupten; für eine Zeichnung ist die Farbe Stoff, nicht Thema. Im Kanon wäre das eine Ergänzung zu K1: Materialfarbe in Zeichnungen.</p>
+    <p class="variante-text" data-zeige="ton" hidden><b>B Ton in Ton.</b> Auf Beige wird die Fläche Gold-200, auf dem Aubergine-Band der hellere Aubergine-Ton aus K2. Sehr ruhig und edel, aber die Städte unterscheiden sich nur noch in der Linie, und die Entdeckung mit dem wilden Wein geht verloren.</p>
+    <p class="variante-text" data-zeige="rot" hidden><b>Rot wie in der ersten Lesung.</b> Zum Vergleich, so wie die Blätter gezeichnet sind.</p>
+  </div>
+  <p class="urteil"><b>Mein Urteil:</b> A. Es ist die einzige Variante, in der die Farbe etwas über die Stadt sagt, und sie bleibt im Kanon, weil alle vier Töne schon existieren. Ton in Ton würde ich für die eine Zeichnung im Mitmachen-Band aufheben. <span class="empf">A empfohlen</span></p>
+</section>
+
+<!-- ───────────── 5 Tinkturen -->
+<section class="punkt" id="p5">
+  <header><div class="nr">Punkt 5</div><h2>Ein Akzent aus den Wappen</h2></header>
+  <p class="text">Je Stadt zwei Tinkturen, also die Farben, die ihr Wappen trägt. Rochester hat keines; dort kommen sie aus der Stadtflagge. Als Paar sind die vier verschieden, auch wenn zwei davon Blau enthalten. Damit sie nicht mit den Themenfarben streiten, gilt eine Regel: nur in Marken bis 24 px, nie als Fläche und nie als Schriftfarbe.</p>
+  <div class="ort"><span><b>Die vier Paare</b></span></div>
+  <div class="tink-reihe" id="tinkturen"></div>
+  <div class="ort" style="margin-top:34px"><span><b>A Wimpel</b> an der Peilung, auf Tafel und Scheibe: siehe Punkt 1, Ebene „Wimpel“. <b>B Tinkturenschild</b> vor der Kategoriezeile im Porträt:</span></div>
+  <div class="kontext">
+    <div class="innen kopf-reihe" id="koepfe"></div>
+  </div>
+  <p class="variante-text">Ein dritter Ort wären die Strahlen der Peilscheibe in den Tinkturen. Das habe ich verworfen: Vier farbige Linien auf einer Karte lesen sich als Legende, und Rot und Blau stünden dann neben dem Petrol des Wassers.</p>
+  <p class="urteil"><b>Mein Urteil:</b> A und B zusammen. Der Wimpel macht die Tafel festlich, der kleine Schild hält die Farbe im Porträt fest. Die perspektivischen Wappen können später genau an die Stelle des Schildes treten. <span class="empf">A und B empfohlen</span></p>
+</section>
+
+<!-- ───────────── Fragen -->
+<section class="punkt" id="fragen" style="border-bottom:0;padding-bottom:80px">
+  <header><div class="nr">Offen</div><h2>Fragen und Befunde</h2></header>
+  <ol class="fragen">
+    <li><b>Kärnten:</b> Das Blatt zeigt Schloss Moosburg von Südwesten, das Foto bestätigt es. Soll die Farbe den wilden Wein im Herbst zeigen (Rot) oder im Sommer (Grün)? Grün hätte dann auch Rochester.</li>
+    <li><b>Standpunkt:</b> Turmzimmer (38,5 m) oder Turmspitze (54 m)? Der Horizont ändert sich kaum, die Erzählung schon: Ins Turmzimmer kann man hinaufsteigen.</li>
+    <li><b>Überhöhung:</b> Der Horizont ist 25-fach überhöht. Echte Panoramatafeln machen es ähnlich, sonst wären die Alpen ein Strich.</li>
+    <li><b>Daten:</b> In <code>partnerstaedte.ts</code> stehen für Bry 273° und für Sawbridgeworth 295°. Gerechnet sind es 277° und 298°. Das korrigiere ich beim Bauen mit.</li>
+    <li><b>Termine:</b> weiterhin offen, ob der Partnerschaftsverein Begegnungen für Bry, Rochester und Sawbridgeworth nennen kann.</li>
+  </ol>
+  <p class="quellen">Höhen: ETOPO1 (NOAA) für die Strecken samt Meerestiefen, SRTM 90 m für den Horizont, über opentopodata.org. Küsten und Länder: Natural Earth über world-atlas. Flüsse: Natural Earth 10m. Gipfelnamen: © OpenStreetMap-Mitwirkende, ODbL. Sonnenstand nach den NOAA-Formeln für 2026. Fotos für die Materialfarben auf Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:H%C3%B4tel_Ville_-_Bry-sur-Marne_(FR94)_-_2022-02-13_-_2.jpg">Hôtel de Ville Bry</a>, <a href="https://commons.wikimedia.org/wiki/File:Moosburg_Schloss_1_Schloss_SW-Ansicht_02102017_1291.jpg">Schloss Moosburg</a>, <a href="https://commons.wikimedia.org/wiki/File:GOC_Sawbridgeworth_074_Great_St_Mary%27s_Church,_Sawbridgeworth_(30574807955).jpg">Great St Mary's</a>, <a href="https://commons.wikimedia.org/wiki/File:CornWaterTowerRochesterMNday.jpg">Corn Water Tower</a>. Rochesters Flagge nach <a href="https://cdn.fotw.info/flags/us-mn-r.html">Flags of the World</a>.</p>
+</section>
+
+</div>
+
+<script>
+const D = JSON.parse(document.getElementById("daten").textContent);
+const NS = "http://www.w3.org/2000/svg";
+const MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+const datum = (iso) => { const [, m, t] = iso.split("-").map(Number); return `${t}. ${MONATE[m - 1]}`; };
+const zahl = (n) => Math.round(n).toLocaleString("de-DE");
+const f1 = (n) => n.toFixed(1);
+
+const REIHE = ["kaernten", "bry", "saw", "roch"];
+const STADT = {
+  kaernten: { name: "Moosburg in Kärnten", kurz: "Kärnten", land: "Österreich", seit: "1991", mitte: 190, tink: ["gold", "schwarz"], tinkText: "Gold und Schwarz", herkunft: "aus dem Wappen: schwarze Turmruine auf Gold" },
+  bry: { name: "Bry-sur-Marne", kurz: "Bry", land: "Frankreich", seit: "1973", mitte: 455, tink: ["blau", "rot"], tinkText: "Blau und Rot", herkunft: "aus dem Wappen, gespalten in Blau und Rot" },
+  saw: { name: "Sawbridgeworth", kurz: "Sawbridgeworth", land: "England", seit: "2018", mitte: 660, tink: ["rot", "gold"], tinkText: "Rot und Gold", herkunft: "aus dem Wappen: goldene Garbe auf Rot" },
+  roch: { name: "Rochester", kurz: "Rochester", land: "USA", seit: "1981", mitte: 865, tink: ["blau", "weiss"], tinkText: "Blau und Weiß", herkunft: "aus der Stadtflagge, ein Wappen gibt es nicht" },
+};
+for (const id of REIHE) Object.assign(STADT[id], { grad: D.strecken[id].peilung, km: D.strecken[id].km });
+const T = (n) => `var(--t-${n})`;
+
+// ---------- Sonne ----------
+const U = D.sonne.untergang;
+const nordUntergang = Math.max(...U.map((u) => u[1]));
+function untergangsTage(grad) {
+  const tage = [];
+  for (let i = 1; i < U.length; i++) if ((U[i - 1][1] - grad) * (U[i][1] - grad) <= 0) tage.push(U[i][0]);
+  return tage;
+}
+function sonnenSatz(id) {
+  const g = STADT[id].grad;
+  const tage = untergangsTage(g);
+  if (tage.length) return ["Sonnenuntergang hier:", tage.map(datum).join(" und ")];
+  if (g > nordUntergang && g < 360) return ["Hier geht die Sonne nie unter,", `${f1(g - nordUntergang).replace(".", ",")}° fehlen`];
+  return [];
+}
+
+// ---------- Wimpel ----------
+function wimpel(x, y, tink, gross = 1) {
+  const h = 26 * gross, w = 17 * gross, f = 9 * gross;
+  return `<g class="g-wimpel">
+    <path class="fahne" d="M${x} ${y - h}L${x + w} ${y - h + f / 2}L${x} ${y - h + f / 2}Z" fill="${T(tink[0])}"/>
+    <path class="fahne" d="M${x} ${y - h + f / 2}L${x + w} ${y - h + f / 2}L${x} ${y - h + f}Z" fill="${T(tink[1])}"/>
+    <line class="mast" x1="${x}" y1="${y}" x2="${x}" y2="${y - h - 2}"/>
+  </g>`;
+}
+
+// ---------- 1 Panoramatafel ----------
+const AZ0 = 100, AZ1 = 340, X0 = 40, X1 = 960;
+const PXG = (X1 - X0) / (AZ1 - AZ0);
+const UEBER = 25, HY = 336, BODEN = 362, LINEAL = 380;
+const X = (az) => X0 + (az - AZ0) * PXG;
+const YG = (w) => HY - Math.max(-0.25, w) * PXG * UEBER;
+const STRAHLEN = D.horizont.strahlen;
+const horizontBei = (az) => {
+  const s = STRAHLEN.reduce((a, b) => (Math.abs(b.az - az) < Math.abs(a.az - az) ? b : a));
+  return Math.max(...s.baender.map((b) => b[0]));
+};
+
+function kulissen() {
+  let s = "";
+  for (let b = 3; b >= 0; b--) {
+    const teile = [];
+    let akt = [];
+    for (const r of STRAHLEN) {
+      const w = r.baender[b][0];
+      if (w <= -9) { if (akt.length) teile.push(akt); akt = []; continue; }
+      akt.push([X(r.az), YG(w)]);
+    }
+    if (akt.length) teile.push(akt);
+    for (const t of teile) {
+      const linie = t.map(([x, y]) => `${f1(x)} ${f1(y)}`).join("L");
+      s += `<path class="k k${4 - b}" d="M${f1(t[0][0])} ${BODEN}L${linie}L${f1(t.at(-1)[0])} ${BODEN}Z"/>`;
+    }
+  }
+  return `<g class="g-gelaende">${s}</g><line class="flach" x1="${X0}" y1="${HY}" x2="${X1}" y2="${HY}"/>`;
+}
+
+// Bekannte Gipfel zuerst; nur, was vom Turmzimmer aus über den Horizont ragt.
+const BEKANNT = ["Zugspitze", "Großglockner", "Großvenediger", "Wendelstein", "Hochkönig"];
+function gipfelWahl() {
+  const gewaehlt = [];
+  for (const n of BEKANNT) {
+    const g = D.gipfel.filter((x) => x.name === n && x.sichtbar).sort((a, b) => b.winkel - a.winkel)[0];
+    if (g && !gewaehlt.some((h) => Math.abs(h.az - g.az) < 5)) gewaehlt.push(g);
+  }
+  return gewaehlt.sort((a, b) => a.az - b.az);
+}
+function gipfelMarken() {
+  return `<g class="g-gipfel">${gipfelWahl().map((g, i) => {
+    // Drei Reihen, weil Glockner, Venediger und Wendelstein eng stehen; die Zugspitze bleibt unten, über ihr stehen Brys Sonnendaten.
+    const x = X(g.az), y = YG(g.winkel), hoch = [8, 30, 52, 8, 8][i] ?? 8;
+    return `<line class="gipfel-s" x1="${f1(x)}" y1="${f1(y - 2)}" x2="${f1(x)}" y2="${f1(y - 12 - hoch)}"/>
+      <text class="gipfel-t" x="${f1(x)}" y="${f1(y - 27 - hoch)}" text-anchor="middle">${g.name}</text>
+      <text class="gipfel-m" x="${f1(x)}" y="${f1(y - 16 - hoch)}" text-anchor="middle">${zahl(g.ele)} m · ${g.km} km</text>`;
+  }).join("")}</g>`;
+}
+
+// Wo die Sonne im Jahreslauf untergeht, als Strich am Fuß der Tafel
+function untergangsBogen() {
+  const sued = Math.min(...U.map((u) => u[1]));
+  const gleiche = U.find((u) => u[0] === "2026-03-20")[1];
+  const y = BODEN + 8;
+  let s = `<line class="untergang" x1="${f1(X(sued))}" y1="${y}" x2="${f1(X(nordUntergang))}" y2="${y}"/>`;
+  for (const [az, t, a] of [[sued, "21. Dezember", "end"], [gleiche, "Tag-und-Nacht-Gleiche", "middle"], [nordUntergang, "21. Juni", "start"]]) {
+    s += `<line class="untergang-s" x1="${f1(X(az))}" y1="${y - 6}" x2="${f1(X(az))}" y2="${y + 4}"/>`;
+    s += `<text class="untergang-t" x="${f1(X(az) + (a === "end" ? -6 : a === "start" ? 6 : 0))}" y="${y - (a === "middle" ? 9 : -3)}" text-anchor="${a}">${t}</text>`;
+  }
+  return `<g class="g-sonne">${s}</g>`;
+}
+
+function panorama(el) {
+  let svg = `<svg viewBox="0 0 1000 410" aria-hidden="true">`;
+  svg += kulissen() + gipfelMarken() + untergangsBogen();
+  svg += `<line class="lineal" x1="${X0}" y1="${LINEAL}" x2="${X1}" y2="${LINEAL}"/>`;
+  for (let g = AZ0; g <= AZ1; g += 5) {
+    const lang = g % 45 === 0;
+    svg += `<line class="tick${lang ? " lang" : ""}" x1="${f1(X(g))}" y1="${LINEAL}" x2="${f1(X(g))}" y2="${LINEAL + (lang ? 12 : 5)}"/>`;
+  }
+  for (const [g, n] of Object.entries({ 135: "Südost", 180: "Süd", 225: "Südwest", 270: "West", 315: "Nordwest" })) {
+    svg += `<text class="himmel" x="${f1(X(+g))}" y="${LINEAL + 26}" text-anchor="middle">${n}</text>`;
+  }
+  for (const id of REIHE) {
+    const s = STADT[id], bx = X(s.grad), by = YG(horizontBei(s.grad));
+    svg += `<path class="leit" data-s="${id}" d="M${s.mitte} 246C${s.mitte} 270 ${f1(bx)} ${f1(by - 60)} ${f1(bx)} ${f1(by - 30)}"/>`;
+    svg += `<circle class="fuss" cx="${f1(bx)}" cy="${f1(by)}" r="2.2"/>`;
+    svg += wimpel(bx, by, s.tink);
+    svg += `<text class="pname" x="${s.mitte}" y="192" text-anchor="middle">${s.name}</text>`;
+    svg += `<text class="pdetail" x="${s.mitte}" y="208" text-anchor="middle">${zahl(s.km)} km · seit ${s.seit} · ${Math.round(s.grad)}°</text>`;
+    sonnenSatz(id).forEach((z, i) => { svg += `<text class="psonne g-sonne" x="${s.mitte}" y="${224 + i * 13}" text-anchor="middle">${z}</text>`; });
+  }
+  svg += `</svg>`;
+  let staedte = "";
+  for (const id of REIHE) {
+    const s = STADT[id];
+    staedte += `<a class="pano-stadt" href="#p3" data-s="${id}" style="left:${(s.mitte - 75) / 10}%;top:${10 / 4.1}%;width:15%;height:${162 / 4.1}%"><span class="zg z-${id}"></span><span class="sr">${s.name}, ${zahl(s.km)} km, Partnerschaft seit ${s.seit}</span></a>`;
+  }
+  el.innerHTML = svg + staedte;
+  el.querySelectorAll(".pano-stadt").forEach((a) => {
+    const an = (v) => el.querySelectorAll(`.leit[data-s="${a.dataset.s}"]`).forEach((p) => p.classList.toggle("an", v));
+    a.addEventListener("mouseenter", () => an(true));
+    a.addEventListener("mouseleave", () => an(false));
+    a.addEventListener("focus", () => an(true));
+    a.addEventListener("blur", () => an(false));
+  });
+}
+panorama(document.getElementById("pano-haupt"));
+
+document.querySelectorAll("[data-ebenen]").forEach((gruppe) => {
+  const ziel = document.getElementById(gruppe.dataset.ebenen);
+  gruppe.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const an = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", String(an));
+    ziel.classList.toggle(`aus-${b.dataset.ebene}`, !an);
+  });
+});
+
+// ---------- Geometrie auf der Kugel ----------
+const RAD = Math.PI / 180, ERDE = 6371;
+const MOOSBURG = [48.4703, 11.9378];
+function abstandPeilung([la1, lo1], [la2, lo2]) {
+  const p1 = la1 * RAD, p2 = la2 * RAD, dl = (lo2 - lo1) * RAD;
+  const d = 2 * Math.asin(Math.sqrt(Math.sin((p2 - p1) / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2));
+  const b = Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / RAD;
+  return [d * ERDE, (b + 360) % 360];
+}
+const K = D.karte;
+const radius = (km) => (K.scheibe * Math.log1p(km / K.d0)) / Math.log1p(K.dmax / K.d0);
+const scheibenPunkt = (km, grad) => [radius(km) * Math.sin(grad * RAD), -radius(km) * Math.cos(grad * RAD)];
+const GEGENDEN = [
+  ["Nordsee", 55.5, 3.5, "meer"], ["Atlantik", 52, -28, "meer"], ["Mittelmeer", 38.5, 5.5, "meer"],
+  ["Grönland", 72, -40, "land"], ["Labrador", 54, -62, "land"], ["Alpen", 47.1, 11.4, "land"],
+  ["Ostsee", 56.5, 18.5, "meer"], ["Island", 64.9, -18.5, "land"],
+];
+
+// ---------- 2 A Peilscheibe von oben ----------
+function scheibeFlach(el) {
+  let s = `<svg viewBox="-590 -590 1180 1180" role="img" aria-label="Karte mit Moosburg in der Mitte, die Routen zu den vier Partnerstädten als Geraden">`;
+  s += `<circle class="meer" r="500"/><path class="land" d="${K.land}"/><path class="kueste" d="${K.kueste}"/>`;
+  for (const [km, r] of Object.entries(K.ringe)) {
+    if (+km >= K.dmax) continue;
+    s += `<circle class="ring" r="${r}"/>`;
+    const [x, y] = [r * Math.sin(62 * RAD), -r * Math.cos(62 * RAD)];
+    s += `<text class="ring-t" x="${f1(x + 4)}" y="${f1(y - 3)}">${zahl(+km)} km</text>`;
+  }
+  s += `<circle class="rand" r="500"/>`;
+  for (let g = 0; g < 360; g += 5) {
+    const l = g % 45 === 0 ? 16 : 7, a = g * RAD;
+    s += `<line class="rand-tick" x1="${f1(500 * Math.sin(a))}" y1="${f1(-500 * Math.cos(a))}" x2="${f1((500 + l) * Math.sin(a))}" y2="${f1(-(500 + l) * Math.cos(a))}"/>`;
+  }
+  for (const [g, n] of [[0, "N"], [90, "O"], [180, "S"], [270, "W"]]) {
+    s += `<text class="rand-t" x="${f1(542 * Math.sin(g * RAD))}" y="${f1(-542 * Math.cos(g * RAD) + 5)}" text-anchor="middle">${n}</text>`;
+  }
+  for (const [n, la, lo, art] of GEGENDEN) {
+    const [km, g] = abstandPeilung(MOOSBURG, [la, lo]);
+    const [x, y] = scheibenPunkt(km, g);
+    s += `<text class="gegend${art === "land" ? " land-t" : ""}" x="${f1(x)}" y="${f1(y)}" text-anchor="middle">${n}</text>`;
+  }
+  for (const id of REIHE) {
+    const st = STADT[id], prof = D.strecken[id].profil;
+    for (let i = 1; i < prof.length; i++) {
+      const [a, b] = [scheibenPunkt(prof[i - 1][0], st.grad), scheibenPunkt(prof[i][0], st.grad)];
+      const meer = prof[i][1] < 0 && prof[i - 1][1] < 0;
+      s += `<line class="${meer ? "strahl-meer" : "strahl"}" x1="${f1(a[0])}" y1="${f1(a[1])}" x2="${f1(b[0])}" y2="${f1(b[1])}"/>`;
+    }
+    const [x, y] = scheibenPunkt(st.km, st.grad);
+    const rechts = x >= 0;
+    s += `<circle class="ziel" cx="${f1(x)}" cy="${f1(y)}" r="5"/>`;
+    s += `<text class="ziel-t" x="${f1(x + (rechts ? 10 : -10))}" y="${f1(y - 4)}" text-anchor="${rechts ? "start" : "end"}">${st.kurz}</text>`;
+    s += `<text class="ziel-m" x="${f1(x + (rechts ? 10 : -10))}" y="${f1(y + 13)}" text-anchor="${rechts ? "start" : "end"}">${zahl(st.km)} km</text>`;
+  }
+  s += `<circle class="mitte" r="6"/><text class="ziel-t" x="10" y="22">Moosburg</text></svg>`;
+  el.innerHTML = s;
+}
+
+// ---------- 2 B Peilscheibe schräg, mit Gelände ----------
+const DREH = 110, NEIGUNG = 0.5, VZ = 0.036, STUFE = 250;
+// Wohin die Beschriftung an der Zeichnung rückt, damit sich nichts überlagert
+const ETIKETT = { kaernten: "links", bry: "links", saw: "unten", roch: "rechts" };
+function schraeg([x, y]) {
+  const a = DREH * RAD;
+  const xr = x * Math.cos(a) - y * Math.sin(a), yr = x * Math.sin(a) + y * Math.cos(a);
+  return [xr, yr * NEIGUNG];
+}
+function scheibeSchraeg(el) {
+  let s = `<svg viewBox="-560 -330 1120 600" role="img" aria-label="Die Karte schräg gesehen, entlang jeder Route das Gelände als gestufte Wand">`;
+  // Schräg nur Flächen, keine Küstenlinien: Im Vordergrund stehen die Wände.
+  s += `<g transform="scale(1 ${NEIGUNG}) rotate(${DREH})"><circle class="meer" r="500"/><path class="land" d="${K.land}"/>`;
+  for (const [km, r] of Object.entries(K.ringe)) if (+km < K.dmax) s += `<circle class="ring" r="${r}"/>`;
+  s += `<circle class="rand" r="500" style="stroke-width:2"/></g>`;
+  for (const [g, n] of [[0, "N"], [90, "O"], [180, "S"], [270, "W"]]) {
+    const [x, y] = schraeg([535 * Math.sin(g * RAD), -535 * Math.cos(g * RAD)]);
+    s += `<text class="rand-t" x="${f1(x)}" y="${f1(y + 5)}" text-anchor="middle">${n}</text>`;
+  }
+  // Wände von hinten nach vorn
+  const waende = REIHE.map((id) => {
+    const st = STADT[id], prof = D.strecken[id].profil;
+    const boden = prof.map(([km]) => schraeg(scheibenPunkt(km, st.grad)));
+    const hoch = prof.map(([, e]) => (e > 0 ? Math.floor(e / STUFE) * STUFE : 0) * VZ);
+    const tiefe = boden.reduce((a, p) => a + p[1], 0) / boden.length;
+    return { id, st, prof, boden, hoch, tiefe };
+  }).sort((a, b) => a.tiefe - b.tiefe);
+  for (const w of waende) {
+    let oben = [];
+    w.boden.forEach(([x, y], i) => {
+      if (i) oben.push([x, y - w.hoch[i - 1]]);
+      oben.push([x, y - w.hoch[i]]);
+    });
+    const unten = [...w.boden].reverse();
+    s += `<path class="band" d="M${[...oben, ...unten].map(([x, y]) => `${f1(x)} ${f1(y)}`).join("L")}Z"/>`;
+    w.boden.forEach(([x, y], i) => {
+      if (w.hoch[i] > 2) s += `<line class="schraffur" x1="${f1(x)}" y1="${f1(y)}" x2="${f1(x)}" y2="${f1(y - w.hoch[i])}"/>`;
+    });
+    for (let i = 1; i < w.prof.length; i++) {
+      if (w.prof[i][1] < 0 && w.prof[i - 1][1] < 0) {
+        s += `<line class="strahl-meer" x1="${f1(w.boden[i - 1][0])}" y1="${f1(w.boden[i - 1][1])}" x2="${f1(w.boden[i][0])}" y2="${f1(w.boden[i][1])}"/>`;
+      }
+    }
+    const [ex, ey] = w.boden.at(-1);
+    s += `<foreignObject class="fo-zg" x="${f1(ex - 48)}" y="${f1(ey - 108)}" width="96" height="106"><span class="zg z-${w.id}" style="height:106px;aspect-ratio:auto"></span></foreignObject>`;
+    const lage = ETIKETT[w.id];
+    const [tx, ty, anker] = lage === "links" ? [ex - 50, ey - 26, "end"] : lage === "rechts" ? [ex + 50, ey - 26, "start"] : [ex, ey + 26, "middle"];
+    s += `<text class="ziel-t" x="${f1(tx)}" y="${f1(ty)}" text-anchor="${anker}">${w.st.kurz}</text>`;
+    s += `<text class="ziel-m" x="${f1(tx)}" y="${f1(ty + 20)}" text-anchor="${anker}">${zahl(w.st.km)} km</text>`;
+  }
+  s += `<foreignObject class="fo-zg" x="-56" y="-82" width="112" height="85"><span class="zg z-rathaus" style="height:85px;aspect-ratio:auto"></span></foreignObject>`;
+  s += `<text class="ziel-t" x="0" y="30" text-anchor="middle">Moosburg</text></svg>`;
+  el.innerHTML = s;
+}
+scheibeFlach(document.getElementById("scheibe-flach"));
+scheibeSchraeg(document.getElementById("scheibe-schraeg"));
+
+// ---------- 3 Höhenschnitt ----------
+const FLUSS_DE = { Rhin: "Rhein", Rhine: "Rhein" };
+const FLUESSE = {
+  kaernten: ["Inn", "Salzach", "Mur"],
+  bry: ["Donau", "Neckar", "Rhein", "Mosel", "Maas", "Marne"],
+  saw: ["Donau", "Rhein", "Mosel", "Maas", "Schelde"],
+  roch: ["Rhein", "Mississippi"],
+};
+const KURZ = { Deutschland: "D", Niederlande: "NL", Großbritannien: "GB", Belgien: "B", Frankreich: "F", Österreich: "A" };
+const LAND_HIER = { saw: { Großbritannien: "England" } };
+const HOEHE = { roch: 150 };
+const HOCH = { kaernten: "Tauern", bry: "Nordschwarzwald", saw: "Schnee-Eifel", roch: "Labrador" };
+const MEERE = { saw: [[700, 870, "Nordsee"]], roch: [[670, 1020, "Nordsee"], [1500, 4800, "Atlantik"]] };
+const TIEF = { saw: "Nordsee", roch: "Labradorsee" };
+
+function schnitt(id) {
+  const st = STADT[id], S = D.strecken[id], P = S.profil, L = S.km;
+  const maxLand = Math.max(...P.map((p) => p[1]));
+  const maxMeer = Math.max(0, ...P.map((p) => -p[1]));
+  const stufe = [50, 100, 200, 250, 500].find((x) => x >= Math.max(maxLand, maxMeer) / 9) ?? 500;
+  const vz = (HOEHE[id] ?? 78) / (maxLand + (maxLand > maxMeer ? 0 : maxMeer));
+  const x = (km) => 70 + (km / L) * 860;
+  const y0 = 46 + maxLand * vz;
+  const unten = y0 + maxMeer * vz;
+  const H = unten + 52;
+  const terr = (e) => (e > 0 ? Math.floor(e / stufe) * stufe : -Math.floor(-e / stufe) * stufe);
+
+  // Stufenlinie über die ganze Strecke
+  const pts = [];
+  P.forEach(([km, e], i) => {
+    const yy = y0 - Math.max(0, terr(e)) * vz;
+    if (i) pts.push([x(km), pts.at(-1)[1]]);
+    pts.push([x(km), yy]);
+  });
+  const linie = pts.map(([a, b]) => `${f1(a)} ${f1(b)}`).join("L");
+  let s = `<svg viewBox="0 0 1000 ${f1(H)}" role="img" aria-label="Höhenschnitt von Moosburg nach ${st.name}">`;
+  s += `<path class="landgrund" d="M${x(0)} ${f1(y0)}L${linie}L${x(L)} ${f1(y0)}Z"/>`;
+  s += `<path class="land" d="M${x(0)} ${f1(y0)}L${linie}L${x(L)} ${f1(y0)}Z"/>`;
+  if (maxMeer > 0) {
+    // Wasser ohne Stufen: Terrassen sind eine Form für Land, das Meer bekommt seine Tiefenlinie.
+    const mp = P.map(([km, e]) => [x(km), y0 + Math.max(0, -e) * vz]);
+    s += `<path class="meer-s" d="M${x(0)} ${f1(y0)}L${mp.map(([a, b]) => `${f1(a)} ${f1(b)}`).join("L")}L${x(L)} ${f1(y0)}Z"/>`;
+    s += `<line class="spiegel" x1="${x(0)}" y1="${f1(y0)}" x2="${x(L)}" y2="${f1(y0)}"/>`;
+  }
+  s += `<path class="oberkante" d="M${linie}"/>`;
+
+  // Flüsse, je Name nur die erste Querung
+  const gesehen = new Set();
+  for (const f of S.fluesse) {
+    const n = FLUSS_DE[f.name] ?? f.name;
+    if (!FLUESSE[id].includes(n) || gesehen.has(n)) continue;
+    gesehen.add(n);
+    const i = P.findIndex((p) => p[0] >= f.km);
+    const yy = y0 - Math.max(0, terr(P[Math.max(0, i)][1])) * vz;
+    s += `<line class="fluss" x1="${f1(x(f.km))}" y1="${f1(yy - 3)}" x2="${f1(x(f.km))}" y2="${f1(yy - 13)}"/>`;
+    s += `<text class="fluss-t" x="${f1(x(f.km))}" y="${f1(yy - 17)}" text-anchor="middle">${n}</text>`;
+  }
+
+  // Höchster und tiefster Punkt
+  const [hkm, he] = S.hoechster;
+  const hy = y0 - terr(he) * vz;
+  s += `<text class="marke-t" x="${f1(x(hkm))}" y="${f1(hy - 30)}" text-anchor="middle">${HOCH[id]}</text>`;
+  s += `<text class="marke-m" x="${f1(x(hkm))}" y="${f1(hy - 17)}" text-anchor="middle">${zahl(he)} m</text>`;
+  if (maxMeer >= 500) {
+    const [tkm, te] = S.tiefster;
+    s += `<text class="marke-m" x="${f1(x(tkm))}" y="${f1(y0 - (te * vz) / 2)}" text-anchor="middle">${TIEF[id]}, bis ${zahl(-te)} m tief</text>`;
+  }
+
+  // Länder und Grenzen
+  const by = unten + 20;
+  s += `<line class="land-band" x1="${x(0)}" y1="${f1(by)}" x2="${x(L)}" y2="${f1(by)}"/>`;
+  let vorher = null;
+  for (const [roh, a, b] of S.laender) {
+    const n = LAND_HIER[id]?.[roh] ?? roh;
+    const meer = n === "Meer";
+    let name = meer ? (MEERE[id] ?? []).find(([v, w]) => (a + b) / 2 >= v && (a + b) / 2 <= w)?.[2] : n;
+    const breite = x(b) - x(a);
+    if (name && breite < name.length * 6.3) name = !meer && KURZ[name] && breite >= KURZ[name].length * 7 ? KURZ[name] : null;
+    if (vorher && vorher !== "Meer" && !meer) s += `<line class="grenze" x1="${f1(x(a))}" y1="${f1(by - 7)}" x2="${f1(x(a))}" y2="${f1(by + 7)}"/>`;
+    if (name) s += `<text class="${meer ? "meer-t" : "land-t"}" x="${f1((x(a) + x(b)) / 2)}" y="${f1(by + 19)}" text-anchor="middle">${name}</text>`;
+    vorher = n;
+  }
+  s += `<text class="ende-t" x="${x(0)}" y="${f1(y0 + 18)}" text-anchor="start">Moosburg</text>`;
+  s += `<text class="ende-t" x="${x(L)}" y="${f1(y0 + 18)}" text-anchor="end">${st.kurz}</text>`;
+  const ueber = Math.round(((L * 1000) / 860) * vz);
+  s += `<text class="ueberhoeht" x="${x(L)}" y="14" text-anchor="end">${zahl(L)} km · Stufen zu ${stufe} m · ${zahl(ueber)}-fach überhöht</text>`;
+  s += `</svg>`;
+  const grenzen = new Set(S.laender.map((l) => l[0]).filter((n) => n !== "Meer")).size - 1;
+  const ueberMeer = S.laender.filter((l) => l[0] === "Meer").reduce((a, l) => a + (l[2] - l[1]), 0);
+  const zusatz = [grenzen === 1 ? "eine Grenze" : `${["", "", "zwei", "drei", "vier", "fünf"][grenzen]} Grenzen`];
+  if (ueberMeer > 50) zusatz.push(`${zahl(Math.round(ueberMeer / 10) * 10)} km über Wasser`);
+  return `<div class="schnitt"><h4>Der Weg nach ${st.name}<small>${zusatz.join(" · ")}</small></h4><div class="schnitt-scroll">${s}</div></div>`;
+}
+document.getElementById("schnitte").innerHTML = REIHE.map(schnitt).join("");
+
+// ---------- 5 Tinkturen ----------
+function schild(t, w = 13, h = 16) {
+  return `<svg viewBox="0 0 13 16" width="${w}" height="${h}" aria-hidden="true">
+    <path d="M1 1H6.5V15C3 13.5 1 11 1 8Z" fill="${T(t[0])}"/><path d="M6.5 1H12V8C12 11 10 13.5 6.5 15Z" fill="${T(t[1])}"/>
+    <path d="M1 1H12V8C12 11 10 13.5 6.5 15 3 13.5 1 11 1 8Z" fill="none" stroke="#1c1c1c" stroke-width=".8"/></svg>`;
+}
+document.getElementById("tinkturen").innerHTML = REIHE.map((id) => {
+  const s = STADT[id];
+  return `<figure><svg viewBox="0 0 80 60" aria-hidden="true">${wimpel(10, 56, s.tink, 2).replace('class="g-wimpel"', 'style="--p-linie:#1c1c1c"').replaceAll('class="mast"', 'stroke="#1c1c1c" stroke-width="1.5"').replaceAll('class="fahne"', 'stroke="#1c1c1c" stroke-width=".8"')}</svg>
+    <figcaption><b>${s.name}</b>${s.tinkText}, ${s.herkunft}</figcaption></figure>`;
+}).join("");
+const DATUM = { kaernten: "15. Juli 1991", bry: "29. September 1973", saw: "13. März 2018", roch: "18. Juli 1981" };
+document.getElementById("koepfe").innerHTML = ["bry", "roch"].map((id) => {
+  const s = STADT[id];
+  return `<div class="p-kopf"><div class="kat">${schild(s.tink)}${s.land} · Partnerschaft seit ${DATUM[id]}</div><h4>${s.name}</h4></div>`;
+}).join("");
+
+// ---------- Befunde unter der Tafel ----------
+const g0 = gipfelWahl().find((g) => g.name === "Hochkönig");
+const glockner = gipfelWahl().find((g) => g.name === "Großglockner");
+const befunde = [
+  `<b>Bry</b> liegt bei ${Math.round(STADT.bry.grad)}°: Die Sonne geht von Moosburg aus am ${untergangsTage(STADT.bry.grad).map(datum).join(" und am ")} genau in dieser Richtung unter.`,
+  `<b>Sawbridgeworth</b> bei ${Math.round(STADT.saw.grad)}°: am ${untergangsTage(STADT.saw.grad).map(datum).join(" und am ")}.`,
+  `<b>Rochester</b> liegt bei ${f1(STADT.roch.grad).replace(".", ",")}°, weiter nördlich, als die Sonne je untergeht (${f1(nordUntergang).replace(".", ",")}° am längsten Tag).`,
+  `<b>Kärnten</b> liegt bei ${Math.round(STADT.kaernten.grad)}°, hinter den Alpen${g0 ? `; ${Math.round(g0.az - STADT.kaernten.grad)}° weiter rechts stehen Watzmann und ${g0.name} hintereinander` : ""}.`,
+  glockner ? `Bei klarer Sicht ragt rechnerisch sogar der <b>${glockner.name}</b> über den Horizont, ${glockner.km} km entfernt. Die Gipfelhöhen im Bild sind etwas zu niedrig, weil der Horizont nur alle 3 km abgetastet ist; für die Seite würde ich feiner rechnen.` : "",
+].filter(Boolean);
+document.getElementById("befunde-pano").innerHTML = befunde.map((b) => `<li>${b}</li>`).join("");
+
+// ---------- Umschalter ----------
+function zeige(ziel, v) {
+  ziel.dataset.variante = v;
+  ziel.querySelectorAll("[data-zeige]").forEach((el) => { el.hidden = el.dataset.zeige !== v; });
+  document.querySelectorAll(`[data-zeige-in="${ziel.id}"]`).forEach((el) => { el.hidden = el.dataset.zeige !== v; });
+}
+document.querySelectorAll(".schalter[data-ziel]").forEach((gruppe) => {
+  gruppe.addEventListener("click", (e) => {
+    const k = e.target.closest("button");
+    if (!k) return;
+    gruppe.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === k)));
+    gruppe.dataset.ziel.split(" ").forEach((id) => zeige(document.getElementById(id), k.dataset.v));
+  });
+});
+document.body.dataset.farbe = "material";
+document.querySelector("[data-farbschalter]").addEventListener("click", (e) => {
+  const k = e.target.closest("button");
+  if (!k) return;
+  k.parentElement.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b === k)));
+  document.body.dataset.farbe = k.dataset.v;
+  zeige(document.getElementById("farb-erkl"), k.dataset.v);
+});
+</script>

@@ -1,0 +1,818 @@
+<title>Partnerstädte, sechste Lesung</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Ausschnitte der Stadtseite, darum eine helle Welt mit Absicht wie in den
+   Lesungen davor: Der gebaute Stand hat keinen Dunkelmodus. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-700:#a50d24;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-700:#6e5a30;
+  --erdbraun:#4a2a17;--z-erdbraun:#9b5309;--z-tannengruen:#157840;
+  --wasser:#117393;--wasser-hell:#dce9eb;
+  --m-ziegel:#9b5309;--m-wein:#c8102e;--m-stein:#b8964e;
+  --t-blau:#3f55b0;--t-rot:#c8102e;--t-gold:#c9a24a;--t-schwarz:#1c1c1c;--t-weiss:#ffffff;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --bry-t:url({{IMG:docs/formsprache/lesung-3/assets/bryA-tinte.webp}});
+  --bry-f:url({{IMG:docs/formsprache/lesung-3/assets/bryA-farbe.webp}});
+  --kaernten-t:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-tinte.webp}});
+  --kaernten-f:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-farbe.webp}});
+  --saw-t:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-tinte.webp}});
+  --saw-f:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-farbe.webp}});
+  --roch-t:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-tinte.webp}});
+  --roch-f:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-farbe.webp}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));overflow-x:clip;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--rot-700)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.kat{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>*:not(.handschrift){position:relative}
+code{font-size:.88em;background:var(--creme-dunkel);padding:.05em .35em;border-radius:4px}
+
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.antworten{margin-top:1.2rem;padding:0;list-style:none;display:grid;gap:.2rem;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.antworten b{color:var(--tinte)}
+.inhalt{margin-top:32px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:2.4em}
+.punkt{padding-block:64px 28px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ort{font-size:.85rem;color:var(--tinte-matt);margin:26px 0 10px;display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between}
+.ort b{color:var(--tinte-weich);font-weight:600}
+.urteil{margin-top:18px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.urteil b{color:var(--tinte)}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem;white-space:nowrap}
+.variante-text{margin-top:14px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.variante-text b{color:var(--tinte)}
+
+.schalter{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--linie);border-radius:999px;background:var(--weiss)}
+.schalter button{border:0;background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+.schalter button[aria-pressed="true"]{background:var(--rot-50);color:var(--rot-700)}
+.schalter-zeile{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center}
+.schalter-zeile label,.schalter-zeile>span{font-size:.85rem;color:var(--tinte-matt)}
+
+.kontext{margin-inline:calc(50% - 50vw);background:var(--creme);border-block:1px solid var(--linie);position:relative}
+.innen{max-width:1180px;margin-inline:auto;padding:44px 24px}
+
+/* Zeichnungen als zwei Schablonen */
+.zg{display:block;position:relative;width:100%}
+.zg::before,.zg::after{content:"";position:absolute;inset:0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:bottom center;mask-position:bottom center;-webkit-mask-size:contain;mask-size:contain}
+.zg::before{background:var(--zf,var(--rot-500));-webkit-mask-image:var(--f);mask-image:var(--f)}
+.zg::after{background:var(--zl,var(--tinte));-webkit-mask-image:var(--t);mask-image:var(--t)}
+.z-bry{--t:var(--bry-t);--f:var(--bry-f);aspect-ratio:1200/1308}
+.z-kaernten{--t:var(--kaernten-t);--f:var(--kaernten-f);aspect-ratio:1200/1106}
+.z-saw{--t:var(--saw-t);--f:var(--saw-f);aspect-ratio:1200/1186}
+.z-roch{--t:var(--roch-t);--f:var(--roch-f);aspect-ratio:1200/1345}
+foreignObject .zg{height:100%;aspect-ratio:auto}
+
+body[data-farbe="material"] .z-bry{--zf:var(--m-ziegel)}
+body[data-farbe="material"] .z-kaernten{--zf:var(--m-wein)}
+body[data-farbe="material"] .z-saw{--zf:var(--m-stein)}
+body[data-farbe="material"] .z-roch{--zf:var(--z-tannengruen)}
+body[data-farbe="dezent"] .z-bry{--zf:var(--gold-500)}
+body[data-farbe="dezent"] .z-kaernten{--zf:var(--z-erdbraun)}
+body[data-farbe="dezent"] .z-saw{--zf:var(--gold-200)}
+body[data-farbe="dezent"] .z-roch{--zf:var(--z-tannengruen)}
+body[data-farbe="ton"] .zg{--zf:var(--gold-200)}
+
+/* 1 Rundblick */
+.rund{position:relative;touch-action:pan-y;cursor:grab;user-select:none}
+.rund.zieht{cursor:grabbing}
+.rund svg{display:block;width:100%;height:auto}
+/* Luftperspektive: je weiter weg, desto heller und feiner der Strich */
+.rund .k{stroke:var(--tinte);stroke-linejoin:round}
+.rund .k1{fill:#f7f3eb;stroke-width:.6;stroke-opacity:.3}
+.rund .k2{fill:#f3eee4;stroke-width:.7;stroke-opacity:.42}
+.rund .k3{fill:#eee7da;stroke-width:.8;stroke-opacity:.6}
+.rund .k4{fill:#e8dfcd;stroke-width:1;stroke-opacity:1}
+.rund path.kf{stroke:none}
+.rund path.k{fill:none}
+.rund .lineal{stroke:var(--tinte-matt);stroke-width:.8}
+.rund .tick{stroke:var(--tinte-matt);stroke-width:.8}
+.rund .himmel{font:600 12px var(--sans);fill:var(--tinte-matt)}
+.rund .gipfel-t{font:italic 400 11px var(--serif);fill:var(--tinte-matt)}
+.rund .gipfel-s{stroke:var(--tinte-matt);stroke-width:.6;stroke-opacity:.6}
+.rund .leit{fill:none;stroke:var(--tinte-matt);stroke-width:1;stroke-dasharray:2 3}
+.rund .pname{font:600 16px var(--serif);fill:var(--tinte)}
+.rund .pdetail{font:400 12px var(--sans);fill:var(--tinte-weich)}
+.rund text{paint-order:stroke;stroke:var(--creme);stroke-width:3px;stroke-linejoin:round}
+.rund .mast{stroke:var(--tinte);stroke-width:1}
+.rund .fahne{stroke:var(--tinte);stroke-width:.5}
+.rund .fuss{fill:var(--tinte)}
+.rund .kalender{stroke:var(--gold-500);stroke-width:3;stroke-linecap:round;opacity:.75}
+.rund .kalender-s{stroke:var(--gold-700);stroke-width:1}
+.rund .kalender-t{font:italic 400 11px var(--serif);fill:var(--tinte-matt)}
+.rund .tag-s{stroke:var(--gold-700);stroke-width:1.6}
+.rund .tag-t{font:italic 600 12px var(--serif);fill:var(--gold-700)}
+.rund .bahn{fill:none;stroke:var(--gold-500);stroke-width:1.4;stroke-dasharray:1 4;stroke-linecap:round}
+.rund .bahn-gelaufen{fill:none;stroke:var(--gold-500);stroke-width:1.8;stroke-linecap:round}
+.rund .sonne-kern{fill:var(--gold-200);stroke:var(--gold-700);stroke-width:1.2}
+.rund .sonne-strahl{stroke:var(--gold-700);stroke-width:1.1;stroke-linecap:round}
+.rund .wimpel-an .fahne{stroke:var(--rot-700);stroke-width:1.4}
+.rund-steuer{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin-top:14px}
+.rund-anzeige{font-size:.92rem;color:var(--tinte-weich);margin-top:8px;min-height:1.6em}
+.rund-anzeige b{color:var(--tinte)}
+.rund-bu{margin-top:6px;font-size:.85rem;color:var(--tinte-matt);max-width:78ch}
+
+/* 6 Steckbriefe */
+.steckbriefe{display:grid;gap:36px 32px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.steckbriefe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:980px){.steckbriefe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.steckbrief{border-top:2px solid var(--tinte);padding-top:.7rem}
+.steckbrief.pate{border-top-color:var(--z-erdbraun)}
+.steckbrief h4{font-size:1.25rem}
+.steckbrief h4 small{display:block;font-family:var(--sans);font-weight:400;font-size:.84rem;color:var(--tinte-matt);margin-top:.15rem}
+.steckbrief dl{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:.35rem .8rem;margin:.9rem 0 0;font-size:.9rem}
+.steckbrief dt{color:var(--tinte-matt);font-size:.84rem;padding-top:.08rem}
+.steckbrief dd{margin:0;color:var(--tinte)}
+.steckbrief ul{margin:0;padding:0;list-style:none;display:grid;gap:.2rem}
+.steckbrief .q{color:var(--tinte-matt);font-size:.8rem}
+
+.fragen{padding-left:1.3rem;max-width:80ch}
+.fragen li{padding-block:.45rem}
+.quellen{font-size:.85rem;color:var(--tinte-matt);max-width:80ch;margin-top:20px}
+.quellen a{color:var(--tinte-matt)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+:root{
+  --turm-t:url({{IMG:docs/formsprache/lesung-3/assets/turm-tinte.webp}});
+  --turm-f:url({{IMG:docs/formsprache/lesung-3/assets/turm-farbe.webp}});
+  --turm-p:url({{IMG:docs/formsprache/lesung-3/assets/turm-papier.webp}});
+}
+
+/* 1 Wege */
+.weg-scroll{overflow-x:auto}
+.weg-svg{width:100%;min-width:720px;height:auto;display:block;overflow:visible}
+.weg-zeile+.weg-zeile{margin-top:10px;padding-top:10px;border-top:1px solid var(--linie)}
+.weg .luft{stroke:var(--tinte-matt);stroke-width:.8;stroke-dasharray:3 3}
+.weg .route{fill:none;stroke:var(--tinte);stroke-width:1.3;stroke-linejoin:round}
+.weg .landf{fill:var(--creme-dunkel)}
+.weg .meerf{fill:url(#schraffur-meer)}
+.weg .ober{fill:none;stroke:var(--tinte);stroke-width:1.2;stroke-linejoin:round}
+.weg .schleier{fill:var(--creme);opacity:.55}
+.weg .ordnung{stroke:var(--tinte-matt);stroke-width:.6;stroke-dasharray:1 2.5}
+.weg .ort-p{fill:var(--tinte)}
+.weg .ort-t{font:600 11.5px var(--sans);fill:var(--tinte)}
+.weg .ort-m{font-weight:400;font-size:10.5px;fill:var(--tinte-weich)}
+.weg .jenseits .ort-t{fill:var(--tinte-matt)}
+.weg .ziel-l{stroke:var(--gold-700);stroke-width:1.2}
+.weg .ziel-p{fill:var(--gold-500);stroke:var(--tinte);stroke-width:1}
+.weg .ziel-t{font:600 14px var(--serif);fill:var(--tinte)}
+.weg .achse{stroke:var(--tinte-matt);stroke-width:.8}
+.weg .achse-t{font:400 10.5px var(--sans);fill:var(--tinte-matt)}
+.weg .land-t{font:600 11px var(--sans);fill:var(--tinte-weich)}
+.weg .meer-t{font:italic 400 11px var(--serif);fill:var(--wasser)}
+.weg .grenze{stroke:var(--rot-700);stroke-width:1.2}
+.weg .fluss{stroke:var(--wasser);stroke-width:1.6;stroke-linecap:round}
+.weg .fluss-t{font:italic 400 11px var(--serif);fill:var(--wasser)}
+.weg .zeile-t{font:600 17px var(--serif);fill:var(--tinte)}
+.weg .zeile-m{font:400 12px var(--sans);fill:var(--tinte-matt)}
+.weg .wie-oben{stroke:var(--gold-500);stroke-width:4;stroke-linecap:round;opacity:.6}
+.weg .wie-oben-t,.weg .weiter-t{font:italic 400 11.5px var(--serif);fill:var(--gold-700)}
+.weg .weiter-t{fill:var(--tinte-matt)}
+.weg .rand-t{font:400 10px var(--sans);fill:var(--tinte-matt)}
+.weg text{paint-order:stroke;stroke:var(--creme);stroke-width:3px;stroke-linejoin:round}
+.weg-liste{font-size:.92rem;color:var(--tinte-weich);max-width:80ch;margin-top:14px;padding-left:1.2rem}
+.weg-liste li{padding-block:.15rem}
+.weg-liste b{color:var(--tinte)}
+
+/* 2 Wappen */
+.lesart{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;margin-bottom:30px}
+.lesart ul{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;list-style:none;font-size:.85rem;color:var(--tinte-weich)}
+.lesart li{display:flex;align-items:center;gap:6px}
+.lesart svg{width:20px;height:24px;display:block}
+.wappen-kopf{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;align-items:start;margin-bottom:.2rem}
+.wp{position:relative;width:62px;height:72px}
+.wp img{display:block;width:100%;height:100%;object-fit:contain;object-position:left top}
+.wp .stich{position:absolute;inset:0;background:var(--tinte);-webkit-mask:var(--m) left top/contain no-repeat;mask:var(--m) left top/contain no-repeat}
+.wp.gross{width:96px;height:112px}
+[data-wappen="original"] .wp .stich{display:none}
+[data-wappen="stich"] .wp img{display:none}
+.wp-leer{display:flex;align-items:center;justify-content:center;width:56px;height:66px;border:1.3px dashed var(--tinte-matt);border-radius:2px 2px 28px 28px/2px 2px 34px 34px;font:400 17px/1 var(--script);color:var(--gold-700);text-align:center}
+.steckbrief .wp-zeile{font-size:.8rem;color:var(--tinte-matt);margin-top:.35rem}
+
+/* 3 Termine */
+.einschuebe{display:grid;gap:22px 28px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.einschuebe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.einschub-ort{font-size:.8rem;color:var(--tinte-matt);margin-bottom:6px}
+.einschub{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:start;padding:14px 16px 15px;background:var(--weiss);border:1px solid var(--linie);border-top:3px solid var(--gold-500)}
+.einschub.offen{border-top-color:var(--linie)}
+.einschub .kat{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px}
+.beispiel{font-size:.72rem;font-weight:600;color:var(--rot-700)}
+.einschub .wann{min-width:4.2rem}
+.einschub .tag{display:block;font:600 2rem/1 var(--serif)}
+.einschub .monat{display:block;font-size:.82rem;color:var(--tinte-matt);margin-top:.25rem}
+.einschub .ungefaehr{display:block;font:600 1.15rem/1.15 var(--serif)}
+.einschub .noch{display:block;font:400 1.5rem/1 var(--script);color:var(--gold-700);transform:rotate(-5deg);margin-top:.2rem}
+.einschub h4{font-size:1.05rem}
+.einschub p{font-size:.9rem;color:var(--tinte-weich);margin-top:.3rem}
+.einschub a{font-size:.88rem;font-weight:600;display:inline-block;margin-top:.45rem}
+.naechstes{max-width:620px;border-top:2px solid var(--tinte);padding-top:.6rem}
+.naechstes ol{margin:.5rem 0 0;padding:0;list-style:none}
+.naechstes li{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:12px;padding-block:.35rem;border-bottom:1px solid var(--linie);font-size:.95rem}
+.naechstes li span{color:var(--tinte-matt)}
+.naechstes p{font-size:.88rem;color:var(--tinte-matt);margin-top:.5rem}
+
+/* 4 Turm im Rundblick */
+.rund-buehne{position:relative}
+.turm{position:absolute;left:6px;bottom:0;width:70px;aspect-ratio:200/520;background:var(--creme);pointer-events:none;
+  -webkit-mask:var(--turm-p) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-p) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.turm::before,.turm::after{content:"";position:absolute;inset:0}
+.turm::before{background:var(--z-erdbraun);-webkit-mask:var(--turm-f) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-f) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.turm::after{background:var(--tinte);-webkit-mask:var(--turm-t) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-t) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.rund-buehne[data-turm="unten"] .turm{position:relative;left:auto;display:block;margin:4px auto 0;width:84px}
+.turm-reihe{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+.turm-reihe .turm{position:relative;left:auto;width:64px}
+
+/* Akzent der Seite: Themenfarbe für Flächen, Zeichnungsfarbe für Gezeichnetes */
+body{--akzent:#123b4a;--akzent-z:#117393}
+body[data-akzent="nachtblau"]{--akzent:#26295e;--akzent-z:#5159b6}
+body[data-akzent="aubergine"]{--akzent:#3f2248;--akzent-z:#7f4e8f}
+.akzent-wahl{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:14px;z-index:5;display:flex;align-items:center;gap:8px;padding:6px 8px 6px 14px;background:var(--weiss);border:1px solid var(--linie);border-radius:999px;box-shadow:0 2px 10px rgb(0 0 0/.08);font-size:.8rem;color:var(--tinte-matt)}
+.akzent-wahl .schalter{border:0;padding:0}
+.akzent-wahl button[data-v]::before{content:"";display:inline-block;width:.7em;height:.7em;border-radius:50%;margin-right:.35em;vertical-align:-.05em;background:var(--p)}
+
+/* 1 Wappen dargebracht */
+.wd-reihe{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
+@media (min-width:760px){.wd-reihe{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.wd{margin:0;text-align:center}
+.wd-buehne{position:relative;height:178px}
+.wd-buehne>span{position:absolute}
+.wd-bild{left:50%;top:26px;width:104px;height:120px;margin-left:-52px}
+.wd-bild>span{position:absolute;inset:0;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.wd-leer{position:absolute;inset:6px 10px 4px;border:1.4px dashed currentColor;border-radius:2px 2px 42px 42px/2px 2px 52px 52px;display:flex;align-items:center;justify-content:center;font:400 21px/1 var(--script)}
+.wd figcaption{font:600 1rem/1.25 var(--serif);margin-top:6px}
+.wd figcaption span{display:block;font:400 .8rem var(--sans);color:var(--tinte-matt);margin-top:.15rem}
+.wd svg.ring{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;display:none;overflow:visible}
+
+/* A: halb auf der Fläche. Ein Band läuft hinter allen Wappen, oberhalb Tinte auf Papier, darin Papier auf Farbe */
+[data-wd="halb"] .wd-reihe{background:linear-gradient(to bottom,transparent 0 86px,var(--akzent) 86px 100%);padding-bottom:16px}
+@media (max-width:759px){[data-wd="halb"] .wd-reihe{background:none}[data-wd="halb"] .wd{background:linear-gradient(to bottom,transparent 0 86px,var(--akzent) 86px 100%);padding-bottom:12px}}
+[data-wd="halb"] .wd .tinte{background:var(--tinte);clip-path:inset(0 0 50% 0)}
+[data-wd="halb"] .wd .hell{background:var(--creme);clip-path:inset(50% 0 0 0)}
+[data-wd="halb"] .wd figcaption{color:var(--creme)}
+[data-wd="halb"] .wd figcaption span{color:var(--gold-200)}
+[data-wd="halb"] .wd-leer{color:var(--gold-200)}
+
+/* B: Siegel. Nur ein Ausschnitt in der Scheibe, der Name im Rand */
+[data-wd="siegel"] .wd-buehne::before{content:"";position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;background:var(--akzent)}
+[data-wd="siegel"] .wd-bild{top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;clip-path:circle(52px at 50% 50%)}
+[data-wd="siegel"] .wd .tinte{display:none}
+[data-wd="siegel"] .wd .hell{background:var(--creme);transform:translateY(var(--sy,0)) scale(var(--sz,1.6))}
+[data-wd="siegel"] .wd svg.ring{display:block}
+[data-wd="siegel"] .wd-leer{inset:40px;border-radius:50%;color:var(--gold-200);border-color:var(--gold-200)}
+
+/* C: Prägung. Keine Tinte, nur Licht und Schatten auf farbigem Karton */
+[data-wd="praegung"] .wd-buehne::before{content:"";position:absolute;left:50%;top:8px;width:150px;height:162px;margin-left:-75px;background:var(--akzent);border-radius:3px}
+[data-wd="praegung"] .wd .tinte{background:rgb(0 0 0/.55);transform:translate(1px,1.2px)}
+[data-wd="praegung"] .wd .hell{background:rgb(255 255 255/.42);transform:translate(-.8px,-1px)}
+[data-wd="praegung"] .wd-leer{color:rgb(255 255 255/.5);border-color:rgb(255 255 255/.4)}
+
+/* 2 Mitmachen-Band */
+.band{margin-inline:calc(50% - 50vw);background:var(--akzent);color:var(--creme);position:relative;overflow:hidden}
+.band-innen{max-width:1180px;margin-inline:auto;padding:46px 24px 50px;display:grid;gap:30px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.band-innen{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}}
+.band .kat{color:var(--gold-200);display:flex;gap:12px;align-items:baseline}
+.band .beispiel{color:var(--gold-200);opacity:.75}
+.band h3{font-size:clamp(1.6rem,3.2vw,2.3rem);margin:.4rem 0 .7rem;color:var(--weiss)}
+.band p{color:rgb(250 247 242/.86);max-width:56ch}
+.band .notiz{font:400 1.7rem/1 var(--script);color:var(--gold-200);transform:rotate(-5deg);display:inline-block;margin:.3rem 0 0 .2rem}
+.band .knoepfe{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:1.3rem}
+.band .primaer{display:inline-block;background:var(--creme);color:var(--akzent);font-weight:700;text-decoration:none;padding:.65rem 1.2rem;border-radius:999px}
+.band .sekundaer{color:var(--creme);font-weight:600}
+.band form{background:rgb(255 255 255/.07);border:1px solid rgb(250 247 242/.25);border-radius:6px;padding:18px}
+.band form label{display:block;font-weight:600;color:var(--weiss)}
+.band form .zeile{display:flex;gap:8px;margin-top:.6rem}
+.band input{flex:1;min-width:0;font:inherit;padding:.55rem .7rem;border-radius:4px;border:1px solid rgb(250 247 242/.5);background:rgb(0 0 0/.15);color:var(--weiss)}
+.band input::placeholder{color:rgb(250 247 242/.55)}
+.band form button{font:inherit;font-weight:700;padding:.55rem 1rem;border-radius:4px;border:0;background:var(--gold-200);color:var(--akzent);cursor:pointer}
+.band form small{display:block;margin-top:.6rem;font-size:.8rem;color:rgb(250 247 242/.7)}
+.band form small a{color:var(--creme)}
+.band .bild{position:absolute;right:max(24px,calc(50vw - 590px));bottom:-14px;width:250px;opacity:.95;pointer-events:none}
+.band .bild .zg{--zl:var(--creme);--zf:var(--akzent-z)}
+.band .reihe4{display:flex;gap:10px;margin-top:1.4rem;opacity:.9}
+.band .reihe4 .zg{width:84px;--zl:var(--creme);--zf:var(--akzent-z)}
+@media (min-width:900px){.band[data-zustand="aufruf"] .band-innen{padding-right:300px;grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}}
+@media (max-width:899px){.band .bild{display:none}}
+
+/* 3 Turm */
+.rund-buehne[data-turm="unten"] .turm{margin:0}
+.turm::before{display:none}
+.sockel{position:relative;width:260px;height:236px;margin:-78px auto 0;pointer-events:none}
+.sockel .turm{position:absolute!important;left:50%!important;bottom:6px;width:84px!important;margin-left:-42px!important}
+.sockel svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sockel .grund{display:none}
+.sockel[data-grund="klecks"] .klecks,.sockel[data-grund="scheibe"] .scheibe,.sockel[data-grund="rose"] .rose{display:inline}
+.sockel .klecks path{fill:var(--akzent-z)}
+.sockel .scheibe circle{fill:var(--akzent-z)}
+.sockel .rose ellipse{fill:none;stroke:var(--akzent-z);stroke-width:2.2}
+.sockel .rose line{stroke:var(--akzent-z);stroke-width:1.4}
+.sockel .rose text{font:700 13px var(--sans);fill:var(--akzent);text-anchor:middle;paint-order:stroke;stroke:var(--creme);stroke-width:3px}
+</style>
+
+<script type="application/json" id="daten">{{TEXT:docs/formsprache/lesung-3/daten-5.json}}</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="schraffur-meer" width="6" height="4" patternUnits="userSpaceOnUse"><rect width="6" height="4" fill="#dce9eb"/><path d="M0 2H6" stroke="#117393" stroke-width=".5" opacity=".55"/></pattern>
+  </defs>
+</svg>
+
+<div class="akzent-wahl"><span>Akzent</span>
+  <div class="schalter" id="akzent-wahl" role="group" aria-label="Akzentfarbe der Seite">
+    <button type="button" aria-pressed="true" data-v="petrol" style="--p:#123b4a">Isar-Petrol</button>
+    <button type="button" aria-pressed="false" data-v="nachtblau" style="--p:#26295e">Nachtblau</button>
+    <button type="button" aria-pressed="false" data-v="aubergine" style="--p:#3f2248">Aubergine</button>
+  </div>
+</div>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Themenseite · Stadt-Prototyp · 30. Oktober 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">mit Farbe</span>
+    <h1 style="font-size:1em">Partnerstädte, sechste Lesung</h1>
+  </div>
+  <p class="lead text">Drei Punkte und eine Farbe. Damit nicht überall nur Gold und Beige steht, bekommt die Seite einen Akzent, eine dunkle Themenfarbe aus dem Kanon. Der Schalter unten rechts färbt alle drei Punkte zugleich: Isar-Petrol, Nachtblau oder Aubergine. Gebaut ist weiterhin nichts.</p>
+  <ul class="antworten">
+    <li><b>1 A</b>: Hinter dem Ziel geht es um die Hälfte weiter. Sawbridgeworth behält die eigene Zeile; so habe ich dein A verstanden.</li>
+    <li><b>Globus B</b>, Feder: übernommen.</li>
+    <li><b>2</b>, Sawbridgeworth vektorisiert und Ideen zur Darbringung: Punkt 1.</li>
+    <li><b>3</b>, ein Einschub auf ganzer Breite mit Aufruf: Punkt 2.</li>
+    <li><b>4</b>, der Turm mittig, näher am Panorama, ohne rote Ziegel, mit Farbe dahinter: Punkt 3.</li>
+  </ul>
+  <p class="text" style="margin-top:.8rem;color:var(--tinte-weich)">Antworten wie gewohnt, etwa „Petrol, 1 B, 2 ja, 3 A“.</p>
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Wappen, dargebracht</a></li>
+    <li><a href="#p2"><span>2</span>Mitmachen auf ganzer Breite</a></li>
+    <li><a href="#p3"><span>3</span>Der Turm, mit Farbe</a></li>
+    <li><a href="#fragen"><span>?</span>Fragen</a></li>
+  </ul>
+</header>
+
+<!-- ───────────── 1 Wappen -->
+<section class="punkt" id="p1">
+  <header><div class="nr">Punkt 1</div><h2>Wappen, dargebracht</h2></header>
+  <p class="text">Sawbridgeworth habe ich nach deinen Vorlagen neu gezeichnet, als reduzierten Vektor: Zackenschnitt in Blau und Silber, auf Rot zwei silberne Ruder mit goldenen Beschlägen, gekreuzte Pinnen, dazwischen die Garbe. Abgepaust habe ich nichts. Zwei der Vorlagen sind Stockfotos mit Wasserzeichen; eine neue Zeichnung nach dem Wappen ist dagegen frei. Rochester führt kein Wappen. Von dort steht jetzt das Rundsiegel aus der Stadtflagge in der Reihe, gestochen wie die anderen. Das Emblem von Odžaci bleibt draußen, es trägt weiter die 1944.</p>
+  <p class="text" style="margin-top:.8rem">Zur Darbringung drei Ideen als Probe, alle mit den gestochenen, einfarbigen Wappen:</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Reihe der Wappen über den Steckbriefen</span>
+    <div class="schalter" id="wd-wahl" role="group" aria-label="Darbringung der Wappen">
+      <button type="button" aria-pressed="true" data-v="halb">A halb auf der Fläche</button>
+      <button type="button" aria-pressed="false" data-v="siegel">B Siegel</button>
+      <button type="button" aria-pressed="false" data-v="praegung">C Prägung</button>
+    </div>
+  </div>
+  <div class="kontext" id="wd-feld" data-wd="halb">
+    <div class="innen">
+      <div class="wd-reihe" id="wd-reihe"></div>
+    </div>
+  </div>
+  <ul class="weg-liste">
+    <li><b>A halb auf der Fläche</b>, deine erste Idee. Ein Band läuft hinter allen sechs Wappen. Wo ein Wappen ins Band taucht, kehrt der Strich sich um: oben Tinte auf Papier, unten Papier auf Farbe. Das ist ein Druckertrick, die Aussparung. Er funktioniert nur, weil die Wappen einfarbig sind, und die Namen stehen gleich darunter im Band.</li>
+    <li><b>B Siegel</b>, deine zweite Idee. Die Scheibe zeigt nur einen Ausschnitt, vergrößert auf das, was jedes Wappen ausmacht: Mühlrad und Ulme, Ruine, Garbe, Gänse, Löwe. Der Name läuft im Rand. Rochesters Rundsiegel ist hier zu Hause; mehr als die anderen erzählt B von Urkunden und Verträgen.</li>
+    <li><b>C Prägung</b>, eine dritte Idee: blind geprägt wie auf einer Urkunde, ohne Tinte, nur Licht und Schatten auf farbigem Karton. Am leisesten von allen, aber auf dem Handy und bei wenig Kontrast kaum lesbar.</li>
+    <li><b>Weitere Ideen, nicht gebaut:</b> Allianzwappen, also Moosburg und Partner als zwei einander zugeneigte Schilde, wie sie Heraldiker für Ehen setzen. Das passt inhaltlich am besten, braucht aber einen sauber gezeichneten Moosburger Schild ohne Mauerkrone und Rollwerk. Dazu das Wasserzeichen, groß, blass und angeschnitten hinter jedem Porträt; das ist schön, aber verbreitet. Und der Stempel wie im Reisepass; den lasse ich weg, er steht der ausgeschlossenen Briefmarke zu nah.</li>
+  </ul>
+  <p class="urteil"><b>Mein Urteil:</b> B, Siegel. Es löst das Stilproblem am gründlichsten: Wer nur einen Ausschnitt zeigt, zeigt keine Rahmen, Kronen und Schildformen, und genau dort unterscheiden sich die Vorlagen am stärksten. Rochester steht dazu nicht als Lücke da. A ist die schönere Komposition auf breiten Bildschirmen, zerfällt auf dem Handy aber in sechs Einzelkarten. <span class="empf">B empfohlen</span></p>
+</section>
+
+<!-- ───────────── 2 Mitmachen -->
+<section class="punkt" id="p2">
+  <header><div class="nr">Punkt 2</div><h2>Mitmachen auf ganzer Breite</h2></header>
+  <p class="text">Einmal auf der Seite, zwischen Porträts und Steckbriefen, ein Band über die ganze Breite in der Akzentfarbe. Es hat zwei Zustände. Gibt es einen offenen Aufruf, steht er vorn, mit Frist und Knopf. Gibt es keinen, lädt das Band allgemein ein. Daneben steht in beiden Fällen das Angebot, benachrichtigt zu werden. Die kleinen Einschübe aus der fünften Lesung schrumpfen in den Porträts auf eine Zeile, die zum Band führt.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, einmal, zwischen Porträts und Steckbriefen</span>
+    <div class="schalter" id="band-wahl" role="group" aria-label="Zustand des Bands">
+      <button type="button" aria-pressed="true" data-v="aufruf">mit Aufruf</button>
+      <button type="button" aria-pressed="false" data-v="allgemein">ohne Aufruf</button>
+    </div>
+  </div>
+  <div class="band" id="band" data-zustand="aufruf">
+    <div class="band-innen" data-zeige="aufruf">
+      <div>
+        <div class="kat">Aufruf, Bürgerfahrt <span class="beispiel">Beispiel</span></div>
+        <h3>Mit nach Bry, 13. bis 16. Mai 2027</h3>
+        <p>Mit dem Bus nach Bry-sur-Marne, untergebracht in Familien. Mitfahren kann jede und jeder aus Moosburg, Französisch ist keine Bedingung.</p>
+        <span class="notiz">noch 14 Plätze</span>
+        <div class="knoepfe"><a class="primaer" href="#p2">Anmelden bis 31. Januar</a><a class="sekundaer" href="#p2">Was die Fahrt kostet</a></div>
+      </div>
+      <form onsubmit="event.preventDefault()">
+        <label for="mail-a">Nichts mehr verpassen</label>
+        <p style="font-size:.88rem;margin-top:.2rem">Neue Fahrten, Besuche und Aufrufe aus allen vier Partnerstädten, ein paar Mal im Jahr.</p>
+        <div class="zeile"><input id="mail-a" type="email" placeholder="E-Mail-Adresse" autocomplete="email"><button type="submit">Benachrichtigen</button></div>
+        <small>Mit Bestätigung per E-Mail, jederzeit abbestellbar. Oder <a href="#p2">die Termine als Kalender abonnieren</a>.</small>
+      </form>
+    </div>
+    <div class="bild" data-zeige="aufruf"><span class="zg z-bry"></span></div>
+    <div class="band-innen" data-zeige="allgemein" hidden>
+      <div>
+        <div class="kat">Mitmachen <span class="beispiel">Beispiel</span></div>
+        <h3>Lust auf Bry, Kärnten, Rochester oder Sawbridgeworth?</h3>
+        <p>Mitfahren, Gäste aufnehmen, Briefe schreiben, den eigenen Verein oder die Schulklasse vernetzen: Sag, was dich interessiert, und wir melden uns, sobald etwas passt.</p>
+        <div class="knoepfe"><a class="primaer" href="#p2">Interesse melden</a><a class="sekundaer" href="#p2">Wer die Partnerschaften trägt</a></div>
+        <div class="reihe4" aria-hidden="true"><span class="zg z-kaernten"></span><span class="zg z-bry"></span><span class="zg z-saw"></span><span class="zg z-roch"></span></div>
+      </div>
+      <form onsubmit="event.preventDefault()">
+        <label for="mail-b">Benachrichtigt werden</label>
+        <p style="font-size:.88rem;margin-top:.2rem">Sobald es eine Fahrt, einen Besuch oder einen Aufruf gibt, ein paar Mal im Jahr.</p>
+        <div class="zeile"><input id="mail-b" type="email" placeholder="E-Mail-Adresse" autocomplete="email"><button type="submit">Benachrichtigen</button></div>
+        <small>Mit Bestätigung per E-Mail, jederzeit abbestellbar. Oder <a href="#p2">die Termine als Kalender abonnieren</a>.</small>
+      </form>
+    </div>
+  </div>
+  <p class="variante-text"><b>Zwei Dinge dazu.</b> Der Knopf zum Interesse führt auf ein kurzes Formular mit drei Fragen (welche Stadt, was, wie erreichbar), nicht auf eine Mail-Adresse; so kommen Anfragen sortiert an. Die Benachrichtigung per E-Mail braucht eine Bestätigung und einen Verteiler, den jemand betreibt. Gibt es den nicht, bleibt das Kalender-Abo: Es sammelt keine Adressen und hält sich von selbst aktuell.</p>
+  <p class="urteil"><b>Mein Urteil:</b> ja, mit beiden Zuständen und dem Bild der Stadt, um die es im Aufruf geht. Die Fläche in der Akzentfarbe ist die einzige große Farbfläche der Seite, darum fällt sie auf, ohne zu schreien. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 3 Turm -->
+<section class="punkt" id="p3">
+  <header><div class="nr">Punkt 3</div><h2>Der Turm, mit Farbe</h2></header>
+  <p class="text">Mittig und näher am Panorama, die Spitze reicht jetzt bis an die Himmelsrichtungen. Die roten Ziegel sind weg, das Dach ist Papier mit Ziegelreihen in Tinte. Die Farbe kommt von hinten, in der Zeichnungsfarbe des Akzents. Drei Formen:</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Rundblick im Kopf</span>
+    <div class="schalter" id="grund-wahl" role="group" aria-label="Form hinter dem Turm">
+      <button type="button" aria-pressed="true" data-v="klecks">A Klecks</button>
+      <button type="button" aria-pressed="false" data-v="scheibe">B Scheibe</button>
+      <button type="button" aria-pressed="false" data-v="rose">C Windrose</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen" style="padding-block:30px 26px">
+      <div class="rund-buehne" id="rund-buehne" data-turm="unten">
+        <div class="rund" id="rund" tabindex="0" role="img" aria-label="Rundblick vom Johannisturm mit den Partnerstädten an ihrer Richtung. Ziehen oder Pfeiltasten drehen den Blick und den Turm."></div>
+        <div class="sockel" id="sockel" data-grund="klecks" aria-hidden="true">
+          <svg viewBox="0 0 260 236">
+            <g class="grund klecks"><path d="M58 150C40 128 62 104 92 112C104 88 140 86 156 104C182 92 214 110 204 138C226 150 218 184 190 186C182 210 140 214 124 198C100 214 62 206 66 184C42 182 40 162 58 150Z"/><path d="M214 116c6-4 13 1 10 7s-13 3-10-7zM46 196c4-3 9 0 7 5s-9 2-7-5zM222 196c3-2 7 0 6 3s-7 2-6-3z"/></g>
+            <g class="grund scheibe"><circle cx="130" cy="96" r="62"/></g>
+            <g class="grund rose" id="rose"><ellipse cx="130" cy="214" rx="104" ry="20"/><g id="rose-marken"></g></g>
+          </svg>
+          <span class="turm" id="turm"></span>
+        </div>
+      </div>
+      <div class="rund-steuer">
+        <div class="schalter" id="sonne-tage" role="group" aria-label="Tag für den Sonnenlauf">
+          <button type="button" aria-pressed="false" data-tag="heute">Heute</button>
+          <button type="button" aria-pressed="true" data-tag="2026-03-30">30. März, Bry</button>
+          <button type="button" aria-pressed="false" data-tag="2026-05-10">10. Mai, Sawbridgeworth</button>
+          <button type="button" aria-pressed="false" data-tag="2026-06-21">21. Juni</button>
+        </div>
+      </div>
+      <p class="rund-anzeige" id="sonne-anzeige" aria-live="polite"></p>
+    </div>
+  </div>
+  <ul class="weg-liste">
+    <li><b>A Klecks</b>, wie du vorgeschlagen hast: ein Tintenfleck, aus dem der Turm herauswächst. Malerisch, und er passt zum Federstrich. Mit drei Spritzern daneben wirkt er gewollt und nicht wie ein Fehler.</li>
+    <li><b>B Scheibe</b> hinter der Spitze, wie eine Sonne oder ein Zifferblatt. Ruhig und klar, aber im Sonnenlauf steht dann eine zweite Scheibe in der Mitte des Bildes.</li>
+    <li><b>C Windrose</b>, eine eigene Idee: ein Ring am Fuß des Turms, perspektivisch, mit den Himmelsrichtungen darauf. Er dreht mit dem Blick. Damit ist die Farbe nicht nur Schmuck, sondern sagt, wohin man schaut. Hinten verschwinden die Buchstaben hinter dem Turm.</li>
+  </ul>
+  <p class="urteil"><b>Mein Urteil:</b> A, Klecks. Erwartet hatte ich die Windrose, weil sie etwas sagt; im Bild ist ihr Ring aber zu fein, um den Turm zu tragen, und die Buchstaben verschwinden zur Hälfte hinter ihm. Der Klecks gibt der Mitte Gewicht und bringt die Akzentfarbe ins Panorama, ohne mit der Sonne zu konkurrieren wie die Scheibe. <span class="empf">A empfohlen</span></p>
+</section>
+
+<!-- ───────────── Fragen -->
+<section class="punkt" id="fragen" style="border-bottom:0;padding-bottom:110px">
+  <header><div class="nr">Offen</div><h2>Fragen</h2></header>
+  <ol class="fragen">
+    <li><b>Akzent:</b> Isar-Petrol, Nachtblau oder Aubergine? Ich würde Petrol nehmen. Im Kanon steht es schon für den Bahnhof, also für Wege und Verbindungen, und es verträgt sich mit dem Meer in den Schnitten. Aubergine trägt bereits die Speisekarten, Nachtblau die Wahlseite.</li>
+    <li><b>Sawbridgeworth:</b> Die Zeichnung folgt dem Bild, nicht dem Wortlaut der Verleihung, den ich nicht abrufen konnte. Vor der Veröffentlichung gegenlesen lassen, am besten von der Town Council selbst.</li>
+    <li><b>Rochester:</b> Darf das Rundsiegel der Flagge als Siegel stehen? Woher stammt deine Datei? Die Commons-Fassung der Flagge steht unter CC BY 3.0.</li>
+    <li><b>Benachrichtigung:</b> Gibt es einen Verteiler der Stadt oder des Partnerschaftsvereins, oder bleibt es beim Kalender-Abo?</li>
+  </ol>
+  <p class="quellen">Wappen: Sawbridgeworth neu gezeichnet nach dem Vollwappen der Town Council (Vorlagen von Benedict, nur als Referenz), Rochester nach dem Rundsiegel der Stadtflagge (Datei von Benedict), die übrigen wie in der fünften Lesung über Wikimedia Commons. Turm: St. Johannes aus dem europecitybuilder. Farben: Themen- und Zeichnungsfarben aus moosburg-design.</p>
+</section>
+
+</div>
+
+<script>
+document.body.dataset.farbe = "dezent";
+const D = JSON.parse(document.getElementById("daten").textContent);
+const RAD = Math.PI / 180;
+const MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+const zahl = (n) => Math.round(n).toLocaleString("de-DE");
+const f1 = (n) => (Math.round(n * 10) / 10).toString();
+const ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const MOOSBURG = [48.4703, 11.9378];
+const STADT = {
+  kaernten: { name: "Moosburg in Kärnten", kurz: "Kärnten", seit: "1991", tink: ["gold", "schwarz"] },
+  bry: { name: "Bry-sur-Marne", kurz: "Bry", seit: "1973", tink: ["blau", "rot"] },
+  saw: { name: "Sawbridgeworth", kurz: "Sawbridgeworth", seit: "2018", tink: ["rot", "gold"] },
+  roch: { name: "Rochester", kurz: "Rochester", seit: "1981", tink: ["blau", "weiss"] },
+};
+const LAGE = { bry: [48.8385, 2.5233], kaernten: [46.6564, 14.1756], saw: [51.8146, 0.1503], roch: [44.0216, -92.4699] };
+const PARTNER = ["kaernten", "bry", "saw", "roch"];
+for (const id of PARTNER) Object.assign(STADT[id], { grad: D.strecken[id].peilung, km: D.strecken[id].km });
+const T = (n) => `var(--t-${n})`;
+
+function abstandPeilung([la1, lo1], [la2, lo2]) {
+  const p1 = la1 * RAD, p2 = la2 * RAD, dl = (lo2 - lo1) * RAD;
+  const d = 2 * Math.asin(Math.sqrt(Math.sin((p2 - p1) / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2));
+  const b = Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / RAD;
+  return [d * 6371, (b + 360) % 360];
+}
+function zielPunkt([la, lo], peil, km) {
+  const p1 = la * RAD, l1 = lo * RAD, t = peil * RAD, d = km / 6371;
+  const p2 = Math.asin(Math.sin(p1) * Math.cos(d) + Math.cos(p1) * Math.sin(d) * Math.cos(t));
+  const l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(p1), Math.cos(d) - Math.sin(p1) * Math.sin(p2));
+  return [p2 / RAD, ((l2 / RAD + 540) % 360) - 180];
+}
+
+function wimpel(x, y, tink) {
+  return `<g class="g-wimpel">
+    <path class="fahne" d="M${x} ${y - 26}L${x + 17} ${y - 21.5}L${x} ${y - 21.5}Z" fill="${T(tink[0])}"/>
+    <path class="fahne" d="M${x} ${y - 21.5}L${x + 17} ${y - 21.5}L${x} ${y - 17}Z" fill="${T(tink[1])}"/>
+    <line class="mast" x1="${x}" y1="${y}" x2="${x}" y2="${y - 28}"/></g>`;
+}
+
+// ---------- Sonne (NOAA-Näherung, wie in daten.py) ----------
+function sonnenstand(t, lat, lon) {
+  const jd = t.getTime() / 86400000 + 2440587.5, jc = (jd - 2451545) / 36525;
+  const l0 = (280.46646 + jc * (36000.76983 + jc * 0.0003032)) % 360;
+  const m = 357.52911 + jc * (35999.05029 - 0.0001537 * jc);
+  const e = 0.016708634 - jc * (0.000042037 + 0.0000001267 * jc);
+  const c = Math.sin(m * RAD) * (1.914602 - jc * (0.004817 + 0.000014 * jc)) + Math.sin(2 * m * RAD) * (0.019993 - 0.000101 * jc) + Math.sin(3 * m * RAD) * 0.000289;
+  const lam = l0 + c - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * jc) * RAD);
+  const eps = 23 + (26 + (21.448 - jc * (46.815 + jc * (0.00059 - jc * 0.001813))) / 60) / 60 + 0.00256 * Math.cos((125.04 - 1934.136 * jc) * RAD);
+  const dekl = Math.asin(Math.sin(eps * RAD) * Math.sin(lam * RAD)) / RAD;
+  const y = Math.tan((eps / 2) * RAD) ** 2;
+  const zeitgl = (4 / RAD) * (y * Math.sin(2 * l0 * RAD) - 2 * e * Math.sin(m * RAD) + 4 * e * y * Math.sin(m * RAD) * Math.cos(2 * l0 * RAD) - 0.5 * y * y * Math.sin(4 * l0 * RAD) - 1.25 * e * e * Math.sin(2 * m * RAD));
+  const min = t.getUTCHours() * 60 + t.getUTCMinutes() + t.getUTCSeconds() / 60;
+  const stw = ((min + zeitgl + 4 * lon) / 4 - 180) * RAD, phi = lat * RAD, d = dekl * RAD;
+  const h = Math.asin(Math.sin(phi) * Math.sin(d) + Math.cos(phi) * Math.cos(d) * Math.cos(stw)) / RAD;
+  const az = (Math.atan2(Math.sin(stw), Math.cos(stw) * Math.sin(phi) - Math.tan(d) * Math.cos(phi)) / RAD + 540) % 360;
+  return { az, h, dekl, zeitgl, min };
+}
+function tagesbahn(iso) {
+  const start = new Date(`${iso}T00:00:00Z`).getTime() - 2 * 3600e3;
+  const pts = [];
+  for (let k = 0; k <= 26 * 30; k++) {
+    const t = new Date(start + k * 120e3);
+    pts.push({ t, ...sonnenstand(t, ...MOOSBURG) });
+  }
+  const auf = pts.findIndex((p, i) => i && pts[i - 1].h < -0.833 && p.h >= -0.833);
+  const unter = pts.findIndex((p, i) => i > auf && pts[i - 1].h >= -0.833 && p.h < -0.833);
+  return { pts: pts.slice(auf, unter + 1), auf: pts[auf], unter: pts[unter] };
+}
+const uhr = (t) => t.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" });
+const datum = (iso) => { const [, m, t] = iso.split("-").map(Number); return `${t}. ${MONATE[m - 1]}`; };
+const U = D.sonne.untergang;
+const nordUntergang = Math.max(...U.map((u) => u[1])), suedUntergang = Math.min(...U.map((u) => u[1]));
+// Tage, an denen der Untergang die Richtung einer Stadt kreuzt
+function partnerTage(grad) {
+  const tage = [];
+  for (let i = 1; i < U.length; i++) {
+    const a = U[i - 1][1] - grad, b = U[i][1] - grad;
+    if (a * b < 0) tage.push(Math.abs(a) < Math.abs(b) ? U[i - 1][0] : U[i][0]);
+  }
+  return tage;
+}
+
+// ---------- 1 Rundblick ----------
+const PXG = 4, BREITE = 360 * PXG, UEBER = 25, HY = 330, BODEN = 356, KAL = 370, LINEAL = 404, HOCH = 440;
+const XA = (az) => az * PXG;
+const YG = (w) => HY - Math.max(-0.25, w) * PXG * UEBER;
+const YS = (h) => HY - h * PXG * 0.5;
+const STRAHLEN = D.horizont.strahlen;
+const horizontBei = (az) => {
+  const s = STRAHLEN.reduce((a, b) => (Math.abs(b.az - az) < Math.abs(a.az - az) ? b : a));
+  return Math.max(...s.baender.map((b) => b[0]));
+};
+
+// Mitten der Beschriftungen: ab der Peilung so weit auseinander, dass sich nichts überlagert
+function verteile(ids, abstand) {
+  const p = ids.map((id) => ({ id, ziel: XA(STADT[id].grad), x: XA(STADT[id].grad) }));
+  for (let runde = 0; runde < 400; runde++) {
+    p.sort((a, b) => a.x - b.x);
+    for (let i = 0; i < p.length; i++) {
+      const a = p[i], b = p[(i + 1) % p.length];
+      const bx = i === p.length - 1 ? b.x + BREITE : b.x;
+      const luecke = bx - a.x;
+      if (luecke < abstand) { const s = (abstand - luecke) / 2; a.x -= s; b.x += s; }
+    }
+    for (const q of p) { q.x += (q.ziel - q.x) * 0.02; q.x = ((q.x % BREITE) + BREITE) % BREITE; }
+  }
+  return Object.fromEntries(p.map((q) => [q.id, q.x]));
+}
+const MITTE = verteile(PARTNER, 215);
+
+const BEKANNT = ["Zugspitze", "Großglockner", "Wendelstein"];
+function gipfelWahl() {
+  return BEKANNT.map((n) => D.gipfel.filter((x) => x.name === n && x.sichtbar).sort((a, b) => b.winkel - a.winkel)[0]).filter(Boolean).sort((a, b) => a.az - b.az);
+}
+
+function streifen() {
+  let s = "";
+  // Kulissen, von hinten nach vorn
+  for (let b = 3; b >= 0; b--) {
+    const teile = []; let akt = [];
+    for (const r of STRAHLEN) {
+      const w = r.baender[b][0];
+      if (w <= -9) { if (akt.length) teile.push(akt); akt = []; continue; }
+      akt.push([XA(r.az), YG(w)]);
+    }
+    if (akt.length) teile.push(akt);
+    if (teile.length && teile[0][0][0] === 0) teile.at(-1).push([BREITE, teile[0][0][1]]);
+    for (const t of teile) {
+      const zug = t.map(([x, y]) => `${f1(x)} ${f1(y)}`).join("L");
+      s += `<path class="kf k${4 - b}" d="M${f1(t[0][0])} ${BODEN}L${zug}L${f1(t.at(-1)[0])} ${BODEN}Z"/><path class="k k${4 - b}" d="M${zug}"/>`;
+    }
+  }
+  // Drei Gipfel, nur mit Namen
+  gipfelWahl().forEach((g, i) => {
+    const x = XA(g.az), y = YG(g.winkel), hoch = i % 2 ? 30 : 12;
+    s += `<line class="gipfel-s" x1="${f1(x)}" y1="${f1(y - 3)}" x2="${f1(x)}" y2="${f1(y - 6 - hoch)}"/><text class="gipfel-t" x="${f1(x)}" y="${f1(y - 10 - hoch)}" text-anchor="middle">${g.name}</text>`;
+  });
+  // Kalender der Untergänge: der Bogen eines Jahres, darauf die Tage der Städte
+  s += `<line class="kalender" x1="${XA(suedUntergang)}" y1="${KAL}" x2="${XA(nordUntergang)}" y2="${KAL}"/>`;
+  s += `<text class="kalender-t" x="${XA(suedUntergang) - 8}" y="${KAL + 4}" text-anchor="end">Untergang am 21. Dezember</text>`;
+  s += `<text class="kalender-t" x="${XA(nordUntergang) + 8}" y="${KAL + 4}" text-anchor="start">am 21. Juni</text>`;
+  for (const id of PARTNER) {
+    const tage = partnerTage(STADT[id].grad);
+    if (!tage.length) continue;
+    const x = XA(STADT[id].grad), links = id === "bry";
+    s += `<line class="tag-s" x1="${f1(x)}" y1="${KAL - 7}" x2="${f1(x)}" y2="${KAL + 8}"/>`;
+    s += `<text class="tag-t" x="${f1(x + (links ? -5 : 5))}" y="${KAL + 21}" text-anchor="${links ? "end" : "start"}">${tage.map(datum).join(", ")}</text>`;
+  }
+  // Himmelsrichtungen
+  s += `<line class="lineal" x1="0" y1="${LINEAL}" x2="${BREITE}" y2="${LINEAL}"/>`;
+  ["Nord", "Nordost", "Ost", "Südost", "Süd", "Südwest", "West", "Nordwest"].forEach((n, i) => {
+    s += `<line class="tick" x1="${XA(i * 45)}" y1="${LINEAL}" x2="${XA(i * 45)}" y2="${LINEAL + 6}"/><text class="himmel" x="${XA(i * 45)}" y="${LINEAL + 22}" text-anchor="middle">${n}</text>`;
+  });
+  // Partnerstädte
+  for (const id of PARTNER) {
+    const st = STADT[id], bx = XA(st.grad), by = YG(horizontBei(st.grad));
+    let mx = MITTE[id];
+    if (mx - bx > BREITE / 2) mx -= BREITE; else if (bx - mx > BREITE / 2) mx += BREITE;
+    s += `<path class="leit" d="M${f1(mx)} 214C${f1(mx)} 250 ${f1(bx)} ${f1(by - 60)} ${f1(bx)} ${f1(by - 30)}"/>`;
+    s += `<circle class="fuss" cx="${f1(bx)}" cy="${f1(by)}" r="2.2"/><g data-wimpel="${id}">${wimpel(bx, by, st.tink)}</g>`;
+    s += `<foreignObject x="${f1(mx - 75)}" y="10" width="150" height="160"><span class="zg z-${id}"></span></foreignObject>`;
+    s += `<text class="pname" x="${f1(mx)}" y="188" text-anchor="middle">${st.name}</text><text class="pdetail" x="${f1(mx)}" y="204" text-anchor="middle">seit ${st.seit} · ${zahl(st.km)} km</text>`;
+  }
+  return s;
+}
+
+const rund = document.getElementById("rund");
+let fenster = 1000, blick = 277;
+rund.innerHTML = `<svg viewBox="0 0 1000 ${HOCH}" aria-hidden="true"><g id="rund-zug">${[-1, 0, 1].map((k) => `<g transform="translate(${k * BREITE} 0)">${streifen()}</g>`).join("")}<g id="rund-sonne"></g></g></svg>`;
+const zug = document.getElementById("rund-zug");
+const sonneG = document.getElementById("rund-sonne");
+function setzeBlick(az) {
+  blick = ((az % 360) + 360) % 360;
+  zug.setAttribute("transform", `translate(${f1(fenster / 2 - XA(blick))} 0)`);
+  turmDrehen(blick);
+}
+function passeFenster() {
+  fenster = rund.clientWidth < 700 ? 560 : 1000;
+  rund.querySelector("svg").setAttribute("viewBox", `0 0 ${fenster} ${HOCH}`);
+  setzeBlick(blick);
+}
+new ResizeObserver(passeFenster).observe(rund);
+
+let folgen = true;
+(() => {
+  let start = null;
+  rund.addEventListener("pointerdown", (e) => { start = [e.clientX, blick]; rund.setPointerCapture(e.pointerId); rund.classList.add("zieht"); folgen = false; });
+  rund.addEventListener("pointermove", (e) => { if (start) setzeBlick(start[1] - ((e.clientX - start[0]) * fenster) / rund.clientWidth / PXG); });
+  const ende = () => { start = null; rund.classList.remove("zieht"); };
+  rund.addEventListener("pointerup", ende);
+  rund.addEventListener("pointercancel", ende);
+  rund.addEventListener("keydown", (e) => {
+    const d = { ArrowLeft: -10, ArrowRight: 10 }[e.key];
+    if (d) { e.preventDefault(); folgen = false; setzeBlick(blick + d); }
+  });
+})();
+
+// Sonnenlauf
+const heute = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+let tag = "2026-03-30", bahn = tagesbahn(tag), lauf = null;
+const anzeige = document.getElementById("sonne-anzeige");
+function sonneZeichnen(anteil) {
+  const p = bahn.pts;
+  const n = Math.max(1, Math.round(anteil * (p.length - 1)));
+  const linie = (arr) => arr.map((q) => `${f1(XA(q.az))} ${f1(YS(Math.max(0, q.h)))}`).join("L");
+  const jetzt = p[n];
+  let s = "";
+  for (const k of [-1, 0, 1]) {
+    s += `<g transform="translate(${k * BREITE} 0)"><path class="bahn" d="M${linie(p)}"/><path class="bahn-gelaufen" d="M${linie(p.slice(0, n + 1))}"/>`;
+    const x = XA(jetzt.az), y = YS(Math.max(0, jetzt.h));
+    s += Array.from({ length: 8 }, (_, i) => { const a = (i * 45) * RAD; return `<line class="sonne-strahl" x1="${f1(x + Math.cos(a) * 13)}" y1="${f1(y + Math.sin(a) * 13)}" x2="${f1(x + Math.cos(a) * 18)}" y2="${f1(y + Math.sin(a) * 18)}"/>`; }).join("");
+    s += `<circle class="sonne-kern" cx="${f1(x)}" cy="${f1(y)}" r="9"/></g>`;
+  }
+  sonneG.innerHTML = s;
+  if (folgen) setzeBlick(jetzt.az);
+  const unterAz = bahn.unter.az;
+  const treffer = anteil >= 1 ? PARTNER.find((id) => Math.abs(STADT[id].grad - unterAz) < 0.8) : null;
+  document.querySelectorAll("#rund [data-wimpel]").forEach((w) => w.classList.toggle("wimpel-an", w.dataset.wimpel === treffer));
+  const kopf = `<b>${tag === heute ? "Heute, " : ""}${datum(tag)}</b> · Untergang ${uhr(bahn.unter.t)} Uhr`;
+  let satz = "";
+  if (anteil < 1) satz = ` · ${uhr(jetzt.t)} Uhr`;
+  else if (treffer) satz = ` · <b>Die Sonne geht genau über ${STADT[treffer].name} unter.</b>`;
+  else if (unterAz > 305) satz = ` · Nördlicher geht sie nie unter; Rochester liegt noch ${f1(STADT.roch.grad - unterAz).replace(".", ",")}° weiter.`;
+  anzeige.innerHTML = kopf + satz;
+}
+function waehleTag(iso, abspielen) {
+  tag = iso; bahn = tagesbahn(iso); folgen = true;
+  document.querySelectorAll("#sonne-tage button").forEach((b) => b.setAttribute("aria-pressed", String((b.dataset.tag === "heute" ? heute : b.dataset.tag) === iso)));
+  if (lauf) cancelAnimationFrame(lauf);
+  if (!abspielen || ruhig) { sonneZeichnen(1); return; }
+  const t0 = performance.now(), dauer = 9000;
+  const schritt = (t) => {
+    const a = Math.min(1, (t - t0) / dauer);
+    sonneZeichnen(a * a * (3 - 2 * a));
+    if (a < 1) lauf = requestAnimationFrame(schritt);
+  };
+  lauf = requestAnimationFrame(schritt);
+}
+document.getElementById("sonne-tage").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (b) waehleTag(b.dataset.tag === "heute" ? heute : b.dataset.tag, true);
+});
+passeFenster();
+waehleTag("2026-03-30", false);
+
+// ---------- Schalter ----------
+function schalter(id, wenn) {
+  const g = document.getElementById(id);
+  g.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    wenn(b.dataset.v);
+  });
+}
+
+
+// ---------- Akzent ----------
+schalter("akzent-wahl", (v) => { document.body.dataset.akzent = v; });
+
+// ---------- 1 Wappen ----------
+const WAPPEN = [
+  { name: "Bry-sur-Marne", seit: "seit 1973", m: "{{IMG:docs/formsprache/lesung-3/assets/wappen-bry-stich.webp}}", sz: 1.55, sy: "0px" },
+  { name: "Moosburg in Kärnten", seit: "seit 1991", m: "{{IMG:docs/formsprache/lesung-3/assets/wappen-kaernten-stich.webp}}", sz: 1.65, sy: "-4px" },
+  { name: "Sawbridgeworth", seit: "seit 2018", m: "{{IMG:docs/formsprache/lesung-3/assets/wappen-saw-stich.webp}}", sz: 1.9, sy: "-14px" },
+  { name: "Rochester", seit: "seit 1981", m: "{{IMG:docs/formsprache/lesung-3/assets/wappen-roch-stich.webp}}", sz: 1.12, sy: "0px" },
+  { name: "Königsberg an der Eger", seit: "Patenschaft seit 1968", m: "{{IMG:docs/formsprache/lesung-3/assets/wappen-koenigsberg-stich.webp}}", sz: 1.45, sy: "4px" },
+  { name: "Hodschag", seit: "Patenschaft seit 1973", m: null },
+];
+const KUERZEL = { "Moosburg in Kärnten": "MOOSBURG · KÄRNTEN", "Königsberg an der Eger": "KÖNIGSBERG · EGER" };
+document.getElementById("wd-reihe").innerHTML = WAPPEN.map((w, i) => {
+  const ring = (KUERZEL[w.name] || w.name.toUpperCase()) + " · " + w.seit.replace("Patenschaft ", "").toUpperCase();
+  const bild = w.m ? `<span class="tinte"></span><span class="hell"></span>` : `<span class="wd-leer">offen</span>`;
+  return `<figure class="wd"${w.m ? ` style="--m:url(${w.m});--sz:${w.sz};--sy:${w.sy}"` : ""}>
+    <div class="wd-buehne"><span class="wd-bild">${bild}</span>
+      <svg class="ring" viewBox="0 0 150 150" aria-hidden="true"><defs><path id="ring-${i}" d="M75 75m-61 0a61 61 0 1 1 122 0a61 61 0 1 1-122 0"/></defs>
+        <circle cx="75" cy="75" r="53" fill="none" stroke="#e8d5a3" stroke-width=".8"/><circle cx="75" cy="75" r="71" fill="none" stroke="#e8d5a3" stroke-width=".6"/>
+        <text font-family="Atkinson Hyperlegible Next,sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6" fill="#faf7f2"><textPath href="#ring-${i}" startOffset="25%" text-anchor="middle">${ring}</textPath></text></svg>
+    </div>
+    <figcaption>${w.name}<span>${w.seit}</span></figcaption></figure>`;
+}).join("");
+schalter("wd-wahl", (v) => { document.getElementById("wd-feld").dataset.wd = v; });
+
+// ---------- 2 Band ----------
+schalter("band-wahl", (v) => {
+  const band = document.getElementById("band");
+  band.dataset.zustand = v;
+  band.querySelectorAll("[data-zeige]").forEach((e) => { e.hidden = e.dataset.zeige !== v; });
+});
+
+// ---------- 3 Turm ----------
+function turmDrehen(az) {
+  const i = Math.round(az / 10) % 36;
+  const t = document.getElementById("turm");
+  if (t) {
+    t.style.setProperty("--tx", `${((i % 9) / 8) * 100}%`);
+    t.style.setProperty("--ty", `${(Math.floor(i / 9) / 3) * 100}%`);
+  }
+  // Windrose: geradeaus ist hinten auf dem Ring, rechts ist rechts
+  const m = document.getElementById("rose-marken");
+  if (!m) return;
+  m.innerHTML = [["N", 0], ["O", 90], ["S", 180], ["W", 270]].map(([n, a]) => {
+    const w = (a - az) * RAD, x = 130 + 104 * Math.sin(w), y = 214 - 20 * Math.cos(w);
+    return `<line x1="${f1(x)}" y1="${f1(y - 5)}" x2="${f1(x)}" y2="${f1(y + 5)}"/><text x="${f1(x)}" y="${f1(y + (Math.cos(w) > 0 ? -9 : 19))}">${n}</text>`;
+  }).join("");
+}
+turmDrehen(blick);
+schalter("grund-wahl", (v) => { document.getElementById("sockel").dataset.grund = v; });
+</script>

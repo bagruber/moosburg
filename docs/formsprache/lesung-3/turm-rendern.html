@@ -1,0 +1,101 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  Zeichnet den oberen Johannisturm in 36 Ansichten, oben Kanten (Durchgang A), unten Schraffur
+  und Dachfarbe (Durchgang B). Neben diese Seite gehören aus dem europecitybuilder
+  three.module.js, three.core.js, loaders/GLTFLoader.js, utils/BufferGeometryUtils.js,
+  utils/SkeletonUtils.js und public/models/st-johannes-moosburg-fern.glb.
+  Ordner per HTTP ausliefern, dann:
+    chrome --headless=new --use-angle=swiftshader --enable-unsafe-swiftshader --hide-scrollbars
+      --window-size=1800,4160 --virtual-time-budget=30000 --screenshot=blatt.png
+      "http://127.0.0.1:8765/turm-rendern.html?ymin=25.6"
+    python turm_zerlegen.py <assets-ordner>
+-->
+<style>html,body{margin:0;background:#fff}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "./loaders/GLTFLoader.js";
+
+const q = new URLSearchParams(location.search);
+const W = +(q.get("w") || 200), H = +(q.get("h") || 520), N = +(q.get("n") || 36), SP = +(q.get("sp") || 9);
+const YMIN = +(q.get("ymin") || 21), FOV = +(q.get("fov") || 16), NEIG = +(q.get("neig") || 8);
+const datei = q.get("modell") === "nah" ? "st-johannes-moosburg.glb" : "st-johannes-moosburg-fern.glb";
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.setClearColor(0x00ff00, 1);
+
+const gltf = await new GLTFLoader().loadAsync("./" + datei);
+gltf.scene.updateMatrixWorld(true);
+const teile = { dach: [], dunkel: [], wand: [] };
+gltf.scene.traverse((o) => {
+  if (!o.isMesh) return;
+  const g = (o.geometry.index ? o.geometry.toNonIndexed() : o.geometry.clone()).applyMatrix4(o.matrixWorld);
+  const p = g.attributes.position.array;
+  const art = /^roof/.test(o.material.name) ? "dach" : /^(inside|glass|iron|woodDark)$/.test(o.material.name) ? "dunkel" : "wand";
+  for (let i = 0; i < p.length; i += 9) {
+    const cx = (p[i] + p[i + 3] + p[i + 6]) / 3, cy = (p[i + 1] + p[i + 4] + p[i + 7]) / 3;
+    if (cx < -10.25 && cy > YMIN) for (let k = 0; k < 9; k++) teile[art].push(p[i + k]);
+  }
+});
+const geo = {};
+for (const [k, v] of Object.entries(teile)) {
+  geo[k] = new THREE.BufferGeometry();
+  geo[k].setAttribute("position", new THREE.Float32BufferAttribute(v, 3));
+  geo[k].computeVertexNormals();
+}
+const alle = new THREE.BufferGeometry();
+alle.setAttribute("position", new THREE.Float32BufferAttribute([...teile.dach, ...teile.dunkel, ...teile.wand], 3));
+
+// Durchgang A: Kanten in Tinte, verdeckte Kanten verschwinden hinter weißen Flächen
+const szeneA = new THREE.Scene();
+szeneA.add(new THREE.Mesh(alle, new THREE.MeshBasicMaterial({ color: 0xffffff, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 })));
+// Mauerkanten schwarz (werden kräftig), Ziegelkanten blau (bleiben fein)
+const mauer = new THREE.BufferGeometry();
+mauer.setAttribute("position", new THREE.Float32BufferAttribute([...teile.dunkel, ...teile.wand], 3));
+szeneA.add(new THREE.LineSegments(new THREE.EdgesGeometry(mauer, 28), new THREE.LineBasicMaterial({ color: 0x000000 })));
+szeneA.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo.dach, 28), new THREE.LineBasicMaterial({ color: 0x0000ff })));
+
+
+// Durchgang B: Schraffur nach Licht, Dach in Rot (wird zur zweiten Farbe), Öffnungen voll
+const schraffur = (farbe, dunkel) => new THREE.ShaderMaterial({
+  uniforms: { uFarbe: { value: new THREE.Color(farbe) }, uDunkel: { value: dunkel }, uGrenze: { value: farbe === 0xff0000 ? 0 : .32 } },
+  vertexShader: `varying vec3 vN; varying float vY; void main(){ vN = normalize(normalMatrix * normal); vY = (modelMatrix * vec4(position, 1.)).y; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
+  fragmentShader: `uniform vec3 uFarbe; uniform float uDunkel; uniform float uGrenze; varying vec3 vN; varying float vY;
+    void main(){
+      float d = max(0., dot(normalize(vN), normalize(vec3(-.55, .55, .62))));
+      vec2 p = gl_FragCoord.xy;
+      float ink = 0.;
+      if (d < uGrenze) ink = max(ink, step(mod(p.x + p.y, 6.), 1.));
+      if (d < .1 && uGrenze > .3) ink = max(ink, step(mod(p.x - p.y, 6.), 1.));
+      if (uDunkel > .5) ink = 1.;
+      gl_FragColor = vec4(mix(uFarbe, vec3(0.), ink), 1.);
+    }`,
+});
+const szeneB = new THREE.Scene();
+szeneB.add(new THREE.Mesh(geo.wand, schraffur(0xffffff, 0)));
+szeneB.add(new THREE.Mesh(geo.dach, schraffur(0xff0000, 0)));
+szeneB.add(new THREE.Mesh(geo.dunkel, schraffur(0x000000, 1)));
+
+alle.computeBoundingBox();
+const bb = alle.boundingBox, mitte = new THREE.Vector3(-13.65, (bb.min.y + bb.max.y) / 2, 0);
+const hoehe = bb.max.y - bb.min.y;
+const kamera = new THREE.PerspectiveCamera(FOV, W / H, 1, 2000);
+const abstand = (hoehe * 0.56) / Math.tan((FOV / 2) * Math.PI / 180);
+
+const blatt = (n) => { const c = document.createElement("canvas"); c.width = SP * W; c.height = Math.ceil(N / SP) * H; document.body.append(c); return c.getContext("2d"); };
+const a = blatt(), b = blatt();
+for (let i = 0; i < N; i++) {
+  // Blick nach az: die Kamera steht hinter dem Turm und schaut in dieselbe Richtung (Norden = -z, Osten = +x)
+  const az = (i * 360) / N * Math.PI / 180, neig = NEIG * Math.PI / 180;
+  const d = new THREE.Vector3(Math.sin(az), 0, -Math.cos(az));
+  kamera.position.copy(mitte).addScaledVector(d, -abstand * Math.cos(neig)).add(new THREE.Vector3(0, abstand * Math.sin(neig), 0));
+  kamera.lookAt(mitte);
+  const x = (i % SP) * W, y = Math.floor(i / SP) * H;
+  renderer.render(szeneA, kamera); a.drawImage(renderer.domElement, x, y);
+  renderer.render(szeneB, kamera); b.drawImage(renderer.domElement, x, y);
+}
+document.title = "fertig " + JSON.stringify({ hoehe: hoehe.toFixed(1), dreiecke: alle.attributes.position.count / 3 });
+</script>

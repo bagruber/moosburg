@@ -1,0 +1,891 @@
+<title>Partnerstädte, fünfte Lesung</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"Madelon Script";src:url({{FONT:public/fonts/MadelonScript.otf}}) format("opentype");font-display:swap}
+
+/* Ausschnitte der Stadtseite, darum eine helle Welt mit Absicht wie in den
+   Lesungen davor: Der gebaute Stand hat keinen Dunkelmodus. */
+:root{
+  --creme:#faf7f2;--creme-dunkel:#f1ece1;--weiss:#fff;
+  --tinte:#1c1c1c;--tinte-weich:#555;--tinte-matt:#6f6b63;--linie:#e4e0d7;
+  --rot-50:#fdf3f5;--rot-100:#fbe5e9;--rot-500:#c8102e;--rot-700:#a50d24;
+  --gold-100:#f6ecd5;--gold-200:#e8d5a3;--gold-500:#b8964e;--gold-700:#6e5a30;
+  --erdbraun:#4a2a17;--z-erdbraun:#9b5309;--z-tannengruen:#157840;
+  --wasser:#117393;--wasser-hell:#dce9eb;
+  --m-ziegel:#9b5309;--m-wein:#c8102e;--m-stein:#b8964e;
+  --t-blau:#3f55b0;--t-rot:#c8102e;--t-gold:#c9a24a;--t-schwarz:#1c1c1c;--t-weiss:#ffffff;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Atkinson Hyperlegible Next",system-ui,sans-serif;
+  --script:"Madelon Script","Brush Script MT",cursive;
+  --bry-t:url({{IMG:docs/formsprache/lesung-3/assets/bryA-tinte.webp}});
+  --bry-f:url({{IMG:docs/formsprache/lesung-3/assets/bryA-farbe.webp}});
+  --kaernten-t:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-tinte.webp}});
+  --kaernten-f:url({{IMG:docs/formsprache/lesung-3/assets/kaerntenA-farbe.webp}});
+  --saw-t:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-tinte.webp}});
+  --saw-f:url({{IMG:docs/formsprache/lesung-3/assets/sawbridgeworthA-farbe.webp}});
+  --roch-t:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-tinte.webp}});
+  --roch-f:url({{IMG:docs/formsprache/lesung-3/assets/rochesterA-farbe.webp}});
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip}
+body{background:var(--creme);color:var(--tinte);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));overflow-x:clip;font-variant-numeric:lining-nums}
+.spalte{max-width:1080px;margin-inline:auto}
+.text{max-width:68ch}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:var(--rot-700)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rot-500);outline-offset:2px}
+.kat{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ueber{position:relative;display:inline-block;margin-top:.9em}
+.ueber>.handschrift{position:absolute;left:-.05em;top:-.42em;font-family:var(--script);font-size:1.45em;line-height:1;color:rgb(184 150 78/.55);transform:rotate(-6deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none;user-select:none}
+.ueber>*:not(.handschrift){position:relative}
+code{font-size:.88em;background:var(--creme-dunkel);padding:.05em .35em;border-radius:4px}
+
+.seitenkopf{padding-block:56px 36px;border-bottom:1px solid var(--linie)}
+.lead{font-size:1.15rem;color:var(--tinte-weich);margin-top:1.1rem}
+.antworten{margin-top:1.2rem;padding:0;list-style:none;display:grid;gap:.2rem;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.antworten b{color:var(--tinte)}
+.inhalt{margin-top:32px;columns:2 260px;column-gap:40px;font-size:.95rem;padding:0;list-style:none}
+.inhalt li{break-inside:avoid;padding-block:.3rem;border-bottom:1px solid var(--linie)}
+.inhalt a{text-decoration:none;color:var(--tinte)}
+.inhalt span{color:var(--tinte-matt);display:inline-block;min-width:2.4em}
+.punkt{padding-block:64px 28px;border-bottom:1px solid var(--linie)}
+.punkt>header{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.nr{font-weight:600;font-size:.88rem;color:var(--gold-700)}
+.ort{font-size:.85rem;color:var(--tinte-matt);margin:26px 0 10px;display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between}
+.ort b{color:var(--tinte-weich);font-weight:600}
+.urteil{margin-top:18px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.urteil b{color:var(--tinte)}
+.empf{font-size:.78rem;font-weight:600;color:var(--rot-700);background:var(--rot-50);border:1px solid var(--rot-100);border-radius:999px;padding:.05rem .55rem;white-space:nowrap}
+.variante-text{margin-top:14px;font-size:.95rem;color:var(--tinte-weich);max-width:80ch}
+.variante-text b{color:var(--tinte)}
+
+.schalter{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--linie);border-radius:999px;background:var(--weiss)}
+.schalter button{border:0;background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.84rem;font-weight:600;color:var(--tinte-weich);cursor:pointer}
+.schalter button[aria-pressed="true"]{background:var(--rot-50);color:var(--rot-700)}
+.schalter-zeile{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center}
+.schalter-zeile label,.schalter-zeile>span{font-size:.85rem;color:var(--tinte-matt)}
+
+.kontext{margin-inline:calc(50% - 50vw);background:var(--creme);border-block:1px solid var(--linie);position:relative}
+.innen{max-width:1180px;margin-inline:auto;padding:44px 24px}
+
+/* Zeichnungen als zwei Schablonen */
+.zg{display:block;position:relative;width:100%}
+.zg::before,.zg::after{content:"";position:absolute;inset:0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:bottom center;mask-position:bottom center;-webkit-mask-size:contain;mask-size:contain}
+.zg::before{background:var(--zf,var(--rot-500));-webkit-mask-image:var(--f);mask-image:var(--f)}
+.zg::after{background:var(--zl,var(--tinte));-webkit-mask-image:var(--t);mask-image:var(--t)}
+.z-bry{--t:var(--bry-t);--f:var(--bry-f);aspect-ratio:1200/1308}
+.z-kaernten{--t:var(--kaernten-t);--f:var(--kaernten-f);aspect-ratio:1200/1106}
+.z-saw{--t:var(--saw-t);--f:var(--saw-f);aspect-ratio:1200/1186}
+.z-roch{--t:var(--roch-t);--f:var(--roch-f);aspect-ratio:1200/1345}
+foreignObject .zg{height:100%;aspect-ratio:auto}
+
+body[data-farbe="material"] .z-bry{--zf:var(--m-ziegel)}
+body[data-farbe="material"] .z-kaernten{--zf:var(--m-wein)}
+body[data-farbe="material"] .z-saw{--zf:var(--m-stein)}
+body[data-farbe="material"] .z-roch{--zf:var(--z-tannengruen)}
+body[data-farbe="dezent"] .z-bry{--zf:var(--gold-500)}
+body[data-farbe="dezent"] .z-kaernten{--zf:var(--z-erdbraun)}
+body[data-farbe="dezent"] .z-saw{--zf:var(--gold-200)}
+body[data-farbe="dezent"] .z-roch{--zf:var(--z-tannengruen)}
+body[data-farbe="ton"] .zg{--zf:var(--gold-200)}
+
+/* 1 Rundblick */
+.rund{position:relative;touch-action:pan-y;cursor:grab;user-select:none}
+.rund.zieht{cursor:grabbing}
+.rund svg{display:block;width:100%;height:auto}
+/* Luftperspektive: je weiter weg, desto heller und feiner der Strich */
+.rund .k{stroke:var(--tinte);stroke-linejoin:round}
+.rund .k1{fill:#f7f3eb;stroke-width:.6;stroke-opacity:.3}
+.rund .k2{fill:#f3eee4;stroke-width:.7;stroke-opacity:.42}
+.rund .k3{fill:#eee7da;stroke-width:.8;stroke-opacity:.6}
+.rund .k4{fill:#e8dfcd;stroke-width:1;stroke-opacity:1}
+.rund path.kf{stroke:none}
+.rund path.k{fill:none}
+.rund .lineal{stroke:var(--tinte-matt);stroke-width:.8}
+.rund .tick{stroke:var(--tinte-matt);stroke-width:.8}
+.rund .himmel{font:600 12px var(--sans);fill:var(--tinte-matt)}
+.rund .gipfel-t{font:italic 400 11px var(--serif);fill:var(--tinte-matt)}
+.rund .gipfel-s{stroke:var(--tinte-matt);stroke-width:.6;stroke-opacity:.6}
+.rund .leit{fill:none;stroke:var(--tinte-matt);stroke-width:1;stroke-dasharray:2 3}
+.rund .pname{font:600 16px var(--serif);fill:var(--tinte)}
+.rund .pdetail{font:400 12px var(--sans);fill:var(--tinte-weich)}
+.rund text{paint-order:stroke;stroke:var(--creme);stroke-width:3px;stroke-linejoin:round}
+.rund .mast{stroke:var(--tinte);stroke-width:1}
+.rund .fahne{stroke:var(--tinte);stroke-width:.5}
+.rund .fuss{fill:var(--tinte)}
+.rund .kalender{stroke:var(--gold-500);stroke-width:3;stroke-linecap:round;opacity:.75}
+.rund .kalender-s{stroke:var(--gold-700);stroke-width:1}
+.rund .kalender-t{font:italic 400 11px var(--serif);fill:var(--tinte-matt)}
+.rund .tag-s{stroke:var(--gold-700);stroke-width:1.6}
+.rund .tag-t{font:italic 600 12px var(--serif);fill:var(--gold-700)}
+.rund .bahn{fill:none;stroke:var(--gold-500);stroke-width:1.4;stroke-dasharray:1 4;stroke-linecap:round}
+.rund .bahn-gelaufen{fill:none;stroke:var(--gold-500);stroke-width:1.8;stroke-linecap:round}
+.rund .sonne-kern{fill:var(--gold-200);stroke:var(--gold-700);stroke-width:1.2}
+.rund .sonne-strahl{stroke:var(--gold-700);stroke-width:1.1;stroke-linecap:round}
+.rund .wimpel-an .fahne{stroke:var(--rot-700);stroke-width:1.4}
+.rund-steuer{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin-top:14px}
+.rund-anzeige{font-size:.92rem;color:var(--tinte-weich);margin-top:8px;min-height:1.6em}
+.rund-anzeige b{color:var(--tinte)}
+.rund-bu{margin-top:6px;font-size:.85rem;color:var(--tinte-matt);max-width:78ch}
+
+/* 6 Steckbriefe */
+.steckbriefe{display:grid;gap:36px 32px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.steckbriefe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:980px){.steckbriefe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.steckbrief{border-top:2px solid var(--tinte);padding-top:.7rem}
+.steckbrief.pate{border-top-color:var(--z-erdbraun)}
+.steckbrief h4{font-size:1.25rem}
+.steckbrief h4 small{display:block;font-family:var(--sans);font-weight:400;font-size:.84rem;color:var(--tinte-matt);margin-top:.15rem}
+.steckbrief dl{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:.35rem .8rem;margin:.9rem 0 0;font-size:.9rem}
+.steckbrief dt{color:var(--tinte-matt);font-size:.84rem;padding-top:.08rem}
+.steckbrief dd{margin:0;color:var(--tinte)}
+.steckbrief ul{margin:0;padding:0;list-style:none;display:grid;gap:.2rem}
+.steckbrief .q{color:var(--tinte-matt);font-size:.8rem}
+
+.fragen{padding-left:1.3rem;max-width:80ch}
+.fragen li{padding-block:.45rem}
+.quellen{font-size:.85rem;color:var(--tinte-matt);max-width:80ch;margin-top:20px}
+.quellen a{color:var(--tinte-matt)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+:root{
+  --turm-t:url({{IMG:docs/formsprache/lesung-3/assets/turm-tinte.webp}});
+  --turm-f:url({{IMG:docs/formsprache/lesung-3/assets/turm-farbe.webp}});
+  --turm-p:url({{IMG:docs/formsprache/lesung-3/assets/turm-papier.webp}});
+}
+
+/* 1 Wege */
+.weg-scroll{overflow-x:auto}
+.weg-svg{width:100%;min-width:720px;height:auto;display:block;overflow:visible}
+.weg-zeile+.weg-zeile{margin-top:10px;padding-top:10px;border-top:1px solid var(--linie)}
+.weg .luft{stroke:var(--tinte-matt);stroke-width:.8;stroke-dasharray:3 3}
+.weg .route{fill:none;stroke:var(--tinte);stroke-width:1.3;stroke-linejoin:round}
+.weg .landf{fill:var(--creme-dunkel)}
+.weg .meerf{fill:url(#schraffur-meer)}
+.weg .ober{fill:none;stroke:var(--tinte);stroke-width:1.2;stroke-linejoin:round}
+.weg .schleier{fill:var(--creme);opacity:.55}
+.weg .ordnung{stroke:var(--tinte-matt);stroke-width:.6;stroke-dasharray:1 2.5}
+.weg .ort-p{fill:var(--tinte)}
+.weg .ort-t{font:600 11.5px var(--sans);fill:var(--tinte)}
+.weg .ort-m{font-weight:400;font-size:10.5px;fill:var(--tinte-weich)}
+.weg .jenseits .ort-t{fill:var(--tinte-matt)}
+.weg .ziel-l{stroke:var(--gold-700);stroke-width:1.2}
+.weg .ziel-p{fill:var(--gold-500);stroke:var(--tinte);stroke-width:1}
+.weg .ziel-t{font:600 14px var(--serif);fill:var(--tinte)}
+.weg .achse{stroke:var(--tinte-matt);stroke-width:.8}
+.weg .achse-t{font:400 10.5px var(--sans);fill:var(--tinte-matt)}
+.weg .land-t{font:600 11px var(--sans);fill:var(--tinte-weich)}
+.weg .meer-t{font:italic 400 11px var(--serif);fill:var(--wasser)}
+.weg .grenze{stroke:var(--rot-700);stroke-width:1.2}
+.weg .fluss{stroke:var(--wasser);stroke-width:1.6;stroke-linecap:round}
+.weg .fluss-t{font:italic 400 11px var(--serif);fill:var(--wasser)}
+.weg .zeile-t{font:600 17px var(--serif);fill:var(--tinte)}
+.weg .zeile-m{font:400 12px var(--sans);fill:var(--tinte-matt)}
+.weg .wie-oben{stroke:var(--gold-500);stroke-width:4;stroke-linecap:round;opacity:.6}
+.weg .wie-oben-t,.weg .weiter-t{font:italic 400 11.5px var(--serif);fill:var(--gold-700)}
+.weg .weiter-t{fill:var(--tinte-matt)}
+.weg .rand-t{font:400 10px var(--sans);fill:var(--tinte-matt)}
+.weg text{paint-order:stroke;stroke:var(--creme);stroke-width:3px;stroke-linejoin:round}
+.weg-liste{font-size:.92rem;color:var(--tinte-weich);max-width:80ch;margin-top:14px;padding-left:1.2rem}
+.weg-liste li{padding-block:.15rem}
+.weg-liste b{color:var(--tinte)}
+
+/* 2 Wappen */
+.lesart{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;margin-bottom:30px}
+.lesart ul{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;list-style:none;font-size:.85rem;color:var(--tinte-weich)}
+.lesart li{display:flex;align-items:center;gap:6px}
+.lesart svg{width:20px;height:24px;display:block}
+.wappen-kopf{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;align-items:start;margin-bottom:.2rem}
+.wp{position:relative;width:62px;height:72px}
+.wp img{display:block;width:100%;height:100%;object-fit:contain;object-position:left top}
+.wp .stich{position:absolute;inset:0;background:var(--tinte);-webkit-mask:var(--m) left top/contain no-repeat;mask:var(--m) left top/contain no-repeat}
+.wp.gross{width:96px;height:112px}
+[data-wappen="original"] .wp .stich{display:none}
+[data-wappen="stich"] .wp img{display:none}
+.wp-leer{display:flex;align-items:center;justify-content:center;width:56px;height:66px;border:1.3px dashed var(--tinte-matt);border-radius:2px 2px 28px 28px/2px 2px 34px 34px;font:400 17px/1 var(--script);color:var(--gold-700);text-align:center}
+.steckbrief .wp-zeile{font-size:.8rem;color:var(--tinte-matt);margin-top:.35rem}
+
+/* 3 Termine */
+.einschuebe{display:grid;gap:22px 28px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.einschuebe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.einschub-ort{font-size:.8rem;color:var(--tinte-matt);margin-bottom:6px}
+.einschub{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:start;padding:14px 16px 15px;background:var(--weiss);border:1px solid var(--linie);border-top:3px solid var(--gold-500)}
+.einschub.offen{border-top-color:var(--linie)}
+.einschub .kat{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px}
+.beispiel{font-size:.72rem;font-weight:600;color:var(--rot-700)}
+.einschub .wann{min-width:4.2rem}
+.einschub .tag{display:block;font:600 2rem/1 var(--serif)}
+.einschub .monat{display:block;font-size:.82rem;color:var(--tinte-matt);margin-top:.25rem}
+.einschub .ungefaehr{display:block;font:600 1.15rem/1.15 var(--serif)}
+.einschub .noch{display:block;font:400 1.5rem/1 var(--script);color:var(--gold-700);transform:rotate(-5deg);margin-top:.2rem}
+.einschub h4{font-size:1.05rem}
+.einschub p{font-size:.9rem;color:var(--tinte-weich);margin-top:.3rem}
+.einschub a{font-size:.88rem;font-weight:600;display:inline-block;margin-top:.45rem}
+.naechstes{max-width:620px;border-top:2px solid var(--tinte);padding-top:.6rem}
+.naechstes ol{margin:.5rem 0 0;padding:0;list-style:none}
+.naechstes li{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:12px;padding-block:.35rem;border-bottom:1px solid var(--linie);font-size:.95rem}
+.naechstes li span{color:var(--tinte-matt)}
+.naechstes p{font-size:.88rem;color:var(--tinte-matt);margin-top:.5rem}
+
+/* 4 Turm im Rundblick */
+.rund-buehne{position:relative}
+.turm{position:absolute;left:6px;bottom:0;width:70px;aspect-ratio:200/520;background:var(--creme);pointer-events:none;
+  -webkit-mask:var(--turm-p) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-p) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.turm::before,.turm::after{content:"";position:absolute;inset:0}
+.turm::before{background:var(--z-erdbraun);-webkit-mask:var(--turm-f) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-f) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.turm::after{background:var(--tinte);-webkit-mask:var(--turm-t) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat;mask:var(--turm-t) var(--tx,0%) var(--ty,0%)/900% 400% no-repeat}
+.rund-buehne[data-turm="unten"] .turm{position:relative;left:auto;display:block;margin:4px auto 0;width:84px}
+.turm-reihe{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+.turm-reihe .turm{position:relative;left:auto;width:64px}
+</style>
+
+<script type="application/json" id="daten">{{TEXT:docs/formsprache/lesung-3/daten-5.json}}</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="schraffur-meer" width="6" height="4" patternUnits="userSpaceOnUse"><rect width="6" height="4" fill="#dce9eb"/><path d="M0 2H6" stroke="#117393" stroke-width=".5" opacity=".55"/></pattern>
+    <!-- Tinkturen nach Petra Sancta, für die Legende -->
+    <pattern id="ps-rot" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M.5 0V3" stroke="#1c1c1c" stroke-width=".8"/></pattern>
+    <pattern id="ps-blau" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 .5H3" stroke="#1c1c1c" stroke-width=".8"/></pattern>
+    <pattern id="ps-gruen" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M.5 0V3" stroke="#1c1c1c" stroke-width=".8"/></pattern>
+    <pattern id="ps-gold" width="3.4" height="3.4" patternUnits="userSpaceOnUse"><circle cx="1.7" cy="1.7" r=".7" fill="#1c1c1c"/></pattern>
+    <pattern id="ps-schwarz" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M.5 0V3M0 .5H3" stroke="#1c1c1c" stroke-width=".8"/></pattern>
+  </defs>
+</svg>
+
+<div class="spalte">
+
+<header class="seitenkopf">
+  <div class="kat">Themenseite · Stadt-Prototyp · 30. Oktober 2026</div>
+  <div class="ueber" style="font-size:clamp(2.2rem,5vw,3.4rem)">
+    <span class="handschrift" aria-hidden="true">unterwegs</span>
+    <h1 style="font-size:1em">Partnerstädte, fünfte Lesung</h1>
+  </div>
+  <p class="lead text">Deine Antworten zur vierten Lesung, umgesetzt: Die Wege laufen über die Städte, die Wappen kommen dazu, die Porträts bekommen einen Einschub für den nächsten Termin, und der Johannisturm dreht sich im Rundblick mit. Gebaut ist weiterhin nichts.</p>
+  <ul class="antworten">
+    <li><b>Wege</b> über markante Städte, dazwischen Luftlinie, die kurzen verlängert, Rochester über Sawbridgeworth: Punkt 1.</li>
+    <li><b>Wappen</b>, auch wenn Qualität und Stil verschieden sind: Punkt 2, gleich mit den Steckbriefen.</li>
+    <li><b>Einschübe</b> für den nächsten Austausch, mit Text, wenn nichts bekannt ist: Punkt 3.</li>
+    <li><b>Johannisturm</b> aus dem europecitybuilder, drehend im Panorama: Punkt 4.</li>
+    <li><b>Sawbridgeworth</b> seit 2018, mit Bry schon länger: in den Steckbriefen geändert.</li>
+    <li><b>Hodschag</b> 1973, die 50 Jahre 2023: übernommen. <b>Haus der Heimat</b>: Antwort bei den Fragen.</li>
+  </ul>
+  <p class="text" style="margin-top:.8rem;color:var(--tinte-weich)">Antworten wie gewohnt, etwa „1 B und A, 2 B, 3 ja, 4 B“.</p>
+  <ul class="inhalt">
+    <li><a href="#p1"><span>1</span>Der Weg dorthin, über die Städte</a></li>
+    <li><a href="#p2"><span>2</span>Wappen und Steckbriefe</a></li>
+    <li><a href="#p3"><span>3</span>Der nächste Termin als Einschub</a></li>
+    <li><a href="#p4"><span>4</span>Der Turm dreht mit</a></li>
+    <li><a href="#fragen"><span>?</span>Fragen</a></li>
+  </ul>
+</header>
+
+<!-- ───────────── 1 Wege -->
+<section class="punkt" id="p1">
+  <header><div class="nr">Punkt 1</div><h2>Der Weg dorthin, über die Städte</h2></header>
+  <p class="text">Wie du vorgeschlagen hast: Der Weg führt über markante Städte nahe der Luftlinie und läuft zwischen zwei Städten wieder auf der Luftlinie. So steht jede Stadt auf ihrer wirklichen Höhe, und gemessen ist jeder Punkt des Schnitts genau dort, wo der Weg ihn kreuzt. Als markant gilt hier eine Stadt ab 30.000 Einwohnern, höchstens 20 km neben der Luftlinie, mindestens 80 km von der nächsten gewählten Stadt und 30 km von Start und Ziel entfernt; bei zweien gewinnt die größere. Über Atlantik und Kanada gelten 50 km, 50.000 Einwohner und 250 km.</p>
+  <p class="text" style="margin-top:.8rem">Über jedem Schnitt liegt der Weg von oben, im selben Maßstab und seitlich nicht überhöht: gestrichelt die Luftlinie, durchgezogen der Weg über die Städte. Punktierte Linien verbinden jede Stadt in beiden Ansichten. Die Achse zählt weiter die Luftlinie, damit das Ziel bei seiner Entfernung steht. Wie viel länger der Weg ist, steht in der Kopfzeile.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Abschnitt „Der Weg dorthin“, alle Wege untereinander</span>
+    <div class="schalter-zeile">
+      <span>Hinter dem Ziel</span>
+      <div class="schalter" id="verl-wahl" role="group" aria-label="Verlängerung hinter dem Ziel">
+        <button type="button" aria-pressed="false" data-v="haelfte">A um die Hälfte</button>
+        <button type="button" aria-pressed="true" data-v="rand">B bis zum Rand</button>
+      </div>
+      <span>Sawbridgeworth</span>
+      <div class="schalter" id="saw-wahl" role="group" aria-label="Sawbridgeworth als eigene Zeile oder nur als Etappe">
+        <button type="button" aria-pressed="true" data-v="eigen">A eigene Zeile</button>
+        <button type="button" aria-pressed="false" data-v="etappe">B nur Etappe</button>
+      </div>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen weg weg-scroll" id="wege" style="padding-block:30px 22px"></div>
+  </div>
+  <ul class="weg-liste">
+    <li><b>Der Umweg ist klein.</b> Nach Kärnten 1 km, nach Bry 14 km, nach Sawbridgeworth 11 km. Nach Rochester über Sawbridgeworth sind es 36 km mehr als auf der direkten Luftlinie, obwohl Sawbridgeworth 200 km südlich von ihr liegt: Auf 7.375 km fällt ein Bogen kaum ins Gewicht.</li>
+    <li><b>Hinter dem Ziel</b> läuft die Luftlinie weiter, blasser gezeichnet. A verlängert jeden Weg um die Hälfte, höchstens bis zum Rand der Stufe; das ändert nur Kärnten, Bry und Sawbridgeworth reichen ohnehin bis zum Rand. B führt alle bis zum Rand: Kärnten läuft dann über Kroatien, Bosnien und Montenegro bis nach Albanien, Bry bis an die Küste der Normandie, Sawbridgeworth bis Milton Keynes.</li>
+    <li><b>Sawbridgeworth</b> ist jetzt Etappe nach Rochester. Der erste Teil des Rochester-Wegs ist darum genau der Weg nach Sawbridgeworth, nur im kleineren Maßstab. A behält die eigene Zeile, weil dort Belgien und die Überfahrt über die Nordsee zu sehen sind; B spart die Zeile, dann bleibt von beidem ein Streifen von gut 100 Pixeln.</li>
+    <li><b>Wo ich unsicher bin:</b> Mantes-la-Jolie steht hinter Bry, weil Versailles 1 km zu nah am Ziel liegt. Craigavon in Nordirland ist die einzige Stadt, die über dem Meer der Regel genügt. Wenn dir andere Städte markanter scheinen, tausche ich sie.</li>
+  </ul>
+  <p class="urteil"><b>Mein Urteil:</b> B und A. Bis zum Rand gezogen, enden alle Zeilen an derselben Stelle; das Auge vergleicht dann die Ziele und nicht die Zeilenenden. Die eigene Zeile für Sawbridgeworth lohnt sich, weil der Wiedererkennungseffekt in der Rochester-Zeile („das kenne ich von oben“) den Maßstabssprung erklärt. <span class="empf">B und A empfohlen</span></p>
+</section>
+
+<!-- ───────────── 2 Wappen -->
+<section class="punkt" id="p2">
+  <header><div class="nr">Punkt 2</div><h2>Wappen und Steckbriefe</h2></header>
+  <p class="text">Frei verfügbar sind nur vier Wappen: Moosburg, Moosburg in Kärnten und Königsberg sind gemeinfrei, Bry steht unter CC BY-SA. Sie sind sehr verschieden: Moosburg mit Mauerkrone und Rollwerk, Kärnten flach mit gesprenkelter Ruine, Bry als sauberes französisches Blason, Königsberg nur 142 Pixel groß. Für Sawbridgeworth gibt es kein freies Bild. Rochester führt kein Wappen. Für Hodschag gibt es nur das Emblem der heutigen Gemeinde Odžaci, und das trägt die Jahreszahl 1944, das Jahr von Flucht und Massaker. Für eine Patenschaft mit den vertriebenen Hodschagern taugt es nicht.</p>
+  <p class="text" style="margin-top:.8rem">Darum zwei Wege. A zeigt die Wappen, wie sie geliefert werden, gleich groß gefasst. B sticht sie: Ein Skript ersetzt jede Tinktur durch ihre Schraffur nach Petra Sancta, wie in Kupferstichen seit dem 17. Jahrhundert, und macht aus jeder Grenze eine Linie. Heraldisch ist das dasselbe Wappen, nur einfarbig gedruckt. Die Stilunterschiede bleiben sichtbar, aber Tinte, Strich und Dichte sind gleich, und es passt zum Feder-Globus.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, im Kopf jedes Steckbriefs</span>
+    <div class="schalter" id="wappen-wahl" role="group" aria-label="Darstellung der Wappen">
+      <button type="button" aria-pressed="false" data-v="original">A wie geliefert</button>
+      <button type="button" aria-pressed="true" data-v="stich">B gestochen</button>
+    </div>
+  </div>
+  <div class="kontext" id="wappen-feld" data-wappen="stich">
+    <div class="innen">
+      <div class="lesart">
+        <div class="wp gross"><img src="{{IMG:docs/formsprache/lesung-3/assets/wappen-moosburg.webp}}" alt="Wappen von Moosburg an der Isar"><span class="stich" style="--m:url({{IMG:docs/formsprache/lesung-3/assets/wappen-moosburg-stich.webp}})"></span></div>
+        <div>
+          <div class="kat">So liest man den Stich, am Wappen von Moosburg</div>
+          <ul>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="url(#ps-rot)" stroke="#1c1c1c"/></svg>Rot senkrecht</li>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="url(#ps-blau)" stroke="#1c1c1c"/></svg>Blau waagrecht</li>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="url(#ps-gruen)" stroke="#1c1c1c"/></svg>Grün schräg</li>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="url(#ps-gold)" stroke="#1c1c1c"/></svg>Gold gepunktet</li>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="url(#ps-schwarz)" stroke="#1c1c1c"/></svg>Schwarz gegittert</li>
+            <li><svg viewBox="0 0 20 24"><path d="M1 1H19V11C19 18 14 21 10 23 6 21 1 18 1 11Z" fill="none" stroke="#1c1c1c"/></svg>Silber leer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="steckbriefe">
+        <article class="steckbrief"><div class="wappen-kopf"><div class="wp"><img src="{{IMG:docs/formsprache/lesung-3/assets/wappen-bry.webp}}" alt="Wappen von Bry-sur-Marne"><span class="stich" style="--m:url({{IMG:docs/formsprache/lesung-3/assets/wappen-bry-stich.webp}})"></span></div><h4>Bry-sur-Marne<small>Frankreich</small></h4></div><dl>
+          <dt>Lage</dt><dd>Île-de-France, Département Val-de-Marne, an der Marne östlich von Paris</dd>
+          <dt>Einwohner</dt><dd>18.503 (2023)</dd>
+          <dt>Erwähnt</dt><dd>861, in einer Urkunde Karls des Kahlen</dd>
+          <dt>Stadtrecht</dt><dd>keines; französische Gemeinde</dd>
+          <dt>Geschichte</dt><dd><ul><li>1870 Schlacht bei Champigny, der Ort wird verwüstet</li><li>1977 Anschluss an die RER A</li><li>heute Sitz des INA, des Archivs für Radio und Fernsehen</li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>seit 29. September 1973</dd></dl></article>
+        <article class="steckbrief"><div class="wappen-kopf"><div class="wp"><img src="{{IMG:docs/formsprache/lesung-3/assets/wappen-kaernten.webp}}" alt="Wappen von Moosburg in Kärnten"><span class="stich" style="--m:url({{IMG:docs/formsprache/lesung-3/assets/wappen-kaernten-stich.webp}})"></span></div><h4>Moosburg in Kärnten<small>Österreich</small></h4></div><dl>
+          <dt>Lage</dt><dd>Kärnten, Bezirk Klagenfurt-Land</dd>
+          <dt>Einwohner</dt><dd>4.649 (1. Januar 2026)</dd>
+          <dt>Erwähnt</dt><dd>879, die Burg, heute Ruine Hetzelburg</dd>
+          <dt>Stadtrecht</dt><dd>keines; Marktgemeinde seit 1997</dd>
+          <dt>Geschichte</dt><dd><ul><li>888 Arnulf von Kärnten feiert Weihnachten in der Pfalz</li><li>1850 Ortsgemeinde</li><li>1973 Gemeindereform, Tigring kommt hinzu</li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>seit 15. Juli 1991</dd></dl></article>
+        <article class="steckbrief"><div class="wappen-kopf"><div class="wp"><span class="wp-leer">folgt</span></div><h4>Sawbridgeworth<small>England</small></h4></div><dl>
+          <dt>Lage</dt><dd>Hertfordshire, Distrikt East Hertfordshire, am Fluss Stort</dd>
+          <dt>Einwohner</dt><dd>8.742 (2021)</dd>
+          <dt>Erwähnt</dt><dd>1086, im Domesday Book als „Sabrixteworde“</dd>
+          <dt>Stadtrecht</dt><dd>keines; Town mit Town Council seit 1974</dd>
+          <dt>Geschichte</dt><dd><ul><li>1841 Bahnhof an der Strecke London nach Cambridge</li><li>im Zweiten Weltkrieg Flugplatz RAF Sawbridgeworth</li><li>1973 Partnerschaft mit Bry</li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>seit 13. März 2018; mit Bry schon seit 1973</dd></dl>
+          <p class="wp-zeile">Wappen: kein freies Bild. Die Town Council fragen oder nach der Beschreibung neu stechen.</p></article>
+        <article class="steckbrief"><div class="wappen-kopf"><div class="wp"><span class="wp-leer">keines</span></div><h4>Rochester<small>Minnesota, USA</small></h4></div><dl>
+          <dt>Lage</dt><dd>Südosten von Minnesota, Sitz des Olmsted County</dd>
+          <dt>Einwohner</dt><dd>121.395 (2020)</dd>
+          <dt>Erwähnt</dt><dd>1854 von George Head gegründet</dd>
+          <dt>Stadtrecht</dt><dd>City seit 5. August 1858</dd>
+          <dt>Geschichte</dt><dd><ul><li>1883 Tornado, 37 Tote</li><li>1889 St. Marys Hospital eröffnet</li><li>heute Sitz der Mayo Clinic, „Med City“</li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>seit 18. Juli 1981</dd></dl>
+          <p class="wp-zeile">Amerikanische Städte führen keine Wappen; Rochester hat Siegel und Flagge.</p></article>
+        <article class="steckbrief pate"><div class="wappen-kopf"><div class="wp"><img src="{{IMG:docs/formsprache/lesung-3/assets/wappen-koenigsberg.webp}}" alt="Wappen von Kynšperk nad Ohří"><span class="stich" style="--m:url({{IMG:docs/formsprache/lesung-3/assets/wappen-koenigsberg-stich.webp}})"></span></div><h4>Königsberg an der Eger<small>Kynšperk nad Ohří, Tschechien</small></h4></div><dl>
+          <dt>Lage</dt><dd>Karlsbader Region, Bezirk Sokolov, an der Eger</dd>
+          <dt>Einwohner</dt><dd>4.568 (2023)</dd>
+          <dt>Erwähnt</dt><dd>1232 als „Cuningberch“, im ersten überlieferten Stadtprivileg Böhmens</dd>
+          <dt>Stadtrecht</dt><dd>1364 durch Karl IV.</dd>
+          <dt>Geschichte</dt><dd><ul><li>Ende des 12. Jahrhunderts Burg Kinsberg</li><li>1938 an das Deutsche Reich</li><li>1945 und 1946 Vertreibung der Deutschböhmen <span class="q">Jahre aus einer Quelle</span></li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>Patenschaft seit 8. April 1968</dd></dl>
+          <p class="wp-zeile">Wappen der heutigen Stadt; ob die Königsberger dasselbe führen, ist zu prüfen.</p></article>
+        <article class="steckbrief pate"><div class="wappen-kopf"><div class="wp"><span class="wp-leer">offen</span></div><h4>Hodschag<small>Odžaci, Serbien</small></h4></div><dl>
+          <dt>Lage</dt><dd>Vojvodina, Bezirk Westbatschka</dd>
+          <dt>Einwohner</dt><dd>7.556 (2022)</dd>
+          <dt>Erwähnt</dt><dd>1522 als „Kéménd“ <span class="q">umstritten, auch 1389 und 1557</span></dd>
+          <dt>Stadtrecht</dt><dd>Marktrecht 1813, heute Stadt</dd>
+          <dt>Geschichte</dt><dd><ul><li>1755 rund 300 deutsche Familien aus dem Schwarzwald angesiedelt</li><li>1944 Flucht, Massaker von Hodschag, Internierung</li><li>2006 Denkmal für die ermordeten Donauschwaben</li></ul></dd>
+          <dt>Mit Moosburg</dt><dd>Patenschaft seit 9. Juli 1973, die 50 Jahre gefeiert 2023</dd></dl>
+          <p class="wp-zeile">Welches Zeichen der Hodschager Heimatverein führt, ist zu klären.</p></article>
+      </div>
+    </div>
+  </div>
+  <p class="variante-text"><b>Was beim Stechen auffiel:</b> Kleine Vorlagen werden besser, nicht schlechter, weil die Schraffur die unscharfen Kanten überdeckt; Königsberg wirkt gestochen ebenbürtig. Bry verliert im Baum etwas, weil dort Grün, Gold und Umrisse auf wenigen Pixeln liegen. Der Stich von Bry ist eine Bearbeitung und steht damit selbst unter CC BY-SA; auf der Seite braucht er eine Zeile Nachweis. Bei einem abgewandelten Gemeindewappen bleibt die Frage aus der ersten Lesung: Ein kurzes Einverständnis der Städte ist höflich und sicher.</p>
+  <p class="urteil"><b>Mein Urteil:</b> B. Der Stich löst das Problem, das du benannt hast, ohne ein Wappen neu zu erfinden, und er erklärt sich mit der kleinen Legende selbst. Die leeren Schilde sind ehrlicher als Ersatzbilder: Ein Siegel für Rochester oder das Emblem von Odžaci würde etwas behaupten, das nicht stimmt. <span class="empf">B empfohlen</span></p>
+</section>
+
+<!-- ───────────── 3 Termine -->
+<section class="punkt" id="p3">
+  <header><div class="nr">Punkt 3</div><h2>Der nächste Termin als Einschub</h2></header>
+  <p class="text">Ein Einschub je Stadt, unter dem Porträt, und gesammelt als „Als Nächstes“ im Seitenkopf. Er kennt drei Zustände, weil Termine selten nur bekannt oder unbekannt sind: fest, ungefähr und offen. Alle Termine hier sind erfunden; Namen und Kontakte in eckigen Klammern sind Platzhalter.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, unter jedem Porträt und gesammelt im Kopf</span></div>
+  <div class="kontext">
+    <div class="innen">
+      <div class="einschuebe">
+        <div>
+          <div class="einschub-ort">Termin fest, unter Bry-sur-Marne</div>
+          <aside class="einschub" aria-label="Nächste Begegnung mit Bry-sur-Marne">
+            <div class="kat">Nächste Begegnung <span class="beispiel">Beispiel</span></div>
+            <div class="wann"><span class="tag">13.</span><span class="monat">bis 16. Mai 2027</span></div>
+            <div><h4>Bürgerfahrt nach Bry</h4><p>Mit dem Bus, untergebracht in Familien. Anmeldung bis 31. Januar bei [Ansprechpartner].</p><a href="#p3">Anmelden</a></div>
+          </aside>
+        </div>
+        <div>
+          <div class="einschub-ort">Termin ungefähr, unter Rochester</div>
+          <aside class="einschub" aria-label="Nächste Begegnung mit Rochester">
+            <div class="kat">Nächste Begegnung <span class="beispiel">Beispiel</span></div>
+            <div class="wann"><span class="ungefaehr">Sommer<br>2027</span><span class="monat">Tag folgt</span></div>
+            <div><h4>Besuch aus Rochester</h4><p>Eine Gruppe aus Minnesota kommt nach Moosburg. Gesucht sind Familien, die Gäste aufnehmen.</p><a href="#p3">Interesse melden</a></div>
+          </aside>
+        </div>
+        <div>
+          <div class="einschub-ort">Nichts bekannt, unter Moosburg in Kärnten</div>
+          <aside class="einschub offen" aria-label="Begegnungen mit Moosburg in Kärnten">
+            <div class="kat">Nächste Begegnung <span class="beispiel">Beispiel</span></div>
+            <div class="wann"><span class="noch">noch offen</span></div>
+            <div><h4>Gerade ist nichts geplant</h4><p>Wer eine Begegnung anstoßen möchte, als Verein, Schule, Chor oder Familie: [Ansprechpartner im Rathaus] stellt den Kontakt nach Kärnten her.</p><a href="#p3">Kontakt aufnehmen</a></div>
+          </aside>
+        </div>
+      </div>
+      <div class="naechstes" style="margin-top:40px">
+        <div class="kat">Als Nächstes, im Kopf der Seite <span class="beispiel">Beispiel</span></div>
+        <ol>
+          <li><span>13. bis 16. Mai 2027</span>Bürgerfahrt nach Bry-sur-Marne</li>
+          <li><span>Sommer 2027</span>Besuch aus Rochester</li>
+        </ol>
+        <p>Für Moosburg in Kärnten und Sawbridgeworth steht gerade nichts fest.</p>
+      </div>
+    </div>
+  </div>
+  <p class="variante-text"><b>Zwei Regeln dazu.</b> Ein vergangener Termin verschwindet von selbst; der Einschub fällt am Tag danach auf „offen“ zurück, statt eine alte Fahrt anzukündigen. Und der offene Zustand ist keine Leerstelle, sondern eine Einladung: Er sagt, wer hilft, eine Begegnung anzustoßen. Dafür braucht es eine echte Ansprechperson; ohne sie würde ich den Einschub bei „offen“ ganz weglassen.</p>
+  <p class="urteil"><b>Mein Urteil:</b> ja, mit allen drei Zuständen. „Ungefähr“ ist der häufigste Fall bei Partnerschaften, und eine Seite, die nur feste Termine kennt, schweigt die meiste Zeit. <span class="empf">empfohlen</span></p>
+</section>
+
+<!-- ───────────── 4 Turm -->
+<section class="punkt" id="p4">
+  <header><div class="nr">Punkt 4</div><h2>Der Turm dreht mit</h2></header>
+  <p class="text">Das geht, und es ist weniger aufwändig als gedacht, wenn der Turm nicht im Browser gerechnet wird. Ich habe St. Johannes aus dem europecitybuilder genommen (die Fernstufe, rund 18.700 Dreiecke), oberhalb der Glockenstube abgeschnitten und vorab in 36 Ansichten gezeichnet, alle 10°: Kanten als Tinte, die Schattenseite schraffiert, Öffnungen schwarz, das Ziegeldach in Erdbraun aus dem Kanon. Die Seite tauscht nur das Bild, passend zur Blickrichtung. Es sind drei Masken wie bei den Zeichnungen, zusammen 136 KB.</p>
+  <div class="ort"><span><b>Partnerstädte</b>, Rundblick im Kopf. Ziehen oder Pfeiltasten drehen Blick und Turm</span>
+    <div class="schalter" id="turm-wahl" role="group" aria-label="Ort des Turms">
+      <button type="button" aria-pressed="false" data-v="rand">A am Rand</button>
+      <button type="button" aria-pressed="true" data-v="unten">B darunter</button>
+    </div>
+  </div>
+  <div class="kontext">
+    <div class="innen" style="padding-block:30px 26px">
+      <div class="rund-buehne" id="rund-buehne" data-turm="unten">
+        <div class="rund" id="rund" tabindex="0" role="img" aria-label="Rundblick vom Johannisturm mit den Partnerstädten an ihrer Richtung. Ziehen oder Pfeiltasten drehen den Blick und den Turm."></div>
+        <span class="turm" id="turm" aria-hidden="true"></span>
+      </div>
+      <div class="rund-steuer">
+        <div class="schalter" id="sonne-tage" role="group" aria-label="Tag für den Sonnenlauf">
+          <button type="button" aria-pressed="false" data-tag="heute">Heute</button>
+          <button type="button" aria-pressed="true" data-tag="2026-03-30">30. März, Bry</button>
+          <button type="button" aria-pressed="false" data-tag="2026-05-10">10. Mai, Sawbridgeworth</button>
+          <button type="button" aria-pressed="false" data-tag="2026-06-21">21. Juni</button>
+        </div>
+      </div>
+      <p class="rund-anzeige" id="sonne-anzeige" aria-live="polite"></p>
+      <p class="rund-bu">Der Turm zeigt die Seite, die man sähe, stünde man hinter ihm und schaute in dieselbe Richtung wie der Rundblick.</p>
+      <div class="turm-reihe" id="turm-reihe" aria-hidden="true"></div>
+    </div>
+  </div>
+  <p class="variante-text"><b>Warum nicht echtes 3D?</b> Dafür bräuchte die Seite three.js, ein neues Paket von rund 180 KB, das das Briefing ausschließt, dazu WebGL auf jedem Gerät. Der gezeichnete Look müsste in Echtzeit als Shader entstehen und kostet auf alten Handys Akku. Vorab gerechnet ist der Strich kontrolliert, läuft überall und nutzt dieselbe Maskentechnik wie die Zeichnungen der Städte. Der Preis: Der Turm dreht in 10°-Schritten, wie ein Daumenkino; und ändert sich das Modell, rechnet ein Skript die 36 Bilder neu, in unter einer Minute. Die Reihe unter dem Rundblick zeigt jede vierte Ansicht.</p>
+  <p class="urteil"><b>Mein Urteil:</b> B, darunter. Ich hatte A erwartet, im Bild überzeugt B: Der Turm steht genau unter der Blickrichtung, und der Rundblick liest sich als das, was er ist, die Aussicht von seiner Spitze. Er verdeckt nichts, auch nicht die Sonne, die im Sonnenlauf in der Mitte sinkt. Am Rand stößt er an Gelände und Himmelsrichtungen. Der Preis von B sind gut 200 Pixel Höhe; auf dem Handy würde ich ihn kleiner zeichnen. <span class="empf">B empfohlen</span></p>
+</section>
+
+<!-- ───────────── Fragen -->
+<section class="punkt" id="fragen" style="border-bottom:0;padding-bottom:80px">
+  <header><div class="nr">Offen</div><h2>Fragen</h2></header>
+  <ol class="fragen">
+    <li><b>Haus der Heimat, wieso:</b> Die Patenstädte haben in Moosburg keinen anderen Ort. Im Haus der Heimat an der Hodschager Straße liegen beide Heimatstuben, die der Hodschager und die der Königsberger. Es wäre das „Hier“ zum „Dort“ der Chronik und der eine Ort, an den man gehen kann. Wenn du jetzt Wahrzeichen für die Patenstädte suchst, braucht es die Zeichnung nicht; eine Zeile mit Adresse und Öffnung nach Vereinbarung genügt.</li>
+    <li><b>Wege:</b> Passen die Städte? Kandidaten zum Tausch wären Versailles statt Mantes-la-Jolie und Klagenfurt direkt hinter Moosburg in Kärnten.</li>
+    <li><b>Sawbridgeworth:</b> Darf ich die Town Council um ihr Wappen bitten, oder stechen wir es nach der Beschreibung?</li>
+    <li><b>Hodschag und Königsberg:</b> Welches Zeichen führen die Heimatvereine? Die Wappen der heutigen Orte passen nur bei Königsberg vielleicht.</li>
+    <li><b>Termine:</b> Wer pflegt sie, Stadt oder Vereine, und wer ist die Ansprechperson für den offenen Fall?</li>
+    <li><b>Globus aus der vierten Lesung:</b> A Kupferstich oder B Feder? Dazu stand noch keine Antwort aus.</li>
+  </ol>
+  <p class="quellen">Wege: Städte aus GeoNames (cities15000, CC BY 4.0), Höhen aus GEBCO 2020 über opentopodata.org, Länder und Flüsse aus Natural Earth. Wappen über Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Wappen.Moosburg.svg">Moosburg an der Isar</a> (gemeinfrei), <a href="https://commons.wikimedia.org/wiki/File:AUT_Moosburg_COA.svg">Moosburg in Kärnten</a> (gemeinfrei), <a href="https://commons.wikimedia.org/wiki/File:Blason_Bry-sur-Marne_version3_94.svg">Bry-sur-Marne</a> (CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Kyn%C5%A1perk_nad_Oh%C5%99%C3%AD_-_CoA.png">Kynšperk nad Ohří</a> (gemeinfrei), <a href="https://commons.wikimedia.org/wiki/File:Coat_of_arms_odzaci.jpg">Odžaci</a> (gemeinfrei, nicht verwendet). Turm: Modell St. Johannes aus dem europecitybuilder, gezeichnet mit three.js beim Erzeugen, nicht auf der Seite. Rundblick, Sonnenlauf und Steckbriefe wie in der vierten Lesung.</p>
+</section>
+
+</div>
+
+<script>
+document.body.dataset.farbe = "dezent";
+const D = JSON.parse(document.getElementById("daten").textContent);
+const RAD = Math.PI / 180;
+const MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+const zahl = (n) => Math.round(n).toLocaleString("de-DE");
+const f1 = (n) => (Math.round(n * 10) / 10).toString();
+const ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const MOOSBURG = [48.4703, 11.9378];
+const STADT = {
+  kaernten: { name: "Moosburg in Kärnten", kurz: "Kärnten", seit: "1991", tink: ["gold", "schwarz"] },
+  bry: { name: "Bry-sur-Marne", kurz: "Bry", seit: "1973", tink: ["blau", "rot"] },
+  saw: { name: "Sawbridgeworth", kurz: "Sawbridgeworth", seit: "2018", tink: ["rot", "gold"] },
+  roch: { name: "Rochester", kurz: "Rochester", seit: "1981", tink: ["blau", "weiss"] },
+};
+const LAGE = { bry: [48.8385, 2.5233], kaernten: [46.6564, 14.1756], saw: [51.8146, 0.1503], roch: [44.0216, -92.4699] };
+const PARTNER = ["kaernten", "bry", "saw", "roch"];
+for (const id of PARTNER) Object.assign(STADT[id], { grad: D.strecken[id].peilung, km: D.strecken[id].km });
+const T = (n) => `var(--t-${n})`;
+
+function abstandPeilung([la1, lo1], [la2, lo2]) {
+  const p1 = la1 * RAD, p2 = la2 * RAD, dl = (lo2 - lo1) * RAD;
+  const d = 2 * Math.asin(Math.sqrt(Math.sin((p2 - p1) / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2));
+  const b = Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / RAD;
+  return [d * 6371, (b + 360) % 360];
+}
+function zielPunkt([la, lo], peil, km) {
+  const p1 = la * RAD, l1 = lo * RAD, t = peil * RAD, d = km / 6371;
+  const p2 = Math.asin(Math.sin(p1) * Math.cos(d) + Math.cos(p1) * Math.sin(d) * Math.cos(t));
+  const l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(p1), Math.cos(d) - Math.sin(p1) * Math.sin(p2));
+  return [p2 / RAD, ((l2 / RAD + 540) % 360) - 180];
+}
+
+function wimpel(x, y, tink) {
+  return `<g class="g-wimpel">
+    <path class="fahne" d="M${x} ${y - 26}L${x + 17} ${y - 21.5}L${x} ${y - 21.5}Z" fill="${T(tink[0])}"/>
+    <path class="fahne" d="M${x} ${y - 21.5}L${x + 17} ${y - 21.5}L${x} ${y - 17}Z" fill="${T(tink[1])}"/>
+    <line class="mast" x1="${x}" y1="${y}" x2="${x}" y2="${y - 28}"/></g>`;
+}
+
+// ---------- Sonne (NOAA-Näherung, wie in daten.py) ----------
+function sonnenstand(t, lat, lon) {
+  const jd = t.getTime() / 86400000 + 2440587.5, jc = (jd - 2451545) / 36525;
+  const l0 = (280.46646 + jc * (36000.76983 + jc * 0.0003032)) % 360;
+  const m = 357.52911 + jc * (35999.05029 - 0.0001537 * jc);
+  const e = 0.016708634 - jc * (0.000042037 + 0.0000001267 * jc);
+  const c = Math.sin(m * RAD) * (1.914602 - jc * (0.004817 + 0.000014 * jc)) + Math.sin(2 * m * RAD) * (0.019993 - 0.000101 * jc) + Math.sin(3 * m * RAD) * 0.000289;
+  const lam = l0 + c - 0.00569 - 0.00478 * Math.sin((125.04 - 1934.136 * jc) * RAD);
+  const eps = 23 + (26 + (21.448 - jc * (46.815 + jc * (0.00059 - jc * 0.001813))) / 60) / 60 + 0.00256 * Math.cos((125.04 - 1934.136 * jc) * RAD);
+  const dekl = Math.asin(Math.sin(eps * RAD) * Math.sin(lam * RAD)) / RAD;
+  const y = Math.tan((eps / 2) * RAD) ** 2;
+  const zeitgl = (4 / RAD) * (y * Math.sin(2 * l0 * RAD) - 2 * e * Math.sin(m * RAD) + 4 * e * y * Math.sin(m * RAD) * Math.cos(2 * l0 * RAD) - 0.5 * y * y * Math.sin(4 * l0 * RAD) - 1.25 * e * e * Math.sin(2 * m * RAD));
+  const min = t.getUTCHours() * 60 + t.getUTCMinutes() + t.getUTCSeconds() / 60;
+  const stw = ((min + zeitgl + 4 * lon) / 4 - 180) * RAD, phi = lat * RAD, d = dekl * RAD;
+  const h = Math.asin(Math.sin(phi) * Math.sin(d) + Math.cos(phi) * Math.cos(d) * Math.cos(stw)) / RAD;
+  const az = (Math.atan2(Math.sin(stw), Math.cos(stw) * Math.sin(phi) - Math.tan(d) * Math.cos(phi)) / RAD + 540) % 360;
+  return { az, h, dekl, zeitgl, min };
+}
+function tagesbahn(iso) {
+  const start = new Date(`${iso}T00:00:00Z`).getTime() - 2 * 3600e3;
+  const pts = [];
+  for (let k = 0; k <= 26 * 30; k++) {
+    const t = new Date(start + k * 120e3);
+    pts.push({ t, ...sonnenstand(t, ...MOOSBURG) });
+  }
+  const auf = pts.findIndex((p, i) => i && pts[i - 1].h < -0.833 && p.h >= -0.833);
+  const unter = pts.findIndex((p, i) => i > auf && pts[i - 1].h >= -0.833 && p.h < -0.833);
+  return { pts: pts.slice(auf, unter + 1), auf: pts[auf], unter: pts[unter] };
+}
+const uhr = (t) => t.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" });
+const datum = (iso) => { const [, m, t] = iso.split("-").map(Number); return `${t}. ${MONATE[m - 1]}`; };
+const U = D.sonne.untergang;
+const nordUntergang = Math.max(...U.map((u) => u[1])), suedUntergang = Math.min(...U.map((u) => u[1]));
+// Tage, an denen der Untergang die Richtung einer Stadt kreuzt
+function partnerTage(grad) {
+  const tage = [];
+  for (let i = 1; i < U.length; i++) {
+    const a = U[i - 1][1] - grad, b = U[i][1] - grad;
+    if (a * b < 0) tage.push(Math.abs(a) < Math.abs(b) ? U[i - 1][0] : U[i][0]);
+  }
+  return tage;
+}
+
+// ---------- 1 Rundblick ----------
+const PXG = 4, BREITE = 360 * PXG, UEBER = 25, HY = 330, BODEN = 356, KAL = 370, LINEAL = 404, HOCH = 440;
+const XA = (az) => az * PXG;
+const YG = (w) => HY - Math.max(-0.25, w) * PXG * UEBER;
+const YS = (h) => HY - h * PXG * 0.5;
+const STRAHLEN = D.horizont.strahlen;
+const horizontBei = (az) => {
+  const s = STRAHLEN.reduce((a, b) => (Math.abs(b.az - az) < Math.abs(a.az - az) ? b : a));
+  return Math.max(...s.baender.map((b) => b[0]));
+};
+
+// Mitten der Beschriftungen: ab der Peilung so weit auseinander, dass sich nichts überlagert
+function verteile(ids, abstand) {
+  const p = ids.map((id) => ({ id, ziel: XA(STADT[id].grad), x: XA(STADT[id].grad) }));
+  for (let runde = 0; runde < 400; runde++) {
+    p.sort((a, b) => a.x - b.x);
+    for (let i = 0; i < p.length; i++) {
+      const a = p[i], b = p[(i + 1) % p.length];
+      const bx = i === p.length - 1 ? b.x + BREITE : b.x;
+      const luecke = bx - a.x;
+      if (luecke < abstand) { const s = (abstand - luecke) / 2; a.x -= s; b.x += s; }
+    }
+    for (const q of p) { q.x += (q.ziel - q.x) * 0.02; q.x = ((q.x % BREITE) + BREITE) % BREITE; }
+  }
+  return Object.fromEntries(p.map((q) => [q.id, q.x]));
+}
+const MITTE = verteile(PARTNER, 215);
+
+const BEKANNT = ["Zugspitze", "Großglockner", "Wendelstein"];
+function gipfelWahl() {
+  return BEKANNT.map((n) => D.gipfel.filter((x) => x.name === n && x.sichtbar).sort((a, b) => b.winkel - a.winkel)[0]).filter(Boolean).sort((a, b) => a.az - b.az);
+}
+
+function streifen() {
+  let s = "";
+  // Kulissen, von hinten nach vorn
+  for (let b = 3; b >= 0; b--) {
+    const teile = []; let akt = [];
+    for (const r of STRAHLEN) {
+      const w = r.baender[b][0];
+      if (w <= -9) { if (akt.length) teile.push(akt); akt = []; continue; }
+      akt.push([XA(r.az), YG(w)]);
+    }
+    if (akt.length) teile.push(akt);
+    if (teile.length && teile[0][0][0] === 0) teile.at(-1).push([BREITE, teile[0][0][1]]);
+    for (const t of teile) {
+      const zug = t.map(([x, y]) => `${f1(x)} ${f1(y)}`).join("L");
+      s += `<path class="kf k${4 - b}" d="M${f1(t[0][0])} ${BODEN}L${zug}L${f1(t.at(-1)[0])} ${BODEN}Z"/><path class="k k${4 - b}" d="M${zug}"/>`;
+    }
+  }
+  // Drei Gipfel, nur mit Namen
+  gipfelWahl().forEach((g, i) => {
+    const x = XA(g.az), y = YG(g.winkel), hoch = i % 2 ? 30 : 12;
+    s += `<line class="gipfel-s" x1="${f1(x)}" y1="${f1(y - 3)}" x2="${f1(x)}" y2="${f1(y - 6 - hoch)}"/><text class="gipfel-t" x="${f1(x)}" y="${f1(y - 10 - hoch)}" text-anchor="middle">${g.name}</text>`;
+  });
+  // Kalender der Untergänge: der Bogen eines Jahres, darauf die Tage der Städte
+  s += `<line class="kalender" x1="${XA(suedUntergang)}" y1="${KAL}" x2="${XA(nordUntergang)}" y2="${KAL}"/>`;
+  s += `<text class="kalender-t" x="${XA(suedUntergang) - 8}" y="${KAL + 4}" text-anchor="end">Untergang am 21. Dezember</text>`;
+  s += `<text class="kalender-t" x="${XA(nordUntergang) + 8}" y="${KAL + 4}" text-anchor="start">am 21. Juni</text>`;
+  for (const id of PARTNER) {
+    const tage = partnerTage(STADT[id].grad);
+    if (!tage.length) continue;
+    const x = XA(STADT[id].grad), links = id === "bry";
+    s += `<line class="tag-s" x1="${f1(x)}" y1="${KAL - 7}" x2="${f1(x)}" y2="${KAL + 8}"/>`;
+    s += `<text class="tag-t" x="${f1(x + (links ? -5 : 5))}" y="${KAL + 21}" text-anchor="${links ? "end" : "start"}">${tage.map(datum).join(", ")}</text>`;
+  }
+  // Himmelsrichtungen
+  s += `<line class="lineal" x1="0" y1="${LINEAL}" x2="${BREITE}" y2="${LINEAL}"/>`;
+  ["Nord", "Nordost", "Ost", "Südost", "Süd", "Südwest", "West", "Nordwest"].forEach((n, i) => {
+    s += `<line class="tick" x1="${XA(i * 45)}" y1="${LINEAL}" x2="${XA(i * 45)}" y2="${LINEAL + 6}"/><text class="himmel" x="${XA(i * 45)}" y="${LINEAL + 22}" text-anchor="middle">${n}</text>`;
+  });
+  // Partnerstädte
+  for (const id of PARTNER) {
+    const st = STADT[id], bx = XA(st.grad), by = YG(horizontBei(st.grad));
+    let mx = MITTE[id];
+    if (mx - bx > BREITE / 2) mx -= BREITE; else if (bx - mx > BREITE / 2) mx += BREITE;
+    s += `<path class="leit" d="M${f1(mx)} 214C${f1(mx)} 250 ${f1(bx)} ${f1(by - 60)} ${f1(bx)} ${f1(by - 30)}"/>`;
+    s += `<circle class="fuss" cx="${f1(bx)}" cy="${f1(by)}" r="2.2"/><g data-wimpel="${id}">${wimpel(bx, by, st.tink)}</g>`;
+    s += `<foreignObject x="${f1(mx - 75)}" y="10" width="150" height="160"><span class="zg z-${id}"></span></foreignObject>`;
+    s += `<text class="pname" x="${f1(mx)}" y="188" text-anchor="middle">${st.name}</text><text class="pdetail" x="${f1(mx)}" y="204" text-anchor="middle">seit ${st.seit} · ${zahl(st.km)} km</text>`;
+  }
+  return s;
+}
+
+const rund = document.getElementById("rund");
+let fenster = 1000, blick = 277;
+rund.innerHTML = `<svg viewBox="0 0 1000 ${HOCH}" aria-hidden="true"><g id="rund-zug">${[-1, 0, 1].map((k) => `<g transform="translate(${k * BREITE} 0)">${streifen()}</g>`).join("")}<g id="rund-sonne"></g></g></svg>`;
+const zug = document.getElementById("rund-zug");
+const sonneG = document.getElementById("rund-sonne");
+function setzeBlick(az) {
+  blick = ((az % 360) + 360) % 360;
+  zug.setAttribute("transform", `translate(${f1(fenster / 2 - XA(blick))} 0)`);
+  turmDrehen(blick);
+}
+function passeFenster() {
+  fenster = rund.clientWidth < 700 ? 560 : 1000;
+  rund.querySelector("svg").setAttribute("viewBox", `0 0 ${fenster} ${HOCH}`);
+  setzeBlick(blick);
+}
+new ResizeObserver(passeFenster).observe(rund);
+
+let folgen = true;
+(() => {
+  let start = null;
+  rund.addEventListener("pointerdown", (e) => { start = [e.clientX, blick]; rund.setPointerCapture(e.pointerId); rund.classList.add("zieht"); folgen = false; });
+  rund.addEventListener("pointermove", (e) => { if (start) setzeBlick(start[1] - ((e.clientX - start[0]) * fenster) / rund.clientWidth / PXG); });
+  const ende = () => { start = null; rund.classList.remove("zieht"); };
+  rund.addEventListener("pointerup", ende);
+  rund.addEventListener("pointercancel", ende);
+  rund.addEventListener("keydown", (e) => {
+    const d = { ArrowLeft: -10, ArrowRight: 10 }[e.key];
+    if (d) { e.preventDefault(); folgen = false; setzeBlick(blick + d); }
+  });
+})();
+
+// Sonnenlauf
+const heute = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+let tag = "2026-03-30", bahn = tagesbahn(tag), lauf = null;
+const anzeige = document.getElementById("sonne-anzeige");
+function sonneZeichnen(anteil) {
+  const p = bahn.pts;
+  const n = Math.max(1, Math.round(anteil * (p.length - 1)));
+  const linie = (arr) => arr.map((q) => `${f1(XA(q.az))} ${f1(YS(Math.max(0, q.h)))}`).join("L");
+  const jetzt = p[n];
+  let s = "";
+  for (const k of [-1, 0, 1]) {
+    s += `<g transform="translate(${k * BREITE} 0)"><path class="bahn" d="M${linie(p)}"/><path class="bahn-gelaufen" d="M${linie(p.slice(0, n + 1))}"/>`;
+    const x = XA(jetzt.az), y = YS(Math.max(0, jetzt.h));
+    s += Array.from({ length: 8 }, (_, i) => { const a = (i * 45) * RAD; return `<line class="sonne-strahl" x1="${f1(x + Math.cos(a) * 13)}" y1="${f1(y + Math.sin(a) * 13)}" x2="${f1(x + Math.cos(a) * 18)}" y2="${f1(y + Math.sin(a) * 18)}"/>`; }).join("");
+    s += `<circle class="sonne-kern" cx="${f1(x)}" cy="${f1(y)}" r="9"/></g>`;
+  }
+  sonneG.innerHTML = s;
+  if (folgen) setzeBlick(jetzt.az);
+  const unterAz = bahn.unter.az;
+  const treffer = anteil >= 1 ? PARTNER.find((id) => Math.abs(STADT[id].grad - unterAz) < 0.8) : null;
+  document.querySelectorAll("#rund [data-wimpel]").forEach((w) => w.classList.toggle("wimpel-an", w.dataset.wimpel === treffer));
+  const kopf = `<b>${tag === heute ? "Heute, " : ""}${datum(tag)}</b> · Untergang ${uhr(bahn.unter.t)} Uhr`;
+  let satz = "";
+  if (anteil < 1) satz = ` · ${uhr(jetzt.t)} Uhr`;
+  else if (treffer) satz = ` · <b>Die Sonne geht genau über ${STADT[treffer].name} unter.</b>`;
+  else if (unterAz > 305) satz = ` · Nördlicher geht sie nie unter; Rochester liegt noch ${f1(STADT.roch.grad - unterAz).replace(".", ",")}° weiter.`;
+  anzeige.innerHTML = kopf + satz;
+}
+function waehleTag(iso, abspielen) {
+  tag = iso; bahn = tagesbahn(iso); folgen = true;
+  document.querySelectorAll("#sonne-tage button").forEach((b) => b.setAttribute("aria-pressed", String((b.dataset.tag === "heute" ? heute : b.dataset.tag) === iso)));
+  if (lauf) cancelAnimationFrame(lauf);
+  if (!abspielen || ruhig) { sonneZeichnen(1); return; }
+  const t0 = performance.now(), dauer = 9000;
+  const schritt = (t) => {
+    const a = Math.min(1, (t - t0) / dauer);
+    sonneZeichnen(a * a * (3 - 2 * a));
+    if (a < 1) lauf = requestAnimationFrame(schritt);
+  };
+  lauf = requestAnimationFrame(schritt);
+}
+document.getElementById("sonne-tage").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (b) waehleTag(b.dataset.tag === "heute" ? heute : b.dataset.tag, true);
+});
+passeFenster();
+waehleTag("2026-03-30", false);
+
+// ---------- 4 Turm ----------
+function turmDrehen(az) {
+  const i = Math.round(az / 10) % 36;
+  for (const t of [document.getElementById("turm")].filter(Boolean)) {
+    t.style.setProperty("--tx", `${((i % 9) / 8) * 100}%`);
+    t.style.setProperty("--ty", `${(Math.floor(i / 9) / 3) * 100}%`);
+  }
+}
+document.getElementById("turm-reihe").innerHTML = Array.from({ length: 9 }, (_, k) => {
+  const i = k * 4;
+  return `<span class="turm" style="--tx:${((i % 9) / 8) * 100}%;--ty:${(Math.floor(i / 9) / 3) * 100}%"></span>`;
+}).join("");
+turmDrehen(blick);
+
+// ---------- Schalter ----------
+function schalter(id, wenn) {
+  const g = document.getElementById(id);
+  g.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    wenn(b.dataset.v);
+  });
+}
+
+// ---------- 1 Wege ----------
+const WEG = D.wege;
+const STUFE_KM = { europa: 1000, uebersee: 7500 };
+const PXM = 0.06, WX0 = 70, WXE = 930;
+const FLUSS_DE = { Rhin: "Rhein", Rhine: "Rhein", "La Grande": "La Grande Rivière" };
+const ZIELNAME = { kaernten: "Moosburg in Kärnten", bry: "Bry-sur-Marne", saw: "Sawbridgeworth", roch: "Rochester" };
+const wahl = { verl: "rand", saw: "eigen" };
+
+function wegZeile(id) {
+  const w = WEG[id], stufe = STUFE_KM[w.stufe], k = (WXE - WX0) / stufe;
+  const ziel = w.etappen.at(-1);
+  const ende = w.stufe === "europa" && wahl.verl === "haelfte" ? Math.min(stufe, ziel.x * 1.5) : stufe;
+  const X = (x) => WX0 + x * k;
+  const pts = w.profil.filter((p) => p[0] <= ende + 0.01);
+  const naechster = (x) => pts.reduce((a, b) => (Math.abs(b[0] - x) < Math.abs(a[0] - x) ? b : a));
+  const maxM = Math.max(500, ...pts.map((p) => p[1])), minM = Math.min(0, ...pts.map((p) => p[1]));
+  const PLAN = 62, REIHEN = [104, 119, 134], oben = 156;
+  const y0 = oben + maxM * PXM, unten = y0 - minM * PXM + 4, achse = unten + 8, H = achse + 50;
+  const Y = (m) => y0 - m * PXM, YP = (q) => PLAN + q * k;
+  const zug = (arr, f) => arr.map((p) => `${f1(X(p[0]))} ${f1(f(p))}`).join("L");
+  const xEnde = X(pts.at(-1)[0]);
+  const ueber = id === "roch" ? "über Sawbridgeworth und die Städte" : "über die Städte";
+  const kurz = w.orte.filter((o) => !o.jenseits).map((o) => o.name).join(", ");
+  let s = `<svg class="weg-svg" viewBox="0 0 1000 ${f1(H)}" role="img" aria-label="Weg von Moosburg nach ${ZIELNAME[id]} über ${kurz}, Luftlinie ${zahl(w.luftlinie)} km, Weg ${zahl(w.weg)} km">`;
+  s += `<text class="zeile-t" x="${WX0}" y="20">${ZIELNAME[id]}<tspan class="zeile-m" dx="12">Luftlinie ${zahl(w.luftlinie)} km · ${ueber} ${zahl(w.weg)} km</tspan></text>`;
+
+  // Von oben: Luftlinie und Weg im selben Maßstab
+  s += `<text class="rand-t" x="${WX0 - 10}" y="${PLAN + 3}" text-anchor="end">von oben</text>`;
+  s += `<line class="luft" x1="${X(0)}" y1="${PLAN}" x2="${f1(xEnde)}" y2="${PLAN}"/>`;
+  s += `<path class="route" d="M${zug(pts, (p) => YP(p[2]))}"/>`;
+  if (id === "roch") {
+    const xs = X(w.etappen[0].x);
+    s += `<line class="wie-oben" x1="${X(0)}" y1="${PLAN + 12}" x2="${f1(xs)}" y2="${PLAN + 12}"/>`;
+    s += `<text class="wie-oben-t" x="${f1(xs + 10)}" y="${PLAN + 16}">${wahl.saw === "eigen" ? "bis Sawbridgeworth derselbe Weg wie oben" : "zuerst nach Sawbridgeworth"}</text>`;
+  }
+
+  // Schnitt
+  s += `<text class="rand-t" x="${WX0 - 10}" y="${f1(y0 + 3)}" text-anchor="end">im Schnitt</text>`;
+  s += `<path class="landf" d="M${X(0)} ${f1(unten)}L${zug(pts, (p) => Y(p[1]))}L${f1(xEnde)} ${f1(unten)}Z"/>`;
+  if (minM < 0) s += `<path class="meerf" d="M${X(0)} ${f1(y0)}L${zug(pts, (p) => Y(Math.min(0, p[1])))}L${f1(xEnde)} ${f1(y0)}Z"/>`;
+  s += `<path class="ober" d="M${zug(pts, (p) => Y(p[1]))}"/>`;
+  // Höhenmaßstab, für alle Zeilen derselbe
+  s += `<line class="achse" x1="${WX0 - 26}" y1="${f1(Y(0))}" x2="${WX0 - 26}" y2="${f1(Y(1000))}"/><line class="achse" x1="${WX0 - 30}" y1="${f1(Y(1000))}" x2="${WX0 - 22}" y2="${f1(Y(1000))}"/><line class="achse" x1="${WX0 - 30}" y1="${f1(Y(0))}" x2="${WX0 - 22}" y2="${f1(Y(0))}"/>`;
+  s += `<text class="rand-t" x="${WX0 - 32}" y="${f1(Y(1000) + 3)}" text-anchor="end">1.000 m</text>`;
+
+  // Flüsse, jeder nur einmal beschriftet
+  const gesehen = new Set();
+  for (const f of w.fluesse) {
+    if (f.km > ende || f.rang > 6) continue;
+    const p = naechster(f.km), x = X(f.km), y = Y(Math.max(0, p[1]));
+    s += `<line class="fluss" x1="${f1(x)}" y1="${f1(y - 5)}" x2="${f1(x)}" y2="${f1(y + 5)}"/>`;
+    const name = FLUSS_DE[f.name] || f.name;
+    if (!gesehen.has(name)) { gesehen.add(name); s += `<text class="fluss-t" x="${f1(x + 4)}" y="${f1(y + 16)}">${name}</text>`; }
+  }
+
+  // Achse
+  const schritt = w.stufe === "europa" ? 100 : 500, beschrift = w.stufe === "europa" ? 200 : 1000;
+  s += `<line class="achse" x1="${X(0)}" y1="${f1(achse)}" x2="${X(stufe)}" y2="${f1(achse)}"/>`;
+  for (let x = 0; x <= stufe; x += schritt) {
+    s += `<line class="achse" x1="${f1(X(x))}" y1="${f1(achse)}" x2="${f1(X(x))}" y2="${f1(achse + (x % beschrift ? 3 : 6))}"/>`;
+    if (x % beschrift === 0) s += `<text class="achse-t" x="${f1(X(x))}" y="${f1(achse + 17)}" text-anchor="middle">${x === stufe ? zahl(x) + " km" : zahl(x)}</text>`;
+  }
+  // Länder unter der Achse
+  for (const [name, a, b] of w.laender) {
+    if (a > ende) continue;
+    const xa = X(a), xb = X(Math.min(b, ende)), mitte = (xa + xb) / 2;
+    if (a > 0) s += `<line class="grenze" x1="${f1(xa)}" y1="${f1(achse + 22)}" x2="${f1(xa)}" y2="${f1(achse + 36)}"/>`;
+    const meer = name === "Meer";
+    if (xb - xa > name.length * 6.2 + 8) s += `<text class="${meer ? "meer-t" : "land-t"}" x="${f1(mitte)}" y="${f1(achse + 33)}" text-anchor="middle">${name}</text>`;
+  }
+
+  // Schleier hinter dem Ziel
+  if (ende > ziel.x + 1) {
+    s += `<rect class="schleier" x="${f1(X(ziel.x) + 1)}" y="${PLAN - 28}" width="${f1(xEnde - X(ziel.x) + 2)}" height="${f1(unten - PLAN + 28)}"/>`;
+    if (xEnde - X(ziel.x) > 170) s += `<text class="weiter-t" x="${f1(X(ziel.x) + 8)}" y="${PLAN - 12}">weiter auf der Luftlinie</text>`;
+  }
+
+  // Städte: in beiden Ansichten, mit Ordnungslinie und Namen dazwischen
+  const marken = [];
+  const erste = w.etappen[0].x;
+  for (const o of w.orte) {
+    if (o.x > ende) continue;
+    marken.push({ name: o.name, x: o.x, m: o.m, art: o.jenseits ? "jenseits" : "ort", label: !(id === "roch" && o.x < erste) });
+  }
+  for (const e of w.etappen) marken.push({ name: ZIELNAME[e.id], x: e.x, m: naechster(e.x)[1], art: "ziel", label: true });
+  marken.sort((a, b) => a.x - b.x);
+  const belegt = REIHEN.map(() => -1e9);
+  for (const m of marken) {
+    const p = naechster(m.x), x = X(m.x), yp = YP(p[2]), ys = Y(m.m);
+    if (m.art === "ziel") {
+      s += `<line class="ziel-l" x1="${f1(x)}" y1="${f1(yp)}" x2="${f1(x)}" y2="${f1(achse)}"/>`;
+      s += `<circle class="ziel-p" cx="${f1(x)}" cy="${f1(yp)}" r="4"/><circle class="ziel-p" cx="${f1(x)}" cy="${f1(ys)}" r="4"/>`;
+    } else {
+      s += `<g class="${m.art}"><line class="ordnung" x1="${f1(x)}" y1="${f1(yp)}" x2="${f1(x)}" y2="${f1(ys)}"/>`;
+      s += `<circle class="ort-p" cx="${f1(x)}" cy="${f1(yp)}" r="2.2"/><circle class="ort-p" cx="${f1(x)}" cy="${f1(ys)}" r="2.6"/></g>`;
+    }
+    if (!m.label) continue;
+    const text = m.art === "ziel" ? m.name : `${m.name} ${zahl(m.m)} m`;
+    const breite = text.length * (m.art === "ziel" ? 7.4 : 6.2);
+    let r = belegt.findIndex((b) => x - breite / 2 > b + 8);
+    if (r < 0) r = belegt.indexOf(Math.min(...belegt));
+    belegt[r] = x + breite / 2;
+    const inhalt = m.art === "ziel" ? m.name : `${m.name} <tspan class="ort-m">${zahl(m.m)} m</tspan>`;
+    s += `<g class="${m.art}"><text class="${m.art === "ziel" ? "ziel-t" : "ort-t"}" x="${f1(x)}" y="${REIHEN[r]}" text-anchor="middle">${inhalt}</text></g>`;
+  }
+  return `<div class="weg-zeile">${s}</svg></div>`;
+}
+function wegeZeichnen() {
+  const ids = ["kaernten", "bry", ...(wahl.saw === "eigen" ? ["saw"] : []), "roch"];
+  document.getElementById("wege").innerHTML = ids.map(wegZeile).join("");
+}
+schalter("verl-wahl", (v) => { wahl.verl = v; wegeZeichnen(); });
+schalter("saw-wahl", (v) => { wahl.saw = v; wegeZeichnen(); });
+wegeZeichnen();
+
+// ---------- 2 Wappen, 4 Turm ----------
+schalter("wappen-wahl", (v) => { document.getElementById("wappen-feld").dataset.wappen = v; });
+schalter("turm-wahl", (v) => { document.getElementById("rund-buehne").dataset.turm = v; });
+</script>
