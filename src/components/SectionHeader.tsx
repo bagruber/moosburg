@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { Beispiel } from "./Beispiel";
 
 export function SectionHeader({
   eyebrow,
@@ -7,6 +8,7 @@ export function SectionHeader({
   light = false,
   align = "left",
   size = "lg",
+  beispiel = false,
   className,
 }: {
   eyebrow?: string;
@@ -20,6 +22,8 @@ export function SectionHeader({
    * wie der Hauptabschnitt darüber.
    */
   size?: "lg" | "sm";
+  /** Der Block darunter ist erfunden und trägt den Stempel in der Kategoriezeile. */
+  beispiel?: boolean;
   className?: string;
 }) {
   const small = size === "sm";
@@ -32,7 +36,7 @@ export function SectionHeader({
         className,
       )}
     >
-      {eyebrow && (
+      {(eyebrow || beispiel) && (
         <div
           className={cn(
             "eyebrow relative inline-flex items-center gap-2",
@@ -41,6 +45,7 @@ export function SectionHeader({
           )}
         >
           {eyebrow}
+          {beispiel && <Beispiel />}
         </div>
       )}
       {/* Die Handschrift steht in der Überschrift, nicht daneben: ihre Maße

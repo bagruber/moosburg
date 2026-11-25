@@ -58,7 +58,7 @@ export function Stadtentwicklung() {
 
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="Woran die Stadt arbeitet" heading="Aktuelle Projekte & Verfahren" />
+          <SectionHeader eyebrow="Woran die Stadt arbeitet" heading="Aktuelle Projekte & Verfahren" beispiel />
         </Reveal>
 
         {/* Typ-Filter */}

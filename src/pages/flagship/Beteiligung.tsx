@@ -16,6 +16,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SpotlightSection } from "@/components/SpotlightSection";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/cn";
+import { Beispiel } from "@/components/Beispiel";
 import { Rose } from "@/components/BrandMark";
 import { findRoute } from "@/routes";
 
@@ -87,7 +88,7 @@ export function Beteiligung() {
       {/* ── Laufende Verfahren ────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
         <Reveal>
-          <SectionHeader eyebrow="Jetzt mitreden" heading="Laufende Beteiligungsverfahren" />
+          <SectionHeader eyebrow="Jetzt mitreden" heading="Laufende Beteiligungsverfahren" beispiel />
         </Reveal>
         <div className="grid gap-4 lg:grid-cols-2">
           {VERFAHREN.map((v) => (
@@ -261,7 +262,10 @@ function FeedbackForm() {
       onSubmit={(e) => { e.preventDefault(); setSent(true); }}
       className="rounded-xl border border-ink-line/70 bg-cream p-7"
     >
-      <div className="eyebrow text-red-700">Sagen Sie Ihre Meinung</div>
+      <div className="eyebrow flex items-center gap-2 text-red-700">
+        Sagen Sie Ihre Meinung
+        <Beispiel />
+      </div>
       <h3 className="headline mt-1 text-2xl text-ink">Idee oder Feedback einreichen</h3>
       <label className="mt-4 block text-sm font-medium text-ink">
         Thema

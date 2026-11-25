@@ -17,6 +17,7 @@ import {
 } from "@/data/ansprechpartner";
 import { AnsprechpartnerCard } from "@/components/AnsprechpartnerCard";
 import { cn } from "@/lib/cn";
+import { Beispiel } from "@/components/Beispiel";
 
 const route = findRoute("rathaus/online-dienste")!;
 
@@ -210,8 +211,9 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
       className="rounded-lg border border-ink-line/60 bg-cream-dark/30 p-3"
     >
       <label className="block">
-        <span className="text-xs font-display text-ink-muted">
+        <span className="flex flex-wrap items-center gap-2 text-xs font-display text-ink-muted">
           {mode.formTitle}
+          <Beispiel />
         </span>
         <textarea
           rows={3}

@@ -44,6 +44,7 @@ import { jobs } from "@/data/jobs";
 import { PersonalizedBadge } from "@/components/PersonalizedBadge";
 import { Klecks } from "@/components/Klecks";
 import { cn } from "@/lib/cn";
+import { Beispiel } from "@/components/Beispiel";
 import { Bookmark } from "@phosphor-icons/react";
 
 type Stage = "signed-out" | "awaiting-link" | "logging-in" | "signed-in";
@@ -79,7 +80,10 @@ function SignedOut({ onSend }: { onSend: (email: string) => void }) {
           <span aria-hidden="true" className="script-accent pointer-events-none absolute -top-2 right-4 text-[4rem] leading-none text-gold-500/30 select-none rotate-[-4deg]">
             einfach
           </span>
-          <div className="eyebrow text-red-700">Mein Moosburg-Konto</div>
+          <div className="eyebrow flex items-center gap-2 text-red-700">
+            Mein Moosburg-Konto
+            <Beispiel />
+          </div>
           <h2 className="headline mt-1 text-2xl text-ink">Ohne Passwort anmelden</h2>
           <p className="mt-3 text-sm text-ink-soft">
             Geben Sie Ihre E-Mail-Adresse ein, wir senden Ihnen einen Anmeldelink. Kein Passwort,

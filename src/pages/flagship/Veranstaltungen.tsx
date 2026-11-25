@@ -13,6 +13,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { findRoute } from "@/routes";
 import { cn } from "@/lib/cn";
+import { Beispiel } from "@/components/Beispiel";
 
 const route = findRoute("mein-moosburg/veranstaltungen")!;
 
@@ -125,6 +126,7 @@ export function Veranstaltungen() {
       {/* Filter + view toggle */}
       <section className="border-b border-ink-line/60 bg-cream-dark">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-5 lg:px-8">
+          <Beispiel />
           <div className="flex flex-wrap gap-2">
             {categories.map((c) => (
               <button

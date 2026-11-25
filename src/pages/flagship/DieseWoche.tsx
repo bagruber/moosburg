@@ -386,6 +386,7 @@ export function DieseWoche() {
           <SectionHeader
             eyebrow="Aus dem Rathaus"
             heading="Neuigkeiten"
+            beispiel
           />
         </Reveal>
         <Reveal as="ul" className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

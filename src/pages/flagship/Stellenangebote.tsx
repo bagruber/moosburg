@@ -24,6 +24,7 @@ import { useAppState } from "@/state/AppState";
 import { jobs, allBereiche, allUmfang, type Bereich, type Umfang } from "@/data/jobs";
 import { findRoute } from "@/routes";
 import { cn } from "@/lib/cn";
+import { Beispiel } from "@/components/Beispiel";
 
 const route = findRoute("rathaus/stellenangebote")!;
 
@@ -89,6 +90,7 @@ export function Stellenangebote() {
               <div className="grid gap-8 rounded-md border border-red-500/20 bg-red-50 p-7 shadow-soft md:grid-cols-[minmax(0,1fr)_320px] lg:p-10">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
+                    <Beispiel />
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-3 py-1 text-[10px] font-semibold text-cream">
                       Spotlight · neu ausgeschrieben
                     </span>
@@ -173,7 +175,10 @@ export function Stellenangebote() {
         <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-12">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
             <div>
-              <div className="eyebrow text-red-700">Aktuelle Stellenausschreibungen</div>
+              <div className="eyebrow flex items-center gap-2 text-red-700">
+                Aktuelle Stellenausschreibungen
+                <Beispiel />
+              </div>
               <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Alle offenen Stellen ({jobs.length})</h2>
             </div>
           </div>
@@ -388,7 +393,8 @@ export function Stellenangebote() {
           <span className="grid mx-auto h-12 w-12 place-items-center rounded-full bg-gold-500 text-cream">
             <Bell className="h-6 w-6" weight="regular" />
           </span>
-          <h3 className="headline mt-4 text-xl text-ink">Job-Alert abonnieren</h3>
+          <Beispiel className="mt-4" />
+          <h3 className="headline mt-2 text-xl text-ink">Job-Alert abonnieren</h3>
           <p className="mt-2 text-sm text-ink-soft mx-auto max-w-md">
             Lassen Sie sich neue Stellen direkt per E-Mail zusenden, passend zu Ihrem Wunsch-Bereich.
           </p>
