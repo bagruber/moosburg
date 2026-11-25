@@ -5,10 +5,11 @@ import {
   Check,
   Info,
   CaretDown,
-  ShieldCheck,
 } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
+import { Beispiel } from "@/components/Beispiel";
+import { BeispielAblauf, FeldFehler, type AblaufSchritt } from "@/components/BeispielAblauf";
 import {
   MoosburgMap,
   layerConfig,
@@ -44,11 +45,20 @@ const statusStyle: Record<string, string> = {
 
 const ALL_LAYERS: LayerKey[] = ["mangel", "baustelle", "spielplatz", "trinkbrunnen", "haltestelle"];
 
+const feld = "mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500";
+
 export function MaengelMelden() {
   const [pin, setPin] = useState<{ lat: number; lng: number } | null>(null);
   const [address, setAddress] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
+  // Nur der Dateiname: Das Foto selbst verlässt das Gerät nicht, und ein
+  // Dateifeld lässt sich beim Zurückgehen nicht wieder füllen.
+  const [foto, setFoto] = useState("");
+  const [kontaktName, setKontaktName] = useState("");
+  const [kontaktMail, setKontaktMail] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [fehler, setFehler] = useState<Record<string, string>>({});
   const [visibleLayers, setVisibleLayers] = useState<Set<LayerKey>>(
     () => new Set<LayerKey>(["mangel", "baustelle"]),
   );
@@ -69,128 +79,136 @@ export function MaengelMelden() {
     return out;
   }, []);
 
-  return (
-    <PageLayout>
-      <PageHeader
-        title={route.title}
-        intro="Ist Ihnen ein Problem im Stadtgebiet aufgefallen? Melden Sie Schäden oder Störungen direkt online. Ihre Meldung wird automatisch an die zuständige Stelle in der Stadtverwaltung Moosburg weitergeleitet und bearbeitet."
-        crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Mängel melden" }]}
-        variant="foto-daneben"
-        image="images/altstadt.jpg"
-        script="gemeinsam"
-      />
+  const pruefe = (f: Record<string, string>) => {
+    setFehler(f);
+    return Object.keys(f).length === 0;
+  };
 
-      {/* Map section */}
-      <section className="mx-auto max-w-7xl px-4 pt-12 lg:px-8 lg:pt-16">
-        <div className="mb-6">
-          <div className="eyebrow text-red-700">Schritt 1 von 3</div>
-          <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Ort auswählen</h2>
-          <p className="mt-2 max-w-2xl text-sm text-ink-soft">
+  const schritte: AblaufSchritt[] = [
+    {
+      titel: "Ort",
+      frage: "Ort auswählen",
+      angaben: [
+        { name: "Marker auf der Karte", wert: pin ? `${pin.lat.toFixed(5)}, ${pin.lng.toFixed(5)}` : "nicht gesetzt" },
+        { name: "Adresse", wert: address || "keine Angabe" },
+      ],
+      inhalt: () => (
+        <>
+          <p className="-mt-6 max-w-2xl text-sm text-ink-soft">
             Klicken Sie auf die Karte, um den genauen Ort des Problems zu markieren. Alternativ
             können Sie eine Adresse eingeben.
           </p>
-        </div>
 
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <MoosburgMap
-            className="h-[460px] overflow-hidden rounded-md border border-ink-line shadow-soft"
-            pins={mockPins}
-            visibleLayers={visibleLayers}
-            userPin={pin}
-            onPick={(lat, lng) => setPin({ lat, lng })}
-          />
+          <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <MoosburgMap
+              className="h-[460px] overflow-hidden rounded-md border border-ink-line shadow-soft"
+              pins={mockPins}
+              visibleLayers={visibleLayers}
+              userPin={pin}
+              onPick={(lat, lng) => setPin({ lat, lng })}
+            />
 
-          <div className="flex flex-col gap-4">
-            <div className="rounded-md border border-ink-line bg-white p-4">
-              <div className="eyebrow text-ink-muted">Ebenen anzeigen</div>
-              <ul className="mt-3 space-y-1.5">
-                {ALL_LAYERS.map((k) => {
-                  const cfg = layerConfig[k];
-                  const on = visibleLayers.has(k);
-                  return (
-                    <li key={k}>
-                      <label className="flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 text-sm hover:bg-cream-dark">
-                        <input
-                          type="checkbox"
-                          checked={on}
-                          onChange={() => toggleLayer(k)}
-                          className="h-4 w-4 accent-red-500"
-                        />
-                        <span
-                          className="h-3 w-3 shrink-0 rounded-full"
-                          style={{ backgroundColor: cfg.color }}
-                        />
-                        <span className="flex-1 text-ink">{cfg.label}</span>
-                        <span className="font-mono text-xs text-ink-muted">{layerCounts[k]}</span>
-                      </label>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            <label className="block">
-              <span className="eyebrow text-ink-muted">Adresse</span>
-              <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-white focus-within:border-red-500">
-                <MapPin className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
-                <input
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  placeholder="z. B. Bahnhofstraße 12"
-                  className="w-full bg-transparent py-2.5 pl-2.5 pr-3 text-sm outline-none"
-                />
+            <div className="flex flex-col gap-4">
+              <div className="rounded-md border border-ink-line bg-white p-4">
+                <div className="eyebrow text-ink-muted">Ebenen anzeigen</div>
+                <ul className="mt-3 space-y-1.5">
+                  {ALL_LAYERS.map((k) => {
+                    const cfg = layerConfig[k];
+                    const on = visibleLayers.has(k);
+                    return (
+                      <li key={k}>
+                        <label className="flex cursor-pointer items-center gap-2.5 rounded-md p-1.5 text-sm hover:bg-cream-dark focus-within:bg-cream-dark">
+                          <input
+                            type="checkbox"
+                            checked={on}
+                            onChange={() => toggleLayer(k)}
+                            className="h-4 w-4 accent-red-500"
+                          />
+                          <span
+                            className="h-3 w-3 shrink-0 rounded-full"
+                            style={{ backgroundColor: cfg.color }}
+                          />
+                          <span className="flex-1 text-ink">{cfg.label}</span>
+                          <span className="font-mono text-xs text-ink-muted">{layerCounts[k]}</span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
-            </label>
 
-            <div className="rounded-md border border-ink-line bg-white p-4 text-sm">
-              <div className="eyebrow text-ink-muted">Ausgewählt</div>
-              <div className="mt-2 text-ink">
-                {pin ? (
-                  <>
-                    <div className="font-semibold">Marker gesetzt</div>
-                    <div className="mt-0.5 font-mono text-xs text-ink-muted">
-                      {pin.lat.toFixed(5)}, {pin.lng.toFixed(5)}
-                    </div>
-                  </>
-                ) : address ? (
-                  <div className="font-semibold">{address}</div>
-                ) : (
-                  <div className="text-ink-muted">Noch kein Ort gewählt, bitte auf die Karte klicken</div>
-                )}
+              <label className="block">
+                <span className="eyebrow text-ink-muted">Adresse</span>
+                <div className="mt-1.5 flex items-center rounded-md border border-ink-line bg-white focus-within:border-red-500">
+                  <MapPin className="ml-3 h-4 w-4 text-ink-muted" weight="regular" />
+                  <input
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    placeholder="z. B. Bahnhofstraße 12"
+                    className="w-full bg-transparent py-2.5 pl-2.5 pr-3 text-sm outline-none"
+                  />
+                </div>
+              </label>
+
+              <div className="rounded-md border border-ink-line bg-white p-4 text-sm">
+                <div className="eyebrow text-ink-muted">Ausgewählt</div>
+                <div className="mt-2 text-ink">
+                  {pin ? (
+                    <>
+                      <div className="font-semibold">Marker gesetzt</div>
+                      <div className="mt-0.5 font-mono text-xs text-ink-muted">
+                        {pin.lat.toFixed(5)}, {pin.lng.toFixed(5)}
+                      </div>
+                    </>
+                  ) : address ? (
+                    <div className="font-semibold">{address}</div>
+                  ) : (
+                    <div className="text-ink-muted">Noch kein Ort gewählt, bitte auf die Karte klicken</div>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="rounded-md bg-gold-100/60 p-4 text-xs text-ink-soft">
-              <div className="flex gap-2">
-                <Info className="h-4 w-4 shrink-0 text-gold-700 mt-0.5" weight="regular" />
-                <span>
-                  Die Karte zeigt nur das <strong>Stadtgebiet Moosburg</strong>. Für Meldungen in
-                  Nachbargemeinden wenden Sie sich bitte an deren jeweilige Stadtverwaltung.
-                </span>
+              <div className="rounded-md bg-gold-100/60 p-4 text-xs text-ink-soft">
+                <div className="flex gap-2">
+                  <Info className="h-4 w-4 shrink-0 text-gold-700 mt-0.5" weight="regular" />
+                  <span>
+                    Die Karte zeigt nur das <strong>Stadtgebiet Moosburg</strong>. Für Meldungen in
+                    Nachbargemeinden wenden Sie sich bitte an deren jeweilige Stadtverwaltung.
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Form section */}
-      <section className="mx-auto max-w-7xl px-4 pt-16 pb-12 lg:px-8 lg:pt-20">
-        <div className="mb-6">
-          <div className="eyebrow text-red-700">Schritt 2 von 3</div>
-          <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Details zum Problem</h2>
-        </div>
-
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="space-y-6">
+        </>
+      ),
+    },
+    {
+      titel: "Details",
+      frage: "Details zum Problem",
+      angaben: [
+        { name: "Art des Mangels", wert: category },
+        { name: "Foto", wert: foto || "kein Foto" },
+        { name: "Beschreibung", wert: description },
+      ],
+      pruefen: () => pruefe({
+        ...(!category && { category: "Bitte wählen Sie die Art des Mangels aus." }),
+        ...(!description.trim() && { description: "Bitte beschreiben Sie das Problem." }),
+      }),
+      inhalt: () => (
+        <div className="max-w-3xl space-y-6">
+          <div>
             <label className="block">
               <span className="eyebrow text-ink-muted">
                 Art des Mangels <span className="text-red-500">*</span>
               </span>
               <div className="relative mt-1.5">
                 <select
+                  required
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full appearance-none rounded-md border border-ink-line bg-white py-3 pl-4 pr-10 text-sm text-ink outline-none focus:border-red-500"
+                  aria-invalid={!!fehler.category}
+                  aria-describedby={fehler.category ? "fehler-category" : undefined}
+                  className="w-full appearance-none rounded-md border border-ink-line bg-white py-3 pl-4 pr-10 text-sm text-ink outline-none focus:border-red-500 aria-invalid:border-red-700"
                 >
                   <option value="">Bitte wählen…</option>
                   {categories.map((c) => (
@@ -200,116 +218,150 @@ export function MaengelMelden() {
                 <CaretDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" weight="regular" />
               </div>
             </label>
+            <FeldFehler id="fehler-category">{fehler.category}</FeldFehler>
+          </div>
 
+          <div>
             <label className="block">
               <span className="eyebrow text-ink-muted">
                 Beschreibung <span className="text-red-500">*</span>
               </span>
               <textarea
+                required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={6}
                 placeholder="Bitte beschreiben Sie das Problem möglichst genau (z. B. seit wann es besteht, genaue Lage, mögliche Gefahren)."
-                className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-4 text-sm text-ink outline-none focus:border-red-500"
+                aria-invalid={!!fehler.description}
+                aria-describedby={fehler.description ? "fehler-description" : undefined}
+                className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-4 text-sm text-ink outline-none focus:border-red-500 aria-invalid:border-red-700"
               />
               <div className="mt-1 text-right text-xs text-ink-muted">
                 {description.length} Zeichen
               </div>
             </label>
+            <FeldFehler id="fehler-description">{fehler.description}</FeldFehler>
+          </div>
 
-            <div>
-              <span className="eyebrow text-ink-muted">Foto (optional)</span>
-              <label className="mt-1.5 flex cursor-pointer items-center gap-4 rounded-md border-2 border-dashed border-ink-line bg-white p-5 text-sm transition hover:border-red-500">
-                <Camera className="h-8 w-8 shrink-0 text-red-700" weight="light" />
-                <div>
-                  <div className="card-title text-sm">Foto hochladen oder aufnehmen</div>
-                  <div className="mt-0.5 text-xs text-ink-muted">
-                    Ein Bild hilft uns, den Mangel schneller zu beurteilen. PNG, JPG bis 10 MB.
-                  </div>
+          <div>
+            <span className="eyebrow text-ink-muted">Foto (optional)</span>
+            <label className="mt-1.5 flex cursor-pointer items-center gap-4 rounded-md border-2 border-dashed border-ink-line bg-white p-5 text-sm transition hover:border-red-500 focus-within:border-red-500">
+              <Camera className="h-8 w-8 shrink-0 text-red-700" weight="light" />
+              <div>
+                <div className="card-title text-sm">Foto hochladen oder aufnehmen</div>
+                <div className="mt-0.5 text-xs text-ink-muted">
+                  Ein Bild hilft uns, den Mangel schneller zu beurteilen. PNG, JPG bis 10 MB.
                 </div>
-                <input type="file" accept="image/*" className="sr-only" />
-              </label>
-            </div>
+                {foto && <div className="mt-1 break-all text-xs text-ink">Ausgewählt: {foto}</div>}
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                className="sr-only"
+                onChange={(e) => setFoto(e.target.files?.[0]?.name ?? "")}
+              />
+            </label>
           </div>
-
-          <aside>
-            <div className="rounded-md border border-gold-500/30 bg-gold-100/50 p-5">
-              <div className="eyebrow text-gold-700">Was passiert danach?</div>
-              <ol className="mt-3 space-y-2.5 text-sm text-ink">
-                <li className="flex gap-2">
-                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-500 text-xs font-semibold text-cream">1</span>
-                  <span>Wir leiten Ihre Meldung an die zuständige Abteilung weiter.</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-500 text-xs font-semibold text-cream">2</span>
-                  <span>Sie erhalten eine Referenznummer zur Nachverfolgung.</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-500 text-xs font-semibold text-cream">3</span>
-                  <span>Bearbeitung typischerweise innerhalb von 3 Werktagen.</span>
-                </li>
-              </ol>
-            </div>
-          </aside>
         </div>
-      </section>
+      ),
+    },
+    {
+      titel: "Kontakt",
+      frage: "Kontakt",
+      angaben: [
+        { name: "Name", wert: kontaktName || "keine Angabe" },
+        { name: "E-Mail-Adresse", wert: kontaktMail || "keine Angabe" },
+        { name: "Einwilligung", wert: "erteilt" },
+      ],
+      pruefen: () => pruefe(consent ? {} : { consent: "Bitte stimmen Sie der Verarbeitung Ihrer Daten zu." }),
+      inhalt: () => (
+        <>
+          <p className="-mt-6 max-w-2xl text-sm text-ink-soft">
+            Wenn Sie eine Rückmeldung zu Ihrer Meldung erhalten möchten, können Sie hier Ihre
+            Kontaktdaten angeben. Alle Felder sind optional, außer der Datenschutz-Zustimmung.
+          </p>
 
-      {/* Contact + Privacy + Submit */}
-      <section className="border-t border-ink-line/60 bg-cream-dark">
-        <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="mb-6">
-            <div className="eyebrow text-red-700">Schritt 3 von 3</div>
-            <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">
-              Kontakt & Absenden
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm text-ink-soft">
-              Wenn Sie eine Rückmeldung zu Ihrer Meldung erhalten möchten, können Sie hier Ihre
-              Kontaktdaten angeben. Alle Felder sind optional, außer der Datenschutz-Zustimmung.
-            </p>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <label className="block">
               <span className="eyebrow text-ink-muted">Name (optional)</span>
               <input
                 type="text"
-                className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500"
+                value={kontaktName}
+                onChange={(e) => setKontaktName(e.target.value)}
+                className={feld}
               />
             </label>
             <label className="block">
               <span className="eyebrow text-ink-muted">E-Mail-Adresse (optional)</span>
               <input
                 type="email"
+                value={kontaktMail}
+                onChange={(e) => setKontaktMail(e.target.value)}
                 placeholder="ihre.adresse@beispiel.de"
-                className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500"
+                className={feld}
               />
             </label>
           </div>
 
-          <label className="mt-8 flex cursor-pointer items-start gap-3 rounded-md border border-ink-line bg-white p-4 text-sm">
-            <input type="checkbox" className="mt-0.5 h-4 w-4 accent-red-500" />
+          <label className="mt-8 flex cursor-pointer items-start gap-3 rounded-md border border-ink-line bg-white p-4 text-sm focus-within:border-red-500">
+            <input
+              required
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              aria-invalid={!!fehler.consent}
+              aria-describedby={fehler.consent ? "fehler-consent" : undefined}
+              className="mt-0.5 h-4 w-4 accent-red-500"
+            />
             <span className="text-ink">
               Ich habe die <a href="#datenschutz" className="text-red-700 underline hover:text-red-500">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung dieser Meldung zu. <span className="text-red-500">*</span>
             </span>
           </label>
+          <FeldFehler id="fehler-consent">{fehler.consent}</FeldFehler>
+        </>
+      ),
+    },
+  ];
 
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-ink-muted">
-              <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
-              Ihre Meldung wird verschlüsselt übertragen und nach 12 Monaten gelöscht.
-            </div>
-            <button className="inline-flex items-center gap-2 rounded-md bg-red-500 px-7 py-3 text-sm font-semibold text-cream shadow-soft hover:bg-red-700">
-              Meldung absenden
-            </button>
-          </div>
-        </div>
-      </section>
+  return (
+    <PageLayout>
+      <PageHeader
+        title={route.title}
+        intro="Ist Ihnen ein Problem im Stadtgebiet aufgefallen? Hier sehen Sie, wie eine Meldung an die Stadt ablaufen könnte. Der Ablauf ist ein Beispiel und sendet nichts. Bei Gefahr rufen Sie 110 oder 112."
+        crumbs={[{ label: "Mitgestalten", to: "/mitgestalten" }, { label: "Mängel melden" }]}
+        variant="foto-daneben"
+        image="images/altstadt.jpg"
+        script="gemeinsam"
+      />
+
+      <BeispielAblauf
+        schritte={schritte}
+        schluss={{
+          titel: "Es wurde nichts gemeldet",
+          weg: "Einen Mangel melden Sie bei der Stadt Moosburg:",
+          zusatz: (
+            <p className="mt-5 text-ink">
+              Bei Gefahr rufen Sie{" "}
+              <a href="tel:110" className="font-semibold text-red-700 underline underline-offset-2 hover:text-red-500">110</a>
+              {" "}oder{" "}
+              <a href="tel:112" className="font-semibold text-red-700 underline underline-offset-2 hover:text-red-500">112</a>.
+            </p>
+          ),
+        }}
+        onNeu={() => {
+          setPin(null); setAddress(""); setCategory(""); setDescription(""); setFoto("");
+          setKontaktName(""); setKontaktMail(""); setConsent(false); setFehler({});
+        }}
+      />
 
       {/* Recent reports */}
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 pb-16 lg:px-8">
         <div className="mb-6 flex items-end justify-between">
           <div>
-            <div className="eyebrow text-red-700">Transparenz</div>
+            <div className="eyebrow flex items-center gap-2 text-red-700">
+              Transparenz
+              <Beispiel />
+            </div>
             <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">
               Aktuelle Meldungen
             </h2>

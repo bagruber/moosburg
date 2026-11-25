@@ -26,6 +26,7 @@ import { findRoute } from "@/routes";
 import { firmen, type Firma } from "@/data/firmen";
 import { FirmaCard, MoosburgCardBadge, MomaBadge } from "@/components/FirmaCard";
 import { Klecks } from "@/components/Klecks";
+import { Beispiel } from "@/components/Beispiel";
 import {
   MoosburgMap,
   layerConfig,
@@ -193,7 +194,7 @@ export function Mobilitaet() {
             {/* ── Baustellen ─────────────────────────────────────── */}
             <SectionHeader id="baustellen" icon={TrafficCone} accent="rb-2"
               title="Aktuelle Baustellen & Sperrungen"
-              lead="Stand letzter Aktualisierung der Stadtverwaltung. Bei akut neuen Sperrungen oder gefährlichen Stellen bitte über „Mängel melden“ Bescheid geben." />
+              lead="Stand letzter Aktualisierung der Stadtverwaltung. Bei Gefahr rufen Sie 110 oder 112. Neue Sperrungen und gefährliche Stellen melden Sie der Stadt unter 08761 684-0." />
             <ul className="space-y-3">
               {BAUSTELLEN.map((b) => (
                 <li key={b.strasse}>
@@ -330,9 +331,12 @@ export function Mobilitaet() {
           {/* ── Sidebar ─────────────────────────────────────────────── */}
           <aside className="space-y-6">
             <section className="rounded-xl border border-gold-500/30 bg-gold-100/40 p-5">
-              <div className="eyebrow text-gold-700">Mängel melden</div>
+              <div className="eyebrow flex items-center gap-2 text-gold-700">
+                Mängel melden
+                <Beispiel />
+              </div>
               <p className="mt-2 text-sm text-ink-soft">
-                Schlagloch, defekte Straßen­laterne, gefährliche Stelle?
+                Schlagloch oder defekte Straßen­laterne?
               </p>
               <Link
                 to="/mitgestalten/maengel-melden"
