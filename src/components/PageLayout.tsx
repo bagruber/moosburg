@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { TabLeiste } from "./TabLeiste";
+import { FehlerGrenze } from "./FehlerGrenze";
 
 export function PageLayout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
@@ -21,7 +22,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
       </a>
       <Header />
       <main id="inhalt" tabIndex={-1} className="flex-1 focus:outline-none">
-        {children}
+        <FehlerGrenze pfad={pathname}>{children}</FehlerGrenze>
       </main>
       <Footer />
       {/* Platz unter dem Fuss, damit die Leiste nichts verdeckt. */}
