@@ -144,7 +144,10 @@ export function GoldRahmen({
       <span ref={huelle} className="hidden" aria-hidden="true" />
       <svg
         aria-hidden="true"
-        width={mass.w + 2 * P + Math.abs(dx)}
+        // Rechts kein Rand: dort steht keine Linie über, und das Feld des SVG
+        // zählt zur Seitenbreite, auch wo nichts gezeichnet ist. Mit Rand ragte
+        // es am Handy 9 px über die Seite, und sie ließ sich seitlich wischen.
+        width={mass.w + P + Math.abs(dx)}
         height={mass.h + 2 * P + v}
         className={cn(
           "goldrahmen pointer-events-none absolute overflow-visible",
