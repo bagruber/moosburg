@@ -79,9 +79,10 @@ export function BeispielAblauf({
   const vor = "inline-flex items-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-cream transition hover:bg-red-700";
 
   return (
-    <>
-      {/* Der Stempel bleibt beim Scrollen unter dem Kopf stehen. Oben liegt er
-          auch am Handy frei, wo der Konzepthinweis den unteren Rand verdeckt. */}
+    <div>
+      {/* Der Stempel bleibt beim Scrollen unter dem Kopf stehen, solange der
+          Ablauf im Bild ist. Oben liegt er auch am Handy frei, wo der
+          Konzepthinweis den unteren Rand verdeckt. */}
       <div className="sticky top-[7.25rem] z-30 border-b border-ink-line/70 bg-cream/95 backdrop-blur lg:top-20">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 lg:px-8">
           <p className="flex items-center gap-2 text-sm text-ink-soft">
@@ -219,7 +220,7 @@ export function BeispielAblauf({
           </div>
         )}
       </section>
-    </>
+    </div>
   );
 }
 
