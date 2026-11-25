@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Car,
   Heart,
@@ -148,10 +149,12 @@ function slotsFor(category: string): string[] {
 const formatDate = (d: Date) =>
   d.toLocaleDateString("de-DE", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
 
+const isoDate = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
 const feld = "mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500 aria-invalid:border-red-700";
 
 export function TerminBuchen() {
-  const { profile, signedIn } = useAppState();
+  const { profile, signedIn, addBooking } = useAppState();
 
   const [catId, setCatId] = useState<string | null>(null);
   const [serviceId, setServiceId] = useState<string | null>(null);
@@ -544,6 +547,23 @@ export function TerminBuchen() {
         schluss={{
           titel: "Es wurde kein Termin vereinbart",
           weg: "Einen echten Termin bekommen Sie bei der Stadt Moosburg:",
+          zusatz: (
+            <p className="mt-5 text-ink">
+              Den durchgespielten Termin sehen Sie als Beispiel{" "}
+              <Link to="/konto" className="font-semibold text-red-700 underline underline-offset-2 hover:text-red-500">in Ihrem Konto</Link>,
+              bis Sie die Seite neu laden.
+            </p>
+          ),
+        }}
+        onAbschluss={() => {
+          if (!cat || !service || !slot) return;
+          addBooking({
+            category: cat.title,
+            service: service.title,
+            date: isoDate(date),
+            time: slot,
+            location: cat.location,
+          });
         }}
         onNeu={() => {
           setCatId(null); setServiceId(null); setSlot(null); setConsent(false); setFehler({});

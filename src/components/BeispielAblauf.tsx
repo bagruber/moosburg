@@ -30,6 +30,7 @@ export type AblaufSchritt = {
 export function BeispielAblauf({
   schritte,
   schluss,
+  onAbschluss,
   onNeu,
 }: {
   schritte: AblaufSchritt[];
@@ -40,6 +41,8 @@ export function BeispielAblauf({
     weg: string;
     zusatz?: ReactNode;
   };
+  /** Läuft bei „Beispiel abschließen“, bevor der Schluss erscheint. */
+  onAbschluss?: () => void;
   /** Leert die Eingaben der Seite, wenn jemand von vorn beginnt. */
   onNeu: () => void;
 }) {
@@ -177,7 +180,7 @@ export function BeispielAblauf({
               <button type="button" onClick={() => setOrt(n - 1)} className={zurueck}>
                 <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
               </button>
-              <button type="button" onClick={weiter} className={vor}>
+              <button type="button" onClick={() => { onAbschluss?.(); weiter(); }} className={vor}>
                 Beispiel abschließen
               </button>
             </div>

@@ -473,10 +473,13 @@ function MyBookings() {
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="eyebrow text-red-700">Meine Termine</div>
-          <h2 className="headline mt-1 text-2xl text-ink">Anstehende Termine ({bookings.length})</h2>
+          <h2 className="headline mt-1 text-2xl text-ink">Durchgespielte Termine ({bookings.length})</h2>
+          <p className="mt-2 text-sm text-ink-soft">
+            Hier steht, was Sie im Beispiel durchgespielt haben. Bei der Stadt ist kein Termin vereinbart.
+          </p>
         </div>
         <Link to="/rathaus/termin-buchen" className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 hover:underline">
-          <CalendarDots className="h-4 w-4" weight="regular" /> Weiteren Termin buchen
+          <CalendarDots className="h-4 w-4" weight="regular" /> Termin buchen
         </Link>
       </div>
 
@@ -495,18 +498,18 @@ function MyBookings() {
                 </div>
               </div>
               <div className="min-w-0 flex-1">
-                <div className="eyebrow text-red-700">{b.category}</div>
+                <div className="eyebrow flex flex-wrap items-center gap-x-2 gap-y-1 text-red-700">
+                  <Beispiel />
+                  {b.category}
+                </div>
                 <h3 className="mt-1 card-title text-base text-ink">{b.service}</h3>
                 <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-muted">
                   <div className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" weight="regular" />{b.time} Uhr</div>
                   <div className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" weight="regular" />{b.location}</div>
                 </dl>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-[11px] text-ink-muted">Ref. {b.reference}</span>
-                  <button className="text-xs font-semibold text-red-700 hover:underline">In den Kalender (.ics)</button>
-                  <button className="text-xs font-semibold text-ink-soft hover:text-red-700">Verschieben</button>
                   <button onClick={() => removeBooking(b.id)} className="ml-auto inline-flex items-center gap-1 text-xs text-ink-muted hover:text-red-700">
-                    <X className="h-3.5 w-3.5" weight="regular" /> Absagen
+                    <X className="h-3.5 w-3.5" weight="regular" /> Entfernen
                   </button>
                 </div>
               </div>

@@ -50,7 +50,6 @@ export type Booking = {
   date: string;        // ISO YYYY-MM-DD
   time: string;        // HH:MM
   location: string;
-  reference: string;   // e.g. "T-2026-0418"
   createdAt: number;
 };
 
@@ -63,7 +62,7 @@ type AppStateValue = {
   signIn: (email: string) => void;
   signOut: () => void;
   updateProfile: (patch: Partial<Profile>) => void;
-  addBooking: (b: Omit<Booking, "id" | "reference" | "createdAt">) => Booking;
+  addBooking: (b: Omit<Booking, "id" | "createdAt">) => Booking;
   removeBooking: (id: string) => void;
   toggleStep: (id: string) => void;
   toggleWatchedJob: (id: string) => void;
@@ -109,8 +108,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const addBooking: AppStateValue["addBooking"] = useCallback((b) => {
     const id = `${Date.now()}`;
-    const ref = `T-${new Date().getFullYear()}-${Math.floor(Math.random() * 9000 + 1000)}`;
-    const booking: Booking = { ...b, id, reference: ref, createdAt: Date.now() };
+    const booking: Booking = { ...b, id, createdAt: Date.now() };
     setBookings((prev) => [booking, ...prev]);
     return booking;
   }, []);
