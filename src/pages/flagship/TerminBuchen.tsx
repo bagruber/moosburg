@@ -124,9 +124,14 @@ const categories: ServiceCategory[] = [
   },
 ];
 
-/** Generate next 14 working days from anchor date 2026-04-25. */
+/**
+ * Die nächsten Werktage ab morgen. „Heute“ ist der Tag in Moosburg und nicht
+ * der des Geräts, sonst böte der Kalender kurz nach Mitternacht einen Tag an,
+ * der im Rathaus schon läuft. Feiertage kennt die Liste nicht.
+ */
 function nextWorkingDays(count = 14): Date[] {
-  const start = new Date("2026-04-25T00:00:00");
+  const heute = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+  const start = new Date(`${heute}T00:00:00`);
   const out: Date[] = [];
   let d = new Date(start);
   d.setDate(d.getDate() + 1); // start tomorrow
