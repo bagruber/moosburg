@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { Rose } from "./BrandMark";
 
 export function Logo({
   className,
@@ -15,14 +16,12 @@ export function Logo({
       <span
         className={cn(
           "grid h-11 w-11 shrink-0 place-items-center rounded-full shrink-0",
-          isLight ? "bg-cream p-1" : "",
+          isLight ? "bg-cream" : "",
         )}
       >
-        <img
-          src={`${import.meta.env.BASE_URL}moosburg.svg`}
-          alt=""
-          className={cn("h-full w-full", isLight ? "" : "h-10 w-10")}
-        />
+        {/* Die Rose statt des Stadtwappens: Das Wappen in Originalform ist
+            Hoheitszeichen und gehört nicht auf einen Konzeptvorschlag. */}
+        <Rose className={cn("text-red-700", isLight ? "h-7 w-7" : "h-9 w-9")} />
       </span>
       {showWordmark && (
         <span className="flex flex-col leading-none">

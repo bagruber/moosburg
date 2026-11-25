@@ -53,7 +53,8 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-6">
           <div className="lg:col-span-1">
             <Logo tone="light" />
-            <dl className="mt-6 space-y-3 text-sm text-cream/90">
+            <h3 className="eyebrow mt-6 text-gold-200">Stadtverwaltung</h3>
+            <dl className="mt-4 space-y-3 text-sm text-cream/90">
               <div className="flex gap-2.5">
                 <MapPin className="h-4 w-4 mt-0.5 text-gold-200 shrink-0" weight="regular" />
                 <span>Stadtplatz 13<br />85368 Moosburg a. d. Isar</span>
@@ -104,7 +105,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-cream/15 pt-6 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <span>© {new Date().getFullYear()} Stadt Moosburg an der Isar</span>
+            <span>Konzeptvorschlag, privat erstellt. Kein Auftritt der Stadt Moosburg.</span>
             <Link to="/konzept" className="inline-flex items-center gap-1.5 text-gold-200 hover:text-white">
               <Rose className="h-3 w-3" /> Konzept &amp; Design
             </Link>
