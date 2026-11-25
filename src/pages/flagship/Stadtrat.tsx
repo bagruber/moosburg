@@ -13,6 +13,11 @@ const route = findRoute("mitgestalten/stadtrat")!;
 const IMG = (src: string) => `${import.meta.env.BASE_URL}${src}`;
 const COUNCIL = "https://bagruber.github.io/council";
 
+// Die Kopie der Termine ist so alt wie der letzte Abgleich. Was seither
+// stattfand, fällt hier heraus, sonst stehen gehaltene Sitzungen als nächste da.
+const heute = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+const kommende = sitzungstermine.filter((s) => s.datum >= heute);
+
 /**
  * Sitze kommen aus dem Wahlergebnis, die Reihenfolge nicht: `parteien` ist nach
  * Größe sortiert, ein Sitzbalken liest sich aber nur als Spektrum von links
@@ -113,10 +118,13 @@ export function Stadtrat() {
           </div>
 
           <div className="overflow-hidden rounded-md border border-ink-line bg-white">
-            {sitzungstermine.map((s, i) => (
+            {kommende.length === 0 && (
+              <p className="p-5 text-sm text-ink-soft">Derzeit ist keine Sitzung angekündigt.</p>
+            )}
+            {kommende.map((s, i) => (
               <div
                 key={s.id}
-                className={`flex flex-wrap items-center gap-4 p-5 ${i !== sitzungstermine.length - 1 ? "border-b border-ink-line" : ""}`}
+                className={`flex flex-wrap items-center gap-4 p-5 ${i !== kommende.length - 1 ? "border-b border-ink-line" : ""}`}
               >
                 <div className="flex items-center gap-3">
                   <CalendarDots className="h-5 w-5 text-red-700" weight="regular" />
