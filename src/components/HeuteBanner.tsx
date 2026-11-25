@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from "@phosphor-icons/react";
 import { upcomingEvents } from "@/routes";
+import { Beispiel } from "./Beispiel";
 import { cn } from "@/lib/cn";
 
 /**
@@ -71,6 +72,8 @@ type Tile = {
   to?: string;
   href?: string;
   accent: string;     // CSS var
+  /** Inhalt der Kachel ist erfunden, sie trägt den Stempel. */
+  beispiel?: boolean;
 };
 
 export function HeuteBanner({ className, hideSeason }: { className?: string; hideSeason?: boolean }) {
@@ -86,7 +89,8 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
       icon: Sun,
       // Kein Pegel in dieser Kachel: ein fester Stand mit „normal“ neben dem
       // heutigen Datum wäre bei Hochwasser falsch, auch als Beispiel.
-      eyebrow: "Wetter heute · Beispiel",
+      eyebrow: "Wetter heute",
+      beispiel: true,
       body: "Heiter, 18 °C",
       href: "https://www.dwd.de/",
       accent: "var(--color-gold-700)",
@@ -101,7 +105,8 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
     },
     {
       icon: Warning,
-      eyebrow: "Akute Sperrung · Beispiel",
+      eyebrow: "Akute Sperrung",
+      beispiel: true,
       body: "Stadtwaldstraße",
       meta: "Vollsperrung bis 07.08.2026",
       to: "/mein-moosburg/mobilitaet#baustellen",
@@ -142,7 +147,10 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
                   <Icon className="h-4.5 w-4.5" weight="regular" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[10px] font-display text-ink-muted">{t.eyebrow}</div>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] font-display text-ink-muted">
+                    {t.eyebrow}
+                    {t.beispiel && <Beispiel />}
+                  </div>
                   <div className="truncate text-sm font-medium text-ink">{t.body}</div>
                   {t.meta && (
                     <div className="truncate text-xs text-ink-muted">{t.meta}</div>
