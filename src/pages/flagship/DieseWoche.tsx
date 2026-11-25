@@ -8,7 +8,6 @@ import {
   Sun,
   Cloud,
   CloudRain,
-  Drop,
   CaretRight,
   BabyCarriage,
   UsersThree,
@@ -282,13 +281,15 @@ export function DieseWoche() {
             )}
           </div>
           <div className="flex items-center gap-4 text-xs text-ink-soft">
+            {/* Das Wetter ist ein Mock und trägt das Etikett der Kategorien weiter
+               unten. Ein fester Isar-Pegel stand hier und ist entfallen: „normal“
+               neben dem heutigen Datum wäre bei Hochwasser falsch. */}
             <span className="inline-flex items-center gap-1.5">
+              <span className="rounded-full border border-ink-line px-2 py-0.5 text-[10px] font-semibold text-ink-soft">
+                Beispiel
+              </span>
               <WetterIcon className="h-3.5 w-3.5 text-gold-700" weight="regular" />
               {wetter.label}, {wetter.temp}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Drop className="h-3.5 w-3.5" style={{ color: "var(--color-rb-6)" }} weight="regular" />
-              Isar-Pegel 1,32 m · normal
             </span>
           </div>
         </div>

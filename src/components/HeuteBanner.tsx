@@ -84,9 +84,10 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
   const tiles: Tile[] = [
     {
       icon: Sun,
-      eyebrow: "Wetter heute",
+      // Kein Pegel in dieser Kachel: ein fester Stand mit „normal“ neben dem
+      // heutigen Datum wäre bei Hochwasser falsch, auch als Beispiel.
+      eyebrow: "Wetter heute · Beispiel",
       body: "Heiter, 18 °C",
-      meta: "Pegel Isar: 1,32 m (normal)",
       href: "https://www.dwd.de/",
       accent: "var(--color-gold-700)",
     },
@@ -100,7 +101,7 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
     },
     {
       icon: Warning,
-      eyebrow: "Akute Sperrung",
+      eyebrow: "Akute Sperrung · Beispiel",
       body: "Stadtwaldstraße",
       meta: "Vollsperrung bis 07.08.2026",
       to: "/mein-moosburg/mobilitaet#baustellen",
