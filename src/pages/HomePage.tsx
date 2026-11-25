@@ -275,6 +275,9 @@ function Events() {
           />
         </Reveal>
 
+        {upcomingEvents.length === 0 && (
+          <p className="text-sm text-cream/90">Derzeit ist hier keine Veranstaltung eingetragen.</p>
+        )}
         <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {upcomingEvents.map((e) => (
             <Link

@@ -460,12 +460,19 @@ export type EventItem = {
   category: string;
 };
 
-export const upcomingEvents: EventItem[] = [
+const events: EventItem[] = [
   { date: "2026-04-30", day: "30", month: "Apr", title: "57. Moosburger Frühlingsfest: Anstich", location: "Festgelände, Am Stadtpark", category: "Volksfest" },
   { date: "2026-05-01", day: "01", month: "Mai", title: "Maibaumaufstellen am Plan", location: "Plan Moosburg", category: "Brauchtum" },
   { date: "2026-04-29", day: "29", month: "Apr", title: "Stadtratssitzung (öffentlich)", location: "Rathaus, Sitzungssaal", category: "Stadtrat" },
   { date: "2026-05-04", day: "04", month: "Mai", title: "Auftakt Solar- und Umwelttage 2026", location: "Stadtbibliothek Moosburg", category: "Umwelt" },
 ];
+
+// Die Liste ist von Hand gesetzt und altert. Was vorbei ist, fällt beim Laden
+// heraus, sonst steht ein Fest vom Frühjahr im Herbst als nächstes da. Gezählt
+// wird der Tag in Moosburg, ein Termin von heute bleibt also stehen. Die Liste
+// kann dadurch leer sein: wer sie zeigt, braucht dafür einen Satz.
+const heute = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Berlin" });
+export const upcomingEvents: EventItem[] = events.filter((e) => e.date >= heute);
 
 export function findRoute(slug: string): Route | undefined {
   return routes.find((r) => r.slug === slug);

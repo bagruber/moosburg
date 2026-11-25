@@ -57,11 +57,9 @@ function pickSeasonTip(now: Date): SeasonTip {
   return candidates.find((t) => !t.label.startsWith("Wochenmarkt")) ?? candidates[0] ?? SEASON[SEASON.length - 1];
 }
 
-function pickNextEvent(now: Date) {
-  const future = upcomingEvents
-    .filter((e) => new Date(e.date + "T00:00:00") >= now)
-    .sort((a, b) => a.date.localeCompare(b.date));
-  return future[0] ?? upcomingEvents[0];
+/** Vergangenes hat die Liste schon aussortiert. Ist sie leer, gibt es keinen. */
+function pickNextEvent() {
+  return [...upcomingEvents].sort((a, b) => a.date.localeCompare(b.date))[0];
 }
 
 type Tile = {
@@ -78,7 +76,7 @@ type Tile = {
 
 export function HeuteBanner({ className, hideSeason }: { className?: string; hideSeason?: boolean }) {
   const now = new Date();
-  const event = pickNextEvent(now);
+  const event = pickNextEvent();
   const season = pickSeasonTip(now);
 
   const weekday = now.toLocaleDateString("de-DE", { weekday: "long" });
@@ -98,8 +96,8 @@ export function HeuteBanner({ className, hideSeason }: { className?: string; hid
     {
       icon: CalendarDots,
       eyebrow: "Nächstes Event",
-      body: event.title,
-      meta: `${event.day}. ${event.month} · ${event.location}`,
+      body: event ? event.title : "Derzeit nichts eingetragen",
+      meta: event && `${event.day}. ${event.month} · ${event.location}`,
       to: "/mein-moosburg/veranstaltungen",
       accent: "var(--color-red-500)",
     },

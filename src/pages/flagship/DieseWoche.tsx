@@ -196,13 +196,11 @@ export function DieseWoche() {
     return Math.ceil((((+d - +yearStart) / 86400000) + 1) / 7);
   })();
 
-  // The next 4 events (after today, sorted; fall back to all)
-  const visibleEvents = (() => {
-    const future = upcomingEvents
-      .filter((e) => new Date(e.date + "T00:00:00") >= new Date(now.toDateString()))
-      .sort((a, b) => a.date.localeCompare(b.date));
-    return (future.length >= 3 ? future : upcomingEvents).slice(0, 4);
-  })();
+  // Die nächsten vier Termine. Vergangene hat die Liste schon aussortiert, und
+  // aufgefüllt wird nicht: lieber weniger Karten als ein Termin von gestern.
+  const visibleEvents = [...upcomingEvents]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 4);
 
   const weekdayDate = now.toLocaleDateString("de-DE", {
     weekday: "long", day: "2-digit", month: "long", year: "numeric",
@@ -306,34 +304,38 @@ export function DieseWoche() {
             heading="Termine dieser Woche"
           />
         </Reveal>
-        <Reveal as="ul" className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleEvents.map((e) => (
-            <li key={e.date + e.title}>
-              <Link
-                to="/mein-moosburg/veranstaltungen"
-                className="group flex h-full flex-col gap-3 rounded-xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
-              >
-                <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
-                  <div className="badge text-cream/80">{e.month}</div>
-                  <div className="font-display text-2xl leading-none">{e.day}</div>
-                </div>
-                <div>
-                  <span className="mb-1 inline-block rounded-full border border-ink-line px-2 py-0.5 text-[10px] font-semibold text-ink-soft">
-                    {e.category}
-                  </span>
-                  <h3 className="mt-1 card-title text-base text-ink line-clamp-2 group-hover:text-red-700">
-                    {e.title}
-                  </h3>
-                  <div className="mt-2 flex items-center gap-1 text-xs text-ink-muted">
-                    <Clock className="h-3 w-3" weight="regular" />
-                    <MapPin className="ml-1 h-3 w-3" weight="regular" />
-                    <span className="truncate">{e.location}</span>
+        {visibleEvents.length === 0 ? (
+          <p className="-mt-3 text-sm text-ink-soft">Derzeit ist hier keine Veranstaltung eingetragen.</p>
+        ) : (
+          <Reveal as="ul" className="-mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {visibleEvents.map((e) => (
+              <li key={e.date + e.title}>
+                <Link
+                  to="/mein-moosburg/veranstaltungen"
+                  className="group flex h-full flex-col gap-3 rounded-xl border border-ink-line/50 bg-white p-5 transition hover:-translate-y-0.5 hover:border-red-500 hover:shadow-soft"
+                >
+                  <div className="flex h-16 w-16 flex-col items-center justify-center rounded-md bg-red-500 text-cream">
+                    <div className="badge text-cream/80">{e.month}</div>
+                    <div className="font-display text-2xl leading-none">{e.day}</div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </Reveal>
+                  <div>
+                    <span className="mb-1 inline-block rounded-full border border-ink-line px-2 py-0.5 text-[10px] font-semibold text-ink-soft">
+                      {e.category}
+                    </span>
+                    <h3 className="mt-1 card-title text-base text-ink line-clamp-2 group-hover:text-red-700">
+                      {e.title}
+                    </h3>
+                    <div className="mt-2 flex items-center gap-1 text-xs text-ink-muted">
+                      <Clock className="h-3 w-3" weight="regular" />
+                      <MapPin className="ml-1 h-3 w-3" weight="regular" />
+                      <span className="truncate">{e.location}</span>
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </Reveal>
+        )}
         <div className="mt-6 text-center">
           <Link
             to="/mein-moosburg/veranstaltungen"
