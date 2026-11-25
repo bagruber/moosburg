@@ -75,7 +75,15 @@ export function PageHeader({
 
   /* Die Handschrift misst sich in em an der Überschrift und sitzt deshalb in
      ihr. Abgeschnitten werden darf nur die Zeichnung, nie der Schwung der
-     Handschrift — deshalb trägt der Kopf selbst kein overflow-hidden. */
+     Handschrift — deshalb trägt der Kopf selbst kein overflow-hidden.
+
+     Weil sie nicht umbricht, wäre ein langer Akzent am Handy breiter als die
+     Seite: „die Drei-Rosen-Stadt“ lief bei 390 px bis 402 und machte die Seite
+     seitlich wischbar. Unter lg ist die Größe deshalb zusätzlich an die Spalte
+     gebunden: Viewport minus die beiden Ränder aus px-4, geteilt durch die
+     geschätzte Laufweite. Madelon braucht bei den langen Akzenten rund 0,38 em
+     je Zeichen. Kurze Akzente erreichen die Grenze nie und bleiben bei
+     1,45 em. Ab lg gilt nur der feste Wert, dort reicht der Platz. */
   const Titel = (
     <h1
       className={cn(
@@ -89,10 +97,12 @@ export function PageHeader({
       {script && (
         <span
           aria-hidden="true"
+          style={{ "--zeichen": script.length } as React.CSSProperties}
           className={cn(
             "script-accent pointer-events-none absolute -left-[0.05em] -top-[0.42em]",
             "origin-bottom-left -rotate-6 select-none whitespace-nowrap",
             "text-[1.45em] leading-none",
+            "max-lg:text-[length:min(1.45em,calc((100vw_-_2rem)_/_(0.38_*_var(--zeichen))))]",
             hell ? "text-gold-500/55" : "text-gold-200/70",
           )}
         >
