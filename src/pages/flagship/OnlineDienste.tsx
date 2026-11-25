@@ -223,7 +223,7 @@ function ServiceCTA({ mode, aufgabe }: { mode: ServiceMode; aufgabe: string }) {
       </label>
       <div className="mt-2 flex items-center justify-between gap-3">
         <span className="text-xs text-ink-muted">
-          Antwort innerhalb von 2 Werktagen (Demo)
+          Ein echter Dienst würde hier zusagen: Antwort innerhalb von 2 Werktagen.
         </span>
         <button
           type="submit"
