@@ -1,11 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Map as MapGL, Source, Layer, type MapRef, type MapLayerMouseEvent } from "react-map-gl/maplibre";
-import "maplibre-gl/dist/maplibre-gl.css";
-import { MOOSBURG_CENTER, MOOSBURG_BOUNDS } from "@/data/stadtkarte";
+import { Karte, KartenQuelle, type KartenInstanz, type KartenKlick } from "@/components/Karte";
+import { MOOSBURG_CENTER } from "@/data/stadtkarte";
 import { loadStrassenGeo, bboxOfNames, type StreetFC } from "@/lib/strassenGeo";
-import { maplibreWorker } from "@/lib/maplibreWorker";
 
-const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 const EMPHASIS_COLOR = "#c8102e";
 
 export type MapLayer = { streets: string[]; color: string };
@@ -25,7 +22,7 @@ export function StrassenKarte({
   onSelectStreet?: (name: string) => void;
   className?: string;
 }) {
-  const mapRef = useRef<MapRef | null>(null);
+  const mapRef = useRef<KartenInstanz | null>(null);
   const [geo, setGeo] = useState<StreetFC | null>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -65,40 +62,36 @@ export function StrassenKarte({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fitKey, loaded, geo]);
 
-  const handleClick = (e: MapLayerMouseEvent) => {
-    const name = e.features?.[0]?.properties?.name as string | undefined;
+  const handleClick = (k: KartenKlick) => {
+    const name = k.eigenschaften?.name as string | undefined;
     if (name && onSelectStreet) onSelectStreet(name);
   };
 
   return (
     <div className={className}>
-      <MapGL
-        workerUrl={maplibreWorker}
+      <Karte
         ref={mapRef}
-        initialViewState={{ longitude: MOOSBURG_CENTER[0], latitude: MOOSBURG_CENTER[1], zoom: 13.2 }}
-        mapStyle={STYLE_URL}
-        maxBounds={MOOSBURG_BOUNDS}
+        zoom={13.2}
         minZoom={11}
         maxZoom={17.5}
-        style={{ width: "100%", height: "100%" }}
-        attributionControl={{ compact: true }}
-        interactiveLayerIds={onSelectStreet ? ["strassen-hit"] : []}
+        kompakteAttribution
+        klickEbenen={onSelectStreet ? ["strassen-hit"] : []}
         onLoad={() => setLoaded(true)}
         onClick={handleClick}
         cursor={onSelectStreet ? "pointer" : "grab"}
       >
-        <Source id="strassen" type="geojson" data={shownFC}>
-          <Layer id="strassen-casing" type="line"
-            layout={{ "line-cap": "round", "line-join": "round" }}
-            paint={{ "line-color": "#ffffff", "line-width": 9, "line-opacity": 0.95 }} />
-          <Layer id="strassen-line" type="line"
-            layout={{ "line-cap": "round", "line-join": "round" }}
-            paint={{ "line-color": ["get", "color"], "line-width": ["get", "w"] }} />
-          <Layer id="strassen-hit" type="line"
-            layout={{ "line-cap": "round", "line-join": "round" }}
-            paint={{ "line-color": "#000000", "line-width": 22, "line-opacity": 0 }} />
-        </Source>
-      </MapGL>
+        <KartenQuelle id="strassen" data={shownFC} ebenen={[
+          { id: "strassen-casing", type: "line",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: { "line-color": "#ffffff", "line-width": 9, "line-opacity": 0.95 } },
+          { id: "strassen-line", type: "line",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: { "line-color": ["get", "color"], "line-width": ["get", "w"] } },
+          { id: "strassen-hit", type: "line",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: { "line-color": "#000000", "line-width": 22, "line-opacity": 0 } },
+        ]} />
+      </Karte>
     </div>
   );
 }

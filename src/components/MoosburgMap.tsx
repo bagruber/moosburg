@@ -1,23 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Map as MapGL,
-  Marker,
-  Popup,
-  NavigationControl,
-  Source,
-  Layer,
-  type MapRef,
-} from "react-map-gl/maplibre";
-import "maplibre-gl/dist/maplibre-gl.css";
-import { MOOSBURG_CENTER, MOOSBURG_BOUNDS } from "@/data/stadtkarte";
-import { maplibreWorker } from "@/lib/maplibreWorker";
-
-/**
- * Derselbe Basemap-Style wie Stadtplan und Straßennamen-Karte: „positron" ist
- * entsättigt, damit die Layer-Farben die Information tragen und nicht mit dem
- * Kartenbild konkurrieren.
- */
-const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
+import { Karte, KartenMarker, KartenPopup, KartenQuelle, type KartenInstanz } from "@/components/Karte";
+import { MOOSBURG_BOUNDS } from "@/data/stadtkarte";
 
 export type MapPin = {
   id: string;
@@ -75,7 +58,7 @@ export function MoosburgMap({
   onPick?: (lat: number, lng: number) => void;
   className?: string;
 }) {
-  const mapRef = useRef<MapRef>(null);
+  const mapRef = useRef<KartenInstanz>(null);
   const [selected, setSelected] = useState<MapPin | null>(null);
   const [userOpen, setUserOpen] = useState(false);
 
@@ -88,52 +71,42 @@ export function MoosburgMap({
 
   return (
     <div className={className}>
-      <MapGL
-        workerUrl={maplibreWorker}
+      <Karte
         ref={mapRef}
-        initialViewState={{
-          longitude: MOOSBURG_CENTER[0],
-          latitude: MOOSBURG_CENTER[1],
-          zoom: 14,
-        }}
-        mapStyle={STYLE_URL}
-        maxBounds={MOOSBURG_BOUNDS}
+        zoom={14}
         minZoom={12}
         maxZoom={18}
-        style={{ width: "100%", height: "100%" }}
+        navigation
         cursor={onPick ? "crosshair" : "grab"}
-        onClick={(e) => {
-          if (!onPick) return;
-          const { lng, lat } = e.lngLat;
-          if (insideMoosburg(lng, lat)) onPick(lat, lng);
+        onClick={({ lng, lat }) => {
+          if (onPick && insideMoosburg(lng, lat)) onPick(lat, lng);
         }}
       >
-        <NavigationControl position="top-right" showCompass={false} />
 
         {/* Näherungs-Halo um den gesetzten Ort — unter den Markern. */}
         {userPin && (
-          <Source
+          <KartenQuelle
             id="user-halo"
-            type="geojson"
             data={{
               type: "Feature",
               geometry: { type: "Point", coordinates: [userPin.lng, userPin.lat] },
               properties: {},
             }}
-          >
-            <Layer
-              id="user-halo-circle"
-              type="circle"
-              paint={{
-                "circle-radius": 28,
-                "circle-color": "#c8102e",
-                "circle-opacity": 0.12,
-                "circle-stroke-color": "#c8102e",
-                "circle-stroke-width": 1,
-                "circle-stroke-opacity": 0.45,
-              }}
-            />
-          </Source>
+            ebenen={[
+              {
+                id: "user-halo-circle",
+                type: "circle",
+                paint: {
+                  "circle-radius": 28,
+                  "circle-color": "#c8102e",
+                  "circle-opacity": 0.12,
+                  "circle-stroke-color": "#c8102e",
+                  "circle-stroke-width": 1,
+                  "circle-stroke-opacity": 0.45,
+                },
+              },
+            ]}
+          />
         )}
 
         {pins
@@ -141,13 +114,12 @@ export function MoosburgMap({
           .map((p) => {
             const size = dotSize(p.layer);
             return (
-              <Marker
+              <KartenMarker
                 key={p.id}
-                longitude={p.lng}
-                latitude={p.lat}
+                lng={p.lng}
+                lat={p.lat}
                 anchor="center"
-                onClick={(e) => {
-                  e.originalEvent.stopPropagation();
+                onClick={() => {
                   setUserOpen(false);
                   setSelected(p);
                 }}
@@ -163,19 +135,16 @@ export function MoosburgMap({
                     style={{ width: Math.round(size * 0.28), height: Math.round(size * 0.28) }}
                   />
                 </button>
-              </Marker>
+              </KartenMarker>
             );
           })}
 
         {selected && (
-          <Popup
-            longitude={selected.lng}
-            latitude={selected.lat}
-            anchor="bottom"
+          <KartenPopup
+            lng={selected.lng}
+            lat={selected.lat}
             offset={dotSize(selected.layer) / 2 + 4}
-            closeButton={false}
             onClose={() => setSelected(null)}
-            maxWidth="280px"
           >
             <div className="p-1">
               <div className="flex items-center gap-2">
@@ -190,17 +159,16 @@ export function MoosburgMap({
               <h3 className="mt-1 font-display text-base text-ink">{selected.title}</h3>
               {selected.meta && <p className="mt-0.5 text-xs text-ink-soft">{selected.meta}</p>}
             </div>
-          </Popup>
+          </KartenPopup>
         )}
 
         {/* Der selbst gesetzte Ort: Tropfenform, Spitze auf der Koordinate. */}
         {userPin && (
-          <Marker
-            longitude={userPin.lng}
-            latitude={userPin.lat}
+          <KartenMarker
+            lng={userPin.lng}
+            lat={userPin.lat}
             anchor="bottom"
-            onClick={(e) => {
-              e.originalEvent.stopPropagation();
+            onClick={() => {
               setSelected(null);
               setUserOpen(true);
             }}
@@ -221,18 +189,15 @@ export function MoosburgMap({
                 <circle cx="16" cy="14" r="4.4" fill="#fff" />
               </svg>
             </button>
-          </Marker>
+          </KartenMarker>
         )}
 
         {userPin && userOpen && (
-          <Popup
-            longitude={userPin.lng}
-            latitude={userPin.lat}
-            anchor="bottom"
+          <KartenPopup
+            lng={userPin.lng}
+            lat={userPin.lat}
             offset={36}
-            closeButton={false}
             onClose={() => setUserOpen(false)}
-            maxWidth="280px"
           >
             <div className="p-1">
               <h3 className="font-display text-base text-ink">Ihr gewählter Ort</h3>
@@ -240,9 +205,9 @@ export function MoosburgMap({
                 {userPin.lat.toFixed(5)}, {userPin.lng.toFixed(5)}
               </p>
             </div>
-          </Popup>
+          </KartenPopup>
         )}
-      </MapGL>
+      </Karte>
     </div>
   );
 }

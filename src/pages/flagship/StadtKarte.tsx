@@ -1,8 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Map, Marker, Popup, NavigationControl, Source, Layer, type MapLayerMouseEvent } from "react-map-gl/maplibre";
-import "maplibre-gl/dist/maplibre-gl.css";
+import { Karte, KartenMarker, KartenPopup, KartenQuelle, type KartenKlick } from "@/components/Karte";
 import {
   ArrowRight,
   MapPin,
@@ -16,17 +15,13 @@ import {
   LAYER_META,
   KARTEN_FLAECHEN,
   FLAECHE_META,
-  MOOSBURG_CENTER,
-  MOOSBURG_BOUNDS,
   type KartenLayer,
   type KartenPunkt,
   type FlaecheLayer,
 } from "@/data/stadtkarte";
 import { cn } from "@/lib/cn";
-import { maplibreWorker } from "@/lib/maplibreWorker";
 
 const route = findRoute("mein-moosburg/stadtplan")!;
-const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 const ALL_LAYERS = Object.keys(LAYER_META) as KartenLayer[];
 const ALL_FLAECHEN = Object.keys(FLAECHE_META) as FlaecheLayer[];
 
@@ -94,13 +89,12 @@ export function StadtKarte() {
     layers: ALL_LAYERS.filter((l) => LAYER_META[l].group === g),
   }));
 
-  const handleMapClick = (e: MapLayerMouseEvent) => {
-    const feat = e.features?.[0];
-    if (feat?.properties) {
-      const p = feat.properties as Record<string, string>;
+  const handleMapClick = (k: KartenKlick) => {
+    if (k.eigenschaften) {
+      const p = k.eigenschaften as Record<string, string>;
       setSelected(null);
       setSelectedArea({
-        lng: e.lngLat.lng, lat: e.lngLat.lat,
+        lng: k.lng, lat: k.lat,
         title: p.title, meta: p.meta, to: p.to, color: p.color,
       });
     } else {
@@ -159,39 +153,30 @@ export function StadtKarte() {
       {/* ── Karte ──────────────────────────────────────────────────── */}
       <section className="relative">
         <div className="relative h-[68vh] min-h-[480px] w-full overflow-hidden border-b border-ink-line/50">
-          <Map
-            workerUrl={maplibreWorker}
-            initialViewState={{
-              longitude: zielPunkt?.lng ?? MOOSBURG_CENTER[0],
-              latitude: zielPunkt?.lat ?? MOOSBURG_CENTER[1],
-              zoom: zielPunkt ? 16.5 : 14.2,
-            }}
-            mapStyle={STYLE_URL}
-            maxBounds={MOOSBURG_BOUNDS}
+          <Karte
+            center={zielPunkt ? [zielPunkt.lng, zielPunkt.lat] : undefined}
+            zoom={zielPunkt ? 16.5 : 14.2}
             minZoom={12}
             maxZoom={18}
-            style={{ width: "100%", height: "100%" }}
-            interactiveLayerIds={["flaechen-fill"]}
+            navigation
+            klickEbenen={["flaechen-fill"]}
             onClick={handleMapClick}
           >
-            <NavigationControl position="top-right" showCompass={false} />
-
             {/* Flächen zuerst (unter den Markern) */}
-            <Source id="flaechen" type="geojson" data={flaechenGeo}>
-              <Layer id="flaechen-fill" type="fill"
-                paint={{ "fill-color": ["get", "color"], "fill-opacity": 0.18 }} />
-              <Layer id="flaechen-line" type="line"
-                paint={{ "line-color": ["get", "color"], "line-width": 2, "line-dasharray": [2, 1] }} />
-            </Source>
+            <KartenQuelle id="flaechen" data={flaechenGeo} ebenen={[
+              { id: "flaechen-fill", type: "fill",
+                paint: { "fill-color": ["get", "color"], "fill-opacity": 0.18 } },
+              { id: "flaechen-line", type: "line",
+                paint: { "line-color": ["get", "color"], "line-width": 2, "line-dasharray": [2, 1] } },
+            ]} />
 
             {visible.map((p) => (
-              <Marker
+              <KartenMarker
                 key={p.id}
-                longitude={p.lng}
-                latitude={p.lat}
+                lng={p.lng}
+                lat={p.lat}
                 anchor="bottom"
-                onClick={(e) => {
-                  e.originalEvent.stopPropagation();
+                onClick={() => {
                   setSelectedArea(null);
                   setSelected(p);
                 }}
@@ -208,14 +193,13 @@ export function StadtKarte() {
                     <span className="h-2 w-2 rounded-full bg-white/90" />
                   </span>
                 </button>
-              </Marker>
+              </KartenMarker>
             ))}
 
             {selected && (
-              <Popup
-                longitude={selected.lng} latitude={selected.lat}
-                anchor="bottom" offset={28} closeButton={false}
-                onClose={() => setSelected(null)} maxWidth="280px"
+              <KartenPopup
+                lng={selected.lng} lat={selected.lat} offset={28}
+                onClose={() => setSelected(null)}
               >
                 <div className="p-1">
                   <div className="flex items-center gap-2">
@@ -233,14 +217,13 @@ export function StadtKarte() {
                     </Link>
                   )}
                 </div>
-              </Popup>
+              </KartenPopup>
             )}
 
             {selectedArea && (
-              <Popup
-                longitude={selectedArea.lng} latitude={selectedArea.lat}
-                anchor="bottom" offset={8} closeButton={false}
-                onClose={() => setSelectedArea(null)} maxWidth="280px"
+              <KartenPopup
+                lng={selectedArea.lng} lat={selectedArea.lat} offset={8}
+                onClose={() => setSelectedArea(null)}
               >
                 <div className="p-1">
                   <div className="flex items-center gap-2">
@@ -256,9 +239,9 @@ export function StadtKarte() {
                     </Link>
                   )}
                 </div>
-              </Popup>
+              </KartenPopup>
             )}
-          </Map>
+          </Karte>
 
           {/* ── Mobile: Bottom-Sheet ────────────────────────────────── */}
           <MobileLayerSheet

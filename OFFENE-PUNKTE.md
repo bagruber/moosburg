@@ -127,25 +127,6 @@ weit dedupliziert, wie die Versionen uebereinstimmen. Gemessen kostet ein Repo m
 abweichenden Versionen ~158 MB, ein Versions-Zwilling ~8 MB. **Einzelne Pakete
 also nicht im Alleingang hochziehen** — das faellt allen anderen Repos zur Last.
 
-## Falle: react-map-gl 8.1.2
-
-**Steht bewusst auf 8.1.1, gehalten vom Lockfile.** Version 8.1.2 aendert den Typ
-von `maxBounds` und bricht den Build sofort:
-
-```
-error TS2322: Type '[[number, number], [number, number]]' is not assignable to
-type '[number, number, number, number] | (LngLatBounds & [...]) | undefined'
-```
-
-Betroffen sind `src/pages/flagship/StadtKarte.tsx`,
-`src/components/MoosburgMap.tsx` und `src/components/StrassenKarte.tsx`. Wer
-`react-map-gl` hochzieht, muss diese Aufrufstellen bewusst auf den neuen Typ
-anpassen — das ist kein Nebenbei-Update.
-
-Gefunden wurde das beim pnpm-Umstieg: `npm ci` installiert die gepinnten
-Versionen, `pnpm install` loest die Ranges neu auf und zog dabei 8.1.2. Der
-Bruch kam also nicht von pnpm, sondern von einem Patch-Release.
-
 ## Warum `baseUrl` aus der tsconfig verschwunden ist
 
 TypeScript 7 hat die Option entfernt (Fehler TS5102). Die Zeile
