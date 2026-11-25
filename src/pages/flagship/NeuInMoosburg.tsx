@@ -18,7 +18,6 @@ import {
   ArrowRight,
   Check,
   CarProfile,
-  UserCircle,
   UserCheck,
   PersonSimpleWalk,
   MapPin,
@@ -325,44 +324,27 @@ export function NeuInMoosburg() {
       {/* Stadtführung CTA */}
       <section className="border-y border-ink-line/60 bg-cream-dark">
         <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div>
-              <div className="eyebrow text-red-700">Lernen Sie Moosburg kennen</div>
-              <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Stadtführung für Neubürger:innen</h2>
-              <p className="mt-3 text-sm text-ink-soft max-w-md">
-                Kostenlose 90-Minuten-Führung durch die Altstadt, das Kastulus-Münster und das
-                Heimatmuseum, speziell für Menschen, die neu in Moosburg sind.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-1.5">
-                  <CalendarDots className="h-4 w-4 text-red-700" weight="regular" />
-                  <span className="text-ink">Jeden 1. Samstag, 11:00 Uhr</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="h-4 w-4 text-red-700" weight="regular" />
-                  <span className="text-ink">Treffpunkt Stadtplatz</span>
-                </div>
+          <div>
+            <div className="eyebrow text-red-700">Lernen Sie Moosburg kennen</div>
+            <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Stadtführung für Neubürger:innen</h2>
+            <p className="mt-3 text-sm text-ink-soft max-w-md">
+              Kostenlose 90-Minuten-Führung durch die Altstadt, das Kastulus-Münster und das
+              Heimatmuseum, speziell für Menschen, die neu in Moosburg sind.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-1.5">
+                <CalendarDots className="h-4 w-4 text-red-700" weight="regular" />
+                <span className="text-ink">Jeden 1. Samstag, 11:00 Uhr</span>
               </div>
-              <Link to="/mein-moosburg/veranstaltungen" className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
-                Nächsten Termin sehen
-                <ArrowRight className="h-4 w-4" weight="bold" />
-              </Link>
+              <div className="flex items-center gap-1.5">
+                <MapPin className="h-4 w-4 text-red-700" weight="regular" />
+                <span className="text-ink">Treffpunkt Stadtplatz</span>
+              </div>
             </div>
-
-            {/* Bürgermeister quote */}
-            <figure className="rounded-md border border-ink-line bg-white p-6 shadow-soft">
-              <blockquote className="text-sm italic text-ink-soft leading-relaxed">
-                „Schön, dass Sie da sind. Moosburg lebt vom Engagement seiner Bürger:innen. Kommen
-                Sie auf eine der Stadtführungen oder schreiben Sie mir direkt. Wir freuen uns auf Sie."
-              </blockquote>
-              <figcaption className="mt-4 flex items-center gap-3">
-                <UserCircle className="h-9 w-9 text-red-700" weight="light" />
-                <div className="text-sm">
-                  <div className="card-title text-ink">Maximilian Mader</div>
-                  <div className="text-xs text-ink-muted">Erster Bürgermeister</div>
-                </div>
-              </figcaption>
-            </figure>
+            <Link to="/mein-moosburg/veranstaltungen" className="mt-6 inline-flex items-center gap-2 rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold text-cream hover:bg-red-700">
+              Nächsten Termin sehen
+              <ArrowRight className="h-4 w-4" weight="bold" />
+            </Link>
           </div>
         </div>
       </section>

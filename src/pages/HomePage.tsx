@@ -317,48 +317,6 @@ function Events() {
   );
 }
 
-function MayorQuote() {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
-      <Reveal>
-        <div className="relative">
-          <span
-            aria-hidden="true"
-            className="script-accent pointer-events-none absolute -top-2 left-0 text-[5rem] leading-none text-gold-500/40 select-none lg:-top-4 lg:text-[6rem]"
-          >
-            Ein Wort
-          </span>
-          <div className="eyebrow relative text-red-700 pt-10">des Bürgermeisters</div>
-          <h2 className="headline relative mt-2 text-3xl lg:text-4xl text-ink max-w-3xl">
-            „Moosburg ist unser Zuhause."
-          </h2>
-        </div>
-      </Reveal>
-
-      <Reveal delay={1}>
-        <figure className="mt-8 flex items-start gap-5 rounded-md border border-ink-line bg-white p-6 shadow-soft sm:gap-7 sm:p-8">
-          <img
-            src={IMG("images/person-portrait-1.jpg")}
-            alt="Erster Bürgermeister Maximilian Mader"
-            className="h-24 w-24 shrink-0 rounded-md object-cover sm:h-28 sm:w-28"
-          />
-          <div className="min-w-0">
-            <blockquote className="text-base italic text-ink-soft leading-relaxed sm:text-lg">
-              „Die Stadt Moosburg freut sich darauf, mit Ihnen gemeinsam Stadtgeschichte zu
-              schreiben. Diese Website soll Ihnen das einfacher machen, kommen Sie mit uns
-              ins Gespräch."
-            </blockquote>
-            <figcaption className="mt-4 text-sm font-semibold text-ink">
-              Maximilian Mader
-              <span className="ml-2 font-normal text-ink-muted">· Erster Bürgermeister</span>
-            </figcaption>
-          </div>
-        </figure>
-      </Reveal>
-    </section>
-  );
-}
-
 function HubsGrid() {
   return (
     <section className="border-t border-ink-line/60 bg-cream-dark">
@@ -402,7 +360,6 @@ export function HomePage() {
       <News />
       <Lebenslagen />
       <Events />
-      <MayorQuote />
       {/* Zwischen zwei hellen Abschnitten. Nicht direkt hinter die
           Veranstaltungen: die stehen auf Tinte, und zwei dunkle Flächen
           nebeneinander sind im Kanon ausgeschlossen. */}
