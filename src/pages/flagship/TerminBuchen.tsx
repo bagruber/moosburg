@@ -1,25 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import {
-  CalendarDots,
   Car,
   Heart,
   IdentificationCard,
   ArrowRight,
-  ArrowLeft,
   Info,
-  Check,
   House,
   Building,
   CaretLeft,
   CaretRight,
   Clock,
-  ShieldCheck,
   CheckCircle,
 } from "@phosphor-icons/react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { RoseLoader } from "@/components/RoseLoader";
+import { BeispielAblauf, FeldFehler, type AblaufSchritt } from "@/components/BeispielAblauf";
 import { findRoute } from "@/routes";
 import { useAppState } from "@/state/AppState";
 import { cn } from "@/lib/cn";
@@ -128,8 +123,6 @@ const categories: ServiceCategory[] = [
   },
 ];
 
-type Step = 1 | 2 | 3 | 4 | "loading" | "success";
-
 /** Generate next 14 working days from anchor date 2026-04-25. */
 function nextWorkingDays(count = 14): Date[] {
   const start = new Date("2026-04-25T00:00:00");
@@ -155,13 +148,11 @@ function slotsFor(category: string): string[] {
 const formatDate = (d: Date) =>
   d.toLocaleDateString("de-DE", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
 
-const isoDate = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const feld = "mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500 aria-invalid:border-red-700";
 
 export function TerminBuchen() {
-  const { profile, bookings, addBooking, signedIn } = useAppState();
-  const navigate = useNavigate();
+  const { profile, signedIn } = useAppState();
 
-  const [step, setStep] = useState<Step>(1);
   const [catId, setCatId] = useState<string | null>(null);
   const [serviceId, setServiceId] = useState<string | null>(null);
   const [dateIdx, setDateIdx] = useState(0);
@@ -170,7 +161,7 @@ export function TerminBuchen() {
   const [email, setEmail] = useState(profile.email || "");
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
-  const [confirmed, setConfirmed] = useState<{ ref: string } | null>(null);
+  const [fehler, setFehler] = useState<Record<string, string>>({});
 
   // When signed-in profile changes, hydrate empty fields without overwriting user edits
   useEffect(() => {
@@ -185,80 +176,25 @@ export function TerminBuchen() {
   const days = useMemo(() => nextWorkingDays(14), []);
   const date = days[dateIdx];
   const slots = useMemo(() => (cat ? slotsFor(cat.id) : []), [cat]);
+  const dauer = service?.durationOverride ?? cat?.duration;
 
-  const goNext = () => setStep((s) => (s === 4 ? "loading" : ((typeof s === "number" ? s + 1 : s) as Step)));
-  const goBack = () => setStep((s) => (typeof s === "number" && s > 1 ? ((s - 1) as Step) : s));
+  const pruefe = (f: Record<string, string>) => {
+    setFehler(f);
+    return Object.keys(f).length === 0;
+  };
 
-  // Submit → loader → success → record booking
-  useEffect(() => {
-    if (step !== "loading") return;
-    const t = setTimeout(() => {
-      if (!cat || !service || !date || !slot) return;
-      const b = addBooking({
-        category: cat.title,
-        service: service.title,
-        date: isoDate(date),
-        time: slot,
-        location: cat.location,
-      });
-      setConfirmed({ ref: b.reference });
-      setStep("success");
-    }, 1800);
-    return () => clearTimeout(t);
-  }, [step, cat, service, date, slot, addBooking]);
-
-  const stepNum = typeof step === "number" ? step : step === "loading" ? 4 : 5;
-
-  return (
-    <PageLayout>
-      <PageHeader
-        title={step === "success" ? "Termin gebucht" : route.title}
-        intro={
-          step === "success"
-            ? "Ihre Buchung wurde gespeichert. Eine Bestätigung haben wir an Ihre E-Mail-Adresse gesendet."
-            : route.intro
-        }
-        crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Termin buchen" }]}
-      />
-
-      {/* Stepper */}
-      {step !== "success" && step !== "loading" && (
-        <section className="border-b border-ink-line/60 bg-cream-dark">
-          <div className="mx-auto max-w-7xl px-4 py-5 lg:px-8">
-            <ol className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-              {["Anliegen", "Dienstleistung", "Datum & Zeit", "Daten & Bestätigung"].map((label, i) => {
-                const n = (i + 1) as 1 | 2 | 3 | 4;
-                const done = n < stepNum;
-                const active = n === stepNum;
-                return (
-                  <li key={label} className="flex items-center gap-2">
-                    <span
-                      className={cn(
-                        "grid h-6 w-6 place-items-center rounded-full border text-[11px] font-semibold",
-                        done && "border-rb-5 bg-rb-5 text-cream",
-                        active && "border-red-500 bg-red-500 text-cream",
-                        !done && !active && "border-ink-line bg-white text-ink-muted",
-                      )}
-                    >
-                      {done ? <Check className="h-3 w-3" weight="bold" /> : n}
-                    </span>
-                    <span className={cn("  font-semibold", active ? "text-ink" : "text-ink-muted")}>
-                      {label}
-                    </span>
-                    {i < 3 && <span className="hidden text-ink-line sm:inline">›</span>}
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-        </section>
-      )}
-
-      {/* Step 1 — Anliegen */}
-      {step === 1 && (
-        <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <h2 className="headline text-2xl lg:text-3xl text-ink">Welches Anliegen möchten Sie bearbeiten?</h2>
-          <p className="mt-2 max-w-2xl text-sm text-ink-soft">
+  const schritte: AblaufSchritt[] = [
+    {
+      titel: "Anliegen",
+      frage: "Welches Anliegen möchten Sie bearbeiten?",
+      angaben: [
+        { name: "Stelle", wert: cat?.title },
+        { name: "Ort", wert: cat?.location },
+      ],
+      pruefen: () => pruefe(cat ? {} : { cat: "Bitte wählen Sie eine Stelle aus." }),
+      inhalt: (weiter) => (
+        <>
+          <p className="-mt-6 max-w-2xl text-sm text-ink-soft">
             Wählen Sie zunächst die Stelle aus. Im nächsten Schritt sehen Sie die konkreten
             Dienstleistungen mit den dafür nötigen Unterlagen.
           </p>
@@ -269,7 +205,15 @@ export function TerminBuchen() {
               return (
                 <button
                   key={c.id}
-                  onClick={() => { setCatId(c.id); setServiceId(null); setStep(2); }}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => {
+                    // Eine andere Stelle hat andere Leistungen und Zeiten; die
+                    // alte Auswahl stünde sonst falsch in der Kontrollansicht.
+                    if (!selected) { setCatId(c.id); setServiceId(null); setSlot(null); }
+                    setFehler({});
+                    weiter();
+                  }}
                   className={cn(
                     "group flex flex-col rounded-md border bg-white p-6 text-left transition",
                     selected ? "border-red-500 shadow-soft" : "border-ink-line hover:border-red-500 hover:shadow-soft",
@@ -289,24 +233,23 @@ export function TerminBuchen() {
               );
             })}
           </div>
-        </section>
-      )}
-
-      {/* Step 2 — Dienstleistung */}
-      {step === 2 && cat && (
-        <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <div className="eyebrow text-red-700">{cat.title}</div>
-              <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Konkretes Anliegen wählen</h2>
-            </div>
-            <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
-            </button>
-          </div>
-
+          <FeldFehler>{fehler.cat}</FeldFehler>
+        </>
+      ),
+    },
+    {
+      titel: "Dienstleistung",
+      frage: "Konkretes Anliegen wählen",
+      ueber: cat?.title,
+      angaben: [
+        { name: "Dienstleistung", wert: service?.title },
+        { name: "Dauer", wert: `${dauer} Minuten` },
+      ],
+      pruefen: () => pruefe(service ? {} : { service: "Bitte wählen Sie eine Dienstleistung aus." }),
+      inhalt: (weiter) => cat && (
+        <>
           {/* Office card, address + hours + note */}
-          <div className="mt-6 grid gap-4 rounded-xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="grid gap-4 rounded-xl border border-ink-line/50 bg-white p-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div>
               <div className="eyebrow text-ink-muted">Standort</div>
               <p className="mt-1 text-sm text-ink">{cat.location}</p>
@@ -339,7 +282,9 @@ export function TerminBuchen() {
               return (
                 <button
                   key={s.id}
-                  onClick={() => { setServiceId(s.id); setStep(3); }}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => { setServiceId(s.id); setFehler({}); weiter(); }}
                   className={cn(
                     "rounded-md border bg-white p-5 text-left transition",
                     selected ? "border-red-500 shadow-soft" : "border-ink-line hover:border-red-500",
@@ -368,6 +313,7 @@ export function TerminBuchen() {
               );
             })}
           </div>
+          <FeldFehler>{fehler.service}</FeldFehler>
 
           {cat.contactIds && cat.contactIds.length > 0 && (
             <AnsprechpartnerStrip
@@ -377,38 +323,38 @@ export function TerminBuchen() {
               className="mt-8"
             />
           )}
-        </section>
-      )}
-
-      {/* Step 3 — Datum + Slot */}
-      {step === 3 && cat && service && (
-        <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <div className="eyebrow text-red-700">{cat.title} · {service.title}</div>
-              <h2 className="headline mt-1 text-2xl lg:text-3xl text-ink">Termin wählen</h2>
-            </div>
-            <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
-            </button>
-          </div>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+        </>
+      ),
+    },
+    {
+      titel: "Datum & Zeit",
+      frage: "Termin wählen",
+      ueber: cat && service ? `${cat.title} · ${service.title}` : undefined,
+      angaben: [
+        { name: "Datum", wert: formatDate(date) },
+        { name: "Uhrzeit", wert: `${slot} Uhr` },
+      ],
+      pruefen: () => pruefe(slot ? {} : { slot: "Bitte wählen Sie eine Uhrzeit aus." }),
+      inhalt: () => cat && service && (
+        <>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
             <div className="rounded-md border border-ink-line bg-white p-5">
               <div className="flex items-center justify-between">
                 <div className="eyebrow text-ink-muted">Tag wählen</div>
                 <div className="flex gap-1">
                   <button
+                    type="button"
                     aria-label="Vorheriger Tag"
-                    onClick={() => setDateIdx((i) => Math.max(0, i - 1))}
+                    onClick={() => { setDateIdx((i) => Math.max(0, i - 1)); setSlot(null); }}
                     disabled={dateIdx === 0}
                     className="grid h-7 w-7 place-items-center rounded border border-ink-line text-ink hover:bg-cream-dark disabled:opacity-40"
                   >
                     <CaretLeft className="h-4 w-4" weight="regular" />
                   </button>
                   <button
+                    type="button"
                     aria-label="Nächster Tag"
-                    onClick={() => setDateIdx((i) => Math.min(days.length - 1, i + 1))}
+                    onClick={() => { setDateIdx((i) => Math.min(days.length - 1, i + 1)); setSlot(null); }}
                     disabled={dateIdx === days.length - 1}
                     className="grid h-7 w-7 place-items-center rounded border border-ink-line text-ink hover:bg-cream-dark disabled:opacity-40"
                   >
@@ -422,6 +368,8 @@ export function TerminBuchen() {
                   return (
                     <li key={i}>
                       <button
+                        type="button"
+                        aria-pressed={active}
                         onClick={() => { setDateIdx(i); setSlot(null); }}
                         className={cn(
                           "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm transition",
@@ -455,8 +403,10 @@ export function TerminBuchen() {
                   return (
                     <button
                       key={t}
+                      type="button"
+                      aria-pressed={active}
                       disabled={taken}
-                      onClick={() => setSlot(t)}
+                      onClick={() => { setSlot(t); setFehler({}); }}
                       className={cn(
                         "rounded-lg px-3 py-2.5 text-sm font-semibold transition",
                         taken && "cursor-not-allowed border border-ink-line bg-cream-dark/60 text-ink-muted line-through",
@@ -469,19 +419,12 @@ export function TerminBuchen() {
                   );
                 })}
               </div>
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink-line pt-5 text-sm">
+              <FeldFehler>{fehler.slot}</FeldFehler>
+              <div className="mt-6 border-t border-ink-line pt-5 text-sm">
                 <span className="text-ink-muted flex items-center gap-1.5">
                   <Clock className="h-4 w-4" weight="regular" />
-                  {service.durationOverride ?? cat.duration} Minuten · vor Ort
+                  {dauer} Minuten · vor Ort
                 </span>
-                <button
-                  disabled={!slot}
-                  onClick={goNext}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-cream transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
-                >
-                  Weiter
-                  <ArrowRight className="h-4 w-4" weight="bold" />
-                </button>
               </div>
             </div>
           </div>
@@ -504,138 +447,108 @@ export function TerminBuchen() {
               </div>
             </div>
           )}
-        </section>
-      )}
-
-      {/* Step 4 — Daten + Bestätigung */}
-      {step === 4 && cat && service && slot && (
-        <section className="mx-auto max-w-5xl px-4 py-12 lg:px-8 lg:py-16">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="headline text-2xl lg:text-3xl text-ink">Daten bestätigen</h2>
-            <button onClick={goBack} className="inline-flex items-center gap-1 text-sm font-semibold text-ink-soft hover:text-red-700">
-              <ArrowLeft className="h-4 w-4" weight="regular" /> Zurück
-            </button>
-          </div>
-
-          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_320px]">
-            <form
-              onSubmit={(e) => { e.preventDefault(); if (consent && name && email) goNext(); }}
-              className="space-y-5"
-            >
+        </>
+      ),
+    },
+    {
+      titel: "Kontaktdaten",
+      frage: "Ihre Kontaktdaten",
+      angaben: [
+        { name: "Name", wert: name },
+        { name: "E-Mail", wert: email },
+        { name: "Telefon", wert: phone || "keine Angabe" },
+        { name: "Einwilligung", wert: "erteilt" },
+      ],
+      pruefen: () => pruefe({
+        ...(!name.trim() && { name: "Bitte geben Sie Ihren Namen an." }),
+        ...(!/^\S+@\S+\.\S+$/.test(email) && { email: "Bitte geben Sie eine E-Mail-Adresse an, etwa name@beispiel.de." }),
+        ...(!consent && { consent: "Bitte stimmen Sie der Verarbeitung Ihrer Daten zu." }),
+      }),
+      inhalt: () => cat && service && slot && (
+        <div className="grid max-w-5xl gap-8 md:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="space-y-5">
+            <div>
               <label className="block">
                 <span className="eyebrow text-ink-muted">Name <span className="text-red-500">*</span></span>
                 <input required value={name} onChange={(e) => setName(e.target.value)} placeholder="Max Mustermann"
-                  className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500" />
+                  aria-invalid={!!fehler.name} aria-describedby={fehler.name ? "fehler-name" : undefined}
+                  className={feld} />
               </label>
+              <FeldFehler id="fehler-name">{fehler.name}</FeldFehler>
+            </div>
+            <div>
               <label className="block">
                 <span className="eyebrow text-ink-muted">E-Mail <span className="text-red-500">*</span></span>
                 <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="ihre.adresse@beispiel.de"
-                  className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500" />
+                  aria-invalid={!!fehler.email} aria-describedby={fehler.email ? "fehler-email" : undefined}
+                  className={feld} />
                 {signedIn && <span className="mt-1 block text-[11px] text-ink-muted">Vorausgefüllt aus Ihrem Konto</span>}
               </label>
-              <label className="block">
-                <span className="eyebrow text-ink-muted">Telefon (optional, für Rückfragen)</span>
-                <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="08761 …"
-                  className="mt-1.5 w-full rounded-md border border-ink-line bg-white p-3 text-sm outline-none focus:border-red-500" />
-              </label>
+              <FeldFehler id="fehler-email">{fehler.email}</FeldFehler>
+            </div>
+            <label className="block">
+              <span className="eyebrow text-ink-muted">Telefon (optional, für Rückfragen)</span>
+              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="08761 …"
+                className={feld} />
+            </label>
 
-              <label className="flex cursor-pointer items-start gap-3 rounded-md border border-ink-line bg-white p-4 text-sm">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 accent-red-500" />
+            <div>
+              <label className="flex cursor-pointer items-start gap-3 rounded-md border border-ink-line bg-white p-4 text-sm focus-within:border-red-500">
+                <input required type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
+                  aria-invalid={!!fehler.consent} aria-describedby={fehler.consent ? "fehler-consent" : undefined}
+                  className="mt-0.5 h-4 w-4 accent-red-500" />
                 <span className="text-ink">
                   Ich stimme der Verarbeitung meiner Daten zur Terminbearbeitung zu. Bei Nichterscheinen wird der Slot automatisch nach 10 Min freigegeben. <span className="text-red-500">*</span>
                 </span>
               </label>
+              <FeldFehler id="fehler-consent">{fehler.consent}</FeldFehler>
+            </div>
+          </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                <div className="flex items-center gap-2 text-xs text-ink-muted">
-                  <ShieldCheck className="h-4 w-4 text-rb-5" weight="regular" />
-                  Verschlüsselte Übertragung
-                </div>
-                <button
-                  type="submit"
-                  disabled={!consent || !name || !email}
-                  className="inline-flex items-center gap-2 rounded-full bg-red-500 px-7 py-3 text-sm font-semibold text-cream shadow-soft transition hover:bg-red-700 disabled:opacity-40 disabled:hover:bg-red-500"
-                >
-                  Termin verbindlich buchen
-                  <ArrowRight className="h-4 w-4" weight="bold" />
-                </button>
+          <aside className="self-start rounded-md border border-ink-line bg-cream-dark/50 p-5 text-sm">
+            <div className="eyebrow text-red-700">Ihre Auswahl</div>
+            <dl className="mt-4 space-y-3">
+              <div>
+                <dt className="text-xs text-ink-muted">Anliegen</dt>
+                <dd className="mt-0.5 card-title text-sm text-ink">{service.title}</dd>
+                <dd className="text-xs text-ink-muted">{cat.title}</dd>
               </div>
-            </form>
-
-            <aside className="rounded-md border border-ink-line bg-cream-dark/50 p-5 text-sm">
-              <div className="eyebrow text-red-700">Ihre Buchung</div>
-              <dl className="mt-4 space-y-3">
-                <div>
-                  <dt className="text-xs text-ink-muted">Anliegen</dt>
-                  <dd className="mt-0.5 card-title text-sm text-ink">{service.title}</dd>
-                  <dd className="text-xs text-ink-muted">{cat.title}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-ink-muted">Datum</dt>
-                  <dd className="mt-0.5 card-title text-sm text-ink">{formatDate(date)}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-ink-muted">Uhrzeit</dt>
-                  <dd className="mt-0.5 card-title text-sm text-ink">{slot} Uhr · {service.durationOverride ?? cat.duration} Min</dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-ink-muted">Ort</dt>
-                  <dd className="mt-0.5 text-sm text-ink">{cat.location}</dd>
-                </div>
-              </dl>
-              {!signedIn && (
-                <div className="mt-5 rounded-md border border-gold-500/40 bg-gold-100/40 p-3 text-xs text-ink">
-                  <strong>Tipp:</strong> Im{" "}
-                  <Link to="/konto" className="text-red-700 underline">Mein-Moosburg-Konto</Link>{" "}
-                  sehen Sie Ihre Termine später wieder.
-                </div>
-              )}
-            </aside>
-          </div>
-        </section>
-      )}
-
-      {step === "loading" && <RoseLoader fullscreen label="Termin wird gebucht" />}
-
-      {step === "success" && cat && service && confirmed && (
-        <section className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
-          <div className="rounded-md border border-rb-5/30 bg-white p-8 text-center shadow-soft">
-            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-rb-5 text-cream">
-              <Check className="h-8 w-8" weight="bold" />
-            </div>
-            <h2 className="headline mt-5 text-3xl text-ink">Termin gebucht!</h2>
-            <p className="mt-3 text-sm text-ink-soft">
-              Referenz: <strong className="font-mono text-ink">{confirmed.ref}</strong>
-            </p>
-            <dl className="mt-6 grid gap-3 rounded-md bg-cream-dark/50 p-5 text-sm sm:grid-cols-2">
-              <div className="text-left"><dt className="eyebrow text-ink-muted">Datum</dt><dd className="card-title text-ink">{formatDate(date)}</dd></div>
-              <div className="text-left"><dt className="eyebrow text-ink-muted">Uhrzeit</dt><dd className="card-title text-ink">{slot} Uhr</dd></div>
-              <div className="text-left sm:col-span-2"><dt className="eyebrow text-ink-muted">Anliegen</dt><dd className="card-title text-ink">{service.title}</dd><dd className="text-xs text-ink-muted">{cat.location}</dd></div>
+              <div>
+                <dt className="text-xs text-ink-muted">Datum</dt>
+                <dd className="mt-0.5 card-title text-sm text-ink">{formatDate(date)}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">Uhrzeit</dt>
+                <dd className="mt-0.5 card-title text-sm text-ink">{slot} Uhr · {dauer} Min</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">Ort</dt>
+                <dd className="mt-0.5 text-sm text-ink">{cat.location}</dd>
+              </div>
             </dl>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={() => navigate("/konto")}
-                className="inline-flex items-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-cream hover:bg-red-700"
-              >
-                <CalendarDots className="h-4 w-4" weight="regular" />
-                Im Konto ansehen ({bookings.length + (confirmed ? 0 : 1)})
-              </button>
-              <button
-                onClick={() => {
-                  setStep(1);
-                  setCatId(null); setServiceId(null); setSlot(null); setConsent(false); setConfirmed(null);
-                }}
-                className="inline-flex items-center gap-2 rounded-full border border-ink-line bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-red-500"
-              >
-                Weiteren Termin buchen
-              </button>
-            </div>
-            <p className="mt-6 text-xs text-ink-muted">
-              Sie erhalten eine Bestätigung an {email}. Termin verschieben oder absagen jederzeit über den Link in der Mail.
-            </p>
-          </div>
-        </section>
-      )}
+          </aside>
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <PageLayout>
+      <PageHeader
+        title={route.title}
+        intro={route.intro}
+        crumbs={[{ label: "Rathaus", to: "/rathaus" }, { label: "Termin buchen" }]}
+      />
+      <BeispielAblauf
+        schritte={schritte}
+        schluss={{
+          titel: "Es wurde kein Termin vereinbart",
+          weg: "Einen echten Termin bekommen Sie bei der Stadt Moosburg:",
+        }}
+        onNeu={() => {
+          setCatId(null); setServiceId(null); setSlot(null); setConsent(false); setFehler({});
+        }}
+      />
     </PageLayout>
   );
 }
