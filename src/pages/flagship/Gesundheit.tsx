@@ -337,7 +337,7 @@ export function Gesundheit() {
               body="AWO Seniorenpark, Caritas-Pflegedienste, ambulante Krankenpflege David, Pflegedienst Mann." />
             <Pill icon={Phone}
               title="Krisendienst Psychiatrie"
-              body="0180 655 3000 · 365 Tage, 0–24 Uhr für seelische Krisen im Alter." />
+              body="0800 655 3000 · 365 Tage, 0–24 Uhr für seelische Krisen im Alter." />
           </div>
         </Reveal>
         <Reveal delay={2}>
