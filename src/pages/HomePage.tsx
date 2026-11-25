@@ -317,6 +317,57 @@ function Events() {
   );
 }
 
+// Ein echtes Zitat mit Quelle. Vorher stand hier ein erfundener Wortlaut unter
+// dem Namen des Bürgermeisters; was er nicht gesagt hat, steht hier nicht.
+const MADER_INTERVIEW =
+  "https://www.meine-anzeigenzeitung.de/lokales/freising/meine-aufgabe-lautet-effizienz-zu-steigern-moosburgs-ortschef-ueber-sparzwaenge-und-klimaschutz-94442477.html";
+
+function MayorQuote() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
+      <Reveal>
+        <div className="relative">
+          <span
+            aria-hidden="true"
+            className="script-accent pointer-events-none absolute -top-2 left-0 text-[5rem] leading-none text-gold-500/40 select-none lg:-top-4 lg:text-[6rem]"
+          >
+            Ein Wort
+          </span>
+          <div className="eyebrow relative text-red-700 pt-10">des Bürgermeisters</div>
+          <blockquote className="headline relative mt-2 text-3xl lg:text-4xl text-ink max-w-3xl">
+            „Der Dialog war ab Tag 1 meines Amtsbeginns der stringente Faden.“
+          </blockquote>
+        </div>
+      </Reveal>
+
+      <Reveal delay={1}>
+        <figure className="mt-8 flex items-center gap-5 rounded-md border border-ink-line bg-white p-6 shadow-soft sm:gap-7 sm:p-8">
+          <img
+            src={IMG("images/buergermeister-mader.webp")}
+            alt="Erster Bürgermeister Maximilian Mader"
+            width={224}
+            height={224}
+            className="h-24 w-24 shrink-0 rounded-md object-cover sm:h-28 sm:w-28"
+          />
+          <figcaption className="min-w-0 text-sm text-ink">
+            <div className="font-semibold">
+              Maximilian Mader
+              <span className="ml-2 font-normal text-ink-muted">· Erster Bürgermeister</span>
+            </div>
+            <p className="mt-2 text-ink-soft">
+              Aus einem Interview nach 100 Tagen im Amt, auf die Frage nach dem Austausch mit
+              den Bürgerinnen und Bürgern.{" "}
+              <a href={MADER_INTERVIEW} target="_blank" rel="noreferrer" className="font-semibold text-red-700 hover:underline">
+                Zum Interview (Armin Forster, August 2026)
+              </a>
+            </p>
+          </figcaption>
+        </figure>
+      </Reveal>
+    </section>
+  );
+}
+
 function HubsGrid() {
   return (
     <section className="border-t border-ink-line/60 bg-cream-dark">
@@ -360,6 +411,7 @@ export function HomePage() {
       <News />
       <Lebenslagen />
       <Events />
+      <MayorQuote />
       {/* Zwischen zwei hellen Abschnitten. Nicht direkt hinter die
           Veranstaltungen: die stehen auf Tinte, und zwei dunkle Flächen
           nebeneinander sind im Kanon ausgeschlossen. */}
